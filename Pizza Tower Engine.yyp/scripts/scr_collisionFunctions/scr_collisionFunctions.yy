@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_collisionFunctions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_collisionFunctions",
+  "parent":{
+    "name":"Unown's Collisions",
+    "path":"folders/Scripts/Unown's Collisions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
