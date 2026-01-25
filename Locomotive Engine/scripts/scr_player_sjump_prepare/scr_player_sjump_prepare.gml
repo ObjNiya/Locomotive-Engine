@@ -1,8 +1,7 @@
 /// @ignore
 function state_player_sjump_prepare_start()
 {
-    sprite_index = spr_sjump_prepare_intro;
-    image_index = 0;
+    sprite_index_set(spr_sjump_prepare_intro, 0);
     image_xscale = abs(image_xscale);
 }
 

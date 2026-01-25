@@ -1,7 +1,6 @@
 function state_player_sjump_start()
 {
-    sprite_index = spr_sjump;
-    image_index = 0;
+    sprite_index_set(spr_sjump, 0);
     
     vsp = -17;
     hsp = 0;
@@ -20,8 +19,7 @@ function state_player_sjump_step()
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
-        sprite_index = spr_sjump_cancel_intro;
-        image_index = 0;
+        sprite_index_set(spr_sjump_cancel_intro, 0);
         
         vsp = 0;
         grav = 0;

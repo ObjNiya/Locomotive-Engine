@@ -13,16 +13,16 @@ function state_player_normal_step()
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     var idle = (sign_input_x == 0);
     
+    movespeed = 8;
+    
     if (sign_image_xscale != sign_input_x)
     {
-        movespeed = 0;
+        hsp = 0;
         if (sign_input_x != 0)
             image_xscale = sign_input_x;
     }
     else
-        movespeed = approach(movespeed, 8 * (!idle), 0.5);
-        
-    hsp = movespeed * sign_image_xscale;
+        hsp = approach(hsp, movespeed * InputX(INPUT_CLUSTER.NAVIGATION), 0.5);
     
     player_perform_jump(spr_jump);
     
@@ -39,21 +39,25 @@ function state_player_normal_step()
     {
         player_try_jumpstop();
         
-        if (sprite_index == spr_jump || sprite_index == spr_grabdash_cancel)
+        if (equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]))
             animation_end(spr_fall);
-        else if (sprite_index != spr_fall && sprite_index != spr_grabdash_bump)
+        else if (sprite_index != spr_grabdash_bump)
             sprite_index = spr_fall;
         
         return;
     }
     
-    if (sprite_index == spr_fall || sprite_index == spr_jump)
+    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1 || place_meeting(x, y - 32, obj_solid))
     {
-        sprite_index = spr_land;
-        image_index = 0;
+        trace("Gob")
+        state_machine_set_state(state_player_crouch());
+        return;
     }
     
-    if (sprite_index == spr_land || sprite_index == spr_land_walk)
+    if (equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel]))
+        sprite_index_set(spr_land, 0);
+    
+    if (equals_to_either(sprite_index, [spr_land, spr_land_walk]))
     {
         sprite_index = (idle) ? spr_land : spr_land_walk;
         animation_end((idle) ? spr_idle : spr_walk);

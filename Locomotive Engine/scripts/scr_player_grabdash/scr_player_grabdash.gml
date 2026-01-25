@@ -1,8 +1,7 @@
 /// @ignore
 function state_player_grabdash_start()
 {
-    sprite_index = spr_grabdash_intro;
-    image_index = 0;
+    sprite_index_set(spr_grabdash_intro, 0);
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
@@ -10,7 +9,7 @@ function state_player_grabdash_start()
     
     if (movespeed < 10 || sign_input_x == -sign_image_xscale)
     {
-        movespeed = max(movespeed, 10 * grounded);
+        movespeed = max(movespeed, (grounded) ? 10 : 8);
         
         if (sign_input_x != 0)
             image_xscale = sign_input_x;
@@ -26,6 +25,9 @@ function state_player_grabdash_step()
         movespeed += 0.5;
     
     hsp = movespeed * sign_image_xscale;
+    
+    if (player_perform_wallclimb(false, true))
+        return;
     
     if (player_perform_jump(spr_longjump_intro))
     {
@@ -49,16 +51,11 @@ function state_player_grabdash_step()
         return;
     }
     
-    if (sprite_index == spr_grabdash_intro)
-        animation_end(spr_grabdash);
-    if (sprite_index == spr_grabdash && grounded)
-        animation_end(spr_grabdash_end);
+    animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
+    animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
     
     if (grabdash_airborne && grounded && sprite_index == spr_grabdash)
-    {
-        sprite_index = spr_grabdash_end;
-        image_index = 0;
-    }
+        sprite_index_set(spr_grabdash_end, 0);
     
     if (sign_input_x == -sign_image_xscale || (sprite_index == spr_grabdash_end && animation_end()))
     {

@@ -18,9 +18,11 @@ function player_get_mach_stage()
 /// @ignore
 function state_player_mach_start()
 {
-    sprite_index = (player_get_mach_stage() >= 3) ? spr_mach3 : spr_mach1;
-    image_index = 0;
-    
+    if (!grounded && player_get_mach_stage() <= 2)
+        sprite_index_set(spr_mach2_jump_intro, 0);
+    else
+        sprite_index_set((player_get_mach_stage() <= 2) ? spr_mach1 : spr_mach3, 0); 
+
     movespeed = max(movespeed, 6);
 }
 
@@ -38,6 +40,9 @@ function state_player_mach_step()
     hsp = movespeed * sign_image_xscale;
     
     if (player_perform_taunt())
+        return;
+        
+    if (player_perform_wallclimb())
         return;
     
     if (mach_stage >= 3 && place_meeting(x + sign_image_xscale, y, obj_solid))
@@ -83,10 +88,13 @@ function state_player_mach_step()
         return;
     }
     
-    if (mach_stage <= 2 && sprite_index != spr_machroll_getup && sprite_index != spr_mach4)
+    if (mach_stage <= 2 && !equals_to_either(sprite_index, [spr_machroll_getup, spr_mach4]))
         image_speed = (movespeed / 5.5);
     else
         image_speed = 1;
+    
+    if (sprite_index == spr_machroll_getup && animation_end())
+        sprite_index = (mach_stage > 2) ? spr_mach3 : spr_mach2;
     
     if (mach_stage == 4)
         sprite_index = spr_mach4;
@@ -95,14 +103,13 @@ function state_player_mach_step()
     {
         player_try_jumpstop();
         
-        if (sprite_index == spr_mach2_jump_intro)
-            animation_end(spr_mach2_jump);
+        if (equals_to_either(sprite_index, [spr_mach1, spr_mach2]))
+            sprite_index_set(spr_mach2_jump_intro, 0);
         
-        if (sprite_index == spr_mach3_jump)
-            animation_end(spr_mach3);
-        
-        if (sprite_index == spr_longjump_intro)
-            animation_end(spr_longjump);
+        animation_end_ext((sprite_index == spr_mach2_jump_intro), spr_mach2_jump);
+        animation_end_ext((sprite_index == spr_mach3_jump), spr_mach3);
+        animation_end_ext((sprite_index == spr_longjump_intro), spr_longjump);
+        animation_end_ext((sprite_index == spr_walljump_intro), spr_walljump);
         
         return;
     }
@@ -113,13 +120,11 @@ function state_player_mach_step()
         return;
     }
 
-    if (sprite_index == spr_mach1 || sprite_index == spr_machroll_getup)
-        animation_end(spr_mach2);
-    
-    if (sprite_index == spr_mach2_jump_intro || sprite_index == spr_mach2_jump || sprite_index == spr_longjump_intro || sprite_index == spr_longjump)
+    if (equals_to_either(sprite_index, [spr_mach2_jump_intro, spr_mach2_jump, spr_longjump_intro, spr_longjump, spr_walljump_intro, spr_walljump]) 
+        || (sprite_index == spr_mach1 && animation_end()))
         sprite_index = spr_mach2;
     
-    if (sprite_index == spr_mach3_jump || sprite_index == spr_sjump_cancel || (sprite_index == spr_mach2 && mach_stage == 3))
+    if (equals_to_either(sprite_index, [spr_mach3_jump, spr_sjump_cancel]) || (sprite_index == spr_mach2 && mach_stage == 3))
         sprite_index = spr_mach3;
 }
 

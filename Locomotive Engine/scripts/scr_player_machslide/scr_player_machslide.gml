@@ -9,22 +9,20 @@ function state_player_machslide_start()
 function state_player_machslide_step()
 {
     movespeed = approach(movespeed, 0, 0.4);
-    hsp = movespeed * sign(image_xscale);
+    hsp = movespeed * sign_image_xscale;
     
     if (movespeed <= 0)
     {
-        sprite_index = spr_machslide_end;
-        image_index = 0;
-        
         state_machine_set_state(state_player_normal());
+        sprite_index_set(spr_machslide_end, 0);
+        
         return;
     }
     
     if (player_perform_wallsplat())
         return;
     
-    if (sprite_index == spr_machslide_intro)
-        animation_end(spr_machslide);
+    animation_end_ext((sprite_index == spr_machslide_intro), spr_machslide);
 }
 
 /// @description This function will return an array containing the machslide states start, step and end event in order.

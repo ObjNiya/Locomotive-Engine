@@ -25,9 +25,7 @@ function state_player_machroll_step()
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && !place_meeting(x, y - 32, [obj_solid, obj_slope]) && grounded)
     {
         state_machine_set_state(state_player_mach());
-        
-        sprite_index = spr_machroll_getup;
-        image_index = 0;
+        sprite_index_set(spr_machroll_getup, 0);
         
         return;
     }

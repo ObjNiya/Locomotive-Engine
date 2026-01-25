@@ -21,6 +21,13 @@ char_cache_sprite_variables(character);
 state_machine_initialize();
 state_machine_set_state(state_player_normal());
 
+// Wallclimb variables
+
+wallclimb_grab_buffer = 0;
+wallclimb_dash_timer = new Timer(0.35, 1, time_source_units_seconds, function() {
+    sprite_index = spr_wallclimb;
+})
+
 // Grabdash variables
 
 grabdash_bump_buffer = 60;

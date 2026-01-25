@@ -60,6 +60,20 @@ function player_perform_machrun(forced = false)
     return true;
 }
 
+function player_perform_wallclimb(forced = false, set_buffer = false)
+{
+    if (!place_meeting(x + sign_image_xscale, y, obj_solid) && !forced)
+        return false;
+    
+    if (grounded && !groundedSlope && !forced)
+        return false;
+    
+    wallclimb_grab_buffer = 10 * set_buffer;
+    
+    state_machine_set_state(state_player_wallclimb());
+    return true;
+}
+
 /// @description This function will make the current player instance wallsplat if they're facing a wall.
 /// @parameter {Bool} forced Whether to ignore the check that checks if player is facing the wall.
 /// @returns {Bool}
