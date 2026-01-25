@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_camera",
+  "%Name":"scr_math_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_camera",
+  "name":"scr_math_utilities",
   "parent":{
-    "name":"Systems",
-    "path":"folders/Scripts/Systems.yy",
+    "name":"Utilities",
+    "path":"folders/Scripts/Utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_utilities",
+  "%Name":"scr_coyote_system",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_utilities",
+  "name":"scr_coyote_system",
   "parent":{
-    "name":"Core",
-    "path":"folders/Scripts/Core.yy",
+    "name":"Player",
+    "path":"folders/Scripts/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

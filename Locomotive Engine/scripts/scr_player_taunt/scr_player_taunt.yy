@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_camera",
+  "%Name":"scr_player_taunt",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_camera",
+  "name":"scr_player_taunt",
   "parent":{
-    "name":"Systems",
-    "path":"folders/Scripts/Systems.yy",
+    "name":"States",
+    "path":"folders/Scripts/Player/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -30,6 +30,6 @@ function char_cache_sprite_variables(char_struct)
         
         variable_instance_set(id, sprite_name, i);
         
-        trace("Creating charspr variable: ", sprite_name, " With value: ", sprite_get_name(i));
+        trace("Creating charspr variable \"", sprite_name, "\", With value: ", sprite_get_name(i));
     }
 }

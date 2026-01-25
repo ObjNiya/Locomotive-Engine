@@ -1,0 +1,29 @@
+function state_player_taunt_start()
+{
+    stored_sprite_index = sprite_index;
+    stored_image_index = image_index;
+    
+    sprite_index = spr_taunt;
+    image_index = irandom(image_number);
+    
+    stored_vsp = vsp;
+    stored_hsp = hsp;
+    stored_movespeed = movespeed;
+    
+    grav = 0;
+    vsp = 0;
+    hsp = 0;
+    movespeed = 0;
+    
+    taunt_timer.start();
+}
+
+function state_player_taunt_step()
+{
+    taunt_timer.step();
+}
+
+function state_player_taunt()
+{
+    return [state_player_taunt_start, state_player_taunt_step, -1];
+}

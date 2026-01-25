@@ -18,7 +18,7 @@ function player_get_mach_stage()
 /// @ignore
 function state_player_mach_start()
 {
-    sprite_index = (movespeed >= 12) ? spr_mach3 : spr_mach1;
+    sprite_index = (player_get_mach_stage() >= 3) ? spr_mach3 : spr_mach1;
     image_index = 0;
     
     movespeed = max(movespeed, 6);
@@ -37,28 +37,30 @@ function state_player_mach_step()
     movespeed += acceleration * (sign_input_x == sign_image_xscale || mach_stage <= 2);
     hsp = movespeed * sign_image_xscale;
     
-    if (place_meeting(x + sign_image_xscale, y, obj_solid))
+    if (player_perform_taunt())
+        return;
+    
+    if (mach_stage >= 3 && place_meeting(x + sign_image_xscale, y, obj_solid))
     {
         state_machine_set_state(state_player_animation());
         
-        image_speed = 0.35;
-        
-        if (mach_stage >= 3)
-        {
-            sprite_index = spr_mach3hitwall;
+        sprite_index = spr_mach3_hit_wall;
             
-            vsp = -6;
-            movespeed = -6;
-            grounded = false;
-        }
-        else
-        {
-            sprite_index = spr_wallsplat;
-            
-            vsp = 0;
-            grav = 0;
-        }
+        vsp = -6;
+        movespeed = -6;
+        grounded = false;
         
+        return;
+    }    
+    
+    if (player_perform_wallsplat())
+        return;
+
+    if (!InputCheck(INPUT_VERB.MACHRUN) && grounded)
+    {
+        var state = (movespeed >= 8) ? state_player_machslide() : state_player_normal();
+        
+        state_machine_set_state(state);
         return;
     }
     
@@ -70,83 +72,61 @@ function state_player_mach_step()
     else if (sign_input_x == -sign_image_xscale && grounded)
         image_xscale *= -1;
     
+    player_perform_jump((mach_stage <= 2) ? spr_mach2_jump_intro : spr_mach3_jump);
+    
+    if (player_perform_grabdash())
+        return;
+    
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
     {
         state_machine_set_state(state_player_machroll());
         return;
     }
     
-    if (!InputCheck(INPUT_VERB.MACHRUN) && grounded)
-    {
-        image_speed = 0.35;
-        var state = (movespeed >= 8) ? state_player_machslide() : state_player_normal();
-        
-        state_machine_set_state(state);
-        return;
-    }
-    
-    if (InputPressed(INPUT_VERB.GRABDASH))
-    {
-        image_speed = 0.35;
-        
-        state_machine_set_state(state_player_grabdash());
-        return;
-    }
-    
-    if (grounded && InputPressed(INPUT_VERB.JUMP))
-    {
-        if (mach_stage <= 2)
-        {
-            sprite_index = spr_secondjump1;
-            image_index = 0;
-        }
-        else if (mach_stage == 3)
-        {
-            sprite_index = spr_mach3jump;
-            image_index = 0;
-        }
-        
-        vsp = jump_height;
-        grounded = false;
-        
-        return;
-    }
-    
-    if (sprite_index == spr_mach4)
-        image_speed = 0.75;
-    else if (mach_stage > 2 || sprite_index == spr_rollgetup)
-        image_speed = 0.4;
+    if (mach_stage <= 2 && sprite_index != spr_machroll_getup && sprite_index != spr_mach4)
+        image_speed = (movespeed / 5.5);
     else
-        image_speed = movespeed / 15;
-    
-    if (!grounded)
-    {
-        if (InputReleased(INPUT_VERB.JUMP) && vsp < 0)
-            vsp /= 20;
-        
-        if (sprite_index == spr_secondjump1)
-            animation_end(spr_secondjump2);
-        
-        if (sprite_index == spr_mach3jump)
-            animation_end(spr_mach3);
-        
-        if (sprite_index == spr_longjump)
-            animation_end(spr_longjumpend);
-        
-        return;
-    }
-
-    if (sprite_index == spr_mach1 || sprite_index == spr_rollgetup)
-        animation_end(spr_mach);
-    
-    if (sprite_index == spr_secondjump1 || sprite_index == spr_secondjump2 || sprite_index == spr_longjump || sprite_index == spr_longjumpend)
-        sprite_index = spr_mach;
-    
-    if (sprite_index == spr_mach3jump || (sprite_index == spr_mach && mach_stage == 3))
-        sprite_index = spr_mach3;
+        image_speed = 1;
     
     if (mach_stage == 4)
         sprite_index = spr_mach4;
+    
+    if (!grounded)
+    {
+        player_try_jumpstop();
+        
+        if (sprite_index == spr_mach2_jump_intro)
+            animation_end(spr_mach2_jump);
+        
+        if (sprite_index == spr_mach3_jump)
+            animation_end(spr_mach3);
+        
+        if (sprite_index == spr_longjump_intro)
+            animation_end(spr_longjump);
+        
+        return;
+    }
+    
+    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1 && mach_stage > 2)
+    {
+        state_machine_set_state(state_player_sjump_prepare());
+        return;
+    }
+
+    if (sprite_index == spr_mach1 || sprite_index == spr_machroll_getup)
+        animation_end(spr_mach2);
+    
+    if (sprite_index == spr_mach2_jump_intro || sprite_index == spr_mach2_jump || sprite_index == spr_longjump_intro || sprite_index == spr_longjump)
+        sprite_index = spr_mach2;
+    
+    if (sprite_index == spr_mach3_jump || sprite_index == spr_sjump_cancel || (sprite_index == spr_mach2 && mach_stage == 3))
+        sprite_index = spr_mach3;
+}
+
+/// @ignore
+function state_player_mach_end()
+{
+    image_speed = 1;
 }
 
 /// @description This function will return an array containing the mach states start, step and end event in order.
@@ -154,5 +134,5 @@ function state_player_mach_step()
 /// @pure
 function state_player_mach()
 {
-    return [state_player_mach_start, state_player_mach_step, -1];
+    return [state_player_mach_start, state_player_mach_step, state_player_mach_end];
 }

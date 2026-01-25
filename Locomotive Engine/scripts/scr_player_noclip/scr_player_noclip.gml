@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_noclip_start()
 {
-    sprite_index = spr_parry1;
+    sprite_index = spr_parry_intro;
     image_index = 1;
     image_speed = 0;
     
@@ -31,7 +31,7 @@ function state_player_noclip_step()
 /// @ignore
 function state_player_noclip_end()
 {
-    image_speed = 0.35;
+    image_speed = 1;
     
     grav = 0.5;
     usesCollision = true;

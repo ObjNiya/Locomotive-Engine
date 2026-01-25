@@ -10,9 +10,8 @@ function state_player_normal_start()
 /// @ignore
 function state_player_normal_step()
 {
-    var input_x = InputX(INPUT_CLUSTER.NAVIGATION);
-    var sign_input_x = sign(input_x);
-    var idle = (input_x == 0);
+    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    var idle = (sign_input_x == 0);
     
     if (sign_image_xscale != sign_input_x)
     {
@@ -25,40 +24,25 @@ function state_player_normal_step()
         
     hsp = movespeed * sign_image_xscale;
     
-    if (sprite_index != spr_grabdashbump)
-        grabdash_bump_buffer = 0;
+    player_perform_jump(spr_jump);
     
-    grabdash_bump_buffer--;
-    
-    if (InputPressed(INPUT_VERB.GRABDASH) && grabdash_bump_buffer <= 0)
-    {
-        state_machine_set_state(state_player_grabdash());
+    if (player_perform_taunt())
         return;
-    }
+    
+    if (player_perform_grabdash())
+        return;
+    
+    if (player_perform_machrun())
+        return;
     
     if (!grounded)
     {
-        if (InputReleased(INPUT_VERB.JUMP) && vsp < 0)
-            vsp /= 20;
+        player_try_jumpstop();
         
-        if (sprite_index == spr_jump || sprite_index == spr_grabdashfall || sprite_index == spr_grabdashcancel)
+        if (sprite_index == spr_jump || sprite_index == spr_grabdash_cancel)
             animation_end(spr_fall);
-        
-        return;
-    }
-    
-    if (InputCheck(INPUT_VERB.MACHRUN))
-    {
-        state_machine_set_state(state_player_mach());
-        return;
-    }
-    
-    if (InputPressed(INPUT_VERB.JUMP))
-    {
-        vsp = jump_height;
-        
-        sprite_index = spr_jump;
-        image_index = 0;
+        else if (sprite_index != spr_fall && sprite_index != spr_grabdash_bump)
+            sprite_index = spr_fall;
         
         return;
     }
@@ -69,15 +53,15 @@ function state_player_normal_step()
         image_index = 0;
     }
     
-    if (sprite_index == spr_land || sprite_index == spr_landwalk)
+    if (sprite_index == spr_land || sprite_index == spr_land_walk)
     {
-        sprite_index = (idle) ? spr_land : spr_landwalk;
+        sprite_index = (idle) ? spr_land : spr_land_walk;
         animation_end((idle) ? spr_idle : spr_walk);
         
         return;
     }
     
-    if (sprite_index == spr_machslideend && idle)
+    if (sprite_index == spr_machslide_end && idle)
     {
         animation_end(spr_idle);
         return;

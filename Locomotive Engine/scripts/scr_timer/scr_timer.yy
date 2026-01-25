@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_player",
+  "%Name":"scr_timer",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_player",
+  "name":"scr_timer",
   "parent":{
-    "name":"Player",
-    "path":"folders/Scripts/Player.yy",
+    "name":"Constructors",
+    "path":"folders/Scripts/Constructors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

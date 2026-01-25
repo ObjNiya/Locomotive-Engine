@@ -12,7 +12,7 @@ angle = approach(angle, angle_target, angle_speed);*/
 var center_x = camera_get_view_width(camera) / 2;
 var center_y = camera_get_view_height(camera) / 2;
 
-var natural_y_offset = camera_get_view_height(camera) / 4;
+var natural_y_offset = 50;
 
 var target_x = clamp(target.x - center_x - xoffset, 0, room_width);
 var target_y = clamp(target.y - center_y - natural_y_offset - yoffset, 0, room_width);
