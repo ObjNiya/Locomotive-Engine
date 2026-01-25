@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Enemy Swing",
+    "path":"folders/Sprites/Player/Damian/Enemy Swing.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

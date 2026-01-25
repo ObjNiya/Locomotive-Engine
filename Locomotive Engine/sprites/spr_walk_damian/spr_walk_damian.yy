@@ -36,8 +36,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Walk",
+    "path":"folders/Sprites/Player/Damian/Normal/Walk.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

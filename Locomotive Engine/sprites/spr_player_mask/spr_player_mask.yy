@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Collision",
+    "path":"folders/Sprites/Player/Damian/Collision.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

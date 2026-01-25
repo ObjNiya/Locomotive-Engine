@@ -112,7 +112,7 @@ function state_player_mach_step()
         return;
     }
     
-    if (sprite_index == spr_crazyrun)
+    if (sprite_index == spr_mach4)
         image_speed = 0.75;
     else if (mach_stage > 2 || sprite_index == spr_rollgetup)
         image_speed = 0.4;
@@ -146,7 +146,7 @@ function state_player_mach_step()
         sprite_index = spr_mach3;
     
     if (mach_stage == 4)
-        sprite_index = spr_crazyrun;
+        sprite_index = spr_mach4;
 }
 
 /// @description This function will return an array containing the mach states start, step and end event in order.

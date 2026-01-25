@@ -43,8 +43,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Superjump",
+    "path":"folders/Sprites/Player/Damian/Superjump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Kung Fu",
+    "path":"folders/Sprites/Player/Damian/Kung Fu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

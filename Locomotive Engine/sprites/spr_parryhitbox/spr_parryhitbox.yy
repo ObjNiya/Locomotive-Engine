@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Parry",
+    "path":"folders/Sprites/Player/Damian/Parry.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

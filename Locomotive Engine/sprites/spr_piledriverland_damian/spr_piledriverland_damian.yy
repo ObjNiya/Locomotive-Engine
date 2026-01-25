@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Miscellanious",
+    "path":"folders/Sprites/Player/Damian/Miscellanious.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

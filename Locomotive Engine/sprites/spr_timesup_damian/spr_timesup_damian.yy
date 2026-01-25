@@ -43,8 +43,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Normal",
-    "path":"folders/Sprites/Player/Damian/Normal.yy",
+    "name":"Cutscene",
+    "path":"folders/Sprites/Player/Damian/Cutscene.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
