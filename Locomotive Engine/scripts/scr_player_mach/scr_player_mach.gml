@@ -97,8 +97,11 @@ function state_player_mach_step()
         sprite_index = (mach_stage > 2) ? spr_mach3 : spr_mach2;
     
     if (mach_stage == 4)
+    {
+        image_speed = 1;
         sprite_index = spr_mach4;
-    
+    }
+     
     if (!grounded)
     {
         player_try_jumpstop();

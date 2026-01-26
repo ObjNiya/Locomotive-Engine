@@ -38,6 +38,12 @@ function state_player_grabdash_step()
         return;
     }
     
+    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
+    {
+        state_machine_set_state(state_player_backslide());
+        return;
+    }
+    
     if (place_meeting(x + sign_image_xscale, y, obj_solid))
     {
         state_machine_set_state(state_player_normal());

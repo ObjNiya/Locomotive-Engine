@@ -48,6 +48,17 @@ function player_perform_taunt(forced = false)
     return true;
 }
 
+function player_perform_groundpound(sprite = spr_groundpound_intro, forced = false)
+{
+    if ((!InputPressed(INPUT_VERB.DOWN) || grounded) && !forced)
+        return false;
+    
+    state_machine_set_state(state_player_groundpound());
+    sprite_index_set(sprite, 0);
+    
+    return true;
+}
+
 /// @description This function will make the current player instance machrun if the machrun bind is held and they're not facing a wall.
 /// @parameter {Bool} forced Whether to ignore the check that checks if the mach run button is held, the player isn't facing a wall and that the player isn't in the air.
 /// @returns {Bool}

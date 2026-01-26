@@ -15,6 +15,14 @@ function state_player_machroll_step()
         sprite_index = spr_machroll_dive;
         
         vsp = 20;
+        
+        if (InputPressed(INPUT_VERB.JUMP))
+        {
+            state_machine_set_state(state_player_groundpound());
+            sprite_index_set(spr_divebomb, 0);
+            
+            return;
+        }
     }
     else if (sprite_index == spr_machroll_dive)
         sprite_index = spr_machroll;

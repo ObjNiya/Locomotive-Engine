@@ -33,10 +33,16 @@ function state_player_normal_step()
         return;
     
     if (player_perform_machrun())
+    {
+        movespeed = max(6, abs(hsp));
         return;
+    }
     
     if (!grounded)
     {
+        if (player_perform_groundpound())
+            return;
+        
         player_try_jumpstop();
         
         if (equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]))
@@ -49,7 +55,6 @@ function state_player_normal_step()
     
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1 || place_meeting(x, y - 32, obj_solid))
     {
-        trace("Gob")
         state_machine_set_state(state_player_crouch());
         return;
     }

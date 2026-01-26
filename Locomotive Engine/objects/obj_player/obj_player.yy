@@ -13,7 +13,10 @@
     "name":"Core",
     "path":"folders/Objects/Core.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_player",
+    "path":"objects/par_player/par_player.yy",
+  },
   "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

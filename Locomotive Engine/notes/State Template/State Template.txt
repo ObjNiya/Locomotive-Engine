@@ -1,0 +1,24 @@
+```gml
+/// @ignore
+function state_player_X_start()
+{
+    
+}
+
+/// @ignore
+function state_player_X_step()
+{
+    
+}
+
+/// @ignore
+function state_player_X_end()
+{
+    
+}
+
+function state_player_X()
+{
+    return [state_player_X_start, state_player_X_step, state_player_X_end];
+}
+```
