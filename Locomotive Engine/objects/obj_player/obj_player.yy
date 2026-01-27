@@ -10,8 +10,8 @@
   "name":"obj_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"Core",
-    "path":"folders/Objects/Core.yy",
+    "name":"Game Structure",
+    "path":"folders/Objects/Game Structure.yy",
   },
   "parentObjectId":{
     "name":"par_player",
