@@ -44,6 +44,7 @@ function state_player_sjump_step()
     mach_afterimage_timer.stop();
     groundpound_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
+    step_particle_timer.stop();
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION))
     
@@ -68,6 +69,7 @@ function state_player_sjump_end()
     mach_afterimage_timer.stop();
     groundpound_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
+    step_particle_timer.stop();
 }
 
 function state_player_sjump()

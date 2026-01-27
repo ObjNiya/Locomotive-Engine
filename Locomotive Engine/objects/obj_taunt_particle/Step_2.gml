@@ -5,5 +5,4 @@ with (player_instance)
     
     other.x = x;
     other.y = y;
-    other.depth = depth + 1;
 }

@@ -1,0 +1,1 @@
+room_transition(target_room, target_spawnpoint);
