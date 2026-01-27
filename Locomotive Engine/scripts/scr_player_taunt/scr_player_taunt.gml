@@ -14,12 +14,14 @@ function state_player_taunt_start()
     hsp = 0;
     movespeed = 0;
     
+    create_taunt_particle(x, y, depth);
     taunt_timer.start();
 }
 
 function state_player_taunt_step()
 {
     taunt_timer.step();
+    
 }
 
 function state_player_taunt()

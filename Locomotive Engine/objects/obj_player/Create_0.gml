@@ -1,11 +1,13 @@
+// Built-ins
+depth = 0;
+mask_index = spr_player_mask;
+
 // Collision system
 
 scr_collision_init();
 grav = 0.5;
 movespeed = 0;
 terminalVelocity = 20;
-
-mask_index = spr_player_mask;
 
 // Coyote manager
 

@@ -1,4 +1,0 @@
-function define_particles()
-{
-    
-}
