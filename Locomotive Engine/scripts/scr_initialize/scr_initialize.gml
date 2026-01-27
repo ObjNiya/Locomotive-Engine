@@ -58,8 +58,6 @@ function initialize_globals()
 /// @description This function initializes important objects for the game.
 function initialize_objects()
 {
-    instance_create_layer(0, 0, "Instances_1", obj_effect_manager);
-    
     if (DEBUG_MODE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);
 }

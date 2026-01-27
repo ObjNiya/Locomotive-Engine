@@ -2,11 +2,18 @@ function state_player_sjump_start()
 {
     sprite_index_set(spr_sjump, 0);
     
-    vsp = -17;
+    vsp = -12;
     hsp = 0;
     movespeed = 0;
     grav = -0.1;
     grounded = false;
+    
+    mach_afterimage_use_alpha = false;
+    mach_afterimage_timer.start();
+    step_particle_timer.start();
+    groundpound_woosh_particle_timer.start();
+    
+    instance_create(x, y, obj_explosion_particle_alt);
 }
 
 function state_player_sjump_step()
@@ -25,8 +32,18 @@ function state_player_sjump_step()
         grav = 0;
     }
     
+    if (!instance_exists(obj_groundpound_effect))
+    {
+        with (instance_create(x, y, obj_groundpound_effect))
+            player_instance = other.id;
+    }    
+    
     if (sprite_index != spr_sjump_cancel_intro)
         return;
+    
+    mach_afterimage_timer.stop();
+    groundpound_woosh_particle_timer.stop();
+    blur_afterimage_timer.stop();
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION))
     
@@ -47,6 +64,10 @@ function state_player_sjump_step()
 function state_player_sjump_end()
 {
     grav = 0.5;
+    mach_afterimage_use_alpha = true;
+    mach_afterimage_timer.stop();
+    groundpound_woosh_particle_timer.stop();
+    blur_afterimage_timer.stop();
 }
 
 function state_player_sjump()

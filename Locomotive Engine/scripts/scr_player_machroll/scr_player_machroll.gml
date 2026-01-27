@@ -3,6 +3,11 @@ function state_player_machroll_start()
 {
     sprite_index = spr_machroll;
     mask_index = spr_crouchmask;
+    
+    with (instance_create(x, y + 45, obj_burst_cloud_particle))
+        image_xscale = other.image_xscale;
+    
+    blur_afterimage_timer.start();
 }
 
 /// @ignore
@@ -35,10 +40,22 @@ function state_player_machroll_step()
         state_machine_set_state(state_player_mach());
         sprite_index_set(spr_machroll_getup, 0);
         
+        with (instance_create(x, y + 45, obj_burst_cloud_particle))
+            image_xscale = other.image_xscale;
+        
         return;
     }
     
     image_speed = movespeed / 5.5;
+    
+    if (instance_exists(mach_cloud_particle_id))
+        return;
+    
+    with (instance_create(x, y + 45, obj_mach2_cloud_particle)) 
+    {
+        other.mach_cloud_particle_id = id;
+        image_xscale = other.image_xscale;
+    }
 }
 
 /// @ignore
@@ -46,6 +63,8 @@ function state_player_machroll_end()
 {
     mask_index = spr_player_mask;
     image_speed = 1;
+    
+    blur_afterimage_timer.stop();
 }
 
 /// @description This function will return an array containing the machroll states start, step and end event in order.

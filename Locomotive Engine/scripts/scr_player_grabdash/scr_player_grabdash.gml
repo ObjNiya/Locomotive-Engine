@@ -14,6 +14,12 @@ function state_player_grabdash_start()
         if (sign_input_x != 0)
             image_xscale = sign_input_x;
     }
+    
+    image_speed = 1;
+    
+    blur_afterimage_timer.start();
+    with (instance_create(x, y + 45, obj_burst_cloud_particle))
+        image_xscale = other.image_xscale;
 }
 
 /// @ignore
@@ -63,6 +69,15 @@ function state_player_grabdash_step()
     if (grabdash_airborne && grounded && sprite_index == spr_grabdash)
         sprite_index_set(spr_grabdash_end, 0);
     
+    if (!instance_exists(grabdash_cloud_particle_id) && grounded && movespeed > 5)
+    {
+        with (instance_create(x, y + 45, obj_slide_cloud_particle))
+        {
+            other.grabdash_cloud_particle_id = id;
+            image_xscale = other.image_xscale;
+        }
+    }
+    
     if (sign_input_x == -sign_image_xscale || (sprite_index == spr_grabdash_end && animation_end()))
     {
         state_machine_set_state(state_player_normal());
@@ -74,10 +89,15 @@ function state_player_grabdash_step()
     }
 }
 
+function state_player_grabdash_end()
+{
+    blur_afterimage_timer.stop();
+}
+
 /// @description This function will return an array containing the grabdash states start, step and end event in order.
 /// @returns {Array<Function>}
 /// @pure
 function state_player_grabdash()
 {
-    return [state_player_grabdash_start, state_player_grabdash_step, -1];
+    return [state_player_grabdash_start, state_player_grabdash_step, state_player_grabdash_end];
 }

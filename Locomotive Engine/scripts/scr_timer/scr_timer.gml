@@ -1,4 +1,4 @@
-function Timer(time, speed, units, callback) constructor
+function Timer(time, speed, units, repeating, callback) constructor
 {
     max_time = time;
     self.units = units;
@@ -8,6 +8,7 @@ function Timer(time, speed, units, callback) constructor
     self.time = 0;
     
     started = false;
+    self.repeating = repeating;
     
     static start = function()
     { 
@@ -38,6 +39,9 @@ function Timer(time, speed, units, callback) constructor
         {
             callback();
             started = false;
+            
+            if (repeating)
+                start();
         }
     }
     

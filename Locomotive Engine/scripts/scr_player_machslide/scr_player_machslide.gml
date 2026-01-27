@@ -23,6 +23,15 @@ function state_player_machslide_step()
         return;
     
     animation_end_ext((sprite_index == spr_machslide_intro), spr_machslide);
+    
+    if (instance_exists(mach_cloud_particle_id) || !grounded)
+        return;
+    
+    with (instance_create(x, y + 45, obj_machturn_particle)) 
+    {
+        other.mach_cloud_particle_id = id;
+        image_xscale = other.image_xscale;
+    }
 }
 
 /// @description This function will return an array containing the machslide states start, step and end event in order.

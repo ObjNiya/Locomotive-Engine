@@ -7,7 +7,7 @@ function player_get_mach_stage()
     
     if (sprite_index == spr_mach1)
         return 1;
-    else if (floor_movespeed < 12)
+    else if (floor_movespeed < 12 || (equals_to_either(sprite_index, [spr_longjump_intro, spr_longjump])))
         return 2;
     else if (floor_movespeed < 16)
         return 3;
@@ -24,6 +24,9 @@ function state_player_mach_start()
         sprite_index_set((player_get_mach_stage() <= 2) ? spr_mach1 : spr_mach3, 0); 
 
     movespeed = max(movespeed, 6);
+    
+    mach_afterimage_use_alpha = true;
+    mach_afterimage_timer.start();
 }
 
 /// @ignore
@@ -88,7 +91,7 @@ function state_player_mach_step()
         return;
     }
     
-    if (mach_stage <= 2 && !equals_to_either(sprite_index, [spr_machroll_getup, spr_mach4]))
+    if (mach_stage <= 2 && !equals_to_either(sprite_index, [spr_machroll_getup, spr_mach4, spr_longjump_intro, spr_longjump]))
         image_speed = (movespeed / 5.5);
     else
         image_speed = 1;
@@ -98,10 +101,51 @@ function state_player_mach_step()
     
     if (mach_stage == 4)
     {
-        image_speed = 1;
-        sprite_index = spr_mach4;
+        if (sprite_index != spr_mach4)
+        {
+            image_speed = 1;
+            sprite_index = spr_mach4;
+            
+            with (instance_create(x, y, obj_mach4_puff_particle))
+                image_xscale = other.image_xscale;
+        }
+        
+        if (!mach4_flame_particle_timer.started)
+            mach4_flame_particle_timer.start();
+        mach4_flame_particle_timer.step();
+        
+        if (!blur_afterimage_timer.started)
+            blur_afterimage_timer.start();
+        
+        if (!instance_exists(mach4_woosh_particle_id))
+        {
+            with (instance_create(x, y, obj_mach4_woosh_particle))
+            {
+                other.mach4_woosh_particle_id = id;
+                image_xscale = other.image_xscale;
+            }
+        }
     }
-     
+    else
+        mach4_flame_particle_timer.stop();
+    
+    var mach3_effects = [obj_speedlines_effect, obj_charge_effect];
+    var effect_count = 2;
+    
+    for (var i = 0; i < effect_count; i++)
+    {
+        var effect = mach3_effects[i];
+        
+        if (instance_exists(effect) || mach_stage <= 2)
+            continue;
+        
+        with (instance_create(x, y, effect))
+        {
+            player_instance = other.id;
+            image_xscale = other.image_xscale;
+        }
+    }
+    
     if (!grounded)
     {
         player_try_jumpstop();
@@ -129,12 +173,26 @@ function state_player_mach_step()
     
     if (equals_to_either(sprite_index, [spr_mach3_jump, spr_sjump_cancel]) || (sprite_index == spr_mach2 && mach_stage == 3))
         sprite_index = spr_mach3;
+    
+    if (!instance_exists(mach_cloud_particle_id)) 
+    {
+        var particle = (mach_stage >= 3) ? obj_mach3_cloud_particle : obj_mach2_cloud_particle;
+        
+        with (instance_create(x, y + 45, particle)) 
+        {
+            other.mach_cloud_particle_id = id;
+            image_xscale = other.image_xscale;
+        }
+    }
 }
 
 /// @ignore
 function state_player_mach_end()
 {
     image_speed = 1;
+    
+    mach_afterimage_timer.stop();
+    blur_afterimage_timer.stop();
 }
 
 /// @description This function will return an array containing the mach states start, step and end event in order.

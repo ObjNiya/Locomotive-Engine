@@ -14,3 +14,8 @@ function equals_to_either(variable, values)
     
     return false;
 }
+
+function instance_create(x, y, obj, var_struct = {})
+{
+    return instance_create_layer(x, y, "Instances_1", obj, var_struct);
+}

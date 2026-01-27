@@ -14,7 +14,9 @@ function state_player_taunt_start()
     hsp = 0;
     movespeed = 0;
     
-    create_taunt_particle(x, y, depth);
+    with (instance_create(x, y, obj_taunt_particle))
+        player_instance = other.id;
+    
     taunt_timer.start();
 }
 

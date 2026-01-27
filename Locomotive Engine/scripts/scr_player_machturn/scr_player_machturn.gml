@@ -27,6 +27,15 @@ function state_player_machturn_step()
             
         return;
     }
+    
+    if (instance_exists(mach_cloud_particle_id) || !grounded)
+        return;
+    
+    with (instance_create(x, y + 45, obj_machturn_particle)) 
+    {
+        other.mach_cloud_particle_id = id;
+        image_xscale = other.image_xscale;
+    }
 }
 
 /// @description This function will return an array containing the machturn states start, step and end event in order.

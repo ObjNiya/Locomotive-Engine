@@ -16,6 +16,8 @@ function player_perform_jump(jump_sprite, forced = false)
     sprite_index = jump_sprite;
     image_index = 0;
     
+    instance_create(x, y + 45, obj_jump_particle);
+    
     return true;
 }
 

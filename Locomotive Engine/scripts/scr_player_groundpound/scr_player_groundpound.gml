@@ -7,6 +7,9 @@ function state_player_groundpound_start()
     
     vsp = -6;
     terminalVelocity = 200;
+    
+    mach_afterimage_use_alpha = false;
+    blur_afterimage_timer.start();
 }
 
 function state_player_groundpound_step()
@@ -23,6 +26,7 @@ function state_player_groundpound_step()
             
             image_xscale = sign(-instance_place(x, y + 1, [obj_slope, obj_slopePlatform]).image_xscale);
             
+            instance_create(x, y + 45, obj_jump_particle);
             return;
         }
         
@@ -34,6 +38,8 @@ function state_player_groundpound_step()
             
             hsp = 0;
             movespeed = 0;
+            
+            instance_create(x, y + 45, obj_groundpound_slam_particle);
             return;
         }
         
@@ -46,7 +52,27 @@ function state_player_groundpound_step()
     }
     
     if (vsp >= 2)
+    {
         grav = 1;
+        
+        if (!step_particle_timer.started)
+            step_particle_timer.start();
+        
+        if (vsp > 17)
+        {
+            if (!mach_afterimage_timer.started)
+                mach_afterimage_timer.start();
+            
+            if (!groundpound_woosh_particle_timer.started)
+                groundpound_woosh_particle_timer.start();
+            
+            if (!instance_exists(obj_groundpound_effect))
+            {
+                with (instance_create(x, y, obj_groundpound_effect))
+                    player_instance = other.id;
+            }    
+        }
+    }
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
@@ -73,6 +99,11 @@ function state_player_groundpound_end()
 {
     grav = 0.5;
     terminalVelocity = 20;
+    
+    mach_afterimage_use_alpha = true;
+    mach_afterimage_timer.stop();
+    groundpound_woosh_particle_timer.stop();
+    blur_afterimage_timer.stop();
 }
 
 function state_player_groundpound()

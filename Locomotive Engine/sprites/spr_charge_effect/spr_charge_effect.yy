@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_mach_charge_effect",
+  "%Name":"spr_charge_effect",
   "bboxMode":2,
   "bbox_bottom":80,
   "bbox_left":23,
@@ -25,7 +25,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"509a1d25-3c59-4e74-afa9-ab56644a6632","blendMode":0,"displayName":"default","isLocked":false,"name":"509a1d25-3c59-4e74-afa9-ab56644a6632","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_mach_charge_effect",
+  "name":"spr_charge_effect",
   "nineSlice":null,
   "origin":4,
   "parent":{
@@ -37,7 +37,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_mach_charge_effect",
+    "%Name":"spr_charge_effect",
     "autoRecord":true,
     "backdropHeight":1080,
     "backdropImageOpacity":0.5,
@@ -61,9 +61,9 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_mach_charge_effect",
+    "name":"spr_charge_effect",
     "playback":1,
-    "playbackSpeed":20.0,
+    "playbackSpeed":23.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -73,19 +73,19 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2b54a296-f67f-4308-932b-be2d4df66e52","path":"sprites/spr_mach_charge_effect/spr_mach_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2b54a296-f67f-4308-932b-be2d4df66e52","path":"sprites/spr_charge_effect/spr_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"84d2847a-fb77-488c-a9b4-239a6b36238c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd9588d4-7611-486d-8531-55633fb66f48","path":"sprites/spr_mach_charge_effect/spr_mach_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"dd9588d4-7611-486d-8531-55633fb66f48","path":"sprites/spr_charge_effect/spr_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"0f477a9b-2b57-48ec-bef6-cf0b4a1af154","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a3964a23-a3b4-45ca-a7cb-0d7ea18e6689","path":"sprites/spr_mach_charge_effect/spr_mach_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a3964a23-a3b4-45ca-a7cb-0d7ea18e6689","path":"sprites/spr_charge_effect/spr_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"675e1264-1500-4ee6-a4ac-1b0780597def","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"879cdb62-26a2-4e4b-8d65-47699e843f42","path":"sprites/spr_mach_charge_effect/spr_mach_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"879cdb62-26a2-4e4b-8d65-47699e843f42","path":"sprites/spr_charge_effect/spr_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"12425844-0958-4848-8299-38b17c457a1e","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"be13924f-b3e7-4789-8ed8-f6fa041685e9","path":"sprites/spr_mach_charge_effect/spr_mach_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"be13924f-b3e7-4789-8ed8-f6fa041685e9","path":"sprites/spr_charge_effect/spr_charge_effect.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"3f9e307d-2c8a-4351-b7f9-1c937e28f6bb","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

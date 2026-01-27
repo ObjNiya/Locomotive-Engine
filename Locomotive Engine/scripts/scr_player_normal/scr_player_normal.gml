@@ -24,7 +24,15 @@ function state_player_normal_step()
     else
         hsp = approach(hsp, movespeed * InputX(INPUT_CLUSTER.NAVIGATION), 0.5);
     
-    player_perform_jump(spr_jump);
+    if (hsp == 0 || !grounded)
+        step_particle_timer.stop();
+    else
+    {
+        if (!step_particle_timer.started)
+            step_particle_timer.start();
+    }
+    
+    player_perform_jump(spr_jump)
     
     if (player_perform_taunt())
         return;
@@ -37,6 +45,8 @@ function state_player_normal_step()
         movespeed = max(6, abs(hsp));
         return;
     }
+    
+    image_speed = 1;
     
     if (!grounded)
     {
@@ -60,7 +70,10 @@ function state_player_normal_step()
     }
     
     if (equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel]))
+    {
+        instance_create(x, y + 45, obj_land_cloud_particle);
         sprite_index_set(spr_land, 0);
+    }
     
     if (equals_to_either(sprite_index, [spr_land, spr_land_walk]))
     {
@@ -83,7 +96,23 @@ function state_player_normal_step()
     else
     {
         sprite_index = spr_walk;
+        
+        var fast_walk_speed = 3;
+        var fastest_walk_speed = 6;
+        
+        var abs_hsp = abs(hsp);
+        
+        if (movespeed > fastest_walk_speed)
+            image_speed = 1.5;
+        else if (movespeed > fast_walk_speed)
+            image_speed = 1.25;
     }
+}
+
+function state_player_normal_end()
+{
+    image_speed = 1;
+    step_particle_timer.stop();
 }
 
 /// @description This function will return an array containing the normal states start, step and end event in order.
@@ -91,5 +120,5 @@ function state_player_normal_step()
 /// @pure
 function state_player_normal()
 {
-    return [state_player_normal_start, state_player_normal_step, -1];
+    return [state_player_normal_start, state_player_normal_step, state_player_normal_end];
 }
