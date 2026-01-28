@@ -63,8 +63,14 @@ function state_player_grabdash_step()
         return;
     }
     
-    if (instance_exists(grab_enemy()))
+    var grab_target = grab_enemy();
+    
+    if (instance_exists(grab_target))
+    {
+        grabbed_instance_id = grab_target;
+        state_machine_set_state(state_player_normal());
         return;
+    }
     
     animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
     animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
@@ -92,14 +98,17 @@ function state_player_grabdash_step()
     }
 }
 
+/// @ignore
 function state_player_grabdash_end()
 {
     blur_afterimage_timer.stop();
 }
 
-/// @description This function will return an array containing the grabdash states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's grabdash state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_grabdash()
 {
     return [state_player_grabdash_start, state_player_grabdash_step, state_player_grabdash_end];

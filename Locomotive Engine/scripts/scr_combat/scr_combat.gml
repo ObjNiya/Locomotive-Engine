@@ -1,4 +1,4 @@
-function combat_manager_initialize()
+/*function combat_manager_initialize()
 {
     scaring = false;
     provoking = false;

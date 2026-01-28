@@ -5,6 +5,8 @@ function state_player_normal_start()
         sprite_index = spr_fall;
     else if (InputX(INPUT_CLUSTER.NAVIGATION) != 0)
         sprite_index = spr_walk;
+    
+    
 }
 
 /// @ignore
@@ -109,15 +111,18 @@ function state_player_normal_step()
     }
 }
 
+/// @ignore
 function state_player_normal_end()
 {
     image_speed = 1;
     step_particle_timer.stop();
 }
 
-/// @description This function will return an array containing the normal states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's normal state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_normal()
 {
     return [state_player_normal_start, state_player_normal_step, state_player_normal_end];

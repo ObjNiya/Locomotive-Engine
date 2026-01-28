@@ -1,3 +1,4 @@
+/// @ignore
 function state_player_sjump_start()
 {
     sprite_index_set(spr_sjump, 0);
@@ -16,8 +17,11 @@ function state_player_sjump_start()
     instance_create(x, y, obj_explosion_particle_alt);
 }
 
+/// @ignore
 function state_player_sjump_step()
 {
+    hurt_enemy();
+    
     if (player_perform_hit_ceiling())
         return;
     
@@ -62,6 +66,7 @@ function state_player_sjump_step()
     sprite_index = spr_sjump_cancel;
 }
 
+/// @ignore
 function state_player_sjump_end()
 {
     grav = 0.5;
@@ -72,6 +77,11 @@ function state_player_sjump_end()
     step_particle_timer.stop();
 }
 
+/**
+ * This function will return an array of the player's superjump state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_sjump()
 {
     return [state_player_sjump_start, state_player_sjump_step, state_player_sjump_end];

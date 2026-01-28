@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_room_helper",
+  "%Name":"scr_room_system",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_room_helper",
+  "name":"scr_room_system",
   "parent":{
     "name":"Game Structure",
     "path":"folders/Scripts/Game Structure.yy",

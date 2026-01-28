@@ -16,6 +16,9 @@ function state_player_noclip_start()
 /// @ignore
 function state_player_noclip_step()
 {
+    scare_enemy();
+    hurt_enemy();
+    
     var speed_multiplier = (InputCheck(INPUT_VERB.MACHRUN)) ? 16 : 8;
     
     var _hsp = InputX(INPUT_CLUSTER.NAVIGATION) * speed_multiplier;
@@ -37,9 +40,11 @@ function state_player_noclip_end()
     usesCollision = true;
 }
 
-/// @description This function will return an array containing the noclip states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's noclip events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_noclip()
 {
     return [state_player_noclip_start, state_player_noclip_step, state_player_noclip_end];

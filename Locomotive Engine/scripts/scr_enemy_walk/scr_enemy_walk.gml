@@ -25,6 +25,11 @@ function state_enemy_walk_end()
     
 }
 
+/**
+ * This function will return an array of the enemies' walk state events to be given to the ```state_machine_set_state``` function to change the enemies' state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_enemy_walk()
 {
     return [state_enemy_walk_start, state_enemy_walk_step, state_enemy_walk_end];

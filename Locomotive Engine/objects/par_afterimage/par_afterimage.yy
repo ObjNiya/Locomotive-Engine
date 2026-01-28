@@ -8,8 +8,8 @@
   "name":"par_afterimage",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parents",
-    "path":"folders/Objects/Parents.yy",
+    "name":"Afterimages",
+    "path":"folders/Objects/Effects/Afterimages.yy",
   },
   "parentObjectId":{
     "name":"par_effect",

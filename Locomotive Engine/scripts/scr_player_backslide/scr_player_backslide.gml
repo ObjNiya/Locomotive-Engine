@@ -11,6 +11,8 @@ function state_player_backslide_start()
 /// @ignore
 function state_player_backslide_step()
 {
+    hurt_enemy();
+    
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && !place_meeting(x, y - 32, [obj_solid, obj_slope]) && grounded)
     {
         state_machine_set_state(state_player_mach());
@@ -41,6 +43,11 @@ function state_player_backslide_end()
     mask_index = spr_player_mask;
 }
 
+/**
+ * This function will return an array of the player's backslide state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_backslide()
 {
     return [state_player_backslide_start, state_player_backslide_step, state_player_backslide_end];

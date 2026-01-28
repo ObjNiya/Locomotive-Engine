@@ -1,3 +1,4 @@
+/// @ignore
 function state_player_wallclimb_start()
 {
     sprite_index = spr_wallclimb;
@@ -11,6 +12,7 @@ function state_player_wallclimb_start()
     
 }
 
+/// @ignore
 function state_player_wallclimb_step()
 {
     if (player_perform_hit_ceiling())
@@ -68,6 +70,7 @@ function state_player_wallclimb_step()
     }
 }
 
+/// @ignore
 function state_player_wallclimb_end()
 {
     grav = 0.5;
@@ -75,6 +78,11 @@ function state_player_wallclimb_end()
     wallclimb_dash_timer.stop();
 }
 
+/**
+ * This function will return an array of the player's wallclimb state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_wallclimb()
 {
     return [state_player_wallclimb_start, state_player_wallclimb_step, state_player_wallclimb_end];

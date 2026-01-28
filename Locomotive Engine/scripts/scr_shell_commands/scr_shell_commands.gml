@@ -6,3 +6,8 @@ function sh_noclip()
     with (obj_player)
         state_machine_set_state(state_player_noclip());
 }
+
+function sh_game_restart()
+{
+    game_restart();
+}

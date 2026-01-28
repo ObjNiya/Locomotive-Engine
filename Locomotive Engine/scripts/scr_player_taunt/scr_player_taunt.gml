@@ -1,3 +1,4 @@
+/// @ignore
 function state_player_taunt_start()
 {
     stored_sprite_index = sprite_index;
@@ -20,12 +21,18 @@ function state_player_taunt_start()
     taunt_timer.start();
 }
 
+/// @ignore
 function state_player_taunt_step()
 {
     taunt_timer.step();
     
 }
 
+/**
+ * This function will return an array of the player's taunt state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_taunt()
 {
     return [state_player_taunt_start, state_player_taunt_step, -1];

@@ -34,9 +34,11 @@ function state_player_machslide_step()
     }
 }
 
-/// @description This function will return an array containing the machslide states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's machslide state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_machslide()
 {
     return [state_player_machslide_start, state_player_machslide_step, -1];

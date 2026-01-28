@@ -2,26 +2,26 @@
 depth = 0;
 mask_index = spr_player_mask;
 
-// Collision system
+/////////////////////////////
+// Initialize various systems
+/////////////////////////////
 
 scr_collision_init();
 grav = 0.5;
-movespeed = 0;
 terminalVelocity = 20;
 
-// Coyote manager
-
+initialize_movement_helpers();
 coyote_manager_initialize();
-
-// Character system
 
 character = global.char_damian;
 char_cache_sprite_variables(character);
 
-// State machine
-
 state_machine_initialize();
 state_machine_set_state(state_player_normal());
+
+/////////////////////////////
+
+grabbed_instance_id = noone;
 
 // Walk variables
 

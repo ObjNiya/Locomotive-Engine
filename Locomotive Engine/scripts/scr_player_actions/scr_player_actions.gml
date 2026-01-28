@@ -1,7 +1,8 @@
-/// @description This function will make the current player instance jump if the jump bind is pressed and they're on the ground or if the coyote timer is above 0.
-/// @parameter {Asset.GMSprite} jump_sprite The sprite to set when jumping.
-/// @parameter {Bool} forced Whether to ignore the check that checks if the player can jump and pressed the jump bind.
-/// @returns {Bool}
+/**
+ * This function will try to make the current player instance jump if the coyote manager says they can jump and they are pressing the jump bind.
+ * @parameter {Asset.GMSprite} jump_sprite The sprite to set when the check succeeds and the player jumps.
+ * @parameter {Bool} forced Whether to ignore what the coyote manager says and the player inputs and just jump regardless.
+ */
 function player_perform_jump(jump_sprite, forced = false)
 {
     if ((!can_jump || !InputPressed(INPUT_VERB.JUMP)) && !forced)
@@ -21,9 +22,11 @@ function player_perform_jump(jump_sprite, forced = false)
     return true;
 }
 
-/// @description This function will make the current player instance grabdash if the grabdash bind is pressed and the grabdash bump buffer is 0.
-/// @parameter {Bool} forced Whether to ignore the check that checks if the grabdash button is pressed and the grabdash bump buffer is 0.
-/// @returns {Bool}
+/**
+ * This function will try to make the current player instance grabdash if the player isn't in the grabdash bump and is pressing the grabdash bind OR 
+ * the player is in the grabdash bump, the grabdash bump timer is 0 and they're pressing the grabdash bind.
+ * @parameter {Bool} forced Whether to ignore the grabdash bump and player inputs and just grabdash regardless.
+ */
 function player_perform_grabdash(forced = false)
 {
     grabdash_bump_buffer = max(grabdash_bump_buffer--, 0);

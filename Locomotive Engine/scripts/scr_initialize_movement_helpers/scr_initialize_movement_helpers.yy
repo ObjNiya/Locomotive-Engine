@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_initialize_movement_helpers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_initialize_movement_helpers",
+  "parent":{
+    "name":"Helper",
+    "path":"folders/Scripts/Helper.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_coyote_system",
   "parent":{
-    "name":"Player",
-    "path":"folders/Scripts/Player.yy",
+    "name":"Quality of Life",
+    "path":"folders/Scripts/Quality of Life.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

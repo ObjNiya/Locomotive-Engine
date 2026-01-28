@@ -38,9 +38,11 @@ function state_player_machturn_step()
     }
 }
 
-/// @description This function will return an array containing the machturn states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's machturn state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_machturn()
 {
     return [state_player_machturn_start, state_player_machturn_step, -1];

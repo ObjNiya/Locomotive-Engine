@@ -1,3 +1,4 @@
+/// @ignore
 function state_player_crouch_start()
 {
     if (sign(hsp) == 0)
@@ -8,6 +9,7 @@ function state_player_crouch_start()
     mask_index = spr_crouchmask;
 }
 
+/// @ignore
 function state_player_crouch_step()
 {
     movespeed = 4;
@@ -44,11 +46,17 @@ function state_player_crouch_step()
     sprite_index = (sign_hsp == 0) ? spr_crouch : spr_crawl;
 }
 
+/// @ignore
 function state_player_crouch_end()
 {
     mask_index = spr_player_mask;
 }
 
+/**
+ * This function will return an array of the player's crouch state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_crouch()
 {
     return [state_player_crouch_start, state_player_crouch_step, state_player_crouch_end];

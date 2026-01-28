@@ -67,9 +67,11 @@ function state_player_machroll_end()
     blur_afterimage_timer.stop();
 }
 
-/// @description This function will return an array containing the machroll states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's machroll state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_machroll()
 {
     return [state_player_machroll_start, state_player_machroll_step, state_player_machroll_end];

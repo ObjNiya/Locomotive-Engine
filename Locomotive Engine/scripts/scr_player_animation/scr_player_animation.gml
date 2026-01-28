@@ -22,9 +22,11 @@ function state_player_animation_end()
     grav = 0.5;
 }
 
-/// @description This function will return an array containing the animation states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's animation state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_animation()
 {
     return [state_player_animation_start, state_player_animation_step, state_player_animation_end];

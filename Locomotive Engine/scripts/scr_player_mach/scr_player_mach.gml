@@ -1,6 +1,8 @@
-/// @description This function will return at what mach stage the player is at (e.x movespeed 12 = 3, movespeed 16 = 4).
-/// @returns {Real}
-/// @pure
+/**
+ * This function will return what mach stage the player is at depending on their movement speed, unless the player's sprite is the mach 1 sprite, which then it will be forced to 1.
+ * @returns {Real}
+ * @pure
+ */
 function player_get_mach_stage()
 {
     var floor_movespeed = floor(movespeed);
@@ -43,6 +45,9 @@ function state_player_mach_step()
     hsp = movespeed * sign_image_xscale;
     
     hurt_enemy();
+    
+    if (mach_stage >= 3)
+        scare_enemy();
     
     if (player_perform_taunt())
         return;
@@ -197,9 +202,11 @@ function state_player_mach_end()
     blur_afterimage_timer.stop();
 }
 
-/// @description This function will return an array containing the mach states start, step and end event in order.
-/// @returns {Array<Function>}
-/// @pure
+/**
+ * This function will return an array of the player's mach state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_mach()
 {
     return [state_player_mach_start, state_player_mach_step, state_player_mach_end];

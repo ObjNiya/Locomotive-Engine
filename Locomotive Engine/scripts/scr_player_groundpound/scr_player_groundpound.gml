@@ -1,3 +1,4 @@
+/// @ignore
 function state_player_groundpound_start()
 {
     sprite_index_set(spr_groundpound_intro, 0);
@@ -12,6 +13,7 @@ function state_player_groundpound_start()
     blur_afterimage_timer.start();
 }
 
+/// @ignore
 function state_player_groundpound_step()
 {
     if (grounded)
@@ -50,6 +52,8 @@ function state_player_groundpound_step()
         
         return;
     }
+    
+    hurt_enemy();
     
     if (vsp >= 2)
     {
@@ -95,17 +99,24 @@ function state_player_groundpound_step()
         image_speed = clamp(image_speed, vsp / 8, 8);
 }
 
+/// @ignore
 function state_player_groundpound_end()
 {
     grav = 0.5;
     terminalVelocity = 20;
     
     mach_afterimage_use_alpha = true;
+    
     mach_afterimage_timer.stop();
     groundpound_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
 }
 
+/**
+ * This function will return an array of the player's groundpound state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * @returns {Array<Function>}
+ * @pure
+ */
 function state_player_groundpound()
 {
     return [state_player_groundpound_start, state_player_groundpound_step, state_player_groundpound_end];

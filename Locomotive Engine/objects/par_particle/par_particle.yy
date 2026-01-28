@@ -9,8 +9,8 @@
   "name":"par_particle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parents",
-    "path":"folders/Objects/Parents.yy",
+    "name":"Particles",
+    "path":"folders/Objects/Effects/Particles.yy",
   },
   "parentObjectId":{
     "name":"par_effect",
