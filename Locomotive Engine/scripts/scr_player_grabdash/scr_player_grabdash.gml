@@ -63,6 +63,9 @@ function state_player_grabdash_step()
         return;
     }
     
+    if (instance_exists(grab_enemy()))
+        return;
+    
     animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
     animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
     

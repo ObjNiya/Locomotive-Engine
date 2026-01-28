@@ -1,24 +1,24 @@
 ```gml
 /// @ignore
-function state_player_X_start()
+function state_X_Y_start()
 {
     
 }
 
 /// @ignore
-function state_player_X_step()
+function state_X_Y_step()
 {
     
 }
 
 /// @ignore
-function state_player_X_end()
+function state_X_Y_end()
 {
     
 }
 
-function state_player_X()
+function state_X_Y()
 {
-    return [state_player_X_start, state_player_X_step, state_player_X_end];
+    return [state_X_Y_start, state_X_Y_step, state_X_Y_end];
 }
 ```

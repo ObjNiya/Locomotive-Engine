@@ -1,16 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"par_enemy",
+  "%Name":"obj_hurtbox",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"par_enemy",
+  "name":"obj_hurtbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Objects/Game Structure.yy",
+    "name":"Combat",
+    "path":"folders/Objects/Game Structure/Combat.yy",
   },
   "parentObjectId":null,
   "persistent":false,

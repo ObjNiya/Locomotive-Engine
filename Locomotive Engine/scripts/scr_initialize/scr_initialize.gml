@@ -18,7 +18,7 @@ function initialize_globals()
     global.char_tv_nauta = define_character(PLAYER_CHARACTERS.TV_NAUTA, "_nauta", "TV Nauta");
     global.char_jose = define_character(PLAYER_CHARACTERS.JOSE, "_jose", "Jose");
     
-    // Room system
+    // Room transition
     
     global.spawnpoints = {
         A: obj_spawnpoint_a,
@@ -28,6 +28,10 @@ function initialize_globals()
         E: obj_spawnpoint_e,
         F: obj_spawnpoint_f
     }
+    
+    // Combat
+    
+    global.objects_with_combat = [obj_player, par_enemy];
 }
 
 /// @description This function initializes important objects for the game.

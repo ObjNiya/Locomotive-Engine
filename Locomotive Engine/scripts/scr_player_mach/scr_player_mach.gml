@@ -42,6 +42,8 @@ function state_player_mach_step()
     movespeed += acceleration * (sign_input_x == sign_image_xscale || mach_stage <= 2);
     hsp = movespeed * sign_image_xscale;
     
+    hurt_enemy();
+    
     if (player_perform_taunt())
         return;
         

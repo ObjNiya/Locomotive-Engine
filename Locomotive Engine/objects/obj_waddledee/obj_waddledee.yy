@@ -1,18 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"par_enemy",
+  "%Name":"obj_waddledee",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"par_enemy",
+  "name":"obj_waddledee",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Objects/Game Structure.yy",
+    "name":"Enemies",
+    "path":"folders/Objects/Room Structure/Enemies.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_enemy",
+    "path":"objects/par_enemy/par_enemy.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_waddledee_walk",
+    "path":"sprites/spr_waddledee_walk/spr_waddledee_walk.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
