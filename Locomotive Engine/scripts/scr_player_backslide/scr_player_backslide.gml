@@ -1,8 +1,8 @@
 /// @ignore
 function state_player_backslide_start()
 {
-    vsp = (grounded) ? -3 : 3;
-    movespeed = 12;
+    vsp = (grounded) ? -3 : max(vsp, 3);
+    movespeed = max(movespeed, 12);
     
     sprite_index = spr_rolling_jump;
     mask_index = spr_crouchmask;
@@ -13,21 +13,20 @@ function state_player_backslide_step()
 {
     hurt_enemy();
     
-    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && !place_meeting(x, y - 32, [obj_solid, obj_slope]) && grounded)
-    {
+    if (player_check_can_get_up())
+    {   
         state_machine_set_state(state_player_mach());
         sprite_index_set(spr_machroll_getup, 0);
         
         return;
     }
     
-    if (place_meeting(x + sign_image_xscale, y, obj_solid))
-    {
-        image_xscale *= -1;
-        sign_image_xscale = sign(image_xscale);
-    }
+    if (place_meeting(x + dir, y, obj_solid))
+        dir *= -1;
     
-    hsp = movespeed * sign_image_xscale;
+    hsp = movespeed * dir;
+    
+    image_xscale = side(dir, image_xscale);
     
     if (grounded && sprite_index == spr_rolling_jump)
         sprite_index_set(spr_backslide_land, 0);

@@ -7,10 +7,12 @@ function state_player_animation_start()
 /// @ignore
 function state_player_animation_step()
 {
-    hsp = movespeed * sign(image_xscale);
-    
     if (grounded)
         movespeed = 0;
+    
+    hsp = movespeed * dir;
+    
+    image_xscale = side(image_xscale, dir);
     
     if (animation_end())
         state_machine_set_state(state_player_normal());

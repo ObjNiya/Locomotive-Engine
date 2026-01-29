@@ -9,7 +9,7 @@ function state_player_machslide_start()
 function state_player_machslide_step()
 {
     movespeed = approach(movespeed, 0, 0.4);
-    hsp = movespeed * sign_image_xscale;
+    hsp = movespeed * dir;
     
     if (movespeed <= 0)
     {
@@ -19,19 +19,16 @@ function state_player_machslide_step()
         return;
     }
     
-    if (player_perform_wallsplat())
+    if (player_check_hit_wall())
+    {
+        player_setup_wallsplat();
         return;
+    }
     
     animation_end_ext((sprite_index == spr_machslide_intro), spr_machslide);
     
-    if (instance_exists(mach_cloud_particle_id) || !grounded)
-        return;
-    
-    with (instance_create(x, y + 45, obj_machturn_particle)) 
-    {
-        other.mach_cloud_particle_id = id;
-        image_xscale = other.image_xscale;
-    }
+    if (grounded)
+        create_particle_repeating(x, y + 45, obj_machturn_particle);
 }
 
 /**

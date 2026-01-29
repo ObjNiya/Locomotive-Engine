@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_player_utility",
+  "%Name":"scr_afterimage_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_player_utility",
+  "name":"scr_afterimage_utilities",
   "parent":{
-    "name":"Player",
-    "path":"folders/Scripts/Player.yy",
+    "name":"Effects",
+    "path":"folders/Scripts/Effects.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

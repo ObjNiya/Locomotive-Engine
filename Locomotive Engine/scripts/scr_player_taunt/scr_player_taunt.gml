@@ -1,6 +1,8 @@
 /// @ignore
 function state_player_taunt_start()
 {
+    state_machine_store_state();
+    
     stored_sprite_index = sprite_index;
     stored_image_index = image_index;
     
@@ -15,8 +17,7 @@ function state_player_taunt_start()
     hsp = 0;
     movespeed = 0;
     
-    with (instance_create(x, y, obj_taunt_particle))
-        player_instance = other.id;
+    create_particle(x, y + 45, obj_taunt_particle);
     
     taunt_timer.start();
 }

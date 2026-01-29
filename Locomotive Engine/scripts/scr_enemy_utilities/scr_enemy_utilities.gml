@@ -26,7 +26,7 @@ function scare_enemy(forced = false)
     }
 }
 
-/*
+
 function grab_enemy(forced = false)
 {
     var enemy_instance = instance_place(x, y, par_enemy);

@@ -1,76 +1,86 @@
 /// @ignore
 function state_player_grabdash_start()
 {
-    sprite_index_set(spr_grabdash_intro, 0);
-    
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     grabdash_airborne = !grounded;
     
-    if (movespeed < 10 || sign_input_x == -sign_image_xscale)
+    if (movespeed < 10 || sign_input_x == -dir || dir == 0)
     {
-        movespeed = max(movespeed, (grounded) ? 10 : 8);
-        
         if (sign_input_x != 0)
-            image_xscale = sign_input_x;
+            dir = sign_input_x;
+        else if (dir == 0)
+            dir = sign(image_xscale);
+        
+        if (grounded)
+            movespeed = max(movespeed, 10);
+        
+        hsp = movespeed * dir;
     }
     
+    image_xscale = dir;
     image_speed = 1;
     
+    sprite_index_set(spr_grabdash_intro, 0);
+    
     blur_afterimage_timer.start();
-    with (instance_create(x, y + 45, obj_burst_cloud_particle))
-        image_xscale = other.image_xscale;
+    create_particle(x, y + 45, obj_burst_cloud_particle);
 }
 
 /// @ignore
 function state_player_grabdash_step()
 {
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    var acceleration = 0.5;
     
     if (movespeed < 10)
-        movespeed += 0.5;
+        movespeed += acceleration;
     
-    hsp = movespeed * sign_image_xscale;
+    hsp = movespeed * dir;
     
-    if (player_perform_wallclimb(false, true))
-        return;
-    
-    if (player_perform_jump(spr_longjump_intro))
+    if (player_check_can_jump())
     {
-        state_machine_set_state(state_player_mach());
-        
-        sprite_index = spr_longjump_intro;
+        player_setup_longjump();
+        return;
+    }
+    
+    if (player_check_can_wallclimb())
+    {
+        wallclimb_grab_buffer = 10;
+        state_machine_set_state(state_player_wallclimb());
         
         return;
     }
     
-    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
+    if (player_check_can_crouch())
     {
         state_machine_set_state(state_player_backslide());
         return;
     }
     
-    if (place_meeting(x + sign_image_xscale, y, obj_solid))
+    if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && animation_end()))
     {
         state_machine_set_state(state_player_normal());
-        
-        vsp = -4;
-        grounded = false;
-        grabdash_bump_buffer = 60;
-        
-        sprite_index = spr_grabdash_bump;
+        if (!grounded && sign_input_x == -dir)
+            sprite_index_set(spr_grabdash_cancel, 0);
         
         return;
     }
     
-    var grab_target = grab_enemy();
+    if (player_check_hit_wall())
+    {
+        player_setup_grabdash_bump();
+        return;
+    }
+    
+    /*var grab_target = grab_enemy();
     
     if (instance_exists(grab_target))
     {
         grabbed_instance_id = grab_target;
         state_machine_set_state(state_player_normal());
         return;
-    }
+    }*/
     
     animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
     animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
@@ -78,24 +88,8 @@ function state_player_grabdash_step()
     if (grabdash_airborne && grounded && sprite_index == spr_grabdash)
         sprite_index_set(spr_grabdash_end, 0);
     
-    if (!instance_exists(grabdash_cloud_particle_id) && grounded && movespeed > 5)
-    {
-        with (instance_create(x, y + 45, obj_slide_cloud_particle))
-        {
-            other.grabdash_cloud_particle_id = id;
-            image_xscale = other.image_xscale;
-        }
-    }
-    
-    if (sign_input_x == -sign_image_xscale || (sprite_index == spr_grabdash_end && animation_end()))
-    {
-        state_machine_set_state(state_player_normal());
-        
-        if (sign_input_x == -sign_image_xscale && !grounded)
-            sprite_index = spr_grabdash_cancel;
-        
-        return;
-    }
+    if (grounded && movespeed > 5)
+        create_particle_repeating(x, y + 45, obj_slide_cloud_particle);
 }
 
 /// @ignore

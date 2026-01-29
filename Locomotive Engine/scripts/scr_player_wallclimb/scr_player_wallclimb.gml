@@ -3,28 +3,26 @@ function state_player_wallclimb_start()
 {
     sprite_index = spr_wallclimb;
     
-    vsp = -movespeed;
-    vsp = min(0, vsp);
+    vertical_movespeed = movespeed;
+    vertical_movespeed = max(0, vertical_movespeed);
     
     hsp = 0;
     movespeed = 0;
     grav = 0;
     
+    mach_afterimage_timer.start();
 }
 
 /// @ignore
 function state_player_wallclimb_step()
 {
-    if (player_perform_hit_ceiling())
-        return;
-    
     wallclimb_grab_buffer--;
     
     if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimb_grab_buffer <= 0)
     {
         state_machine_set_state(state_player_normal());
         
-        hsp = -6 * sign_image_xscale;
+        hsp = -6 * dir;
         
         if (!InputCheck(INPUT_VERB.JUMP))
             vsp /= 20;
@@ -37,11 +35,18 @@ function state_player_wallclimb_step()
         state_machine_set_state(state_player_mach());
         sprite_index_set(spr_walljump_intro, 0);
         
-        image_xscale *= -1;
+        dir *= -1;
+        image_xscale = dir;
         
         vsp = jump_height;
         movespeed = 10;
         
+        return;
+    }
+    
+    if (player_check_hit_ceiling())
+    {
+        player_setup_hit_ceiling();
         return;
     }
     
@@ -56,10 +61,12 @@ function state_player_wallclimb_step()
     
     var acceleration = (sprite_index == spr_wallclimb_dash) ? 0.3 : 0.15;
     
-    if (vsp > -20)
-        vsp -= acceleration;
+    if (vertical_movespeed < 20)
+        vertical_movespeed += acceleration;
     
-    if (!place_meeting(x + sign_image_xscale, y, obj_solid))
+    vsp = -vertical_movespeed;
+    
+    if (!player_check_hit_wall())
     {
         movespeed = abs(vsp);
         vsp = 0;
@@ -76,6 +83,7 @@ function state_player_wallclimb_end()
     grav = 0.5;
     
     wallclimb_dash_timer.stop();
+    mach_afterimage_timer.stop();
 }
 
 /**

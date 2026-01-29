@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_mach4_flame_cloud_particle",
+  "%Name":"obj_woosh_particle",
   "eventList":[],
   "managed":true,
-  "name":"obj_mach4_flame_cloud_particle",
+  "name":"obj_woosh_particle",
   "overriddenProperties":[],
   "parent":{
     "name":"Particles",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_mach4_flame_particle",
-    "path":"sprites/spr_mach4_flame_particle/spr_mach4_flame_particle.yy",
+    "name":"spr_woosh_particle",
+    "path":"sprites/spr_woosh_particle/spr_woosh_particle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

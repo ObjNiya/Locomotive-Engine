@@ -24,12 +24,12 @@ function state_machine_set_state(state)
     if (state_end != -1)
         state_end();
     
-    state_start = state[0];
-    self.state_step = state[1];
-    state_end = state[2];
+    if (state[0] != -1)
+        state[0]();
     
-    if (state_start != -1)
-        state_start();
+    state_start = state[0];
+    state_step = state[1];
+    state_end = state[2];
 }
 
 function state_machine_store_state()

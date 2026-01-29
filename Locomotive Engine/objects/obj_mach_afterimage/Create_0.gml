@@ -1,5 +1,7 @@
 event_inherited();
 
+image_blend = c_white;
+
 spawner_id = noone;
 
 colors = array_create(3, 0);

@@ -3,6 +3,8 @@ function state_player_sjump_prepare_start()
 {
     sprite_index_set(spr_sjump_prepare_intro, 0);
     image_xscale = abs(image_xscale);
+    
+    mask_index = spr_crouchmask;
 }
 
 /// @ignore
@@ -16,20 +18,27 @@ function state_player_sjump_prepare_step()
         return;
     }
     
-    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != -1 && grounded)
+    if (!player_check_can_sjump_prepare() && player_check_nothing_above() && grounded)
     {
         state_machine_set_state(state_player_sjump());
         return;
     }
     
     movespeed = 3;
+    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     if (grounded)
-        hsp = movespeed * InputX(INPUT_CLUSTER.NAVIGATION);
+        hsp = movespeed * dir;
     else
-        hsp = approach(hsp, movespeed * InputX(INPUT_CLUSTER.NAVIGATION), 0.35);
+        hsp = approach(hsp, movespeed * dir, 0.35);
     
     sprite_index = (hsp == 0) ? spr_sjump_prepare_idle : spr_sjump_prepare_move;
+}
+
+/// @ignore
+function state_player_sjump_prepare_end()
+{
+    mask_index = spr_player_mask;
 }
 
 /**
@@ -39,5 +48,5 @@ function state_player_sjump_prepare_step()
  */
 function state_player_sjump_prepare()
 {
-    return [state_player_sjump_prepare_start, state_player_sjump_prepare_step, -1];
+    return [state_player_sjump_prepare_start, state_player_sjump_prepare_step, state_player_sjump_prepare_end];
 }

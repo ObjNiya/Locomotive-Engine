@@ -26,3 +26,9 @@ function coyote_manager_step()
     
     can_jump = (grounded || coyote_time > 0);
 }
+
+function coyote_manager_jump()
+{
+    coyote_time = 0;
+    can_jump = false;
+}

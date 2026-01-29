@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_machroll_start()
 {
-    sprite_index = spr_machroll;
+    sprite_index_set(spr_machroll, 0);
     mask_index = spr_crouchmask;
     
     with (instance_create(x, y + 45, obj_burst_cloud_particle))
@@ -13,48 +13,50 @@ function state_player_machroll_start()
 /// @ignore
 function state_player_machroll_step()
 {
-    hsp = movespeed * sign_image_xscale;
+    hsp = movespeed * dir;
     
-    if (!grounded)
+    if (player_check_hit_wall())
     {
-        sprite_index = spr_machroll_dive;
-        
-        vsp = 20;
-        
-        if (InputPressed(INPUT_VERB.JUMP))
+        player_setup_wallsplat();
+        return;
+    }
+    
+    if (grounded)
+    {
+        if (player_check_can_get_up())
         {
-            state_machine_set_state(state_player_groundpound());
-            sprite_index_set(spr_divebomb, 0);
+            state_machine_set_state(state_player_mach());
+            sprite_index_set(spr_machroll_getup, 0);
             
             return;
         }
-    }
-    else if (sprite_index == spr_machroll_dive)
-        sprite_index = spr_machroll;
-    
-    if (player_perform_wallsplat())
-        return;
-    
-    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && !place_meeting(x, y - 32, [obj_solid, obj_slope]) && grounded)
-    {
-        state_machine_set_state(state_player_mach());
-        sprite_index_set(spr_machroll_getup, 0);
         
-        with (instance_create(x, y + 45, obj_burst_cloud_particle))
-            image_xscale = other.image_xscale;
+        image_speed = 1;
+        
+        if ((movespeed < 12 || !animation_end()) && !equals_to_either(sprite_index, [spr_backslide_land, spr_backslide]))
+        {
+            sprite_index = spr_machroll;
+            image_speed = movespeed / 5.5;
+        }
+        else if (sprite_index == spr_machroll)
+            sprite_index_set(spr_backslide_land, 0);
+        
+        animation_end_ext((sprite_index == spr_backslide_land), spr_backslide);
+        create_particle_repeating(x, y + 45, obj_mach2_cloud_particle);
         
         return;
     }
     
-    image_speed = movespeed / 5.5;
+    vsp = 20;
     
-    if (instance_exists(mach_cloud_particle_id))
-        return;
+    sprite_index = spr_machroll_dive;
     
-    with (instance_create(x, y + 45, obj_mach2_cloud_particle)) 
+    if (player_check_can_divebomb())
     {
-        other.mach_cloud_particle_id = id;
-        image_xscale = other.image_xscale;
+        state_machine_set_state(state_player_groundpound());
+        sprite_index_set(spr_divebomb, 0);
+            
+        return;
     }
 }
 

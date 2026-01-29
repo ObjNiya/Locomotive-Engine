@@ -10,6 +10,10 @@
 
 #macro MAX_EFFECTS 255
 
+// Bugfix configurations
+
+#macro FIX_INSTATURN false
+
 #endregion
 
 enum PLAYER_CHARACTERS

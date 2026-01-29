@@ -5,9 +5,6 @@ function state_enemy_scared_scared_start()
     
     hsp = 0;
     
-    if (scared_timer.started)
-        return;
-    
     if (grounded)
         vsp = -3;
     else

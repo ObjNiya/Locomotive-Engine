@@ -26,14 +26,14 @@ function state_player_groundpound_step()
             movespeed = abs(vsp);
             movespeed = clamp(movespeed, 10, 16);
             
-            image_xscale = sign(-instance_place(x, y + 1, [obj_slope, obj_slopePlatform]).image_xscale);
+            dir = sign(-instance_place(x, y + 1, [obj_slope, obj_slopePlatform]).image_xscale);
+            image_xscale = dir;
             
-            instance_create(x, y + 45, obj_jump_particle);
+            create_particle(x, y + 45, obj_jump_particle);
             return;
         }
         
-        
-        if (sprite_index != spr_groundpound_land && sprite_index != spr_divebomb_land)
+        if (!equals_to_either(sprite_index, [spr_groundpound_land, spr_divebomb_land]))
         {
             sprite_index_set((sprite_index == spr_divebomb) ? spr_divebomb_land : spr_groundpound_land, 0);
             image_speed = 1;
@@ -41,14 +41,12 @@ function state_player_groundpound_step()
             hsp = 0;
             movespeed = 0;
             
-            instance_create(x, y + 45, obj_groundpound_slam_particle);
+            create_particle(x, y + 45, obj_groundpound_slam_particle);
             return;
         }
         
         if (animation_end())
-        {
             state_machine_set_state(state_player_normal());
-        }
         
         return;
     }
@@ -59,44 +57,37 @@ function state_player_groundpound_step()
     {
         grav = 1;
         
-        if (!step_particle_timer.started)
-            step_particle_timer.start();
+        cloud_particle_timer.start();
         
         if (vsp > 17)
         {
-            if (!mach_afterimage_timer.started)
-                mach_afterimage_timer.start();
+            mach_afterimage_timer.start();
+            downwards_woosh_particle_timer.start();
             
-            if (!groundpound_woosh_particle_timer.started)
-                groundpound_woosh_particle_timer.start();
-            
-            if (!instance_exists(obj_groundpound_effect))
-            {
-                with (instance_create(x, y, obj_groundpound_effect))
-                    player_instance = other.id;
-            }    
+            create_particle_repeating(x, y, obj_groundpound_effect);
         }
     }
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    var acceleration = abs(hsp) > 8 ? 0.05 : 0.25;
     
-    if (sign_image_xscale != sign_input_x)
+    if (dir != sign_input_x)
     {
         hsp = 0;
-        
-        if (sign_input_x != 0)
-            image_xscale = sign_input_x;
+        dir = sign_input_x;
     }
     else
-    {
-        var acceleration = abs(hsp) > 8 ? 0.05 : 0.25;
-        hsp = approach(hsp, movespeed * InputX(INPUT_CLUSTER.NAVIGATION), acceleration);
-    }
+        hsp = approach(hsp, movespeed * dir, acceleration);
     
-    animation_end_ext((sprite_index == spr_groundpound_intro), spr_groundpound);
+    if (sprite_index == spr_divebomb)
+        image_xscale = 1;
+    else if (dir != 0)
+        image_xscale = dir;
     
     if (sprite_index == spr_divebomb && vsp >= 8)
         image_speed = clamp(image_speed, vsp / 8, 8);
+    
+    animation_end_ext((sprite_index == spr_groundpound_intro), spr_groundpound);
 }
 
 /// @ignore
@@ -108,8 +99,10 @@ function state_player_groundpound_end()
     mach_afterimage_use_alpha = true;
     
     mach_afterimage_timer.stop();
-    groundpound_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
+    
+    downwards_woosh_particle_timer.stop();
+    cloud_particle_timer.stop();
 }
 
 /**

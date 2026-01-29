@@ -2,120 +2,162 @@
 function state_player_normal_start()
 {
     if (!grounded)
+    {
         sprite_index = spr_fall;
-    else if (InputX(INPUT_CLUSTER.NAVIGATION) != 0)
-        sprite_index = spr_walk;
+        return;
+    }
     
-    
+    sprite_index = (InputX(INPUT_CLUSTER.NAVIGATION) == 0) ? spr_idle : spr_walk;
 }
 
 /// @ignore
 function state_player_normal_step()
 {
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    var acceleration = 0.5;
+    
     var idle = (sign_input_x == 0);
     
     movespeed = 8;
     
-    if (sign_image_xscale != sign_input_x)
+    if (sign_input_x != dir)
     {
+        dir = sign_input_x;
         hsp = 0;
-        if (sign_input_x != 0)
-            image_xscale = sign_input_x;
     }
     else
-        hsp = approach(hsp, movespeed * InputX(INPUT_CLUSTER.NAVIGATION), 0.5);
+        hsp = approach(hsp, movespeed * dir, acceleration);
     
-    if (hsp == 0 || !grounded)
-        step_particle_timer.stop();
-    else
+    if (player_check_can_grabdash())
     {
-        if (!step_particle_timer.started)
-            step_particle_timer.start();
-    }
-    
-    player_perform_jump(spr_jump)
-    
-    if (player_perform_taunt())
-        return;
-    
-    if (player_perform_grabdash())
-        return;
-    
-    if (player_perform_machrun())
-    {
-        movespeed = max(6, abs(hsp));
+        state_machine_set_state(state_player_grabdash());
         return;
     }
     
+    if (player_check_can_taunt())
+    {
+        state_machine_set_state(state_player_taunt());
+        return;
+    }
+    
+    image_xscale = side(dir, image_xscale);
     image_speed = 1;
     
-    if (!grounded)
+    if (grounded)
     {
-        if (player_perform_groundpound())
+        if (player_check_can_jump())
+        {
+            player_setup_jump();
             return;
+        }
         
-        player_try_jumpstop();
+        if (player_check_can_machrun())
+        {
+            state_machine_set_state(state_player_mach());
+            movespeed = max(6, abs(hsp));
+            
+            return;
+        }
         
-        if (equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]))
-            animation_end(spr_fall);
-        else if (sprite_index != spr_grabdash_bump)
-            sprite_index = spr_fall;
+        if (player_check_can_crouch())
+        {
+            state_machine_set_state(state_player_crouch());
+            return;
+        }
         
-        return;
-    }
-    
-    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1 || place_meeting(x, y - 32, obj_solid))
-    {
-        state_machine_set_state(state_player_crouch());
-        return;
-    }
-    
-    if (equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel]))
-    {
-        instance_create(x, y + 45, obj_land_cloud_particle);
-        sprite_index_set(spr_land, 0);
-    }
-    
-    if (equals_to_either(sprite_index, [spr_land, spr_land_walk]))
-    {
-        sprite_index = (idle) ? spr_land : spr_land_walk;
-        animation_end((idle) ? spr_idle : spr_walk);
+        var start_land_animation = equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump]);
+        var land_animation = equals_to_either(sprite_index, [spr_land, spr_land_walk]);
         
-        return;
-    }
-    
-    if (sprite_index == spr_machslide_end && idle)
-    {
-        animation_end(spr_idle);
-        return;
-    }
-    
-    if (idle)
-    {
-        sprite_index = spr_idle;
-    }
-    else
-    {
+        if (start_land_animation)
+        {
+            image_index = 0;
+            land_animation = true;
+            
+            instance_create(x, y + 45, obj_land_cloud_particle);
+        }
+        
+        if (idle)
+        {
+            cloud_particle_timer.stop();
+            
+            if (sprite_index == spr_machslide_end || land_animation)
+            {
+                sprite_index = spr_land;
+                animation_end(spr_idle);
+                
+                return;
+            }
+            
+            var idle_animations = [spr_idle_animation1, spr_idle_animation2];
+            var idle_animation_count = 1;
+            
+            static idle_anim_timer = 90;
+            
+            if (idle_anim_timer-- <= 0)
+            {
+                sprite_index_set(idle_animations[irandom(idle_animation_count)], 0);
+                idle_anim_timer = 90;
+                
+                return;
+            }
+            
+            for (var i = 0; i < idle_animation_count; i++)
+            {
+                if (sprite_index == idle_animations[i])
+                {
+                    animation_end(spr_idle);
+                    return;
+                }
+            }
+            
+            sprite_index = spr_idle;
+            return;
+        }
+        
+        cloud_particle_timer.start();
+        
+        var image_speed_curve = [1, 1.25, 1.5];
+        
+        var image_speed_curve_index = floor(abs(hsp) / 3);
+        image_speed_curve_index = clamp(image_speed_curve_index, 0, array_length(image_speed_curve) - 1);
+        
+        image_speed = image_speed_curve[image_speed_curve_index];
+        
+        if (land_animation)
+        {
+            sprite_index = spr_land_walk;
+            animation_end(spr_walk);
+            
+            return;
+        }
+        
         sprite_index = spr_walk;
         
-        var fast_walk_speed = 3;
-        var fastest_walk_speed = 6;
-        
-        var abs_hsp = abs(hsp);
-        
-        if (movespeed > fastest_walk_speed)
-            image_speed = 1.5;
-        else if (movespeed > fast_walk_speed)
-            image_speed = 1.25;
+        return;
     }
+    
+    player_try_jumpstop();
+    
+    if (player_check_can_groundpound())
+    {
+        state_machine_set_state(state_player_groundpound());
+        return;
+    }
+    
+    if (equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]))
+        animation_end(spr_fall);
+    else if (!equals_to_either(sprite_index, [spr_fall, spr_grabdash_bump]))
+        sprite_index = spr_fall;
+    
+    cloud_particle_timer.stop();
 }
 
 /// @ignore
 function state_player_normal_end()
 {
     image_speed = 1;
-    step_particle_timer.stop();
+    
+    cloud_particle_timer.stop();
 }
 
 /**

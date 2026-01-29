@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_player_actions",
+  "%Name":"scr_draw_sprite_pos_ext",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_player_actions",
+  "name":"scr_draw_sprite_pos_ext",
   "parent":{
-    "name":"Player",
-    "path":"folders/Scripts/Player.yy",
+    "name":"Utilities",
+    "path":"folders/Scripts/Utilities.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

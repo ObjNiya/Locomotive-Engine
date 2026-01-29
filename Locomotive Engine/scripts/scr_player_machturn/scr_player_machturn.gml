@@ -9,7 +9,7 @@ function state_player_machturn_start()
 function state_player_machturn_step()
 {
     movespeed = approach(movespeed, 0, 0.4);
-    hsp = movespeed * sign(image_xscale);
+    hsp = movespeed * dir;
     
     animation_end_ext((sprite_index == spr_mach2_turn_intro), spr_mach2_turn);
     animation_end_ext((sprite_index == spr_mach3_turn_intro), spr_mach3_turn);
@@ -18,9 +18,10 @@ function state_player_machturn_step()
     {
         var mach3 = (equals_to_either(sprite_index, [spr_mach3_turn_intro, spr_mach3_turn]));
         
-        image_xscale *= -1;
-        
+        dir *= -1;
         movespeed = (mach3) ? 12 : 10;
+        
+        image_xscale = dir;
         
         state_machine_set_state(state_player_mach());
         sprite_index_set((mach3) ? spr_mach3 : spr_mach2, 0);
@@ -28,14 +29,8 @@ function state_player_machturn_step()
         return;
     }
     
-    if (instance_exists(mach_cloud_particle_id) || !grounded)
-        return;
-    
-    with (instance_create(x, y + 45, obj_machturn_particle)) 
-    {
-        other.mach_cloud_particle_id = id;
-        image_xscale = other.image_xscale;
-    }
+    if (grounded)
+        create_particle_repeating(x, y + 45, obj_machturn_particle);
 }
 
 /**

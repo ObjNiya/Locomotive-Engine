@@ -11,8 +11,8 @@ function state_player_sjump_start()
     
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.start();
-    step_particle_timer.start();
-    groundpound_woosh_particle_timer.start();
+    cloud_particle_timer.start();
+    upwards_woosh_particle_timer.start();
     
     instance_create(x, y, obj_explosion_particle_alt);
 }
@@ -21,10 +21,7 @@ function state_player_sjump_start()
 function state_player_sjump_step()
 {
     hurt_enemy();
-    
-    if (player_perform_hit_ceiling())
-        return;
-    
+
     if (sprite_index == spr_springlaunch)
         return;
     
@@ -36,24 +33,26 @@ function state_player_sjump_step()
         grav = 0;
     }
     
-    if (!instance_exists(obj_groundpound_effect))
+    if (player_check_hit_ceiling())
     {
-        with (instance_create(x, y, obj_groundpound_effect))
-            player_instance = other.id;
-    }    
+        player_setup_hit_ceiling();
+        return;
+    }
     
     if (sprite_index != spr_sjump_cancel_intro)
         return;
     
     mach_afterimage_timer.stop();
-    groundpound_woosh_particle_timer.stop();
+    upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
-    step_particle_timer.stop();
+    cloud_particle_timer.stop();
     
-    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION))
+    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION))
     
-    if (sign_input_x != 0)
-        image_xscale = sign_input_x;
+    if (dir == 0)
+        dir = sign(image_xscale);
+    
+    image_xscale = dir;
     
     if (!animation_end())
         return;
@@ -72,9 +71,9 @@ function state_player_sjump_end()
     grav = 0.5;
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();
-    groundpound_woosh_particle_timer.stop();
+    upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
-    step_particle_timer.stop();
+    cloud_particle_timer.stop();
 }
 
 /**

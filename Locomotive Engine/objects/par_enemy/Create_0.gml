@@ -14,11 +14,11 @@ dead_sprite = spr_waddledee_dead;
 
 hp = 1;
 
-scared_timer = new Timer(1.4, 1, time_source_units_seconds, false, function() {
+scared_timer = new Timer(1.4, time_source_units_seconds, function() {
     state_machine_set_state(state_enemy_walk());
 })
 
-thrown_blur_afterimage = new Timer(2, 1, time_source_units_frames, true, function() {
+thrown_blur_afterimage = new Timer(2, time_source_units_frames, function() {
     if (movespeed == 0)
         return;
     

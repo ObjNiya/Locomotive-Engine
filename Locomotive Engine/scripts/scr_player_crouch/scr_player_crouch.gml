@@ -1,49 +1,51 @@
 /// @ignore
 function state_player_crouch_start()
 {
+    mask_index = spr_crouchmask;
+    
+    image_speed = 1;
+    
     if (sign(hsp) == 0)
         sprite_index_set(spr_crouch_intro, 0);
     else
         sprite_index = spr_crawl;
-    
-    mask_index = spr_crouchmask;
 }
 
 /// @ignore
 function state_player_crouch_step()
 {
     movespeed = 4;
-    hsp = movespeed * InputX(INPUT_CLUSTER.NAVIGATION);
+    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    hsp = movespeed * dir;
     
-    var sign_hsp = sign(hsp);
+    image_xscale = side(dir, image_xscale);
     
-    image_xscale = side(sign_hsp, image_xscale);
-    
-    if (!place_meeting(x, y - 32, obj_solid) && player_perform_jump(spr_crouch_jump))
-        vsp += 3;
-    
-    if (!grounded)
+    if (player_check_nothing_above() && player_check_can_jump())
     {
-        if (sprite_index != spr_crouch_jump || (sprite_index == spr_crouch_jump && animation_end()))
-            sprite_index = spr_crouch_fall;
+        player_setup_crouch_jump();
+        return;
+    }
+    
+    if (grounded)
+    {
+        if (player_check_can_get_up())
+        {
+            state_machine_set_state(state_player_normal());
+            return;
+        }
         
+        if (sprite_index == spr_crouch_intro)
+        {
+            animation_end(spr_crouch);
+            return;
+        }
+        
+        sprite_index = (dir == 0) ? spr_crouch : spr_crawl;
         return;
     }
     
-    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && !place_meeting(x, y - 32, obj_solid))
-    {
-        state_machine_set_state(state_player_normal());
-        return;
-    }
-    
-    
-    if (sprite_index == spr_crouch_intro && sign_hsp == 0)
-    {
-        animation_end(spr_crouch);
-        return;
-    }    
-    
-    sprite_index = (sign_hsp == 0) ? spr_crouch : spr_crawl;
+    if (!equals_to_either(sprite_index, [spr_crouch_jump, spr_crouch_fall]) || (sprite_index == spr_crouch_jump && animation_end()))
+        sprite_index = spr_crouch_fall;
 }
 
 /// @ignore

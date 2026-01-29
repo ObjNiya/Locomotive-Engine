@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_timer",
+  "%Name":"scr_particle_utilities",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_timer",
+  "name":"scr_particle_utilities",
   "parent":{
-    "name":"TimerUtil",
-    "path":"folders/TimerUtil.yy",
+    "name":"Effects",
+    "path":"folders/Scripts/Effects.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
