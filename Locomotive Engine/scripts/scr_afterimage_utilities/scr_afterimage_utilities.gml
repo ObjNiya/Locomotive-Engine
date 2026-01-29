@@ -1,3 +1,9 @@
+/**
+ * This function will create the given afterimage object at the given position and will set all of the afterimage sprite drawing variables to the values from the instance who spawned it.
+ * @parameter {Real} x The x position the afterimage will be created at.
+ * @parameter {Real} y The y position the afterimage will be created at.
+ * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
+ */
 function create_afterimage(x, y, afterimage_object)
 {
     var afterimage_id = create_particle(x, y, afterimage_object);
@@ -14,8 +20,17 @@ function create_afterimage(x, y, afterimage_object)
         image_blend = other.image_blend;
         image_alpha = other.image_alpha * real(other.visible);
     }
+    
+    return afterimage_id;
 }
 
+/**
+ * This function will create the given afterimage object at the given position and will set all of the afterimage sprite drawing variables to the values 
+ * from the instance who spawned it ONLY when there is no other instance of that afterimage object in the room that has been spawned by the current instance.
+ * @parameter {Real} x The x position the afterimage will be created at.
+ * @parameter {Real} y The y position the afterimage will be created at.
+ * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
+ */
 function create_afterimage_repeating(x, y, afterimage_object)
 {
     var spawn_afterimage = (!instance_exists(afterimage_object) || (instance_exists(afterimage_object) && afterimage_object.spawner_id != id))

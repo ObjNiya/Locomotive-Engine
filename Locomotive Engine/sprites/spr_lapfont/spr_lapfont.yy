@@ -74,7 +74,7 @@
     "name":"spr_lapfont",
     "playback":1,
     "playbackSpeed":0.0,
-    "playbackSpeedType":1,
+    "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "showBackdrop":true,
