@@ -8,13 +8,11 @@ function goto_room(index, spawnpoint_letter)
     if (instance_exists(obj_goto_room))
         return;
 
+    global.target_room = index;
+    global.target_spawnpoint = spawnpoint_letter;
+    
     with (instance_create(x, y, obj_goto_room))
-    {
-        target_room = index;
-        target_spawnpoint = spawnpoint_letter;
-        
         event_user(0);
-    }
 }
 
 /**
@@ -25,15 +23,9 @@ function goto_room(index, spawnpoint_letter)
  */
 function room_transition(index, spawnpoint_letter, transition_object = obj_roomtransition_fade)
 {
-    with (instance_create(x, y, transition_object))
-    {
-        target_room = index;
-        target_spawnpoint = spawnpoint_letter;
-    }
+    global.target_room = index;
+    global.target_spawnpoint = spawnpoint_letter;
     
-    with (instance_create(x, y, obj_goto_room)) 
-    {
-        target_room = index;
-        target_spawnpoint = spawnpoint_letter;
-    }  
+    instance_create(x, y, transition_object);
+    instance_create(x, y, obj_goto_room);
 }

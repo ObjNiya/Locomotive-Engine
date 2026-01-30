@@ -11,7 +11,7 @@ function create_particle(x, y, particle_object, face_me = true)
     particle_id.spawner_id = id;
     
     if (face_me) // This is something you'd want with every particle in Pizza Tower
-        particle_id.image_xscale = sign(image_xscale);
+        particle_id.image_xscale = (variable_instance_exists(id, "visual_xscale")) ? sign(visual_xscale) : sign(image_xscale);
     
     return particle_id;
 }

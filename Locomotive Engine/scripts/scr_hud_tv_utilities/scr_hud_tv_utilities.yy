@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_hud_tv_utilities",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_hud_tv_utilities",
+  "parent":{
+    "name":"TV",
+    "path":"folders/Scripts/HUD/TV.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

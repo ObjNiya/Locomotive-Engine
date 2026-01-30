@@ -52,7 +52,7 @@ function state_player_sjump_step()
     if (dir == 0)
         dir = sign(image_xscale);
     
-    image_xscale = dir;
+    visual_xscale = dir;
     
     if (!animation_end())
         return;

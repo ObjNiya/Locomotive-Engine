@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_visual_helper",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_visual_helper",
+  "parent":{
+    "name":"Helper",
+    "path":"folders/Scripts/Helper.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

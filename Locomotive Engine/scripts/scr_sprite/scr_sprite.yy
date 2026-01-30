@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_sprite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_sprite",
+  "parent":{
+    "name":"SpriteUtil",
+    "path":"folders/SpriteUtil.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

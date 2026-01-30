@@ -12,7 +12,7 @@ function state_player_animation_step()
     
     hsp = movespeed * dir;
     
-    image_xscale = side(image_xscale, dir);
+    visual_xscale = side(visual_xscale, dir);
     
     if (animation_end())
         state_machine_set_state(state_player_normal());

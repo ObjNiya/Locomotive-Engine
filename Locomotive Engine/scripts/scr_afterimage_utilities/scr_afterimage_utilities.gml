@@ -8,6 +8,24 @@ function create_afterimage(x, y, afterimage_object)
 {
     var afterimage_id = create_particle(x, y, afterimage_object);
     
+    if (variable_instance_exists(id, "visual_xscale"))
+    {
+        with (afterimage_id)
+        {
+            sprite_index = other.sprite_index;
+            image_index = other.image_index - 1;
+            
+            image_xscale = other.visual_xscale;
+            image_yscale = other.visual_yscale;
+            
+            image_angle = other.visual_angle;
+            image_blend = other.image_blend;
+            image_alpha = other.image_alpha * real(other.visible);
+        }
+        
+        return afterimage_id;
+    }
+    
     with (afterimage_id)
     {
         sprite_index = other.sprite_index;

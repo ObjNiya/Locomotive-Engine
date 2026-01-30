@@ -22,6 +22,8 @@ char_cache_sprite_variables(character);
 state_machine_initialize();
 state_machine_set_state(state_player_normal());
 
+visual_helper_initialize();
+
 /////////////////////////////
 // General state variables
 /////////////////////////////

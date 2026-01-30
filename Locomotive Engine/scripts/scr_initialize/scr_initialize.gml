@@ -1,5 +1,9 @@
 #region Macros
 
+// Screen configurations
+#macro GAME_WIDTH 960
+#macro GAME_HEIGHT 540
+
 // Compile configurations
 
 #macro DEVELOPER_MODE (os_get_config() == "Developer")
@@ -28,13 +32,21 @@ enum PLAYER_CHARACTERS
  */
 function initialize_globals()
 {
-    // Player Characters
+    // Player Character definitions
     
     global.char_damian = define_character(PLAYER_CHARACTERS.DAMIAN, "_damian", "Damian");
     global.char_tv_nauta = define_character(PLAYER_CHARACTERS.TV_NAUTA, "_nauta", "TV Nauta");
     global.char_jose = define_character(PLAYER_CHARACTERS.JOSE, "_jose", "Jose");
     
+    // Level definitions
+    
+    global.lvl_hallway = define_level("Hallway Longway", rm_hallway_1, 50, true, 6000);
+    global.lvl_lawn = define_level("Crazii Lawn", rm_initialize, 50, true, 3000);
+    
     // Room transition
+    
+    global.target_room = noone;
+    global.target_spawnpoint = "A";
     
     global.spawnpoints = {
         A: obj_spawnpoint_a,
@@ -44,6 +56,10 @@ function initialize_globals()
         E: obj_spawnpoint_e,
         F: obj_spawnpoint_f
     }
+    
+    // Level system
+    
+    global.level = pointer_null;
 }
 
 /**
@@ -51,6 +67,8 @@ function initialize_globals()
  */
 function initialize_objects()
 {
+    instance_create(0, 0, obj_screen);
+    
     if (DEBUG_MODE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);
 }
@@ -60,7 +78,6 @@ function initialize_objects()
  */
 function initialize_game()
 {
-    
     initialize_globals();
     initialize_objects();
 }

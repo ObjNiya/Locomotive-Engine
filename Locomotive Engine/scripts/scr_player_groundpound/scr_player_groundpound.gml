@@ -27,7 +27,7 @@ function state_player_groundpound_step()
             movespeed = clamp(movespeed, 10, 16);
             
             dir = sign(-instance_place(x, y + 1, [obj_slope, obj_slopePlatform]).image_xscale);
-            image_xscale = dir;
+            visual_xscale = dir;
             
             create_particle(x, y + 45, obj_jump_particle);
             return;
@@ -80,9 +80,9 @@ function state_player_groundpound_step()
         hsp = approach(hsp, movespeed * dir, acceleration);
     
     if (sprite_index == spr_divebomb)
-        image_xscale = 1;
+        visual_xscale = 1;
     else if (dir != 0)
-        image_xscale = dir;
+        visual_xscale = dir;
     
     if (sprite_index == spr_divebomb && vsp >= 8)
         image_speed = clamp(image_speed, vsp / 8, 8);

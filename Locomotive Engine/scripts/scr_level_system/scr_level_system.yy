@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_level_system",
   "parent":{
-    "name":"Systems",
-    "path":"folders/Scripts/Systems.yy",
+    "name":"Level",
+    "path":"folders/Scripts/Game Structure/Level.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

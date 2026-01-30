@@ -10,7 +10,7 @@ function state_player_grabdash_start()
         if (sign_input_x != 0)
             dir = sign_input_x;
         else if (dir == 0)
-            dir = sign(image_xscale);
+            dir = sign(visual_xscale);
         
         if (grounded)
             movespeed = max(movespeed, 10);
@@ -18,7 +18,7 @@ function state_player_grabdash_start()
         hsp = movespeed * dir;
     }
     
-    image_xscale = dir;
+    visual_xscale = dir;
     image_speed = 1;
     
     sprite_index_set(spr_grabdash_intro, 0);

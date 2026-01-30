@@ -25,8 +25,7 @@ function state_player_taunt_start()
 /// @ignore
 function state_player_taunt_step()
 {
-    taunt_timer.step();
-    
+
 }
 
 /**

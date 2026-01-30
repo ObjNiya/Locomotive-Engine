@@ -1,4 +1,4 @@
-var spawnpoint_instance = global.spawnpoints[$ target_spawnpoint];
+var spawnpoint_instance = global.spawnpoints[$ global.target_spawnpoint];
 
 if (!instance_exists(spawnpoint_instance))
 {
@@ -8,7 +8,7 @@ if (!instance_exists(spawnpoint_instance))
         y = 0;
     }
     
-    show_debug_message("Spawnpoint with name: " + target_spawnpoint + " doesn't exist, setting players X and Y to 0.");
+    show_debug_message("Spawnpoint with name: " + global.target_spawnpoint + " doesn't exist, setting players X and Y to 0.");
     instance_destroy();
     
     exit;

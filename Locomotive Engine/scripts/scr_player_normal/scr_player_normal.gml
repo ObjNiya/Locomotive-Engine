@@ -40,7 +40,7 @@ function state_player_normal_step()
         return;
     }
     
-    image_xscale = side(dir, image_xscale);
+    visual_xscale = side(dir, visual_xscale);
     image_speed = 1;
     
     if (grounded)

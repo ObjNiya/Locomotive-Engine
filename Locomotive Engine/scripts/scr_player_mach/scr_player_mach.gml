@@ -20,7 +20,7 @@ function state_player_mach_start()
 {
     movespeed = max(movespeed, 6);
     if (dir == 0)
-        dir = sign(image_xscale);
+        dir = sign(visual_xscale);
     
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.start();
@@ -35,8 +35,8 @@ function state_player_mach_start()
     { 
         case 1: sprite_index_set(spr_mach1, 0) break; 
         case 2: sprite_index = spr_mach2 break;
-        case 3: sprite_index = spr_mach3 break;
-        case 4: sprite_index = spr_mach4 break;    
+        case 3: sprite_index = spr_mach3; break;
+        case 4: sprite_index = spr_mach4; break;    
     }
 }
 
@@ -57,6 +57,12 @@ function state_player_mach_step()
     
     if (mach_stage >= 3)
         scare_enemy();
+    
+    with (obj_hud_tv)
+    {
+        if (state_step == state_tv_idle_step && mach_stage >= 3)
+            hud_tv_trigger_expression("mach" + string(mach_stage));
+    }
     
     if (player_check_can_jump())
     {
@@ -98,7 +104,7 @@ function state_player_mach_step()
     else if (player_check_can_machinstaturn())
     {
         dir *= -1;
-        image_xscale = dir;
+        visual_xscale = dir;
         
         movespeed = min(movespeed, 6);
     }
@@ -182,7 +188,7 @@ function state_player_mach_step()
             else if (play_regular_sprite)
                 sprite_index = spr_mach3;
             
-            if (grounded)
+            if (grounded || equals_to_either(sprite_index, [spr_sjump_cancel, spr_mach3_jump, spr_mach4]))
             {
                 create_particle_repeating(x, y + 45, obj_mach3_cloud_particle);
                 create_particle_repeating(x, y, obj_speedlines_effect);

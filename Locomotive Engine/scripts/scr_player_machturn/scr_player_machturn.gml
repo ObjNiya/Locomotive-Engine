@@ -21,7 +21,7 @@ function state_player_machturn_step()
         dir *= -1;
         movespeed = (mach3) ? 12 : 10;
         
-        image_xscale = dir;
+        visual_xscale = dir;
         
         state_machine_set_state(state_player_mach());
         sprite_index_set((mach3) ? spr_mach3 : spr_mach2, 0);

@@ -36,7 +36,7 @@ function state_player_wallclimb_step()
         sprite_index_set(spr_walljump_intro, 0);
         
         dir *= -1;
-        image_xscale = dir;
+        visual_xscale = dir;
         
         vsp = jump_height;
         movespeed = 10;

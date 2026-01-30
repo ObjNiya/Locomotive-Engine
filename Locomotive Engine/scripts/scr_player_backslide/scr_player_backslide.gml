@@ -26,7 +26,7 @@ function state_player_backslide_step()
     
     hsp = movespeed * dir;
     
-    image_xscale = side(dir, image_xscale);
+    visual_xscale = side(dir, visual_xscale);
     
     if (grounded && sprite_index == spr_rolling_jump)
         sprite_index_set(spr_backslide_land, 0);

@@ -18,7 +18,7 @@ function state_player_crouch_step()
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     hsp = movespeed * dir;
     
-    image_xscale = side(dir, image_xscale);
+    visual_xscale = side(dir, visual_xscale);
     
     if (player_check_nothing_above() && player_check_can_jump())
     {
