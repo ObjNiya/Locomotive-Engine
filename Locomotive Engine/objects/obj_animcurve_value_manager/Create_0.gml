@@ -1,0 +1,1 @@
+animcurve_values = [];

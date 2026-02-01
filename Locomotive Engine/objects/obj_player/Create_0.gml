@@ -9,6 +9,8 @@ mask_index = spr_player_mask;
 // Initialize various systems
 /////////////////////////////
 
+attach_camera();
+
 scr_collision_init();
 grav = 0.5;
 terminalVelocity = 20;

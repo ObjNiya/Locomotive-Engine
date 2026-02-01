@@ -32,6 +32,18 @@ enum PLAYER_CHARACTERS
  */
 function initialize_globals()
 {
+    // Font defintions
+    
+    global.bigfont = font_add_sprite_ext(spr_bigfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¿?.:1234567890ÁÉÍÓÚ", 1, 0);
+    global.mediumfont = font_add_sprite_ext(spr_mediumfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:!0123456789?'\"ÁÉÍÓÚáéíóú_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 2);
+    global.smallfont = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.,_1234567890:?", 1, 0);    
+    global.minifont = font_add_sprite_ext(spr_minifont, "0123456789:.", 1, 0);
+
+    global.pointsbookfont = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
+    global.pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
+    global.combofont = font_add_sprite_ext(spr_combo_bar_font, "0123456789", 1, 0);
+
+
     // Player Character definitions
     
     global.char_damian = define_character(PLAYER_CHARACTERS.DAMIAN, "_damian", "Damian");
@@ -68,6 +80,7 @@ function initialize_globals()
 function initialize_objects()
 {
     instance_create(0, 0, obj_screen);
+    instance_create(0, 0, obj_parallax);
     
     if (DEBUG_MODE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);

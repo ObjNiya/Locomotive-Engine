@@ -1,5 +1,12 @@
 state_machine_initialize();
 
+tv_offset_target = 0;
+tv_offset_hitbox = [317, 284];
+
+/////////////////////////////
+/// TV background set-up
+/////////////////////////////
+
 tvbg_sprite = spr_tvbg_hallway;
 tvbg_scroll = 0;
 

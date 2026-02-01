@@ -36,8 +36,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Sprites/HUD/Fonts.yy",
+    "name":"General Fonts",
+    "path":"folders/Sprites/HUD/General Fonts.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

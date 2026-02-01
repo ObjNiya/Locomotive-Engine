@@ -1,6 +1,6 @@
 draw_set_mask(spr_tv_turnon_damian, 0, x, y, false);
 
-var x_offset = x - xstart;
+var x_offset = xstart + x;
 var y_offset = ystart - y;
 
 for (var i = 0; i < sprite_get_number(tvbg_sprite); i++)

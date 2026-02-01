@@ -1,27 +1,12 @@
-target = noone;
+follow_target = noone;
+view_id = view_camera[instance_number(obj_camera) - 1];
 
-camera = -1;
+x_extend = 0;
+x_extend_speed = 1;
+x_extend_target = 0;
 
-xoffset = 0;
-yoffset = 0;
+y_extend = 0;
+y_extend_speed = 1;
+y_extend_target = 0;
 
-xoffset_target = 0;
-yoffset_target = 0;
-
-xoffset_speed = 3;
-yoffset_speed = 3;
-
-
-xscale = 1;
-yscale = 1;
-
-xscale_target = 1;
-yscale_target = 1;
-
-xscale_speed = 0.2;
-yscale_speed = 0.2;
-
-
-angle = 0;
-angle_target = 0;
-angle_speed = 1;
+camera_set_view_size(view_id, GAME_WIDTH, GAME_HEIGHT);

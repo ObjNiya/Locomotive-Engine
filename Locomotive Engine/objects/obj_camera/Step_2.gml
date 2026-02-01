@@ -1,22 +1,18 @@
-if (!instance_exists(target))
+x_extend = approach(x_extend, x_extend_target, x_extend_speed);
+y_extend = approach(y_extend, y_extend_target, y_extend_speed);
+
+if (!instance_exists(follow_target))
 	exit;
 
-/*xoffset = approach(xoffset, xoffset_target, xoffset_speed);
-yoffset = approach(yoffset, yoffset_target, yoffset_speed);
-
-xscale = approach(xscale, xscale_target, xscale_speed);
-yscale = approach(yscale, yscale_target, yscale_speed);
-
-angle = approach(angle, angle_target, angle_speed);*/
-
-var center_x = camera_get_view_width(camera) / 2;
-var center_y = camera_get_view_height(camera) / 2;
+var x_origin = camera_get_view_width(view_id) / 2;
+var y_origin = camera_get_view_height(view_id) / 2;
 
 var natural_y_offset = 50;
 
-var target_x = clamp(target.x - center_x - xoffset, 0, room_width);
-var target_y = clamp(target.y - center_y - natural_y_offset - yoffset, 0, room_width);
+var target_x = (follow_target.x - x_origin) + x_extend;
+target_x = clamp(target_x, 0, room_width);
 
-camera_set_view_size(camera, 960 * xscale, 540 * yscale);
-camera_set_view_angle(camera, angle);
-camera_set_view_pos(camera, target_x, target_y);
+var target_y = (follow_target.y - y_origin) + + y_extend;
+target_y = clamp(target_y, 0, room_height);
+
+camera_set_view_pos(view_id, target_x, target_y);
