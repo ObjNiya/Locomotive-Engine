@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{5e2417f9-e482-4af3-8922-8ffa77d57705}">
 		<property name="assetPath">
-			<value>SFX/Level/Dashpad.ogg</value>
+			<value>SFX/Level Structure/Dashpad.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

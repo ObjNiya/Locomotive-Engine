@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{1b6ddcdf-f67e-461b-ae15-8fcaf4bddbf2}">
 		<property name="assetPath">
-			<value>Unimplemented/Frowny Face 2.ogg</value>
+			<value>Music/Level/TV Nauta Lap 2 Music.ogg</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

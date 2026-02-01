@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{1912d2dd-1ecc-48ac-8da2-5502c6cc03d5}">
 		<property name="assetPath">
-			<value>SFX/Level/Rank Screen/Rank Screen Plushie.ogg</value>
+			<value>SFX/Level Structure/Rank Screen/Rank Screen Plushie.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

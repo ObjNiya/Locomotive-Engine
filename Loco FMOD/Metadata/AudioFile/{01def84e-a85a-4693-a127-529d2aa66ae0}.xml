@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{01def84e-a85a-4693-a127-529d2aa66ae0}">
 		<property name="assetPath">
-			<value>SFX/Level/Marx/Marx Laser Charge.ogg</value>
+			<value>SFX/Level Structure/Marx/Marx Laser Charge.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

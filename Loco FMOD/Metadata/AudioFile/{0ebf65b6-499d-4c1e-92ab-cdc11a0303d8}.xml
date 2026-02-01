@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{0ebf65b6-499d-4c1e-92ab-cdc11a0303d8}">
 		<property name="assetPath">
-			<value>SFX/Level/Destroyables/Destroyable Metal.ogg</value>
+			<value>SFX/Level Structure/Destroyables/Destroyable Metal.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{9f5eb792-5028-4a5e-b9d8-0fa23ece4a89}">
 		<property name="assetPath">
-			<value>SFX/Player/Damian/Voice/Damian Happy A.ogg</value>
+			<value>SFX/Player/Damian/Voice/Damian Happy.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

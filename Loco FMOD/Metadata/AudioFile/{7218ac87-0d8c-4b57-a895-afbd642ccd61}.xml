@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{7218ac87-0d8c-4b57-a895-afbd642ccd61}">
 		<property name="assetPath">
-			<value>SFX/Level/Collectables/Collect Showtime Big.ogg</value>
+			<value>SFX/Level Structure/Collectables/Collectable Showtime Big.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

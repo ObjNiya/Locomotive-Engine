@@ -265,6 +265,7 @@
     {"id":{"name":"obj_dead_enemy_particle","path":"objects/obj_dead_enemy_particle/obj_dead_enemy_particle.yy",},},
     {"id":{"name":"obj_explosion_particle_alt","path":"objects/obj_explosion_particle_alt/obj_explosion_particle_alt.yy",},},
     {"id":{"name":"obj_flame_particle","path":"objects/obj_flame_particle/obj_flame_particle.yy",},},
+    {"id":{"name":"obj_fmod_studio_manager","path":"objects/obj_fmod_studio_manager/obj_fmod_studio_manager.yy",},},
     {"id":{"name":"obj_goto_room","path":"objects/obj_goto_room/obj_goto_room.yy",},},
     {"id":{"name":"obj_groundpound_effect","path":"objects/obj_groundpound_effect/obj_groundpound_effect.yy",},},
     {"id":{"name":"obj_groundpound_slam_particle","path":"objects/obj_groundpound_slam_particle/obj_groundpound_slam_particle.yy",},},

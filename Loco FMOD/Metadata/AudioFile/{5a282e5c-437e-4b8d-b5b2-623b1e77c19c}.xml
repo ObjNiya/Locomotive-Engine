@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{5a282e5c-437e-4b8d-b5b2-623b1e77c19c}">
 		<property name="assetPath">
-			<value>SFX/Player/Damian/Mach/Damian Mach Drift.ogg</value>
+			<value>SFX/Player/Damian/Mach/Damian Mach Turn.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

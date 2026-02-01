@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ce73cbfa-163a-4ec5-bd4b-86dfe4bba348}">
 		<property name="assetPath">
-			<value>SFX/Level/Patripi Hurt.ogg</value>
+			<value>SFX/Level Structure/Patripi Hurt.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

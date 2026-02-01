@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ddafbed9-1f40-4f62-b2a5-7c44264a5a11}">
 		<property name="assetPath">
-			<value>SFX/Level/Marx/Voice/Marx Screech.ogg</value>
+			<value>SFX/Level Structure/Marx/Voice/Marx Screech.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

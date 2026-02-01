@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{5fc914e6-a196-41f8-9da4-9a77742a1661}">
 		<property name="assetPath">
-			<value>SFX/Level/Collectables/Collect Treasure.ogg</value>
+			<value>SFX/Level Structure/Collectables/Collect Treasure.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{d0b0f052-02be-427b-aaec-bf3b24a3c531}">
 		<property name="assetPath">
-			<value>SFX/Level/Egg/Egg Pop.ogg</value>
+			<value>SFX/Level Structure/Egg/Egg Pop.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

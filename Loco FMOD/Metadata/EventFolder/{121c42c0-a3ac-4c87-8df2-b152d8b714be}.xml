@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{121c42c0-a3ac-4c87-8df2-b152d8b714be}">
+		<property name="name">
+			<value>Superjump</value>
+		</property>
+		<relationship name="folder">
+			<destination>{563809c7-49b0-46a9-8ed4-02d664d58e35}</destination>
+		</relationship>
+	</object>
+</objects>

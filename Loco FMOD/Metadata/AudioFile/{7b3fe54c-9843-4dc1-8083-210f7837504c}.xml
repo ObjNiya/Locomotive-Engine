@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{7b3fe54c-9843-4dc1-8083-210f7837504c}">
 		<property name="assetPath">
-			<value>SFX/Level/Patrick Pillar Voice.ogg</value>
+			<value>SFX/Level Structure/Patrick Pillar Voice.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

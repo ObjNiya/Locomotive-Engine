@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{390ee0a6-bea1-402e-8a8c-704da16739c5}">
 		<property name="assetPath">
-			<value>SFX/Level/Exit Level Jingle.ogg</value>
+			<value>SFX/Level Structure/Exit Level Jingle.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{93a400f4-c690-4c60-92e3-c56b03e65c2c}">
 		<property name="assetPath">
-			<value>Music/Level/TV Nauta Showtime Secret.ogg</value>
+			<value>Music/Level/TV Nauta Showtime Secret Music.ogg</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{e94ae279-38de-4d82-a945-44be081f8279}">
 		<property name="assetPath">
-			<value>SFX/Player/Breakdance/Breakdance Start B.ogg</value>
+			<value>SFX/Player/Breakdance/Breakdance Voice B.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

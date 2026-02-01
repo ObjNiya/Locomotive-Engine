@@ -231,6 +231,7 @@
     {"name":"obj_dead_enemy_particle","order":15,"path":"objects/obj_dead_enemy_particle/obj_dead_enemy_particle.yy",},
     {"name":"obj_explosion_particle_alt","order":13,"path":"objects/obj_explosion_particle_alt/obj_explosion_particle_alt.yy",},
     {"name":"obj_flame_particle","order":9,"path":"objects/obj_flame_particle/obj_flame_particle.yy",},
+    {"name":"obj_fmod_studio_manager","order":9,"path":"objects/obj_fmod_studio_manager/obj_fmod_studio_manager.yy",},
     {"name":"obj_groundpound_effect","order":4,"path":"objects/obj_groundpound_effect/obj_groundpound_effect.yy",},
     {"name":"obj_groundpound_slam_particle","order":12,"path":"objects/obj_groundpound_slam_particle/obj_groundpound_slam_particle.yy",},
     {"name":"obj_hallway","order":6,"path":"objects/obj_hallway/obj_hallway.yy",},

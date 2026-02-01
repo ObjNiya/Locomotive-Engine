@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ae270ecf-a473-4b46-bc92-f650e3f10b6c}">
 		<property name="assetPath">
-			<value>SFX/Level/Showtime Rumble.ogg</value>
+			<value>SFX/Level Structure/Showtime Rumble.ogg</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
