@@ -155,4 +155,150 @@
 
 #macro sfx_transition_circle_in "event:/SFX/Room Transition/Transition Circle In"
 #macro sfx_transition_circle_out "event:/SFX/Room Transition/Transition Circle Out"
-#macro sfx_transition_fade "event:/SFX/Room Transition/Transition Fade"  
+#macro sfx_transition_fade "event:/SFX/Room Transition/Transition Fade"
+
+/////////////////////////////
+// Function macros
+/////////////////////////////
+
+#macro sound_description_create_instance fmod_studio_event_description_create_instance
+#macro sound_description_get_instance_count fmod_studio_event_description_get_instance_count
+#macro sound_description_get_instance_list fmod_studio_event_description_get_instance_list
+#macro sound_description_release_all_instances fmod_studio_event_description_release_all_instances
+#macro sound_description_load_sample_data fmod_studio_event_description_load_sample_data
+#macro sound_description_unload_sample_data fmod_studio_event_description_unload_sample_data
+#macro sound_description_get_sample_loading_state fmod_studio_event_description_get_sample_loading_state
+#macro sound_description_is_3d fmod_studio_event_description_is_3d
+#macro sound_description_is_doppler_enabled fmod_studio_event_description_is_doppler_enabled
+#macro sound_description_is_oneshot fmod_studio_event_description_is_oneshot
+#macro sound_description_is_snapshot fmod_studio_event_description_is_snapshot
+#macro sound_description_is_stream fmod_studio_event_description_is_stream
+#macro sound_description_has_sustain_point fmod_studio_event_description_has_sustain_point
+#macro sound_description_get_min_max_distance fmod_studio_event_description_get_min_max_distance
+#macro sound_description_get_sound_size fmod_studio_event_description_get_sound_size
+#macro sound_description_get_parameter_description_by_name fmod_studio_event_description_get_parameter_description_by_name
+#macro sound_description_get_parameter_description_by_id fmod_studio_event_description_get_parameter_description_by_id
+#macro sound_description_get_parameter_description_by_index fmod_studio_event_description_get_parameter_description_by_index
+#macro sound_description_get_parameter_description_count fmod_studio_event_description_get_parameter_description_count
+#macro sound_description_get_parameter_label_by_name fmod_studio_event_description_get_parameter_label_by_name
+#macro sound_description_get_parameter_label_by_id fmod_studio_event_description_get_parameter_label_by_id
+#macro sound_description_get_parameter_label_by_index fmod_studio_event_description_get_parameter_label_by_index
+#macro sound_description_get_user_property fmod_studio_event_description_get_user_property
+#macro sound_description_get_user_property_by_index fmod_studio_event_description_get_user_property_by_index
+#macro sound_description_get_user_property_count fmod_studio_event_description_get_user_property_count
+#macro sound_description_get_id fmod_studio_event_description_get_id
+#macro sound_description_get_length fmod_studio_event_description_get_length
+#macro sound_description_get_path fmod_studio_event_description_get_path
+#macro sound_description_set_callback fmod_studio_event_description_set_callback
+#macro sound_description_set_user_data fmod_studio_event_description_set_user_data
+#macro sound_description_get_user_data fmod_studio_event_description_get_user_data
+#macro sound_description_is_valid fmod_studio_event_description_is_valid
+
+#macro sound_instance_start fmod_studio_event_instance_start
+#macro sound_instance_stop fmod_studio_event_instance_stop
+#macro sound_instance_get_playback_state fmod_studio_event_instance_get_playback_state
+#macro sound_instance_set_paused fmod_studio_event_instance_set_paused
+#macro sound_instance_get_paused fmod_studio_event_instance_get_paused
+#macro sound_instance_keyoff fmod_studio_event_instance_keyoff
+#macro sound_instance_set_pitch fmod_studio_event_instance_set_pitch
+#macro sound_instance_get_pitch fmod_studio_event_instance_get_pitch
+#macro sound_instance_set_property fmod_studio_event_instance_set_property
+#macro sound_instance_get_property fmod_studio_event_instance_get_property
+#macro sound_instance_set_timeline_position fmod_studio_event_instance_set_timeline_position
+#macro sound_instance_get_timeline_position fmod_studio_event_instance_get_timeline_position
+#macro sound_instance_set_volume fmod_studio_event_instance_set_volume
+#macro sound_instance_get_volume fmod_studio_event_instance_get_volume
+#macro sound_instance_is_virtual fmod_studio_event_instance_is_virtual
+#macro sound_instance_set_3d_attributes fmod_studio_event_instance_set_3d_attributes
+#macro sound_instance_get_3d_attributes fmod_studio_event_instance_get_3d_attributes
+#macro sound_instance_set_listener_mask fmod_studio_event_instance_set_listener_mask
+#macro sound_instance_get_listener_mask fmod_studio_event_instance_get_listener_mask
+#macro sound_instance_get_min_max_distance fmod_studio_event_instance_get_min_max_distance
+#macro sound_instance_set_parameter_by_name fmod_studio_event_instance_set_parameter_by_name
+#macro sound_instance_set_parameter_by_name_with_label fmod_studio_event_instance_set_parameter_by_name_with_label
+#macro sound_instance_get_parameter_by_name fmod_studio_event_instance_get_parameter_by_name
+#macro sound_instance_set_parameter_by_id fmod_studio_event_instance_set_parameter_by_id
+#macro sound_instance_set_parameter_by_id_with_label fmod_studio_event_instance_set_parameter_by_id_with_label
+#macro sound_instance_get_parameter_by_id fmod_studio_event_instance_get_parameter_by_id
+#macro sound_instance_get_channel_group fmod_studio_event_instance_get_channel_group
+#macro sound_instance_set_reverb_level fmod_studio_event_instance_set_reverb_level
+#macro sound_instance_get_reverb_level fmod_studio_event_instance_get_reverb_level
+#macro sound_instance_get_cpu_usage fmod_studio_event_instance_get_cpu_usage
+#macro sound_instance_get_memory_usage fmod_studio_event_instance_get_memory_usage
+#macro sound_instance_set_callback fmod_studio_event_instance_set_callback
+#macro sound_instance_set_user_data fmod_studio_event_instance_set_user_data
+#macro sound_instance_get_user_data fmod_studio_event_instance_get_user_data
+#macro sound_instance_get_description fmod_studio_event_instance_get_description
+#macro sound_instance_release fmod_studio_event_instance_release
+#macro sound_instance_is_valid fmod_studio_event_instance_is_valid
+
+#macro sound_instance_move fmod_studio_event_instance_move
+#macro sound_instance_create fmod_studio_event_instance_create
+#macro sound_instance_one_shot fmod_studio_event_instance_one_shot
+
+#macro sound_instance_start_all fmod_studio_event_instance_start_all
+#macro sound_instance_stop_all fmod_studio_event_instance_stop_all
+#macro sound_instance_set_paused_all fmod_studio_event_instance_set_paused_all
+#macro sound_instance_keyoff_all fmod_studio_event_instance_keyoff_all
+#macro sound_instance_set_pitch_all fmod_studio_event_instance_set_pitch_all
+#macro sound_instance_set_property_all fmod_studio_event_instance_set_property_all
+#macro sound_instance_set_timeline_position_all fmod_studio_event_instance_set_timeline_position_all
+#macro sound_instance_set_3d_attributes_all fmod_studio_event_instance_set_3d_attributes_all
+#macro sound_instance_set_listener_mask_all fmod_studio_event_instance_set_listener_mask_all
+#macro sound_instance_set_parameter_by_name_all fmod_studio_event_instance_set_parameter_by_name_all
+#macro sound_instance_set_parameter_by_id_all fmod_studio_event_instance_set_parameter_by_id_all
+#macro sound_instance_set_parameter_by_id_with_label_all fmod_studio_event_instance_set_parameter_by_id_with_label_all
+#macro sound_instance_set_reverb_level_all fmod_studio_event_instance_set_reverb_level_all
+#macro sound_instance_set_callback_all fmod_studio_event_instance_set_callback_all
+#macro sound_instance_release_all fmod_studio_event_instance_release_all
+
+
+/////////////////////////////
+// FMOD Studio initializer
+/////////////////////////////
+
+var _max_channels = 1024
+var _flags_core = FMOD_INIT.NORMAL;
+var _flags_studio = FMOD_STUDIO_INIT.LIVEUPDATE;
+
+#macro USE_FMOD_STUDIO true 
+#macro USE_DEBUG_CALLBACKS DEBUG_MODE 
+
+if (USE_DEBUG_CALLBACKS)
+{
+    fmod_debug_initialize(FMOD_DEBUG_FLAGS.LEVEL_LOG, FMOD_DEBUG_MODE.CALLBACK);
+}
+
+if (USE_FMOD_STUDIO)
+{
+	fmod_studio_system_create();
+	show_debug_message("fmod_studio_system_create: " + string(fmod_last_result()));
+
+	fmod_studio_system_init(_max_channels, _flags_studio, _flags_core);
+	show_debug_message("fmod_studio_system_init: " + string(fmod_last_result()));
+
+	fmod_main_system = fmod_studio_system_get_core_system();
+}
+else
+{
+	fmod_main_system = fmod_system_create()
+	show_debug_message("fmod_system_create: " + string(fmod_last_result()))
+
+	fmod_system_init(_max_channels, _flags_core)
+	show_debug_message("fmod_system_init: " + string(fmod_last_result()))
+}
+
+sound_instances = [];
+
+master_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data/sound/Desktop/MASTER.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data/sound/Desktop/MASTER.strings.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+
+player_bank = -1;
+damian_bank = -1;
+hub_bank = -1;
+level_structure_bank = -1;
+tutorial_bank = -1;
+hallway_longway_bank = -1;
+bloom_and_doom_bank = -1;
+forest_maze_bank = -1;
+wigglers_garden_bank = -1;

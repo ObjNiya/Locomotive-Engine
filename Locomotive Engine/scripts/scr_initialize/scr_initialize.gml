@@ -81,6 +81,7 @@ function initialize_objects()
 {
     instance_create(0, 0, obj_screen);
     instance_create(0, 0, obj_parallax);
+    instance_create(0, 0, obj_fmod_studio_manager)
     
     if (DEBUG_MODE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);

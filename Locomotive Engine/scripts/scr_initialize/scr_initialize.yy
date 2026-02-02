@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_initialize",
   "parent":{
-    "name":"Core",
-    "path":"folders/Scripts/Core.yy",
+    "name":"Game Structure",
+    "path":"folders/Scripts/Game Structure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
