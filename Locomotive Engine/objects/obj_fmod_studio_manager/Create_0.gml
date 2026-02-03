@@ -291,11 +291,11 @@ else
 
 sound_instances = [];
 
-master_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
-master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.strings.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+master_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.strings.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
 
-player_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\PLAYER.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
-damian_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DAMIAN.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+player_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\PLAYER.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+damian_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DAMIAN.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
 trace("Bank load:", fmod_path_bundle("data/sound/Desktop/PLAYER.bank"))
 hub_bank = -1;
 level_structure_bank = -1;

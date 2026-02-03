@@ -1,6 +1,6 @@
 function player_check_nothing_above()
 {
-    return (!place_meeting(x, y - 32, [obj_solid, obj_slope]));
+    return (!place_meeting(x, y - 32, obj_solid));
 }
 
 function player_check_hit_wall()
@@ -10,7 +10,7 @@ function player_check_hit_wall()
 
 function player_check_hit_ceiling()
 {
-    return (place_meeting(x, y - 1, [obj_solid, obj_slope]));
+    return (place_meeting(x, y - 1, obj_solid));
 }
 
 function player_check_can_get_up()
@@ -20,7 +20,7 @@ function player_check_can_get_up()
 
 function player_check_can_jump()
 {
-    return (can_jump && InputPressed(INPUT_VERB.JUMP) && !place_meeting(x, y - 1, [obj_solid, obj_slope]));
+    return (can_jump && InputPressed(INPUT_VERB.JUMP) && !place_meeting(x, y - 1, obj_solid));
 }
 
 function player_check_can_crouch()
@@ -88,6 +88,10 @@ function player_check_can_sjump_prepare()
     return (InputPressed(INPUT_VERB.UP) && grounded);
 }
 
+function player_check_sjump_prepare_release()
+{
+    return (!InputCheck(INPUT_VERB.UP) && grounded)
+}
 function player_try_jumpstop(divisor = 20)
 {
     if (!InputReleased(INPUT_VERB.JUMP) || vsp >= 0 || grounded)

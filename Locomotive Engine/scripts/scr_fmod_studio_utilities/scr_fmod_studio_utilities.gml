@@ -4,10 +4,10 @@ function fmod_studio_event_instance_move(event_instance_ref, x, y)
 {
     var fmod_3d_attributes = new Fmod3DAttributes();
     
-    with (fmod_3d_attributes.position)
+    with (fmod_3d_attributes)
     {
-        self.x = x;
-        self.y = y;
+        position.x = x;
+        position.y = y;
     }
     
     fmod_studio_event_instance_set_3d_attributes(event_instance_ref, fmod_3d_attributes);
@@ -20,6 +20,8 @@ function fmod_studio_event_instance_create(event_description_ref, x = 0, y = 0)
     
     with (obj_fmod_studio_manager)
         array_push(sound_instances, fmod_studio_event_instance);
+    
+    return fmod_studio_event_instance;
 }
 
 function fmod_studio_event_instance_one_shot(event_description_ref, x = 0, y = 0)

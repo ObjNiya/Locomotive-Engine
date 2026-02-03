@@ -84,6 +84,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{04f0e45b-ef0b-4d4d-afd8-30b71d8c053c}">
+		<property name="volume">
+			<value>-16</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{e2309f19-0612-4bf5-940a-27ccd7b0efdf}</destination>
 		</relationship>
@@ -122,7 +125,9 @@
 	<object class="MixerBusEffectChain" id="{e2309f19-0612-4bf5-940a-27ccd7b0efdf}">
 		<relationship name="effects">
 			<destination>{981eaede-86ab-4d86-a9b8-cbd459cbd6fe}</destination>
+			<destination>{68663319-bea6-461d-bf73-9e1b668e293c}</destination>
 			<destination>{304df088-2ad7-4064-9ded-25805e218bb5}</destination>
+			<destination>{ab922cd3-a78a-472e-893f-31052a5b5755}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4a0eb532-49c6-49bb-927d-7e4aac641360}" />
@@ -142,6 +147,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{ab6641f7-63dc-4ab9-9679-ab9ac2ef7f4b}" />
 	<object class="MixerBusFader" id="{981eaede-86ab-4d86-a9b8-cbd459cbd6fe}" />
+	<object class="DistortionEffect" id="{68663319-bea6-461d-bf73-9e1b668e293c}" />
 	<object class="ProxyEffect" id="{304df088-2ad7-4064-9ded-25805e218bb5}">
 		<property name="inputFormat">
 			<value>1</value>
@@ -149,6 +155,20 @@
 		<relationship name="preset">
 			<destination>{597d8602-524d-40dd-b82f-651cb3239490}</destination>
 		</relationship>
+	</object>
+	<object class="SFXReverbEffect" id="{ab922cd3-a78a-472e-893f-31052a5b5755}">
+		<property name="decayTime">
+			<value>7000</value>
+		</property>
+		<property name="HFDecayRatio">
+			<value>55</value>
+		</property>
+		<property name="diffusion">
+			<value>99.5</value>
+		</property>
+		<property name="wetLevel">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="SingleSound" id="{51e2e305-4d5c-4576-bb66-66380ce39857}">
 		<relationship name="audioFile">

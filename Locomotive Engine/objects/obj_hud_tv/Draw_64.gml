@@ -15,5 +15,5 @@ for (var i = 0; i < sprite_get_number(tvbg_sprite); i++)
 
 draw_reset_mask();
 
-draw_sprite(sprite_index, image_index, x, y);
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 whitenoise.draw();

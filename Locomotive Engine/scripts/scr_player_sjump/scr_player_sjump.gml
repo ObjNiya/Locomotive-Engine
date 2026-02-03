@@ -47,12 +47,12 @@ function state_player_sjump_step()
     blur_afterimage_timer.stop();
     cloud_particle_timer.stop();
     
-    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION))
+    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     if (dir == 0)
-        dir = sign(image_xscale);
-    
-    visual_xscale = dir;
+        dir = sign(visual_xscale);
+    else
+        visual_xscale = dir;
     
     if (!animation_end())
         return;

@@ -14,4 +14,4 @@ application_y = (window_get_height() / 2) - (application_height / 2);
 if (application_width != surface_get_width(application_surface) || application_height != surface_get_height(application_surface))
     surface_resize(application_surface, application_width, application_height);
 
-display_set_gui_maximise(-1, -1);
+event_user(1);

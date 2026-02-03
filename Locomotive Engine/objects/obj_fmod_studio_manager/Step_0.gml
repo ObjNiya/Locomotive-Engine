@@ -5,15 +5,28 @@ else {
 	fmod_system_update();
 }
 
-var camera_x = camera_get_view_x(view_camera[0]) - (camera_get_view_width(view_camera[0]) / 2);
-var camera_y = camera_get_view_y(view_camera[0]) - (camera_get_view_height(view_camera[0]) / 2);
+var camera_x = camera_get_view_x(view_camera[0]);
+var camera_y = camera_get_view_y(view_camera[0]);
 
-var listener_3dattributes = new Fmod3DAttributes()
+var _attr = new Fmod3DAttributes();
 
-with (listener_3dattributes.position)
+with (_attr.position)
 {
-    x = camera_x;
+    x = camera_x; 
     y = camera_y;
+    z = -1;
+}
+with (_attr.forward)
+{
+    x = 0;
+    y = 0;
+    z = 1;
+}
+with (_attr.up)
+{
+    x = 0;
+    y = 1;
+    z = 0;
 }
 
-fmod_studio_system_set_listener_attributes(0, listener_3dattributes)
+fmod_studio_system_set_listener_attributes(0, _attr)

@@ -10,5 +10,5 @@ with (par_player)
 
 var tv_movespeed = 15;
 
-x = approach(x, xstart + tv_offset_target, tv_movespeed);
-y = approach(y, ystart - tv_offset_target, tv_movespeed);
+//x = approach(x, xstart + tv_offset_target, tv_movespeed);
+//y = approach(y, ystart - tv_offset_target, tv_movespeed);

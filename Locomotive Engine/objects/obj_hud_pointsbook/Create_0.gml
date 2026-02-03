@@ -1,5 +1,8 @@
 event_inherited();
 
+x *= gui_get_xscale();
+y *= gui_get_yscale();
+
 stickers = [];
 collectable_effect_array = [];
 

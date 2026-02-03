@@ -16,6 +16,18 @@ function define_character(id, sprite_suffix, name)
     }
 }
 
+function char_define_event_paths(char_struct, event_paths)
+{
+    var sounds = {};
+    var event_path_count = array_length(event_paths);
+    
+    if (!variable_struct_exists(char_struct, "sounds"))
+        variable_struct_set(char_struct, "sounds", {});
+    
+    for (var i = 0; i < event_path_count; i++)
+        variable_struct_set(char_struct.sounds, event_paths[i][0], event_paths[i][1]);
+}
+
 /**
  * This function will return the index of the sprite that starts with the given prefix and ends with the Char Struct's sprite suffix.
  * @parameter {String} sprite_prefix The prefix of the sprite to get, in other words the sprite name without the Char Struct's sprite suffix.
@@ -25,6 +37,11 @@ function define_character(id, sprite_suffix, name)
 function char_get_sprite(sprite_prefix, char_struct)
 {
     return asset_get_index(sprite_prefix + char_struct.sprite_suffix);
+}
+
+function char_get_sound(char_struct, sound)
+{
+    return char_struct.sounds[$ sound];
 }
 
 /**
@@ -46,6 +63,15 @@ function char_cache_sprite_variables(char_struct)
         
         variable_instance_set(id, sprite_name, i);
         
-        //trace("Creating charspr variable \"", sprite_name, "\", With value: ", sprite_get_name(i));
+        trace("Creating charspr variable \"", sprite_name, "\", With value: ", sprite_get_name(i));
     }
+}
+
+function char_cache_sound_variables(char_struct)
+{
+    struct_foreach(char_struct.sounds, function(name, value) {
+        variable_instance_set(other.id, name, value);
+        
+        trace("Creating charsnd variable \"", name, "\", With value: ", string(value));
+    })
 }

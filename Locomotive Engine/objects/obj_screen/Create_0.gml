@@ -35,6 +35,8 @@ event_user(0);
 // GUI surface set-up
 
 gui_surface = -1;
+gui_scale = -1;
+gui_queue_resize = false;
 
 // Other
 

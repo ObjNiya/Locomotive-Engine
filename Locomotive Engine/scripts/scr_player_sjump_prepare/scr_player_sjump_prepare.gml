@@ -18,7 +18,7 @@ function state_player_sjump_prepare_step()
         return;
     }
     
-    if (!player_check_can_sjump_prepare() && player_check_nothing_above() && grounded)
+    if (player_check_sjump_prepare_release())
     {
         state_machine_set_state(state_player_sjump());
         return;

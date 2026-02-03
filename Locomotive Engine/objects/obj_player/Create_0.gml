@@ -20,6 +20,7 @@ coyote_manager_initialize();
 
 character = global.char_damian;
 char_cache_sprite_variables(character);
+char_cache_sound_variables(character);
 
 state_machine_initialize();
 state_machine_set_state(state_player_normal());
@@ -90,8 +91,8 @@ wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
 cloud_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if (state_step == state_player_normal)
-        sound_instance_one_shot(sfx_damian_step, x, y);
+    if (state_step == state_player_normal_step)
+        sound_instance_one_shot(sfx_step, x, y);
 });
 cloud_particle_timer.set_ext(1, true);
 

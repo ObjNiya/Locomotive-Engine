@@ -46,6 +46,20 @@ function initialize_globals()
     // Player Character definitions
     
     global.char_damian = define_character(PLAYER_CHARACTERS.DAMIAN, "_damian", "Loco Damian");
+    char_define_event_paths(global.char_damian, [
+        ["sfx_step", sfx_damian_step],
+        ["sfx_jump", sfx_damian_jump],
+        ["sfx_hair_scratch", sfx_damian_hair_scratch],
+        ["sfx_voice_idle", sfx_damian_voice_idle],
+        ["sfx_voice_happy", sfx_damian_voice_happy],
+        ["sfx_voice_hurt", sfx_damian_voice_hurt],
+        ["sfx_voice_plushie", sfx_damian_voice_plushie],
+        ["sfx_voice_catripi", sfx_damian_voice_catripi],
+        ["sfx_mach", sfx_damian_mach],
+        ["sfx_mach_turn", sfx_damian_mach_turn],
+        ["sfx_mach_brake", sfx_damian_mach_brake]
+    ]);
+
     global.char_tv_nauta = define_character(PLAYER_CHARACTERS.TV_NAUTA, "_nauta", "TV Nauta");
     global.char_jose = define_character(PLAYER_CHARACTERS.JOSE, "_jose", "Jose");
     

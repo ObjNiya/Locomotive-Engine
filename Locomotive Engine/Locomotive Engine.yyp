@@ -653,6 +653,7 @@
     {"id":{"name":"scr_enemy_walk","path":"scripts/scr_enemy_walk/scr_enemy_walk.yy",},},
     {"id":{"name":"scr_flash_effect_manager","path":"scripts/scr_flash_effect_manager/scr_flash_effect_manager.yy",},},
     {"id":{"name":"scr_fmod_studio_utilities","path":"scripts/scr_fmod_studio_utilities/scr_fmod_studio_utilities.yy",},},
+    {"id":{"name":"scr_gui_utilities","path":"scripts/scr_gui_utilities/scr_gui_utilities.yy",},},
     {"id":{"name":"scr_hud_pointsbook","path":"scripts/scr_hud_pointsbook/scr_hud_pointsbook.yy",},},
     {"id":{"name":"scr_hud_tv_utilities","path":"scripts/scr_hud_tv_utilities/scr_hud_tv_utilities.yy",},},
     {"id":{"name":"scr_initialize","path":"scripts/scr_initialize/scr_initialize.yy",},},
