@@ -141,6 +141,7 @@
 // Damian Voice
 
 #macro sfx_damian_voice_plushie "event:/SFX/Player/Damian/Voice/Damian Voice Plushie"
+#macro sfx_damian_voice_catripi "event:/SFX/Player/Damian/Voice/Damian Collect Catripi"
 #macro sfx_damian_voice_happy "event:/SFX/Player/Damian/Voice/Damian Voice Happy"
 #macro sfx_damian_voice_hurt "event:/SFX/Player/Damian/Voice/Damian Voice Hurt"
 #macro sfx_damian_voice_idle "event:/SFX/Player/Damian/Voice/Damian Voice Idle"
@@ -290,11 +291,12 @@ else
 
 sound_instances = [];
 
-master_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data/sound/Desktop/MASTER.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
-master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data/sound/Desktop/MASTER.strings.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+master_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.strings.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
 
-player_bank = -1;
-damian_bank = -1;
+player_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\PLAYER.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+damian_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DAMIAN.bank"), FMOD_STUDIO_LOAD_BANK.DECOMPRESS_SAMPLES);
+trace("Bank load:", fmod_path_bundle("data/sound/Desktop/PLAYER.bank"))
 hub_bank = -1;
 level_structure_bank = -1;
 tutorial_bank = -1;
@@ -302,3 +304,5 @@ hallway_longway_bank = -1;
 bloom_and_doom_bank = -1;
 forest_maze_bank = -1;
 wigglers_garden_bank = -1;
+
+fmod_studio_system_set_num_listeners(0);

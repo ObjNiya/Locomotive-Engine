@@ -43,17 +43,16 @@ function initialize_globals()
     global.pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
     global.combofont = font_add_sprite_ext(spr_combo_bar_font, "0123456789", 1, 0);
 
-
     // Player Character definitions
     
-    global.char_damian = define_character(PLAYER_CHARACTERS.DAMIAN, "_damian", "Damian");
+    global.char_damian = define_character(PLAYER_CHARACTERS.DAMIAN, "_damian", "Loco Damian");
     global.char_tv_nauta = define_character(PLAYER_CHARACTERS.TV_NAUTA, "_nauta", "TV Nauta");
     global.char_jose = define_character(PLAYER_CHARACTERS.JOSE, "_jose", "Jose");
     
     // Level definitions
     
     global.lvl_hallway = define_level("Hallway Longway", rm_hallway_1, 50, true, 6000);
-    global.lvl_lawn = define_level("Crazii Lawn", rm_initialize, 50, true, 3000);
+    global.lvl_bloom_and_doom = define_level("Bloom And Doom", rm_initialize, 50, true, 3000);
     
     // Room transition
     
@@ -72,6 +71,10 @@ function initialize_globals()
     // Level system
     
     global.level = pointer_null;
+
+    // Other definitions
+
+    global.essential_objects = [obj_screen, obj_fmod_studio_manager];
 }
 
 /**

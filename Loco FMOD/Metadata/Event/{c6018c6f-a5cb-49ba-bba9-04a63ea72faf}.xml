@@ -5,7 +5,7 @@
 			<value>Collect Catripi</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>5</value>
 		</property>
 		<relationship name="folder">
 			<destination>{30029bab-0ffb-4c0d-9dbf-8a087dd3006f}</destination>
@@ -37,6 +37,7 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{016eaf37-af74-4e78-bb65-831cc04ac104}</destination>
+			<destination>{944951c9-fe7a-4176-8f0d-bac336df9b74}</destination>
 		</relationship>
 		<relationship name="banks">
 			<destination>{dddbba35-e6da-42a9-ab23-6784e451fcf4}</destination>
@@ -63,12 +64,15 @@
 			<destination>{a6ead3b8-7345-4be4-a617-f4d725a576ee}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{e02e33e3-404d-419b-8b98-eeadce5ff067}</destination>
+			<destination>{9446e5e4-5b3c-4698-97a9-58c9b314d573}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{81286299-1578-4912-86f7-1663b2931b3c}" />
 	<object class="MarkerTrack" id="{e57c8968-100b-42d5-9f3f-cede73389c4c}" />
 	<object class="GroupTrack" id="{02a1ce4e-216b-462a-b013-7ecc2d350f9e}">
+		<relationship name="modules">
+			<destination>{72049d72-3f3b-4391-87ca-b8844b5741e4}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{8734208b-dbdb-4a7d-b06b-deb8d54594aa}</destination>
 		</relationship>
@@ -81,6 +85,14 @@
 	<object class="ActionSheet" id="{016eaf37-af74-4e78-bb65-831cc04ac104}">
 		<relationship name="modules">
 			<destination>{4bb3633c-d312-4730-bcc0-1fd6d1dd6ac7}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProxy" id="{944951c9-fe7a-4176-8f0d-bac336df9b74}">
+		<relationship name="modules">
+			<destination>{72049d72-3f3b-4391-87ca-b8844b5741e4}</destination>
+		</relationship>
+		<relationship name="preset">
+			<destination>{f8f4065b-39eb-4150-87e7-419d1041d1dc}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{efa0a94f-0012-401d-8861-b0807303fa13}">
@@ -105,6 +117,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a6ead3b8-7345-4be4-a617-f4d725a576ee}" />
+	<object class="EventSound" id="{72049d72-3f3b-4391-87ca-b8844b5741e4}">
+		<relationship name="event">
+			<destination>{35f1e0f1-f925-47c6-8865-3b6c8a8ed4f5}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{8734208b-dbdb-4a7d-b06b-deb8d54594aa}">
 		<property name="name">
 			<value>Audio 1</value>

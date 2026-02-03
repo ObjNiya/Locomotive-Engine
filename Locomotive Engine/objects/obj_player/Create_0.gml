@@ -89,6 +89,9 @@ wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
 
 cloud_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
+    
+    if (state_step == state_player_normal)
+        sound_instance_one_shot(sfx_damian_step, x, y);
 });
 cloud_particle_timer.set_ext(1, true);
 

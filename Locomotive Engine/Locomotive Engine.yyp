@@ -261,6 +261,7 @@
     {"id":{"name":"State Template","path":"notes/State Template/State Template.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
     {"id":{"name":"obj_animcurve_value_manager","path":"objects/obj_animcurve_value_manager/obj_animcurve_value_manager.yy",},},
+    {"id":{"name":"obj_asset_loader","path":"objects/obj_asset_loader/obj_asset_loader.yy",},},
     {"id":{"name":"obj_attack_hitbox","path":"objects/obj_attack_hitbox/obj_attack_hitbox.yy",},},
     {"id":{"name":"obj_bang_particle","path":"objects/obj_bang_particle/obj_bang_particle.yy",},},
     {"id":{"name":"obj_blur_afterimage","path":"objects/obj_blur_afterimage/obj_blur_afterimage.yy",},},
@@ -643,6 +644,7 @@
     {"id":{"name":"scr_collisionLibraryPhysics","path":"scripts/scr_collisionLibraryPhysics/scr_collisionLibraryPhysics.yy",},},
     {"id":{"name":"scr_combat","path":"scripts/scr_combat/scr_combat.yy",},},
     {"id":{"name":"scr_coyote_system","path":"scripts/scr_coyote_system/scr_coyote_system.yy",},},
+    {"id":{"name":"scr_deactivate_game","path":"scripts/scr_deactivate_game/scr_deactivate_game.yy",},},
     {"id":{"name":"scr_draw_sprite_pos_ext","path":"scripts/scr_draw_sprite_pos_ext/scr_draw_sprite_pos_ext.yy",},},
     {"id":{"name":"scr_enemy_grabbed","path":"scripts/scr_enemy_grabbed/scr_enemy_grabbed.yy",},},
     {"id":{"name":"scr_enemy_scared","path":"scripts/scr_enemy_scared/scr_enemy_scared.yy",},},
@@ -1238,5 +1240,12 @@
           "autocrop":"false",
         },
       },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texturegroup_levelstructure","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texturegroup_levelstructure","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
   ],
 }

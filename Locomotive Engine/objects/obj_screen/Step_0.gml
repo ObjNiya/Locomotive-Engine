@@ -1,27 +1,17 @@
-if (scaling_mode == SCALING_MODES.PIXEL_PERFECT)
-{
-    application_width = GAME_WIDTH;
-    application_height = GAME_HEIGHT;
-    
+if (previous_window_width == window_get_height() && previous_window_height == window_get_height())
     exit;
-}
 
-if (scaling_mode == SCALING_MODES.STRETCH)
-{
-    application_width = window_get_width();
-    application_height = window_get_height();
-    
-    exit;
-}
+previous_window_width = window_get_width();
+previous_window_height = window_get_height();
 
-var window_xscale = window_get_width() / GAME_WIDTH;
-var window_yscale = window_get_height() / GAME_HEIGHT;
+event_user(0);
 
-application_scale = min(window_xscale, window_yscale);
-var floor_application_scale = floor(application_scale);
+// Take the changes from User Event 0 into account
 
-if (scaling_mode == SCALING_MODES.INTEGER && floor_application_scale != 0)
-    application_scale = floor_application_scale;  
+application_x = (window_get_width() / 2) - (application_width / 2);
+application_y = (window_get_height() / 2) - (application_height / 2);
 
-application_width = GAME_WIDTH * application_scale;
-application_height = GAME_HEIGHT * application_scale;
+if (application_width != surface_get_width(application_surface) || application_height != surface_get_height(application_surface))
+    surface_resize(application_surface, application_width, application_height);
+
+display_set_gui_maximise(-1, -1);
