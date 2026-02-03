@@ -86,6 +86,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{96d7d859-a68d-4f4b-91b0-288c7d4f5553}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{e7795577-99a7-43a7-9daa-bf3bdb8d319d}</destination>
 		</relationship>
@@ -103,6 +106,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{16a824be-1b1f-4823-8e8f-2c509159ffe4}" />
 	<object class="SingleSound" id="{c8486246-8605-41f6-a6e3-253649768a77}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="start">
 			<value>32</value>
 		</property>
@@ -141,6 +147,9 @@
 		</property>
 		<property name="length">
 			<value>30.296303854875283</value>
+		</property>
+		<property name="name">
+			<value>D To B Rank Music</value>
 		</property>
 		<property name="looping">
 			<value>2</value>

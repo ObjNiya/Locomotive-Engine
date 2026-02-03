@@ -97,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{f15fcb97-1872-43f7-b082-45f987617c16}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{d8e7fdf6-52e2-4b10-a059-dc84624df4c5}</destination>
 		</relationship>
@@ -114,11 +117,17 @@
 	</object>
 	<object class="MixerBusPanner" id="{c36e7fb8-05a4-447f-9d9e-be4dd34d3967}" />
 	<object class="SingleSound" id="{0c9a67cf-f6d3-4866-895a-27b65ad72a2f}">
+		<property name="color">
+			<value>Cyan Light 2</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{b9e8bee8-7f4a-443c-9aa0-ef057f8d7be8}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{631001d6-46ba-4d3e-95ec-3da0fb4f5fea}">
+		<property name="color">
+			<value>Green</value>
+		</property>
 		<property name="start">
 			<value>1</value>
 		</property>
@@ -135,6 +144,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{a2ec0a95-a0e5-4290-bfa5-97a9a31ba931}">
+		<property name="color">
+			<value>Red</value>
+		</property>
 		<property name="start">
 			<value>3</value>
 		</property>
@@ -143,6 +155,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{b56bf0f4-4120-4818-b465-e3fe0ec660de}">
+		<property name="color">
+			<value>Yellow</value>
+		</property>
 		<property name="start">
 			<value>4</value>
 		</property>
@@ -151,6 +166,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{4b835ec8-724b-4100-a242-c03ad176fea3}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="start">
 			<value>5</value>
 		</property>
@@ -175,6 +193,7 @@
 	<object class="MixerBusEffectChain" id="{d8e7fdf6-52e2-4b10-a059-dc84624df4c5}">
 		<relationship name="effects">
 			<destination>{126749f4-cc5b-4324-9508-8ed7b6a16543}</destination>
+			<destination>{04c2b59e-ee80-46da-900a-fa11d78b9cef}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{0dee1812-1a48-47e1-a6a8-f03264a9edd5}" />
@@ -186,5 +205,13 @@
 	</object>
 	<object class="MixerBusPanner" id="{39e8e0b5-ba5a-4314-9186-f536909b079c}" />
 	<object class="MixerBusFader" id="{126749f4-cc5b-4324-9508-8ed7b6a16543}" />
+	<object class="SFXReverbEffect" id="{04c2b59e-ee80-46da-900a-fa11d78b9cef}">
+		<property name="decayTime">
+			<value>140</value>
+		</property>
+		<property name="wetLevel">
+			<value>-27.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{c235513b-b65f-4b19-b706-d617921109e9}" />
 </objects>
