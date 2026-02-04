@@ -244,9 +244,7 @@
 		<property name="transitionOffset">
 			<value>1</value>
 		</property>
-		<property name="name">
-			<value>Main Hub</value>
-		</property>
+		<property name="name" />
 		<property name="looping">
 			<value>2</value>
 		</property>
@@ -273,9 +271,7 @@
 		<property name="transitionOffset">
 			<value>1</value>
 		</property>
-		<property name="name">
-			<value>Cafe Hub</value>
-		</property>
+		<property name="name" />
 		<property name="looping">
 			<value>2</value>
 		</property>

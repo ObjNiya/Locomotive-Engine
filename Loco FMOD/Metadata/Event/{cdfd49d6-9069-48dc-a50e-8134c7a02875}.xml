@@ -148,9 +148,7 @@
 		<property name="length">
 			<value>30.296303854875283</value>
 		</property>
-		<property name="name">
-			<value>D To B Rank Music</value>
-		</property>
+		<property name="name" />
 		<property name="looping">
 			<value>2</value>
 		</property>
