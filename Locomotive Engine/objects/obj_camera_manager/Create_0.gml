@@ -25,3 +25,9 @@ function set_up_viewports()
         view_camera[i] = cameras[camera_index].id;
     }
 }
+
+global.clock.AddTickMethod(function() {
+    array_foreach(cameras, function(value, index) {
+        value.attribute_calculate_func();
+    });
+})

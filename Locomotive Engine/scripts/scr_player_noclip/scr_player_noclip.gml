@@ -27,7 +27,7 @@ function state_player_noclip_step()
     x += _hsp;
     y += _vsp;
     
-    if (InputPressed(INPUT_VERB.JUMP))
+    if (IotaGetInput("jump_pressed"))
         state_machine_set_state(state_player_normal());
 }
 

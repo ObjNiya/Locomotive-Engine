@@ -25,7 +25,7 @@ function state_player_sjump_step()
     if (sprite_index == spr_springlaunch)
         return;
     
-    if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
+    if ((IotaGetInput("machrun_pressed") || IotaGetInput("grabdash_pressed")) && sprite_index == spr_sjump)
     {
         sprite_index_set(spr_sjump_cancel_intro, 0);
         
