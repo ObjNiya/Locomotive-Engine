@@ -9,7 +9,7 @@ mask_index = spr_player_mask;
 // Initialize various systems
 /////////////////////////////
 
-attach_camera();
+camera = add_camera(id);
 
 scr_collision_init();
 grav = 0.5;

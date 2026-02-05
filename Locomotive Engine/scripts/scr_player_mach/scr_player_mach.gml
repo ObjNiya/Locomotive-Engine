@@ -174,7 +174,7 @@ function state_player_mach_step()
             var camera_extend = 250 * dir;
             var camera_extend_speed = mach_stage / 2;
             
-            extend_camera_horizontal(camera_extend, camera_extend_speed);
+            //extend_camera_horizontal(camera_extend, camera_extend_speed);
             
             if (mach_stage >= 4 && !equals_to_either(sprite_index, [spr_longjump_intro, spr_longjump]))
             {
@@ -213,7 +213,7 @@ function state_player_mach_end()
     mach_afterimage_timer.stop();
     flame_particle_timer.stop();
     
-    extend_camera_horizontal(0, 2);
+    //extend_camera_horizontal(0, 2);
 }
 
 /**
