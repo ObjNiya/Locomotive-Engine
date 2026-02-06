@@ -18,7 +18,7 @@ function state_X_Y_end()
 }
 
 /**
- * This function will return an array of the XY state events to be given to the ```state_machine_set_state``` function to change the X's state.
+ * This function will return an array of the X Y state events to be given to the ```state_machine_set_state``` function to change the X's state.
  * @returns {Array<Function>}
  * @pure
  */

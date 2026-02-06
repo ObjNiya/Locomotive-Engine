@@ -78,6 +78,11 @@ function player_check_can_grabdash()
     return (InputPressed(INPUT_VERB.GRABDASH) && (grabdash_bump_buffer <= 0 || sprite_index != spr_grabdash_bump));
 }
 
+function player_check_can_uppercut()
+{
+    return (player_check_can_grabdash() && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1)
+}
+
 function player_check_can_divebomb()
 {
     return (InputPressed(INPUT_VERB.JUMP) && !grounded);
@@ -85,7 +90,12 @@ function player_check_can_divebomb()
 
 function player_check_can_sjump_prepare()
 {
-    return (InputPressed(INPUT_VERB.UP) && grounded);
+    return (InputPressed(INPUT_VERB.UP) && grounded && player_get_mach_stage() >= 3);
+}
+
+function player_check_can_cape()
+{
+    return (InputPressed(INPUT_VERB.UP) && !grounded && player_get_mach_stage() >= 3);
 }
 
 function player_check_sjump_prepare_release()

@@ -22,6 +22,8 @@ function state_player_mach_start()
     if (dir == 0)
         dir = sign(visual_xscale);
     
+    acceleration = 0.1;
+    
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.start();
     
@@ -38,7 +40,7 @@ function state_player_mach_start()
         case 3: sprite_index = spr_mach3; break;
         case 4: sprite_index = spr_mach4; break;    
     }
-    
+
     sound_instance_start(snd_mach);
 }
 
@@ -48,12 +50,17 @@ function state_player_mach_step()
     var accelerations = [0.1, 0.1, 0.025, 0.1];
     
     var mach_stage = player_get_mach_stage();
-    var acceleration = accelerations[mach_stage - 1] * grounded;
+    acceleration = accelerations[mach_stage - 1] * grounded;
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     movespeed += acceleration * (sign_input_x == dir || mach_stage <= 2);
+    movespeed = median(6, movespeed, 20);
+    
     hsp = movespeed * dir;
+    
+    if (sound_instance_get_playback_state(snd_mach) == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
+        sound_instance_start(snd_mach);
     
     sound_instance_set_parameter_by_name(snd_mach, "State", mach_stage - 1);
     sound_instance_set_parameter_by_name(snd_mach, "Grounded", grounded);
@@ -75,6 +82,12 @@ function state_player_mach_step()
         return;
     }
     
+    if (player_check_can_uppercut())
+    {
+        state_machine_set_state(state_player_uppercut());
+        return;
+    }
+    
     if (player_check_can_grabdash())
     {
         state_machine_set_state(state_player_grabdash());
@@ -92,6 +105,12 @@ function state_player_mach_step()
     if (player_check_can_crouch() || player_check_can_dive())
     {
         state_machine_set_state(state_player_machroll());
+        return;
+    }
+    
+    if (player_check_can_cape())
+    {
+        state_machine_set_state(state_player_cape());
         return;
     }
     
@@ -198,7 +217,9 @@ function state_player_mach_step()
             else if (play_regular_sprite)
                 sprite_index = spr_mach3;
             
-            if (grounded || equals_to_either(sprite_index, [spr_sjump_cancel, spr_mach3_jump, spr_mach4]))
+            animation_end_ext((sprite_index == spr_sjump_cancel_intro), spr_sjump_cancel);
+            
+            if (grounded || equals_to_either(sprite_index, [spr_sjump_cancel_intro, spr_sjump_cancel, spr_mach3_jump, spr_mach4]))
             {
                 create_particle_repeating(x, y + 45, obj_mach3_cloud_particle);
                 create_particle_repeating(x, y, obj_speedlines_effect);

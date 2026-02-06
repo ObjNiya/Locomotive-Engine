@@ -16,7 +16,6 @@ function fmod_studio_event_instance_move(event_instance_ref, x, y)
     with (fmod_3d_attributes.up)
         self.y = 1;
     
-    trace(x, y)
     fmod_studio_event_instance_set_3d_attributes(event_instance_ref, fmod_3d_attributes);
 }
 

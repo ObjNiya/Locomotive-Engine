@@ -138,7 +138,11 @@ upwards_woosh_particle_timer.set_ext(1, true);
 // Afterimages
 
 blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
-    create_afterimage(x, y, obj_blur_afterimage);
+    with (create_afterimage(x, y, obj_blur_afterimage))
+    {
+        if (other.state_step == state_player_cape_step)
+            image_index = floor(other.image_index);
+    }
 });
 blur_afterimage_timer.set_ext(1, true);
 

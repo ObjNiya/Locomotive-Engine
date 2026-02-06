@@ -4,17 +4,14 @@
 		<property name="assetPath">
 			<value>Music/Levels/Tutorial Music.ogg</value>
 		</property>
-		<property name="isStreaming">
-			<value>true</value>
-		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>96</value>
+			<value>104.72727083333334</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{c50c7136-441e-4afa-b3c5-9f7c4eae9789}</destination>

@@ -1,6 +1,9 @@
 /// @ignore
 function state_player_normal_start()
 {
+    movespeed = 8;
+    acceleration = 0.5;
+    
     if (!grounded)
     {
         sprite_index = spr_fall;
@@ -14,19 +17,21 @@ function state_player_normal_start()
 function state_player_normal_step()
 {
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    var acceleration = 0.5;
-    
     var idle = (sign_input_x == 0);
     
-    movespeed = 8;
-    
-    if (sign_input_x != dir)
+    if (sign_input_x != dir || sign(hsp) == -dir)
     {
         dir = sign_input_x;
         hsp = 0;
     }
     else
         hsp = approach(hsp, movespeed * dir, acceleration);
+    
+    if (player_check_can_uppercut())
+    {
+        state_machine_set_state(state_player_uppercut());
+        return;
+    }
     
     if (player_check_can_grabdash())
     {
@@ -74,6 +79,7 @@ function state_player_normal_step()
             land_animation = true;
             
             instance_create(x, y + 45, obj_land_cloud_particle);
+            sound_instance_one_shot(sfx_step, x, y);
         }
         
         if (idle)

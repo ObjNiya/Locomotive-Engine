@@ -32,7 +32,7 @@ function state_player_sjump_step()
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
-        sprite_index_set(spr_sjump_cancel_intro, 0);
+        sprite_index_set(spr_sjump_cancel_prepare, 0);
         
         sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
         sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
@@ -47,7 +47,7 @@ function state_player_sjump_step()
         return;
     }
     
-    if (sprite_index != spr_sjump_cancel_intro)
+    if (sprite_index != spr_sjump_cancel_prepare)
         return;
     
     mach_afterimage_timer.stop();
@@ -70,7 +70,8 @@ function state_player_sjump_step()
     vsp = -5;
     movespeed = 12;
     
-    sprite_index = spr_sjump_cancel;
+    sprite_index = spr_sjump_cancel_intro;
+    image_speed = 1;
 }
 
 /// @ignore

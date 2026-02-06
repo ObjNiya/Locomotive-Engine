@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{81d5eee1-98d4-4485-a11e-37069266fd22}">
 		<property name="assetPath">
-			<value>Music/Level/Times Up Buildup.ogg</value>
+			<value>Music/Level Structure/Times Up Buildup.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

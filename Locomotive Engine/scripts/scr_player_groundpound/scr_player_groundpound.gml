@@ -3,6 +3,8 @@ function state_player_groundpound_start()
 {
     sprite_index_set(spr_groundpound_intro, 0);
     
+    acceleration = 0.5;
+    
     if (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == 0)
         hsp = 0;
     
@@ -59,6 +61,19 @@ function state_player_groundpound_step()
     
     hurt_enemy();
     
+    if (InputPressed(INPUT_VERB.GRABDASH))
+    {
+        state_machine_set_state(state_player_sjump());
+        sprite_index_set(spr_sjump_cancel_prepare, 0);
+        instance_destroy(obj_explosion_particle_alt);
+        
+        sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
+        
+        vsp = 0;
+        grav = 0;
+        return;
+    }
+    
     if (vsp >= 2)
     {
         grav = 1;
@@ -75,7 +90,7 @@ function state_player_groundpound_step()
     }
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    var acceleration = abs(hsp) > 8 ? 0.05 : 0.25;
+    acceleration = abs(hsp) > 8 ? 0.05 : 0.25;
     
     if (dir != sign_input_x)
     {

@@ -68,6 +68,9 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{33285789-daa9-400d-a5fd-8f8f1ca119f3}">
+		<property name="isPersistent">
+			<value>true</value>
+		</property>
 		<property name="maxVoices">
 			<value>1</value>
 		</property>

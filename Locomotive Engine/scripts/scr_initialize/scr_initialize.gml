@@ -88,6 +88,7 @@ function initialize_globals()
 
     // Other definitions
 
+    global.saveroom = ds_map_create();
     global.essential_objects = [obj_screen, obj_fmod_studio_manager];
 }
 

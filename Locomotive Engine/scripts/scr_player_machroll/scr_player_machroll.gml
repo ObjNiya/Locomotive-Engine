@@ -16,6 +16,16 @@ function state_player_machroll_step()
 {
     hsp = movespeed * dir;
     
+    if (sprite_index == spr_rolling_jump)
+    {
+        if (grounded)
+            sprite_index_set(spr_backslide_land, 0);
+        else
+            vsp += 0.5;
+        
+        return;
+    }
+    
     if (player_check_hit_wall())
     {
         player_setup_wallsplat();

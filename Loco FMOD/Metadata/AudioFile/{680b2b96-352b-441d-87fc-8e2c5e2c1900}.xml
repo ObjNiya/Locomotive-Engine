@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{680b2b96-352b-441d-87fc-8e2c5e2c1900}">
 		<property name="assetPath">
-			<value>Music/Level/TV Nauta Lap 3 Music.ogg</value>
+			<value>Music/Level Structure/TV Nauta Lap 3 Music.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

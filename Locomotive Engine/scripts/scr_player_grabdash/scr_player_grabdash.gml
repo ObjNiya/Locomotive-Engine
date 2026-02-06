@@ -5,6 +5,8 @@ function state_player_grabdash_start()
     
     grabdash_airborne = !grounded;
     
+    acceleration = 0.5;
+    
     if (movespeed < 10 || sign_input_x == -dir || dir == 0)
     {
         if (sign_input_x != 0)
@@ -32,8 +34,7 @@ function state_player_grabdash_start()
 function state_player_grabdash_step()
 {
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    var acceleration = 0.5;
-    
+
     if (movespeed < 10)
         movespeed += acceleration;
     
@@ -53,9 +54,14 @@ function state_player_grabdash_step()
         return;
     }
     
-    if (player_check_can_crouch())
+    if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
     {
-        state_machine_set_state(state_player_backslide());
+        state_machine_set_state(state_player_rolling_jump());
+        /*sprite_index = spr_rolling_jump;
+        
+        vsp = (!grounded) ? 6 : -6;
+        movespeed = max(movespeed, 12);
+        */
         return;
     }
     

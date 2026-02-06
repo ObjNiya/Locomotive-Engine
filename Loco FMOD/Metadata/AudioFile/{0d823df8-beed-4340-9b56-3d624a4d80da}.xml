@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{0d823df8-beed-4340-9b56-3d624a4d80da}">
 		<property name="assetPath">
-			<value>Music/Level/Damian Lap 3 Music.ogg</value>
+			<value>Music/Level Structure/Damian Lap 3 Music.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

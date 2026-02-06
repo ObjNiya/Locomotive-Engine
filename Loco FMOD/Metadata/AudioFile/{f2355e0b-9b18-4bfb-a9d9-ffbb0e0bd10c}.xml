@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{f2355e0b-9b18-4bfb-a9d9-ffbb0e0bd10c}">
 		<property name="assetPath">
-			<value>Music/Level/Patrick Pillar Music.ogg</value>
+			<value>Music/Level Structure/Patrick Pillar Music.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
