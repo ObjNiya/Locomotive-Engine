@@ -15,18 +15,11 @@ function add_camera(target)
     
     with (obj_camera_manager)
     {
-        var camera_struct = {
+        array_push(cameras, {
             id: camera,
-            attribute_calculate_func: camera_calculate_attributes, 
-            update_func: camera_update,
+            update_func: camera_end_step,
             
             target: target,
-            
-            x: 0,
-            y: 0,
-            
-            width: GAME_WIDTH,
-            height: GAME_HEIGHT,
             
             x_extend: 0,
             x_extend_speed: 0.2,
@@ -42,18 +35,7 @@ function add_camera(target)
             zoom: 1,
             zoom_speed: 0.1,
             zoom_target: 1
-        };
-        
-        with (camera_struct)
-        {
-            global.clock.VariableInterpolate("x", "iota_x");
-            global.clock.VariableInterpolate("y", "iota_y");
-            
-            global.clock.VariableInterpolate("width", "iota_width");
-            global.clock.VariableInterpolate("height", "iota_height");
-        }
-        
-        array_push(cameras, camera_struct);
+        });
         
         camera_indices[viewport] = array_length(cameras) - 1;
         
@@ -93,7 +75,7 @@ function delete_camera(camera)
     }
 }
 
-function camera_calculate_attributes()
+function camera_end_step()
 {
     with (obj_camera_manager)
     {
@@ -113,35 +95,20 @@ function camera_calculate_attributes()
             if (!instance_exists(target))
                 return;
             
-            width = GAME_WIDTH * zoom;
-            height = GAME_HEIGHT * zoom;
+            var camera_width = GAME_WIDTH * zoom;
+            var camera_height = GAME_HEIGHT * zoom;
+            
+            camera_set_view_size(id, camera_width, camera_height);
             
             var camera_x_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            
-            x = (target.x + camera_x_shake) - camera_get_view_width(id) / 2;
-            x = clamp(x, 0, room_width);
+            var camera_x = (target.x + camera_x_shake) - camera_get_view_width(id) / 2;  
+            camera_x = clamp(camera_x, 0, room_width);
             
             var camera_y_shake = irandom_range(-shake_magnitude, shake_magnitude);
+            var camera_y = (target.y + camera_y_shake) - camera_get_view_height(id) / 2;  
+            camera_y = clamp(camera_y, 0, room_height);
             
-            y = (target.y + camera_y_shake) - camera_get_view_height(id) / 2;
-            y = clamp(y, 0, room_height);
-        }
-    }
-}
-
-function camera_update()
-{
-    with (obj_camera_manager)
-    {
-        var camera_index = camera_indices[view_current];
-
-        if (camera_index == -1)
-            return;
-        
-        with (cameras[camera_index])
-        {
-            camera_set_view_size(id, iota_width, iota_height);
-            camera_set_view_pos(id, iota_x, iota_y);
+            camera_set_view_pos(id, camera_x, camera_y);
         }
     }
 }

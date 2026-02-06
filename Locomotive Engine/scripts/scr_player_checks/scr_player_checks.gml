@@ -5,7 +5,7 @@ function player_check_nothing_above()
 
 function player_check_hit_wall()
 {
-    return (place_meeting(x + visual_xscale, y, obj_solid))
+    return (place_meeting(x + dir, y, obj_solid))
 }
 
 function player_check_hit_ceiling()
@@ -20,7 +20,7 @@ function player_check_can_get_up()
 
 function player_check_can_jump()
 {
-    return (can_jump && IotaGetInput("jump_pressed") && !place_meeting(x, y - 1, obj_solid));
+    return (can_jump && InputPressed(INPUT_VERB.JUMP) && !place_meeting(x, y - 1, obj_solid));
 }
 
 function player_check_can_crouch()
@@ -35,7 +35,7 @@ function player_check_can_dive()
 
 function player_check_can_taunt()
 {
-    return (IotaGetInput("taunt_pressed"));
+    return (InputPressed(INPUT_VERB.TAUNT));
 }
 
 function player_check_can_wallclimb()
@@ -65,7 +65,7 @@ function player_check_can_machslide()
 
 function player_check_can_groundpound()
 {
-    return (IotaGetInput("groundpound_pressed") && !grounded);
+    return (InputPressed(INPUT_VERB.DOWN) && !grounded);
 }
 
 function player_check_can_machstop()
@@ -75,17 +75,17 @@ function player_check_can_machstop()
 
 function player_check_can_grabdash()
 {
-    return (IotaGetInput("grabdash_pressed") && (grabdash_bump_buffer <= 0 || sprite_index != spr_grabdash_bump));
+    return (InputPressed(INPUT_VERB.GRABDASH) && (grabdash_bump_buffer <= 0 || sprite_index != spr_grabdash_bump));
 }
 
 function player_check_can_divebomb()
 {
-    return (IotaGetInput("jump_pressed") && !grounded);
+    return (InputPressed(INPUT_VERB.JUMP) && !grounded);
 }
 
 function player_check_can_sjump_prepare()
 {
-    return (IotaGetInput("superjump_pressed") && grounded);
+    return (InputPressed(INPUT_VERB.UP) && grounded);
 }
 
 function player_check_sjump_prepare_release()
@@ -94,7 +94,7 @@ function player_check_sjump_prepare_release()
 }
 function player_try_jumpstop(divisor = 20)
 {
-    if (!IotaGetInput("jump_released") || vsp >= 0 || grounded)
+    if (!InputReleased(INPUT_VERB.JUMP) || vsp >= 0 || grounded)
         return false;
     
     vsp /= divisor;

@@ -118,27 +118,14 @@ upwards_woosh_particle_timer.set_ext(1, true);
 
 // Afterimages
 
-blur_afterimage_timer = new Timer(0.035, time_source_units_seconds, function() {
-    create_afterimage(iota_x, iota_y, obj_blur_afterimage);
+blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
+    create_afterimage(x, y, obj_blur_afterimage);
 });
 blur_afterimage_timer.set_ext(1, true);
 
 
 mach_afterimage_use_alpha = true;
-mach_afterimage_timer = new Timer(0.035, time_source_units_seconds, function() {
-    create_afterimage(iota_x, iota_y, obj_mach_afterimage);
+mach_afterimage_timer = new Timer(5, time_source_units_frames, function() {
+    create_afterimage(x, y, obj_mach_afterimage);
 });
 mach_afterimage_timer.set_ext(1, true);
-
-/////////////////////////////
-// Delta time
-/////////////////////////////
-
-global.clock.AddTickMethod(function() {
-    scr_collision();
-    coyote_manager_step();
-    state_machine_step();
-});
-
-global.clock.VariableInterpolate("x", "iota_x");
-global.clock.VariableInterpolate("y", "iota_y");

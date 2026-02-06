@@ -30,7 +30,7 @@ function state_player_wallclimb_step()
         return;
     }
     
-    if (IotaGetInput("jump_pressed"))
+    if (InputPressed(INPUT_VERB.JUMP))
     {
         state_machine_set_state(state_player_mach());
         sprite_index_set(spr_walljump_intro, 0);
@@ -50,7 +50,7 @@ function state_player_wallclimb_step()
         return;
     }
     
-    if (IotaGetInput("grabdash_pressed") && sprite_index != spr_wallclimb_dash)
+    if (InputPressed(INPUT_VERB.GRABDASH) && sprite_index != spr_wallclimb_dash)
     {
         sprite_index = spr_wallclimb_dash;
         

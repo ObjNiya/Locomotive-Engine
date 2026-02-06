@@ -20,15 +20,12 @@ function __InputConfigVerbs()
         GRABDASH,
         TAUNT,
         MACHRUN,
-        SUPERJUMP,
-        GROUNDPOUND,
     }
     
     enum INPUT_CLUSTER
     {
         //Add your own clusters here!
         //Clusters are used for two-dimensional checkers (InputDirection() etc.)
-        MENU_NAVIGATION,
         NAVIGATION,
     }
     
@@ -52,8 +49,6 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    "X",        gp_face3);
         InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       "C",        gp_face4);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
-        InputDefineVerb(INPUT_VERB.SUPERJUMP, "superjump", vk_up,      [-gp_axislv, gp_padu]);
-        InputDefineVerb(INPUT_VERB.GROUNDPOUND, "groundpound", vk_down, [gp_axislv, gp_padd]);
         
     }
     else //Flip A/B over on Switch
@@ -76,11 +71,8 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    "X",        gp_face4);
         InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       "C",        gp_face3);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
-        InputDefineVerb(INPUT_VERB.SUPERJUMP, "superjump", vk_up,      [-gp_axislv, gp_padu]);
-        InputDefineVerb(INPUT_VERB.GROUNDPOUND, "groundpound", vk_down, [gp_axislv, gp_padd]);
     }
     
     //Define a cluster of verbs for moving around
-    InputDefineCluster(INPUT_CLUSTER.MENU_NAVIGATION, INPUT_VERB.MENU_UP, INPUT_VERB.MENU_RIGHT, INPUT_VERB.MENU_DOWN, INPUT_VERB.MENU_LEFT);
     InputDefineCluster(INPUT_CLUSTER.NAVIGATION, INPUT_VERB.UP, INPUT_VERB.RIGHT, INPUT_VERB.DOWN, INPUT_VERB.LEFT);
 }

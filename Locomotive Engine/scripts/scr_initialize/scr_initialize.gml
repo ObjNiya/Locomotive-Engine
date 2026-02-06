@@ -32,9 +32,6 @@ enum PLAYER_CHARACTERS
  */
 function initialize_globals()
 {
-    global.clock = new IotaClock();
-    global.clock.SetUpdateFrequency(60);
-        
     // Font defintions
     
     global.bigfont = font_add_sprite_ext(spr_bigfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¿?.:1234567890ÁÉÍÓÚ", 1, 0);
@@ -91,7 +88,7 @@ function initialize_globals()
 
     // Other definitions
 
-    global.essential_objects = [obj_screen, obj_fmod_studio_manager, obj_iota_clock, obj_camera_manager];
+    global.essential_objects = [obj_screen, obj_fmod_studio_manager];
 }
 
 /**
@@ -99,8 +96,10 @@ function initialize_globals()
  */
 function initialize_objects()
 {
-    for (var i = 0; i < array_length(global.essential_objects); i++)
-        instance_create(0, 0, global.essential_objects[i]);
+    instance_create(0, 0, obj_screen);
+    instance_create(0, 0, obj_parallax);
+    instance_create(0, 0, obj_fmod_studio_manager);
+    instance_create(0, 0, obj_camera_manager);
     
     if (DEBUG_MODE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);
@@ -111,8 +110,6 @@ function initialize_objects()
  */
 function initialize_game()
 {
-    game_set_speed(display_get_frequency(), gamespeed_fps);
-    
     initialize_globals();
     initialize_objects();
 }

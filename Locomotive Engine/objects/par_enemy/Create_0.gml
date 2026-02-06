@@ -18,7 +18,7 @@ scared_timer = new Timer(1.4, time_source_units_seconds, function() {
     state_machine_set_state(state_enemy_walk());
 })
 
-thrown_blur_afterimage = new Timer(0.035, time_source_units_seconds, function() {
+thrown_blur_afterimage = new Timer(2, time_source_units_frames, function() {
     if (movespeed == 0)
         return;
     
