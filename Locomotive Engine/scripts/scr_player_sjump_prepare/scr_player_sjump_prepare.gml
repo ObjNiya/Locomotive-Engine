@@ -5,6 +5,9 @@ function state_player_sjump_prepare_start()
     image_xscale = abs(image_xscale);
     
     mask_index = spr_crouchmask;
+    
+    sound_instance_start(snd_superjump);
+    sound_instance_set_parameter_by_name(snd_superjump, "State", 0);
 }
 
 /// @ignore

@@ -11,6 +11,8 @@ function state_player_groundpound_start()
     
     mach_afterimage_use_alpha = false;
     blur_afterimage_timer.start();
+    
+    sound_instance_start(snd_groundpound);
 }
 
 /// @ignore
@@ -42,6 +44,10 @@ function state_player_groundpound_step()
             movespeed = 0;
             
             create_particle(x, y + 45, obj_groundpound_slam_particle);
+            
+            sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+            sound_instance_one_shot(sfx_player_groundpound_land, x, y);
+            
             return;
         }
         
@@ -103,6 +109,8 @@ function state_player_groundpound_end()
     
     downwards_woosh_particle_timer.stop();
     cloud_particle_timer.stop();
+    
+    sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }
 
 /**

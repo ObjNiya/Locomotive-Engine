@@ -8,6 +8,7 @@ function state_player_machroll_start()
         image_xscale = other.image_xscale;
     
     blur_afterimage_timer.start();
+    sound_instance_start(snd_machroll);
 }
 
 /// @ignore
@@ -27,6 +28,7 @@ function state_player_machroll_step()
         {
             state_machine_set_state(state_player_mach());
             sprite_index_set(spr_machroll_getup, 0);
+            sound_instance_start(snd_roll_getup);
             
             return;
         }
@@ -49,7 +51,11 @@ function state_player_machroll_step()
     
     vsp = 20;
     
-    sprite_index = spr_machroll_dive;
+    if (sprite_index != spr_machroll_dive)
+    {
+        sound_instance_start(snd_dive);
+        sprite_index = spr_machroll_dive;
+    }
     
     if (player_check_can_divebomb())
     {
@@ -67,6 +73,8 @@ function state_player_machroll_end()
     image_speed = 1;
     
     blur_afterimage_timer.stop();
+    
+    sound_instance_stop(snd_machroll, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }
 
 /**

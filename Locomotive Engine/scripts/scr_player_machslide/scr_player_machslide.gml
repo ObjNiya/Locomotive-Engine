@@ -3,6 +3,8 @@ function state_player_machslide_start()
 {
     sprite_index = spr_machslide_intro;
     image_index = 0;
+    
+    sound_instance_one_shot(sfx_mach_brake, x, y);
 }
 
 /// @ignore

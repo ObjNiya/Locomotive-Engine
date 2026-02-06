@@ -20,6 +20,7 @@ function state_player_taunt_start()
     create_particle(x, y + 45, obj_taunt_particle);
     
     taunt_timer.start();
+    sound_instance_one_shot(sfx_player_taunt, x, y);
 }
 
 /// @ignore

@@ -50,6 +50,8 @@ grabdash_airborne = false;
 grabdash_cloud_particle_id = noone;
 grabbed_instance_id = noone;
 
+snd_grabdash = sound_instance_create(sfx_player_grabdash);
+
 // Taunt & Hit Stun
 
 stored_hsp = 0;
@@ -74,13 +76,30 @@ taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
     movespeed = stored_movespeed;
 });
 
+// Ground Pound
+
+snd_groundpound = sound_instance_create(sfx_player_groundpound);
+
+// Mach
+
+snd_mach = sound_instance_create(sfx_mach);
+
+// Super Jump
+
+snd_superjump = sound_instance_create(sfx_player_sjump);
+
+// Mach Roll
+
+snd_machroll = sound_instance_create(sfx_player_machroll);
+snd_dive = sound_instance_create(sfx_player_dive);
+snd_roll_getup = sound_instance_create(sfx_player_roll_getup);
+
 // Wall Climb
 
 wallclimb_grab_buffer = 0;
 wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
     sprite_index = spr_wallclimb;
-})
-
+});
 
 /////////////////////////////
 // General Timers

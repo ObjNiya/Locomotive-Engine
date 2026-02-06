@@ -25,6 +25,7 @@ function state_player_grabdash_start()
     
     blur_afterimage_timer.start();
     create_particle(x, y + 45, obj_burst_cloud_particle);
+    sound_instance_start(snd_grabdash);
 }
 
 /// @ignore

@@ -255,6 +255,7 @@
   },
   "name":"Locomotive Engine",
   "resources":[
+    {"id":{"name":"ac_parallax","path":"animcurves/ac_parallax/ac_parallax.yy",},},
     {"id":{"name":"FMOD","path":"extensions/FMOD/FMOD.yy",},},
     {"id":{"name":"font_console","path":"fonts/font_console/font_console.yy",},},
     {"id":{"name":"ReadMe - Collisions","path":"notes/ReadMe - Collisions/ReadMe - Collisions.yy",},},
@@ -685,6 +686,7 @@
     {"id":{"name":"scr_player_wallclimb","path":"scripts/scr_player_wallclimb/scr_player_wallclimb.yy",},},
     {"id":{"name":"scr_room_system","path":"scripts/scr_room_system/scr_room_system.yy",},},
     {"id":{"name":"scr_shell_commands","path":"scripts/scr_shell_commands/scr_shell_commands.yy",},},
+    {"id":{"name":"scr_sound_positioner","path":"scripts/scr_sound_positioner/scr_sound_positioner.yy",},},
     {"id":{"name":"scr_sprite","path":"scripts/scr_sprite/scr_sprite.yy",},},
     {"id":{"name":"scr_state_system","path":"scripts/scr_state_system/scr_state_system.yy",},},
     {"id":{"name":"scr_state_tv_expression","path":"scripts/scr_state_tv_expression/scr_state_tv_expression.yy",},},

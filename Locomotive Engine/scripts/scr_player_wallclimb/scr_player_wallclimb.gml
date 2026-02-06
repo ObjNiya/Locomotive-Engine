@@ -11,6 +11,10 @@ function state_player_wallclimb_start()
     grav = 0;
     
     mach_afterimage_timer.start();
+    
+    sound_instance_start(snd_mach);
+    sound_instance_set_parameter_by_name(snd_mach, "Grounded", true);
+    sound_instance_set_parameter_by_name(snd_mach, "State", 1);
 }
 
 /// @ignore
@@ -84,6 +88,8 @@ function state_player_wallclimb_end()
     
     wallclimb_dash_timer.stop();
     mach_afterimage_timer.stop();
+    
+    sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }
 
 /**

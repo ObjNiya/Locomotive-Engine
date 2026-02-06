@@ -27,7 +27,7 @@ function player_setup_longjump()
     sprite_index_set(spr_longjump_intro, 0);
     create_particle(x, y + 45, obj_jump_particle);
     
-    sound_instance_one_shot(sfx_player_roll_getup, x ,y);
+    sound_instance_start(snd_roll_getup);
     
     movespeed = max(movespeed, 10);
     vsp = jump_height;
@@ -49,6 +49,7 @@ function player_setup_grabdash_bump()
     state_machine_set_state(state_player_normal());
         
     sound_instance_one_shot(sfx_player_bump_wall, x, y);
+    sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     
     vsp = -4;
     grounded = false;

@@ -3,6 +3,8 @@ function state_player_machturn_start()
 {
     sprite_index = (player_get_mach_stage() > 2) ? spr_mach3_turn_intro : spr_mach2_turn_intro;
     image_index = 0;
+    
+    sound_instance_one_shot(sfx_mach_turn, x, y);
 }
 
 /// @ignore

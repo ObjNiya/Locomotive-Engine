@@ -38,6 +38,8 @@ function state_player_mach_start()
         case 3: sprite_index = spr_mach3; break;
         case 4: sprite_index = spr_mach4; break;    
     }
+    
+    sound_instance_start(snd_mach);
 }
 
 /// @ignore
@@ -52,6 +54,9 @@ function state_player_mach_step()
     
     movespeed += acceleration * (sign_input_x == dir || mach_stage <= 2);
     hsp = movespeed * dir;
+    
+    sound_instance_set_parameter_by_name(snd_mach, "State", mach_stage - 1);
+    sound_instance_set_parameter_by_name(snd_mach, "Grounded", grounded);
     
     hurt_enemy();
     
@@ -213,6 +218,7 @@ function state_player_mach_end()
     mach_afterimage_timer.stop();
     flame_particle_timer.stop();
     
+    sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     //extend_camera_horizontal(0, 2);
 }
 

@@ -215,6 +215,7 @@
     {"name":"TimerUtil","order":19,"path":"folders/TimerUtil.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"ac_parallax","order":2,"path":"animcurves/ac_parallax/ac_parallax.yy",},
     {"name":"FMOD","order":1,"path":"extensions/FMOD/FMOD.yy",},
     {"name":"State Template","order":1,"path":"notes/State Template/State Template.yy",},
     {"name":"__InputUpdateController","order":19,"path":"objects/__InputUpdateController/__InputUpdateController.yy",},
@@ -581,6 +582,7 @@
     {"name":"scr_player_spawn_technical_difficulties","order":7,"path":"scripts/scr_player_spawn_technical_difficulties/scr_player_spawn_technical_difficulties.yy",},
     {"name":"scr_player_taunt","order":10,"path":"scripts/scr_player_taunt/scr_player_taunt.yy",},
     {"name":"scr_player_wallclimb","order":11,"path":"scripts/scr_player_wallclimb/scr_player_wallclimb.yy",},
+    {"name":"scr_sound_positioner","order":7,"path":"scripts/scr_sound_positioner/scr_sound_positioner.yy",},
     {"name":"scr_sprite","order":1,"path":"scripts/scr_sprite/scr_sprite.yy",},
     {"name":"scr_state_tv_expression","order":1,"path":"scripts/scr_state_tv_expression/scr_state_tv_expression.yy",},
     {"name":"scr_state_tv_whitenoise","order":2,"path":"scripts/scr_state_tv_whitenoise/scr_state_tv_whitenoise.yy",},

@@ -99,9 +99,8 @@
 
 // Player Superjump
 
-#macro sfx_player_sjump_prepare "event:/SFX/Player/Superjump/Player Superjump Prepare"
-#macro sfx_player_sjump "event:/SFX/Player/Superjump/Player Superjump"
-#macro sfx_player_sjump_cancel "event:/SFX/Player/Superjump/Player Superjump Cancel"   
+#macro sfx_player_sjump "event:/SFX/Player/Player Superjump"
+#macro sfx_player_sjump_cancel "event:/SFX/Player/Player Superjump Cancel"   
 
 // Player Other SFX
 
@@ -136,7 +135,7 @@
 
 #macro sfx_damian_mach_brake "event:/SFX/Player/Damian/Mach/Damian Mach Brake"
 #macro sfx_damian_mach "event:/SFX/Player/Damian/Mach/Damian Mach"
-#macro sfx_damian_mach_turn "event:/SFX/Player/Damian/Mach/Damian Mach Brake"   
+#macro sfx_damian_mach_turn "event:/SFX/Player/Damian/Mach/Damian Mach Turn"   
 
 // Damian Voice
 
@@ -304,5 +303,3 @@ hallway_longway_bank = -1;
 bloom_and_doom_bank = -1;
 forest_maze_bank = -1;
 wigglers_garden_bank = -1;
-
-fmod_studio_system_set_num_listeners(0);

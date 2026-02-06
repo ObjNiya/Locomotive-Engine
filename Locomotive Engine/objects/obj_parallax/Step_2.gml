@@ -10,8 +10,13 @@ var layer_count = array_length(layers);
 for (var i = 0; i < layer_count; i++)
 {
     var current_layer = layers[i];
+    var current_layer_depth = layer_get_depth(current_layer);
+    if (current_layer_depth == 0)
+        continue;
     
-    var parallax_multiplier = (1 / (1 + layer_get_depth(current_layer) / 33.33)) / 8;
+    var parallax_animcurve_channel_name = (sign(current_layer_depth) == 1) ? "background" : "foreground";
+    var parallax_animcurve_channel = animcurve_get_channel(ac_parallax, parallax_animcurve_channel_name);
+    var parallax_multiplier = animcurve_channel_evaluate(parallax_animcurve_channel, current_layer_depth / 1000);
     
     var layer_xspeed = (camera_x_previous - camera_x) * parallax_multiplier;
     var layer_yspeed = (camera_y_previous - camera_y) * parallax_multiplier;

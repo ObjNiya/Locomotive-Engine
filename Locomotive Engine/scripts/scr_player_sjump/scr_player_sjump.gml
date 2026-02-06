@@ -15,6 +15,11 @@ function state_player_sjump_start()
     upwards_woosh_particle_timer.start();
     
     instance_create(x, y, obj_explosion_particle_alt);
+    
+    if (sound_instance_get_playback_state() != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
+        sound_instance_start(snd_superjump);
+    
+    sound_instance_set_parameter_by_name(snd_superjump, "State", 1);
 }
 
 /// @ignore
@@ -28,6 +33,9 @@ function state_player_sjump_step()
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
         sprite_index_set(spr_sjump_cancel_intro, 0);
+        
+        sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+        sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
         
         vsp = 0;
         grav = 0;
@@ -70,10 +78,13 @@ function state_player_sjump_end()
 {
     grav = 0.5;
     mach_afterimage_use_alpha = true;
+    
     mach_afterimage_timer.stop();
     upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
     cloud_particle_timer.stop();
+    
+    sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }
 
 /**

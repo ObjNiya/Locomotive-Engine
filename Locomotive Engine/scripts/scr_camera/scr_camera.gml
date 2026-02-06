@@ -15,9 +15,20 @@ function add_camera(target)
     
     with (obj_camera_manager)
     {
+        var listener_3d_attributes = new Fmod3DAttributes()
+        
+        with (listener_3d_attributes.forward)
+            z = 1;
+        
+        with (listener_3d_attributes.up)
+            y = 1;
+        
         array_push(cameras, {
             id: camera,
             update_func: camera_end_step,
+            
+            listener: -1,
+            listener_3d_attributes: listener_3d_attributes,
             
             target: target,
             
@@ -41,6 +52,9 @@ function add_camera(target)
         
         set_up_viewports();
     }
+    
+    fmod_studio_system_set_num_listeners(viewport);
+    fmod_studio_system_set_listener_weight(viewport, 0);
     
     return camera;
 }
@@ -72,6 +86,11 @@ function delete_camera(camera)
         view_hport[camera_indices_index] = 0;
         
         view_camera[camera_indices_index] = -1;
+        
+        var listener_count = fmod_studio_system_get_num_listeners();
+        listener_count--;
+        
+        fmod_studio_system_set_num_listeners(listener_count);
     }
 }
 
@@ -95,20 +114,25 @@ function camera_end_step()
             if (!instance_exists(target))
                 return;
             
-            var camera_width = GAME_WIDTH * zoom;
-            var camera_height = GAME_HEIGHT * zoom;
+            camera_set_view_size(id, GAME_WIDTH * zoom, GAME_HEIGHT * zoom);
             
-            camera_set_view_size(id, camera_width, camera_height);
-            
+            var camera_x_origin = camera_get_view_width(id) / 2;
             var camera_x_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            var camera_x = (target.x + camera_x_shake) - camera_get_view_width(id) / 2;  
-            camera_x = clamp(camera_x, 0, room_width);
-            
+            var camera_x = clamp(target.x + camera_x_shake - camera_x_origin, 0, room_width);
+
+            var camera_y_origin = camera_get_view_height(id) / 2;
             var camera_y_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            var camera_y = (target.y + camera_y_shake) - camera_get_view_height(id) / 2;  
-            camera_y = clamp(camera_y, 0, room_height);
-            
+            var camera_y = clamp(target.y + camera_y_shake - camera_y_origin, 0, room_height);
+
             camera_set_view_pos(id, camera_x, camera_y);
+            
+            with (listener_3d_attributes.position)
+            {
+                x = camera_x + camera_x_origin;
+                y = camera_y + camera_y_origin;
+            }
+            
+            fmod_studio_system_set_listener_attributes(view_current, listener_3d_attributes);
         }
     }
 }
