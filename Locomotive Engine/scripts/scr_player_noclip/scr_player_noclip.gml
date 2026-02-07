@@ -11,6 +11,9 @@ function state_player_noclip_start()
     grav = 0;
     
     usesCollision = false;
+    
+    attacking = true;
+    strength = 2;
 }
 
 /// @ignore
@@ -38,6 +41,9 @@ function state_player_noclip_end()
     
     grav = 0.5;
     usesCollision = true;
+    
+    attacking = false;
+    strength = 1;
 }
 
 /**

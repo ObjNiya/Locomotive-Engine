@@ -9,7 +9,7 @@ function state_player_cape_start()
     vertical_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     vertical_movespeed = 15;
     
-    acceleration = 0;
+    acceleration = 0.025;
     vertical_acceleration = 0.8;
     
     if (vertical_dir == 0)
@@ -25,6 +25,7 @@ function state_player_cape_start()
     
     blur_afterimage_timer.start();
     sound_instance_one_shot(sfx_damian_cape_start, x, y);
+    create_afterimage(x, y, obj_flash_afterimage);
 }
 
 /// @ignore
@@ -59,7 +60,7 @@ function state_player_cape_step()
     {
         dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), visual_xscale);
 
-        movespeed += 0.3 * (dir == visual_xscale);
+        movespeed += 0.5 * (dir == visual_xscale);
         movespeed = median(12, movespeed, 20);
         
         visual_xscale = dir;
@@ -72,12 +73,21 @@ function state_player_cape_step()
         mach_afterimage_use_alpha = false;
         mach_afterimage_timer.start();
         
+        attacking = true;
+        strength = 2;
+        
         return;
     }
     
     if (player_check_can_taunt())
     {
         state_machine_set_state(state_player_taunt());
+        return;
+    }
+    
+    if (grounded)
+    {
+        state_machine_set_state(state_player_machroll());
         return;
     }
     
@@ -108,12 +118,13 @@ function state_player_cape_step()
         mach_afterimage_timer.stop();
         
         image_speed = 0;
+        
+        attacking = false;
     }
     
     vertical_acceleration = (vertical_dir == -1 && sign(vsp) == vertical_dir) ? 0.5 : 1.2;
     if (vertical_dir == 0)
         vertical_acceleration = 0.25;
-    
     
     var target_speed = vertical_movespeed * vertical_dir;
     var approach_speed = sprite_get_speed(sprite_index);
@@ -133,11 +144,6 @@ function state_player_cape_step()
     
     vertical_movespeed = (vertical_dir == 1) ? 20 : 14;
     
-    if (vsp > 0)
-        acceleration = approach(acceleration, 0.025, 0.01);
-    else
-        acceleration = 0;
-    
     if (movespeed > 16) 
         movespeed += acceleration;
 
@@ -155,6 +161,9 @@ function state_player_cape_end()
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();
     blur_afterimage_timer.stop();
+    
+    attacking = false;
+    strength = 1;
 }
 
 /**

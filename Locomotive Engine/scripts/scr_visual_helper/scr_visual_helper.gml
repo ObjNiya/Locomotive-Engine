@@ -3,9 +3,9 @@ function visual_helper_initialize()
     visual_x = 0;
     visual_y = 0;
     
-    visual_xscale = image_xscale;
-    visual_yscale = image_yscale;
-    visual_angle = image_angle;
+    visual_xscale = 1;
+    visual_yscale = 1;
+    visual_angle = 0;
 }
 
 function visual_helper_draw_self()

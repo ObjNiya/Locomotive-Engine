@@ -5,6 +5,8 @@ function state_player_machturn_start()
     image_index = 0;
     
     sound_instance_one_shot(sfx_mach_turn, x, y);
+    
+    attacking = true;
 }
 
 /// @ignore
@@ -19,6 +21,8 @@ function state_player_machturn_step()
     if (movespeed <= 0 && grounded)
     {
         var mach3 = (equals_to_either(sprite_index, [spr_mach3_turn_intro, spr_mach3_turn]));
+        
+        strength = real(mach3) + 1;
         
         dir *= -1;
         movespeed = (mach3) ? 12 : 10;
@@ -35,6 +39,13 @@ function state_player_machturn_step()
         create_particle_repeating(x, y + 45, obj_machturn_particle);
 }
 
+/// @ignore
+function state_player_machturn_end()
+{
+    attacking = false;
+    strength = 1;
+}
+
 /**
  * This function will return an array of the player's machturn state events to be given to the ```state_machine_set_state``` function to change the player's state.
  * @returns {Array<Function>}
@@ -42,5 +53,5 @@ function state_player_machturn_step()
  */
 function state_player_machturn()
 {
-    return [state_player_machturn_start, state_player_machturn_step, -1];
+    return [state_player_machturn_start, state_player_machturn_step, state_player_machturn_end];
 }

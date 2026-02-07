@@ -1,17 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"obj_hurtbox",
+  "%Name":"obj_flash_afterimage",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_hurtbox",
+  "name":"obj_flash_afterimage",
   "overriddenProperties":[],
   "parent":{
-    "name":"Combat",
-    "path":"folders/Objects/Game Structure/Combat.yy",
+    "name":"Afterimages",
+    "path":"folders/Objects/Effects/Afterimages.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_afterimage",
+    "path":"objects/par_afterimage/par_afterimage.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

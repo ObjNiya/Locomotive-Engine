@@ -61,9 +61,11 @@ function state_player_wallclimb_step()
     if (InputPressed(INPUT_VERB.GRABDASH) && sprite_index != spr_wallclimb_dash)
     {
         sprite_index = spr_wallclimb_dash;
-        sound_instance_start(snd_grabdash);
         
         wallclimb_dash_timer.start();
+        
+        sound_instance_start(snd_grabdash);
+        create_afterimage(x, y, obj_flash_afterimage);
     }
     
     wallclimb_dash_timer.step();

@@ -4,6 +4,8 @@ function state_player_cape_fall_start()
     sprite_index_set(spr_cape_end, 0);
     
     acceleration = 0.75;
+    
+    mach_afterimage_timer.start();
 }
 
 /// @ignore
@@ -34,21 +36,27 @@ function state_player_cape_fall_step()
     if (abs(hsp) < 12 || dir == -sign(hsp))
         hsp += acceleration * dir;
     
-    grav = (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1) ? 1 : 0.5;
-    
+    movespeed = abs(hsp);
     visual_xscale = dir;
     
     if (grounded)
     {
-        movespeed = max(12, abs(hsp));
-        state_machine_set_state(state_player_mach());
+        movespeed = max(12, movespeed);
+        
+        if (player_check_can_machrun())
+            state_machine_set_state(state_player_mach());
+        else
+        {
+            state_machine_set_state(state_player_normal());
+            sprite_index_set(spr_fall, 0);
+        }
     }
 }
 
 /// @ignore
 function state_player_cape_fall_end()
 {
-    grav = 0.5;
+    mach_afterimage_timer.stop();
 }
 
 /**

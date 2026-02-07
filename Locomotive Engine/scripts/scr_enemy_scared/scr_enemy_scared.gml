@@ -1,7 +1,7 @@
 /// @ignore
 function state_enemy_scared_scared_start()
 {
-    sprite_index = scared_sprite;
+    sprite_index = spr_scared;
     
     hsp = 0;
     

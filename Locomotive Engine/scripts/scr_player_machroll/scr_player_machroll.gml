@@ -9,12 +9,15 @@ function state_player_machroll_start()
     
     blur_afterimage_timer.start();
     sound_instance_start(snd_machroll);
+    
+    attacking = true;
 }
 
 /// @ignore
 function state_player_machroll_step()
 {
     hsp = movespeed * dir;
+    strength = real(sprite_index == spr_backslide || sprite_index == spr_backslide_land);
     
     if (sprite_index == spr_rolling_jump)
     {
@@ -85,6 +88,8 @@ function state_player_machroll_end()
     blur_afterimage_timer.stop();
     
     sound_instance_stop(snd_machroll, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    
+    attacking = false;
 }
 
 /**

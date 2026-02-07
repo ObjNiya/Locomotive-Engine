@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_grabdash_damian",
-    "path":"sprites/spr_grabdash_damian/spr_grabdash_damian.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

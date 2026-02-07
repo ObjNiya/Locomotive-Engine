@@ -1,3 +1,5 @@
+check_saveroom();
+
 value = 10;
 magnetize_speed = 5;
 

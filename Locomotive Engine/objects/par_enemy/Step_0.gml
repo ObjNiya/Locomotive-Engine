@@ -1,2 +1,3 @@
-state_machine_step();
 scr_collision();
+state_machine_step();
+combat_step();

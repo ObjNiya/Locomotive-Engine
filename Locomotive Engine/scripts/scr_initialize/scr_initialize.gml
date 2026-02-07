@@ -89,7 +89,9 @@ function initialize_globals()
     // Other definitions
 
     global.saveroom = ds_map_create();
-    global.essential_objects = [obj_screen, obj_fmod_studio_manager];
+    global.combat_objects = [];
+
+    global.essential_objects = [obj_screen, obj_fmod_studio_manager, obj_camera_manager];
 }
 
 /**
@@ -111,6 +113,7 @@ function initialize_objects()
  */
 function initialize_game()
 {
+    pal_swap_init_system(shd_pal_swapper, shd_pal_html_sprite, shd_pal_html_surface);
     initialize_globals();
     initialize_objects();
 }

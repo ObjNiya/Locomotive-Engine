@@ -37,11 +37,16 @@ function state_player_mach_start()
     { 
         case 1: sprite_index_set(spr_mach1, 0) break; 
         case 2: sprite_index = spr_mach2 break;
-        case 3: sprite_index = spr_mach3; break;
-        case 4: sprite_index = spr_mach4; break;    
+        case 3:
+        case 4:     
+            sprite_index = spr_mach3; 
+            break;
+        
     }
 
     sound_instance_start(snd_mach);
+    
+    attacking = true;
 }
 
 /// @ignore
@@ -64,8 +69,6 @@ function state_player_mach_step()
     
     sound_instance_set_parameter_by_name(snd_mach, "State", mach_stage - 1);
     sound_instance_set_parameter_by_name(snd_mach, "Grounded", grounded);
-    
-    hurt_enemy();
     
     if (mach_stage >= 3)
         scare_enemy();
@@ -178,6 +181,8 @@ function state_player_mach_step()
     {
         case 1:
         case 2:
+            strength = 1;
+            
             if (!grounded && !equals_to_either(sprite_index, [spr_mach2_jump_intro, spr_mach2_jump, spr_longjump_intro, spr_longjump, spr_walljump_intro, spr_walljump]))
                 sprite_index_set(spr_mach2_jump_intro, 0);
             
@@ -195,6 +200,8 @@ function state_player_mach_step()
         
         case 3:
         case 4:
+            strength = 2;
+            
             var camera_extend = 250 * dir;
             var camera_extend_speed = mach_stage / 2;
             
@@ -207,6 +214,7 @@ function state_player_mach_step()
                     sprite_index = spr_mach4;
                     
                     create_particle(x, y, obj_mach4_puff_particle);
+                    create_afterimage(x, y, obj_flash_afterimage);
                 }
                 
                 create_particle_repeating(x, y, obj_woosh_particle);
@@ -222,8 +230,12 @@ function state_player_mach_step()
             if (grounded || equals_to_either(sprite_index, [spr_sjump_cancel_intro, spr_sjump_cancel, spr_mach3_jump, spr_mach4]))
             {
                 create_particle_repeating(x, y + 45, obj_mach3_cloud_particle);
-                create_particle_repeating(x, y, obj_speedlines_effect);
-                create_particle_repeating(x, y , obj_charge_effect);
+                
+                if (!instance_exists(speedlines_effect_id))
+                    speedlines_effect_id = create_particle(x, y, obj_speedlines_effect);
+                
+                if (!instance_exists(charge_effect_id))
+                    charge_effect_id = create_particle_repeating(x, y , obj_charge_effect);
             }
             break;
         
@@ -239,8 +251,14 @@ function state_player_mach_end()
     mach_afterimage_timer.stop();
     flame_particle_timer.stop();
     
+    instance_destroy(speedlines_effect_id);
+    instance_destroy(charge_effect_id);
+    
     sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     //extend_camera_horizontal(0, 2);
+    
+    attacking = false;
+    strength = 1;
 }
 
 /**

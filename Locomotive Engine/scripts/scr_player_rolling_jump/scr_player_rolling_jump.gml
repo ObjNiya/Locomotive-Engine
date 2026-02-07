@@ -10,6 +10,9 @@ function state_player_rolling_jump_start()
     mask_index = spr_crouchmask;
     
     blur_afterimage_timer.start();
+    
+    attacking = true;
+    strength = 2;
 }
 
 /// @ignore
@@ -40,6 +43,9 @@ function state_player_rolling_jump_end()
     mask_index = spr_player_mask;
     
     grav = 0.5;
+    
+    attacking = false;
+    strength = 1;
     
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();

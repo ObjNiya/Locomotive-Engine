@@ -16,6 +16,9 @@ function state_player_uppercut_start()
     
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.start();
+    
+    attacking = true;
+    strength = 2;
 }
 
 /// @ignore
@@ -44,6 +47,9 @@ function state_player_uppercut_end()
 {
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();
+    
+    attacking = false;
+    strength = 1;
     
     image_speed = 1;
 }

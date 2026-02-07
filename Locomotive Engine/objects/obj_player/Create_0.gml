@@ -15,8 +15,42 @@ scr_collision_init();
 grav = 0.5;
 terminalVelocity = 20;
 
+hitstun_initialize();
+
 initialize_movement_helpers();
+visual_helper_initialize();
 coyote_manager_initialize();
+
+combat_initialize();
+invincible = true;
+has_collision = true;
+
+resistance = 1;
+strength = 1;
+hp = 6;
+
+group = COMBAT_GROUPS.PLAYER;
+
+damage_function = function(other_id)
+{
+    hitstun_sprite = (state_step == state_player_mach_step) ? spr_mach3_hit_enemy : -1;
+    
+    hitstun_apply();
+}
+
+stun_function = function(other_id)
+{
+    if (state_step == state_player_hurt_step)
+        return;
+
+    state_machine_set_state(state_player_hurt());
+    
+    sprite_index = (visual_xscale == -other_id.visual_xscale) ? spr_hurt : spr_back_hurt;
+    
+    dir = side(sign(x - other_id.x), visual_xscale);
+}
+
+hurt_function = stun_function;
 
 character = global.char_damian;
 char_cache_sprite_variables(character);
@@ -25,7 +59,6 @@ char_cache_sound_variables(character);
 state_machine_initialize();
 state_machine_set_state(state_player_normal());
 
-visual_helper_initialize();
 
 /////////////////////////////
 // General state variables
@@ -78,9 +111,14 @@ taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
 
 // Ground Pound
 
+groundpound_effect_id = noone;
+
 snd_groundpound = sound_instance_create(sfx_player_groundpound);
 
 // Mach
+
+charge_effect_id = noone;
+speedlines_effect_id = noone;
 
 snd_mach = sound_instance_create(sfx_mach);
 

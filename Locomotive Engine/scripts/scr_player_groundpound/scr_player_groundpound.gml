@@ -15,6 +15,9 @@ function state_player_groundpound_start()
     blur_afterimage_timer.start();
     
     sound_instance_start(snd_groundpound);
+    
+    attacking = true;
+    strength = 2;
 }
 
 /// @ignore
@@ -22,6 +25,9 @@ function state_player_groundpound_step()
 {
     if (grounded)
     {
+        attacking = false;
+        strength = 1;
+        
         if (groundedSlope)
         {
             state_machine_set_state(state_player_mach()); 
@@ -52,6 +58,8 @@ function state_player_groundpound_step()
             
             return;
         }
+        
+        instance_destroy(groundpound_effect_id);
         
         if (animation_end())
             state_machine_set_state(state_player_normal());
@@ -85,7 +93,8 @@ function state_player_groundpound_step()
             mach_afterimage_timer.start();
             downwards_woosh_particle_timer.start();
             
-            create_particle_repeating(x, y, obj_groundpound_effect);
+            if (!instance_exists(groundpound_effect_id))
+                groundpound_effect_id = create_particle(x, y, obj_groundpound_effect, false);
         }
     }
     
@@ -125,7 +134,12 @@ function state_player_groundpound_end()
     downwards_woosh_particle_timer.stop();
     cloud_particle_timer.stop();
     
+    instance_destroy(groundpound_effect_id);
+    
     sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    
+    attacking = false;
+    strength = 1;
 }
 
 /**

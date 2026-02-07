@@ -14,6 +14,9 @@ function state_player_sjump_start()
     cloud_particle_timer.start();
     upwards_woosh_particle_timer.start();
     
+    attacking = true;
+    strength = 2;
+    
     instance_create(x, y, obj_explosion_particle_alt);
     
     if (sound_instance_get_playback_state() != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
@@ -39,6 +42,9 @@ function state_player_sjump_step()
         
         vsp = 0;
         grav = 0;
+        
+        attacking = false;
+        strength = 1;
     }
     
     if (player_check_hit_ceiling())
@@ -72,6 +78,8 @@ function state_player_sjump_step()
     
     sprite_index = spr_sjump_cancel_intro;
     image_speed = 1;
+    
+    create_afterimage(x, y, obj_flash_afterimage);
 }
 
 /// @ignore
@@ -84,6 +92,9 @@ function state_player_sjump_end()
     upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
     cloud_particle_timer.stop();
+    
+    attacking = false;
+    strength = 1;
     
     sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

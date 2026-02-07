@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Idle",
-    "path":"folders/Sprites/Player/Damian/Normal/Idle.yy",
+    "name":"Superjump",
+    "path":"folders/Sprites/Player/Damian/Superjump.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

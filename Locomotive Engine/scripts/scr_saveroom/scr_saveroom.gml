@@ -19,10 +19,18 @@ function check_saveroom(instance = id, execute_event_flag = false)
 function wipe_saveroom(filter = function(value) { return true })
 {
     var map_value = ds_map_find_first(global.saveroom);
+    var map_size = ds_map_size(global.saveroom);
     
-    while (!is_undefined(map_value))
+    trace(global.saveroom)
+    
+    for (var i = 0; i < map_size; i++)
     {
         if (filter(map_value))
-            ds_map_delete(global.saveroom, )
+        {
+            trace("Deleting: ", map_value);
+            ds_map_delete(global.saveroom, map_value);
+        }
+        
+        map_value = ds_map_find_next(global.saveroom, map_value);
     }
 }

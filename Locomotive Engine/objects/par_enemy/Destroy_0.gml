@@ -1,6 +1,6 @@
 with (instance_create(x, y, obj_dead_enemy_particle))
 { 
-    sprite_index = other.dead_sprite;
+    sprite_index = other.spr_dead;
     image_xscale = other.image_xscale;
     
     vsp = random_range(-10, -18);

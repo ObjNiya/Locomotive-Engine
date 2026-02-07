@@ -5,6 +5,8 @@ function state_player_machslide_start()
     image_index = 0;
     
     sound_instance_one_shot(sfx_mach_brake, x, y);
+    
+    attacking = true;
 }
 
 /// @ignore
@@ -33,6 +35,12 @@ function state_player_machslide_step()
         create_particle_repeating(x, y + 45, obj_machturn_particle);
 }
 
+/// @ignore
+function state_player_machslide_end()
+{
+    attacking = false;
+}
+
 /**
  * This function will return an array of the player's machslide state events to be given to the ```state_machine_set_state``` function to change the player's state.
  * @returns {Array<Function>}
@@ -40,5 +48,5 @@ function state_player_machslide_step()
  */
 function state_player_machslide()
 {
-    return [state_player_machslide_start, state_player_machslide_step, -1];
+    return [state_player_machslide_start, state_player_machslide_step, state_player_machslide_end];
 }

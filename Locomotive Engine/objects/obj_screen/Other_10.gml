@@ -22,3 +22,6 @@ if (scaling_mode == SCALING_MODES.INTEGER && floor_application_scale != 0)
 
 application_width = GAME_WIDTH * application_scale;
 application_height = GAME_HEIGHT * application_scale;
+
+application_width = max(application_width, 1);
+application_height = max(application_height, 1);

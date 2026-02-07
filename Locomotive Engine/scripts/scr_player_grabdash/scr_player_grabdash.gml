@@ -1,33 +1,30 @@
 /// @ignore
 function state_player_grabdash_start()
 {
-    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    
     grabdash_airborne = !grounded;
     
     acceleration = 0.5;
     
-    if (movespeed < 10 || sign_input_x == -dir || dir == 0)
-    {
-        if (sign_input_x != 0)
-            dir = sign_input_x;
-        else if (dir == 0)
-            dir = sign(visual_xscale);
-        
-        if (grounded)
-            movespeed = max(movespeed, 10);
-        
-        hsp = movespeed * dir;
-    }
+    if (dir == 0)
+        dir = visual_xscale;
     
+    if (movespeed < 10 && grounded)
+        movespeed = max(movespeed, 10);
+    
+    hsp = movespeed * dir;
     visual_xscale = dir;
+    
+    damage = 0;
+    attacking = true;
+    strength = 2;
+    
     image_speed = 1;
     
     sprite_index_set(spr_grabdash_intro, 0);
     
+    sound_instance_start(snd_grabdash);
     blur_afterimage_timer.start();
     create_particle(x, y + 45, obj_burst_cloud_particle);
-    sound_instance_start(snd_grabdash);
 }
 
 /// @ignore
@@ -57,11 +54,6 @@ function state_player_grabdash_step()
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
     {
         state_machine_set_state(state_player_rolling_jump());
-        /*sprite_index = spr_rolling_jump;
-        
-        vsp = (!grounded) ? 6 : -6;
-        movespeed = max(movespeed, 12);
-        */
         return;
     }
     
@@ -102,6 +94,10 @@ function state_player_grabdash_step()
 /// @ignore
 function state_player_grabdash_end()
 {
+    damage = 1;
+    attacking = false;
+    strength = 1;
+    
     blur_afterimage_timer.stop();
 }
 
