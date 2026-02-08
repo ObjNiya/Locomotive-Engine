@@ -14,10 +14,7 @@
     "name":"HUD",
     "path":"folders/Objects/HUD.yy",
   },
-  "parentObjectId":{
-    "name":"par_singleton",
-    "path":"objects/par_singleton/par_singleton.yy",
-  },
+  "parentObjectId":null,
   "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

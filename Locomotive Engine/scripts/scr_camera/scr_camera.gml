@@ -13,7 +13,7 @@ function add_camera(target)
     
     var camera = camera_create_view(0, 0, GAME_WIDTH, GAME_HEIGHT, 0);
     
-    with (obj_camera_manager)
+    with (obj_camera_system)
     {
         var listener_3d_attributes = new Fmod3DAttributes()
         
@@ -48,7 +48,10 @@ function add_camera(target)
             zoom_target: 1
         });
         
-        camera_indices[viewport] = array_length(cameras) - 1;
+        var camera_index = array_length(cameras) - 1;
+        
+        camera_indices[viewport] = camera_index;
+        ds_map_add(camera_map, camera, camera_index);
         
         set_up_viewports();
     }
@@ -61,22 +64,18 @@ function add_camera(target)
 
 function delete_camera(camera)
 {
-    with (obj_camera_manager)
+    with (obj_camera_system)
     {
         var camera_count = array_length(cameras);
-        var camera_index = -1;
-        
-        for (var i = 0; i < camera_count && camera_index == -1; i++)
-        {
-            if (cameras[i].id == camera)
-                camera_index = i;
-        }
+        var camera_index = ds_map_find_value(camera_map, camera);
         
         var camera_indices_index = array_get_index(camera_indices, camera_index);
         
         camera_destroy(camera);
         
         array_delete(cameras, camera_index, 1);
+        ds_map_delete(camera_map, camera);
+        
         camera_indices[camera_indices_index] = -1;
         
         view_visible[camera_indices_index] = false;
@@ -96,7 +95,7 @@ function delete_camera(camera)
 
 function camera_end_step()
 {
-    with (obj_camera_manager)
+    with (obj_camera_system)
     {
         var camera_index = camera_indices[view_current];
 
@@ -134,5 +133,38 @@ function camera_end_step()
             
             fmod_studio_system_set_listener_attributes(view_current, listener_3d_attributes);
         }
+    }
+}
+
+function camera_set_x_extend(camera, extend_target, extend_speed)
+{
+    with (obj_camera_system)
+    {
+        var camera_index = ds_map_find_value(camera_map, camera);
+        
+        cameras[camera_index].x_extend_target = extend_target;
+        cameras[camera_index].x_extend_speed = extend_speed;
+    }
+}
+
+function camera_set_y_extend(camera, extend_target, extend_speed)
+{
+    with (obj_camera_system)
+    {
+        var camera_index = ds_map_find_value(camera_map, camera);
+        
+        cameras[camera_index].y_extend_target = extend_target;
+        cameras[camera_index].y_extend_speed = extend_speed;
+    }
+}
+
+function camera_set_shake(camera, shake_magnitude, shake_speed)
+{
+    with (obj_camera_system)
+    {
+        var camera_index = ds_map_find_value(camera_map, camera);
+        
+        cameras[camera_index].shake_magnitude = shake_magnitude;
+        cameras[camera_index].shake_speed = shake_speed;
     }
 }

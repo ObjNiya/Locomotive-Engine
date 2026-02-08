@@ -13,7 +13,7 @@ function Sprite(sprite_index) constructor
     
     image_index = 0;
     image_number = 0;
-    image_speed = 0;
+    image_speed = 1;
     image_xscale = 1;
     image_yscale = 1;
     image_angle = 0;

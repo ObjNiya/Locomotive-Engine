@@ -34,6 +34,7 @@ group = COMBAT_GROUPS.PLAYER;
 damage_function = function(other_id)
 {
     hitstun_sprite = (state_step == state_player_mach_step) ? spr_mach3_hit_enemy : -1;
+    sound_instance_one_shot(sfx_player_punch, x, y);
     
     hitstun_apply();
 }

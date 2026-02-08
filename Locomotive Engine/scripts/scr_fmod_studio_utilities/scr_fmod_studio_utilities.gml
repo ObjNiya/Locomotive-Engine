@@ -24,7 +24,7 @@ function fmod_studio_event_instance_create(event_description_ref, x = 0, y = 0)
     var fmod_studio_event_instance = fmod_studio_event_description_create_instance(fmod_studio_system_get_event(event_description_ref));
     fmod_studio_event_instance_move(fmod_studio_event_instance, x, y);
     
-    with (obj_fmod_studio_manager)
+    with (obj_fmod_studio)
         array_push(sound_instances, fmod_studio_event_instance);
     
     return fmod_studio_event_instance;
@@ -43,7 +43,7 @@ function fmod_studio_event_instance_one_shot(event_description_ref, x = 0, y = 0
 /// @ignore
 function __fmod_studio_event_instance_all__(func, parameters = -1)
 {
-    with (obj_fmod_studio_manager)
+    with (obj_fmod_studio)
     {
         var sound_instance_count = array_length(sound_instances);
         

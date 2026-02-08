@@ -1,4 +1,6 @@
-event_inherited();
+SINGLETON;
+
+asset_clear_tags(object_index, asset_object);
 
 if (room != rm_titlecard)
     instance_destroy();

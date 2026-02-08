@@ -14,8 +14,8 @@
     "path":"folders/Objects/Effects/Particles.yy",
   },
   "parentObjectId":{
-    "name":"obj_dead_enemy_particle",
-    "path":"objects/obj_dead_enemy_particle/obj_dead_enemy_particle.yy",
+    "name":"obj_dead_enemy",
+    "path":"objects/obj_dead_enemy/obj_dead_enemy.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_slapstar",
-    "path":"sprites/spr_slapstar/spr_slapstar.yy",
+    "name":"spr_slap_star_debris",
+    "path":"sprites/spr_slap_star_debris/spr_slap_star_debris.yy",
   },
   "spriteMaskId":null,
   "visible":true,

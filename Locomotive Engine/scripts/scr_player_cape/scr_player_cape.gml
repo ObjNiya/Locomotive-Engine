@@ -122,9 +122,15 @@ function state_player_cape_step()
         attacking = false;
     }
     
-    vertical_acceleration = (vertical_dir == -1 && sign(vsp) == vertical_dir) ? 0.5 : 1.2;
-    if (vertical_dir == 0)
-        vertical_acceleration = 0.25;
+    switch (vertical_dir)
+    {
+        case 1: vertical_acceleration = 1.5 break;
+        case 0: vertical_acceleration = 0.25 break;
+        case -1: vertical_acceleration = 0.75 break;
+    }
+    
+    if (vertical_dir != sign(vsp) && vertical_dir != 0)
+        vertical_acceleration = 1.25;
     
     var target_speed = vertical_movespeed * vertical_dir;
     var approach_speed = sprite_get_speed(sprite_index);

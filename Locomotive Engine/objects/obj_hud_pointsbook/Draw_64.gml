@@ -32,7 +32,7 @@ draw_set_font(global.pointsbookfont);
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 
-with (obj_level_manager)
+with (obj_level_system)
     draw_text(other.points_text_x, other.points_text_y, string(points));
 
 draw_set_halign(fa_left);

@@ -33,7 +33,7 @@ texturegroups_progress /= texturegroup_count;
 var fmod_studio_bank_count = array_length(fmod_studio_banks);
 var fmod_studio_banks_progress = 0;
 
-with (obj_fmod_studio_manager)
+with (obj_fmod_studio)
 {
     for (var i = 0; i < fmod_studio_bank_count; i++)
     {

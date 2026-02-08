@@ -14,10 +14,10 @@ function goto_level(lvl_struct)
 {
     global.level = lvl_struct;
     
-    with (obj_level_manager)
+    with (obj_level_system)
         instance_destroy();
     
-    instance_create(0, 0, obj_level_manager);
+    instance_create(0, 0, obj_level_system);
     
     room_transition(global.level.starting_room, "A");
 }

@@ -1,4 +1,4 @@
-event_inherited();
+SINGLETON;
 
 // Scaling mode set-up
 

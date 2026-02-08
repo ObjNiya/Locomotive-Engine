@@ -1,3 +1,5 @@
+SINGLETON;
+
 camera_x_previous = 0;
 camera_y_previous = 0;
 

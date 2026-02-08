@@ -18,6 +18,15 @@
 
 #macro FIX_INSTATURN false
 
+// Game start configurations
+
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_camera_system]
+#macro STARTING_OBJECTS_COUNT 3
+
+// Code shortcuts
+
+#macro SINGLETON if (instance_number(object_index) > 1) { instance_destroy(); }
+
 #endregion
 
 enum PLAYER_CHARACTERS
@@ -89,9 +98,8 @@ function initialize_globals()
     // Other definitions
 
     global.saveroom = ds_map_create();
-    global.combat_objects = [];
 
-    global.essential_objects = [obj_screen, obj_fmod_studio_manager, obj_camera_manager];
+    global.combat_objects = [];
 }
 
 /**
@@ -99,10 +107,10 @@ function initialize_globals()
  */
 function initialize_objects()
 {
-    instance_create(0, 0, obj_screen);
-    instance_create(0, 0, obj_parallax);
-    instance_create(0, 0, obj_fmod_studio_manager);
-    instance_create(0, 0, obj_camera_manager);
+    var objects = STARTING_OBJECTS;
+    
+    for (var i = 0; i < STARTING_OBJECTS_COUNT; i++)
+        instance_create(0, 0, objects[i]);
     
     if (DEBUG_MODE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);

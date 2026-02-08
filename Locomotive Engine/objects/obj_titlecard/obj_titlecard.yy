@@ -12,10 +12,7 @@
     "name":"Cutscene",
     "path":"folders/Objects/Cutscene.yy",
   },
-  "parentObjectId":{
-    "name":"par_singleton",
-    "path":"objects/par_singleton/par_singleton.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
