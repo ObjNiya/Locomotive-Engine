@@ -1,7 +1,6 @@
 Locomotive Engine/options/extensions/FMOD.json
-Locomotive Engine/data/sound/*
 
 .unsaved
 .user
 .cache
-LOCO FMOD/Build/*
+*.bank
