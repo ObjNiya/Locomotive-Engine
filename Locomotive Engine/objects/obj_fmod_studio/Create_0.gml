@@ -126,6 +126,9 @@ SINGLETON;
 #macro sfx_player_uppercut "event:/SFX/Player/Player Uppercut"
 #macro sfx_player_wall_splat "event:/SFX/Player/Player Wall Splat"
 #macro sfx_player_supertaunt "event:/SFX/Player/Supertaunt"
+#macro sfx_player_mach3_wallcrash "event:/SFX/Player/Player Mach 3 Wall Crash"
+#macro sfx_player_mach2_bump "event:/SFX/Player/Player Mach 2 Bump"
+#macro sfx_player_grab_cancel "event:/SFX/Player/Player Grab Cancel"
 
 // Damian Cape
 

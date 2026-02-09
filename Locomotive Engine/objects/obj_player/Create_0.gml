@@ -17,7 +17,7 @@ terminalVelocity = 20;
 
 hitstun_initialize();
 
-initialize_movement_helpers();
+movement_helpers_initialize();
 visual_helper_initialize();
 coyote_manager_initialize();
 

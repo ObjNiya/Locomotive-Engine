@@ -6,7 +6,7 @@ function state_enemy_stunned_start()
     
     sprite_index = spr_stunned;
     
-    sound_instance_start(snd_stunned);
+    stunned_timer.start();
 }
 
 /// @ignore
@@ -15,16 +15,18 @@ function state_enemy_stunned_step()
     visual_xscale = approach(visual_xscale, 1, 0.03);
     visual_yscale = approach(visual_yscale, 1, 0.03);
     
-    unstunnable_buffer--;
+    unstunnable_buffer = max(unstunnable_buffer - 1, 0);
     
     movespeed = approach(movespeed, 0, 0.3);
-    hsp = movespeed * -visual_xscale;
+    hsp = movespeed * -image_xscale;
+    
+    //create_particle_repeating(x, y + 43, obj_machturn_particle);
 }
 
 /// @ignore
 function state_enemy_stunned_end()
 {
-    sound_instance_stop(snd_stunned, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    stunned_timer.stop();
 }
 
 /**

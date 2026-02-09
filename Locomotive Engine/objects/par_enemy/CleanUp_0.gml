@@ -1,2 +1,0 @@
-sound_instance_stop(snd_stunned, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-sound_instance_release(snd_stunned);

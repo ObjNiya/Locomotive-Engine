@@ -61,7 +61,10 @@ function state_player_grabdash_step()
     {
         state_machine_set_state(state_player_normal());
         if (!grounded && sign_input_x == -dir)
+        {
             sprite_index_set(spr_grabdash_cancel, 0);
+            sound_instance_one_shot(sfx_player_grab_cancel, x, y);
+        }
         
         return;
     }

@@ -74,7 +74,7 @@ function player_setup_wallcrash()
 {
     state_machine_set_state(state_player_animation());
     
-    sound_instance_one_shot(sfx_player_groundpound_land, x, y);
+    sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
     
     sprite_index = spr_mach3_hit_wall;
         

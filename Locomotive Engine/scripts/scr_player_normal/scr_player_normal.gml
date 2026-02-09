@@ -70,7 +70,7 @@ function state_player_normal_step()
             return;
         }
         
-        var start_land_animation = equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump]);
+        var start_land_animation = equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump, spr_stomp, spr_stomp_fall]);
         var land_animation = equals_to_either(sprite_index, [spr_land, spr_land_walk]);
         
         if (start_land_animation)
@@ -142,6 +142,17 @@ function state_player_normal_step()
         return;
     }
     
+    cloud_particle_timer.stop();
+    
+    var combat_id = combat_get_meeting();
+    
+    if (combat_id != noone && combat_id.stun_function(id))
+    {
+        sprite_index_set(spr_stomp, 0);
+        
+        vsp = (InputCheck(INPUT_VERB.JUMP)) ? -14 : -9;
+    }
+    
     player_try_jumpstop();
     
     if (player_check_can_groundpound())
@@ -150,12 +161,16 @@ function state_player_normal_step()
         return;
     }
     
-    if (equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]))
-        animation_end(spr_fall);
-    else if (!equals_to_either(sprite_index, [spr_fall, spr_grabdash_bump]))
-        sprite_index = spr_fall;
+    if (equals_to_either(sprite_index, [spr_stomp, spr_stomp_fall]))
+    {
+        animation_end(spr_stomp_fall);
+        return;
+    }
     
-    cloud_particle_timer.stop();
+    var force_fall_animation = !equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]);
+    
+    if (animation_end(spr_fall) || force_fall_animation)
+        sprite_index_set(spr_fall, 0);
 }
 
 /// @ignore

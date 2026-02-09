@@ -2,7 +2,7 @@ function hitstun_initialize()
 {
     hitstun_x = x;
     hitstun_y = y;
-    hitstun_time = 8;
+    hitstun_time = 5;
     hitstun_shake_magnitude = 4;
     
     previous_sprite = sprite_index;

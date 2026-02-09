@@ -27,11 +27,8 @@ scr_collision_init();
 grav = 0.5;
 terminalVelocity = 20;
 
-initialize_movement_helpers();
-
+movement_helpers_initialize();
 visual_helper_initialize();
-visual_xscale = image_xscale;
-image_xscale = 1;
 
 combat_initialize();
 has_collision = true;
@@ -39,19 +36,50 @@ has_collision = true;
 stun_function = function(other_id)
 {
     if (unstunnable_buffer > 0)
-        return;
+        return false;
+    
+    var stomp = false;
+    
+    if (other_id.y >= y && other_id.state_step == state_player_normal_step)
+        return false;
+    else if (other_id.state_step == state_player_normal_step)
+        stomp = true;
     
     state_machine_set_state(state_enemy_stunned());
     
-    visual_xscale = -other_id.visual_xscale;
-    movespeed = 12;
+    image_xscale = -other_id.visual_xscale;
+    movespeed = (stomp) ? 5 : 12;
     
-    hsp = movespeed * -visual_xscale;
-    vsp = (other_id.y - 180 - y) / 60;
+    hsp = movespeed * -image_xscale;
+    vsp = (stomp) ? -5 : (other_id.y - 180 - y) / 60;
     
     unstunnable_buffer = 15;
     
-    instance_create(x, y, obj_bang_particle);
+    invincibility_timer.max_time = 5;
+    invincibility_timer.start();
+    
+    invincible = true;
+    untouchable = true;
+    
+    if (!stomp)
+    {
+        instance_create(x, y, obj_bang_particle);
+    
+        repeat (2)
+        {
+            with (instance_create(x, y, obj_slap_star_debris))
+                vspeed = irandom_range(-6, -11);
+        }
+        
+        sound_instance_one_shot(sfx_player_mach2_bump, x, y);
+    }
+    else
+    {
+        instance_create(other_id.x, other_id.y + 50, obj_stomp_stars_particle);
+        sound_instance_one_shot(sfx_enemy_stomped, other_id.x, other_id.y);
+    }
+    
+    return true;
 }
 
 kill_function = function(other_id)
@@ -77,6 +105,18 @@ kill_function = function(other_id)
         hsp = random_range(10, 18) * image_xscale;
         vsp = random_range(-10, -18);
     }
+    
+    with (other_id)
+    {
+        repeat (3)
+            instance_create(x, y, obj_slap_star_debris);
+        repeat (3)
+            instance_create(x, y, obj_enemy_debris);
+    }
+    
+    instance_create(x, y, obj_parry_particle);
+    instance_create(x, y, obj_impact_particle);
+    
     instance_destroy();
     add_saveroom();
 }
@@ -86,11 +126,18 @@ state_machine_set_state(state_enemy_walk());
 
 unstunnable_buffer = 0;
 
-snd_stunned = sound_instance_create(sfx_enemy_stunned);
-
 /////////////////////////////
 // Timers
 /////////////////////////////
+
+invincibility_timer = new Timer(5, time_source_units_frames, function() {
+    invincible = false;
+    untouchable = false;
+})
+
+stunned_timer = new Timer(200, time_source_units_frames, function() {
+    state_machine_set_state(state_enemy_walk());
+})
 
 scared_timer = new Timer(1.4, time_source_units_seconds, function() {
     state_machine_set_state(state_enemy_walk());

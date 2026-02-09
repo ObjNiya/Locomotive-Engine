@@ -2,16 +2,17 @@
 function state_enemy_walk_start()
 {
     sprite_index = spr_walk;
+    
     movespeed = 1;
 }
 
 /// @ignore
 function state_enemy_walk_step()
 {
-    if (grounded && !place_meeting(x + visual_xscale, y + 1, [obj_solid, obj_slope])) || (place_meeting(x + visual_xscale, y, obj_solid))
-        visual_xscale *= -1;
+    if (grounded && !place_meeting(x + image_xscale, y + 1, [obj_solid, obj_slope])) || (place_meeting(x + image_xscale, y, obj_solid))
+        image_xscale *= -1;
  
-    hsp = movespeed * visual_xscale;
+    hsp = movespeed * image_xscale;
        
     if (!animation_end() || !grounded)
         return;

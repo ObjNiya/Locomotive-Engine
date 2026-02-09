@@ -8,7 +8,7 @@
  * ```dir``` can be used in combination with movespeed to dictate which direction your object will move in.
  * ```vertical_dir```, just like with ```vertical_movespeed``` and ```movespeed```, is a vertical variant of ```dir``` for the Y axis.
 */
-function initialize_movement_helpers()
+function movement_helpers_initialize()
 {
     movespeed = 0;
     vertical_movespeed = 0;

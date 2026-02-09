@@ -50,9 +50,14 @@ function combat_initialize()
         array_push(global.combat_objects, object_index);
 }
 
+function combat_get_meeting()
+{
+    return (has_collision) ? instance_place(x + hsp, y + vsp, global.combat_objects) : instance_place(x, y, global.combat_objects);
+}
+
 function combat_step()
 {
-    var combat_other_id = (has_collision) ? instance_place(x + hsp, y + vsp, global.combat_objects) : instance_place(x, y, global.combat_objects);
+    var combat_other_id = combat_get_meeting();
     
     if (combat_other_id == noone)
         return;
