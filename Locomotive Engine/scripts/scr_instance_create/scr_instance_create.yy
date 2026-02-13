@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_other_utilities",
+  "%Name":"scr_instance_create",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_other_utilities",
+  "name":"scr_instance_create",
   "parent":{
     "name":"Utilities",
     "path":"folders/Scripts/Utilities.yy",

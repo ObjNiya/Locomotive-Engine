@@ -1,6 +1,11 @@
 /// @ignore
-function INIT__define_characters__()
+function __define_characters__()
 {
+    #macro CHAR_DEFAULT_SPRITE_SUFFIX "_damian"
+    #macro CHAR_DEFAULT_EVENT_NAME "Damian"
+    
+    #macro MAX_CHARACTERS 3
+    
     enum CHARS
     {
         // Player

@@ -11,8 +11,7 @@ function trace()
 }
 
 /**
- * This function will take every argument passed into it of any type and then show it in The Output Window and The Debug Overlay at runtime **IF** the game
- * was compiled with the ```DEBUG_MODE``` macro being true.
+ * This function will take run the ```trace``` function **IF** the game is compiled with the ```DEBUG_MODE``` macro set to true.
  */
 function dbg_trace()
 {

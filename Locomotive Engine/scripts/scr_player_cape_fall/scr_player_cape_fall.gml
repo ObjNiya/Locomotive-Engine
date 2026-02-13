@@ -1,9 +1,9 @@
 /// @ignore
 function state_player_cape_fall_start()
 {
-    sprite_index_set(spr_cape_end, 0);
+    sprite_set(spr_cape_end, 0);
     
-    acceleration = 0.75;
+    accel = 0.75;
     
     mach_afterimage_timer.start();
 }
@@ -34,7 +34,7 @@ function state_player_cape_fall_step()
     dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
     
     if (abs(hsp) < 12 || dir == -sign(hsp))
-        hsp += acceleration * dir;
+        hsp += accel * dir;
     
     movespeed = abs(hsp);
     image_xscale = dir;
@@ -48,7 +48,7 @@ function state_player_cape_fall_step()
         else
         {
             smc_set_state(state_player_normal);
-            sprite_index_set(spr_fall, 0);
+            sprite_set(spr_fall, 0);
         }
     }
 }

@@ -2,7 +2,7 @@
 function state_player_normal_start()
 {
     movespeed = 8;
-    acceleration = 0.5;
+    accel = 0.5;
     
     if (!grounded)
     {
@@ -25,7 +25,7 @@ function state_player_normal_step()
         hsp = 0;
     }
     else
-        hsp = approach(hsp, movespeed * dir, acceleration);
+        hsp = approach(hsp, movespeed * dir, accel);
     
     if (PLAYER_UPPERCUT)
     {
@@ -70,8 +70,8 @@ function state_player_normal_step()
             return;
         }
         
-        var start_land_animation = equals_to_either(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump, spr_stomp, spr_stomp_fall]);
-        var land_animation = equals_to_either(sprite_index, [spr_land, spr_land_walk]);
+        var start_land_animation = equals_to_any(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump, spr_stomp, spr_stomp_fall]);
+        var land_animation = equals_to_any(sprite_index, [spr_land, spr_land_walk]);
         
         if (start_land_animation)
         {
@@ -101,7 +101,7 @@ function state_player_normal_step()
             
             if (idle_anim_timer-- <= 0)
             {
-                sprite_index_set(idle_animations[irandom(idle_animation_count)], 0);
+                sprite_set(idle_animations[irandom(idle_animation_count)], 0);
                 idle_anim_timer = 90;
                 
                 return;
@@ -148,7 +148,7 @@ function state_player_normal_step()
     
     if (combat_id != noone && combat_id.stun_function(id))
     {
-        sprite_index_set(spr_stomp, 0);
+        sprite_set(spr_stomp, 0);
         
         vsp = (InputCheck(INPUT_VERB.JUMP)) ? -14 : -9;
     }
@@ -161,16 +161,16 @@ function state_player_normal_step()
         return;
     }
     
-    if (equals_to_either(sprite_index, [spr_stomp, spr_stomp_fall]))
+    if (equals_to_any(sprite_index, [spr_stomp, spr_stomp_fall]))
     {
         animation_end(spr_stomp_fall);
         return;
     }
     
-    var force_fall_animation = !equals_to_either(sprite_index, [spr_jump, spr_grabdash_cancel]);
+    var force_fall_animation = !equals_to_any(sprite_index, [spr_jump, spr_grabdash_cancel]);
     
     if (animation_end(spr_fall) || force_fall_animation)
-        sprite_index_set(spr_fall, 0);
+        sprite_set(spr_fall, 0);
 }
 
 /// @ignore

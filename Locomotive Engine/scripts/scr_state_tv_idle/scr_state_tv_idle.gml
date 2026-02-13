@@ -16,7 +16,7 @@ function state_tv_idle_step()
         return;
     }
     
-    animation_end_ext((equals_to_either(sprite_index, [spr_tv_idle_animation1, spr_tv_idle_animation2])), spr_tv_idle_damian);
+    animation_end_ext((equals_to_any(sprite_index, [spr_tv_idle_animation1, spr_tv_idle_animation2])), spr_tv_idle_damian);
 }
 
 /// @ignore
