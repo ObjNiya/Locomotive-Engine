@@ -27,46 +27,46 @@ function state_player_normal_step()
     else
         hsp = approach(hsp, movespeed * dir, acceleration);
     
-    if (player_check_can_uppercut())
+    if (PLAYER_UPPERCUT)
     {
-        state_machine_set_state(state_player_uppercut());
+        smc_set_state(state_player_uppercut);
         return;
     }
     
-    if (player_check_can_grabdash())
+    if (PLAYER_GRABDASH)
     {
-        state_machine_set_state(state_player_grabdash());
+        smc_set_state(state_player_grabdash);
         return;
     }
     
-    if (player_check_can_taunt())
+    if (PLAYER_TAUNT)
     {
-        state_machine_set_state(state_player_taunt());
+        smc_set_state(state_player_taunt);
         return;
     }
     
-    visual_xscale = side(dir, visual_xscale);
+    image_xscale = side(dir, image_xscale);
     image_speed = 1;
     
     if (grounded)
     {
-        if (player_check_can_jump())
+        if (PLAYER_JUMP)
         {
             player_setup_jump();
             return;
         }
         
-        if (player_check_can_machrun())
+        if (PLAYER_MACHRUN)
         {
-            state_machine_set_state(state_player_mach());
+            smc_set_state(state_player_mach);
             movespeed = max(6, abs(hsp));
             
             return;
         }
         
-        if (player_check_can_crouch())
+        if (PLAYER_CROUCH)
         {
-            state_machine_set_state(state_player_crouch());
+            smc_set_state(state_player_crouch);
             return;
         }
         
@@ -144,7 +144,7 @@ function state_player_normal_step()
     
     cloud_particle_timer.stop();
     
-    var combat_id = combat_get_meeting();
+    var combat_id = COMBAT_GET_MEETING;
     
     if (combat_id != noone && combat_id.stun_function(id))
     {
@@ -153,11 +153,11 @@ function state_player_normal_step()
         vsp = (InputCheck(INPUT_VERB.JUMP)) ? -14 : -9;
     }
     
-    player_try_jumpstop();
+    player_routine_jumpstop();
     
-    if (player_check_can_groundpound())
+    if (PLAYER_GROUNDPOUND)
     {
-        state_machine_set_state(state_player_groundpound());
+        smc_set_state(state_player_groundpound);
         return;
     }
     
@@ -182,7 +182,7 @@ function state_player_normal_end()
 }
 
 /**
- * This function will return an array of the player's normal state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's normal state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

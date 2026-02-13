@@ -7,7 +7,7 @@ function state_player_hurt_start()
     vsp = -9;
     
     sound_instance_one_shot(sfx_player_hurt, x, y);
-    create_afterimage(x, y, obj_flash_afterimage);
+    create_flash_effect(true);
 }
 
 /// @ignore
@@ -17,7 +17,7 @@ function state_player_hurt_step()
     
     if (grounded)
     {
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
         return;
     }
 }
@@ -29,7 +29,7 @@ function state_player_hurt_end()
 }
 
 /**
- * This function will return an array of the player hurt state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player hurt state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

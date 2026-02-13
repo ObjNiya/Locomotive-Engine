@@ -1,4 +1,4 @@
-state_machine_step();
+smc_step();
 
 tv_offset_target = 0;
 

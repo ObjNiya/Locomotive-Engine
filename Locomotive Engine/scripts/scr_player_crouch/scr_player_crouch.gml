@@ -18,9 +18,9 @@ function state_player_crouch_step()
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     hsp = movespeed * dir;
     
-    visual_xscale = side(dir, visual_xscale);
+    image_xscale = side(dir, image_xscale);
     
-    if (player_check_nothing_above() && player_check_can_jump())
+    if (PLAYER_NOTHING_ABOVE && PLAYER_JUMP)
     {
         player_setup_crouch_jump();
         return;
@@ -28,9 +28,9 @@ function state_player_crouch_step()
     
     if (grounded)
     {
-        if (player_check_can_get_up())
+        if (PLAYER_GET_UP)
         {
-            state_machine_set_state(state_player_normal());
+            smc_set_state(state_player_normal);
             return;
         }
         
@@ -55,7 +55,7 @@ function state_player_crouch_end()
 }
 
 /**
- * This function will return an array of the player's crouch state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's crouch state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

@@ -29,7 +29,7 @@ function state_player_machroll_step()
         return;
     }
     
-    if (player_check_hit_wall())
+    if (PLAYER_HIT_WALL)
     {
         player_setup_wallsplat();
         return;
@@ -37,9 +37,9 @@ function state_player_machroll_step()
     
     if (grounded)
     {
-        if (player_check_can_get_up())
+        if (PLAYER_GET_UP)
         {
-            state_machine_set_state(state_player_mach());
+            smc_set_state(state_player_mach);
             sprite_index_set(spr_machroll_getup, 0);
             sound_instance_start(snd_roll_getup);
             
@@ -70,9 +70,9 @@ function state_player_machroll_step()
         sprite_index = spr_machroll_dive;
     }
     
-    if (player_check_can_divebomb())
+    if (PLAYER_DIVEBOMB)
     {
-        state_machine_set_state(state_player_groundpound());
+        smc_set_state(state_player_groundpound);
         sprite_index_set(spr_divebomb, 0);
             
         return;
@@ -93,7 +93,7 @@ function state_player_machroll_end()
 }
 
 /**
- * This function will return an array of the player's machroll state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's machroll state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

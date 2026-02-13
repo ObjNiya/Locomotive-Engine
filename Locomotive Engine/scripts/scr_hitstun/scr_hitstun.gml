@@ -1,7 +1,10 @@
+#macro HITSTUN_STEP if (hitstun_step()) exit
+
 function hitstun_initialize()
 {
     hitstun_x = x;
     hitstun_y = y;
+    
     hitstun_time = 5;
     hitstun_shake_magnitude = 4;
     

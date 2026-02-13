@@ -27,9 +27,9 @@ function state_player_machturn_step()
         dir *= -1;
         movespeed = (mach3) ? 12 : 10;
         
-        visual_xscale = dir;
+        image_xscale = dir;
         
-        state_machine_set_state(state_player_mach());
+        smc_set_state(state_player_mach);
         sprite_index_set((mach3) ? spr_mach3 : spr_mach2, 0);
             
         return;
@@ -47,7 +47,7 @@ function state_player_machturn_end()
 }
 
 /**
- * This function will return an array of the player's machturn state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's machturn state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

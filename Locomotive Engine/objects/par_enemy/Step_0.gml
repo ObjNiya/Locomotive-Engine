@@ -1,5 +1,5 @@
 scr_collision();
-state_machine_step();
+smc_step();
 combat_step();
 
 bird.x = x;

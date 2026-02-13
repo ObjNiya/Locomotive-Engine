@@ -1,3 +1,5 @@
+#macro COMBAT_GET_MEETING (has_collision) ? instance_place(x + hsp, y + vsp, global.combat_objects) : instance_place(x, y, global.combat_objects)
+
 enum COMBAT_GROUPS
 {
     PLAYER,
@@ -50,22 +52,17 @@ function combat_initialize()
         array_push(global.combat_objects, object_index);
 }
 
-function combat_get_meeting()
-{
-    return (has_collision) ? instance_place(x + hsp, y + vsp, global.combat_objects) : instance_place(x, y, global.combat_objects);
-}
-
 function combat_step()
 {
-    var combat_other_id = combat_get_meeting();
+    var combat_id = COMBAT_GET_MEETING;
     
-    if (combat_other_id == noone)
+    if (combat_id == noone)
         return;
     
-    if (!attacking || group == combat_other_id.group || combat_other_id.untouchable)
+    if (!attacking || group == combat_id.group || combat_id.untouchable)
         return;
     
-    with (combat_other_id)
+    with (combat_id)
     {
         var can_damage = !invincible && other.strength > resistance;
         

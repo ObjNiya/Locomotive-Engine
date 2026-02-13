@@ -38,7 +38,7 @@ function state_player_uppercut_step()
     if (!grounded)
         return;
     
-    state_machine_set_state(state_player_normal());
+    smc_set_state(state_player_normal);
     return;
 }
 
@@ -55,7 +55,7 @@ function state_player_uppercut_end()
 }
 
 /**
- * This function will return an array of the player uppercut state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player uppercut state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

@@ -238,6 +238,7 @@ SINGLETON;
 #macro sound_instance_is_valid fmod_studio_event_instance_is_valid
 
 #macro sound_instance_move fmod_studio_event_instance_move
+#macro sound_instance_move_several fmod_studio_event_instance_move_several
 #macro sound_instance_create fmod_studio_event_instance_create
 #macro sound_instance_one_shot fmod_studio_event_instance_one_shot
 

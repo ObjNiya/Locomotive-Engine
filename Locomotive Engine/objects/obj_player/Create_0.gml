@@ -1,4 +1,30 @@
 /////////////////////////////
+// Condition macros
+/////////////////////////////
+
+#macro PLAYER_HIT_WALL (place_meeting(x + dir, y, obj_solid))
+#macro PLAYER_HIT_CEILING (place_meeting(x, y - 1, obj_solid))
+#macro PLAYER_CROUCH (grounded && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
+#macro PLAYER_NOTHING_ABOVE (!place_meeting(x, y - 32, obj_solid)) 
+#macro PLAYER_GET_UP (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && PLAYER_NOTHING_ABOVE && grounded)
+#macro PLAYER_JUMP (can_jump && InputPressed(INPUT_VERB.JUMP) && !place_meeting(x, y - 1, obj_solid))
+#macro PLAYER_GRABDASH (InputPressed(INPUT_VERB.GRABDASH) && (grabdash_bump_buffer <= 0 || sprite_index != spr_grabdash_bump))
+#macro PLAYER_UPPERCUT (PLAYER_GRABDASH && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1)
+#macro PLAYER_GROUNDPOUND (InputPressed(INPUT_VERB.DOWN) && !grounded)  
+#macro PLAYER_TAUNT (InputPressed(INPUT_VERB.TAUNT))
+#macro PLAYER_MACHRUN (!PLAYER_HIT_WALL && InputCheck(INPUT_VERB.MACHRUN) && grounded)
+#macro PLAYER_MACHINSTATURN (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == -dir && movespeed <= 8 && grounded)
+#macro PLAYER_MACHTURN (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == -dir && movespeed > 8 && grounded)
+#macro PLAYER_MACHSTOP (!InputCheck(INPUT_VERB.MACHRUN) && movespeed <= 8 && grounded)
+#macro PLAYER_MACHSLIDE (!InputCheck(INPUT_VERB.MACHRUN) && movespeed > 8 && grounded)
+#macro PLAYER_WALLCLIMB (PLAYER_HIT_WALL && (!grounded || (grounded && groundedSlope)))
+#macro PLAYER_DIVE (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
+#macro PLAYER_DIVEBOMB (InputPressed(INPUT_VERB.JUMP) && !grounded)
+#macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && !grounded && player_get_mach_stage() >= 3) 
+#macro PLAYER_SJUMP_PREPARE (InputPressed(INPUT_VERB.UP) && grounded && player_get_mach_stage() >= 3)   
+#macro PLAYER_SJUMP_RELEASE (!InputCheck(INPUT_VERB.UP) && grounded) 
+
+/////////////////////////////
 // Set built-ins
 /////////////////////////////
 
@@ -16,10 +42,13 @@ grav = 0.5;
 terminalVelocity = 20;
 
 hitstun_initialize();
-
+coyote_initialize();
 movement_helpers_initialize();
 visual_helper_initialize();
-coyote_manager_initialize();
+
+/////////////////////////////
+// Combat Set-up
+/////////////////////////////
 
 combat_initialize();
 invincible = true;
@@ -31,9 +60,11 @@ hp = 6;
 
 group = COMBAT_GROUPS.PLAYER;
 
+// Functions
+
 damage_function = function(other_id)
 {
-    hitstun_sprite = (state_step == state_player_mach_step) ? spr_mach3_hit_enemy : -1;
+    hitstun_sprite = (state_id == state_player_mach) ? spr_mach3_hit_enemy : -1;
     sound_instance_one_shot(sfx_player_punch, x, y);
     
     hitstun_apply();
@@ -41,25 +72,38 @@ damage_function = function(other_id)
 
 stun_function = function(other_id)
 {
-    if (state_step == state_player_hurt_step)
+    if (state_id == state_player_hurt)
         return;
 
-    state_machine_set_state(state_player_hurt());
+    smc_set_state(state_player_hurt);
     
-    sprite_index = (visual_xscale == -other_id.visual_xscale) ? spr_hurt : spr_back_hurt;
+    sprite_index = (image_xscale == -other_id.image_xscale) ? spr_hurt : spr_back_hurt;
     
-    dir = side(sign(x - other_id.x), visual_xscale);
+    dir = side(sign(x - other_id.x), image_xscale);
 }
 
 hurt_function = stun_function;
 
-character = global.char_damian;
-char_cache_sprite_variables(character);
-char_cache_sound_variables(character);
+/////////////////////////////
+// Character Set-up
+/////////////////////////////
+
+character = CHARS.DAMIAN;
+cache_charsprites(character);
+
+sfx_step = get_charsnd(sfx_damian_step, character);
+sfx_jump = get_charsnd(sfx_damian_jump, character);
+sfx_mach = get_charsnd(sfx_damian_mach, character);
+sfx_mach_turn = get_charsnd(sfx_damian_mach_turn, character);
+sfx_mach_brake = get_charsnd(sfx_damian_mach_brake, character);
+sfx_voice_idle = get_charsnd(sfx_damian_voice_idle, character);
+sfx_voice_happy = get_charsnd(sfx_damian_voice_happy, character);
+sfx_voice_hurt = get_charsnd(sfx_damian_voice_hurt, character);
+sfx_voice_plushie = get_charsnd(sfx_damian_voice_plushie, character);
+sfx_voice_catripi = get_charsnd(sfx_damian_voice_catripi, character);
 
 state_machine_initialize();
-state_machine_set_state(state_player_normal());
-
+smc_set_state(state_player_normal);
 
 /////////////////////////////
 // General state variables
@@ -86,7 +130,7 @@ grabbed_instance_id = noone;
 
 snd_grabdash = sound_instance_create(sfx_player_grabdash);
 
-// Taunt & Hit Stun
+// Taunt
 
 stored_hsp = 0;
 stored_vsp = 0;
@@ -95,12 +139,10 @@ stored_movespeed = 0;
 stored_sprite_index = -1;
 stored_image_index = 0;
 
-// Taunt
-
 taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
     grav = 0.5;
     
-    state_machine_set_previous_state();
+    smc_restore_state();
     
     sprite_index = stored_sprite_index;
     image_index = stored_image_index;
@@ -149,7 +191,7 @@ wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
 cloud_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if (state_step == state_player_normal_step)
+    if (state_id == state_player_normal)
         sound_instance_one_shot(sfx_step, x, y);
 });
 cloud_particle_timer.set_ext(1, true);
@@ -179,7 +221,7 @@ upwards_woosh_particle_timer.set_ext(1, true);
 blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
     with (create_afterimage(x, y, obj_blur_afterimage))
     {
-        if (other.state_step == state_player_cape_step)
+        if (other.state_id == state_player_cape)
             image_index = floor(other.image_index);
     }
 });

@@ -18,7 +18,7 @@ function state_tv_whitenoise_step()
             return;
     }
     
-    state_machine_set_state(whitenoise_next_state);
+    smc_set_state(whitenoise_next_state);
 }
 
 /// @ignore
@@ -33,7 +33,7 @@ function state_tv_whitenoise_end()
 }
 
 /**
- * This function will return an array of the tvwhitenoise state events to be given to the ```state_machine_set_state``` function to change the tv's state.
+ * This function will return an array of the tvwhitenoise state events to be given to the ```smc_set_state``` function to change the tv's state.
  * @returns {Array<Function>}
  * @pure
  */

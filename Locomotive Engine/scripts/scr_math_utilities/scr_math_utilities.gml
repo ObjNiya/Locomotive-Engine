@@ -1,9 +1,14 @@
+function approach(a, b, amt)
+{
+    return a + clamp(b - a, -amt, amt);
+}
+
 function side(n, fallback)
 {
     return (sign(n) == 0) ? fallback : n;
 }
 
-function approach(a, b, amt)
+function bsign(boolean)
 {
-    return a + clamp(b - a, -amt, amt);
+    return (!boolean) ? -1 : 1;
 }

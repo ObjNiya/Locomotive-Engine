@@ -7,6 +7,6 @@ if (titlecard_time-- <= 0)
     goto_level(global.level);
     
     with (par_player)
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
     
 }

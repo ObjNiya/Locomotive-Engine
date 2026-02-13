@@ -6,13 +6,13 @@ function state_player_grabdash_start()
     acceleration = 0.5;
     
     if (dir == 0)
-        dir = visual_xscale;
+        dir = image_xscale;
     
     if (movespeed < 10 && grounded)
         movespeed = max(movespeed, 10);
     
     hsp = movespeed * dir;
-    visual_xscale = dir;
+    image_xscale = dir;
     
     damage = 0;
     attacking = true;
@@ -37,29 +37,29 @@ function state_player_grabdash_step()
     
     hsp = movespeed * dir;
     
-    if (player_check_can_jump())
+    if (PLAYER_JUMP)
     {
         player_setup_longjump();
         return;
     }
     
-    if (player_check_can_wallclimb())
+    if (PLAYER_WALLCLIMB)
     {
         wallclimb_grab_buffer = 10;
-        state_machine_set_state(state_player_wallclimb());
+        smc_set_state(state_player_wallclimb);
         
         return;
     }
     
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
     {
-        state_machine_set_state(state_player_rolling_jump());
+        smc_set_state(state_player_rolling_jump);
         return;
     }
     
     if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && animation_end()))
     {
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
         if (!grounded && sign_input_x == -dir)
         {
             sprite_index_set(spr_grabdash_cancel, 0);
@@ -69,7 +69,7 @@ function state_player_grabdash_step()
         return;
     }
     
-    if (player_check_hit_wall())
+    if (PLAYER_HIT_WALL)
     {
         player_setup_grabdash_bump();
         return;
@@ -80,7 +80,7 @@ function state_player_grabdash_step()
     if (instance_exists(grab_target))
     {
         grabbed_instance_id = grab_target;
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
         return;
     }*/
     
@@ -105,7 +105,7 @@ function state_player_grabdash_end()
 }
 
 /**
- * This function will return an array of the player's grabdash state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's grabdash state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

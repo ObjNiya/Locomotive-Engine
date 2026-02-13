@@ -21,9 +21,9 @@ function state_player_sjump_prepare_step()
         return;
     }
     
-    if (player_check_sjump_prepare_release())
+    if (PLAYER_SJUMP_RELEASE)
     {
-        state_machine_set_state(state_player_sjump());
+        smc_set_state(state_player_sjump);
         return;
     }
     
@@ -45,7 +45,7 @@ function state_player_sjump_prepare_end()
 }
 
 /**
- * This function will return an array of the player's superjump prepare state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's superjump prepare state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

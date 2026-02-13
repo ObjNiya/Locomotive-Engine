@@ -4,19 +4,24 @@ function fmod_studio_event_instance_move(event_instance_ref, x, y)
 {
     var fmod_3d_attributes = new Fmod3DAttributes();
     
-    with (fmod_3d_attributes.position)
+    with (fmod_3d_attributes)
     {
-        self.x = x;
-        self.y = y;
+        position.x = x;
+        position.y = y;
+        
+        forward.z = 1;
+        up.y = 1;
     }
     
-    with (fmod_3d_attributes.forward)
-        z = 1;
-    
-    with (fmod_3d_attributes.up)
-        self.y = 1;
-    
     fmod_studio_event_instance_set_3d_attributes(event_instance_ref, fmod_3d_attributes);
+}
+
+function fmod_studio_event_instance_move_several(event_instance_refs, x, y)
+{
+    var event_instance_count = array_length(event_instance_refs);
+    
+    for (var i = 0; i < event_instance_count; i++)
+        fmod_studio_event_instance_move(event_instance_refs[i], x, y);
 }
 
 function fmod_studio_event_instance_create(event_description_ref, x = 0, y = 0)
@@ -137,7 +142,7 @@ function fmod_studio_event_instance_set_callback_all(type)
     __fmod_studio_event_instance_all__(fmod_studio_event_instance_set_callback, [type]);
 }
 
-function fmod_studio_event_instance_set_user_data(data)
+function fmod_studio_event_instance_set_user_data_all(data)
 {
     __fmod_studio_event_instance_all__(fmod_studio_event_instance_set_user_data, [data]);
 }

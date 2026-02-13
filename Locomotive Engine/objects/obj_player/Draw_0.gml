@@ -1,1 +1,1 @@
-visual_helper_draw_self();
+vh_draw_self();

@@ -26,7 +26,7 @@ function state_player_wallclimb_step()
     
     if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimb_grab_buffer <= 0)
     {
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
         
         hsp = -6 * dir;
         
@@ -38,13 +38,13 @@ function state_player_wallclimb_step()
     
     if (InputPressed(INPUT_VERB.JUMP))
     {
-        state_machine_set_state(state_player_mach());
+        smc_set_state(state_player_mach);
         sprite_index_set(spr_walljump_intro, 0);
         
         sound_instance_one_shot(sfx_jump, x, y);
         
         dir *= -1;
-        visual_xscale = dir;
+        image_xscale = dir;
         
         vsp = jump_height;
         movespeed = 10;
@@ -52,7 +52,7 @@ function state_player_wallclimb_step()
         return;
     }
     
-    if (player_check_hit_ceiling())
+    if (PLAYER_HIT_CEILING)
     {
         player_setup_hit_ceiling();
         return;
@@ -65,7 +65,7 @@ function state_player_wallclimb_step()
         wallclimb_dash_timer.start();
         
         sound_instance_start(snd_grabdash);
-        create_afterimage(x, y, obj_flash_afterimage);
+        create_flash_effect(true);
     }
     
     wallclimb_dash_timer.step();
@@ -77,12 +77,12 @@ function state_player_wallclimb_step()
     
     vsp = -vertical_movespeed;
     
-    if (!player_check_hit_wall())
+    if (!PLAYER_HIT_WALL)
     {
         movespeed = abs(vsp);
         vsp = 0;
         
-        state_machine_set_state(state_player_mach());
+        smc_set_state(state_player_mach);
         
         return;
     }
@@ -101,7 +101,7 @@ function state_player_wallclimb_end()
 }
 
 /**
- * This function will return an array of the player's wallclimb state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's wallclimb state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

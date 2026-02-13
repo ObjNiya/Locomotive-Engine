@@ -11,43 +11,43 @@ function state_player_cape_fall_start()
 /// @ignore
 function state_player_cape_fall_step()
 {
-    if (player_check_can_grabdash())
+    if (PLAYER_GRABDASH)
     {
-        state_machine_set_state(state_player_grabdash());
+        smc_set_state(state_player_grabdash);
         return;
     }
     
-    if (player_check_can_taunt())
+    if (PLAYER_TAUNT)
     {
-        state_machine_set_state(state_player_taunt());
+        smc_set_state(state_player_taunt);
         return;
     }
     
-    if (player_check_can_wallclimb())
+    if (PLAYER_WALLCLIMB)
     {
-        state_machine_set_state(state_player_wallclimb());
+        smc_set_state(state_player_wallclimb);
         return;
     }
     
     animation_end_ext((sprite_index == spr_cape_end), spr_cape_fall);
     
-    dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), visual_xscale);
+    dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
     
     if (abs(hsp) < 12 || dir == -sign(hsp))
         hsp += acceleration * dir;
     
     movespeed = abs(hsp);
-    visual_xscale = dir;
+    image_xscale = dir;
     
     if (grounded)
     {
         movespeed = max(12, movespeed);
         
-        if (player_check_can_machrun())
-            state_machine_set_state(state_player_mach());
+        if (PLAYER_MACHRUN)
+            smc_set_state(state_player_mach);
         else
         {
-            state_machine_set_state(state_player_normal());
+            smc_set_state(state_player_normal);
             sprite_index_set(spr_fall, 0);
         }
     }
@@ -60,7 +60,7 @@ function state_player_cape_fall_end()
 }
 
 /**
- * This function will return an array of the player cape fall state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player cape fall state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

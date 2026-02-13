@@ -30,7 +30,7 @@ function state_enemy_stunned_end()
 }
 
 /**
- * This function will return an array of the enemies' stunned state events to be given to the ```state_machine_set_state``` function to change the enemies' state.
+ * This function will return an array of the enemies' stunned state events to be given to the ```smc_set_state``` function to change the enemies' state.
  * @returns {Array<Function>}
  * @pure
  */

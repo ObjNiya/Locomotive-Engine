@@ -26,7 +26,7 @@ idle_animation_timer = new Timer(4 + irandom_range(-1, 2), time_source_units_sec
 })
 idle_animation_timer.set_ext(1, true);
 
-state_machine_set_state(state_tv_idle());
+smc_set_state(state_tv_idle);
 
 /////////////////////////////
 // Whitenoise flash variables
@@ -67,10 +67,10 @@ current_expr = -1;
 expr_mach3 = define_expression(spr_tv_mach3_damian, function() {
     with (par_player)
     {
-        if (state_step == state_player_machturn_step && !equals_to_either(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
+        if (state_id == state_player_machturn && !equals_to_either(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
             return true;
         
-        if (player_get_mach_stage() >= 3 && state_step == state_player_mach_step)
+        if (player_get_mach_stage() >= 3 && state_id == state_player_mach)
         {
             if (player_get_mach_stage() >= 4)
                 hud_tv_trigger_expression("mach4");
@@ -84,13 +84,13 @@ expr_mach3 = define_expression(spr_tv_mach3_damian, function() {
 expr_mach4 = define_expression(spr_tv_mach4_damian, function() {
     with (par_player)
     {
-        if (state_step == state_player_machturn_step && !equals_to_either(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
+        if (state_id == state_player_machturn && !equals_to_either(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
         {
             hud_tv_trigger_expression("mach3");
             return true;
         }
         
-        if (player_get_mach_stage() > 2 && state_step == state_player_mach_step)
+        if (player_get_mach_stage() > 2 && state_id == state_player_mach)
         {
             if (player_get_mach_stage() < 4)
                 hud_tv_trigger_expression("mach3");

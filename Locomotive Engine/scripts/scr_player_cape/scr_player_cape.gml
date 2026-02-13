@@ -25,7 +25,7 @@ function state_player_cape_start()
     
     blur_afterimage_timer.start();
     sound_instance_one_shot(sfx_damian_cape_start, x, y);
-    create_afterimage(x, y, obj_flash_afterimage);
+    create_flash_effect(true);
 }
 
 /// @ignore
@@ -39,8 +39,8 @@ function state_player_cape_step()
         
         if (animation_end(spr_cape))
         {
-            visual_xscale *= -1;
-            dir = visual_xscale;
+            image_xscale *= -1;
+            dir = image_xscale;
             
             vsp = vertical_movespeed * vertical_dir;
             
@@ -52,18 +52,18 @@ function state_player_cape_step()
     
     if (InputPressed(INPUT_VERB.JUMP))
     {
-        state_machine_set_state(state_player_cape_fall());
+        smc_set_state(state_player_cape_fall);
         return;
     }
     
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
-        dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), visual_xscale);
+        dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
 
-        movespeed += 0.5 * (dir == visual_xscale);
+        movespeed += 0.5 * (dir == image_xscale);
         movespeed = median(12, movespeed, 20);
         
-        visual_xscale = dir;
+        image_xscale = dir;
         
         sprite_index_set(spr_cape_spin, 0);
         image_speed = 1;
@@ -79,23 +79,23 @@ function state_player_cape_step()
         return;
     }
     
-    if (player_check_can_taunt())
+    if (PLAYER_TAUNT)
     {
-        state_machine_set_state(state_player_taunt());
+        smc_set_state(state_player_taunt);
         return;
     }
     
     if (grounded)
     {
-        state_machine_set_state(state_player_machroll());
+        smc_set_state(state_player_machroll);
         return;
     }
     
-    if (player_check_hit_wall())
+    if (PLAYER_HIT_WALL)
     {
         if (sprite_index == spr_cape_spin)
         {
-            visual_xscale *= -1;
+            image_xscale *= -1;
             dir *= -1;
         }
         else
@@ -173,7 +173,7 @@ function state_player_cape_end()
 }
 
 /**
- * This function will return an array of the player cape state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player cape state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

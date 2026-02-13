@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_taunt_start()
 {
-    state_machine_store_state();
+    smc_store_state();
     
     stored_sprite_index = sprite_index;
     stored_image_index = image_index;
@@ -30,7 +30,7 @@ function state_player_taunt_step()
 }
 
 /**
- * This function will return an array of the player's taunt state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's taunt state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

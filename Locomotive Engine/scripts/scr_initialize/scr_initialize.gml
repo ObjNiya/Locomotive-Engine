@@ -1,6 +1,7 @@
 #region Macros
 
 // Screen configurations
+
 #macro GAME_WIDTH 960
 #macro GAME_HEIGHT 540
 
@@ -29,13 +30,6 @@
 
 #endregion
 
-enum PLAYER_CHARACTERS
-{
-    DAMIAN = 1,
-    TV_NAUTA = 2, // Unused
-    JOSE = 3, // Unused
-}
-
 /**
  * This function will initialize all important global variables the game requires to operate.
  */
@@ -52,31 +46,6 @@ function initialize_globals()
     global.pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
     global.combofont = font_add_sprite_ext(spr_combo_bar_font, "0123456789", 1, 0);
 
-    // Player Character definitions
-    
-    global.char_damian = define_character(PLAYER_CHARACTERS.DAMIAN, "_damian", "Loco Damian");
-    char_define_event_paths(global.char_damian, [
-        ["sfx_step", sfx_damian_step],
-        ["sfx_jump", sfx_damian_jump],
-        ["sfx_hair_scratch", sfx_damian_hair_scratch],
-        ["sfx_voice_idle", sfx_damian_voice_idle],
-        ["sfx_voice_happy", sfx_damian_voice_happy],
-        ["sfx_voice_hurt", sfx_damian_voice_hurt],
-        ["sfx_voice_plushie", sfx_damian_voice_plushie],
-        ["sfx_voice_catripi", sfx_damian_voice_catripi],
-        ["sfx_mach", sfx_damian_mach],
-        ["sfx_mach_turn", sfx_damian_mach_turn],
-        ["sfx_mach_brake", sfx_damian_mach_brake]
-    ]);
-
-    global.char_tv_nauta = define_character(PLAYER_CHARACTERS.TV_NAUTA, "_nauta", "TV Nauta");
-    global.char_jose = define_character(PLAYER_CHARACTERS.JOSE, "_jose", "Jose");
-    
-    // Level definitions
-    
-    global.lvl_hallway = define_level("Hallway Longway", rm_hallway_1, 50, true, 6000);
-    global.lvl_bloom_and_doom = define_level("Bloom And Doom", rm_initialize, 50, true, 3000);
-    
     // Room transition
     
     global.target_room = noone;

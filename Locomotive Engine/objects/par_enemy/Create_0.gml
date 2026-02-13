@@ -40,12 +40,12 @@ stun_function = function(other_id)
     
     var stomp = false;
     
-    if (other_id.y >= y && other_id.state_step == state_player_normal_step)
+    if (other_id.y >= y && other_id.state_id == state_player_normal)
         return false;
-    else if (other_id.state_step == state_player_normal_step)
+    else if (other_id.state_id == state_player_normal)
         stomp = true;
     
-    state_machine_set_state(state_enemy_stunned());
+    smc_set_state(state_enemy_stunned);
     
     image_xscale = -other_id.visual_xscale;
     movespeed = (stomp) ? 5 : 12;
@@ -122,7 +122,7 @@ kill_function = function(other_id)
 }
 
 state_machine_initialize();
-state_machine_set_state(state_enemy_walk());
+smc_set_state(state_enemy_walk);
 
 unstunnable_buffer = 0;
 
@@ -136,11 +136,11 @@ invincibility_timer = new Timer(5, time_source_units_frames, function() {
 })
 
 stunned_timer = new Timer(200, time_source_units_frames, function() {
-    state_machine_set_state(state_enemy_walk());
+    smc_set_state(state_enemy_walk);
 })
 
 scared_timer = new Timer(1.4, time_source_units_seconds, function() {
-    state_machine_set_state(state_enemy_walk());
+    smc_set_state(state_enemy_walk);
 })
 
 thrown_blur_afterimage = new Timer(2, time_source_units_frames, function() {

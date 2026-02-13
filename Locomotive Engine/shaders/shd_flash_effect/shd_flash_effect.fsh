@@ -14,7 +14,7 @@ void main()
     vec4 vFragColor = v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
     float fColorSum = (vFragColor.r + vFragColor.g + vFragColor.b) / 3.;
     
-    vFragColor.rgb = mix(vec3(1.), vFragColor.rgb, float(fColorSum >= WHITE_THRESHOLD));
+    vFragColor.rgb = mix(vec3(.972), vFragColor.rgb, float(fColorSum >= WHITE_THRESHOLD));
     
     gl_FragColor = vFragColor;
 }

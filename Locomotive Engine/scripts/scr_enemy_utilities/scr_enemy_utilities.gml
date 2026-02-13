@@ -17,44 +17,11 @@ function scare_enemy(forced = false)
         if (x != other.x)
             image_xscale = -sign(x - other.x);
         
-        if (state_step != state_enemy_scared_scared_step)
-            state_machine_set_state(state_enemy_scared());
+        if (state_id != state_enemy_scared)
+            smc_set_state(state_enemy_scared);
         
         scared_timer.start();
         
         return true;
     }
-}
-
-
-function grab_enemy(forced = false)
-{
-    var enemy_instance = instance_place(x, y, par_enemy);
-    
-    if (forced && !instance_exists(enemy_instance))
-        enemy_instance = instance_nearest(x, y, par_enemy);
-    
-    if (!instance_exists(enemy_instance))
-        return noone;
-    
-    trace ("Enemy Grabbed")
-    return enemy_instance;
-}
-
-function hurt_enemy(damage = 1, forced = false)
-{
-    var enemy_instance = instance_place(x, y, par_enemy);
-    
-    if (forced && !instance_exists(enemy_instance))
-        enemy_instance = instance_nearest(x, y, par_enemy);
-    
-    if (!instance_exists(enemy_instance))
-        return noone;
-    
-    enemy_instance.hp -= damage;
-    
-    if (enemy_instance.hp <= 0)
-        instance_destroy(enemy_instance);
-    
-    return enemy_instance;
 }

@@ -17,13 +17,13 @@ function state_player_machslide_step()
     
     if (movespeed <= 0)
     {
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
         sprite_index_set(spr_machslide_end, 0);
         
         return;
     }
     
-    if (player_check_hit_wall())
+    if (PLAYER_HIT_WALL)
     {
         player_setup_wallsplat();
         return;
@@ -42,7 +42,7 @@ function state_player_machslide_end()
 }
 
 /**
- * This function will return an array of the player's machslide state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's machslide state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

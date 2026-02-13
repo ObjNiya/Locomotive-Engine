@@ -28,8 +28,6 @@ function state_player_sjump_start()
 /// @ignore
 function state_player_sjump_step()
 {
-    hurt_enemy();
-
     if (sprite_index == spr_springlaunch)
         return;
     
@@ -47,7 +45,7 @@ function state_player_sjump_step()
         strength = 1;
     }
     
-    if (player_check_hit_ceiling())
+    if (PLAYER_HIT_CEILING)
     {
         player_setup_hit_ceiling();
         return;
@@ -64,14 +62,14 @@ function state_player_sjump_step()
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     if (dir == 0)
-        dir = sign(visual_xscale);
+        dir = sign(image_xscale);
     else
-        visual_xscale = dir;
+        image_xscale = dir;
     
     if (!animation_end())
         return;
     
-    state_machine_set_state(state_player_mach());
+    smc_set_state(state_player_mach);
     
     vsp = -5;
     movespeed = 12;
@@ -79,7 +77,7 @@ function state_player_sjump_step()
     sprite_index = spr_sjump_cancel_intro;
     image_speed = 1;
     
-    create_afterimage(x, y, obj_flash_afterimage);
+    create_flash_effect(true);
 }
 
 /// @ignore
@@ -100,7 +98,7 @@ function state_player_sjump_end()
 }
 
 /**
- * This function will return an array of the player's superjump state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's superjump state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

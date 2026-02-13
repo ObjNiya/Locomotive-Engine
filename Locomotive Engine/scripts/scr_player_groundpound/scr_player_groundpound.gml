@@ -30,14 +30,14 @@ function state_player_groundpound_step()
         
         if (groundedSlope)
         {
-            state_machine_set_state(state_player_mach()); 
+            smc_set_state(state_player_mach); 
             sprite_index_set(spr_machroll_getup, 0);
             
             movespeed = abs(vsp);
             movespeed = clamp(movespeed, 10, 16);
             
             dir = sign(-instance_place(x, y + 1, [obj_slope, obj_slopePlatform]).image_xscale);
-            visual_xscale = dir;
+            image_xscale = dir;
             
             create_particle(x, y + 45, obj_jump_particle);
             return;
@@ -62,16 +62,14 @@ function state_player_groundpound_step()
         instance_destroy(groundpound_effect_id);
         
         if (animation_end())
-            state_machine_set_state(state_player_normal());
+            smc_set_state(state_player_normal);
         
         return;
     }
     
-    hurt_enemy();
-    
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
-        state_machine_set_state(state_player_sjump());
+        smc_set_state(state_player_sjump);
         sprite_index_set(spr_sjump_cancel_prepare, 0);
         instance_destroy(obj_explosion_particle_alt);
         
@@ -110,9 +108,9 @@ function state_player_groundpound_step()
         hsp = approach(hsp, movespeed * dir, acceleration);
     
     if (sprite_index == spr_divebomb)
-        visual_xscale = 1;
+        image_xscale = 1;
     else if (dir != 0)
-        visual_xscale = dir;
+        image_xscale = dir;
     
     if (sprite_index == spr_divebomb && vsp >= 8)
         image_speed = clamp(image_speed, vsp / 8, 8);
@@ -143,7 +141,7 @@ function state_player_groundpound_end()
 }
 
 /**
- * This function will return an array of the player's groundpound state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's groundpound state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

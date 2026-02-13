@@ -1,13 +1,46 @@
+function Camera(id, target) constructor
+{
+    self.id = id;
+    
+    update_func = camera_end_step;
+    
+    listener = -1;
+    fmod_3d_attributes = new Fmod3DAttributes();
+    
+    with (fmod_3d_attributes)
+    {
+        forward.z = 1;
+        up.y = 1;
+    }
+    
+    self.target = target;
+    
+    x_extend = 0;
+    x_extend_speed = 0.2;
+    x_extend_target = 0;
+    
+    y_extend = 0;
+    y_extend_speed = 0.2;
+    y_extend_target = 0;
+    
+    shake_magnitude = 0;
+    shake_deccel = 0.1;
+    
+    zoom = 1;
+    zoom_target = 1;
+    zoom_speed = 0.1;
+}
+
 function add_camera(target)
 {
     var viewport = 0;
     
-    while (view_get_camera(viewport) == -1 && viewport <= 7)
+    while (view_camera[viewport] == -1 && viewport <= 7)
         viewport++;
     
     if (viewport > 7)
     {
-        show_debug_message("Reached camera limit");
+        trace("Reached camera limit!");
         return;
     }
     
@@ -15,38 +48,7 @@ function add_camera(target)
     
     with (obj_camera_system)
     {
-        var listener_3d_attributes = new Fmod3DAttributes()
-        
-        with (listener_3d_attributes.forward)
-            z = 1;
-        
-        with (listener_3d_attributes.up)
-            y = 1;
-        
-        array_push(cameras, {
-            id: camera,
-            update_func: camera_end_step,
-            
-            listener: -1,
-            listener_3d_attributes: listener_3d_attributes,
-            
-            target: target,
-            
-            x_extend: 0,
-            x_extend_speed: 0.2,
-            x_extend_target: 0,
-            
-            y_extend: 0,
-            y_extend_speed: 0.2,
-            y_extend_target: 0,
-            
-            shake_magnitude: 0,
-            shake_speed: 0.1,
-            
-            zoom: 1,
-            zoom_speed: 0.1,
-            zoom_target: 1
-        });
+        array_push(cameras, new Camera(camera, target));
         
         var camera_index = array_length(cameras) - 1;
         
@@ -66,30 +68,25 @@ function delete_camera(camera)
 {
     with (obj_camera_system)
     {
-        var camera_count = array_length(cameras);
         var camera_index = ds_map_find_value(camera_map, camera);
-        
-        var camera_indices_index = array_get_index(camera_indices, camera_index);
+        var camera_ind_index = array_get_index(camera_indices, camera_index);
         
         camera_destroy(camera);
         
         array_delete(cameras, camera_index, 1);
         ds_map_delete(camera_map, camera);
         
-        camera_indices[camera_indices_index] = -1;
+        camera_indices[camera_ind_index] = -1;
         
-        view_visible[camera_indices_index] = false;
-        view_enabled[camera_indices_index] = false;
+        view_visible[camera_ind_index] = false;
+        //view_enabled[camera_indices_index] = false;
         
-        view_wport[camera_indices_index] = 0;
-        view_hport[camera_indices_index] = 0;
+        view_wport[camera_ind_index] = 0;
+        view_hport[camera_ind_index] = 0;
         
-        view_camera[camera_indices_index] = -1;
+        view_camera[camera_ind_index] = -1;
         
-        var listener_count = fmod_studio_system_get_num_listeners();
-        listener_count--;
-        
-        fmod_studio_system_set_num_listeners(listener_count);
+        fmod_studio_system_set_num_listeners(fmod_studio_system_get_num_listeners() - 1);
     }
 }
 
@@ -107,7 +104,7 @@ function camera_end_step()
             x_extend = approach(x_extend, x_extend_target, x_extend_speed);
             y_extend = approach(y_extend, y_extend_target, y_extend_speed);
             
-            shake_magnitude = approach(shake_magnitude, 0, shake_speed);
+            shake_magnitude = approach(shake_magnitude, 0, shake_deccel);
             zoom = lerp(zoom, zoom_target, zoom_speed);
             
             if (!instance_exists(target))
@@ -125,13 +122,13 @@ function camera_end_step()
 
             camera_set_view_pos(id, camera_x, camera_y);
             
-            with (listener_3d_attributes.position)
+            with (fmod_3d_attributes.position)
             {
                 x = camera_x + camera_x_origin;
                 y = camera_y + camera_y_origin;
             }
             
-            fmod_studio_system_set_listener_attributes(view_current, listener_3d_attributes);
+            fmod_studio_system_set_listener_attributes(view_current, fmod_3d_attributes);
         }
     }
 }

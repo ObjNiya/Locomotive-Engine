@@ -10,8 +10,8 @@ function hud_tv_trigger_expression(expression)
         current_expr = expr_variable;
         whitenoise_next_state = state_tv_expression();
         
-        if (state_step != state_tv_whitenoise_step)
-            state_machine_set_state(state_tv_whitenoise());
+        if (state_id != state_tv_whitenoise)
+            smc_set_state(state_tv_whitenoise);
         
         return;
     }

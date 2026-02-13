@@ -11,7 +11,7 @@ function state_tv_expression_step()
         return;
     
     whitenoise_next_state = state_tv_idle();
-    state_machine_set_state(state_tv_whitenoise());
+    smc_set_state(state_tv_whitenoise);
 }
 
 /// @ignore
@@ -21,7 +21,7 @@ function state_tv_expression_end()
 }
 
 /**
- * This function will return an array of the tvexpression state events to be given to the ```state_machine_set_state``` function to change the tv's state.
+ * This function will return an array of the tvexpression state events to be given to the ```smc_set_state``` function to change the tv's state.
  * @returns {Array<Function>}
  * @pure
  */

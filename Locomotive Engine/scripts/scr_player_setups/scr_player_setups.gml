@@ -1,6 +1,6 @@
 function player_setup_jump()
 {
-    coyote_manager_jump();
+    coyote_jump();
     sprite_index_set(spr_jump, 0);
     instance_create(x, y + 45, obj_jump_particle);
     
@@ -11,7 +11,7 @@ function player_setup_jump()
 
 function player_setup_crouch_jump()
 {
-    coyote_manager_jump();
+    coyote_jump();
     sprite_index_set(spr_crouch_jump, 0);
     instance_create(x, y + 45, obj_jump_particle);
     
@@ -22,8 +22,8 @@ function player_setup_crouch_jump()
 
 function player_setup_longjump()
 {
-    coyote_manager_jump();
-    state_machine_set_state(state_player_mach());
+    coyote_jump();
+    smc_set_state(state_player_mach);
     sprite_index_set(spr_longjump_intro, 0);
     create_particle(x, y + 45, obj_jump_particle);
     
@@ -35,7 +35,7 @@ function player_setup_longjump()
 
 function player_setup_mach_jump()
 {
-    coyote_manager_jump();
+    coyote_jump();
     sprite_index_set((player_get_mach_stage() >= 3) ? spr_mach3_jump : spr_mach2_jump_intro, 0);
     create_particle(x, y + 45, obj_jump_particle);
     
@@ -46,7 +46,7 @@ function player_setup_mach_jump()
 
 function player_setup_grabdash_bump()
 {
-    state_machine_set_state(state_player_normal());
+    smc_set_state(state_player_normal);
         
     sound_instance_one_shot(sfx_player_bump_wall, x, y);
     sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
@@ -60,7 +60,7 @@ function player_setup_grabdash_bump()
 
 function player_setup_wallsplat()
 {
-    state_machine_set_state(state_player_animation());
+    smc_set_state(state_player_animation);
     
     sound_instance_one_shot(sfx_player_wall_splat, x, y);
     
@@ -72,7 +72,7 @@ function player_setup_wallsplat()
 
 function player_setup_wallcrash()
 {
-    state_machine_set_state(state_player_animation());
+    smc_set_state(state_player_animation);
     
     sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
     
@@ -85,7 +85,7 @@ function player_setup_wallcrash()
 
 function player_setup_hit_ceiling()
 {
-    state_machine_set_state(state_player_animation());
+    smc_set_state(state_player_animation);
     
     sound_instance_one_shot(sfx_player_groundpound_land, x, y);
     

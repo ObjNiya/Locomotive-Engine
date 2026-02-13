@@ -18,14 +18,12 @@ function state_player_rolling_jump_start()
 /// @ignore
 function state_player_rolling_jump_step()
 {
-    hurt_enemy();
-    
-    if (player_check_hit_wall())
+    if (PLAYER_HIT_WALL)
     {
         mach_afterimage_use_alpha = false;
         mach_afterimage_timer.start();
         
-        visual_xscale *= -1;
+        image_xscale *= -1;
         dir *= -1;
     }
     
@@ -34,7 +32,7 @@ function state_player_rolling_jump_step()
     if (!grounded)
         return;
     
-    state_machine_set_state(state_player_machroll());
+    smc_set_state(state_player_machroll);
 }
 
 /// @ignore
@@ -53,7 +51,7 @@ function state_player_rolling_jump_end()
 }
 
 /**
- * This function will return an array of the player's rolling_jump state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's rolling_jump state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

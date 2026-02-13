@@ -20,7 +20,7 @@ function state_player_mach_start()
 {
     movespeed = max(movespeed, 6);
     if (dir == 0)
-        dir = sign(visual_xscale);
+        dir = sign(image_xscale);
     
     acceleration = 0.1;
     
@@ -75,85 +75,85 @@ function state_player_mach_step()
     
     with (obj_hud_tv)
     {
-        if (state_step == state_tv_idle_step && mach_stage >= 3)
+        if (state_id == state_tv_idle && mach_stage >= 3)
             hud_tv_trigger_expression("mach" + string(mach_stage));
     }
     
-    if (player_check_can_jump())
+    if (PLAYER_JUMP)
     {
         player_setup_mach_jump();
         return;
     }
     
-    if (player_check_can_uppercut())
+    if (PLAYER_UPPERCUT)
     {
-        state_machine_set_state(state_player_uppercut());
+        smc_set_state(state_player_uppercut);
         return;
     }
     
-    if (player_check_can_grabdash())
+    if (PLAYER_GRABDASH)
     {
-        state_machine_set_state(state_player_grabdash());
+        smc_set_state(state_player_grabdash);
         return;
     }
     
-    if (player_check_can_taunt())
+    if (PLAYER_TAUNT)
     {
-        state_machine_store_state();
-        state_machine_set_state(state_player_taunt());
+        smc_store_state();
+        smc_set_state(state_player_taunt);
         
         return;
     }
     
-    if (player_check_can_crouch() || player_check_can_dive())
+    if (PLAYER_CROUCH || PLAYER_DIVE)
     {
-        state_machine_set_state(state_player_machroll());
+        smc_set_state(state_player_machroll);
         return;
     }
     
-    if (player_check_can_cape())
+    if (PLAYER_CAPE)
     {
-        state_machine_set_state(state_player_cape());
+        smc_set_state(state_player_cape);
         return;
     }
     
-    if (player_check_can_sjump_prepare())
+    if (PLAYER_SJUMP_PREPARE)
     {
-        state_machine_set_state(state_player_sjump_prepare());
+        smc_set_state(state_player_sjump_prepare);
         return;
     }
     
-    if (player_check_can_machturn())
+    if (PLAYER_MACHTURN)
     { 
-        state_machine_set_state(state_player_machturn());
+        smc_set_state(state_player_machturn);
         return;
     }
-    else if (player_check_can_machinstaturn())
+    else if (PLAYER_MACHINSTATURN)
     {
         dir *= -1;
-        visual_xscale = dir;
+        image_xscale = dir;
         
         movespeed = min(movespeed, 6);
     }
     
-    if (player_check_can_machslide())
+    if (PLAYER_MACHSLIDE)
     {
-        state_machine_set_state(state_player_machslide());
+        smc_set_state(state_player_machslide);
         return;
     }
-    else if (player_check_can_machstop())
+    else if (PLAYER_MACHSTOP)
     {
-        state_machine_set_state(state_player_normal());
+        smc_set_state(state_player_normal);
         return;
     }
         
-    if (player_check_can_wallclimb())
+    if (PLAYER_WALLCLIMB)
     {
-        state_machine_set_state(state_player_wallclimb());
+        smc_set_state(state_player_wallclimb);
         return;
     }
     
-    if (player_check_hit_wall())
+    if (PLAYER_HIT_WALL)
     {
         if (mach_stage <= 2)
             player_setup_wallsplat();
@@ -165,7 +165,7 @@ function state_player_mach_step()
     
     mach_afterimage_timer.start()
     if (!grounded)
-        player_try_jumpstop();
+        player_routine_jumpstop();
     
     animation_end_ext((sprite_index == spr_mach2_jump_intro), spr_mach2_jump);
     animation_end_ext((sprite_index == spr_mach3_jump), spr_mach3);
@@ -207,6 +207,8 @@ function state_player_mach_step()
             
             //extend_camera_horizontal(camera_extend, camera_extend_speed);
             
+            animation_end_ext((sprite_index == spr_mach3_hit_enemy), spr_mach3);
+            
             if (mach_stage >= 4 && !equals_to_either(sprite_index, [spr_longjump_intro, spr_longjump]))
             {
                 if (sprite_index != spr_mach4)
@@ -214,7 +216,7 @@ function state_player_mach_step()
                     sprite_index = spr_mach4;
                     
                     create_particle(x, y, obj_mach4_puff_particle);
-                    create_afterimage(x, y, obj_flash_afterimage);
+                    create_flash_effect(true);
                 }
                 
                 create_particle_repeating(x, y, obj_woosh_particle);
@@ -222,7 +224,7 @@ function state_player_mach_step()
                 flame_particle_timer.start();
                 blur_afterimage_timer.start();
             }
-            else if (play_regular_sprite)
+            else if (play_regular_sprite && sprite_index != spr_mach3_hit_enemy)
                 sprite_index = spr_mach3;
             
             animation_end_ext((sprite_index == spr_sjump_cancel_intro), spr_sjump_cancel);
@@ -262,7 +264,7 @@ function state_player_mach_end()
 }
 
 /**
- * This function will return an array of the player's mach state events to be given to the ```state_machine_set_state``` function to change the player's state.
+ * This function will return an array of the player's mach state events to be given to the ```smc_set_state``` function to change the player's state.
  * @returns {Array<Function>}
  * @pure
  */

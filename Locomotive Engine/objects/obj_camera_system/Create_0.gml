@@ -18,7 +18,7 @@ function set_up_viewports()
             continue;
         
         view_visible[i] = true;
-        view_enabled[i] = true;
+        view_enabled = true;
         
         view_wport[i] = GAME_WIDTH;
         view_hport[i] = GAME_HEIGHT;
