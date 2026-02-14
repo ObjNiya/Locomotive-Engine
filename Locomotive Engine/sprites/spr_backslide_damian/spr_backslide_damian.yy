@@ -52,7 +52,7 @@
     ],
     "top":0,
   },
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Back Slide",
     "path":"folders/Sprites/Player/Damian/Back Slide.yy",
@@ -135,7 +135,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":98,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

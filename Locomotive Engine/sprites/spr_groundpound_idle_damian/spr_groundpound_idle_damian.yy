@@ -33,7 +33,7 @@
   ],
   "name":"spr_groundpound_idle_damian",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Idle",
     "path":"folders/Sprites/Player/Damian/Normal/Idle.yy",
@@ -116,7 +116,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":98,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

@@ -40,7 +40,7 @@
   ],
   "name":"spr_walk_forward_damian",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Walk",
     "path":"folders/Sprites/Player/Damian/Normal/Walk.yy",
@@ -144,7 +144,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":98,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

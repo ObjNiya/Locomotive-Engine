@@ -36,7 +36,7 @@
   ],
   "name":"spr_piledriver_damian",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Miscellanious",
     "path":"folders/Sprites/Player/Damian/Miscellanious.yy",
@@ -128,7 +128,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":98,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

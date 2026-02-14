@@ -34,7 +34,7 @@
   ],
   "name":"spr_bump_damian",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Bump",
     "path":"folders/Sprites/Player/Damian/Bump.yy",
@@ -120,7 +120,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":98,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

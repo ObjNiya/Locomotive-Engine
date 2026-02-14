@@ -35,7 +35,7 @@
   ],
   "name":"spr_throw_uppercut_damian",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Throw",
     "path":"folders/Sprites/Player/Damian/Throw.yy",
@@ -123,7 +123,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":70,
+    "xorigin":100,
     "yorigin":50,
   },
   "swatchColours":null,

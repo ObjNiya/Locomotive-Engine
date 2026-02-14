@@ -1,3 +1,5 @@
+#macro SPAWN_SPRITE_SIZE 32
+
 global.target_room = -1;
 global.target_spawn_pos = [0, 0];
 
@@ -16,8 +18,10 @@ function queue_room(index, spawn_object)
         
         if (instance.object_index == object_get_name(spawn_object))
         {
-            trace("Found")
-            global.target_spawn_pos = [instance.x, instance.y];
+            var spawn_x = instance.x + (SPAWN_SPRITE_SIZE / 2);
+            var spawn_y = instance.y - par_player.sprite_yoffset;
+            
+            global.target_spawn_pos = [spawn_x, spawn_y];
             found_spawn_pos = true;
         }
     }
