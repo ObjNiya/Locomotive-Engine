@@ -13,7 +13,10 @@
     "name":"Room Transitions",
     "path":"folders/Objects/Room Transitions.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_roomtransition",
+    "path":"objects/par_roomtransition/par_roomtransition.yy",
+  },
   "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

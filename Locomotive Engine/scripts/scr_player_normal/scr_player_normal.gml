@@ -170,7 +170,7 @@ function state_player_normal_step()
     var force_fall_animation = !equals_to_any(sprite_index, [spr_jump, spr_grabdash_cancel]);
     
     if (animation_end(spr_fall) || force_fall_animation)
-        sprite_set(spr_fall, 0);
+        sprite_index = spr_fall;
 }
 
 /// @ignore

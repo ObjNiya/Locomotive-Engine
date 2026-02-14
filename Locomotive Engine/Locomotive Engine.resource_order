@@ -274,6 +274,7 @@
     {"name":"par_effect","order":5,"path":"objects/par_effect/par_effect.yy",},
     {"name":"par_enemy","order":1,"path":"objects/par_enemy/par_enemy.yy",},
     {"name":"par_particle","order":14,"path":"objects/par_particle/par_particle.yy",},
+    {"name":"par_roomtransition","order":3,"path":"objects/par_roomtransition/par_roomtransition.yy",},
     {"name":"rm_levelhud_setup","order":6,"path":"rooms/rm_levelhud_setup/rm_levelhud_setup.yy",},
     {"name":"rm_template","order":3,"path":"rooms/rm_template/rm_template.yy",},
     {"name":"rm_test","order":1,"path":"rooms/rm_test/rm_test.yy",},

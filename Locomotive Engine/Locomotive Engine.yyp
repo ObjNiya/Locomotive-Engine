@@ -333,6 +333,7 @@
     {"id":{"name":"par_enemy","path":"objects/par_enemy/par_enemy.yy",},},
     {"id":{"name":"par_particle","path":"objects/par_particle/par_particle.yy",},},
     {"id":{"name":"par_player","path":"objects/par_player/par_player.yy",},},
+    {"id":{"name":"par_roomtransition","path":"objects/par_roomtransition/par_roomtransition.yy",},},
     {"id":{"name":"rm_hallway_1","path":"rooms/rm_hallway_1/rm_hallway_1.yy",},},
     {"id":{"name":"rm_initialize","path":"rooms/rm_initialize/rm_initialize.yy",},},
     {"id":{"name":"rm_levelhud_setup","path":"rooms/rm_levelhud_setup/rm_levelhud_setup.yy",},},

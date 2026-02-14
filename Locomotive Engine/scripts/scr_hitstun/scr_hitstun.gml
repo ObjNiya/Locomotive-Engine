@@ -5,9 +5,6 @@
  */
 function hitstun_initialize()
 {
-    hitstun_x = x;
-    hitstun_y = y;
-    
     hitstun_time = 5;
     hitstun_shake_magnitude = 4;
     
@@ -15,8 +12,8 @@ function hitstun_initialize()
     hitstun_sprite = -1;
     
     hitstun_timer = new Timer(hitstun_time, time_source_units_frames, function() {
-        x = hitstun_x;
-        y = hitstun_y;
+        x = xstart;
+        y = ystart;
     })
 }
 
@@ -25,8 +22,8 @@ function hitstun_initialize()
  */
 function hitstun_apply()
 {
-    hitstun_x = x;
-    hitstun_y = y;
+    xstart = x;
+    ystart = y;
     
     if (hitstun_sprite != -1)
     {
@@ -47,8 +44,8 @@ function hitstun_step()
 {
     if (hitstun_timer.active)
     {
-        x = hitstun_x + irandom_range(-hitstun_shake_magnitude, hitstun_shake_magnitude);
-        y = hitstun_y + irandom_range(-hitstun_shake_magnitude, hitstun_shake_magnitude);
+        x = xstart + irandom_range(-hitstun_shake_magnitude, hitstun_shake_magnitude);
+        y = ystart + irandom_range(-hitstun_shake_magnitude, hitstun_shake_magnitude);
         
         animation_end_ext((sprite_index == hitstun_sprite), previous_sprite);
         
