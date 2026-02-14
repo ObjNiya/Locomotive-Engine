@@ -32,7 +32,7 @@
   ],
   "name":"spr_wallclimb_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Wall Climb",
     "path":"folders/Sprites/Player/Damian/Wall Climb.yy",
@@ -111,7 +111,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":50,
+    "xorigin":67,
     "yorigin":50,
   },
   "swatchColours":null,
