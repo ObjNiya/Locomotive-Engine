@@ -35,7 +35,7 @@
   ],
   "name":"spr_mach3_hit_wall_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Mach",
     "path":"folders/Sprites/Player/Damian/Mach.yy",
@@ -124,7 +124,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":50,
+    "yorigin":98,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

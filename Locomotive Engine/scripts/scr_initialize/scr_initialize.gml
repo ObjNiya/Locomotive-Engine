@@ -47,19 +47,6 @@ function initialize_globals()
     global.combofont = font_add_sprite_ext(spr_combo_bar_font, "0123456789", 1, 0);
 
     // Room transition
-    
-    global.target_room = noone;
-    global.target_spawnpoint = "A";
-    
-    global.spawnpoints = {
-        A: obj_spawnpoint_a,
-        B: obj_spawnpoint_b,
-        C: obj_spawnpoint_c,
-        D: obj_spawnpoint_d,
-        E: obj_spawnpoint_e,
-        F: obj_spawnpoint_f
-    }
-    
     // Level system
     
     global.level = pointer_null;

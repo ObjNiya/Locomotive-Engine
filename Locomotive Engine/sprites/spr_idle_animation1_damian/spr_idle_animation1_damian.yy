@@ -47,7 +47,7 @@
   ],
   "name":"spr_idle_animation1_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Idle",
     "path":"folders/Sprites/Player/Damian/Normal/Idle.yy",
@@ -172,7 +172,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":50,
+    "yorigin":98,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

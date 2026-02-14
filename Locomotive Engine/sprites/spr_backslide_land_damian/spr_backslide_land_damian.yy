@@ -25,7 +25,7 @@
   ],
   "name":"spr_backslide_land_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Back Slide",
     "path":"folders/Sprites/Player/Damian/Back Slide.yy",
@@ -84,7 +84,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":50,
+    "yorigin":98,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

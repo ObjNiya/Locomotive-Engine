@@ -33,7 +33,7 @@
   ],
   "name":"spr_exitportal_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Cutscene",
     "path":"folders/Sprites/Player/Damian/Cutscene.yy",
@@ -101,7 +101,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":50,
+    "yorigin":98,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

@@ -29,7 +29,9 @@
     {"$GMObjectProperty":"v2","%Name":"target_room","filters":[
         "GMRoom",
       ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
-    {"$GMObjectProperty":"v2","%Name":"target_spawnpoint","filters":[],"listItems":[],"multiselect":false,"name":"target_spawnpoint","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"A","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"target_spawn","filters":[
+        "GMObject",
+      ],"listItems":[],"multiselect":false,"name":"target_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

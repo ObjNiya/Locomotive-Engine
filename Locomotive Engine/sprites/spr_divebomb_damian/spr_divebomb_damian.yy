@@ -38,7 +38,7 @@
   ],
   "name":"spr_divebomb_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Ground Pound",
     "path":"folders/Sprites/Player/Damian/Ground Pound.yy",
@@ -136,7 +136,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":50,
+    "yorigin":98,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
