@@ -24,7 +24,7 @@
   ],
   "name":"spr_keydoor_open",
   "nineSlice":null,
-  "origin":0,
+  "origin":6,
   "parent":{
     "name":"Door",
     "path":"folders/Sprites/Door.yy",
@@ -80,7 +80,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":0,
-    "yorigin":0,
+    "yorigin":100,
   },
   "swatchColours":null,
   "swfPrecision":0.5,

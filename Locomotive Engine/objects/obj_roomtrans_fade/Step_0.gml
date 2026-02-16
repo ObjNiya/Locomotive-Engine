@@ -11,6 +11,8 @@ if (fade_in)
     exit;
 }
 
+with (par_player)
+    frozen = false;
 fade_in = true;
 
 goto_room();

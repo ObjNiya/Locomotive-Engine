@@ -28,7 +28,7 @@
 // Set built-ins
 /////////////////////////////
 
-depth = 0;
+depth = DEPTHS.MIDDLE;
 mask_index = spr_player_mask;
 
 /////////////////////////////
@@ -181,6 +181,10 @@ wallclimb_grab_buffer = 0;
 wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
     sprite_index = spr_wallclimb;
 });
+
+// Warp Pipe
+
+warppipe_id = noone;
 
 /////////////////////////////
 // General Timers

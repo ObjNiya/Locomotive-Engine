@@ -24,3 +24,29 @@ function dbg_trace()
     
     show_debug_message(string_concat_ext(argument_array));
 }
+
+#macro LOG_LEVEL 2
+
+enum LOG_LEVELS
+{
+    INFO = 0,
+    WARN = 1,
+    ERROR = 2,
+}
+
+function log(source, level, txt)
+{
+    if (level > LOG_LEVEL)
+        return;
+    
+    var log_name = "INFO";
+    if (level == LOG_LEVELS.WARN)
+        log_name = "WARN"
+    if (level == LOG_LEVELS.ERROR)
+        log_name = "ERROR"
+    
+    var prefix = string_concat("[", script_get_name(source), " - ", log_name, "] ");
+    txt = string_concat_ext(txt);
+    
+    show_debug_message(prefix + txt);
+}

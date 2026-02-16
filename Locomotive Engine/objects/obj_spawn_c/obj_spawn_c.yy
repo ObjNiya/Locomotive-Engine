@@ -6,8 +6,8 @@
   "name":"obj_spawn_c",
   "overriddenProperties":[],
   "parent":{
-    "name":"Room Structure",
-    "path":"folders/Objects/Room Structure.yy",
+    "name":"Spawns",
+    "path":"folders/Objects/Room Structure/Spawns.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,5 +32,5 @@
     "path":"sprites/spr_spawn_c/spr_spawn_c.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

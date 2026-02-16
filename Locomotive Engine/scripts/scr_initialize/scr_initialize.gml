@@ -30,6 +30,23 @@
 
 #endregion
 
+enum DEPTHS
+{
+    FRONT = -50,
+    
+    CLOSEST = -30,
+    CLOSER = -20,
+    CLOSE = -10,
+    
+    MIDDLE = 0,
+    
+    FAR = 10,
+    FARTHER = 20,
+    FARTHEST = 30,
+    
+    BACK = 50,
+}
+
 /**
  * This function will initialize all important global variables the game requires to operate.
  */

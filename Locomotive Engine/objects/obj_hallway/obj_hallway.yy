@@ -3,6 +3,7 @@
   "%Name":"obj_hallway",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"par_player","path":"objects/par_player/par_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_hallway",
@@ -31,7 +32,7 @@
       ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
     {"$GMObjectProperty":"v2","%Name":"target_spawn","filters":[
         "GMObject",
-      ],"listItems":[],"multiselect":false,"name":"target_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"target_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"noone\"","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

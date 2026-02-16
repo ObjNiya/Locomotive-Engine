@@ -5,5 +5,5 @@ magnetize_speed = 5;
 
 magnetize_target_id = noone;
 
-depth = 10;
+depth = DEPTHS.FARTHEST;
 image_index = irandom(image_number);
