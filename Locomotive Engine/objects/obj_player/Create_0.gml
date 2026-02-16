@@ -88,7 +88,7 @@ hurt_function = stun_function;
 // Character Set-up
 /////////////////////////////
 
-character = CHARS.DAMIAN;
+character = CHARS.NOISE;
 cache_charsprites(character);
 
 sfx_step = get_charsnd(sfx_damian_step, character);

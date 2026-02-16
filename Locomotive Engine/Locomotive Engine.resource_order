@@ -210,6 +210,8 @@
     {"name":"Taunt","order":20,"path":"folders/Sprites/Player/Damian/Taunt.yy",},
     {"name":"Throw","order":18,"path":"folders/Sprites/Player/Damian/Throw.yy",},
     {"name":"Wall Climb","order":9,"path":"folders/Sprites/Player/Damian/Wall Climb.yy",},
+    {"name":"Peppino","order":4,"path":"folders/Sprites/Player/Peppino.yy",},
+    {"name":"Noise","order":3,"path":"folders/Sprites/Player/Noise.yy",},
     {"name":"Room Structure","order":3,"path":"folders/Sprites/Room Structure.yy",},
     {"name":"SpriteUtil","order":20,"path":"folders/SpriteUtil.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},

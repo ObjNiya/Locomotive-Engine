@@ -49,10 +49,12 @@ function get_charspr(sprite, char)
 {
     CATCH_UNDEFINED_CHAR;
     
-    sprite = sprite_get_name(sprite);
-    sprite = string_replace_all(sprite, CHAR_DEFAULT_SPRITE_SUFFIX, char.sprite_suffix);
+    var fallback_spr = sprite;
     
-    return asset_get_index(sprite);
+    sprite = string_replace_all(sprite_get_name(sprite), CHAR_DEFAULT_SPRITE_SUFFIX, char.sprite_suffix);
+    sprite = asset_get_index(sprite);
+    
+    return (sprite_exists(sprite)) ? asset_get_index(sprite) : fallback_spr;
 }
 
 /**
@@ -68,12 +70,15 @@ function cache_charsprites(char)
     
     for (var i = 0; i < sprite_count; i++)
     {
-        var charspr = get_charspr(sprites[i], char);
+        var sprite = sprites[i];
+        var charspr = get_charspr(sprite, char);
         
         if (!sprite_exists(charspr))
             continue;
         
         var charspr_var_name = string_trim_end(sprite_get_name(charspr), [char.sprite_suffix]);
+        if (sprite == charspr)
+            charspr_var_name = string_trim_end(sprite_get_name(charspr), [CHAR_DEFAULT_SPRITE_SUFFIX]);
         
         variable_instance_set(id, charspr_var_name, charspr);
         
