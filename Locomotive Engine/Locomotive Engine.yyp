@@ -1245,6 +1245,7 @@
     {"id":{"name":"spr_waddledee_walk","path":"sprites/spr_waddledee_walk/spr_waddledee_walk.yy",},},
     {"id":{"name":"spr_walk_damian","path":"sprites/spr_walk_damian/spr_walk_damian.yy",},},
     {"id":{"name":"spr_walk_forward_damian","path":"sprites/spr_walk_forward_damian/spr_walk_forward_damian.yy",},},
+    {"id":{"name":"spr_walk_noise","path":"sprites/spr_walk_noise/spr_walk_noise.yy",},},
     {"id":{"name":"spr_wallclimb_damian","path":"sprites/spr_wallclimb_damian/spr_wallclimb_damian.yy",},},
     {"id":{"name":"spr_wallclimb_dash_damian","path":"sprites/spr_wallclimb_dash_damian/spr_wallclimb_dash_damian.yy",},},
     {"id":{"name":"spr_walljump_damian","path":"sprites/spr_walljump_damian/spr_walljump_damian.yy",},},

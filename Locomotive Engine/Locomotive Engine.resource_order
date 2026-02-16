@@ -1058,6 +1058,7 @@
     {"name":"spr_waddledee_walk","order":1,"path":"sprites/spr_waddledee_walk/spr_waddledee_walk.yy",},
     {"name":"spr_walk_damian","order":2,"path":"sprites/spr_walk_damian/spr_walk_damian.yy",},
     {"name":"spr_walk_forward_damian","order":3,"path":"sprites/spr_walk_forward_damian/spr_walk_forward_damian.yy",},
+    {"name":"spr_walk_noise","order":1,"path":"sprites/spr_walk_noise/spr_walk_noise.yy",},
     {"name":"spr_wallclimb_dash_damian","order":1,"path":"sprites/spr_wallclimb_dash_damian/spr_wallclimb_dash_damian.yy",},
     {"name":"spr_walljump_damian","order":2,"path":"sprites/spr_walljump_damian/spr_walljump_damian.yy",},
     {"name":"spr_walljump_intro_damian","order":3,"path":"sprites/spr_walljump_intro_damian/spr_walljump_intro_damian.yy",},

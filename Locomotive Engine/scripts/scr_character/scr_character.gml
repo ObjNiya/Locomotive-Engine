@@ -76,9 +76,8 @@ function cache_charsprites(char)
         if (!sprite_exists(charspr))
             continue;
         
-        var charspr_var_name = string_trim_end(sprite_get_name(charspr), [char.sprite_suffix]);
-        if (sprite == charspr)
-            charspr_var_name = string_trim_end(sprite_get_name(charspr), [CHAR_DEFAULT_SPRITE_SUFFIX]);
+        var var_name_trim = (sprite == charspr) ? CHAR_DEFAULT_SPRITE_SUFFIX : char.sprite_suffix
+        var charspr_var_name = string_trim_end(sprite_get_name(charspr), [var_name_trim]);
         
         variable_instance_set(id, charspr_var_name, charspr);
         
@@ -98,13 +97,21 @@ function get_charsnd(event_path, char)
 {
     CATCH_UNDEFINED_CHAR;
     
+    if (!is_string(event_path))
+    {
+        log(get_charsnd, LOG_LEVELS.WARN, ["Shit"]);
+        return "event:/Event Defaults/3D SFX Action";
+    }
+    
+    var fallback_path = event_path;
+    
     event_path = string_replace_all(event_path, CHAR_DEFAULT_EVENT_NAME, char.event_name);
     var event_id = fmod_studio_system_get_event(event_path);
     
-    if (fmod_studio_event_description_is_valid(event_id))
+    if (event_id != 0 && fmod_studio_event_description_is_valid(event_id))
         return event_path;
     else
-        return -1;
+        return fallback_path;
 }
 
 __define_characters__();
