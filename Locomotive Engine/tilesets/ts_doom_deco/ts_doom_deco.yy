@@ -4,7 +4,7 @@
   "autoTileSets":[],
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_doom\", \"path\":\"texturegroups/texgroup_doom\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "macroPageTiles":{
@@ -28,8 +28,8 @@
   },
   "spriteNoExport":true,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_doom",
+    "path":"texturegroups/texgroup_doom",
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,

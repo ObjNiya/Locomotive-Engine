@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_hub\", \"path\":\"texturegroups/texgroup_hub\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
@@ -105,8 +105,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_hub",
+    "path":"texturegroups/texgroup_hub",
   },
   "type":0,
   "VTile":false,

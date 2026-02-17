@@ -13,7 +13,7 @@
       "textureGroupId":"{\"name\":\"maze_group\",\"path\":\"texturegroups/maze_group\"}",
     },
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_maze\", \"path\":\"texturegroups/texgroup_maze\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
@@ -89,8 +89,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_maze",
+    "path":"texturegroups/texgroup_maze",
   },
   "type":0,
   "VTile":false,

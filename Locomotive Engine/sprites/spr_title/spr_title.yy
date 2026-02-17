@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_titlescreen\", \"path\":\"texturegroups/texgroup_titlescreen\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,

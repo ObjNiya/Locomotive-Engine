@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
@@ -94,8 +94,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_levelstructure",
+    "path":"texturegroups/texgroup_levelstructure",
   },
   "type":0,
   "VTile":false,

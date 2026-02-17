@@ -6,6 +6,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"town_group\",\"path\":\"texturegroups/town_group\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
   },
   "macroPageTiles":{
     "SerialiseHeight":0,
@@ -28,8 +31,8 @@
   },
   "spriteNoExport":false,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_doom",
+    "path":"texturegroups/texgroup_doom",
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,

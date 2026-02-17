@@ -13,7 +13,7 @@
       "textureGroupId":"{\"name\":\"intro_group\",\"path\":\"texturegroups/intro_group\"}",
     },
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_titlescreen\", \"path\":\"texturegroups/texgroup_titlescreen\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
@@ -108,8 +108,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_titlescreen",
+    "path":"texturegroups/texgroup_titlescreen",
   },
   "type":0,
   "VTile":false,

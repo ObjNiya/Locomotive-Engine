@@ -4,7 +4,7 @@
   "autoTileSets":[],
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "macroPageTiles":{
@@ -28,8 +28,8 @@
   },
   "spriteNoExport":false,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_levelstructure",
+    "path":"texturegroups/texgroup_levelstructure",
   },
   "tileAnimationFrames":[
     {"$GMTileAnimation":"","%Name":"animation_1","frames":[23,24,25,26,],"name":"animation_1","resourceType":"GMTileAnimation","resourceVersion":"2.0",},

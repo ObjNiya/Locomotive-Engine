@@ -61,7 +61,7 @@ function initialize_globals()
 
     global.pointsbookfont = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
     global.pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
-    global.combofont = font_add_sprite_ext(spr_combo_bar_font, "0123456789", 1, 0);
+    global.combofont = font_add_sprite_ext(spr_combobar_font, "0123456789", 1, 0);
 
     // Room transition
     // Level system

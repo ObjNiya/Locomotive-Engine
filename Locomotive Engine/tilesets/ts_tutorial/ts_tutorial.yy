@@ -4,7 +4,7 @@
   "autoTileSets":[],
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"texgroup_tutorial\", \"path\":\"texturegroups/texgroup_tutorial\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "macroPageTiles":{
@@ -28,8 +28,8 @@
   },
   "spriteNoExport":true,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_tutorial",
+    "path":"texturegroups/texgroup_tutorial",
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,
