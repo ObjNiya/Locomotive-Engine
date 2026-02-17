@@ -8,6 +8,11 @@
   "bbox_top":5,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

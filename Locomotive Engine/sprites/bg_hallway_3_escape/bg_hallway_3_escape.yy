@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"hall_group\",\"path\":\"texturegroups/hall_group\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_hallway\", \"path\":\"texturegroups/texgroup_hallway\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

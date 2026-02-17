@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"ts_tutorial",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_tutorial\", \"path\":\"texturegroups/texgroup_tutorial\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

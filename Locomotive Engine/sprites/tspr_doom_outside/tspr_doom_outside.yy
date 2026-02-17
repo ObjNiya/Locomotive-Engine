@@ -8,6 +8,11 @@
   "bbox_top":56,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_doom\", \"path\":\"texturegroups/texgroup_doom\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

@@ -1,10 +1,13 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"ts_townsewers",
+  "%Name":"ts_doom_house",
   "autoTileSets":[],
   "ConfigValues":{
     "Dev":{
       "textureGroupId":"{\"name\":\"town_group\",\"path\":\"texturegroups/town_group\"}",
+    },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_doom\", \"path\":\"texturegroups/texgroup_doom\" }",
     },
   },
   "macroPageTiles":{
@@ -12,8 +15,8 @@
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"ts_townsewers",
-  "out_columns":29,
+  "name":"ts_doom_house",
+  "out_columns":36,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -23,8 +26,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"tspr_doom_sewer",
-    "path":"sprites/tspr_doom_sewer/tspr_doom_sewer.yy",
+    "name":"tspr_doom_house",
+    "path":"sprites/tspr_doom_house/tspr_doom_house.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -39,5 +42,5 @@
   "tileWidth":32,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":840,
+  "tile_count":1320,
 }

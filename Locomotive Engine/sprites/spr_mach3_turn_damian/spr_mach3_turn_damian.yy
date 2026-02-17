@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+      "textureGroupId":"{ \"name\":\"texgroup_damian\", \"path\":\"texturegroups/texgroup_damian\" }",
     },
   },
   "DynamicTexturePage":false,

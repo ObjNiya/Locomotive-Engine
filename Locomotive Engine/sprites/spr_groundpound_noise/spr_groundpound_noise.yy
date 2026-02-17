@@ -8,6 +8,11 @@
   "bbox_top":7,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_noise\", \"path\":\"texturegroups/texgroup_noise\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

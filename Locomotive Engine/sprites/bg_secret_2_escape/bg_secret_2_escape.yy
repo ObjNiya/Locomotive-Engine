@@ -15,6 +15,9 @@
     "Playtester":{
       "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

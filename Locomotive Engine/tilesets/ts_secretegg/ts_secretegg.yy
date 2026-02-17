@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"ts_secretegg",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

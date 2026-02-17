@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"ts_doom_deco",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_doom\", \"path\":\"texturegroups/texgroup_doom\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

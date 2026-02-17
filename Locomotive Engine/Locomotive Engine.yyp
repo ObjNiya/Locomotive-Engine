@@ -759,8 +759,6 @@
     {"id":{"name":"bg_treasure_room_2","path":"sprites/bg_treasure_room_2/bg_treasure_room_2.yy",},},
     {"id":{"name":"bg_tutorial","path":"sprites/bg_tutorial/bg_tutorial.yy",},},
     {"id":{"name":"fg_falling_bricks","path":"sprites/fg_falling_bricks/fg_falling_bricks.yy",},},
-    {"id":{"name":"forest_maze_enemy1","path":"sprites/forest_maze_enemy1/forest_maze_enemy1.yy",},},
-    {"id":{"name":"forest_maze_enemy2","path":"sprites/forest_maze_enemy2/forest_maze_enemy2.yy",},},
     {"id":{"name":"marx_projectile_blue_ball_hitbox","path":"sprites/marx_projectile_blue_ball_hitbox/marx_projectile_blue_ball_hitbox.yy",},},
     {"id":{"name":"marx_projectile_blue_ball","path":"sprites/marx_projectile_blue_ball/marx_projectile_blue_ball.yy",},},
     {"id":{"name":"marx_small_projectile","path":"sprites/marx_small_projectile/marx_small_projectile.yy",},},
@@ -1259,6 +1257,11 @@
     {"id":{"name":"tspr_secretegg","path":"sprites/tspr_secretegg/tspr_secretegg.yy",},},
     {"id":{"name":"tspr_tutorial","path":"sprites/tspr_tutorial/tspr_tutorial.yy",},},
     {"id":{"name":"ts_doom_deco","path":"tilesets/ts_doom_deco/ts_doom_deco.yy",},},
+    {"id":{"name":"ts_doom_house","path":"tilesets/ts_doom_house/ts_doom_house.yy",},},
+    {"id":{"name":"ts_doom_outside_night","path":"tilesets/ts_doom_outside_night/ts_doom_outside_night.yy",},},
+    {"id":{"name":"ts_doom_outside","path":"tilesets/ts_doom_outside/ts_doom_outside.yy",},},
+    {"id":{"name":"ts_doom_sewers_escape","path":"tilesets/ts_doom_sewers_escape/ts_doom_sewers_escape.yy",},},
+    {"id":{"name":"ts_doom_sewers","path":"tilesets/ts_doom_sewers/ts_doom_sewers.yy",},},
     {"id":{"name":"ts_hallway_deco","path":"tilesets/ts_hallway_deco/ts_hallway_deco.yy",},},
     {"id":{"name":"ts_hallway_patrick","path":"tilesets/ts_hallway_patrick/ts_hallway_patrick.yy",},},
     {"id":{"name":"ts_hallway","path":"tilesets/ts_hallway/ts_hallway.yy",},},
@@ -1266,12 +1269,7 @@
     {"id":{"name":"ts_hub_hallway","path":"tilesets/ts_hub_hallway/ts_hub_hallway.yy",},},
     {"id":{"name":"ts_hub_maze","path":"tilesets/ts_hub_maze/ts_hub_maze.yy",},},
     {"id":{"name":"ts_hub","path":"tilesets/ts_hub/ts_hub.yy",},},
-    {"id":{"name":"ts_locotown","path":"tilesets/ts_locotown/ts_locotown.yy",},},
-    {"id":{"name":"ts_nighttown","path":"tilesets/ts_nighttown/ts_nighttown.yy",},},
     {"id":{"name":"ts_secretegg","path":"tilesets/ts_secretegg/ts_secretegg.yy",},},
-    {"id":{"name":"ts_townhouse","path":"tilesets/ts_townhouse/ts_townhouse.yy",},},
-    {"id":{"name":"ts_townsewers","path":"tilesets/ts_townsewers/ts_townsewers.yy",},},
-    {"id":{"name":"ts_townsewersescape","path":"tilesets/ts_townsewersescape/ts_townsewersescape.yy",},},
     {"id":{"name":"ts_tutorial","path":"tilesets/ts_tutorial/ts_tutorial.yy",},},
   ],
   "resourceType":"GMProject",
@@ -1294,12 +1292,68 @@
           "autocrop":"false",
         },
       },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"Default","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMTextureGroup":"","%Name":"texturegroup_levelstructure","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+    {"$GMTextureGroup":"","%Name":"texgroup_levelstructure","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
         "Debug":{
           "groupParent":"null",
           "compressFormat":"bz2",
           "loadType":"default",
         },
-      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texturegroup_levelstructure","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_levelstructure","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_hallway","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_hallway","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_doom","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_doom","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_tutorial","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_tutorial","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_hub","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_hub","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_maze","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_maze","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_titlescreen","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_titlescreen","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_damian","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_damian","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMTextureGroup":"","%Name":"texgroup_noise","autocrop":true,"border":2,"compressFormat":"bz2","ConfigValues":{
+        "Debug":{
+          "groupParent":"null",
+          "compressFormat":"bz2",
+          "loadType":"default",
+        },
+      },"customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"name":"texgroup_noise","resourceType":"GMTextureGroup","resourceVersion":"2.0","targets":-1,},
   ],
 }

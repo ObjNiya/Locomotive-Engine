@@ -8,6 +8,11 @@
   "bbox_top":32,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_tutorial\", \"path\":\"texturegroups/texgroup_tutorial\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

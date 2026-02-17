@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"ts_hallway_patrick",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_hallway\", \"path\":\"texturegroups/texgroup_hallway\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

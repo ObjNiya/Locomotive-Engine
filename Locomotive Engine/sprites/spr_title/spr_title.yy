@@ -8,6 +8,11 @@
   "bbox_top":12,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_titlescreen\", \"path\":\"texturegroups/texgroup_titlescreen\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

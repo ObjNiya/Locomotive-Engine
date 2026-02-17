@@ -1,6 +1,6 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"ts_nighttown",
+  "%Name":"ts_doom_sewers_escape",
   "autoTileSets":[],
   "ConfigValues":{
     "Dev":{
@@ -12,8 +12,8 @@
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"ts_nighttown",
-  "out_columns":40,
+  "name":"ts_doom_sewers_escape",
+  "out_columns":29,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -23,8 +23,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"tspr_doom_cmtry",
-    "path":"sprites/tspr_doom_cmtry/tspr_doom_cmtry.yy",
+    "name":"tspr_doom_sewer_escape",
+    "path":"sprites/tspr_doom_sewer_escape/tspr_doom_sewer_escape.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -39,5 +39,5 @@
   "tileWidth":32,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":1575,
+  "tile_count":840,
 }

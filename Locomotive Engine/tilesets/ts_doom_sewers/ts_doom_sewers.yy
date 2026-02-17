@@ -1,6 +1,6 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"ts_townsewersescape",
+  "%Name":"ts_doom_sewers",
   "autoTileSets":[],
   "ConfigValues":{
     "Dev":{
@@ -12,7 +12,7 @@
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"ts_townsewersescape",
+  "name":"ts_doom_sewers",
   "out_columns":29,
   "out_tilehborder":2,
   "out_tilevborder":2,
@@ -23,8 +23,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"tspr_doom_sewer_escape",
-    "path":"sprites/tspr_doom_sewer_escape/tspr_doom_sewer_escape.yy",
+    "name":"tspr_doom_sewer",
+    "path":"sprites/tspr_doom_sewer/tspr_doom_sewer.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{

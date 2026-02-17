@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"baddiegroup\",\"path\":\"texturegroups/baddiegroup\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

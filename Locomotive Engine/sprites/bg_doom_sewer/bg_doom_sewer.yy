@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"town_group\",\"path\":\"texturegroups/town_group\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_doom\", \"path\":\"texturegroups/texgroup_doom\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

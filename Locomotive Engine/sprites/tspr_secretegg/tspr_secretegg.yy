@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"ConfigValues\":{\"Dev\":{\"groupParent\":\"null\",\"compressFormat\":\"bz2\",\"loadType\":\"default\"}},\"isScaled\":true,\"compressFormat\":\"bz2\",\"customOptions\":\"\",\"loadType\":\"default\",\"directory\":\"\",\"autocrop\":true,\"border\":2,\"mipsToGenerate\":0,\"groupParent\":null,\"targets\":-1,\"resourceType\":\"GMTextureGroup\",\"resourceVersion\":\"2.0\",\"name\":\"Default\",\"%Name\":\"Default\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_levelstructure\", \"path\":\"texturegroups/texgroup_levelstructure\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

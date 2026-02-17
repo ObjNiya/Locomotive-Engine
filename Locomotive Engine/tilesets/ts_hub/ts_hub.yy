@@ -6,6 +6,9 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_hub\", \"path\":\"texturegroups/texgroup_hub\" }",
+    },
   },
   "macroPageTiles":{
     "SerialiseHeight":0,

@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"intro_group\",\"path\":\"texturegroups/intro_group\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_titlescreen\", \"path\":\"texturegroups/texgroup_titlescreen\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

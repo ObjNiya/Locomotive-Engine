@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"damian_group\", \"path\":\"texturegroups/damian_group\" }",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_damian\", \"path\":\"texturegroups/texgroup_damian\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"maze_group\",\"path\":\"texturegroups/maze_group\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"texgroup_maze\", \"path\":\"texturegroups/texgroup_maze\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
