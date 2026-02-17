@@ -33,8 +33,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Other",
-    "path":"folders/Sprites/Cutscene/Other.yy",
+    "name":"Cutscene",
+    "path":"folders/Sprites/Cutscene.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -105,10 +105,7 @@
               },"Disabled":false,"id":"b776e797-87a6-4c88-8d9c-0d6caa1ddb84","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
-    "visibleRange":{
-      "x":0.0,
-      "y":0.0,
-    },
+    "visibleRange":null,
     "volume":1.0,
     "xorigin":300,
     "yorigin":100,

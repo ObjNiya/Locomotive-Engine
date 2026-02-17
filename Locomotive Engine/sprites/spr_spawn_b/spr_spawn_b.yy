@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Spawn Points",
-    "path":"folders/Sprites/Game Structure/Room System/Spawn Points.yy",
+    "name":"Room System",
+    "path":"folders/Sprites/Game Structure/Room System.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

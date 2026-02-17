@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Hub",
-    "path":"folders/Sprites/Hub.yy",
+    "name":"Cutscene",
+    "path":"folders/Sprites/Cutscene.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

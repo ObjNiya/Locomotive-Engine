@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Metal",
-    "path":"folders/Sprites/Level Structure/Destructibles/Metal.yy",
+    "name":"Big",
+    "path":"folders/Sprites/Level Structure/Destructibles/Big.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

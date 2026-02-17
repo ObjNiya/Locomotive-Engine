@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Misc.",
-    "path":"folders/Sprites/Backgrounds/Misc..yy",
+    "name":"Rank",
+    "path":"folders/Sprites/Cutscene/Rank.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

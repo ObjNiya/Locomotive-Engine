@@ -46,8 +46,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"HUB",
-    "path":"folders/Sprites/HUD/HUB.yy",
+    "name":"HUD",
+    "path":"folders/Sprites/HUD.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

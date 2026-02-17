@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Unown's Collisions",
-    "path":"folders/Sprites/Unown's Collisions.yy",
+    "name":"Collisions",
+    "path":"folders/Sprites/Game Structure/Collisions.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
