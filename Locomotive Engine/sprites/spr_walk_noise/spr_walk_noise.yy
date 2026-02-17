@@ -70,7 +70,7 @@
     },
     "name":"spr_walk_noise",
     "playback":1,
-    "playbackSpeed":24.0,
+    "playbackSpeed":20.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

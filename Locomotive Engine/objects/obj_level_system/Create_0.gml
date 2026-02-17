@@ -11,10 +11,10 @@ combo_timer = new Timer(6.75, time_source_units_seconds, function() {
 });
 
 showtime_timer = new Timer(60, time_source_units_seconds, function() {
-    show_debug_message("Out Of Time")
+    show_debug_message("Out Of Time");
 });
 
-var hud_data = room_get_info(rm_levelhud_setup, false, true, true, true, false, false);
+/*var hud_data = room_get_info(rm_levelhud_setup, false, true, true, true, false, false);
 
 for (var i = 0; i < array_length(hud_data.instances); i++)
 {

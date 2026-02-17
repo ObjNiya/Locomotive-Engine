@@ -32,13 +32,13 @@ function smc_set_state(state_to_set)
 {
     if (state[2] != -1)
         state[2]();
- 
-    var state_array = state_to_set();
+
+    var new_states = state_to_set();
        
-    if (state_array[0] != -1)
-        state_array[0]();
+    if (new_states[0] != -1)
+        new_states[0]();
     
-    state = state_array;
+    state = new_states;
     state_id = state_to_set;
 }
 

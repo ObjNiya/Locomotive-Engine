@@ -33,8 +33,10 @@
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"target_room","filters":[
         "GMRoom",
-      ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
-    {"$GMObjectProperty":"v2","%Name":"target_spawn","filters":[],"listItems":[],"multiselect":false,"name":"target_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"noone\"","varType":2,},
+      ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_test","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"target_spawn","filters":[
+        "GMObject",
+      ],"listItems":[],"multiselect":false,"name":"target_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"obj_spawn_a","path":"objects/obj_spawn_a/obj_spawn_a.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"obj_spawn_a","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

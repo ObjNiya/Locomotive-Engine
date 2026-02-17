@@ -45,7 +45,10 @@ function log(source, level, txt)
     if (level == LOG_LEVELS.ERROR)
         log_name = "ERROR"
     
-    var prefix = string_concat("[", script_get_name(source), " - ", log_name, "] ");
+    if (is_method(source))
+        source = script_get_name(source);
+    
+    var prefix = string_concat("[", source, " - ", log_name, "] ");
     txt = string_concat_ext(txt);
     
     show_debug_message(prefix + txt);

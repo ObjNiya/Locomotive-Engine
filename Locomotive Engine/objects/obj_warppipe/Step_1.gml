@@ -9,21 +9,14 @@ with (par_player)
     if (!up_warppipe && !down_warppipe)
         exit;
     
-    var prev_spawn_align = global.target_spawn_align;
-    set_spawn_alignment(SPAWN_XALIGN.RIGHT, SPAWN_YALIGN.BOTTOM);
-    
     if (!queue_room(other.target_room, other.target_spawn))
-    {
-        set_spawn_alignment(prev_spawn_align[0], prev_spawn_align[1]);
         exit;
-    }
     
-    x = (other.x - other.sprite_xoffset) + (other.sprite_width / 2);
+    set_spawn_align(SPAWN_XALIGN.RIGHT, SPAWN_YALIGN.BOTTOM);
+    set_spawn_offset(0, 0);
     
-    var y_offset = sprite_yoffset + sprite_get_bbox_bottom(mask_index) - sprite_height;
-    y_offset++;
-    
-    add_spawn_offset(0, -y_offset);
+    x = other.x;
+    other.depth = DEPTHS.CLOSE;
     
     if (up_warppipe)
     {

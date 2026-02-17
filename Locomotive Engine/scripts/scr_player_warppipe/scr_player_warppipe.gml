@@ -12,6 +12,8 @@ function state_player_warppipe_start()
     
     movespeed = 0;
     vert_movespeed = 0;
+    
+    warppipe_failsave_timer.start();
 }
 
 /// @ignore
@@ -23,21 +25,17 @@ function state_player_warppipe_step()
         trans_room(obj_roomtrans_fade, -1);
     }
     
-    static failsave_timer = 0;
-    
-    if (room == global.target_room || ++failsave_timer >= 300)
-    {
-        failsave_timer = 0;
+    if (room == get_target_room())
         smc_set_state((place_meeting(x, y + 32, obj_solid)) ? state_player_normal : state_player_crouch);
-    }
 }
 
 /// @ignore
 function state_player_warppipe_end()
 {
-    grav = 0.5;
-    
     image_speed = 1;
+    
+    grav = 0.5;    
+    warppipe_failsave_timer.stop();
 }
 
 /**

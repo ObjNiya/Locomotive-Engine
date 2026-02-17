@@ -11,6 +11,10 @@ function state_player_door_start()
     
     movespeed = 0;
     vert_movespeed = 0;
+    
+    sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    
+    warppipe_failsave_timer.start();
 }
 
 /// @ignore
@@ -27,12 +31,8 @@ function state_player_door_step()
     if (animation_end())
         image_speed = 0;
     
-    static failsave_timer = 0;
-    
-    if (room == global.target_room || ++failsave_timer >= 300)
+    if (room == get_target_room())
     {
-        failsave_timer = 0;
-        
         sprite_set(spr_walk_forward, 0);
         image_speed = 1;
     }
@@ -41,9 +41,10 @@ function state_player_door_step()
 /// @ignore
 function state_player_door_end()
 {
-    grav = 0.5;
-    
     image_speed = 1;
+    
+    grav = 0.5;
+    warppipe_failsave_timer.start();
 }
 
 /**

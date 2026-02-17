@@ -1,31 +1,38 @@
-#macro SPAWN_OBJECTS [obj_spawn_a, obj_spawn_b, obj_spawn_c, obj_spawn_d, obj_spawn_e, obj_spawn_f]
-
-enum SPAWN_XALIGN
+function set_spawn_align(x_align, y_align)
 {
-    LEFT = 0,
-    CENTER = 2,
-    RIGHT = 1,
+    if (!is_numeric(x_align) || !is_numeric(y_align))
+    {
+        log(set_spawn_align, LOG_LEVELS.WARN, ["The given align values are ", x_align, " and ", y_align, ", which aren't numbers. Cancelling out of the function early..."]);
+        return false;
+    }
+    
+    with (obj_room_goto)
+    {
+        spawn_xalign = x_align;
+        spawn_yalign = y_align;
+    }
+    
+    return true;
 }
 
-enum SPAWN_YALIGN
+function set_spawn_offset(x_offset, y_offset)
 {
-    TOP = 0,
-    MIDDLE = 2,
-    BOTTOM = 1,
+    if (!is_numeric(x_offset) || !is_numeric(y_offset))
+    {
+        log(set_spawn_offset, LOG_LEVELS.WARN, ["The given offset values are ", x_offset, " and ", y_offset, ", which aren't numbers. Cancelling out of the function early..."]);
+        return false;
+    }
+    
+    with (obj_room_goto)
+    {
+        spawn_xoffset = x_offset;
+        spawn_yoffset = y_offset;
+    }
+    
+    return true;
 }
 
-global.target_room = -1;
-global.target_spawn_object = -1;
-
-global.target_spawn_pos = [0, 0];
-global.target_spawn_align = [SPAWN_XALIGN.LEFT, SPAWN_YALIGN.TOP];
-
-function set_spawn_alignment(x_align, y_align)
-{
-    global.target_spawn_align = [x_align, y_align];
-}
-
-function queue_room(index, spawn_obj_name)
+function queue_room(index, spawn)
 {
     if (!room_exists(index))
     {
@@ -33,85 +40,83 @@ function queue_room(index, spawn_obj_name)
         return false;
     }
     
-    if (!is_string(spawn_obj_name))
+    with (obj_room_goto)
     {
-        log(queue_room, LOG_LEVELS.WARN, ["The given spawn object name is not a string as it should be. Cancelling out of the function early..."]);
-        return false;
-    }
-    
-    global.target_room = index;
-    
-    var instances = room_get_info(global.target_room, false, true, false, false, false, false).instances;
-    var instances_count = array_length(instances);
-    
-    for (var i = 0; i < instances_count; i++)
-    {
-        var instance = instances[i];
-        var object_name = instance.object_index;
-        
-        if (object_name != spawn_obj_name)
-            continue;
-        
-        var sprite = object_get_sprite(asset_get_index(object_name));
-        
-        var spawn_x = instance.x - sprite_get_xoffset(sprite);
-        var spawn_y = instance.y - sprite_get_yoffset(sprite);
-        
-        if (global.target_spawn_align[0] != 0)
-            spawn_x += sprite_get_width(sprite) / global.target_spawn_align[0];
-        if (global.target_spawn_align[1] != 0)
-            spawn_y += sprite_get_height(sprite) / global.target_spawn_align[1];
-        
-        global.target_spawn_pos = [spawn_x, spawn_y];
-        break;
+        target_room = index;
+        target_spawn = spawn;
     }
     
     return true;
-}
-
-function add_spawn_offset(x, y)
-{
-    global.target_spawn_pos[0] += x;
-    global.target_spawn_pos[1] += y;
 }
 
 function goto_room()
 {
-    if (!room_exists(global.target_room))
-    {
-        log(goto_room, LOG_LEVELS.WARN, ["The target room index is ", global.target_room, ", which is not a room or it doesn't exist. Cancelling out of the function early..."]);
-        return false;
-    }
+    with (obj_room_goto)
+        event_user(0);
     
-    room_goto(global.target_room);
-    
-    with (par_player)
-    {
-        xstart = global.target_spawn_pos[0];
-        ystart = global.target_spawn_pos[1];
-        
-        x = xstart;
-        y = ystart;
-    }
-    
-    return true;
 }
 
-function trans_room(transition_object, event_path = sfx_transition_fade)
+function trans_room(transition_obj, event_path = sfx_transition_fade)
 {
-    if (!room_exists(global.target_room))
+    if (!object_exists(transition_obj))
     {
-        log(trans_room, LOG_LEVELS.WARN, ["The target room index is ", global.target_room, ", which is not a room or it doesn't exist. Cancelling out of the function early..."]);
-        return false;
+        log(trans_room, LOG_LEVELS.WARN, ["The given transition object is ", transition_obj, ", which is not an object or it doesn't exist. Cancelling out of the function early..."]);
+        return noone;
     }
     
-    if (instance_exists(par_roomtransition))
-        instance_destroy(par_roomtransition);
+    if (object_get_parent(transition_obj) != par_roomtransition)
+    {
+        log(trans_room, LOG_LEVELS.WARN, ["The given transition objects parent is ", object_get_parent(transition_obj), ", which is incorrect as it always should be par_roomtransition. Cancelling out of the function early..."]);
+        return noone;
+    }
     
-    var event_id = fmod_studio_system_get_event(event_path);
+    with (par_roomtransition)
+        instance_destroy();
     
-    if (fmod_studio_event_description_is_valid(event_id))
-        sound_instance_one_shot(event_path);
+    if (is_string(event_path))
+    {
+        var event_id = fmod_studio_system_get_event(event_path);
+        
+        if (fmod_studio_event_description_is_valid(event_id))
+            sound_instance_one_shot(event_path);
+    }
     
-    return instance_create(0, 0, transition_object);
+    return instance_create(0, 0, transition_obj);
+}
+
+// Getters
+
+function get_target_room()
+{
+    return obj_room_goto.target_room;
+}
+
+
+function get_target_spawn()
+{
+    return obj_room_goto.target_spawn;
+}
+
+
+function get_spawn_xalign()
+{
+    return obj_room_goto.spawn_xalign;
+}
+
+
+function get_spawn_yalign()
+{
+    return obj_room_goto.spawn_yalign;
+}
+
+
+function get_spawn_xoffset()
+{
+    return obj_room_goto.spawn_xoffset;
+}
+
+
+function get_spawn_yoffset()
+{
+    return obj_room_goto.spawn_yoffset;
 }

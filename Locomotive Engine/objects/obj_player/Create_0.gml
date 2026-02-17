@@ -20,8 +20,8 @@
 #macro PLAYER_WALLCLIMB (PLAYER_HIT_WALL && (!grounded || (grounded && groundedSlope)))
 #macro PLAYER_DIVE (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
 #macro PLAYER_DIVEBOMB (InputPressed(INPUT_VERB.JUMP) && !grounded)
-#macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && !grounded && player_get_mach_stage() >= 3) 
-#macro PLAYER_SJUMP_PREPARE (InputPressed(INPUT_VERB.UP) && grounded && player_get_mach_stage() >= 3)   
+#macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && InputCheck(INPUT_VERB.JUMP) && !grounded && player_get_mach_stage() >= 3) 
+#macro PLAYER_SJUMP_PREPARE (InputCheck(INPUT_VERB.UP) && grounded && player_get_mach_stage() >= 3)   
 #macro PLAYER_SJUMP_RELEASE (!InputCheck(INPUT_VERB.UP) && grounded) 
 
 /////////////////////////////
@@ -88,7 +88,7 @@ hurt_function = stun_function;
 // Character Set-up
 /////////////////////////////
 
-character = CHARS.NOISE;
+character = CHARS.DAMIAN;
 cache_charsprites(character);
 
 sfx_step = get_charsnd(sfx_damian_step, character);
@@ -183,6 +183,10 @@ wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
 });
 
 // Warp Pipe
+
+warppipe_failsave_timer = new Timer(3, time_source_units_seconds, function() {
+    smc_set_state(state_player_normal);
+});
 
 warppipe_id = noone;
 
