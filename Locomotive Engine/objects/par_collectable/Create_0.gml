@@ -1,5 +1,7 @@
 check_saveroom();
 
+event_path = sfx_collectable;
+
 value = 10;
 magnetize_speed = 5;
 
