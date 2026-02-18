@@ -12,3 +12,9 @@ function bsign(boolean)
 {
     return (!boolean) ? -1 : 1;
 }
+
+function get_lerp_number(_start,_end,_pct)
+{
+	//i cant remember if i may be absoloutely fucking stupid for this but idk
+	return (_end - _start) * _pct
+}
