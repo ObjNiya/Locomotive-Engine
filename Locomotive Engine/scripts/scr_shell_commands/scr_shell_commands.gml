@@ -23,6 +23,15 @@ function meta_noclip()
     }
 }
 
+function sh_goto_room(args)
+{
+    var rm = asset_get_index(args[1]);
+    var spawn = asset_get_index(args[2]);
+    
+    queue_room(rm, spawn);
+    trans_room(obj_roomtrans_fade, -1);
+}
+
 /// @ignore
 function sh_game_restart()
 {

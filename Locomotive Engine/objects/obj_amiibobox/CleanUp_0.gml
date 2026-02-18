@@ -1,0 +1,1 @@
+fmod_event_kill(snd)
