@@ -8,6 +8,11 @@
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -26,7 +31,7 @@
   "origin":0,
   "parent":{
     "name":"Tutorial",
-    "path":"folders/Sprites/Backgrounds/Levels/Tutorial.yy",
+    "path":"folders/Sprites/World/Tutorial.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -81,8 +86,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_tutorial",
+    "path":"texturegroups/texgroup_tutorial",
   },
   "type":0,
   "VTile":false,

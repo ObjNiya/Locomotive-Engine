@@ -6,7 +6,7 @@ function state_player_taunt_start()
     stored_sprite_index = sprite_index;
     stored_image_index = image_index;
     
-    sprite_index_set(spr_taunt, irandom(sprite_get_number(spr_taunt)));
+    sprite_set(spr_taunt, irandom(sprite_get_number(spr_taunt)));
     
     stored_vsp = vsp;
     stored_hsp = hsp;

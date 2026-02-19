@@ -8,6 +8,11 @@
   "bbox_top":14,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -31,7 +36,7 @@
   ],
   "name":"spr_groundpound_intro_damian",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Ground Pound",
     "path":"folders/Sprites/Player/Damian/Ground Pound.yy",
@@ -108,13 +113,13 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":50,
-    "yorigin":20,
+    "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_damian",
+    "path":"texturegroups/texgroup_damian",
   },
   "type":0,
   "VTile":false,

@@ -6,8 +6,8 @@
   "name":"par_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parents",
-    "path":"folders/Objects/Parents.yy",
+    "name":"Player",
+    "path":"folders/Objects/Game Structure/Player.yy",
   },
   "parentObjectId":null,
   "persistent":false,

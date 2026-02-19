@@ -1,3 +1,7 @@
+/**
+ * This function will add the current instances' sprite drawing information as a collect effect to the GUI Points Book.
+ * @parameter {Real} value How many points to add when the collect effect reaches the Points Book.
+ */
 function hud_pointsbook_add_collect_effect(value)
 {
     var collect_effect = new Sprite(sprite_index);
@@ -19,7 +23,5 @@ function hud_pointsbook_add_collect_effect(value)
     }
     
     with (obj_hud_pointsbook)
-        array_push(collectable_effect_array, collect_effect);       
-        
-    return collect_effect;
+        array_push(collectable_effect_array, collect_effect);
 }

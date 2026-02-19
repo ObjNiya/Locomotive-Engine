@@ -1,6 +1,6 @@
 check_saveroom();
 
-depth = 1;
+depth = DEPTHS.FAR;
 
 /////////////////////////////
 // Sprite variables

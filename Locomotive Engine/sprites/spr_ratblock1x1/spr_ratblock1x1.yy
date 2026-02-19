@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"levelstructure_group\", \"path\":\"texturegroups/levelstructure_group\" }",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -32,8 +35,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Crazii Lawn",
-    "path":"folders/Sprites/Level Structure/Destructibles/Ratblock Small/Crazii Lawn.yy",
+    "name":"Ratblock",
+    "path":"folders/Sprites/Level Structure/Destructibles/Ratblock.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -66,8 +69,8 @@
     },
     "name":"spr_ratblock1x1",
     "playback":1,
-    "playbackSpeed":1.0,
-    "playbackSpeedType":1,
+    "playbackSpeed":20.0,
+    "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "showBackdrop":true,
@@ -94,8 +97,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_levelstructure",
+    "path":"texturegroups/texgroup_levelstructure",
   },
   "type":0,
   "VTile":false,

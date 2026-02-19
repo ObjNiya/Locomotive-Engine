@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_sjump_prepare_start()
 {
-    sprite_index_set(spr_sjump_prepare_intro, 0);
+    sprite_set(spr_sjump_prepare_intro, 0);
     image_xscale = abs(image_xscale);
     
     mask_index = spr_crouchmask;

@@ -19,24 +19,40 @@ previous_window_height = window_get_height();
 
 // Application surface set-up
 
-application_x = 0;
-application_y = 0;
+app_x = 0;
+app_y = 0;
 
-application_width = GAME_WIDTH;
-application_height = GAME_HEIGHT;
+app_width = GAME_WIDTH;
+app_height = GAME_HEIGHT;
 
-application_scale = 1;
+app_scale = 1;
 
 application_surface_draw_enable(false);
-surface_resize(application_surface, application_width, application_height);
+surface_resize(application_surface, app_width, app_height);
 
 event_user(0);
+
+// Application surface user properties
+
+app_blend = c_white;
+app_alpha = 1;
+
+app_draw_prefix = function() {};
+app_draw_postfix = function() {};
 
 // GUI surface set-up
 
 gui_surface = -1;
 gui_scale = -1;
 gui_queue_resize = false;
+
+// GUI surface user properties
+
+gui_blend = c_white;
+gui_alpha = 1;
+
+gui_draw_prefix = function() {};
+gui_draw_postfix = function() {};
 
 // Other
 

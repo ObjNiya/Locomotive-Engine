@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"ConfigValues\":{\"Dev\":{\"groupParent\":\"null\",\"compressFormat\":\"bz2\",\"loadType\":\"default\"}},\"%Name\":\"Default\",\"isScaled\":true,\"compressFormat\":\"bz2\",\"customOptions\":\"\",\"loadType\":\"default\",\"directory\":\"\",\"autocrop\":true,\"border\":2,\"mipsToGenerate\":0,\"groupParent\":null,\"targets\":-1,\"resourceType\":\"GMTextureGroup\",\"resourceVersion\":\"2.0\",\"name\":\"Default\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -174,8 +177,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_levelstructure",
+    "path":"texturegroups/texgroup_levelstructure",
   },
   "type":0,
   "VTile":false,

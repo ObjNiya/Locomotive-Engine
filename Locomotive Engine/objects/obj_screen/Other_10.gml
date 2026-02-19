@@ -1,9 +1,9 @@
-// Application Surface
+// app Surface
 
 if (scaling_mode == SCALING_MODES.STRETCH)
 {
-    application_width = window_get_width();
-    application_height = window_get_height();
+    app_width = window_get_width();
+    app_height = window_get_height();
     
     exit;
 }
@@ -11,17 +11,17 @@ if (scaling_mode == SCALING_MODES.STRETCH)
 var window_xscale = window_get_width() / GAME_WIDTH;
 var window_yscale = window_get_height() / GAME_HEIGHT;
 
-application_scale = min(window_xscale, window_yscale);
-if (scaling_mode == SCALING_MODES.PIXEL_PERFECT && application_scale > 1)
-    application_scale = 1;
+app_scale = min(window_xscale, window_yscale);
+if (scaling_mode == SCALING_MODES.PIXEL_PERFECT && app_scale > 1)
+    app_scale = 1;
 
-var floor_application_scale = floor(application_scale);
+var floor_app_scale = floor(app_scale);
 
-if (scaling_mode == SCALING_MODES.INTEGER && floor_application_scale != 0)
-    application_scale = floor_application_scale;  
+if (scaling_mode == SCALING_MODES.INTEGER && floor_app_scale != 0)
+    app_scale = floor_app_scale;  
 
-application_width = GAME_WIDTH * application_scale;
-application_height = GAME_HEIGHT * application_scale;
+app_width = GAME_WIDTH * app_scale;
+app_height = GAME_HEIGHT * app_scale;
 
-application_width = max(application_width, 1);
-application_height = max(application_height, 1);
+app_width = max(app_width, 1);
+app_height = max(app_height, 1);
