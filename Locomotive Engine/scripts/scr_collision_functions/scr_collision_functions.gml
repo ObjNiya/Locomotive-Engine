@@ -1,0 +1,4 @@
+function collide_slope()
+{
+    
+}

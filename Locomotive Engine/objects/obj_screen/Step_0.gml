@@ -8,10 +8,10 @@ event_user(0);
 
 // Take the changes from User Event 0 into account
 
-application_x = (window_get_width() / 2) - (application_width / 2);
-application_y = (window_get_height() / 2) - (application_height / 2);
+app_x = (window_get_width() / 2) - (app_width / 2);
+app_y = (window_get_height() / 2) - (app_height / 2);
 
-if (application_width != surface_get_width(application_surface) || application_height != surface_get_height(application_surface))
-    surface_resize(application_surface, application_width, application_height);
+if (app_width != surface_get_width(application_surface) || app_height != surface_get_height(application_surface))
+    surface_resize(application_surface, app_width, app_height);
 
 event_user(1);

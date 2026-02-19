@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"player_group\", \"path\":\"texturegroups/player_group\" }",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -98,8 +101,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_damian",
+    "path":"texturegroups/texgroup_damian",
   },
   "type":0,
   "VTile":false,

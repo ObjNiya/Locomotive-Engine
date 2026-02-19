@@ -9,8 +9,8 @@
   "name":"obj_collectable_big",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Objects/Level Structure.yy",
+    "name":"Collectables",
+    "path":"folders/Objects/Level Structure/Collectables.yy",
   },
   "parentObjectId":{
     "name":"par_collectable",

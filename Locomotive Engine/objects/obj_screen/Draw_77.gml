@@ -1,2 +1,5 @@
-draw_surface(application_surface, application_x, application_y);
-draw_rectangle(application_x, application_y, application_x + application_width + 1, application_y + application_height + 1, true);
+app_draw_prefix();
+draw_surface_ext(application_surface, app_x, app_y, 1, 1, 0, app_blend, app_alpha);
+app_draw_postfix();
+
+draw_rectangle(app_x, app_y, app_x + app_width + 1, app_y + app_height + 1, true);

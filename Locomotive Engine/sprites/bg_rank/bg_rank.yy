@@ -12,6 +12,9 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"levelstructure_group\",\"path\":\"texturegroups/levelstructure_group\"}",
     },
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -30,8 +33,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Misc.",
-    "path":"folders/Sprites/Backgrounds/Misc..yy",
+    "name":"Rank",
+    "path":"folders/Sprites/Cutscene/Rank.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -86,8 +89,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_levelstructure",
+    "path":"texturegroups/texgroup_levelstructure",
   },
   "type":0,
   "VTile":false,

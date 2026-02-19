@@ -8,6 +8,11 @@
   "bbox_top":2,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Debug":{
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -25,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Hub",
-    "path":"folders/Sprites/Hub.yy",
+    "name":"Cutscene",
+    "path":"folders/Sprites/Cutscene.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -81,8 +86,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_hub",
+    "path":"texturegroups/texgroup_hub",
   },
   "type":0,
   "VTile":false,
