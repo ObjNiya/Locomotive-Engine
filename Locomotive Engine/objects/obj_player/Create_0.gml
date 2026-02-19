@@ -108,7 +108,7 @@ smc_set_state(state_player_normal);
 /////////////////////////////
 // General state variables
 /////////////////////////////
-alarm[1] = 60  * 5
+
 jump_height = -11;
 jumpstop_divisor = 20;
 
@@ -227,78 +227,9 @@ blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
 });
 blur_afterimage_timer.set_ext(1, true);
 
-swapfollow = 0
 
 mach_afterimage_use_alpha = true;
 mach_afterimage_timer = new Timer(5, time_source_units_frames, function() {
     create_afterimage(x, y, obj_mach_afterimage);
 });
 mach_afterimage_timer.set_ext(1, true);
-with create_follower(,,par_toppin)
-{
-	spr_idle = spr_waddledee_stun
-	spr_walk = spr_waddledee_walk
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-
-
-with create_follower(,,par_toppin)
-{
-	spr_idle = spr_shyguy_stun
-	spr_walk = spr_shyguy
-	depth = other.depth + 1
-}
-
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-
-
-with create_follower(,,par_toppin)
-{
-	spr_idle = spr_patripi_idle
-	spr_walk = spr_patripi_near
-	depth = other.depth + 1
-}
-
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
-with create_follower(,,par_toppin)
-{
-	depth = other.depth + 1
-}
