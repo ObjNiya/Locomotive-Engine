@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_dashpad",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_patrick_pillar",
+  "eventList":[],
   "managed":true,
-  "name":"obj_dashpad",
+  "name":"obj_patrick_pillar",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/OLD OBJECTS/Objects.yy",
+    "name":"Level Structure",
+    "path":"folders/Objects/Level Structure.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_dashpad",
-    "path":"sprites/spr_dashpad/spr_dashpad.yy",
+    "name":"spr_patrick_cuck_chair",
+    "path":"sprites/spr_patrick_cuck_chair/spr_patrick_cuck_chair.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_dashpad",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_destroyable_oneway",
+  "eventList":[],
   "managed":true,
-  "name":"obj_dashpad",
+  "name":"obj_destroyable_oneway",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/OLD OBJECTS/Objects.yy",
+    "name":"Destroyables",
+    "path":"folders/Objects/Level Structure/Destroyables.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_dashpad",
-    "path":"sprites/spr_dashpad/spr_dashpad.yy",
+    "name":"spr_onewaydestroy",
+    "path":"sprites/spr_onewaydestroy/spr_onewaydestroy.yy",
   },
   "spriteMaskId":null,
   "visible":true,

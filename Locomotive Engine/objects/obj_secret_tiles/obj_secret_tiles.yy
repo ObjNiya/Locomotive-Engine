@@ -8,8 +8,8 @@
   "name":"obj_secret_tiles",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Objects/Level Structure.yy",
+    "name":"Gimmicks",
+    "path":"folders/Objects/Level Structure/Gimmicks.yy",
   },
   "parentObjectId":null,
   "persistent":false,

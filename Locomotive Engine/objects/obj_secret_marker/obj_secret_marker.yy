@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_secretfound",
+  "%Name":"obj_secret_marker",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_secretfound",
+  "name":"obj_secret_marker",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/OLD OBJECTS/Objects.yy",
+    "name":"Level Structure",
+    "path":"folders/Objects/Level Structure.yy",
   },
   "parentObjectId":null,
   "persistent":false,

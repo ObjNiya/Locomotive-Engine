@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_dashpad",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_outlet",
+  "eventList":[],
   "managed":true,
-  "name":"obj_dashpad",
+  "name":"obj_outlet",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/OLD OBJECTS/Objects.yy",
+    "name":"Gimmicks",
+    "path":"folders/Objects/Level Structure/Gimmicks.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -29,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_dashpad",
-    "path":"sprites/spr_dashpad/spr_dashpad.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

@@ -17,14 +17,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"df10e6d2-4ec3-4f99-8a38-a0b7f764ea72","name":"df10e6d2-4ec3-4f99-8a38-a0b7f764ea72","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5bd73424-a32b-44df-a5ea-90fb45023b89","name":"5bd73424-a32b-44df-a5ea-90fb45023b89","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"d653ca71-f5b8-425e-a4d9-804bb1c0e3b2","blendMode":0,"displayName":"default","isLocked":false,"name":"d653ca71-f5b8-425e-a4d9-804bb1c0e3b2","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"97660c5d-3f6d-4ea7-8a9a-c536ccb418f1","blendMode":0,"displayName":"default","isLocked":false,"name":"97660c5d-3f6d-4ea7-8a9a-c536ccb418f1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_secretmetalblock",
   "nineSlice":null,
@@ -64,8 +64,8 @@
     },
     "name":"spr_secretmetalblock",
     "playback":1,
-    "playbackSpeed":2.0,
-    "playbackSpeedType":1,
+    "playbackSpeed":0.0,
+    "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "seqHeight":64.0,
@@ -76,8 +76,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"df10e6d2-4ec3-4f99-8a38-a0b7f764ea72","path":"sprites/spr_secretmetalblock/spr_secretmetalblock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c5a4ba50-72b0-4357-b909-0538bb550907","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5bd73424-a32b-44df-a5ea-90fb45023b89","path":"sprites/spr_secretmetalblock/spr_secretmetalblock.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"8ac967d9-4238-4149-a796-1577d6863fd9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
