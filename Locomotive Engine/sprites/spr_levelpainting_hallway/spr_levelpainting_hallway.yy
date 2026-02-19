@@ -8,11 +8,6 @@
   "bbox_top":2,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -30,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Painting",
-    "path":"folders/Sprites/World/Hub/Painting.yy",
+    "name":"Hub",
+    "path":"folders/Sprites/Hub.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -64,7 +59,7 @@
     },
     "name":"spr_levelpainting_hallway",
     "playback":1,
-    "playbackSpeed":0.0,
+    "playbackSpeed":1.0,
     "playbackSpeedType":1,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -86,8 +81,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"texgroup_hub",
-    "path":"texturegroups/texgroup_hub",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

@@ -1,13 +1,5 @@
 global.levels = [];
 
-/**
- * This constructor will return a Lvl Struct, containing all the necessary data for a level.
- * @parameter {Asset.GMRoom} starting_room The first room of the level.
- * @parameter {Real} showtime_time The time the showtime timer starts at (in seconds).
- * @parameter {Real} s_rank_requirement How many points are required to get an s rank in the level.
- * @parameter {Real} titlecard_index The image index of the titlecards sprite that displays upon entering a level.
- * @parameter {Bool} has_secrets_and_treasure (OPTIONAL) Whether or not the level contains secrets and treasure to be collected.
- */
 function Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, has_secrets_and_treasure = true) constructor
 {
     rm = starting_room;
@@ -17,18 +9,9 @@ function Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, 
     has_collectables = has_secrets_and_treasure;
 }
 
-/**
- * This function will define a level using the Lvl constructor and insert it into the global levels array.
- * @parameter {Real} index Which index of the levels array to insert the level into.
- * @parameter {Asset.GMRoom} starting_room The first room of the level.
- * @parameter {Real} showtime_time The time the showtime timer starts at (in seconds).
- * @parameter {Real} s_rank_requirement How many points are required to get an s rank in the level.
- * @parameter {Real} titlecard_index The image index of the titlecards sprite that displays upon entering a level.
- * @parameter {Bool} has_secrets_and_treasure (OPTIONAL) Whether or not the level contains secrets and treasure to be collected.
- */
-function lvl_define(index, starting_room, showtime_time, s_rank_requirement, titlecard_index, has_secrets_and_treasure = true)
+function lvl_define(id, starting_room, showtime_time, s_rank_requirement, titlecard_index, has_secrets_and_treasure = true)
 {
-    array_insert(global.levels, index, new Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, has_secrets_and_treasure));
+    array_insert(global.levels, id, new Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, has_secrets_and_treasure));
 }
 
-__define_levels__();
+INIT__define_levels__();

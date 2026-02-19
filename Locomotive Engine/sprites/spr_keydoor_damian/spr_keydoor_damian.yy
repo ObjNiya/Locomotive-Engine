@@ -8,11 +8,6 @@
   "bbox_top":27,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -100,8 +95,8 @@
     },
     "name":"spr_keydoor_damian",
     "playback":1,
-    "playbackSpeed":20.0,
-    "playbackSpeedType":0,
+    "playbackSpeed":1.0,
+    "playbackSpeedType":1,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "showBackdrop":true,
@@ -230,8 +225,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_damian",
-    "path":"texturegroups/texgroup_damian",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

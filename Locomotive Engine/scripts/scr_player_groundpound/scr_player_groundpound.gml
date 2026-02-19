@@ -1,9 +1,9 @@
 /// @ignore
 function state_player_groundpound_start()
 {
-    sprite_set(spr_groundpound_intro, 0);
+    sprite_index_set(spr_groundpound_intro, 0);
     
-    accel = 0.5;
+    acceleration = 0.5;
     
     if (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == 0)
         hsp = 0;
@@ -31,7 +31,7 @@ function state_player_groundpound_step()
         if (groundedSlope)
         {
             smc_set_state(state_player_mach); 
-            sprite_set(spr_machroll_getup, 0);
+            sprite_index_set(spr_machroll_getup, 0);
             
             movespeed = abs(vsp);
             movespeed = clamp(movespeed, 10, 16);
@@ -43,9 +43,9 @@ function state_player_groundpound_step()
             return;
         }
         
-        if (!equals_to_any(sprite_index, [spr_groundpound_land, spr_divebomb_land]))
+        if (!equals_to_either(sprite_index, [spr_groundpound_land, spr_divebomb_land]))
         {
-            sprite_set((sprite_index == spr_divebomb) ? spr_divebomb_land : spr_groundpound_land, 0);
+            sprite_index_set((sprite_index == spr_divebomb) ? spr_divebomb_land : spr_groundpound_land, 0);
             image_speed = 1;
             
             hsp = 0;
@@ -70,7 +70,7 @@ function state_player_groundpound_step()
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
         smc_set_state(state_player_sjump);
-        sprite_set(spr_sjump_cancel_prepare, 0);
+        sprite_index_set(spr_sjump_cancel_prepare, 0);
         instance_destroy(obj_explosion_particle_alt);
         
         sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
@@ -97,7 +97,7 @@ function state_player_groundpound_step()
     }
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    accel = abs(hsp) > 8 ? 0.05 : 0.25;
+    acceleration = abs(hsp) > 8 ? 0.05 : 0.25;
     
     if (dir != sign_input_x)
     {
@@ -105,7 +105,7 @@ function state_player_groundpound_step()
         dir = sign_input_x;
     }
     else
-        hsp = approach(hsp, movespeed * dir, accel);
+        hsp = approach(hsp, movespeed * dir, acceleration);
     
     if (sprite_index == spr_divebomb)
         image_xscale = 1;

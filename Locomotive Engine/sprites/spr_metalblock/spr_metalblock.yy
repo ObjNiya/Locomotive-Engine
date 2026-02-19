@@ -8,11 +8,6 @@
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -32,8 +27,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Big",
-    "path":"folders/Sprites/Level Structure/Destructibles/Big.yy",
+    "name":"Metal",
+    "path":"folders/Sprites/Level Structure/Destructibles/Metal.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -96,8 +91,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_levelstructure",
-    "path":"texturegroups/texgroup_levelstructure",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

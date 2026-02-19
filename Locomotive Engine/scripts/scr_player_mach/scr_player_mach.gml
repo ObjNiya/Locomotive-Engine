@@ -22,20 +22,20 @@ function state_player_mach_start()
     if (dir == 0)
         dir = sign(image_xscale);
     
-    accel = 0.1;
+    acceleration = 0.1;
     
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.start();
     
     if (!grounded && player_get_mach_stage() <= 2)
     {
-        sprite_set(spr_mach2_jump_intro, 0);
+        sprite_index_set(spr_mach2_jump_intro, 0);
         return;
     }
     
     switch (player_get_mach_stage())
     { 
-        case 1: sprite_set(spr_mach1, 0) break; 
+        case 1: sprite_index_set(spr_mach1, 0) break; 
         case 2: sprite_index = spr_mach2 break;
         case 3:
         case 4:     
@@ -52,14 +52,14 @@ function state_player_mach_start()
 /// @ignore
 function state_player_mach_step()
 {
-    var accels = [0.1, 0.1, 0.025, 0.1];
+    var accelerations = [0.1, 0.1, 0.025, 0.1];
     
     var mach_stage = player_get_mach_stage();
-    accel = accels[mach_stage - 1] * grounded;
+    acceleration = accelerations[mach_stage - 1] * grounded;
     
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
-    movespeed += accel * (sign_input_x == dir || mach_stage <= 2);
+    movespeed += acceleration * (sign_input_x == dir || mach_stage <= 2);
     movespeed = median(6, movespeed, 20);
     
     hsp = movespeed * dir;
@@ -183,15 +183,15 @@ function state_player_mach_step()
         case 2:
             strength = 1;
             
-            if (!grounded && !equals_to_any(sprite_index, [spr_mach2_jump_intro, spr_mach2_jump, spr_longjump_intro, spr_longjump, spr_walljump_intro, spr_walljump]))
-                sprite_set(spr_mach2_jump_intro, 0);
+            if (!grounded && !equals_to_either(sprite_index, [spr_mach2_jump_intro, spr_mach2_jump, spr_longjump_intro, spr_longjump, spr_walljump_intro, spr_walljump]))
+                sprite_index_set(spr_mach2_jump_intro, 0);
             
             if (sprite_index == spr_mach1)
                 animation_end(spr_mach2);
             else if (play_regular_sprite)
                 sprite_index = spr_mach2;
             
-            if (equals_to_any(sprite_index, [spr_mach1, spr_mach2]))
+            if (equals_to_either(sprite_index, [spr_mach1, spr_mach2]))
                 image_speed = (movespeed / 5.5);
             
             if (grounded)
@@ -209,7 +209,7 @@ function state_player_mach_step()
             
             animation_end_ext((sprite_index == spr_mach3_hit_enemy), spr_mach3);
             
-            if (mach_stage >= 4 && !equals_to_any(sprite_index, [spr_longjump_intro, spr_longjump]))
+            if (mach_stage >= 4 && !equals_to_either(sprite_index, [spr_longjump_intro, spr_longjump]))
             {
                 if (sprite_index != spr_mach4)
                 {
@@ -229,7 +229,7 @@ function state_player_mach_step()
             
             animation_end_ext((sprite_index == spr_sjump_cancel_intro), spr_sjump_cancel);
             
-            if (grounded || equals_to_any(sprite_index, [spr_sjump_cancel_intro, spr_sjump_cancel, spr_mach3_jump, spr_mach4]))
+            if (grounded || equals_to_either(sprite_index, [spr_sjump_cancel_intro, spr_sjump_cancel, spr_mach3_jump, spr_mach4]))
             {
                 create_particle_repeating(x, y + 45, obj_mach3_cloud_particle);
                 

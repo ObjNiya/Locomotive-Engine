@@ -8,11 +8,6 @@
   "bbox_top":6,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -51,8 +46,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"HUD",
-    "path":"folders/Sprites/HUD.yy",
+    "name":"HUB",
+    "path":"folders/Sprites/HUD/HUB.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -115,8 +110,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_hub",
-    "path":"texturegroups/texgroup_hub",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

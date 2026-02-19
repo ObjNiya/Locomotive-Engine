@@ -10,8 +10,8 @@
   "name":"obj_collectable_showtime_big",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collectables",
-    "path":"folders/Objects/Level Structure/Collectables.yy",
+    "name":"Level Structure",
+    "path":"folders/Objects/Level Structure.yy",
   },
   "parentObjectId":{
     "name":"par_collectable",

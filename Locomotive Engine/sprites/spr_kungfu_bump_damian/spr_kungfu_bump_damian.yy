@@ -8,11 +8,6 @@
   "bbox_top":21,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -37,7 +32,7 @@
   ],
   "name":"spr_kungfu_bump_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Kung Fu",
     "path":"folders/Sprites/Player/Damian/Kung Fu.yy",
@@ -116,14 +111,14 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":100,
+    "xorigin":115,
     "yorigin":54,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_damian",
-    "path":"texturegroups/texgroup_damian",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

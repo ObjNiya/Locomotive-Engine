@@ -3,7 +3,6 @@
   "%Name":"obj_hallway",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"par_player","path":"objects/par_player/par_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_hallway",
@@ -12,10 +11,7 @@
     "name":"Room Structure",
     "path":"folders/Objects/Room Structure.yy",
   },
-  "parentObjectId":{
-    "name":"par_room_switcher",
-    "path":"objects/par_room_switcher/par_room_switcher.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -29,7 +25,12 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"target_room","filters":[
+        "GMRoom",
+      ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"target_spawnpoint","filters":[],"listItems":[],"multiselect":false,"name":"target_spawnpoint","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"A","varType":2,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

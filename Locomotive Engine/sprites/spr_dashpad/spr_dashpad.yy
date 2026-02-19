@@ -8,11 +8,6 @@
   "bbox_top":32,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -40,8 +35,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Gimmicks",
-    "path":"folders/Sprites/Level Structure/Gimmicks.yy",
+    "name":"Level Structure",
+    "path":"folders/Sprites/Level Structure.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -128,8 +123,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_levelstructure",
-    "path":"texturegroups/texgroup_levelstructure",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

@@ -1,5 +1,5 @@
 /// @ignore
-function __define_levels__()
+function INIT__define_levels__()
 {
     enum LVLS
     {

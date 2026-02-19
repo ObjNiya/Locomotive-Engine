@@ -6,7 +6,7 @@ function state_player_crouch_start()
     image_speed = 1;
     
     if (sign(hsp) == 0)
-        sprite_set(spr_crouch_intro, 0);
+        sprite_index_set(spr_crouch_intro, 0);
     else
         sprite_index = spr_crawl;
 }
@@ -44,7 +44,7 @@ function state_player_crouch_step()
         return;
     }
     
-    if (!equals_to_any(sprite_index, [spr_crouch_jump, spr_crouch_fall]) || (sprite_index == spr_crouch_jump && animation_end()))
+    if (!equals_to_either(sprite_index, [spr_crouch_jump, spr_crouch_fall]) || (sprite_index == spr_crouch_jump && animation_end()))
         sprite_index = spr_crouch_fall;
 }
 

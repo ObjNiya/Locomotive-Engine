@@ -20,7 +20,7 @@ function state_player_machturn_step()
     
     if (movespeed <= 0 && grounded)
     {
-        var mach3 = (equals_to_any(sprite_index, [spr_mach3_turn_intro, spr_mach3_turn]));
+        var mach3 = (equals_to_either(sprite_index, [spr_mach3_turn_intro, spr_mach3_turn]));
         
         strength = real(mach3) + 1;
         
@@ -30,7 +30,7 @@ function state_player_machturn_step()
         image_xscale = dir;
         
         smc_set_state(state_player_mach);
-        sprite_set((mach3) ? spr_mach3 : spr_mach2, 0);
+        sprite_index_set((mach3) ? spr_mach3 : spr_mach2, 0);
             
         return;
     }

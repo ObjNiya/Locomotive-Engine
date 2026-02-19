@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"levelstructure_group\", \"path\":\"texturegroups/levelstructure_group\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -101,8 +98,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"texgroup_levelstructure",
-    "path":"texturegroups/texgroup_levelstructure",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

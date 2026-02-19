@@ -1,10 +1,10 @@
 /// @ignore
 function state_player_uppercut_start()
 {
-    sprite_set(spr_uppercut, 0);
+    sprite_index_set(spr_uppercut, 0);
     
     movespeed = 8;
-    accel = 0.5;
+    acceleration = 0.5;
     
     if (abs(hsp) > 18)
         hsp = 18 * dir;
@@ -27,7 +27,7 @@ function state_player_uppercut_step()
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     if (dir != sign(hsp) || abs(hsp) < movespeed)
-        hsp = approach(hsp, movespeed * dir, accel);
+        hsp = approach(hsp, movespeed * dir, acceleration);
     
     if (animation_end())
         image_speed = 0;

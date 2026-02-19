@@ -8,11 +8,6 @@
   "bbox_top":83,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -38,8 +33,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Cutscene",
-    "path":"folders/Sprites/Cutscene.yy",
+    "name":"Other",
+    "path":"folders/Sprites/Cutscene/Other.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -110,7 +105,10 @@
               },"Disabled":false,"id":"b776e797-87a6-4c88-8d9c-0d6caa1ddb84","IsCreationKey":false,"Key":8.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
-    "visibleRange":null,
+    "visibleRange":{
+      "x":0.0,
+      "y":0.0,
+    },
     "volume":1.0,
     "xorigin":300,
     "yorigin":100,
@@ -118,8 +116,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_levelstructure",
-    "path":"texturegroups/texgroup_levelstructure",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

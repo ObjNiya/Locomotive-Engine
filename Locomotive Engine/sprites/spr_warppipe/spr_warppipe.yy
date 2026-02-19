@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Room Structure",
-    "path":"folders/Sprites/Room Structure.yy",
+    "name":"Level Structure",
+    "path":"folders/Sprites/Level Structure.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,10 +1,7 @@
-/**
- * This function will set up all of the required variables to make the player jump.
- */
 function player_setup_jump()
 {
     coyote_jump();
-    sprite_set(spr_jump, 0);
+    sprite_index_set(spr_jump, 0);
     instance_create(x, y + 45, obj_jump_particle);
     
     sound_instance_one_shot(sfx_jump, x, y);
@@ -12,13 +9,10 @@ function player_setup_jump()
     vsp = jump_height;
 }
 
-/**
- * This function will set up all of the required variables to make the player crouch jump.
- */
 function player_setup_crouch_jump()
 {
     coyote_jump();
-    sprite_set(spr_crouch_jump, 0);
+    sprite_index_set(spr_crouch_jump, 0);
     instance_create(x, y + 45, obj_jump_particle);
     
     sound_instance_one_shot(sfx_jump, x, y);
@@ -26,14 +20,11 @@ function player_setup_crouch_jump()
     vsp = crouch_jump_height;
 }
 
-/**
- * This function will set up all of the required variables to make the player long jump.
- */
 function player_setup_longjump()
 {
     coyote_jump();
     smc_set_state(state_player_mach);
-    sprite_set(spr_longjump_intro, 0);
+    sprite_index_set(spr_longjump_intro, 0);
     create_particle(x, y + 45, obj_jump_particle);
     
     sound_instance_start(snd_roll_getup);
@@ -42,13 +33,10 @@ function player_setup_longjump()
     vsp = jump_height;
 }   
 
-/**
- * This function will set up all of the required variables to make the player mach jump.
- */
 function player_setup_mach_jump()
 {
     coyote_jump();
-    sprite_set((player_get_mach_stage() >= 3) ? spr_mach3_jump : spr_mach2_jump_intro, 0);
+    sprite_index_set((player_get_mach_stage() >= 3) ? spr_mach3_jump : spr_mach2_jump_intro, 0);
     create_particle(x, y + 45, obj_jump_particle);
     
     sound_instance_one_shot(sfx_jump, x, y);
@@ -56,9 +44,6 @@ function player_setup_mach_jump()
     vsp = jump_height;
 }
 
-/**
- * This function will set up all of the required variables to make the player grabdash bump.
- */
 function player_setup_grabdash_bump()
 {
     smc_set_state(state_player_normal);
@@ -73,9 +58,6 @@ function player_setup_grabdash_bump()
     sprite_index = spr_grabdash_bump;
 }
 
-/**
- * This function will set up all of the required variables to make the player wallsplat.
- */
 function player_setup_wallsplat()
 {
     smc_set_state(state_player_animation);
@@ -88,9 +70,6 @@ function player_setup_wallsplat()
     grav = 0;
 }
 
-/**
- * This function will set up all of the required variables to make the player wallcrash.
- */
 function player_setup_wallcrash()
 {
     smc_set_state(state_player_animation);
@@ -104,9 +83,6 @@ function player_setup_wallcrash()
     grounded = false;
 }
 
-/**
- * This function will set up all of the required variables to make the player hit the ceiling.
- */
 function player_setup_hit_ceiling()
 {
     smc_set_state(state_player_animation);

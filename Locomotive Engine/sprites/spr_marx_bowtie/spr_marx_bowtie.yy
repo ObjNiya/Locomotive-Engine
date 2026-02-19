@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"baddie_group\", \"path\":\"texturegroups/baddie_group\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -77,8 +74,8 @@
     },
     "name":"spr_marx_bowtie",
     "playback":1,
-    "playbackSpeed":20.0,
-    "playbackSpeedType":0,
+    "playbackSpeed":1.0,
+    "playbackSpeedType":1,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "showBackdrop":true,
@@ -129,8 +126,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_levelstructure",
-    "path":"texturegroups/texgroup_levelstructure",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

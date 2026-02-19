@@ -134,7 +134,7 @@
   "origin":0,
   "parent":{
     "name":"General Fonts",
-    "path":"folders/Sprites/General Fonts.yy",
+    "path":"folders/Sprites/HUD/General Fonts.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

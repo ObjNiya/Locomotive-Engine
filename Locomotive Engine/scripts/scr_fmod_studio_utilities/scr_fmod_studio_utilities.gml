@@ -19,19 +19,9 @@ function fmod_studio_event_instance_move(event_instance_ref, x, y)
 function fmod_studio_event_instance_move_several(event_instance_refs, x, y)
 {
     var event_instance_count = array_length(event_instance_refs);
-    var fmod_3d_attributes = new Fmod3DAttributes();
-    
-    with (fmod_3d_attributes)
-    {
-        position.x = x;
-        position.y = y;
-        
-        forward.z = 1;
-        up.y = 1;
-    }
     
     for (var i = 0; i < event_instance_count; i++)
-        fmod_studio_event_instance_set_3d_attributes(event_instance_refs[i], fmod_3d_attributes);
+        fmod_studio_event_instance_move(event_instance_refs[i], x, y);
 }
 
 function fmod_studio_event_instance_create(event_description_ref, x = 0, y = 0)

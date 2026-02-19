@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -31,7 +28,7 @@
   ],
   "name":"spr_palette_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":0,
   "parent":{
     "name":"Palettes",
     "path":"folders/Sprites/Player/Damian/Palettes.yy",
@@ -85,14 +82,14 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":22,
-    "yorigin":4,
+    "xorigin":0,
+    "yorigin":0,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_damian",
-    "path":"texturegroups/texgroup_damian",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

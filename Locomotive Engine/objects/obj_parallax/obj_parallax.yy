@@ -9,8 +9,8 @@
   "name":"obj_parallax",
   "overriddenProperties":[],
   "parent":{
-    "name":"Effects",
-    "path":"folders/Objects/Effects.yy",
+    "name":"Game Structure",
+    "path":"folders/Objects/Game Structure.yy",
   },
   "parentObjectId":null,
   "persistent":true,

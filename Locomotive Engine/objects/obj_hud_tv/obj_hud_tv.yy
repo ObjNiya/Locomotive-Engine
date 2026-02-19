@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_turnon_damiantv",
-    "path":"sprites/spr_turnon_damiantv/spr_turnon_damiantv.yy",
+    "name":"spr_tv_turnon_damian",
+    "path":"sprites/spr_tv_turnon_damian/spr_tv_turnon_damian.yy",
   },
   "spriteMaskId":null,
   "visible":true,

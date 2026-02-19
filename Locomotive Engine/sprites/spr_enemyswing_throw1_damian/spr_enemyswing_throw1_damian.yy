@@ -8,11 +8,6 @@
   "bbox_top":1,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -32,7 +27,7 @@
   ],
   "name":"spr_enemyswing_throw1_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Enemy Swing",
     "path":"folders/Sprites/Player/Damian/Enemy Swing.yy",
@@ -96,14 +91,14 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":62,
+    "xorigin":70,
     "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_damian",
-    "path":"texturegroups/texgroup_damian",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

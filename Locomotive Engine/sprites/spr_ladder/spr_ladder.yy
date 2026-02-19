@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Collisions",
-    "path":"folders/Sprites/Game Structure/Collisions.yy",
+    "name":"Level Structure",
+    "path":"folders/Sprites/Level Structure.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

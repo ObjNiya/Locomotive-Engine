@@ -3,10 +3,10 @@ function state_player_wallclimb_start()
 {
     sprite_index = spr_wallclimb;
     
-    vert_movespeed = movespeed;
-    vert_movespeed = max(0, vert_movespeed);
+    vertical_movespeed = movespeed;
+    vertical_movespeed = max(0, vertical_movespeed);
     
-    vert_accel = 0.15;
+    vertical_acceleration = 0.15;
     
     hsp = 0;
     movespeed = 0;
@@ -39,7 +39,7 @@ function state_player_wallclimb_step()
     if (InputPressed(INPUT_VERB.JUMP))
     {
         smc_set_state(state_player_mach);
-        sprite_set(spr_walljump_intro, 0);
+        sprite_index_set(spr_walljump_intro, 0);
         
         sound_instance_one_shot(sfx_jump, x, y);
         
@@ -70,12 +70,12 @@ function state_player_wallclimb_step()
     
     wallclimb_dash_timer.step();
     
-    vert_accel = (sprite_index == spr_wallclimb_dash) ? 0.3 : 0.15;
+    vertical_acceleration = (sprite_index == spr_wallclimb_dash) ? 0.3 : 0.15;
     
-    if (vert_movespeed < 20)
-        vert_movespeed += vert_accel;
+    if (vertical_movespeed < 20)
+        vertical_movespeed += vertical_acceleration;
     
-    vsp = -vert_movespeed;
+    vsp = -vertical_movespeed;
     
     if (!PLAYER_HIT_WALL)
     {

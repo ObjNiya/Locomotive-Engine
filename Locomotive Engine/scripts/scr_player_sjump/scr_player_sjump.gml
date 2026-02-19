@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_sjump_start()
 {
-    sprite_set(spr_sjump, 0);
+    sprite_index_set(spr_sjump, 0);
     
     vsp = -12;
     hsp = 0;
@@ -33,7 +33,7 @@ function state_player_sjump_step()
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
-        sprite_set(spr_sjump_cancel_prepare, 0);
+        sprite_index_set(spr_sjump_cancel_prepare, 0);
         
         sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
         sound_instance_one_shot(sfx_player_sjump_cancel, x, y);

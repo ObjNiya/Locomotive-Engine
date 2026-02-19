@@ -20,7 +20,7 @@ tvbg_scroll = 0;
 /////////////////////////////
 
 idle_animation_timer = new Timer(4 + irandom_range(-1, 2), time_source_units_seconds, function() {
-    sprite_set(choose(spr_tv_idle_animation1, spr_tv_idle_animation2), 0);
+    sprite_index_set(choose(spr_tv_idle_animation1, spr_tv_idle_animation2), 0);
     
     max_time = 4 + irandom_range(-1, 2);
 })
@@ -67,7 +67,7 @@ current_expr = -1;
 expr_mach3 = define_expression(spr_tv_mach3_damian, function() {
     with (par_player)
     {
-        if (state_id == state_player_machturn && !equals_to_any(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
+        if (state_id == state_player_machturn && !equals_to_either(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
             return true;
         
         if (player_get_mach_stage() >= 3 && state_id == state_player_mach)
@@ -84,7 +84,7 @@ expr_mach3 = define_expression(spr_tv_mach3_damian, function() {
 expr_mach4 = define_expression(spr_tv_mach4_damian, function() {
     with (par_player)
     {
-        if (state_id == state_player_machturn && !equals_to_any(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
+        if (state_id == state_player_machturn && !equals_to_either(sprite_index, [spr_mach2_turn_intro, spr_mach2_turn]))
         {
             hud_tv_trigger_expression("mach3");
             return true;

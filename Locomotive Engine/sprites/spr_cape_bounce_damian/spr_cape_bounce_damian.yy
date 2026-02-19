@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"player_group\", \"path\":\"texturegroups/player_group\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -35,7 +32,7 @@
   ],
   "name":"spr_cape_bounce_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Cape",
     "path":"folders/Sprites/Player/Damian/Cape.yy",
@@ -101,14 +98,14 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":50,
+    "xorigin":44,
     "yorigin":50,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"texgroup_damian",
-    "path":"texturegroups/texgroup_damian",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

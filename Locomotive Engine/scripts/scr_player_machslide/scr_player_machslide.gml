@@ -18,7 +18,7 @@ function state_player_machslide_step()
     if (movespeed <= 0)
     {
         smc_set_state(state_player_normal);
-        sprite_set(spr_machslide_end, 0);
+        sprite_index_set(spr_machslide_end, 0);
         
         return;
     }

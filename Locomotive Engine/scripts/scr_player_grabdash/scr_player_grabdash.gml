@@ -3,7 +3,7 @@ function state_player_grabdash_start()
 {
     grabdash_airborne = !grounded;
     
-    accel = 0.5;
+    acceleration = 0.5;
     
     if (dir == 0)
         dir = image_xscale;
@@ -20,7 +20,7 @@ function state_player_grabdash_start()
     
     image_speed = 1;
     
-    sprite_set(spr_grabdash_intro, 0);
+    sprite_index_set(spr_grabdash_intro, 0);
     
     sound_instance_start(snd_grabdash);
     blur_afterimage_timer.start();
@@ -33,7 +33,7 @@ function state_player_grabdash_step()
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
 
     if (movespeed < 10)
-        movespeed += accel;
+        movespeed += acceleration;
     
     hsp = movespeed * dir;
     
@@ -62,7 +62,7 @@ function state_player_grabdash_step()
         smc_set_state(state_player_normal);
         if (!grounded && sign_input_x == -dir)
         {
-            sprite_set(spr_grabdash_cancel, 0);
+            sprite_index_set(spr_grabdash_cancel, 0);
             sound_instance_one_shot(sfx_player_grab_cancel, x, y);
         }
         
@@ -88,7 +88,7 @@ function state_player_grabdash_step()
     animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
     
     if (grabdash_airborne && grounded && sprite_index == spr_grabdash)
-        sprite_set(spr_grabdash_end, 0);
+        sprite_index_set(spr_grabdash_end, 0);
     
     if (grounded && movespeed > 5)
         create_particle_repeating(x, y + 45, obj_slide_cloud_particle);

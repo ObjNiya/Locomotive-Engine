@@ -23,21 +23,19 @@ function create_afterimage(x, y, afterimage_object)
     }
 }
 
-/**
- * This function will do the same as the ```create_afterimage``` function, except that it accounts for sprite drawing variables created by the ```visual_helper_initialize``` function.
- * @parameter {Real} x The x position the afterimage will be created at.
- * @parameter {Real} y The y position the afterimage will be created at.
- * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
- * @returns {Id.Instance}
- */
 function create_afterimage_vh(x, y, afterimage_object)
 {
-    with (create_afterimage(x + visual_x, y + visual_y, afterimage_object))
+    with (create_effect(x + visual_x, y + visual_y, afterimage_object))
     {
-        image_xscale *= other.visual_xscale;
-        image_yscale *= other.visual_yscale;
+        sprite_index = other.sprite_index;
+        image_index = other.image_index - 1;
         
-        image_angle += other.visual_angle;
+        image_xscale = other.visual_xscale;
+        image_yscale = other.visual_yscale;
+        
+        image_angle = other.visual_angle;
+        image_blend = other.image_blend;
+        image_alpha = other.image_alpha * real(other.visible);
         
         return id;
     }
@@ -58,13 +56,6 @@ function create_afterimage_repeating(x, y, afterimage_object)
     return noone;
 }
 
-/**
- * This function will do the same as the ```create_afterimage_repeating``` function, except that it accounts for sprite drawing variables created by the ```visual_helper_initialize``` function.
- * @parameter {Real} x The x position the afterimage will be created at.
- * @parameter {Real} y The y position the afterimage will be created at.
- * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
- * @returns {Id.Instance}
- */
 function create_afterimage_repeating_vh(x, y, afterimage_object)
 {
     if (effect_repeat_check(afterimage_object))

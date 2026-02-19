@@ -22,7 +22,6 @@ enum SlopeCheckFlag {
 /// @desc Initializes Collision Variables. To be used in Create Event.
 function scr_collision_init() {
 	usesCollision = true;
-    frozen = false;
 	grounded = false;
 	groundedSlope = false;	
 	terminalVelocity = 10;
@@ -51,9 +50,6 @@ function scr_collision_init() {
 
 /// @desc Handles Collision Physics.
 function scr_collision() {
-    if (frozen)
-        return;
-    
 	var _old_grounded = grounded;
 	grounded = false;
 	groundedSlope = false;

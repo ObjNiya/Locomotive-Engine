@@ -21,31 +21,14 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_camera_system, obj_room_goto]
-#macro STARTING_OBJECTS_COUNT 4
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_camera_system]
+#macro STARTING_OBJECTS_COUNT 3
 
 // Code shortcuts
 
 #macro SINGLETON if (instance_number(object_index) > 1) { instance_destroy(); }
 
 #endregion
-
-enum DEPTHS
-{
-    FRONT = -50,
-    
-    CLOSEST = -30,
-    CLOSER = -20,
-    CLOSE = -10,
-    
-    MIDDLE = 0,
-    
-    FAR = 10,
-    FARTHER = 20,
-    FARTHEST = 30,
-    
-    BACK = 50,
-}
 
 /**
  * This function will initialize all important global variables the game requires to operate.
@@ -61,9 +44,22 @@ function initialize_globals()
 
     global.pointsbookfont = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
     global.pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
-    global.combofont = font_add_sprite_ext(spr_combobar_font, "0123456789", 1, 0);
+    global.combofont = font_add_sprite_ext(spr_combo_bar_font, "0123456789", 1, 0);
 
     // Room transition
+    
+    global.target_room = noone;
+    global.target_spawnpoint = "A";
+    
+    global.spawnpoints = {
+        A: obj_spawnpoint_a,
+        B: obj_spawnpoint_b,
+        C: obj_spawnpoint_c,
+        D: obj_spawnpoint_d,
+        E: obj_spawnpoint_e,
+        F: obj_spawnpoint_f
+    }
+    
     // Level system
     
     global.level = pointer_null;

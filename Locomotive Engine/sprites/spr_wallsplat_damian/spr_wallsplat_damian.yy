@@ -8,11 +8,6 @@
   "bbox_top":9,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -34,7 +29,7 @@
   ],
   "name":"spr_wallsplat_damian",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"Bump",
     "path":"folders/Sprites/Player/Damian/Bump.yy",
@@ -104,14 +99,14 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":46,
+    "xorigin":40,
     "yorigin":65,
   },
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_damian",
-    "path":"texturegroups/texgroup_damian",
+    "name":"Default",
+    "path":"texturegroups/Default",
   },
   "type":0,
   "VTile":false,

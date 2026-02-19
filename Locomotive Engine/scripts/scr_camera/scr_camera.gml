@@ -1,4 +1,3 @@
-/// @ignore
 function Camera(id, target) constructor
 {
     self.id = id;
@@ -32,11 +31,6 @@ function Camera(id, target) constructor
     zoom_speed = 0.1;
 }
 
-/**
- * This function will add a dynamic camera with automatic functionality for extending, shaking and zooming.
- * @parameter {Id.Instance|Asset.GMObject} target The instance or object for the camera to follow.
- * @returns {Id.Camera}
- */
 function add_camera(target)
 {
     var viewport = 0;
@@ -70,10 +64,6 @@ function add_camera(target)
     return camera;
 }
 
-/**
- * This function will delete the given camera, removing it from the screen.
- * @parameter {Id.Camer} camera The camera to delete.
- */
 function delete_camera(camera)
 {
     with (obj_camera_system)
@@ -100,7 +90,6 @@ function delete_camera(camera)
     }
 }
 
-/// @ignore
 function camera_end_step()
 {
     with (obj_camera_system)
@@ -144,12 +133,6 @@ function camera_end_step()
     }
 }
 
-/**
- * This function lets you set how far the given camera extends on the x axis.
- * @parameter {Id.Camera} camera Which camera to extend on the x axis.
- * @parameter {Real} extend_target How far to extend the camera on the x axis.
- * @parameter {Real} extend_speed The speed at which the camera will extend on the x axis.
- */
 function camera_set_x_extend(camera, extend_target, extend_speed)
 {
     with (obj_camera_system)
@@ -161,12 +144,6 @@ function camera_set_x_extend(camera, extend_target, extend_speed)
     }
 }
 
-/**
- * This function lets you set how far the given camera extends on the y axis.
- * @parameter {Id.Camera} camera Which camera to extend on the y axis.
- * @parameter {Real} extend_target How far to extend the camera on the y axis.
- * @parameter {Real} extend_speed The speed at which the camera will extend on the y axis.
- */
 function camera_set_y_extend(camera, extend_target, extend_speed)
 {
     with (obj_camera_system)
@@ -178,19 +155,13 @@ function camera_set_y_extend(camera, extend_target, extend_speed)
     }
 }
 
-/**
- * This function lets you set how much the given camera should shake around it's follow target.
- * @parameter {Id.Camera} camera Which camera to shake.
- * @parameter {Real} shake_magnitude By how many pixels the camera will shake around it's follow target.
- * @parameter {Rea} shake_deccel By how much the shaking should deccelerate each frame until it reaches 0.
- */
-function camera_set_shake(camera, shake_magnitude, shake_deccel)
+function camera_set_shake(camera, shake_magnitude, shake_speed)
 {
     with (obj_camera_system)
     {
         var camera_index = ds_map_find_value(camera_map, camera);
         
         cameras[camera_index].shake_magnitude = shake_magnitude;
-        cameras[camera_index].shake_deccel = shake_deccel;
+        cameras[camera_index].shake_speed = shake_speed;
     }
 }
