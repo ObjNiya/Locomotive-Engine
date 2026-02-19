@@ -31,17 +31,5 @@ function side(n, fallback)
  */
 function bsign(b)
 {
-<<<<<<< HEAD
-    return (!boolean) ? -1 : 1;
-}
-=======
     return (!b) ? -1 : 1;
 }
-
-function get_lerp_number(_start,_end,_pct)
-{
-	//i cant remember if i may be absoloutely fucking stupid for this but idk
-	return (_end - _start) * _pct
-}
-    
->>>>>>> parent of 8a8b83a (Revert "Merge branch 'main' of https://github.com/ObjNiya/Locomotive-Engine")

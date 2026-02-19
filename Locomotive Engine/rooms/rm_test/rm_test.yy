@@ -30,8 +30,6 @@
     {"name":"inst_B32C906","path":"rooms/rm_test/rm_test.yy",},
     {"name":"inst_868C128","path":"rooms/rm_test/rm_test.yy",},
     {"name":"inst_39BEFF","path":"rooms/rm_test/rm_test.yy",},
-<<<<<<< HEAD
-=======
     {"name":"inst_4EF52273","path":"rooms/rm_test/rm_test.yy",},
     {"name":"inst_278B0F28","path":"rooms/rm_test/rm_test.yy",},
     {"name":"inst_300453F3","path":"rooms/rm_test/rm_test.yy",},
@@ -42,7 +40,6 @@
     {"name":"inst_620D7E6A","path":"rooms/rm_test/rm_test.yy",},
     {"name":"inst_639D2126","path":"rooms/rm_test/rm_test.yy",},
     {"name":"inst_414289BF","path":"rooms/rm_test/rm_test.yy",},
->>>>>>> parent of 8a8b83a (Revert "Merge branch 'main' of https://github.com/ObjNiya/Locomotive-Engine")
   ],
   "isDnd":false,
   "layers":[
@@ -71,8 +68,6 @@
         {"$GMRInstance":"v4","%Name":"inst_B32C906","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_B32C906","objectId":{"name":"obj_waddledee","path":"objects/obj_waddledee/obj_waddledee.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-1.0,"scaleY":1.0,"x":1760.0,"y":736.0,},
         {"$GMRInstance":"v4","%Name":"inst_868C128","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_868C128","objectId":{"name":"obj_waddledee","path":"objects/obj_waddledee/obj_waddledee.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-1.0,"scaleY":1.0,"x":1632.0,"y":736.0,},
         {"$GMRInstance":"v4","%Name":"inst_39BEFF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_39BEFF","objectId":{"name":"obj_waddledee","path":"objects/obj_waddledee/obj_waddledee.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":-1.0,"scaleY":1.0,"x":1504.0,"y":736.0,},
-<<<<<<< HEAD
-=======
         {"$GMRInstance":"v4","%Name":"inst_4EF52273","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4EF52273","objectId":{"name":"obj_spawn_a","path":"objects/obj_spawn_a/obj_spawn_a.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1248.0,"y":704.0,},
         {"$GMRInstance":"v4","%Name":"inst_278B0F28","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_278B0F28","objectId":{"name":"obj_vert_hallway","path":"objects/obj_vert_hallway/obj_vert_hallway.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_room_switcher","path":"objects/par_room_switcher/par_room_switcher.yy",},"propertyId":{"name":"target_room","path":"objects/par_room_switcher/par_room_switcher.yy",},"resource":{"name":"rm_hallway_1","path":"rooms/rm_hallway_1/rm_hallway_1.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"rm_hallway_1",},
@@ -91,7 +86,6 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_warppipe","path":"objects/obj_warppipe/obj_warppipe.yy",},"propertyId":{"name":"target_room","path":"objects/obj_warppipe/obj_warppipe.yy",},"resource":{"name":"rm_hallway_1","path":"rooms/rm_hallway_1/rm_hallway_1.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"rm_hallway_1",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1280.0,"y":768.0,},
         {"$GMRInstance":"v4","%Name":"inst_414289BF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_414289BF","objectId":{"name":"obj_exitportal","path":"objects/obj_exitportal/obj_exitportal.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":608.0,"y":704.0,},
->>>>>>> parent of 8a8b83a (Revert "Merge branch 'main' of https://github.com/ObjNiya/Locomotive-Engine")
       ],"layers":[],"name":"Instances_1","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4286545791,"depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],
