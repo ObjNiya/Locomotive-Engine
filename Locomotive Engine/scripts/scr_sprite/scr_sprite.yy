@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_sprite",
   "parent":{
-    "name":"SpriteUtil",
-    "path":"folders/SpriteUtil.yy",
+    "name":"Constructors",
+    "path":"folders/Scripts/Constructors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

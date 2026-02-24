@@ -121,15 +121,18 @@ function camera_end_step()
             if (!instance_exists(target))
                 return;
             
-            camera_set_view_size(id, GAME_WIDTH * zoom, GAME_HEIGHT * zoom);
+            var camera_width = GAME_WIDTH * zoom;
+            var camera_height = GAME_HEIGHT * zoom;
+            
+            camera_set_view_size(id, camera_width, camera_height);
             
             var camera_x_origin = camera_get_view_width(id) / 2;
             var camera_x_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            var camera_x = clamp(target.x + camera_x_shake - camera_x_origin, 0, room_width);
+            var camera_x = clamp(target.x + camera_x_shake - camera_x_origin, 0, room_width - camera_width);
 
             var camera_y_origin = camera_get_view_height(id) / 2;
             var camera_y_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            var camera_y = clamp(target.y + camera_y_shake - camera_y_origin, 0, room_height);
+            var camera_y = clamp(target.y + camera_y_shake - camera_y_origin, 0, room_height - camera_height);
 
             camera_set_view_pos(id, camera_x, camera_y);
             

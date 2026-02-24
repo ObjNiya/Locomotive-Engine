@@ -20,7 +20,10 @@ function Sprite(sprite_index) constructor
     image_blend = c_white;
     image_alpha = 1;
     
-    parent = other.id;
+    if (variable_instance_exists(other, "id"))
+        parent = other.id;
+    else
+        parent = -1;
     
     /**
      * This function will re-assign the sprite of the Sprite struct to the given sprite index.
@@ -60,8 +63,6 @@ function Sprite(sprite_index) constructor
     
     set_sprite(sprite_index);
     
-    if (!instance_exists(obj_sprite_manager))
-        instance_create_depth(0, 0, 999, obj_sprite_manager);
-    
-    array_push(obj_sprite_manager.sprites, self);
+    array_push(obj_struct_updater.structs, self);
+    id = array_length(obj_struct_updater.structs);
 }

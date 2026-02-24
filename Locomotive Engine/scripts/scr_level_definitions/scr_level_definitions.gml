@@ -1,3 +1,5 @@
+#macro SECRET_COUNT 3
+
 /// @ignore
 function __define_levels__()
 {
@@ -12,9 +14,9 @@ function __define_levels__()
         WIGGLERS_GARDEN = 4,
     }
     
-    lvl_define(LVLS.TUTORIAL,        -1,           infinity, infinity, -1, false);
-    lvl_define(LVLS.HALLWAY_LONGWAY, rm_hallway_1, 240,      30000,    0);
-    lvl_define(LVLS.BLOOM_AND_DOOM,  -1,           240,      0,        -1);
-    lvl_define(LVLS.FOREST_MAZE,     -1,           240,      0,        -1);
-    lvl_define(LVLS.WIGGLERS_GARDEN, -1,           240,      0,        -1);
+    lvl_define(LVLS.TUTORIAL,        -1,           infinity, infinity, -1, mu_hallway_title, false);
+    lvl_define(LVLS.HALLWAY_LONGWAY, Nhall_1, 240,       30000,         0, mu_hallway_title);
+    lvl_define(LVLS.BLOOM_AND_DOOM,  -1,           240,      0,        -1, mu_hallway_title);
+    lvl_define(LVLS.FOREST_MAZE,     -1,           240,      0,        -1, mu_hallway_title);
+    lvl_define(LVLS.WIGGLERS_GARDEN, -1,           240,      0,        -1, mu_hallway_title);
 }

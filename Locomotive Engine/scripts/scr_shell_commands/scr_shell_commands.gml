@@ -23,6 +23,12 @@ function meta_noclip()
     }
 }
 
+function sh_toggle_collisions()
+{
+    with (obj_layer_manager)
+        set_collision_visible(!show_collisions);
+}
+
 function sh_goto_room(args)
 {
     var rm = asset_get_index(args[1]);
@@ -30,6 +36,13 @@ function sh_goto_room(args)
     
     queue_room(rm, spawn);
     trans_room(obj_roomtrans_fade, -1);
+}
+
+function sh_goto_level(args)
+{
+    var lvl = real(args[1]);
+    
+    goto_level(lvl);
 }
 
 /// @ignore

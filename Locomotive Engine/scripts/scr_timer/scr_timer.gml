@@ -28,7 +28,11 @@ function Timer(time, time_units, func, function_arguments = []) constructor
     
     active = false;
     paused = false;
-    parent = other.id;
+    
+    if (variable_instance_exists(other, "id"))
+        parent = other.id;
+    else
+        parent = -1;
     
     /**
      * This function will let you configure the functionality of your Timer, letting you set the tick speed of the Timer and whether it should repeat when it 
@@ -137,9 +141,7 @@ function Timer(time, time_units, func, function_arguments = []) constructor
         
         return string(minutes) + ":" + string(seconds);
     }
-    
-    if (!instance_exists(obj_timer_manager))
-        instance_create_depth(0, 0, 999, obj_timer_manager);
-    
-    array_push(obj_timer_manager.timers, self);
+
+    array_push(obj_struct_updater.structs, self);
+    id = array_length(obj_struct_updater.structs);
 }

@@ -94,6 +94,20 @@ function state_player_normal_step()
                 return;
             }
             
+            if (place_meeting(x, y, obj_point_of_interest))
+            {
+                if (sprite_index != spr_lookdoor)
+                {
+                    sprite_set(spr_lookdoor, 0);
+                    image_speed = 1;
+                }
+                
+                if (animation_end())
+                    image_speed = 0;
+                
+                return;
+            }
+            
             var idle_animations = [spr_idle_animation1, spr_idle_animation2];
             var idle_animation_count = 1;
             
@@ -117,6 +131,7 @@ function state_player_normal_step()
             }
             
             sprite_index = spr_idle;
+            image_speed = 1;
             return;
         }
         

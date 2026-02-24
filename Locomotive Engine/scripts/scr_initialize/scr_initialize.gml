@@ -21,8 +21,8 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_camera_system, obj_room_goto]
-#macro STARTING_OBJECTS_COUNT 4
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_camera_system, obj_room_goto, obj_struct_updater, obj_layer_manager]
+#macro STARTING_OBJECTS_COUNT 6
 
 // Code shortcuts
 
@@ -52,27 +52,87 @@ enum DEPTHS
  */
 function initialize_globals()
 {
-    // Font defintions
+    enum RANKS 
+    {
+        L = 0,
+        S = 1,
+        A = 2,
+        B = 3,
+        C = 4,
+        D = 5, 
+    }
     
-    global.bigfont = font_add_sprite_ext(spr_bigfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¿?.:1234567890ÁÉÍÓÚ", 1, 0);
-    global.mediumfont = font_add_sprite_ext(spr_mediumfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:!0123456789?'\"ÁÉÍÓÚáéíóú_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 2);
-    global.smallfont = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.,_1234567890:?", 1, 0);    
-    global.minifont = font_add_sprite_ext(spr_minifont, "0123456789:.", 1, 0);
-
-    global.pointsbookfont = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
-    global.pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
-    global.combofont = font_add_sprite_ext(spr_combobar_font, "0123456789", 1, 0);
-
-    // Room transition
-    // Level system
+    with (global)
+    {
+        // Secret Tiles
+        
+        scrt_ts_circle_x = 0;
+        scrt_ts_circle_y = 0;
+        scrt_ts_circle_radius = 0;
+        
+        // Button Prompt image index map
+        
+        keybrd_sp_prompts_map = ds_map_create();
+        keybrd_sp_prompts_map[? "shift"] = 0;
+        keybrd_sp_prompts_map[? "ctrl"] = 1;
+        keybrd_sp_prompts_map[? "_"] = 2;
+        keybrd_sp_prompts_map[? "arrow up"] = 3;
+        keybrd_sp_prompts_map[? "arrow down"] = 4;
+        keybrd_sp_prompts_map[? "arrow left"] = 5;
+        keybrd_sp_prompts_map[? "arrow right"] = 6;
+        
+        // Font defintions
+        
+        signfont = font_add_sprite_ext(spr_signfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!,.:0123456789'?-", true, 2);
+        bigfont = font_add_sprite_ext(spr_bigfont, "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ!¿?.:1234567890ÁÉÍÓÚ", 1, 0);
+        mediumfont = font_add_sprite_ext(spr_mediumfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:!0123456789?'\"ÁÉÍÓÚáéíóú_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 2);
+        smallfont = font_add_sprite_ext(spr_smallfont, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.,_1234567890:?", 1, 0);    
+        minifont = font_add_sprite_ext(spr_minifont, "0123456789:.", 1, 0);
     
-    global.level = pointer_null;
-
-    // Other definitions
-
-    global.saveroom = ds_map_create();
-
-    global.combat_objects = [];
+        pointsbookfont = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
+        pointsnumberfont = font_add_sprite_ext(spr_pointsnumberfont, "1234567890", 1, 0);
+        combofont = font_add_sprite_ext(spr_combobar_font, "0123456789", 1, 0);
+    
+        // Room goto
+    
+        target_room = -1;
+        target_spawn = -1;
+    
+        // Level data
+    
+        level = -1;
+    
+        showtime_timer = new Timer(60, time_source_units_seconds, function() {
+            trace("Out of time!"); // TODO: Spawn Marx and code him
+        });
+        combo_timer = new Timer(6.75, time_source_units_seconds, function() {
+            trace("Combo lost!");
+            global.combo = 0;
+        })
+            
+        plushies = {
+            waddledoo: false,
+            koopa: false,
+            squash: false,
+            cappy: false,
+            wario: false
+        }
+     
+        rank = RANKS.D;
+        points = 0;
+        combo = 0;
+        secrets_found = 0;
+        laps = 0;
+        treasure_found = false;
+        full_combo = false;
+    
+    
+        // Other definitions
+    
+        saveroom = ds_map_create();
+    
+        combat_objects = [];
+    }   
 }
 
 /**
@@ -95,6 +155,6 @@ function initialize_objects()
 function initialize_game()
 {
     pal_swap_init_system(shd_pal_swapper, shd_pal_html_sprite, shd_pal_html_surface);
-    initialize_globals();
     initialize_objects();
+    initialize_globals();
 }

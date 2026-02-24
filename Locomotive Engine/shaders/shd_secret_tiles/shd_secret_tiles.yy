@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_secret_tiles",
+  "name":"shd_secret_tiles",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

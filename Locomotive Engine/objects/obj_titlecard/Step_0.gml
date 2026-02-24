@@ -1,12 +1,5 @@
-layer_sprite_x(titlecard_title, irandom_range(-1, 1));
-layer_sprite_y(titlecard_title, irandom_range(-1, 1));
+if (sound_instance_get_playback_state(title_music) == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
+    exit;
 
-if (titlecard_time-- <= 0)
-{
-    titlecard_time = 9999;
-    goto_level(global.level);
-    
-    with (par_player)
-        smc_set_state(state_player_normal);
-    
-}
+queue_room(rm_initialize_level, obj_spawn_a);
+trans_room(obj_roomtrans_fade, -1);

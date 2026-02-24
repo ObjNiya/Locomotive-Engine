@@ -4,23 +4,30 @@ SINGLETON;
 // Music macros
 /////////////////////////////
 
-#macro mu_titlescreen "event:/Music/Title Screen"
-#macro mu_pausescreen "event:/Music/Pause Screen"
-#macro mu_creditsscreen "event:/Music/Credits Screen"
+// Menues
+
+#macro mu_title_screen "event:/Music/Title Screen"
+#macro mu_pause_screen "event:/Music/Pause Screen"
+#macro mu_credits_screen "event:/Music/Credits Screen"
+
+// Hub
+
+#macro mu_hub "event:/Music/Hub/Hub"
+#macro mu_hallway_title "event:/Music/Hub/Hallway Longway Titlecard" 
 
 // Level Structure
 
 #macro mu_showtime "event:/Music/Level Structure/Showtime"
 #macro mu_rank "event:/Music/Level Structure/Rank Screen"
 #macro mu_rank_loop "event:/Music/Level Structure/Rank Screen Loop"
-#macro mu_patrick_pillar "event:/Music/Level Structure/Patrick Pillar"
+#macro mu_patrickpillar "event:/Music/Level Structure/Patrick Pillar"
 
 // Levels
 
 #macro mu_tutorial "event:/Music/Levels/Tutorial"
-#macro mu_hallway_longway "event:/Music/Levels/Hallway Longway"
-#macro mu_bloom_and_doom "event:/Music/Levels/Bloom And Doom"
-#macro mu_forest_maze "event:/Music/Levels/Forest Maze"
+#macro mu_hallway "event:/Music/Levels/Hallway Longway"
+#macro mu_doom "event:/Music/Levels/Bloom And Doom"
+#macro mu_maze "event:/Music/Levels/Forest Maze"
 
 /////////////////////////////
 // SFX macros
@@ -28,9 +35,9 @@ SINGLETON;
 
 // Dialouge
 
-#macro sfx_dialouge_start "event:/SFX/Dialouge/Dialouge Start"
-#macro sfx_dialouge_talk "event:/SFX/Dialouge/Dialouge Talk"
-#macro sfx_dialouge_end "event:/SFX/Dialouge/Dialouge End"
+#macro sfx_dial_start "event:/SFX/Dialouge/Dialouge Start"
+#macro sfx_dial_talk "event:/SFX/Dialouge/Dialouge Talk"
+#macro sfx_dial_end "event:/SFX/Dialouge/Dialouge End"
 
 // Collectables
 
@@ -301,10 +308,10 @@ master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\
 
 player_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\PLAYER.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
 damian_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DAMIAN.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-hub_bank = -1;
+hub_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\HUB.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
 level_structure_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\LEVEL STRUCTURE.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-tutorial_bank = -1;
-hallway_longway_bank = -1;
-bloom_and_doom_bank = -1;
-forest_maze_bank = -1;
-wigglers_garden_bank = -1;
+tutorial_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\TUTORIAL.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+hallway_longway_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\HALLWAY LONGWAY.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+bloom_and_doom_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DOOM AND BLOOM.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+forest_maze_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\FOREST MAZE.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+wigglers_garden_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\WIGGLERS GARDEN.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);

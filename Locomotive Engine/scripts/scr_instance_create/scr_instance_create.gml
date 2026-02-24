@@ -8,5 +8,9 @@
  */
 function instance_create(x, y, obj, var_struct = {})
 {
-    return instance_create_layer(x, y, "Instances_1", obj, var_struct);
+    with (instance_create_layer(x, y, "Instances_1", obj))
+    {
+        depth += layer_get_depth("Instances_1");
+        return id;
+    }
 }

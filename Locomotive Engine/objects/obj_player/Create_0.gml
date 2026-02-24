@@ -1,3 +1,5 @@
+event_inherited();
+
 /////////////////////////////
 // Condition macros
 /////////////////////////////
@@ -20,7 +22,7 @@
 #macro PLAYER_WALLCLIMB (PLAYER_HIT_WALL && (!grounded || (grounded && groundedSlope)))
 #macro PLAYER_DIVE (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
 #macro PLAYER_DIVEBOMB (InputPressed(INPUT_VERB.JUMP) && !grounded)
-#macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && InputCheck(INPUT_VERB.JUMP) && !grounded && player_get_mach_stage() >= 3) 
+#macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && !grounded && player_get_mach_stage() >= 3) 
 #macro PLAYER_SJUMP_PREPARE (InputCheck(INPUT_VERB.UP) && grounded && player_get_mach_stage() >= 3)   
 #macro PLAYER_SJUMP_RELEASE (!InputCheck(INPUT_VERB.UP) && grounded) 
 

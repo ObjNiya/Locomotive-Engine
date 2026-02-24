@@ -1,5 +1,3 @@
-check_saveroom();
-
 depth = DEPTHS.FAR;
 
 /////////////////////////////
@@ -148,4 +146,6 @@ thrown_blur_afterimage = new Timer(2, time_source_units_frames, function() {
         return;
     
     create_afterimage(x, y, obj_blur_afterimage);
-})
+});
+
+check_saveroom();

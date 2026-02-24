@@ -367,7 +367,7 @@
   "name":"Nhall_secret3",
   "parent":{
     "name":"Secrets",
-    "path":"folders/Rooms/Level/World 1/Longway Hallway/Secrets.yy",
+    "path":"folders/Rooms/Levels/Hallway Longway/Secrets.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

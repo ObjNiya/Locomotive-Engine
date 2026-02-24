@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_timer",
   "parent":{
-    "name":"TimerUtil",
-    "path":"folders/TimerUtil.yy",
+    "name":"Constructors",
+    "path":"folders/Scripts/Constructors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

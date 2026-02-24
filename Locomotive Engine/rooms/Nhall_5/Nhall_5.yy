@@ -517,8 +517,8 @@
   ],
   "name":"Nhall_5",
   "parent":{
-    "name":"Longway Hallway",
-    "path":"folders/Rooms/Level/World 1/Longway Hallway.yy",
+    "name":"Hallway Longway",
+    "path":"folders/Rooms/Levels/Hallway Longway.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
