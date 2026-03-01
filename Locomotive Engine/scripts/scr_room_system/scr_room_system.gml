@@ -53,7 +53,6 @@ function goto_room()
 {
     with (obj_room_goto)
         event_user(0);
-    
 }
 
 function trans_room(transition_obj, event_path = sfx_transition_fade)
@@ -77,7 +76,7 @@ function trans_room(transition_obj, event_path = sfx_transition_fade)
     {
         var event_id = fmod_studio_system_get_event(event_path);
         
-        if (fmod_studio_event_description_is_valid(event_id))
+        if (sound_description_is_valid_ext(event_id))
             sound_instance_one_shot(event_path);
     }
     

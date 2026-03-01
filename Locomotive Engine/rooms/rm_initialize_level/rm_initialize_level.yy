@@ -21,8 +21,8 @@
   ],
   "name":"rm_initialize_level",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Set-Up",
+    "path":"folders/Rooms/Set-Up.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

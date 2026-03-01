@@ -31,7 +31,9 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"fade_speed","filters":[],"listItems":[],"multiselect":false,"name":"fade_speed","rangeEnabled":true,"rangeMax":1.0,"rangeMin":0.05,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"fade_speed","filters":[],"listItems":[],"multiselect":false,"name":"fade_speed","rangeEnabled":false,"rangeMax":1.0,"rangeMin":0.05,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"end_lag","filters":[],"listItems":[],"multiselect":false,"name":"end_lag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"fade_start","filters":[],"listItems":[],"multiselect":false,"name":"fade_start","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

@@ -1,1 +1,1 @@
-wipe_saveroom()
+set_music(mu_hallway)

@@ -1,6 +1,6 @@
 SINGLETON;
 
-depth = 1;
+depth = DEPTHS.FARTHEST;
 
 fade_in = false;
 fade_alpha = 0;

@@ -40,5 +40,3 @@ with (splash)
     
     bg.image_alpha = c_black;
 }
-
-queue_room(rm_intro, -1);

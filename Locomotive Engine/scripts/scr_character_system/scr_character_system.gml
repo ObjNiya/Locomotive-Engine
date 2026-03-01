@@ -68,7 +68,7 @@ function get_charsnd(event_path, char)
     event_path = string_replace_all(event_path, CHAR_DEFAULT_EVENT_NAME, char.event_name);
     var event_id = fmod_studio_system_get_event(event_path);
     
-    if (event_id != 0 && fmod_studio_event_description_is_valid(event_id))
+    if (event_id != 0 && sound_description_is_valid(event_id))
         return event_path;
     else
         return fallback_path;

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_skip_prompt",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Prompts",
+    "path":"folders/Scripts/Prompts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

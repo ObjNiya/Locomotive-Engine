@@ -1,7 +1,5 @@
 depth = DEPTHS.CLOSEST;
 
-queue_room(rm_title_screen, -1);
-
 var intro_path = "data\\intro.mp4";
 
 if (!file_exists(intro_path))

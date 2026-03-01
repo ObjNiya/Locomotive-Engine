@@ -6,6 +6,7 @@ else if (type == "video_end")
 {
     draw_video = false;
     
-    goto_room();
+    instance_create(0, 0, obj_file_select);
+    instance_destroy();
     video_close();
 }

@@ -1,5 +1,7 @@
 SINGLETON;
 
+#macro snd_null "event:/Null"
+ 
 /////////////////////////////
 // Music macros
 /////////////////////////////
@@ -205,6 +207,7 @@ SINGLETON;
 #macro sound_description_set_user_data fmod_studio_event_description_set_user_data
 #macro sound_description_get_user_data fmod_studio_event_description_get_user_data
 #macro sound_description_is_valid fmod_studio_event_description_is_valid
+#macro sound_description_is_valid_ext fmod_studio_event_description_is_valid_ext
 
 #macro sound_instance_start fmod_studio_event_instance_start
 #macro sound_instance_stop fmod_studio_event_instance_stop
@@ -248,6 +251,8 @@ SINGLETON;
 #macro sound_instance_move_several fmod_studio_event_instance_move_several
 #macro sound_instance_create fmod_studio_event_instance_create
 #macro sound_instance_one_shot fmod_studio_event_instance_one_shot
+#macro sound_instance_kill fmod_studio_event_instance_kill
+#macro sound_instance_change fmod_studio_event_instance_change
 
 #macro sound_instance_start_all fmod_studio_event_instance_start_all
 #macro sound_instance_stop_all fmod_studio_event_instance_stop_all

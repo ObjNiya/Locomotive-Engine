@@ -1,5 +1,14 @@
 // GMEXT-FMOD doesn't have JSDoc so I don't need to JSDoc my own functions either.
 
+function fmod_studio_event_description_is_valid_ext(event_path)
+{
+    if (!is_string(event_path))
+        return false;
+    
+    return fmod_studio_event_description_is_valid(fmod_studio_system_get_event(event_path));
+}
+
+
 function fmod_studio_event_instance_move(event_instance_ref, x, y)
 {
     var fmod_3d_attributes = new Fmod3DAttributes();
@@ -15,6 +24,7 @@ function fmod_studio_event_instance_move(event_instance_ref, x, y)
     
     fmod_studio_event_instance_set_3d_attributes(event_instance_ref, fmod_3d_attributes);
 }
+
 
 function fmod_studio_event_instance_move_several(event_instance_refs, x, y)
 {
@@ -34,6 +44,7 @@ function fmod_studio_event_instance_move_several(event_instance_refs, x, y)
         fmod_studio_event_instance_set_3d_attributes(event_instance_refs[i], fmod_3d_attributes);
 }
 
+
 function fmod_studio_event_instance_create(event_description_ref, x = 0, y = 0)
 {
     var fmod_studio_event_instance = fmod_studio_event_description_create_instance(fmod_studio_system_get_event(event_description_ref));
@@ -45,6 +56,7 @@ function fmod_studio_event_instance_create(event_description_ref, x = 0, y = 0)
     return fmod_studio_event_instance;
 }
 
+
 function fmod_studio_event_instance_one_shot(event_description_ref, x = 0, y = 0)
 {
     var fmod_studio_event_instance = fmod_studio_event_instance_create(event_description_ref, x, y);
@@ -54,6 +66,59 @@ function fmod_studio_event_instance_one_shot(event_description_ref, x = 0, y = 0
     
     return fmod_studio_event_instance;
 }
+
+
+function fmod_studio_event_instance_kill(event_instance_ref, mode = FMOD_STUDIO_STOP_MODE.IMMEDIATE)
+{
+    fmod_studio_event_instance_stop(event_instance_ref, mode);
+    fmod_studio_event_instance_release(event_instance_ref);
+}
+
+function fmod_studio_event_instance_change(event_instance_ref, event_path, restart_timeline = true)
+{
+    if (!fmod_studio_event_instance_is_valid(event_instance_ref) || !fmod_studio_event_description_is_valid_ext(event_path))
+        return -1;
+
+    var paused = fmod_studio_event_instance_get_paused(event_instance_ref);
+    var pitch = fmod_studio_event_instance_get_pitch(event_instance_ref);
+    var channel_priority = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.CHANNELPRIORITY);
+    var cooldown = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.COOLDOWN);
+    var _max = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAX);
+    var maximum_dist = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAXIMUM_DISTANCE);
+    var minimum_dist = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MINIMUM_DISTANCE);
+    var scheduele_delay = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_DELAY);
+    var scheduele_lookahead = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_LOOKAHEAD);
+    var timeline_pos = (restart_timeline) ? 0 : fmod_studio_event_instance_get_timeline_position(event_instance_ref);
+    var _3d_attributes = fmod_studio_event_instance_get_3d_attributes(event_instance_ref);
+    var listener_mask = fmod_studio_event_instance_get_listener_mask(event_instance_ref);
+    var reverb_level_0 = fmod_studio_event_instance_get_reverb_level(event_instance_ref, 0);
+    var reverb_level_1 = fmod_studio_event_instance_get_reverb_level(event_instance_ref, 1);
+    var reverb_level_2 = fmod_studio_event_instance_get_reverb_level(event_instance_ref, 2);
+    var reverb_level_3 = fmod_studio_event_instance_get_reverb_level(event_instance_ref, 3);
+    
+    fmod_studio_event_instance_kill(event_instance_ref);
+    event_instance_ref = fmod_studio_event_instance_create(event_path);
+    
+    fmod_studio_event_instance_set_paused(event_instance_ref, paused);
+    fmod_studio_event_instance_set_pitch(event_instance_ref, pitch);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.CHANNELPRIORITY, channel_priority);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.COOLDOWN, cooldown);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAX, _max);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAXIMUM_DISTANCE, maximum_dist);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MINIMUM_DISTANCE, minimum_dist);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_DELAY, scheduele_delay);
+    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_LOOKAHEAD, scheduele_lookahead);
+    fmod_studio_event_instance_set_timeline_position(event_instance_ref, timeline_pos);
+    fmod_studio_event_instance_set_3d_attributes(event_instance_ref, _3d_attributes);
+    fmod_studio_event_instance_set_listener_mask(event_instance_ref, listener_mask);
+    fmod_studio_event_instance_set_reverb_level(event_instance_ref, 0, reverb_level_0);
+    fmod_studio_event_instance_set_reverb_level(event_instance_ref, 1, reverb_level_1);
+    fmod_studio_event_instance_set_reverb_level(event_instance_ref, 2, reverb_level_2);
+    fmod_studio_event_instance_set_reverb_level(event_instance_ref, 3, reverb_level_3);
+    
+    return event_instance_ref;
+}
+
 
 /// @ignore
 function __fmod_studio_event_instance_all__(func, parameters = -1)

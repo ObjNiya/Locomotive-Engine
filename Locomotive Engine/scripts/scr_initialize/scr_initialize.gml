@@ -126,8 +126,9 @@ function initialize_globals()
         treasure_found = false;
         full_combo = false;
     
-    
         // Other definitions
+    
+        music = 0;
     
         saveroom = ds_map_create();
     
