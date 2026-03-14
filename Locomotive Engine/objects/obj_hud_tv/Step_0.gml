@@ -2,7 +2,7 @@ smc_step();
 
 tv_offset_target = 0;
 
-with (par_player)
+with (obj_player)
 {
     if (x > room_width - other.tv_offset_hitbox[0] && y < other.tv_offset_hitbox[1])
         other.tv_offset_target = sprite_width * 2;

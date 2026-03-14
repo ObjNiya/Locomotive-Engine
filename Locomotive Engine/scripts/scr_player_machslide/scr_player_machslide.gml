@@ -1,12 +1,7 @@
 /// @ignore
 function state_player_machslide_start()
 {
-    sprite_index = spr_machslide_intro;
-    image_index = 0;
-    
-    sound_instance_one_shot(sfx_mach_brake, x, y);
-    
-    attacking = true;
+    sprite_set(spr_machslide_intro, 0);
 }
 
 /// @ignore
@@ -14,6 +9,9 @@ function state_player_machslide_step()
 {
     movespeed = approach(movespeed, 0, 0.4);
     hsp = movespeed * dir;
+    
+    stun_enemy();
+    destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
     
     if (movespeed <= 0)
     {
@@ -23,11 +21,8 @@ function state_player_machslide_step()
         return;
     }
     
-    if (PLAYER_HIT_WALL)
-    {
-        player_setup_wallsplat();
+    if (player_do_wallsplat())
         return;
-    }
     
     animation_end_ext((sprite_index == spr_machslide_intro), spr_machslide);
     
@@ -38,7 +33,7 @@ function state_player_machslide_step()
 /// @ignore
 function state_player_machslide_end()
 {
-    attacking = false;
+    
 }
 
 /**

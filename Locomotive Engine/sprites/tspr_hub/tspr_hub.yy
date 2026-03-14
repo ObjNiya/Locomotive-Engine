@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"tilesetgroup\",\"path\":\"texturegroups/tilesetgroup\"}",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

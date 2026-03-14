@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"levelstructure_group\",\"path\":\"texturegroups/levelstructure_group\"}",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

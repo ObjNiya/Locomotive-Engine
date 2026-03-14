@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

@@ -3,31 +3,23 @@ function state_player_uppercut_start()
 {
     sprite_set(spr_uppercut, 0);
     
-    movespeed = 8;
+    movespeed = 4;
     accel = 0.5;
     
-    if (abs(hsp) > 18)
-        hsp = 18 * dir;
-    
-    vsp = jump_height * 1.5;
-    
-    sound_instance_one_shot(sfx_player_uppercut, x, y);
-    instance_create(x, y + 45, obj_jump_particle);
+    vsp = (grounded) ? -14 : -10;
     
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.start();
-    
-    attacking = true;
-    strength = 2;
 }
 
 /// @ignore
 function state_player_uppercut_step()
 {
-    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    hurt_enemy();
+    destroy_blocks(x, y - 50, [obj_block_metal, obj_block_metal_tiles]);
     
-    if (dir != sign(hsp) || abs(hsp) < movespeed)
-        hsp = approach(hsp, movespeed * dir, accel);
+    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    hsp = approach(hsp, movespeed * dir, accel);
     
     if (animation_end())
         image_speed = 0;
@@ -47,9 +39,6 @@ function state_player_uppercut_end()
 {
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();
-    
-    attacking = false;
-    strength = 1;
     
     image_speed = 1;
 }

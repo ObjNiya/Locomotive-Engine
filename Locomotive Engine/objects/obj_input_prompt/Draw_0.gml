@@ -1,4 +1,4 @@
-with (par_player)
+with (obj_player)
 {
     var top_y = y - sprite_height + sprite_yoffset;
     

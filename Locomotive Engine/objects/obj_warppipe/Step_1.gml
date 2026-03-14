@@ -1,4 +1,4 @@
-with (par_player)
+with (obj_player)
 {
     if (state_id == state_player_hurt || state_id == state_player_bananaslip || state_id == state_player_warppipe || state_id == state_player_animation)
         exit;

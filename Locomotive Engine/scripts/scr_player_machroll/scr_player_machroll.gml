@@ -8,17 +8,19 @@ function state_player_machroll_start()
         image_xscale = other.image_xscale;
     
     blur_afterimage_timer.start();
-    sound_instance_start(snd_machroll);
     
-    attacking = true;
+    if (sound_instance_get_playback_state(snd_machroll) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
+        sound_instance_start(snd_machroll);
 }
 
 /// @ignore
 function state_player_machroll_step()
 {
-    hsp = movespeed * dir;
-    strength = real(sprite_index == spr_backslide || sprite_index == spr_backslide_land);
+    destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
+    stun_enemy();
     
+    hsp = movespeed * dir;
+
     if (sprite_index == spr_rolling_jump)
     {
         if (grounded)
@@ -29,11 +31,8 @@ function state_player_machroll_step()
         return;
     }
     
-    if (PLAYER_HIT_WALL)
-    {
-        player_setup_wallsplat();
+    if (player_do_wallsplat())
         return;
-    }
     
     if (grounded)
     {
@@ -70,13 +69,7 @@ function state_player_machroll_step()
         sprite_index = spr_machroll_dive;
     }
     
-    if (PLAYER_DIVEBOMB)
-    {
-        smc_set_state(state_player_groundpound);
-        sprite_set(spr_divebomb, 0);
-            
-        return;
-    }
+    player_do_groundpound(false, true);
 }
 
 /// @ignore
@@ -88,8 +81,6 @@ function state_player_machroll_end()
     blur_afterimage_timer.stop();
     
     sound_instance_stop(snd_machroll, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-    
-    attacking = false;
 }
 
 /**

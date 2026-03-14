@@ -8,3 +8,5 @@ with (instance_create(x - sprite_xoffset, y - sprite_yoffset, obj_point_of_inter
     image_xscale = other.sprite_width / sprite_width;
     image_yscale = other.sprite_height / sprite_height;
 }
+
+player_ins = noone;

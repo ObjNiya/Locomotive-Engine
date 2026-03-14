@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"baddie_group\", \"path\":\"texturegroups/baddie_group\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

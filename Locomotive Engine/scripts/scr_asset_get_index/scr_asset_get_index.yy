@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_asset_get_index",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_asset_get_index",
+  "parent":{
+    "name":"BetterGM",
+    "path":"folders/Scripts/BetterGM.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

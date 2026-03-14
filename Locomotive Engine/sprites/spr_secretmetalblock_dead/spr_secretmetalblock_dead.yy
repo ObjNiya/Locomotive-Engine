@@ -8,11 +8,7 @@
   "bbox_top":71,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
+  "ConfigValues":{},
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -31,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"Big",
-    "path":"folders/Sprites/Level Structure/Destructibles/Big.yy",
+    "path":"folders/Sprites/Level Structure/Blocks/Big.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

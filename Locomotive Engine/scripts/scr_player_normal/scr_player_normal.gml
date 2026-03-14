@@ -27,17 +27,10 @@ function state_player_normal_step()
     else
         hsp = approach(hsp, movespeed * dir, accel);
     
-    if (PLAYER_UPPERCUT)
-    {
-        smc_set_state(state_player_uppercut);
+    if (player_do_uppercut())
         return;
-    }
-    
-    if (PLAYER_GRABDASH)
-    {
-        smc_set_state(state_player_grabdash);
+    if (player_do_grabdash())
         return;
-    }
     
     if (PLAYER_TAUNT)
     {
@@ -45,17 +38,17 @@ function state_player_normal_step()
         return;
     }
     
+    if (player_do_ladder())
+        return;
+    
     image_xscale = side(dir, image_xscale);
     image_speed = 1;
     
     if (grounded)
     {
-        if (PLAYER_JUMP)
-        {
-            player_setup_jump();
+        if (player_do_jump())
             return;
-        }
-        
+
         if (PLAYER_MACHRUN)
         {
             smc_set_state(state_player_mach);
@@ -157,24 +150,17 @@ function state_player_normal_step()
         return;
     }
     
+    if (sign(vsp) == -1)
+    {
+        if (destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]))
+            vsp = max(0, vsp);
+    }
+    
     cloud_particle_timer.stop();
     
-    var combat_id = COMBAT_GET_MEETING;
-    
-    if (combat_id != noone && combat_id.stun_function(id))
-    {
-        sprite_set(spr_stomp, 0);
-        
-        vsp = (InputCheck(INPUT_VERB.JUMP)) ? -14 : -9;
-    }
-    
-    player_routine_jumpstop();
-    
-    if (PLAYER_GROUNDPOUND)
-    {
-        smc_set_state(state_player_groundpound);
+    player_do_jumpstop();
+    if (player_do_groundpound())
         return;
-    }
     
     if (equals_to_any(sprite_index, [spr_stomp, spr_stomp_fall]))
     {
@@ -182,10 +168,7 @@ function state_player_normal_step()
         return;
     }
     
-    var force_fall_animation = !equals_to_any(sprite_index, [spr_jump, spr_grabdash_cancel]);
-    
-    if (animation_end(spr_fall) || force_fall_animation)
-        sprite_index = spr_fall;
+    animation_end_ext((sprite_index != spr_grabdash_bump), spr_fall);
 }
 
 /// @ignore

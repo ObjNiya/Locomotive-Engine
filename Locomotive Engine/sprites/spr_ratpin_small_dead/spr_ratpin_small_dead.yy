@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"levelstructure_group\", \"path\":\"texturegroups/levelstructure_group\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -34,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Ratpin",
-    "path":"folders/Sprites/Level Structure/Destructibles/Ratpin.yy",
+    "path":"folders/Sprites/Level Structure/Blocks/Ratpin.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

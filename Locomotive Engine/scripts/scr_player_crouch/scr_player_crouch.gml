@@ -22,9 +22,12 @@ function state_player_crouch_step()
     
     if (PLAYER_NOTHING_ABOVE && PLAYER_JUMP)
     {
-        player_setup_crouch_jump();
+        player_do_jump(false, spr_crouch_jump, -8);
         return;
     }
+    
+    if (player_do_ladder())
+        return;
     
     if (grounded)
     {

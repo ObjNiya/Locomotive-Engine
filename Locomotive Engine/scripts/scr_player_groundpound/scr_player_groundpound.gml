@@ -4,30 +4,25 @@ function state_player_groundpound_start()
     sprite_set(spr_groundpound_intro, 0);
     
     accel = 0.5;
-    
     if (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == 0)
         hsp = 0;
-    
     vsp = -6;
+    
     terminalVelocity = 200;
     
     mach_afterimage_use_alpha = false;
     blur_afterimage_timer.start();
-    
     sound_instance_start(snd_groundpound);
-    
-    attacking = true;
-    strength = 2;
 }
 
 /// @ignore
 function state_player_groundpound_step()
 {
+    if (sign(vsp) != -1)
+        destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
+    
     if (grounded)
     {
-        attacking = false;
-        strength = 1;
-        
         if (groundedSlope)
         {
             smc_set_state(state_player_mach); 
@@ -67,6 +62,8 @@ function state_player_groundpound_step()
         return;
     }
     
+    hurt_enemy();
+    
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
         smc_set_state(state_player_sjump);
@@ -79,6 +76,18 @@ function state_player_groundpound_step()
         grav = 0;
         return;
     }
+
+    groundpound_smash++;
+    if (vsp < 0)
+        groundpound_smash = -14;  
+    
+    if (groundpound_smash >= 10)
+    {
+        if (!instance_exists(groundpound_effect_id))
+            groundpound_effect_id = create_particle(x, y, obj_groundpound_effect, false);
+        
+        destroy_blocks(x, y + vsp);
+    }
     
     if (vsp >= 2)
     {
@@ -90,9 +99,6 @@ function state_player_groundpound_step()
         {
             mach_afterimage_timer.start();
             downwards_woosh_particle_timer.start();
-            
-            if (!instance_exists(groundpound_effect_id))
-                groundpound_effect_id = create_particle(x, y, obj_groundpound_effect, false);
         }
     }
     
@@ -106,6 +112,9 @@ function state_player_groundpound_step()
     }
     else
         hsp = approach(hsp, movespeed * dir, accel);
+    
+    if (sprite_index == spr_bananaslip_bump)
+        hsp = 0;
     
     if (sprite_index == spr_divebomb)
         image_xscale = 1;
@@ -135,9 +144,6 @@ function state_player_groundpound_end()
     instance_destroy(groundpound_effect_id);
     
     sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-    
-    attacking = false;
-    strength = 1;
 }
 
 /**

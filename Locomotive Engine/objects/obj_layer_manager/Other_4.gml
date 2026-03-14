@@ -5,10 +5,39 @@ layers = layer_get_all();
 var layer_count = array_length(layers);
 var i = 0;
 
+var closest_depth = -50;
+var furthest_depth = 0;
+
 repeat (layer_count)
 {
     var lay = layers[i];
+    var lay_name = layer_get_name(lay);
     
+    /*if (string_starts_with(lay_name, "Tiles_Secret"))
+    {
+        var lay_num = string_digits(lay_name);
+        
+        if (lay_num != "")
+        {
+            lay_num = real(lay_num);
+            var cur_depth = -50 * lay_num;
+            
+            layer_depth(lay, cur_depth);
+            if (cur_depth < closest_depth)
+                closest_depth = cur_depth;
+            
+            log("obj_layer_manager - room start", LOG_LEVELS.INFO, ["Giving layer: ", lay_name, " a depth of: ", cur_depth]);
+        }
+        else
+        {
+            closest_depth -= 50;
+            layer_depth(lay, closest_depth);
+            
+            log("obj_layer_manager - room start", LOG_LEVELS.INFO, [lay_name, "Has no number, so it will be given the closest depth which is: ", closest_depth]);
+        }
+    }*/
+    
+       
     if (string_pos("Secret", layer_get_name(lay)) == 0)
     {
         i++;

@@ -1,12 +1,7 @@
 /// @ignore
 function state_player_machturn_start()
 {
-    sprite_index = (player_get_mach_stage() > 2) ? spr_mach3_turn_intro : spr_mach2_turn_intro;
-    image_index = 0;
-    
-    sound_instance_one_shot(sfx_mach_turn, x, y);
-    
-    attacking = true;
+    sprite_set((player_get_mach_stage() > 2) ? spr_mach3_turn_intro : spr_mach2_turn_intro, 0);
 }
 
 /// @ignore
@@ -21,9 +16,7 @@ function state_player_machturn_step()
     if (movespeed <= 0 && grounded)
     {
         var mach3 = (equals_to_any(sprite_index, [spr_mach3_turn_intro, spr_mach3_turn]));
-        
-        strength = real(mach3) + 1;
-        
+
         dir *= -1;
         movespeed = (mach3) ? 12 : 10;
         
@@ -42,8 +35,7 @@ function state_player_machturn_step()
 /// @ignore
 function state_player_machturn_end()
 {
-    attacking = false;
-    strength = 1;
+
 }
 
 /**

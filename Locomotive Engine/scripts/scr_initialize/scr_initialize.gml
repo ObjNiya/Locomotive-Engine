@@ -1,23 +1,22 @@
-#region Macros
+// Compile configuration
 
-// Screen configurations
-
-#macro GAME_WIDTH 960
-#macro GAME_HEIGHT 540
-
-// Compile configurations
-
-#macro DEVELOPER_MODE (os_get_config() == "Developer")
-#macro DEBUG_MODE (os_get_config() == "Debug")
-#macro PLAYTESTER_MODE (os_get_config() == "Playtester")
-
-// Performance configurations
-
-#macro MAX_EFFECTS 255
+#macro IDE_BUILD (GM_build_type == "run")
+#macro DBG_CONSOLE IDE_BUILD
 
 // Bugfix configurations
 
+/*
+ * Whether or not to fix the bug from base Pizza Tower that lets you turn instantly and maintain all speed.
+ */
 #macro FIX_INSTATURN false
+/*
+ * Whether or not to fix the bug from base Pizza Tower that lets you jump much higher than usual.
+ */
+#macro FIX_HIGHJUMP false
+/*
+ * Whether or not to fix the bug from base Pizza Tower that makes you exit a wall run a tiny bit above the floor, allowing other tricks to be executed quicker.
+ */
+#macro FIX_POPUP false
 
 // Game start configurations
 
@@ -27,8 +26,6 @@
 // Code shortcuts
 
 #macro SINGLETON if (instance_number(object_index) > 1) { instance_destroy(); }
-
-#endregion
 
 enum DEPTHS
 {
@@ -146,7 +143,7 @@ function initialize_objects()
     for (var i = 0; i < STARTING_OBJECTS_COUNT; i++)
         instance_create(0, 0, objects[i]);
     
-    if (DEBUG_MODE)
+    if (DBG_CONSOLE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);
 }
 

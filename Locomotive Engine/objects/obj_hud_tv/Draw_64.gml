@@ -1,11 +1,11 @@
-draw_set_mask(spr_tv_turnon_damian, 0, x, y, false);
+/*draw_set_mask(spr_tv_turnon_damian, 0, x, y, false);
 
 var x_offset = xstart + x;
 var y_offset = ystart - y;
 
 for (var i = 0; i < sprite_get_number(tvbg_sprite); i++)
 {
-    with (par_player)
+    with (obj_player)
         other.tvbg_scroll += -hsp / 10;
     
     var parrallax = (sprite_get_number(tvbg_sprite) - i) + 1;

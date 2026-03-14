@@ -1,19 +1,7 @@
 {
   "$GMWindowsOptions":"v1",
   "%Name":"Windows",
-  "ConfigValues":{
-    "Debug":{
-      "option_windows_interpolate_pixels":"false",
-      "option_windows_disable_sandbox":"true",
-      "option_windows_save_location":"1",
-      "option_windows_description_info":"A Loco adventure!",
-      "option_windows_company_info":"The Loco Tower Team",
-      "option_windows_display_name":"Locomotive Engine",
-      "option_windows_resize_window":"true",
-      "option_windows_vsync":"true",
-      "option_windows_allow_fullscreen_switching":"false",
-    },
-  },
+  "ConfigValues":{},
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":true,
   "option_windows_borderless":false,

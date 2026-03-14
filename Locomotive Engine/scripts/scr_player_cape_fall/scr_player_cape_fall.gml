@@ -11,11 +11,10 @@ function state_player_cape_fall_start()
 /// @ignore
 function state_player_cape_fall_step()
 {
-    if (PLAYER_GRABDASH)
-    {
-        smc_set_state(state_player_grabdash);
+    player_do_jumpstop();
+    
+    if (player_do_grabdash())
         return;
-    }
     
     if (PLAYER_TAUNT)
     {

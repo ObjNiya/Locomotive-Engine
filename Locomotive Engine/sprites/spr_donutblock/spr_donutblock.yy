@@ -8,11 +8,7 @@
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
+  "ConfigValues":{},
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -39,8 +35,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Destructibles",
-    "path":"folders/Sprites/Level Structure/Destructibles.yy",
+    "name":"Blocks",
+    "path":"folders/Sprites/Level Structure/Blocks.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

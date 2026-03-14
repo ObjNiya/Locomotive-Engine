@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"hall_group\",\"path\":\"texturegroups/hall_group\"}",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

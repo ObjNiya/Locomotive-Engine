@@ -14,9 +14,6 @@ function state_player_sjump_start()
     cloud_particle_timer.start();
     upwards_woosh_particle_timer.start();
     
-    attacking = true;
-    strength = 2;
-    
     instance_create(x, y, obj_explosion_particle_alt);
     
     if (sound_instance_get_playback_state() != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
@@ -29,7 +26,16 @@ function state_player_sjump_start()
 function state_player_sjump_step()
 {
     if (sprite_index == spr_springlaunch)
+    {
+        hurt_enemy();
+        destroy_blocks(x, y + vsp);
+        player_do_ceilingsplat();
+        
         return;
+    }
+    
+    if (hurt_enemy() || destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]))
+        vsp = -12;
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
@@ -40,16 +46,10 @@ function state_player_sjump_step()
         
         vsp = 0;
         grav = 0;
-        
-        attacking = false;
-        strength = 1;
     }
     
-    if (PLAYER_HIT_CEILING)
-    {
-        player_setup_hit_ceiling();
+    if (player_do_ceilingsplat())
         return;
-    }
     
     if (sprite_index != spr_sjump_cancel_prepare)
         return;
@@ -90,9 +90,6 @@ function state_player_sjump_end()
     upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
     cloud_particle_timer.stop();
-    
-    attacking = false;
-    strength = 1;
     
     sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

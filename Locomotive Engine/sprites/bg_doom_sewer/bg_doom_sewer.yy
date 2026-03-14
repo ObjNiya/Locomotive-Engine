@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"town_group\",\"path\":\"texturegroups/town_group\"}",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

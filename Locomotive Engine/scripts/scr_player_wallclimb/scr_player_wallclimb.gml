@@ -24,6 +24,8 @@ function state_player_wallclimb_step()
 {
     wallclimb_grab_buffer--;
     
+    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
+    
     if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimb_grab_buffer <= 0)
     {
         smc_set_state(state_player_normal);
@@ -38,25 +40,18 @@ function state_player_wallclimb_step()
     
     if (InputPressed(INPUT_VERB.JUMP))
     {
-        smc_set_state(state_player_mach);
-        sprite_set(spr_walljump_intro, 0);
-        
-        sound_instance_one_shot(sfx_jump, x, y);
-        
+        movespeed = 10;
         dir *= -1;
         image_xscale = dir;
         
-        vsp = jump_height;
-        movespeed = 10;
+        smc_set_state(state_player_mach);
+        player_do_jump(true, spr_walljump_intro);
         
         return;
     }
     
-    if (PLAYER_HIT_CEILING)
-    {
-        player_setup_hit_ceiling();
+    if (player_do_ceilingsplat())
         return;
-    }
     
     if (InputPressed(INPUT_VERB.GRABDASH) && sprite_index != spr_wallclimb_dash)
     {

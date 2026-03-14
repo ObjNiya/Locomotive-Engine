@@ -1,3 +1,5 @@
+#macro DESTROY_SAVEROOM if (check_saveroom()) instance_destroy(id, false)
+
 /**
  * This function will add the given instance to the save room map so it is remembered and won't reappear when leaving an entering the room.
  * @parameter {Id.Instance} instance (OPTIONAL) The instance to add to the save room map (defaults to the current instances' id).
@@ -15,16 +17,9 @@ function add_saveroom(instance = id, properties = {})
  */
 function check_saveroom(instance = id, execute_event_flag = false)
 {
-    var is_saved = !is_undefined(ds_map_find_value(global.saveroom, instance));
-    
-    if (!is_saved)
-        return false;
-    else
-    {
-        instance_destroy(instance, execute_event_flag);
-        return true;
-    }
+    return !is_undefined(ds_map_find_value(global.saveroom, instance));
 }
+
 
 /**
  * This function will completely wipe the save room map, respawning any remembered instances.

@@ -5,3 +5,8 @@ with (obj_roomtrans_fade)
 }
 
 queue_room(rm_test, obj_spawn_a);
+
+var skip = true;
+
+if (skip)
+    goto_room();

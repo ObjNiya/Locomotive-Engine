@@ -12,9 +12,9 @@ function get_charspr(sprite, char)
     var fallback_spr = sprite;
     
     sprite = string_replace_all(sprite_get_name(sprite), CHAR_DEFAULT_SPRITE_SUFFIX, char.sprite_suffix);
-    sprite = asset_get_index(sprite);
+    sprite = asset_get_index_fast(sprite, asset_sprite);
     
-    return (sprite_exists(sprite)) ? asset_get_index(sprite) : fallback_spr;
+    return (sprite_exists(sprite)) ? asset_get_index_fast(sprite, asset_sprite) : fallback_spr;
 }
 
 /**

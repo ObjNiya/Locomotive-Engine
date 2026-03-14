@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"maze_group\",\"path\":\"texturegroups/maze_group\"}",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,

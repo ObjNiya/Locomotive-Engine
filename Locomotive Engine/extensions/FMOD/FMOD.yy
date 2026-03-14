@@ -13,11 +13,7 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"Fmod_iOS",
-  "ConfigValues":{
-    "Debug":{
-      "copyToTargets":"2891310965066825934",
-    },
-  },
+  "ConfigValues":{},
   "copyToTargets":3035426153142681806,
   "description":"",
   "exportToGame":true,

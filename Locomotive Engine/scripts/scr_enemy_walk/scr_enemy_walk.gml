@@ -9,11 +9,15 @@ function state_enemy_walk_start()
 /// @ignore
 function state_enemy_walk_step()
 {
-    if (grounded && !place_meeting(x + image_xscale, y + 1, [obj_solid, obj_slope])) || (place_meeting(x + image_xscale, y, obj_solid))
+    walk_prefix();
+    
+    if (grounded && !place_meeting(x + image_xscale, y + 1, obj_solid)) || (place_meeting(x + image_xscale, y, obj_solid))
         image_xscale *= -1;
  
     hsp = movespeed * image_xscale;
        
+    walk_postfix();
+    
     if (!animation_end() || !grounded)
         return;
     

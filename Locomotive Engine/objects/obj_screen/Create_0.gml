@@ -1,5 +1,10 @@
 SINGLETON;
 
+// Screen configurations
+
+#macro GAME_WIDTH 960
+#macro GAME_HEIGHT 540
+
 // Scaling mode set-up
 
 enum SCALING_MODES

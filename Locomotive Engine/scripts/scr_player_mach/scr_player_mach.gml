@@ -44,9 +44,8 @@ function state_player_mach_start()
         
     }
 
-    sound_instance_start(snd_mach);
-    
-    attacking = true;
+    if (sound_instance_get_playback_state(snd_mach) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
+        sound_instance_start(snd_mach);
 }
 
 /// @ignore
@@ -64,6 +63,8 @@ function state_player_mach_step()
     
     hsp = movespeed * dir;
     
+    destroy_blocks(x + hsp, y, (mach_stage < 3) ? [obj_block_metal, obj_block_metal_tiles] : []);
+    
     if (sound_instance_get_playback_state(snd_mach) == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
         sound_instance_start(snd_mach);
     
@@ -79,23 +80,13 @@ function state_player_mach_step()
             hud_tv_trigger_expression("mach" + string(mach_stage));
     }
     
-    if (PLAYER_JUMP)
-    {
-        player_setup_mach_jump();
+    if (player_do_jump(false, (mach_stage <= 2) ? spr_mach2_jump_intro : spr_mach3_jump))
         return;
-    }
-    
-    if (PLAYER_UPPERCUT)
-    {
-        smc_set_state(state_player_uppercut);
+
+    if (player_do_grabdash())
         return;
-    }
-    
-    if (PLAYER_GRABDASH)
-    {
-        smc_set_state(state_player_grabdash);
+    if (player_do_uppercut())
         return;
-    }
     
     if (PLAYER_TAUNT)
     {
@@ -111,11 +102,8 @@ function state_player_mach_step()
         return;
     }
     
-    if (PLAYER_CAPE)
-    {
-        smc_set_state(state_player_cape);
+    if (player_do_cape())
         return;
-    }
     
     if (PLAYER_SJUMP_PREPARE)
     {
@@ -123,11 +111,8 @@ function state_player_mach_step()
         return;
     }
     
-    if (PLAYER_MACHTURN)
-    { 
-        smc_set_state(state_player_machturn);
+    if (player_do_machturn())
         return;
-    }
     else if (PLAYER_MACHINSTATURN)
     {
         dir *= -1;
@@ -136,11 +121,8 @@ function state_player_mach_step()
         movespeed = min(movespeed, 6);
     }
     
-    if (PLAYER_MACHSLIDE)
-    {
-        smc_set_state(state_player_machslide);
+    if (player_do_machslide())
         return;
-    }
     else if (PLAYER_MACHSTOP)
     {
         smc_set_state(state_player_normal);
@@ -156,16 +138,21 @@ function state_player_mach_step()
     if (PLAYER_HIT_WALL)
     {
         if (mach_stage <= 2)
-            player_setup_wallsplat();
+            player_do_wallsplat();
         else
-            player_setup_wallcrash();
+        {
+            smc_set_state(state_player_animation);
+            sprite_set(spr_mach3_hit_wall, 0);
+            
+            vsp = -6;
+            movespeed = -6;
+        }
 
         return;
     }    
     
     mach_afterimage_timer.start()
-    if (!grounded)
-        player_routine_jumpstop();
+    player_do_jumpstop();
     
     animation_end_ext((sprite_index == spr_mach2_jump_intro), spr_mach2_jump);
     animation_end_ext((sprite_index == spr_mach3_jump), spr_mach3);
@@ -181,7 +168,7 @@ function state_player_mach_step()
     {
         case 1:
         case 2:
-            strength = 1;
+            stun_enemy();
             
             if (!grounded && !equals_to_any(sprite_index, [spr_mach2_jump_intro, spr_mach2_jump, spr_longjump_intro, spr_longjump, spr_walljump_intro, spr_walljump]))
                 sprite_set(spr_mach2_jump_intro, 0);
@@ -200,7 +187,7 @@ function state_player_mach_step()
         
         case 3:
         case 4:
-            strength = 2;
+            hurt_enemy();
             
             var camera_extend = 250 * dir;
             var camera_extend_speed = mach_stage / 2;
@@ -258,9 +245,6 @@ function state_player_mach_end()
     
     sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     //extend_camera_horizontal(0, 2);
-    
-    attacking = false;
-    strength = 1;
 }
 
 /**

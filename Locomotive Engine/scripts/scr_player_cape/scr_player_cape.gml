@@ -5,12 +5,9 @@ function state_player_cape_start()
     image_speed = 0;
     
     grav = 0;
-    
-    vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     vert_movespeed = 15;
     
-    accel = 0.025;
-    vert_accel = 0.8;
+    vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     
     if (vert_dir == 0)
     {
@@ -23,9 +20,10 @@ function state_player_cape_start()
         image_index = image_number * real(vert_dir == 1);
     }
     
+    accel = 0.025;
+    vert_accel = 0.8;
+    
     blur_afterimage_timer.start();
-    sound_instance_one_shot(sfx_damian_cape_start, x, y);
-    create_flash_effect(true);
 }
 
 /// @ignore
@@ -72,10 +70,7 @@ function state_player_cape_step()
         
         mach_afterimage_use_alpha = false;
         mach_afterimage_timer.start();
-        
-        attacking = true;
-        strength = 2;
-        
+
         return;
     }
     
@@ -112,14 +107,17 @@ function state_player_cape_step()
         return;
     }
     
-    if (sprite_index == spr_cape_spin && animation_end(spr_cape))
+    if (sprite_index == spr_cape_spin)
     {
-        mach_afterimage_use_alpha = true;
-        mach_afterimage_timer.stop();
+        hurt_enemy();
         
-        image_speed = 0;
-        
-        attacking = false;
+        if (animation_end(spr_cape))
+        {
+            mach_afterimage_use_alpha = true;
+            mach_afterimage_timer.stop();
+            
+            image_speed = 0;
+        }
     }
     
     switch (vert_dir)
@@ -167,9 +165,6 @@ function state_player_cape_end()
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();
     blur_afterimage_timer.stop();
-    
-    attacking = false;
-    strength = 1;
 }
 
 /**

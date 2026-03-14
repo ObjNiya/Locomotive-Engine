@@ -2,29 +2,20 @@
 function state_player_grabdash_start()
 {
     grabdash_airborne = !grounded;
-    
     accel = 0.5;
     
+    image_speed = 1;
     if (dir == 0)
         dir = image_xscale;
+    else
+        image_xscale = dir;
     
     if (movespeed < 10 && grounded)
         movespeed = max(movespeed, 10);
     
-    hsp = movespeed * dir;
-    image_xscale = dir;
-    
-    damage = 0;
-    attacking = true;
-    strength = 2;
-    
-    image_speed = 1;
-    
     sprite_set(spr_grabdash_intro, 0);
-    
     sound_instance_start(snd_grabdash);
     blur_afterimage_timer.start();
-    create_particle(x, y + 45, obj_burst_cloud_particle);
 }
 
 /// @ignore
@@ -37,11 +28,10 @@ function state_player_grabdash_step()
     
     hsp = movespeed * dir;
     
-    if (PLAYER_JUMP)
-    {
-        player_setup_longjump();
+    destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
+    
+    if (player_do_longjump())
         return;
-    }
     
     if (PLAYER_WALLCLIMB)
     {
@@ -71,18 +61,18 @@ function state_player_grabdash_step()
     
     if (PLAYER_HIT_WALL)
     {
-        player_setup_grabdash_bump();
+        smc_set_state(state_player_normal);
+        
+        sound_instance_one_shot(sfx_player_bump_wall, x, y);
+        sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+        
+        vsp = -4;
+        grounded = false;
+        grabdash_bump_buffer = 60;
+        
+        sprite_index = spr_grabdash_bump;
         return;
     }
-    
-    /*var grab_target = grab_enemy();
-    
-    if (instance_exists(grab_target))
-    {
-        grabbed_instance_id = grab_target;
-        smc_set_state(state_player_normal);
-        return;
-    }*/
     
     animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
     animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
@@ -97,10 +87,6 @@ function state_player_grabdash_step()
 /// @ignore
 function state_player_grabdash_end()
 {
-    damage = 1;
-    attacking = false;
-    strength = 1;
-    
     blur_afterimage_timer.stop();
 }
 

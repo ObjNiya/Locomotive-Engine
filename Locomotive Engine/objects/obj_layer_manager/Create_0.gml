@@ -12,12 +12,19 @@ scrt_ts_circle_rad.set_animcurve_out_channel("close");
 // Debug
 
 collision_objs = [
-    par_collision, 
+    obj_solid,
+    obj_slope,
+    obj_platform,
+    obj_sidePlatform,
+    obj_slopePlatform,
+    obj_ladder,
+    
     obj_point_of_interest, 
     obj_secret_tiles, 
-    obj_metalblock_tiles, 
-    obj_destroyable_tiles_big, 
-    obj_destroyable_tiles, 
+    obj_block_metal_tiles, 
+    obj_block_tiles_big, 
+    obj_block_tiles,
+    
     obj_spawn_a, 
     obj_spawn_b,
     obj_spawn_c,
@@ -37,12 +44,14 @@ set_collision_visible = function(visible)
     
     repeat (collision_count)
     {
-        with (collision_objs[i])
-            self.visible = other.show_collisions;
+        var obj = collision_objs[i];
+        
+        with (obj)
+        {
+            if (object_index == obj)
+                self.visible = other.show_collisions;
+        }
         
         i++;
     }
 }
-
-if (PLAYTESTER_MODE || DEVELOPER_MODE || DEBUG_MODE)
-    set_collision_visible(true);

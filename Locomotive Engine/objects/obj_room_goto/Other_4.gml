@@ -18,7 +18,7 @@ if (is_undefined(spawn_x) || spawn_x == undefined || is_undefined(spawn_y) || sp
 
 var spawn_spr = (sprite_exists(target_spawn.mask_index)) ? target_spawn.mask_index : target_spawn.sprite_index;
 
-with (par_player)
+with (obj_player)
 {
     var plyr_left_x = sprite_get_xoffset(mask_index) - sprite_get_bbox_left(mask_index);
     spawn_x += plyr_left_x;

@@ -6,9 +6,6 @@
     "Dev":{
       "textureGroupId":"{\"name\":\"town_group\",\"path\":\"texturegroups/town_group\"}",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "macroPageTiles":{
     "SerialiseHeight":0,

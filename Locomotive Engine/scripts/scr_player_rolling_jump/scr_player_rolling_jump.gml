@@ -10,14 +10,15 @@ function state_player_rolling_jump_start()
     mask_index = spr_crouchmask;
     
     blur_afterimage_timer.start();
-    
-    attacking = true;
-    strength = 2;
+
 }
 
 /// @ignore
 function state_player_rolling_jump_step()
 {
+    hurt_enemy();
+    destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
+    
     if (PLAYER_HIT_WALL)
     {
         mach_afterimage_use_alpha = false;
@@ -32,7 +33,7 @@ function state_player_rolling_jump_step()
     if (!grounded)
         return;
     
-    smc_set_state(state_player_machroll);
+    smc_set_state((hsp == 0) ? state_player_normal : state_player_machroll);
 }
 
 /// @ignore
@@ -41,9 +42,6 @@ function state_player_rolling_jump_end()
     mask_index = spr_player_mask;
     
     grav = 0.5;
-    
-    attacking = false;
-    strength = 1;
     
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.stop();

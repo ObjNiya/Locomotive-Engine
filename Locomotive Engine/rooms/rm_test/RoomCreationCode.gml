@@ -1,1 +1,0 @@
-set_music(mu_hallway)

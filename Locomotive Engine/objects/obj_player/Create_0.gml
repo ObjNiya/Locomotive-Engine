@@ -49,44 +49,6 @@ movement_helpers_initialize();
 visual_helper_initialize();
 
 /////////////////////////////
-// Combat Set-up
-/////////////////////////////
-
-combat_initialize();
-invincible = true;
-has_collision = true;
-
-resistance = 1;
-strength = 1;
-hp = 6;
-
-group = COMBAT_GROUPS.PLAYER;
-
-// Functions
-
-damage_function = function(other_id)
-{
-    hitstun_sprite = (state_id == state_player_mach) ? spr_mach3_hit_enemy : -1;
-    sound_instance_one_shot(sfx_player_punch, x, y);
-    
-    hitstun_apply();
-}
-
-stun_function = function(other_id)
-{
-    if (state_id == state_player_hurt)
-        return;
-
-    smc_set_state(state_player_hurt);
-    
-    sprite_index = (image_xscale == -other_id.image_xscale) ? spr_hurt : spr_back_hurt;
-    
-    dir = side(sign(x - other_id.x), image_xscale);
-}
-
-hurt_function = stun_function;
-
-/////////////////////////////
 // Character Set-up
 /////////////////////////////
 
@@ -108,19 +70,19 @@ state_machine_initialize();
 smc_set_state(state_player_normal);
 
 /////////////////////////////
-// General state variables
+// General variables
 /////////////////////////////
 
-jump_height = -11;
-jumpstop_divisor = 20;
+has_key = false;
+has_catripi = false;
 
 /////////////////////////////
 // State specific variables
 /////////////////////////////
 
-// Crouch
+// Ladder
 
-crouch_jump_height = -8;
+ladder_id = noone;
 
 // Grab dash
 
@@ -156,8 +118,8 @@ taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
 
 // Ground Pound
 
+groundpound_smash = -14;
 groundpound_effect_id = noone;
-
 snd_groundpound = sound_instance_create(sfx_player_groundpound);
 
 // Mach
@@ -189,14 +151,11 @@ wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
 warppipe_failsave_timer = new Timer(3, time_source_units_seconds, function() {
     smc_set_state(state_player_normal);
 });
-
 warppipe_id = noone;
 
 /////////////////////////////
-// General Timers
+// Particle timers
 /////////////////////////////
-
-// Particles
 
 cloud_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
@@ -226,7 +185,9 @@ upwards_woosh_particle_timer = new Timer(0.25, time_source_units_seconds, functi
 });
 upwards_woosh_particle_timer.set_ext(1, true);
 
-// Afterimages
+/////////////////////////////
+// Afterimage timers
+/////////////////////////////
 
 blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
     with (create_afterimage(x, y, obj_blur_afterimage))
@@ -240,6 +201,7 @@ blur_afterimage_timer.set_ext(1, true);
 
 mach_afterimage_use_alpha = true;
 mach_afterimage_timer = new Timer(5, time_source_units_frames, function() {
-    create_afterimage(x, y, obj_mach_afterimage);
+    with (create_afterimage(x, y, obj_mach_afterimage))
+        use_alpha = other.mach_afterimage_use_alpha;
 });
 mach_afterimage_timer.set_ext(1, true);

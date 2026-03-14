@@ -1,3 +1,3 @@
 event_inherited();
 
-image_index = 1;
+image_index = real(!check_saveroom());

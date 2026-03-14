@@ -8,11 +8,7 @@
   "bbox_top":32,
   "collisionKind":1,
   "collisionTolerance":0,
-  "ConfigValues":{
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
-  },
+  "ConfigValues":{},
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
@@ -31,7 +27,7 @@
   "origin":9,
   "parent":{
     "name":"Ratblock",
-    "path":"folders/Sprites/Level Structure/Destructibles/Ratblock.yy",
+    "path":"folders/Sprites/Level Structure/Blocks/Ratblock.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

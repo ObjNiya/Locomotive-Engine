@@ -59,3 +59,8 @@ function smc_restore_state()
     if (stored_state_id != -1)
         smc_set_state(stored_state_id);
 }
+
+function smc_empty_state()
+{
+    return [-1, -1, -1];
+}

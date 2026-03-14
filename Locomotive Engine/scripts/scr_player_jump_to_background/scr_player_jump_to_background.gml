@@ -9,7 +9,7 @@ function state_player_jump_to_background_start()
     
     movespeed = 0;
     hsp = 0;
-    vsp = jump_height;
+    vsp = -11;
     grav = 0.35;
 }
 

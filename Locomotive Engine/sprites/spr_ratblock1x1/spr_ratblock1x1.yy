@@ -12,9 +12,6 @@
     "Dev":{
       "textureGroupId":"{ \"name\":\"levelstructure_group\", \"path\":\"texturegroups/levelstructure_group\" }",
     },
-    "Debug":{
-      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
-    },
   },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -36,7 +33,7 @@
   "origin":0,
   "parent":{
     "name":"Ratblock",
-    "path":"folders/Sprites/Level Structure/Destructibles/Ratblock.yy",
+    "path":"folders/Sprites/Level Structure/Blocks/Ratblock.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
