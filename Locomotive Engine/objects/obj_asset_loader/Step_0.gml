@@ -56,4 +56,3 @@ with (obj_fmod_studio)
 }
 
 load_progress = (texturegroups_progress + fmod_studio_banks_progress) / 2;
-trace(load_progress);

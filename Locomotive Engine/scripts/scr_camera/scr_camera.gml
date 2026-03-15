@@ -1,199 +1,86 @@
 /// @ignore
-function Camera(id, target) constructor
+function Camera(instance_to_follow) constructor
 {
-    self.id = id;
+    var view = 0;
     
-    update_func = camera_end_step;
+    while (view_camera[view] == -1)
+    {
+        if (view++ > 7)
+        {
+            log(Camera, LOG_TYPES.WARNING, ["Camera limit reached! Camera with target ", instance_to_follow, " will not be added."])
+            return;
+        }    
+    }
     
-    listener = -1;
-    fmod_3d_attributes = new Fmod3DAttributes();
+    viewport = view;
+    id = camera_create_view(0, 0, GAME_WIDTH, GAME_HEIGHT);
     
-    with (fmod_3d_attributes)
+    target = instance_to_follow;
+
+    fmod_studio_system_set_num_listeners(viewport);
+    fmod_attr = new Fmod3DAttributes();
+    
+    with (fmod_attr)
     {
         forward.z = 1;
-        up.y = 1;
+        up.y = 1; 
     }
     
-    self.target = target;
+    x_offsets = {};
+    y_offsets = {};
+    zooms = { base_val: 1 };
     
-    x_extend = 0;
-    x_extend_speed = 0.2;
-    x_extend_target = 0;
+    locked = false;
     
-    y_extend = 0;
-    y_extend_speed = 0.2;
-    y_extend_target = 0;
-    
-    shake_magnitude = 0;
-    shake_deccel = 0.1;
-    
-    zoom = 1;
-    zoom_target = 1;
-    zoom_speed = 0.1;
-}
-
-/**
- * This function will add a dynamic camera with automatic functionality for extending, shaking and zooming.
- * @parameter {Id.Instance|Asset.GMObject} target The instance or object for the camera to follow.
- * @returns {Id.Camera}
- */
-function add_camera(target)
-{
-    var viewport = 0;
-    
-    while (view_camera[viewport] == -1 && viewport <= 7)
-        viewport++;
-    
-    if (viewport > 7)
+    static room_start = function()
     {
-        trace("Reached camera limit!");
-        return;
+        if (!view_enabled)
+            view_enabled = true;
+        
+        view_visible[viewport] = true;
+        view_wport[viewport] = GAME_WIDTH;
+        view_hport[viewport] = GAME_HEIGHT;
+        view_camera[viewport] = id;
     }
     
-    var camera = camera_create_view(0, 0, GAME_WIDTH, GAME_HEIGHT, 0);
-    
-    with (obj_camera_system)
+    static step = function()
     {
-        array_push(cameras, new Camera(camera, target));
+        if (locked)
+            exit;
         
-        var camera_index = array_length(cameras) - 1;
+        // Calculate certain attributes
         
-        camera_indices[viewport] = camera_index;
-        ds_map_add(camera_map, camera, camera_index);
+        var zoom = struct_get_sum(zooms);
+        var x_offset = struct_get_sum(x_offsets);
+        var y_offset = struct_get_sum(y_offsets);
         
-        set_up_viewports();
-    }
-    
-    fmod_studio_system_set_num_listeners(viewport);
-    fmod_studio_system_set_listener_weight(viewport, 0);
-    
-    return camera;
-}
-
-/**
- * This function will delete the given camera, removing it from the screen.
- * @parameter {Id.Camer} camera The camera to delete.
- */
-function delete_camera(camera)
-{
-    with (obj_camera_system)
-    {
-        var camera_index = ds_map_find_value(camera_map, camera);
-        var camera_ind_index = array_get_index(camera_indices, camera_index);
+        var fin_width = GAME_WIDTH / zoom;
+        var fin_height = GAME_HEIGHT / zoom;
         
-        camera_destroy(camera);
+        camera_set_view_size(id, fin_width, fin_height);
         
-        array_delete(cameras, camera_index, 1);
-        ds_map_delete(camera_map, camera);
+        var mid_width = (fin_width / 2);
+        var mid_height = (fin_height / 2);
         
-        camera_indices[camera_ind_index] = -1;
+        var fin_x = clamp(target.x - mid_width + x_offset, 0, room_width - fin_width);
+        var fin_y = clamp(target.y - 50 - mid_height + y_offset, 0, room_height - fin_height);
         
-        view_visible[camera_ind_index] = false;
-        //view_enabled[camera_indices_index] = false;
+        camera_set_view_pos(id, fin_x, fin_y);
         
-        view_wport[camera_ind_index] = 0;
-        view_hport[camera_ind_index] = 0;
-        
-        view_camera[camera_ind_index] = -1;
-        
-        fmod_studio_system_set_num_listeners(fmod_studio_system_get_num_listeners() - 1);
-    }
-}
-
-/// @ignore
-function camera_end_step()
-{
-    with (obj_camera_system)
-    {
-        var camera_index = camera_indices[view_current];
-
-        if (camera_index == -1)
-            return;
-        
-        with (cameras[camera_index])
+        with (fmod_attr.position)
         {
-            x_extend = approach(x_extend, x_extend_target, x_extend_speed);
-            y_extend = approach(y_extend, y_extend_target, y_extend_speed);
-            
-            shake_magnitude = approach(shake_magnitude, 0, shake_deccel);
-            zoom = lerp(zoom, zoom_target, zoom_speed);
-            
-            if (!instance_exists(target))
-                return;
-            
-            var camera_width = GAME_WIDTH * zoom;
-            var camera_height = GAME_HEIGHT * zoom;
-            
-            camera_set_view_size(id, camera_width, camera_height);
-            
-            var camera_x_origin = camera_get_view_width(id) / 2;
-            var camera_x_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            var camera_x = clamp(target.x + camera_x_shake - camera_x_origin, 0, room_width - camera_width);
-
-            var camera_y_origin = camera_get_view_height(id) / 2;
-            var camera_y_shake = irandom_range(-shake_magnitude, shake_magnitude);
-            var camera_y = clamp(target.y + camera_y_shake - camera_y_origin, 0, room_height - camera_height);
-
-            camera_set_view_pos(id, camera_x, camera_y);
-            
-            with (fmod_3d_attributes.position)
-            {
-                x = camera_x + camera_x_origin;
-                y = camera_y + camera_y_origin;
-            }
-            
-            fmod_studio_system_set_listener_attributes(view_current, fmod_3d_attributes);
+            x = fin_x + mid_width;
+            y = fin_y + mid_height;
         }
-    }
-}
-
-/**
- * This function lets you set how far the given camera extends on the x axis.
- * @parameter {Id.Camera} camera Which camera to extend on the x axis.
- * @parameter {Real} extend_target How far to extend the camera on the x axis.
- * @parameter {Real} extend_speed The speed at which the camera will extend on the x axis.
- */
-function camera_set_x_extend(camera, extend_target, extend_speed)
-{
-    with (obj_camera_system)
-    {
-        var camera_index = ds_map_find_value(camera_map, camera);
         
-        cameras[camera_index].x_extend_target = extend_target;
-        cameras[camera_index].x_extend_speed = extend_speed;
+        fmod_studio_system_set_listener_attributes(viewport, fmod_attr);
     }
-}
-
-/**
- * This function lets you set how far the given camera extends on the y axis.
- * @parameter {Id.Camera} camera Which camera to extend on the y axis.
- * @parameter {Real} extend_target How far to extend the camera on the y axis.
- * @parameter {Real} extend_speed The speed at which the camera will extend on the y axis.
- */
-function camera_set_y_extend(camera, extend_target, extend_speed)
-{
-    with (obj_camera_system)
+    
+    static destroy = function()
     {
-        var camera_index = ds_map_find_value(camera_map, camera);
+        camera_destroy(id);
         
-        cameras[camera_index].y_extend_target = extend_target;
-        cameras[camera_index].y_extend_speed = extend_speed;
-    }
-}
-
-/**
- * This function lets you set how much the given camera should shake around it's follow target.
- * @parameter {Id.Camera} camera Which camera to shake.
- * @parameter {Real} shake_magnitude By how many pixels the camera will shake around it's follow target.
- * @parameter {Rea} shake_deccel By how much the shaking should deccelerate each frame until it reaches 0.
- */
-function camera_set_shake(camera, shake_magnitude, shake_deccel)
-{
-    with (obj_camera_system)
-    {
-        var camera_index = ds_map_find_value(camera_map, camera);
-        
-        cameras[camera_index].shake_magnitude = shake_magnitude;
-        cameras[camera_index].shake_deccel = shake_deccel;
+        view_visible[viewport] = false;
+        view_camera[viewport] = -1;
     }
 }

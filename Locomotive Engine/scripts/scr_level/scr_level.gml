@@ -1,4 +1,4 @@
-#macro CATCH_UNDEFINED_LVL lvl = __get_lvl__(lvl) if (lvl == undefined) { trace("The given level does not exist.") return -1 }
+#macro CATCH_UNDEFINED_LVL lvl = __get_lvl__(lvl) if (lvl == undefined) { return -1 }
 
 
 global.levels = [];

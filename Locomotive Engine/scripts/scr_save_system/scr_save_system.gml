@@ -9,6 +9,5 @@ function save_initialize()
     buffer_write(global.save, buffer_string, "Hello");
     buffer_write(global.save, buffer_u64, 64);
     
-    trace(working_directory + "save.sav")
     buffer_save(global.save, working_directory + "save.sav")
 }

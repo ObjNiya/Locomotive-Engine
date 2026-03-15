@@ -1,8 +1,5 @@
 SINGLETON;
 
-level_intro = true;
-portal_intro = true;
-
 with (global)
 {
     showtime_timer.stop();

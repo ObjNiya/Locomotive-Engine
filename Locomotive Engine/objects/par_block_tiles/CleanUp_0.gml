@@ -30,11 +30,8 @@ var tile_lay_count = array_length(target_tiles);
 var xx = bbox_left;
 var yy = bbox_top;
 
-trace(xx, yy)
-    
 for (; xx < bbox_right && yy < bbox_bottom; xx += 32) 
 {
-    //trace("X: ", xx, " Y: ", yy);
     var i = 0;
 
     repeat (tile_lay_count)

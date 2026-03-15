@@ -5,3 +5,4 @@ sound_instance_move_several([snd_grabdash, snd_groundpound, snd_mach, snd_superj
 scr_collision();
 coyote_step();
 smc_step();
+camera.step();

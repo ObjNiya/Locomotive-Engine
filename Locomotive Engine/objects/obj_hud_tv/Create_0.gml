@@ -1,9 +1,5 @@
 state_machine_initialize();
 
-//x *= gui_get_xscale();
-//image_xscale *= gui_element_get_scale();
-//image_yscale *= gui_element_get_scale();
-trace("Scale: ", image_xscale, image_yscale)
 
 tv_offset_target = 0;
 tv_offset_hitbox = [317, 284];

@@ -101,8 +101,6 @@ function scr_recalculate_followers(baseobj = obj_player.id)
 			if prevfollowingobj != followingobj
 				setlaglerp = 0.1
 			//if changed what objects is being followed, 
-			
-			trace(ds_list_find_value(ds_map_find_value(global.trailfollowers_map, baseobj),i))
 		}
 	}
 }

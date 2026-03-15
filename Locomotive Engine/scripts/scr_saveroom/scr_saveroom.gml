@@ -34,7 +34,6 @@ function wipe_saveroom(filter = function(value) { return true })
     {
         if (filter(map_value))
         {
-            trace("Deleting: ", map_value);
             ds_map_delete(global.saveroom, map_value);
         }
         

@@ -1,7 +1,7 @@
 // Compile configuration
 
 #macro IDE_BUILD (GM_build_type == "run")
-#macro DBG_CONSOLE IDE_BUILD
+#macro DBG_CONSOLE true
 
 // Bugfix configurations
 
@@ -20,8 +20,8 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_camera_system, obj_room_goto, obj_struct_updater, obj_layer_manager]
-#macro STARTING_OBJECTS_COUNT 6
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_room_goto, obj_struct_updater, obj_layer_manager]
+#macro STARTING_OBJECTS_COUNT 5
 
 // Code shortcuts
 
@@ -100,10 +100,10 @@ function initialize_globals()
         level = -1;
     
         showtime_timer = new Timer(60, time_source_units_seconds, function() {
-            trace("Out of time!"); // TODO: Spawn Marx and code him
+            
         });
         combo_timer = new Timer(6.75, time_source_units_seconds, function() {
-            trace("Combo lost!");
+            
             global.combo = 0;
         })
             

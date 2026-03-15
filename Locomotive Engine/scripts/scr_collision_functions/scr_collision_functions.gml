@@ -1,4 +1,0 @@
-function collide_slope()
-{
-    
-}

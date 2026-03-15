@@ -27,21 +27,26 @@ function cache_charsprites(char)
     
     var sprites = asset_get_ids(asset_sprite);
     var sprite_count = array_length(sprites);
+    var i = 0;
     
-    for (var i = 0; i < sprite_count; i++)
+    repeat (sprite_count)
     {
         var sprite = sprites[i];
-        var charspr = get_charspr(sprite, char);
+        var sprite_name = sprite_get_name(sprite);
         
-        if (!sprite_exists(charspr))
+        if (!string_ends_with(sprite_name, char.sprite_suffix))
+        {
+            i++;
             continue;
+        }
         
-        var var_name_trim = (sprite == charspr) ? CHAR_DEFAULT_SPRITE_SUFFIX : char.sprite_suffix
-        var charspr_var_name = string_trim_end(sprite_get_name(charspr), [var_name_trim]);
+        var charspr_name = string_trim_end(sprite_name, [char.sprite_suffix]);
+        var charspr_value = get_charspr(sprite, char);
         
-        variable_instance_set(id, charspr_var_name, charspr);
+        variable_instance_set(id, charspr_name, charspr_value);
+        log(cache_charsprites, LOG_TYPES.INFO, ["Caching charspr ", charspr_name, " with value ", charspr_value]);
         
-        dbg_trace("Caching charspr: ", charspr_var_name, " with value: ", charspr);
+        i++;
     }
 }
 
@@ -59,7 +64,7 @@ function get_charsnd(event_path, char)
     
     if (!is_string(event_path))
     {
-        log(get_charsnd, LOG_LEVELS.WARN, ["Shit"]);
+        log(get_charsnd, LOG_TYPES.WARNING, ["Shit"]);
         return "event:/Event Defaults/3D SFX Action";
     }
     

@@ -11,7 +11,7 @@
   "ConfigValues":{},
   "DynamicTexturePage":false,
   "edgeFiltering":false,
-  "For3D":true,
+  "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"aac41291-2725-4ed1-a360-52d8d02099a6","name":"aac41291-2725-4ed1-a360-52d8d02099a6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],

@@ -7,6 +7,7 @@ with (other)
     
     sprite_index = spr_hurt;
     smc_set_state(smc_empty_state);
+    camera.locked = true;
     
     other.player = id;
 }

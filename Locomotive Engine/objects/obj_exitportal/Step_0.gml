@@ -1,14 +1,19 @@
-if (!visible)
+if (!intro_cutscene)
     exit;
 
-if (animation_end())
+with (obj_player)
 {
-    if (sprite_index == spr_exitportal_close)
-        visible = false;
-    else if (sprite_index == spr_exitportal)
-        sprite_index = spr_exitportal_close;
+    x = other.x;
+    
+    visual_xscale = approach(visual_xscale, 1, 0.035);
+    visual_yscale = approach(visual_yscale, 1, 0.035);
+    
+    if (grounded)
+    {
+        smc_set_state(state_player_normal);
+        visual_xscale = 1;
+        visual_yscale = 1;
+        
+        other.intro_cutscene = false;
+    }
 }
-
-palette_index += 0.035;
-if (palette_index > sprite_get_width(spr_exitportal_palette))
-    palette_index = 0;
