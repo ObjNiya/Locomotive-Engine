@@ -1,7 +1,5 @@
 event_inherited();
 
-image_index = irandom(image_number);
-
 debris_sprite = spr_metalblock_debris;
 debris_amount = 8;
 

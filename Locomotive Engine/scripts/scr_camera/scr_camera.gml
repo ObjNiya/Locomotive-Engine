@@ -26,9 +26,15 @@ function Camera(instance_to_follow) constructor
         up.y = 1; 
     }
     
-    x_offsets = {};
-    y_offsets = {};
+    x_offsets = { };
+    y_offsets = { };
     zooms = { base_val: 1 };
+    
+    shake_x = 0;
+    shake_mag_x = 0;
+    
+    shake_y = 0;
+    shake_mag_y = 0;
     
     lock_x = false;
     lock_y = false;
@@ -46,6 +52,18 @@ function Camera(instance_to_follow) constructor
     {
         self.lock_width = lock_width;
         self.lock_height = lock_height;
+    }
+    
+    static set_shake_x = function(starting_shake, magnitude)
+    {
+        shake_x = starting_shake;
+        shake_mag_x = magnitude;
+    }
+    
+    static set_shake_y = function(starting_shake, magnitude)
+    {
+        shake_y = starting_shake;
+        shake_mag_y = magnitude;
     }
     
     static room_start = function()
@@ -87,8 +105,11 @@ function Camera(instance_to_follow) constructor
             fin_x = camera_get_view_x(id);
         if (lock_y)
             fin_y = camera_get_view_y(id);
+      
+        camera_set_view_pos(id, fin_x + irandom_range(-shake_x, shake_x), fin_y + irandom_range(-shake_y, shake_y));
         
-        camera_set_view_pos(id, fin_x, fin_y);
+        shake_x = approach(shake_x, 0, shake_mag_x);
+        shake_y = approach(shake_y, 0, shake_mag_y);
         
         with (fmod_attr.position)
         {

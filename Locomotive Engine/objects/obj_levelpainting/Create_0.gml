@@ -15,5 +15,5 @@ visual_helper_initialize();
 
 visual_y = ystart - y;
 
-ripple_speed = 0.01;
+ripple_speed = 0;
 ripple_time = 0;

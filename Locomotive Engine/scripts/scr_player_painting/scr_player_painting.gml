@@ -70,14 +70,12 @@ function state_player_painting_step()
             
             with (painting_id)
             {
-                ripple_speed += 0.015;
+                ripple_speed = 0.032;
                 alarm[0] = 45;
             }
 
             sound_instance_one_shot(sfx_enter_painting);
         }
-        else if (!visible)
-            painting_id.ripple_speed += 0.00025;
         else if (y + vsp > painting_id.ystart)
         {
             create_afterimage(x, y, obj_blur_afterimage);
