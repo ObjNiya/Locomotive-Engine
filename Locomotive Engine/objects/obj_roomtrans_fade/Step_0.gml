@@ -1,8 +1,8 @@
 var target_fade = real(!fade_in);
 
-fade_alpha = approach(fade_alpha, target_fade, fade_speed);
+image_alpha = approach(image_alpha, target_fade, fade_speed);
 
-if (fade_alpha != target_fade)
+if (image_alpha != target_fade)
     exit;
 
 if (--end_lag > 0)

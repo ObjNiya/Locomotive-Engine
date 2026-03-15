@@ -268,6 +268,7 @@
   },
   "name":"Locomotive Engine",
   "resources":[
+    {"id":{"name":"ac_back","path":"animcurves/ac_back/ac_back.yy",},},
     {"id":{"name":"ac_ease","path":"animcurves/ac_ease/ac_ease.yy",},},
     {"id":{"name":"ac_parallax","path":"animcurves/ac_parallax/ac_parallax.yy",},},
     {"id":{"name":"ac_scrt_ts_circle_rad","path":"animcurves/ac_scrt_ts_circle_rad/ac_scrt_ts_circle_rad.yy",},},
@@ -819,6 +820,7 @@
     {"id":{"name":"scr_player_cape","path":"scripts/scr_player_cape/scr_player_cape.yy",},},
     {"id":{"name":"scr_player_crouch","path":"scripts/scr_player_crouch/scr_player_crouch.yy",},},
     {"id":{"name":"scr_player_door","path":"scripts/scr_player_door/scr_player_door.yy",},},
+    {"id":{"name":"scr_player_exitportal","path":"scripts/scr_player_exitportal/scr_player_exitportal.yy",},},
     {"id":{"name":"scr_player_grabdash","path":"scripts/scr_player_grabdash/scr_player_grabdash.yy",},},
     {"id":{"name":"scr_player_groundpound","path":"scripts/scr_player_groundpound/scr_player_groundpound.yy",},},
     {"id":{"name":"scr_player_hurt","path":"scripts/scr_player_hurt/scr_player_hurt.yy",},},
@@ -830,6 +832,7 @@
     {"id":{"name":"scr_player_machturn","path":"scripts/scr_player_machturn/scr_player_machturn.yy",},},
     {"id":{"name":"scr_player_noclip","path":"scripts/scr_player_noclip/scr_player_noclip.yy",},},
     {"id":{"name":"scr_player_normal","path":"scripts/scr_player_normal/scr_player_normal.yy",},},
+    {"id":{"name":"scr_player_painting","path":"scripts/scr_player_painting/scr_player_painting.yy",},},
     {"id":{"name":"scr_player_rolling_jump","path":"scripts/scr_player_rolling_jump/scr_player_rolling_jump.yy",},},
     {"id":{"name":"scr_player_sjump_prepare","path":"scripts/scr_player_sjump_prepare/scr_player_sjump_prepare.yy",},},
     {"id":{"name":"scr_player_sjump","path":"scripts/scr_player_sjump/scr_player_sjump.yy",},},

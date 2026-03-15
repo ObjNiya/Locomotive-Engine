@@ -1,5 +1,7 @@
 event_inherited();
 
+depth = DEPTHS.FAR;
+
 pal_sprite = -1;
 pal_index = 0;
 

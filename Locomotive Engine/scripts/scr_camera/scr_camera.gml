@@ -30,7 +30,23 @@ function Camera(instance_to_follow) constructor
     y_offsets = {};
     zooms = { base_val: 1 };
     
-    locked = false;
+    lock_x = false;
+    lock_y = false;
+    
+    lock_width = false;
+    lock_height = false;
+    
+    static axis_set_locked = function(lock_x, lock_y)
+    {
+        self.lock_x = lock_x;
+        self.lock_y = lock_y;
+    } 
+    
+    static size_set_locked = function(lock_width, lock_height)
+    {
+        self.lock_width = lock_width;
+        self.lock_height = lock_height;
+    }
     
     static room_start = function()
     {
@@ -45,9 +61,6 @@ function Camera(instance_to_follow) constructor
     
     static step = function()
     {
-        if (locked)
-            exit;
-        
         // Calculate certain attributes
         
         var zoom = struct_get_sum(zooms);
@@ -57,6 +70,11 @@ function Camera(instance_to_follow) constructor
         var fin_width = GAME_WIDTH / zoom;
         var fin_height = GAME_HEIGHT / zoom;
         
+        if (lock_width)
+            fin_width = camera_get_view_width(id);
+        if (lock_height)
+            fin_height = camera_get_view_height(id);
+        
         camera_set_view_size(id, fin_width, fin_height);
         
         var mid_width = (fin_width / 2);
@@ -64,6 +82,11 @@ function Camera(instance_to_follow) constructor
         
         var fin_x = clamp(target.x - mid_width + x_offset, 0, room_width - fin_width);
         var fin_y = clamp(target.y - 50 - mid_height + y_offset, 0, room_height - fin_height);
+        
+        if (lock_x)
+            fin_x = camera_get_view_x(id);
+        if (lock_y)
+            fin_y = camera_get_view_y(id);
         
         camera_set_view_pos(id, fin_x, fin_y);
         

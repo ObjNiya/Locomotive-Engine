@@ -3,6 +3,9 @@
     {"name":"Bezier","order":1,"path":"folders/Animation Curves/Bezier.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"ac_back","order":1,"path":"animcurves/ac_back/ac_back.yy",},
+    {"name":"scr_player_exitportal","order":2,"path":"scripts/scr_player_exitportal/scr_player_exitportal.yy",},
+    {"name":"scr_player_painting","order":1,"path":"scripts/scr_player_painting/scr_player_painting.yy",},
     {"name":"scr_struct_utilities","order":1,"path":"scripts/scr_struct_utilities/scr_struct_utilities.yy",},
     {"name":"shd_painting_ripples","order":1,"path":"shaders/shd_painting_ripples/shd_painting_ripples.yy",},
   ],

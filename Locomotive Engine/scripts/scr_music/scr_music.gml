@@ -10,3 +10,8 @@ function set_music(event_path)
     
     sound_instance_start(global.music);
 }
+
+function stop_music(allow_fadeout = true)
+{
+    sound_instance_stop(global.music, (allow_fadeout) ? FMOD_STUDIO_STOP_MODE.ALLOWFADEOUT : FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+}

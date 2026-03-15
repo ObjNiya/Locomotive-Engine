@@ -38,6 +38,8 @@ mask_index = spr_player_mask;
 /////////////////////////////
 
 camera = new Camera(id);
+cam_painting_up = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
+camera.y_offsets[$ "painting_up"] = cam_painting_up.value;
 
 scr_collision_init();
 grav = 0.5;
@@ -79,6 +81,10 @@ has_catripi = false;
 /////////////////////////////
 // State specific variables
 /////////////////////////////
+
+// Painting
+
+painting_id = noone;
 
 // Ladder
 
@@ -160,7 +166,7 @@ warppipe_id = noone;
 cloud_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if (state_id == state_player_normal)
+    if (state_id == state_player_normal || state_id == state_player_painting)
         sound_instance_one_shot(sfx_step, x, y);
 });
 cloud_particle_timer.set_ext(1, true);
@@ -190,7 +196,7 @@ upwards_woosh_particle_timer.set_ext(1, true);
 /////////////////////////////
 
 blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
-    with (create_afterimage(x, y, obj_blur_afterimage))
+    with (create_afterimage_vh(x, y, obj_blur_afterimage))
     {
         if (other.state_id == state_player_cape)
             image_index = floor(other.image_index);
@@ -201,7 +207,7 @@ blur_afterimage_timer.set_ext(1, true);
 
 mach_afterimage_use_alpha = true;
 mach_afterimage_timer = new Timer(5, time_source_units_frames, function() {
-    with (create_afterimage(x, y, obj_mach_afterimage))
+    with (create_afterimage_vh(x, y, obj_mach_afterimage))
         use_alpha = other.mach_afterimage_use_alpha;
 });
 mach_afterimage_timer.set_ext(1, true);

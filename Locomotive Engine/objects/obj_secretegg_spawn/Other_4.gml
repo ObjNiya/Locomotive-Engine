@@ -7,6 +7,6 @@ if (!active)
     exit;
 
 with (obj_player)
-    camera.locked = false;
+    camera.axis_set_locked(false, false);
 
 sound_instance_one_shot(sfx_secretegg_exit, x, y);

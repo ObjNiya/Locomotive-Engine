@@ -1,4 +1,6 @@
 depth = DEPTHS.BACK;
+image_speed = 0;
+image_index = clamp(level_id, 0, sprite_get_number(sprite_index));
 
 while (!place_meeting(x, y + 1, [obj_solid, obj_platform, obj_slope]) && y < room_height)
     y++;
@@ -9,8 +11,9 @@ with (instance_create(x - sprite_xoffset, y - sprite_yoffset, obj_point_of_inter
     image_yscale = other.sprite_height / sprite_height;
 }
 
-cutscene = false;
-player = noone;
+visual_helper_initialize();
 
-cam_tween = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
-plyr_shrink_spd = 0.01;
+visual_y = ystart - y;
+
+ripple_speed = 0.01;
+ripple_time = 0;

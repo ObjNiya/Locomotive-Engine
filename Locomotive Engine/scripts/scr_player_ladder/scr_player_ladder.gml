@@ -16,10 +16,27 @@ function state_player_ladder_step()
     vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     vsp = vert_movespeed * vert_dir;
     
+    if (InputPressed(INPUT_VERB.JUMP))
+    {
+        smc_set_state(state_player_normal);
+        sprite_set(spr_jump, 0);
+        vsp = -11;
+        
+        if (vert_dir == 1)
+        {
+            vsp = 10;
+            sprite_index = spr_fall;
+        }
+        
+        return;
+    }
+    
     if (!place_meeting(x, y, ladder_id) || (grounded && vert_dir == 1 && !place_meeting(x, y, obj_platform)))
     {
         smc_set_state(state_player_normal);
-        vsp = 0;
+        
+        if (vert_dir == -1)
+            vsp = 0;
         
         return;
     }
@@ -37,10 +54,7 @@ function state_player_ladder_step()
         sprite_index = spr_ladder_up;
         
         if (vert_dir == 0)
-        {
             image_speed = 0;
-            image_index = 0;
-        }
     }  
 }
 

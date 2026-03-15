@@ -1,17 +1,18 @@
-if (check_saveroom())
+if (is_showtime() || check_saveroom())
+{
+    if (!is_showtime())
+        visible = false;
     exit;
+}
 
 with (obj_player)
 {
-    sprite_set(spr_walk_forward, 0);
-    image_speed = 0;
-    
-    visual_xscale = 0;
-    visual_yscale = 0;
-    
-    vsp = 0;
-    grav = 0.2;
-    
+    x = other.x;
     y = other.y;
-    visible = true;
+    
+    smc_set_state(state_player_exitportal);
+    sound_instance_one_shot(sfx_player_banana_slip, x, y);
 }
+
+alarm[0] = 90;
+add_saveroom();

@@ -1,9 +1,10 @@
 SINGLETON;
 
-depth = DEPTHS.FARTHEST;
+image_blend = c_black;
+image_alpha = fade_start;
+depth = DEPTHS.CLOSEST;
 
 fade_in = false;
-fade_alpha = 0;
 
 with (obj_player)
     frozen = true;

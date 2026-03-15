@@ -3,11 +3,9 @@ if (instance_exists(player))
 
 with (other)
 {
-    // TODO: Add Camera Locking
-    
     sprite_index = spr_hurt;
     smc_set_state(smc_empty_state);
-    camera.locked = true;
+    camera.axis_set_locked(true, true);
     
     other.player = id;
 }

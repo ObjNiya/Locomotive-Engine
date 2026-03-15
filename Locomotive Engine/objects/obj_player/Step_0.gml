@@ -5,4 +5,11 @@ sound_instance_move_several([snd_grabdash, snd_groundpound, snd_mach, snd_superj
 scr_collision();
 coyote_step();
 smc_step();
+
+if (place_meeting(x, y, obj_levelpainting) && state_id == state_player_normal && dir == 0 && grounded)
+    cam_painting_up.set_seek_target(1);
+else
+    cam_painting_up.set_seek_target(0);
+
+camera.y_offsets[$ "painting_up"] = cam_painting_up.value * -120;
 camera.step();

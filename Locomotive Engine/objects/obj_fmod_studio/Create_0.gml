@@ -35,6 +35,8 @@ SINGLETON;
 // SFX macros
 /////////////////////////////
 
+#macro sfx_enter_painting "event:/SFX/Enter Painting"
+
 // Dialouge
 
 #macro sfx_dial_start "event:/SFX/Dialouge/Dialouge Start"

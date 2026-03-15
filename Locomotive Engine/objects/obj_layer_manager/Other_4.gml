@@ -8,11 +8,13 @@ var i = 0;
 var closest_depth = -50;
 var furthest_depth = 0;
 
+var scrt_ts_lay_count = 0;
+
 repeat (layer_count)
 {
     var lay = layers[i];
     var lay_name = layer_get_name(lay);
-
+    
     if (string_pos("Secret", layer_get_name(lay)) == 0)
     {
         i++;

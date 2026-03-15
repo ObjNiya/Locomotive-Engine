@@ -1,5 +1,4 @@
 event_inherited();
-visible = true;
 
 canCollide = function()
 {
