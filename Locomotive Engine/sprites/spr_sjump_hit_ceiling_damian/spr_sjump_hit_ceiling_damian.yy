@@ -66,7 +66,7 @@
     },
     "name":"spr_sjump_hit_ceiling_damian",
     "playback":1,
-    "playbackSpeed":20.0,
+    "playbackSpeed":25.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

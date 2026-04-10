@@ -1,10 +1,12 @@
 /// @ignore
 function state_player_grabdash_start()
 {
+    momentum = true;
     grabdash_airborne = !grounded;
     accel = 0.5;
     
     image_speed = 1;
+    
     if (dir == 0)
         dir = image_xscale;
     else
@@ -29,6 +31,7 @@ function state_player_grabdash_step()
     hsp = movespeed * dir;
     
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
+    player_do_jumpstop();
     
     if (player_do_longjump())
         return;
@@ -49,12 +52,23 @@ function state_player_grabdash_step()
     
     if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && animation_end()))
     {
+        if (PLAYER_MACHRUN && sign_input_x == dir)
+        {
+            smc_set_state(state_player_mach);
+            sprite_index = spr_mach2;
+            
+            return;
+        }
+    
         smc_set_state(state_player_normal);
+        
         if (!grounded && sign_input_x == -dir)
         {
             sprite_set(spr_grabdash_cancel, 0);
             sound_instance_one_shot(sfx_player_grab_cancel, x, y);
         }
+        else if (sign_input_x == -dir)
+            movespeed = 2;
         
         return;
     }
@@ -65,6 +79,7 @@ function state_player_grabdash_step()
         
         sound_instance_one_shot(sfx_player_bump_wall, x, y);
         sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+        create_particle(x + (10 * image_xscale), y + 10, obj_bump_particle, false);
         
         vsp = -4;
         grounded = false;
@@ -75,13 +90,16 @@ function state_player_grabdash_step()
     }
     
     animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
-    animation_end_ext((sprite_index == spr_grabdash && grounded), spr_grabdash_end);
     
-    if (grabdash_airborne && grounded && sprite_index == spr_grabdash)
+    if (!grounded)
+        return;
+    
+    animation_end_ext((sprite_index == spr_grabdash), spr_grabdash_end);
+    
+    if (grabdash_airborne && sprite_index == spr_grabdash)
         sprite_set(spr_grabdash_end, 0);
     
-    if (grounded && movespeed > 5)
-        create_particle_repeating(x, y + 45, obj_slide_cloud_particle);
+    create_particle_repeating(x, y + 45, obj_slide_cloud_particle);
 }
 
 /// @ignore

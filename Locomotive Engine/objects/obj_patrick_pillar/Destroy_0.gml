@@ -1,2 +1,2 @@
-set_music(mu_showtime);
-global.showtime_timer.start();
+
+create_pillar_cutscene(obj_player, id);

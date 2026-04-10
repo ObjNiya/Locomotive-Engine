@@ -1,0 +1,1 @@
+panting_spr_time = 0;

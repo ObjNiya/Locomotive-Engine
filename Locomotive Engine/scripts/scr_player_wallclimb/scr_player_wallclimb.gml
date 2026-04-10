@@ -12,8 +12,6 @@ function state_player_wallclimb_start()
     movespeed = 0;
     grav = 0;
     
-    mach_afterimage_timer.start();
-    
     sound_instance_start(snd_mach);
     sound_instance_set_parameter_by_name(snd_mach, "Grounded", true);
     sound_instance_set_parameter_by_name(snd_mach, "State", 1);
@@ -23,6 +21,9 @@ function state_player_wallclimb_start()
 function state_player_wallclimb_step()
 {
     wallclimb_grab_buffer--;
+    
+    if (panting_spr_time < 200)
+        panting_spr_time++;
     
     destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
     
@@ -45,7 +46,7 @@ function state_player_wallclimb_step()
         image_xscale = dir;
         
         smc_set_state(state_player_mach);
-        player_do_jump(true, spr_walljump_intro);
+        player_do_jump(true, spr_walljump_intro, -11, false);
         
         return;
     }
@@ -78,8 +79,7 @@ function state_player_wallclimb_step()
         vsp = 0;
         
         smc_set_state(state_player_mach);
-        
-        return;
+        create_particle(x, y + 43, obj_jump_particle, false);
     }
 }
 
@@ -89,7 +89,6 @@ function state_player_wallclimb_end()
     grav = 0.5;
     
     wallclimb_dash_timer.stop();
-    mach_afterimage_timer.stop();
     
     sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);

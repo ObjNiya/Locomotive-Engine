@@ -27,13 +27,9 @@ function state_player_sjump_prepare_step()
         return;
     }
     
-    movespeed = 3;
+    movespeed = 2;
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    
-    if (grounded)
-        hsp = movespeed * dir;
-    else
-        hsp = approach(hsp, movespeed * dir, 0.35);
+    hsp = movespeed * dir;
     
     sprite_index = (hsp == 0) ? spr_sjump_prepare_idle : spr_sjump_prepare_move;
 }

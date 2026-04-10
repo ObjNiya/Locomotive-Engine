@@ -11,7 +11,7 @@ function state_player_sjump_start()
     
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.start();
-    cloud_particle_timer.start();
+    air_cloud_particle_timer.start();
     upwards_woosh_particle_timer.start();
     
     instance_create(x, y, obj_explosion_particle_alt);
@@ -34,7 +34,8 @@ function state_player_sjump_step()
         return;
     }
     
-    if (hurt_enemy() || destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]))
+    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
+    if (hurt_enemy())
         vsp = -12;
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
@@ -57,7 +58,7 @@ function state_player_sjump_step()
     mach_afterimage_timer.stop();
     upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
-    cloud_particle_timer.stop();
+    air_cloud_particle_timer.stop();
     
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
@@ -78,6 +79,7 @@ function state_player_sjump_step()
     image_speed = 1;
     
     create_flash_effect(true);
+    create_particle(x, y, obj_woosh_particle);
 }
 
 /// @ignore
@@ -89,7 +91,7 @@ function state_player_sjump_end()
     mach_afterimage_timer.stop();
     upwards_woosh_particle_timer.stop();
     blur_afterimage_timer.stop();
-    cloud_particle_timer.stop();
+    air_cloud_particle_timer.stop();
     
     sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

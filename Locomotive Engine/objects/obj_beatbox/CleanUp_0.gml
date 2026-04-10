@@ -1,0 +1,1 @@
+sound_instance_kill(beatbox_music);

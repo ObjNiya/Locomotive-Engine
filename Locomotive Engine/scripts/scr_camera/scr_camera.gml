@@ -26,44 +26,68 @@ function Camera(instance_to_follow) constructor
         up.y = 1; 
     }
     
-    x_offsets = { };
-    y_offsets = { };
-    zooms = { base_val: 1 };
+    x = 0;
+    x_locked = false;
+    x_offsets = [];
     
-    shake_x = 0;
-    shake_mag_x = 0;
+    y = 0;
+    y_locked = false;
+    y_offsets = [];
     
-    shake_y = 0;
-    shake_mag_y = 0;
+    zoom = 1;
+    zoom_locked = false;
+    zoom_offsets = [1];
     
-    lock_x = false;
-    lock_y = false;
+    width = GAME_WIDTH;
+    height = GAME_HEIGHT;
     
-    lock_width = false;
-    lock_height = false;
-    
-    static axis_set_locked = function(lock_x, lock_y)
+    shake_mag = 0;
+    shake_mag_deccel = 0;
+
+    static add_x_offset = function(offset_value)
     {
-        self.lock_x = lock_x;
-        self.lock_y = lock_y;
-    } 
-    
-    static size_set_locked = function(lock_width, lock_height)
-    {
-        self.lock_width = lock_width;
-        self.lock_height = lock_height;
+        array_push(x_offsets, offset_value);
+        return array_length(x_offsets) - 1;
     }
     
-    static set_shake_x = function(starting_shake, magnitude)
+    static remove_x_offset = function(offset_index)
     {
-        shake_x = starting_shake;
-        shake_mag_x = magnitude;
+        array_delete(x_offsets, offset_index, 1);
     }
     
-    static set_shake_y = function(starting_shake, magnitude)
+    static add_y_offset = function(offset_value)
     {
-        shake_y = starting_shake;
-        shake_mag_y = magnitude;
+        array_push(y_offsets, offset_value);
+        return array_length(y_offsets) - 1;
+    }
+    
+    static remove_y_offset = function(offset_index)
+    {
+        array_delete(y_offsets, offset_index, 1);
+    }
+    
+    static add_zoom_offset = function(offset_value)
+    {
+        array_push(zoom_offsets, offset_value);
+        return array_length(zoom_offsets) - 1;
+    }
+    
+    static remove_zoom_offset = function(offset_index)
+    {
+        array_delete(zoom_offsets, offset_index, 1);
+    }
+    
+    static properties_set_locked = function(lock_x, lock_y, lock_zoom)
+    {
+        x_locked = lock_x;
+        y_locked = lock_y;
+        zoom_locked = lock_zoom;
+    }
+    
+    static shake_set = function(shake_magnitude, shake_magnitude_decceleration)
+    {
+        shake_mag = shake_magnitude;
+        shake_mag_deccel = shake_magnitude_decceleration;
     }
     
     static room_start = function()
@@ -81,40 +105,42 @@ function Camera(instance_to_follow) constructor
     {
         // Calculate certain attributes
         
-        var zoom = struct_get_sum(zooms);
-        var x_offset = struct_get_sum(x_offsets);
-        var y_offset = struct_get_sum(y_offsets);
+        if (!zoom_locked)
+            zoom = 1 * array_get_sum(zoom_offsets);
         
-        var fin_width = GAME_WIDTH / zoom;
-        var fin_height = GAME_HEIGHT / zoom;
+        width = GAME_WIDTH * zoom;
+        height = GAME_HEIGHT * zoom;
         
-        if (lock_width)
-            fin_width = camera_get_view_width(id);
-        if (lock_height)
-            fin_height = camera_get_view_height(id);
+        camera_set_view_size(id, width, height);
         
-        camera_set_view_size(id, fin_width, fin_height);
+        shake_mag = approach(shake_mag, 0, shake_mag_deccel);
         
-        var mid_width = (fin_width / 2);
-        var mid_height = (fin_height / 2);
+        var target_exists = instance_exists(target);
         
-        var fin_x = clamp(target.x - mid_width + x_offset, 0, room_width - fin_width);
-        var fin_y = clamp(target.y - 50 - mid_height + y_offset, 0, room_height - fin_height);
+        var cam_x_center = width / 2;
+        var cam_y_center = height / 2;
         
-        if (lock_x)
-            fin_x = camera_get_view_x(id);
-        if (lock_y)
-            fin_y = camera_get_view_y(id);
-      
-        camera_set_view_pos(id, fin_x + irandom_range(-shake_x, shake_x), fin_y + irandom_range(-shake_y, shake_y));
+        if (!x_locked && target_exists)
+        {
+            x = (target.x + array_get_sum(x_offsets)) - cam_x_center;
+            x = clamp(x, 0, room_width - width);
+        }
         
-        shake_x = approach(shake_x, 0, shake_mag_x);
-        shake_y = approach(shake_y, 0, shake_mag_y);
+        if (!y_locked && target_exists)
+        {
+            y = (target.y + array_get_sum(y_offsets)) - (50 + cam_y_center);
+            y = clamp(y, 0, room_height - height);
+        }
+         
+        var fin_x = x + irandom_range(-shake_mag, shake_mag);
+        var fin_y = y + irandom_range(-shake_mag, shake_mag);
+        
+        camera_set_view_pos(id, fin_x, fin_y);
         
         with (fmod_attr.position)
         {
-            x = fin_x + mid_width;
-            y = fin_y + mid_height;
+            x = fin_x + cam_x_center;
+            y = fin_y + cam_y_center;
         }
         
         fmod_studio_system_set_listener_attributes(viewport, fmod_attr);

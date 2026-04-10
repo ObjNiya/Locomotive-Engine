@@ -8,7 +8,7 @@ function state_player_painting_start()
     vert_movespeed = 0;
     accel = 0.5;
     
-    camera.axis_set_locked(false, true);
+    camera.properties_set_locked(false, true, false);
 }
 
 /// @ignore
@@ -87,7 +87,7 @@ function state_player_painting_step()
 /// @ignore
 function state_player_painting_end()
 {
-    camera.axis_set_locked(false, false);
+    camera.properties_set_locked(false, false, false);
     
     visible = true;
 }

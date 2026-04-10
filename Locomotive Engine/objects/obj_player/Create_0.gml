@@ -39,7 +39,7 @@ mask_index = spr_player_mask;
 
 camera = new Camera(id);
 cam_painting_up = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
-camera.y_offsets[$ "painting_up"] = cam_painting_up.value;
+cam_painting_up_ind = camera.add_y_offset(0);
 
 scr_collision_init();
 grav = 0.5;
@@ -82,6 +82,14 @@ has_catripi = false;
 // State specific variables
 /////////////////////////////
 
+// Normal
+
+idle_spr_time = 150;
+panting_spr_time = 0;
+
+dance_hold_time = 0;
+dance_spr_speed = 0.25;
+
 // Painting
 
 painting_id = noone;
@@ -112,14 +120,14 @@ stored_image_index = 0;
 taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
     grav = 0.5;
     
-    smc_restore_state();
-    
     sprite_index = stored_sprite_index;
     image_index = stored_image_index;
     
     vsp = stored_vsp;
     hsp = stored_hsp;
     movespeed = stored_movespeed;
+    
+    smc_restore_state();
 });
 
 // Ground Pound
@@ -163,13 +171,21 @@ warppipe_id = noone;
 // Particle timers
 /////////////////////////////
 
-cloud_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
+note_particle_timer = new Timer(0.1, time_source_units_seconds, function() {
+    create_particle(x + irandom_range(-70, 70), y + irandom_range(-70, 70), obj_note_particle, false);
+})
+cloud_particle_timer = new Timer(12, time_source_units_frames, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if (state_id == state_player_normal || state_id == state_player_painting)
+    if (state_id == state_player_normal || state_id == state_player_painting || state_id == state_player_ladder)
         sound_instance_one_shot(sfx_step, x, y);
 });
 cloud_particle_timer.set_ext(1, true);
+
+air_cloud_particle_timer = new Timer(8, time_source_units_frames, function() {
+    create_particle(x + irandom_range(-25, 25), y + irandom_range(-10, 35), obj_cloud_particle, false);
+});
+air_cloud_particle_timer.set_ext(1, true);
 
 
 flame_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
@@ -206,7 +222,7 @@ blur_afterimage_timer.set_ext(1, true);
 
 
 mach_afterimage_use_alpha = true;
-mach_afterimage_timer = new Timer(5, time_source_units_frames, function() {
+mach_afterimage_timer = new Timer(6, time_source_units_frames, function() {
     with (create_afterimage_vh(x, y, obj_mach_afterimage))
         use_alpha = other.mach_afterimage_use_alpha;
 });

@@ -7,6 +7,8 @@
  * ```vert_accel``` just like ```accel```, but reserved for the Y axis.
  * ```dir``` can be used in combination with movespeed to dictate which direction your object will move in.
  * ```vert_dir```, just like with ```vert_movespeed``` and ```movespeed```, is a vertical variant of ```dir``` for the Y axis.
+ * ```momentum``` could be used to determine if your object should keep it's speed even if the player is pressing no direction.
+ * ```vert_momentum``` can be used just like ```momentum```, except for the Y axis.
 */
 function movement_helpers_initialize()
 {
@@ -18,4 +20,7 @@ function movement_helpers_initialize()
     
     dir = 0;
     vert_dir = 0;
+    
+    momentum = false;
+    vert_momentum = false;
 }

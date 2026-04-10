@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_machroll_start()
 {
-    sprite_set(spr_machroll, 0);
+    sprite_set((sprite_index == spr_rolling_jump) ? spr_backslide_land : spr_machroll, 0);
     mask_index = spr_crouchmask;
     
     with (instance_create(x, y + 45, obj_burst_cloud_particle))
@@ -20,16 +20,6 @@ function state_player_machroll_step()
     stun_enemy();
     
     hsp = movespeed * dir;
-
-    if (sprite_index == spr_rolling_jump)
-    {
-        if (grounded)
-            sprite_set(spr_backslide_land, 0);
-        else
-            vsp += 0.5;
-        
-        return;
-    }
     
     if (player_do_wallsplat())
         return;
@@ -61,7 +51,7 @@ function state_player_machroll_step()
         return;
     }
     
-    vsp = 20;
+    vsp = 15;
     
     if (sprite_index != spr_machroll_dive)
     {

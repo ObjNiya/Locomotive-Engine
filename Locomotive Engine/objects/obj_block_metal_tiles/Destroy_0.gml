@@ -16,7 +16,4 @@ sound_instance_one_shot(destroy_sound, x, y);
 add_saveroom();
 
 with (obj_player)
-{
-    camera.set_shake_x(20, 0.666);
-    camera.set_shake_y(20, 0.666);
-}
+    camera.shake_set(20, 0.666);

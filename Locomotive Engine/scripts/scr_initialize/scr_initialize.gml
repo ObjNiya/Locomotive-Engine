@@ -18,6 +18,10 @@
  */
 #macro FIX_POPUP false
 
+#macro FIX_TAUNT_BUFFERING false
+
+#macro ANALOG_CONTROLS true
+
 // Game start configurations
 
 #macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_room_goto, obj_struct_updater, obj_layer_manager]

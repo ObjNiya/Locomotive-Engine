@@ -88,22 +88,8 @@ function state_player_cape_step()
     
     if (PLAYER_HIT_WALL)
     {
-        if (sprite_index == spr_cape_spin)
-        {
-            image_xscale *= -1;
-            dir *= -1;
-        }
-        else
-        {
-            sprite_set(spr_cape_bounce, 0);
-            image_speed = 1;
-            
-            vert_movespeed = max(12, abs(vsp));
-            
-            mach_afterimage_use_alpha = true;
-            mach_afterimage_timer.stop();
-        }
-        
+        image_xscale *= -1;
+        dir *= -1;
         return;
     }
     
