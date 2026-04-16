@@ -24,7 +24,7 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screen, obj_room_goto, obj_struct_updater, obj_layer_manager]
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager]
 #macro STARTING_OBJECTS_COUNT 5
 
 // Code shortcuts

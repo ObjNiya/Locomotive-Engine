@@ -1,4 +1,4 @@
-#macro IMPORTANT_OBJS [obj_fmod_studio, obj_screen, obj_room_goto, obj_layer_manager, __InputUpdateController]
+#macro IMPORTANT_OBJS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_layer_manager, __InputUpdateController]
 
 global.deactive_ins = [];
 

@@ -49,7 +49,7 @@ function state_player_normal_step()
     var sign_input_x = sign(input_x);
     var approach_spd = (movespeed > 8) ? deccel : accel;
     
-    movespeed = approach(movespeed, (ANALOG_CONTROLS) ? 8 * abs(input_x) : 8 * abs(sign_input_x), approach_spd);
+    movespeed = approach(movespeed, (ANALOG_CONTROLS) ? 8 * abs(input_x) : 1 * abs(sign_input_x), approach_spd);
     if (sign_input_x != dir)
     {
         dir = sign_input_x;

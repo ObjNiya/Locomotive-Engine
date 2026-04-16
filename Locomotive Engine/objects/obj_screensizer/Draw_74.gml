@@ -1,9 +1,9 @@
 if (!surface_exists(gui_surface))
-    gui_surface = surface_create(app_width, app_height);
+    gui_surface = surface_create(width, height);
 
 if (gui_queue_resize)
 { 
-    surface_resize(gui_surface, app_width, app_height);
+    surface_resize(gui_surface, width, height);
     gui_queue_resize = false;
 }
 
