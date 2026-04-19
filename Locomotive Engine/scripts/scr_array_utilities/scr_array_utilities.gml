@@ -16,3 +16,8 @@ function array_get_sum(array)
     
     return total;
 }
+
+function array_in_bounds(array, index)
+{
+    return (index >= 0 || index < array_length(array));
+}

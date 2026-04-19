@@ -19,7 +19,7 @@ event_inherited();
 #macro PLAYER_MACHTURN (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == -dir && movespeed > 8 && grounded)
 #macro PLAYER_MACHSTOP (!InputCheck(INPUT_VERB.MACHRUN) && movespeed <= 8 && grounded)
 #macro PLAYER_MACHSLIDE (!InputCheck(INPUT_VERB.MACHRUN) && movespeed > 8 && grounded)
-#macro PLAYER_WALLCLIMB (PLAYER_HIT_WALL && (!grounded || (grounded && groundedSlope)))
+#macro PLAYER_WALLCLIMB (PLAYER_HIT_WALL && (!grounded || (grounded && grounded_slope)))
 #macro PLAYER_DIVE (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
 #macro PLAYER_DIVEBOMB (InputPressed(INPUT_VERB.JUMP) && !grounded)
 #macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && !grounded && player_get_mach_stage() >= 3) 
@@ -41,9 +41,10 @@ camera = new Camera(id);
 cam_painting_up = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
 cam_painting_up_ind = camera.add_y_offset(0);
 
-scr_collision_init();
-grav = 0.5;
-terminalVelocity = 20;
+physics_init();
+//scr_collision_init();
+//grav = 0.5;
+//terminalVelocity = 20;
 
 hitstun_initialize();
 coyote_initialize();
@@ -77,6 +78,9 @@ smc_set_state(state_player_normal);
 
 has_key = false;
 has_catripi = false;
+
+collider = new Collider(bbox_left, bbox_top, bbox_bottom, bbox_right);
+collider.persists = true;
 
 /////////////////////////////
 // State specific variables

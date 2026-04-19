@@ -33,3 +33,10 @@ function bsign(b)
 {
     return (!b) ? -1 : 1;
 }
+
+/// @description Returns the absolute floor of val, that is, val floored down to its least magnitude in either direction.
+/// @param {real} val The value to absolute floor.	
+/// @return {real}
+function abs_floor(val) {
+	return (val > 0 ? floor(val) : ceil(val));
+}
