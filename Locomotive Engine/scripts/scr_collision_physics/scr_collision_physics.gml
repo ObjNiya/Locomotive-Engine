@@ -36,15 +36,17 @@ function physics_step()
     hsp -= hsp_frac;
     vsp -= vsp_frac;
     
+    quick_log([hsp])
+    
     var hsp_steps = ceil(abs(hsp) / MIN_COLLIDER_WIDTH);
     var sub_hsp = hsp / hsp_steps;
     
     repeat (hsp_steps)
     {
         var next_coll = new Collider(collider.left + sub_hsp, collider.top, collider.bottom, collider.right + sub_hsp);
-        var touch_coll = check_collide_id(collider);
+        var touch_coll = check_collide_array(next_coll);
         
-        if (touch_coll == -1)
+        if (array_length(touch_coll) == 0)
         {
             x += sub_hsp;
             collider.left += sub_hsp;
@@ -54,15 +56,31 @@ function physics_step()
             continue;
         } 
         
+        touch_coll = touch_coll[0]
+        
         var sign_hsp = sign(sub_hsp);
         var x_offset = x - bbox_left;
         
         if (true)
         {
+            var w = collider.right - collider.left
+                
             if (sign_hsp == 1 && next_coll.left != touch_coll.left)
+            {
                 x = touch_coll.left - x_offset;
+                
+      
+                //collider.left = touch_coll.left;
+                //collider.right = collider.left + w;
+            }
             else if (sign_hsp == -1 && next_coll.right != touch_coll.right)
+            {
+                x_offset = (bbox_right - x)
                 x = touch_coll.right + x_offset;
+                
+                //collider.right = touch_coll.right;
+                //collider.left = collider.right - w;
+            }
             
             hsp = 0;
             hsp_frac = 0;
