@@ -4,12 +4,12 @@ event_inherited();
 // Condition macros
 /////////////////////////////
 
-#macro PLAYER_HIT_WALL (place_meeting(x + dir, y, obj_solid))
-#macro PLAYER_HIT_CEILING (place_meeting(x, y - 1, obj_solid))
+#macro PLAYER_HIT_WALL (check_collide(collider, dir))
+#macro PLAYER_HIT_CEILING (check_collide(collider, 0, -1))
 #macro PLAYER_CROUCH (grounded && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
-#macro PLAYER_NOTHING_ABOVE (!place_meeting(x, y - 32, obj_solid)) 
+#macro PLAYER_NOTHING_ABOVE (!check_collide(collider, 0, -32)) 
 #macro PLAYER_GET_UP (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && PLAYER_NOTHING_ABOVE && grounded)
-#macro PLAYER_JUMP (can_jump && InputPressed(INPUT_VERB.JUMP) && !place_meeting(x, y - 1, obj_solid))
+#macro PLAYER_JUMP (can_jump && InputPressed(INPUT_VERB.JUMP) && !check_collide(collider, 0, -1))
 #macro PLAYER_GRABDASH (InputPressed(INPUT_VERB.GRABDASH) && (grabdash_bump_buffer <= 0 || sprite_index != spr_grabdash_bump))
 #macro PLAYER_UPPERCUT (PLAYER_GRABDASH && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1)
 #macro PLAYER_GROUNDPOUND (InputPressed(INPUT_VERB.DOWN) && !grounded)  

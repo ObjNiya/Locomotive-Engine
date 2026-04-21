@@ -109,7 +109,6 @@ function Collider(copy_owner, left_side_x = 0, right_side_x = MIN_COLLIDER_SIZE,
             return;
         }
         
-        quick_log([owner])
         set_size(owner.bbox_left, owner.bbox_right, owner.bbox_top, owner.bbox_bottom)
     }
     

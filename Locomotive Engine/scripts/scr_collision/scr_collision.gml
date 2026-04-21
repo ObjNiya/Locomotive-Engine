@@ -79,7 +79,7 @@ function check_collide_id(collider_to_check, collider_a_x_offset = 0, collider_a
 
 function check_collide(collider_to_check, collider_a_x_offset = 0, collider_a_y_offset = 0, tag_filter = -1)
 {
-    return (check_collide_id(collider_to_check, collider_a_x_offset = 0, collider_a_y_offset = 0, tag_filter = -1) != -1);
+    return (check_collide_id(collider_to_check, collider_a_x_offset, collider_a_y_offset, tag_filter = -1) != -1);
 }
 
 function slope_get_progress(near_collider, slope_collider)
