@@ -1,8 +1,3 @@
-#macro MIN_COLLIDER_SIZE 32
-
-#macro MIN_COLLIDER_HEIGHT 32
-#macro MIN_COLLIDER_WIDTH 32
-
 function physics_init()
 {
     hsp = 0;
@@ -11,7 +6,7 @@ function physics_init()
     hsp_frac = 0;
     vsp_frac = 0;
     
-    grav = -0.5;
+    grav = 0.5;
     grav_horiz = 0;
     
     max_vsp = 20;
@@ -20,9 +15,7 @@ function physics_init()
     grounded = false;
     grounded_slope = false;
     
-    collider = new Collider(bbox_left, bbox_top, bbox_bottom, bbox_right);
-    collider.persists = persistent;
-    collider.solid = solid;
+    collider = new Collider(false, bbox_left, bbox_right, bbox_top, bbox_bottom);
 }
 
 function physics_step()
@@ -36,113 +29,74 @@ function physics_step()
     hsp -= hsp_frac;
     vsp -= vsp_frac;
     
-    quick_log([hsp])
-    
-    var hsp_steps = ceil(abs(hsp) / MIN_COLLIDER_WIDTH);
+    var hsp_steps = ceil(abs(hsp) / MIN_COLLIDER_SIZE);
     var sub_hsp = hsp / hsp_steps;
     
     repeat (hsp_steps)
     {
-        var next_coll = new Collider(collider.left + sub_hsp, collider.top, collider.bottom, collider.right + sub_hsp);
-        var touch_coll = check_collide_array(next_coll);
+        var touch_coll = check_collide_id(collider, sub_hsp);
         
-        if (array_length(touch_coll) == 0)
+        if (touch_coll == -1)
         {
             x += sub_hsp;
-            collider.left += sub_hsp;
-            collider.right += sub_hsp;
+            collider.move(sub_hsp, 0);
             
-            delete_collider(next_coll);
             continue;
         } 
         
-        touch_coll = touch_coll[0]
-        
         var sign_hsp = sign(sub_hsp);
-        var x_offset = x - bbox_left;
+
+        if (sign_hsp == 1 && collider.l + sub_hsp != touch_coll.l)
+            x = touch_coll.l - (x - bbox_left);
+        else if (sign_hsp == -1 && collider.r + sub_hsp != touch_coll.r)
+            x = touch_coll.r + (bbox_right - x);
         
-        if (true)
-        {
-            var w = collider.right - collider.left
-                
-            if (sign_hsp == 1 && next_coll.left != touch_coll.left)
-            {
-                x = touch_coll.left - x_offset;
-                
-      
-                //collider.left = touch_coll.left;
-                //collider.right = collider.left + w;
-            }
-            else if (sign_hsp == -1 && next_coll.right != touch_coll.right)
-            {
-                x_offset = (bbox_right - x)
-                x = touch_coll.right + x_offset;
-                
-                //collider.right = touch_coll.right;
-                //collider.left = collider.right - w;
-            }
-            
-            hsp = 0;
-            hsp_frac = 0;
-        }
-        
-        delete_collider(next_coll);
+        hsp = 0;
+        hsp_frac = 0;
     }
     
-    var vsp_steps = ceil(abs(vsp) / MIN_COLLIDER_HEIGHT);
+    var vsp_steps = ceil(abs(vsp) / MIN_COLLIDER_SIZE);
     var sub_vsp = vsp / vsp_steps;
 
     repeat (vsp_steps)
     {
-        var next_coll = new Collider(collider.left, collider.top + sub_vsp, collider.bottom + sub_vsp, collider.right);
-        var touch_coll = check_collide_id(next_coll);
+        var touch_coll = check_collide_id(collider, 0, sub_vsp);
         
         if (touch_coll == -1)
         {
             y += sub_vsp;
-            collider.top += sub_vsp;
-            collider.bottom += sub_vsp;
+            collider.move(0, sub_vsp);
             
-            delete_collider(next_coll);
             continue;
         }
         
         var sign_vsp = sign(sub_vsp);
-        var progress = slope_get_progress(next_coll, touch_coll);
-    
-        var top = touch_coll.top;
-        var bottom = touch_coll.bottom;
         
-        if (progress != -1)
+        var top = touch_coll.t;
+        var bottom = touch_coll.b;
+        
+        if (touch_coll.is_slope)
         {
+            var progress = slope_get_progress(collider, touch_coll);
+            
             if (!touch_coll.slope_flip_y)
-                top = lerp(touch_coll.bottom, touch_coll.top, progress);
+                top = floor(lerp(touch_coll.b, touch_coll.t, progress));
             else
-                bottom = lerp(touch_coll.top, touch_coll.bottom, progress);
+                bottom = floor(lerp(touch_coll.t, touch_coll.b, progress));
         }
         
-        if (sign_vsp == 1 && next_coll.top != top)
-        {
-            var y_offset = bbox_bottom - y;
-            y = top - y_offset;
-        }
-        else if (sign_vsp == -1 && next_coll.bottom != bottom)
-        {
-            var y_offset = bbox_top - y;
-            y = bottom + y_offset;
-        }
+        if (sign_vsp == 1 && collider.t + sub_vsp != top)
+            y = top - (bbox_bottom - y);
+        else if (sign_vsp == -1 && collider.b + sign_vsp != bottom)
+            y = bottom + (bbox_top - y);
         
-        delete_collider(next_coll);
         vsp = 0;
         vsp_frac = 0;
     }
     
     var sign_grav = sign(grav);
-    var adjacent_coll = new Collider(collider.left, collider.top + sign_grav, collider.bottom + sign_grav, collider.right);
-    var touch_coll = check_collide_id(adjacent_coll);
-        
-    delete_collider(adjacent_coll);
-    
+    var touch_coll = check_collide_id(collider, 0, sign_grav);
+
     grounded = touch_coll != -1;
     grounded_slope = grounded && touch_coll.is_slope;
     

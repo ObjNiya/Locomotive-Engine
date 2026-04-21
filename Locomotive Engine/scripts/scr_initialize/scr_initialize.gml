@@ -31,6 +31,17 @@
 
 #macro SINGLETON if (instance_number(object_index) > 1) { instance_destroy(); }
 
+// Bullshit
+
+#macro ts self
+#macro bro other
+#macro maybe choose(false, true)
+#macro larp with
+#macro theresnolimittothelarp larp (all)
+#macro kill instance_destroy
+#macro myself ()
+#macro yourself (other)
+
 enum DEPTHS
 {
     FRONT = -50,

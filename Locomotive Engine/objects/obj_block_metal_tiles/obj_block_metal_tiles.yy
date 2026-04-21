@@ -7,7 +7,9 @@
   ],
   "managed":true,
   "name":"obj_block_metal_tiles",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_collider","path":"objects/par_collider/par_collider.yy",},"propertyId":{"name":"breakable_toughness","path":"objects/par_collider/par_collider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"2",},
+  ],
   "parent":{
     "name":"Blocks",
     "path":"folders/Objects/Level Structure/Blocks.yy",

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_collision_internal",
+  "%Name":"scr_collision_collider",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_collision_internal",
+  "name":"scr_collision_collider",
   "parent":{
     "name":"Collision",
     "path":"folders/Scripts/Collision.yy",

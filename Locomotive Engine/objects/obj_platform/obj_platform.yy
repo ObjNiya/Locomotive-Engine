@@ -1,17 +1,21 @@
 {
   "$GMObject":"",
   "%Name":"obj_platform",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_platform",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_collider","path":"objects/par_collider/par_collider.yy",},"propertyId":{"name":"is_platform","path":"objects/par_collider/par_collider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+  ],
   "parent":{
-    "name":"Unown's Collisions",
-    "path":"folders/Objects/Unown's Collisions.yy",
+    "name":"Collision",
+    "path":"folders/Objects/Game Structure/Collision.yy",
   },
   "parentObjectId":{
-    "name":"par_collision",
-    "path":"objects/par_collision/par_collision.yy",
+    "name":"par_collider",
+    "path":"objects/par_collider/par_collider.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -29,7 +33,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
     "name":"spr_platform",
     "path":"sprites/spr_platform/spr_platform.yy",

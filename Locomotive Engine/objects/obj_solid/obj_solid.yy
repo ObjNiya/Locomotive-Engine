@@ -1,19 +1,17 @@
 {
   "$GMObject":"",
   "%Name":"obj_solid",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "eventList":[],
   "managed":true,
   "name":"obj_solid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Unown's Collisions",
-    "path":"folders/Objects/Unown's Collisions.yy",
+    "name":"Collision",
+    "path":"folders/Objects/Game Structure/Collision.yy",
   },
   "parentObjectId":{
-    "name":"par_collision",
-    "path":"objects/par_collision/par_collision.yy",
+    "name":"par_collider",
+    "path":"objects/par_collider/par_collider.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -31,7 +29,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
     "name":"spr_solid",
     "path":"sprites/spr_solid/spr_solid.yy",
