@@ -4,7 +4,7 @@ event_inherited();
 // Condition macros
 /////////////////////////////
 
-#macro PLAYER_HIT_WALL (check_collide(collider, dir))
+#macro PLAYER_HIT_WALL (place_meeting_collision(x + dir, y, Exclude.SLOPES))
 #macro PLAYER_HIT_CEILING (check_collide(collider, 0, -1))
 #macro PLAYER_CROUCH (grounded && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
 #macro PLAYER_NOTHING_ABOVE (!check_collide(collider, 0, -32)) 

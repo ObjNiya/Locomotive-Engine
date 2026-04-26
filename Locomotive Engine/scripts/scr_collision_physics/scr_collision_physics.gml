@@ -103,7 +103,7 @@ function physics_step()
     
     var vsp_steps = ceil(abs(vsp) / MIN_COLLIDER_SIZE);
     var sub_vsp = vsp / vsp_steps;
-
+	
     repeat (vsp_steps)
     {
         var touch_coll = check_collide_id(collider, 0, sub_vsp);
@@ -119,13 +119,13 @@ function physics_step()
         var sign_vsp = sign(sub_vsp);
         
         var top = touch_coll.t;
-        var bottom = touch_coll.b;
+        var bottom = touch_coll.b - 2; //for no particular reason at all the player is 2 pixels below a solid when clipping
 		
 		if (touch_coll.is_slope)
         {
             var progress = slope_get_progress(collider, touch_coll);
             
-            if (!touch_coll.slope_flip_y)
+            if !touch_coll.slope_flip_y
                 top = floor(lerp(touch_coll.b, touch_coll.t, progress));
             else
                 bottom = floor(lerp(touch_coll.t, touch_coll.b, progress));
@@ -133,9 +133,12 @@ function physics_step()
         
         if (sign_vsp == 1 && collider.t + sub_vsp != top)
             y = top - (bbox_bottom - y);
-        else if (sign_vsp == -1 && collider.b + sign_vsp != bottom)
+        else if (sign_vsp == -1 && collider.b + sub_vsp != bottom)
             y = bottom + (bbox_top - y);
         
+		show_debug_message(bbox_top)
+		show_debug_message(bottom)
+		
         vsp = 0;
         vsp_frac = 0;
     }
@@ -144,7 +147,7 @@ function physics_step()
     var touch_coll = check_collide_id(collider, 0, sign_grav);
 
     grounded = touch_coll != -1;
-    grounded_slope = grounded && check_collide_find_slope(check_collide_array(collider, 0, 1)) != -1;
+    grounded_slope = grounded && check_collide_find_slope(check_collide_array(collider, 0, sign_grav)) != -1;
     
     if (!grounded)
         vsp += grav;
