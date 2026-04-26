@@ -10,7 +10,7 @@ function state_player_noclip_start()
     vsp = 0;
     grav = 0;
     
-    usesCollision = false;
+    //usesCollision = false;
 }
 
 /// @ignore
@@ -36,7 +36,7 @@ function state_player_noclip_end()
     image_speed = 1;
     
     grav = 0.5;
-    usesCollision = true;
+    //usesCollision = true;
 }
 
 /**

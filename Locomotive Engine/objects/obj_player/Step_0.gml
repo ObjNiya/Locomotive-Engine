@@ -3,7 +3,6 @@ HITSTUN_STEP;
 sound_instance_move_several([snd_grabdash, snd_groundpound, snd_mach, snd_superjump, snd_machroll, snd_dive, snd_roll_getup], x, y);
 
 physics_step();
-collider.set_size(bbox_left, bbox_right, bbox_top, bbox_bottom);
 quick_log([PLAYER_HIT_WALL, PLAYER_HIT_CEILING, PLAYER_NOTHING_ABOVE])
 coyote_step();
 smc_step();

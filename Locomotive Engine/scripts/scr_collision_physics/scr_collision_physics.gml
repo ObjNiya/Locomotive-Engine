@@ -102,4 +102,6 @@ function physics_step()
     
     if (!grounded)
         vsp += grav;
+    
+    collider.set_size(bbox_left, bbox_right, bbox_top, bbox_bottom);
 }
