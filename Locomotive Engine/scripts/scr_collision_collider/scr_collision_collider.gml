@@ -170,14 +170,24 @@ function colliders_touching(collider_a, collider_b, collider_a_x_offset = 0, col
     
     if (collider_b.is_slope)
     {
-        var progress = slope_get_progress(collider_a, collider_b);
+		var offset_collider_a = variable_clone(collider_a)
+			offset_collider_a.l = l_a 
+			offset_collider_a.r = r_a
+			offset_collider_a.t = t_a
+			offset_collider_a.b = b_a
+		var offset_collider_b = variable_clone(collider_b)
+			offset_collider_b.l = l_b
+			offset_collider_b.r = r_b
+			offset_collider_b.t = t_b
+			offset_collider_b.b = b_b
+		
+        var progress = slope_get_progress(offset_collider_a, offset_collider_b);
         
         if (!collider_b.slope_flip_y)
             t_b = floor(lerp(b_b, t_b, progress));
         else
             b_b = floor(lerp(t_b, b_b, progress));
     }
-    
 
     return (l_a < r_b && r_a > l_b &&
         t_a < b_b && b_a > t_b);

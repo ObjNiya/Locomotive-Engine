@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"s",
+  "%Name":"cc_collide_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"s",
+  "name":"cc_collide_util",
   "parent":{
     "name":"Sprites",
     "path":"folders/Sprites.yy",

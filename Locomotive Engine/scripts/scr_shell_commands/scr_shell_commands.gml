@@ -84,6 +84,24 @@ function meta_goto_room()
     }
 }
 
+function sh_set_game_speed (args) {
+	var type = args[2] == "microseconds" ? gamespeed_microseconds : gamespeed_fps
+	game_set_speed(floor(real(args[1])), type);
+}
+
+function meta_set_game_speed() {
+	return {
+		description: "Set the games framerate, or microseconds per game frame",
+		arguments: ["frames/microseconds", "type"],
+		suggestions: [
+			["60", "16666"],
+			["fps", "microseconds"]
+		],
+		hidden: false,
+		deferred: false
+	}
+}
+
 if (IDE_BUILD)
 {
     /// @ignore

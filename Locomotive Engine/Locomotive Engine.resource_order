@@ -18,7 +18,7 @@
     {"name":"obj_slope","order":3,"path":"objects/obj_slope/obj_slope.yy",},
     {"name":"obj_slopePlatform","order":4,"path":"objects/obj_slopePlatform/obj_slopePlatform.yy",},
     {"name":"obj_solid","order":2,"path":"objects/obj_solid/obj_solid.yy",},
-    {"name":"s","order":2,"path":"scripts/s/s.yy",},
+    {"name":"cc_collide_util","order":2,"path":"scripts/cc_collide_util/cc_collide_util.yy",},
     {"name":"scr_array_utilities","order":2,"path":"scripts/scr_array_utilities/scr_array_utilities.yy",},
     {"name":"scr_collision_collider","order":3,"path":"scripts/scr_collision_collider/scr_collision_collider.yy",},
     {"name":"scr_collision_physics","order":2,"path":"scripts/scr_collision_physics/scr_collision_physics.yy",},

@@ -3,8 +3,8 @@
   "%Name":"spr_crouchmask",
   "bboxMode":0,
   "bbox_bottom":95,
-  "bbox_left":41,
-  "bbox_right":67,
+  "bbox_left":37,
+  "bbox_right":62,
   "bbox_top":74,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -19,8 +19,8 @@
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"320f4199-1e4a-4bff-8178-7928fcbef059","name":"320f4199-1e4a-4bff-8178-7928fcbef059","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
-  "gridX":0,
-  "gridY":0,
+  "gridX":25,
+  "gridY":16,
   "height":100,
   "HTile":false,
   "layers":[
@@ -80,7 +80,7 @@
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":54,
+    "xorigin":50,
     "yorigin":50,
   },
   "swatchColours":null,
@@ -91,5 +91,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":109,
+  "width":100,
 }

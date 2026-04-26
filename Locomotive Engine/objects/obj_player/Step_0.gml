@@ -3,7 +3,7 @@ HITSTUN_STEP;
 sound_instance_move_several([snd_grabdash, snd_groundpound, snd_mach, snd_superjump, snd_machroll, snd_dive, snd_roll_getup], x, y);
 
 physics_step();
-quick_log([PLAYER_HIT_WALL, PLAYER_HIT_CEILING, PLAYER_NOTHING_ABOVE])
+//quick_log([PLAYER_HIT_WALL, PLAYER_HIT_CEILING, PLAYER_NOTHING_ABOVE])
 coyote_step();
 smc_step();
 if (place_meeting(x, y, obj_levelpainting) && state_id == state_player_normal && dir == 0 && grounded)

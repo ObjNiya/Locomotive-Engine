@@ -1,3 +1,4 @@
+/// @deprecated
 function collide()
 {
 	var o_inc = 8 //optimization increment

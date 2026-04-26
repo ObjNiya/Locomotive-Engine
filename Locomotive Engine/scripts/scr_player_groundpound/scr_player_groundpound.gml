@@ -36,7 +36,7 @@ function state_player_groundpound_step()
             else
                 movespeed = 8;
             
-            dir = sign(-instance_place(x, y + 1, [obj_slope, obj_slopePlatform]).image_xscale);
+            dir = sign(-instance_place(x, y + 1, obj_slope).image_xscale);
             image_xscale = side(dir, image_xscale);
             
             create_particle(x, y + 45, obj_jump_particle);
@@ -54,7 +54,7 @@ function state_player_groundpound_step()
             camera.shake_set(5, 0.25);
             
             mach_afterimage_use_alpha = true;
-    
+			
             mach_afterimage_timer.stop();
             mach_afterimage_timer.max_time = 6;
             

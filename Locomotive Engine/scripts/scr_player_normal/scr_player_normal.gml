@@ -59,7 +59,7 @@ function state_player_normal_step()
     }
     
     hsp = movespeed * dir;
-    if (place_meeting_collision(x + hsp, y, Exclude.SLOPES))
+    if (place_meeting_collision(x + dir, y, Exclude.SLOPES))
         movespeed = 0;
     
     image_xscale = side(dir, image_xscale);
