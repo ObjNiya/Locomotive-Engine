@@ -97,3 +97,39 @@ function slope_get_progress(near_collider, slope_collider)
     
     return progress;
 }
+
+function check_collide_contains_slope(colliders_array)
+{
+	var i = 0;
+    var collider_count = array_length(colliders_array);
+    
+    repeat (collider_count)
+    {
+        var collider = colliders_array[i];
+        
+        if collider.is_slope
+            return true;
+        
+        i++;
+    }
+    
+    return false;
+}
+
+function check_collide_find_slope(colliders_array)
+{
+	var i = 0;
+    var collider_count = array_length(colliders_array);
+    
+    repeat (collider_count)
+    {
+        var collider = colliders_array[i];
+        
+        if collider.is_slope
+            return collider;
+        
+        i++;
+    }
+    
+    return -1;
+}

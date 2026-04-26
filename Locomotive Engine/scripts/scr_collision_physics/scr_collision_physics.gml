@@ -35,53 +35,59 @@ function physics_step()
     repeat (hsp_steps)
     {
         var touch_coll = check_collide_id(collider, sub_hsp);
-        var touch_coll_down_slope = check_collide_id(collider, 0, 1);
-		var down_slope = touch_coll_down_slope != -1
+        var touch_slope_side = check_collide_find_slope(check_collide_array(collider, sub_hsp))
+        var touch_slope_below = check_collide_find_slope(check_collide_array(collider, 0, 1))
 		
         if touch_coll == -1 //go foward automatically if theres nothing infront
-        {	
+        {
             collider.move(sub_hsp, 0);
 			
             x += sub_hsp;
 			
-			if down_slope && touch_coll_down_slope.is_slope //go down slopes
+			if touch_slope_below != -1 //go down slopes
 			{	
 				var prev_y = y;
 				
-				var progress = slope_get_progress(collider, touch_coll_down_slope);
+				var progress = slope_get_progress(collider, touch_slope_below);
 			
-				bottom = floor(lerp(touch_coll_down_slope.b, touch_coll_down_slope.t, progress));
+				bottom = ceil(lerp(touch_slope_below.b, touch_slope_below.t, progress));
 				y = bottom - (bbox_bottom - y);
 			
-				collider.move(0, y - prev_y)
+				collider.move(0, y - prev_y);
 			}
             
             continue;
         }
-		else if touch_coll.is_slope //go up slopes
+		else if touch_slope_side != -1 //go up slopes
 		{
-            collider.move(sub_hsp, 0);
+			var behind_solid_side = !touch_slope_side.slope_flip_x ? bbox_right < touch_slope_side.r : bbox_left > touch_slope_side.l
+			var above_corner = !touch_slope_side.slope_flip_y ? bbox_bottom <= touch_slope_side.b : bbox_top >= touch_slope_side.t
 			
-            x += sub_hsp;
-			
-			var prev_y = y;
-			
-			var progress = slope_get_progress(collider, touch_coll);
-			
-			if !touch_coll.slope_flip_y
+			if behind_solid_side && above_corner
 			{
-			    bottom = floor(lerp(touch_coll.b, touch_coll.t, progress));
-				y = bottom - (bbox_bottom - y);
+	            collider.move(sub_hsp, 0);
+				
+	            x += sub_hsp;
+				
+				var prev_y = y;
+				
+				var progress = slope_get_progress(collider, touch_slope_side);
+				
+				if !touch_slope_side.slope_flip_y
+				{
+				    bottom = ceil(lerp(touch_slope_side.b, touch_slope_side.t, progress));
+					y = bottom - (bbox_bottom - y);
+				}
+				else
+				{
+				    top = floor(lerp(touch_slope_side.t, touch_slope_side.b, progress));
+					y = top + (y - bbox_top);
+				}
+				
+				collider.move(0, y - prev_y);
+				
+				continue;
 			}
-			else
-			{
-			    top = floor(lerp(touch_coll.t, touch_coll.b, progress));
-				y = top + (y - bbox_top);
-			}
-			
-			collider.move(0, y - prev_y)
-			
-			continue;
 		}
 		
         var sign_hsp = sign(sub_hsp);
@@ -91,11 +97,8 @@ function physics_step()
         else if (sign_hsp == -1 && collider.r + sub_hsp != touch_coll.r)
             x = touch_coll.r + (bbox_right - x);
         
-		if !(down_slope && touch_coll_down_slope.is_slope) //if slope below, dont stop into walls
-		{
-			hsp = 0;
-			hsp_frac = 0;
-		}
+		hsp = 0;
+		hsp_frac = 0;
     }
     
     var vsp_steps = ceil(abs(vsp) / MIN_COLLIDER_SIZE);
@@ -141,7 +144,7 @@ function physics_step()
     var touch_coll = check_collide_id(collider, 0, sign_grav);
 
     grounded = touch_coll != -1;
-    grounded_slope = grounded && touch_coll.is_slope;
+    grounded_slope = grounded && check_collide_find_slope(check_collide_array(collider, 0, 1)) != -1;
     
     if (!grounded)
         vsp += grav;
