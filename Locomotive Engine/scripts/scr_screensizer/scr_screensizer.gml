@@ -1,102 +1,78 @@
-/// @ignore
-function __update_screen__(xscale, yscale)
+function screen_set_size(width, height)
 {
+    width = floor(width);
+    height = floor(height);
+    
     with (obj_screensizer)
     {
-        var app_width = surface_get_width(application_surface);
-        var app_height = surface_get_height(application_surface);
+        if (app_visual_width == width && app_visual_height == height)
+            return;
         
-        actual_width = GAME_WIDTH;
-        actual_height = GAME_HEIGHT;
+        app_visual_width = width;
+        app_visual_height = height;
+        app_visual_xscale = app_visual_width / GAME_WIDTH;
+        app_visual_yscale = app_visual_height / GAME_HEIGHT;
         
-        if (dynamic_res)
+        if (app_is_scaled)
         {
-            actual_xscale = xscale;
-            actual_yscale = yscale;
+            app_width = GAME_WIDTH;
+            app_height = GAME_HEIGHT;
+            
+            app_xscale = app_visual_xscale;
+            app_yscale = app_visual_yscale;
         }
         else
-        { 
-            actual_xscale = 1;
-            actual_yscale = 1;
+        {
+            app_width = app_visual_width;
+            app_height = app_visual_height;
             
-            actual_width *= xscale;
-            actual_height *= yscale;
+            app_xscale = 1;
+            app_yscale = 1;
         }
         
-        actual_width = max(actual_width, 1);
-        actual_height = max(actual_height, 1);
+        var window_width = window_get_width();
+        var window_height = window_get_height();
         
-        self.xscale = xscale;
-        self.yscale = yscale;
+        app_x = (window_width / 2) - (app_visual_width / 2);
+        app_y = (window_height / 2) - (app_visual_height / 2);
         
-        width = actual_width * actual_xscale;
-        height = actual_height * actual_yscale;
+        if (app_width != surface_get_width(application_surface) || app_height != surface_get_height(application_surface))
+            surface_resize(application_surface, app_width, app_height);
         
-        x = (window_get_width() / 2) - (width / 2);
-        y = (window_get_height() / 2) - (height / 2);
-        
-        if (app_width != actual_width || app_height != actual_height)
+        if (app_width != display_get_gui_width() || app_height != display_get_gui_height())
         {
-            surface_resize(application_surface, actual_width, actual_height);
-            //display_set_gui_maximise(-1, -1);
-            
-            display_set_gui_size(actual_width, actual_height); 
-            
-            gui_queue_resize = true;
+            display_set_gui_size(app_width, app_height);
+            gui_do_resize = true;
         }
     }
 }
 
-function update_screen_size()
+function screen_update()
 {
-    with (obj_screensizer) 
+    with (obj_screensizer)
     { 
-        var xscale = window_get_width() / GAME_WIDTH;
-        var yscale = window_get_height() / GAME_HEIGHT;
-
-        if (scaling_mode == SCALING_MODES.STRETCH)
+        if (resizing_mode == RESIZING_MODES.STRETCH)
         {
-            __update_screen__(xscale, yscale);
+            screen_set_size(window_get_width(), window_get_height());
             return;
         }
         
-        var min_scale = min(xscale, yscale);
-        var floor_scale = floor(min_scale);
+        var game_xscale = window_get_width() / GAME_WIDTH;
+        var game_yscale = window_get_height() / GAME_HEIGHT;
         
-        if (scaling_mode == SCALING_MODES.PIXEL_PEFECT)
-            min_scale = min(min_scale, 1);
-        else if (scaling_mode == SCALING_MODES.INTEGER && floor_scale > 0)
-            min_scale = floor_scale;
+        game_xscale = min(game_xscale, game_yscale);
+        game_yscale = game_xscale;
         
-        __update_screen__(min_scale, min_scale);
+        if (resizing_mode != RESIZING_MODES.INTEGER)
+        {
+            screen_set_size(GAME_WIDTH * game_xscale, GAME_HEIGHT * game_yscale);
+            return;
+        }
+        
+        var floor_scale = floor(game_xscale);
+        if (floor_scale == 0)
+            floor_scale = game_xscale;
+        
+        screen_set_size(GAME_WIDTH * floor_scale, GAME_HEIGHT * floor_scale);
     }
 }
-
-function set_scaling_mode(target_scaling_mode)
-{
-    with (obj_screensizer)
-    {
-        if (scaling_mode == target_scaling_mode)
-            return false;
-        
-        scaling_mode = target_scaling_mode;
-        update_screen_size();
-        
-        return true;
-    }
-}
-
-function set_dynamic_res(dynamic_res_enabled)
-{
-    with (obj_screensizer)
-    {
-        if (dynamic_res == dynamic_res_enabled)
-            return false;
-        
-        dynamic_res = dynamic_res_enabled;
-        __update_screen__(xscale, yscale);
-        
-        return true;
-    }
-}
-
