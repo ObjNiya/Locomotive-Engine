@@ -66,8 +66,8 @@ function physics_step()
 			if behind_solid_side && above_corner
 			{
 	            collider.move(sub_hsp, 0);
-				
-	            x += sub_hsp;
+
+				x += sub_hsp
 				
 				var prev_y = y;
 				
@@ -86,7 +86,15 @@ function physics_step()
 				
 				collider.move(0, y - prev_y);
 				
-				continue;
+				if !touch_slope_side.slope_flip_x && bbox_right > touch_slope_side.r
+					touch_coll = check_collide_id(collider, 0);
+				else if touch_slope_side.slope_flip_x && bbox_left < touch_slope_side.l
+					touch_coll = check_collide_id(collider, 0);
+				else
+					touch_coll = -1
+				
+				if touch_coll == -1
+					continue;
 			}
 		}
 		
