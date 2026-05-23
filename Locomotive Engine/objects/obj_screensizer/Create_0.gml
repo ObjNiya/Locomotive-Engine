@@ -12,28 +12,31 @@ enum RESIZING_MODES
     STRETCH = 2,
 }
 
-resizing_mode = RESIZING_MODES.FIT;
+resizingMode = RESIZING_MODES.FIT;
 
-app_is_scaled = true;
-app_x = 0;
-app_y = 0;
-app_xscale = 1;
-app_yscale = 1;
-app_width = GAME_WIDTH;
-app_height = GAME_HEIGHT;
+appIsScaled = false;
+appX = 0;
+appY = 0;
+appXScale = 1;
+appYScale = 1;
+appWidth = GAME_WIDTH;
+appHeight = GAME_HEIGHT;
 
-app_visual_width = GAME_WIDTH;
-app_visual_height = GAME_HEIGHT;
-app_visual_xscale = 1;
-app_visual_yscale = 1;
+appVisualWidth = GAME_WIDTH;
+appVisualHeight = GAME_HEIGHT;
+appVisualXScale = 1;
+appVisualYScale = 1;
 
-prev_window_width = window_get_width();
-prev_window_height = window_get_height();
+prevWindowWidth = window_get_width();
+prevWindowHeight = window_get_height();
 
-gui_surf = -1;
-gui_do_resize = false;
-gui_scale = infinity;
+guiSurf = -1;
+guiDoResize = false;
+guiWidth = GAME_WIDTH;
+guiHeight = GAME_HEIGHT;
+maxGuiScale = 1;
+guiScale = 2;
 
 application_surface_draw_enable(false);
 window_enable_borderless_fullscreen(true); 
-screen_update();
+ScreenUpdate();

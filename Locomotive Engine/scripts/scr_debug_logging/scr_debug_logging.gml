@@ -50,7 +50,7 @@ function log(source, type, txt)
         
         if (object_exists(source))
             source = object_get_name(source);
-        if (script_exists(source))
+        else if (script_exists(source))
             source = script_get_name(source);
         
         if (!is_string(source))

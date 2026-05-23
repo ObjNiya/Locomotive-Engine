@@ -37,7 +37,7 @@ mask_index = spr_player_mask;
 // Initialize various systems
 /////////////////////////////
 
-camera = new Camera(id);
+camera = new Camera();
 cam_painting_up = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
 cam_painting_up_ind = camera.add_y_offset(0);
 
@@ -231,5 +231,3 @@ mach_afterimage_timer = new Timer(6, time_source_units_frames, function() {
         use_alpha = other.mach_afterimage_use_alpha;
 });
 mach_afterimage_timer.set_ext(1, true);
-
-audio_master_gain(0)

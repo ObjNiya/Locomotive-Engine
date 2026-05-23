@@ -1,22 +1,22 @@
-/// @ignore
-function Camera(instance_to_follow) constructor
+function Camera() constructor
 {
-    var view = 0;
+    var cur_viewport = 0;
     
-    while (view_camera[view] == -1)
+    while (global.viewport_taken[cur_viewport])
     {
-        if (view++ > 7)
+        if (cur_viewport++ > 7)
         {
-            log(Camera, LOG_TYPES.WARNING, ["Camera limit reached! Camera with target ", instance_to_follow, " will not be added."])
-            return;
-        }    
+            log(Camera, LOG_TYPES.WARNING, ["All viewports are already occupied, returning -1."]);
+            return -1;
+        }
     }
     
-    viewport = view;
-    id = camera_create_view(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    global.viewport_taken[cur_viewport] = true;
+    viewport = cur_viewport;
     
-    target = instance_to_follow;
-
+    id = view_camera[viewport];
+    target = other.id;
+    
     fmod_studio_system_set_num_listeners(viewport);
     fmod_attr = new Fmod3DAttributes();
     
@@ -92,19 +92,33 @@ function Camera(instance_to_follow) constructor
     
     static room_start = function()
     {
-        if (!view_enabled)
-            view_enabled = true;
-        
         view_visible[viewport] = true;
         view_wport[viewport] = GAME_WIDTH;
         view_hport[viewport] = GAME_HEIGHT;
-        view_camera[viewport] = id;
+        view_xport[viewport] = GAME_WIDTH * viewport;
+        
+        while (view_xport[viewport] > obj_screensizer.appVisualWidth)
+        {
+            view_xport[viewport] -= GAME_WIDTH * 2;
+            view_yport[viewport] += GAME_HEIGHT;
+        }
+        
+        id = view_camera[viewport];
+        
+        if (id == -1)
+        {
+            id = camera_create_view(0, 0, width, height);
+            view_camera[viewport] = id;
+        }
     }
     
-    static step = function()
+    array_push(global.cameras, self);
+}
+
+function CameraStep(camera_to_update)
+{
+    with (camera_to_update)
     {
-        // Calculate certain attributes
-        
         if (!zoom_locked)
             zoom = 1 * array_get_sum(zoom_offsets);
         
@@ -145,12 +159,13 @@ function Camera(instance_to_follow) constructor
         
         fmod_studio_system_set_listener_attributes(viewport, fmod_attr);
     }
+}
+
+function CameraDestroy(camera_to_delete)
+{
+    var cam_index = array_get_index(global.cameras, camera_to_delete);
+    array_delete(global.cameras, cam_index, 1);
     
-    static destroy = function()
-    {
-        camera_destroy(id);
-        
-        view_visible[viewport] = false;
-        view_camera[viewport] = -1;
-    }
+    view_visible[camera_to_delete.viewport] = false;
+    global.viewport_taken[camera_to_delete.viewport] = false;
 }

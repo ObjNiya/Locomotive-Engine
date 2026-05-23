@@ -41,13 +41,13 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.PAUSE,        "pause",            vk_escape,  gp_start);
         
         
-        InputDefineVerb(INPUT_VERB.UP,      "up",          vk_up,      [-gp_axislv, gp_padu]);
-        InputDefineVerb(INPUT_VERB.DOWN,    "down",        vk_down,    [ gp_axislv, gp_padd]);
-        InputDefineVerb(INPUT_VERB.LEFT,    "left",        vk_left,    [-gp_axislh, gp_padl]);
-        InputDefineVerb(INPUT_VERB.RIGHT,   "right",       vk_right,   [ gp_axislh, gp_padr]);
-        InputDefineVerb(INPUT_VERB.JUMP,    "jump",        "Z",        gp_face1);
-        InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    "X",        gp_face3);
-        InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       "C",        gp_face4);
+        InputDefineVerb(INPUT_VERB.UP,      "up",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
+        InputDefineVerb(INPUT_VERB.DOWN,    "down",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
+        InputDefineVerb(INPUT_VERB.LEFT,    "left",        [vk_left, "A"],    [-gp_axislh, gp_padl]);
+        InputDefineVerb(INPUT_VERB.RIGHT,   "right",       [vk_right, "D"],   [ gp_axislh, gp_padr]);
+        InputDefineVerb(INPUT_VERB.JUMP,    "jump",        ["Z", mb_left],        gp_face1);
+        InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    ["X", mb_right],        gp_face3);
+        InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       ["C", "E"],        gp_face4);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
         
     }

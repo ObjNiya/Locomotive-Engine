@@ -1,1 +1,1 @@
-camera.room_start();
+//camera.room_start();

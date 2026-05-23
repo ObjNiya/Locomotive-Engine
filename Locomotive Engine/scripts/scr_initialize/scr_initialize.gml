@@ -24,8 +24,8 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_collider_manager]
-#macro STARTING_OBJECTS_COUNT 6
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_collider_manager, obj_camera_manager]
+#macro STARTING_OBJECTS_COUNT 7
 
 // Code shortcuts
 
@@ -64,6 +64,8 @@ enum DEPTHS
  */
 function initialize_globals()
 {
+    audio_master_gain(0);
+    
     enum RANKS 
     {
         L = 0,
@@ -141,10 +143,9 @@ function initialize_globals()
         // Other definitions
     
         music = 0;
-    
         saveroom = ds_map_create();
-    
         combat_objects = [];
+        viewport_taken = array_create(8, false);
     }   
 }
 

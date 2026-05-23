@@ -12,4 +12,4 @@ else
     cam_painting_up.set_seek_target(0);
 
 camera.y_offsets[cam_painting_up_ind] = cam_painting_up.value * -120;
-camera.step();
+CameraStep(camera);

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_screensizer",
   "parent":{
-    "name":"Backend",
-    "path":"folders/Scripts/Backend.yy",
+    "name":"Game Structure",
+    "path":"folders/Scripts/Game Structure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

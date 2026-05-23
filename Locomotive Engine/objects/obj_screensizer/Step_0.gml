@@ -1,7 +1,7 @@
-if (prev_window_width == window_get_height() && prev_window_height == window_get_height())
+if (prevWindowWidth == window_get_height() && prevWindowHeight == window_get_height())
     exit;
 
-prev_window_width = window_get_width();
-prev_window_height = window_get_height();
+prevWindowWidth = window_get_width();
+prevWindowHeight = window_get_height();
 
-screen_update();
+ScreenUpdate();

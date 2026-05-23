@@ -1,0 +1,1484 @@
+[gml_api]
+module FMOD;
+
+
+[lib = YYFMOD]
+group {
+    [global, bind = gmval]
+    function fmod_channel_set_frequency(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_frequency(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_set_priority(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_priority(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_set_position(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_position(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_set_channel_group(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_channel_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_set_loop_count(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_loop_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_set_loop_points(arg0 : real, arg1 : real, arg2 : real, arg3 : real, arg4 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_loop_points_multiplatform(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_is_virtual(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_current_sound(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_index(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_is_playing(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_stop(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_paused(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_paused(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_mode(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_mode(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_pitch(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_pitch(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_audibility(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_volume(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_volume(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_volume_ramp(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_volume_ramp(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_mute(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_mute(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_cone_orientation_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_cone_orientation_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_cone_settings(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_cone_settings_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_custom_rolloff_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_custom_rolloff_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_distance_filter(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_distance_filter_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_doppler_level(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_doppler_level(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_level(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_level(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_min_max_distance(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_min_max_distance_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_occlusion(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_occlusion_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_3d_spread(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_3d_spread(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_pan(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_mix_levels_input_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_mix_levels_output(arg0 : real, arg1 : real, arg2 : real, arg3 : real, arg4 : real, arg5 : real, arg6 : real, arg7 : real, arg8 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_mix_matrix_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_mix_matrix_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_reverb_properties(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_reverb_properties(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_low_pass_gain(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_low_pass_gain(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_add_dsp(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_remove_dsp(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_num_dsps(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_dsp(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_dsp_index(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_dsp_index(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_dsp_clock_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_delay_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_delay_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_add_fade_point_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_fade_point_ramp_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_remove_fade_points_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_fade_points_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_callback(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_control_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_num_channels(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_channel(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_add_group_multiplatform(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_num_groups(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_group(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_parent_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_name(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_channel_group_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_channel_group_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_file_get_disk_busy() : real;
+
+    [global, bind = gmval]
+    function fmod_file_set_disk_busy(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_memory_get_stats_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_debug_initialize_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_thread_set_attributes(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_add_input_multiplatform(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_input_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_output_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_num_inputs(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_num_outputs(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_disconnect_all(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_disconnect_from_mutliplatform(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_data_parameter_index(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_num_parameters(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_parameter_bool(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_parameter_bool(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_parameter_data_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_parameter_data_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_parameter_float(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_parameter_float(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_parameter_int(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_parameter_int(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_parameter_info_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_channel_format(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_channel_format_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_output_channel_format_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_metering_info_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_metering_enabled(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_metering_enabled_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_active(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_active(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_bypass(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_bypass(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_wet_dry_mix(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_wet_dry_mix_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_idle(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_reset(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_type(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_info_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_cpu_usage_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_set_callback(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_set_mix(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_get_mix(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_set_mix_matrix_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_get_mix_matrix_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_get_input(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_get_output(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_get_type(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_dsp_connection_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_polygon_attributes(arg0 : real, arg1 : real, arg2 : real, arg3 : real, arg4 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_polygon_attributes_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_polygon_num_vertices(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_polygon_vertex_multiplatform(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_polygon_vertex_multiplatform(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_position_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_position_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_rotation_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_rotation_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_scale_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_scale_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_add_polygon_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_active(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_active(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_max_polygons_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_num_polygons(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_geometry_save_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_set_3d_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_get_3d_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_set_properties(arg0 : real, arg1 : real, arg2 : real, arg3 : real, arg4 : real, arg5 : real, arg6 : real, arg7 : real, arg8 : real, arg9 : real, arg10 : real, arg11 : real, arg12 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_get_properties_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_set_active(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_get_active(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_reverb_3d_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_name(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_sound_get_format_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_length(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_num_tags_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_tag_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_3d_cone_settings(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_3d_cone_settings_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_3d_custom_rolloff_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_3d_custom_rolloff_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_3d_min_max_distance(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_3d_min_max_distance_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_defaults(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_defaults_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_mode(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_mode(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_loop_count(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_loop_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_loop_points(arg0 : real, arg1 : real, arg2 : real, arg3 : real, arg4 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_loop_points_multiplatform(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_sound_group(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_sound_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_num_sub_sounds(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_sub_sound(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_sub_sound_parent(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_open_state_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_read_data_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_seek_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_lock_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_unlock_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_music_num_channels(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_music_channel_volume(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_music_channel_volume(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_music_speed(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_music_speed(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_sync_point_multiplatform(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_num_sync_points(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_add_sync_point(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_delete_sync_point(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_set_max_audible(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_max_audible(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_set_max_audible_behavior(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_max_audible_behavior(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_set_mute_fade_speed(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_mute_fade_speed(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_set_volume(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_volume(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_num_sounds(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_sound(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_num_playing(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_stop(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_name(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_sound_group_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_sound_group_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_loading_state(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_load_sample_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_unload_sample_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_sample_loading_state(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_unload(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_bus_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_bus_list_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_event_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_event_description_list_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_string_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_string_info_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_vca_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_vca_list_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_id(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_path(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_is_valid(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bank_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_set_paused(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_paused(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_stop_all_events(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_set_volume(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_volume(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_set_mute(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_mute(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_set_port_index_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_port_index_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_channel_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_lock_channel_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_unlock_channel_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_cpu_usage_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_memory_usage_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_id(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_get_path(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_bus_is_valid(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_set_bank_path(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_set_create_instance_callback(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_set_frame_callback(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_set_load_bank_callback(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_start(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_stop(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_current_command_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_playback_state(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_set_paused(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_paused(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_seek_to_command(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_seek_to_time(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_command_at_time(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_command_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_command_info_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_command_string(arg0 : real, arg1 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_length(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_system_object(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_is_valid(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_command_replay_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_create_instance(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_instance_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_instance_list_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_release_all_instances(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_load_sample_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_unload_sample_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_sample_loading_state(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_is_3d(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_is_doppler_enabled(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_is_oneshot(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_is_snapshot(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_is_stream(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_has_sustain_point(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_min_max_distance_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_sound_size(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_description_by_name_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_description_by_id_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_description_by_index_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_description_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_label_by_name(arg0 : real, [allow_raw_ptr] arg1 : cstring, arg2 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_label_by_id_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, arg2 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_parameter_label_by_index(arg0 : real, arg1 : real, arg2 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_user_property_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_user_property_by_index_multiplatform(arg0 : real, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_user_property_count(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_id(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_length(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_path(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_set_callback(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_description_is_valid(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_start(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_stop(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_playback_state(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_paused(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_paused(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_keyoff(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_pitch(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_pitch(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_property(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_property(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_timeline_position(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_timeline_position(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_volume(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_volume_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_is_virtual(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_3d_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_3d_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_listener_mask(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_listener_mask(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_min_max_distance_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_parameter_by_name_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_parameter_by_name_with_label(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_parameter_by_name_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_parameter_by_id_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_parameter_by_id_with_label_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_parameter_by_id_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_channel_group(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_reverb_level(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_reverb_level(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_cpu_usage_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_memory_usage_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_callback(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_get_description(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_event_instance_is_valid(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_create() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_init(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_release() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_update_multiplatform() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_flush_commands() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_flush_sample_loading() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_load_bank_custom(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_load_bank_file([allow_raw_ptr] arg0 : cstring, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_load_bank_memory_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_unload_all() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_bank([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_bank_by_id([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_bank_count() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_bank_list_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_listener_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_listener_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_listener_weight(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_listener_weight(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_num_listeners(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_num_listeners() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_bus([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_bus_by_id([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_event([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_event_by_id([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_by_id_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_parameter_by_id_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_parameter_by_id_with_label_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_by_name_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_parameter_by_name_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_parameter_by_name_with_label_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_description_by_name_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_description_by_id_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_description_count() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_description_list_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_label_by_name([allow_raw_ptr] arg0 : cstring, arg1 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_parameter_label_by_id_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_vca([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_vca_by_id([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_advanced_settings_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_advanced_settings_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_start_command_capture([allow_raw_ptr] arg0 : cstring, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_stop_command_capture() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_load_command_replay([allow_raw_ptr] arg0 : cstring, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_buffer_usage_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_reset_buffer_usage() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_cpu_usage_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_memory_usage_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_callback(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_set_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_user_data() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_sound_info_multiplatform([allow_raw_ptr] arg0 : cstring, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_get_core_system() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_system_lookup_id([allow_raw_ptr] arg0 : cstring) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_system_lookup_path([allow_raw_ptr] arg0 : cstring) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_system_is_valid() : real;
+
+    [global, bind = gmval]
+    function fmod_studio_vca_set_volume(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_vca_get_volume(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_studio_vca_get_id(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_vca_get_path(arg0 : real) : cstring;
+
+    [global, bind = gmval]
+    function fmod_studio_vca_is_valid(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create() : real;
+
+    [global, bind = gmval]
+    function fmod_system_select(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_count() : real;
+
+    [global, bind = gmval]
+    function fmod_system_init(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_release(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_close(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_update_multiplatform() : real;
+
+    [global, bind = gmval]
+    function fmod_system_mixer_suspend() : real;
+
+    [global, bind = gmval]
+    function fmod_system_mixer_resume() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_output(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_output() : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_num_drivers() : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_driver_info_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_driver(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_driver() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_software_channels(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_software_channels() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_software_format(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_software_format_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_dsp_buffer_size(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_dsp_buffer_size_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_stream_buffer_size(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_stream_buffer_size_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_advanced_settings_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_advanced_settings_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_speaker_position(arg0 : real, arg1 : real, arg2 : real, arg3 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_speaker_position_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_3d_settings(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_3d_settings_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_3d_num_listeners(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_3d_num_listeners() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_3d_rolloff_callback() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_network_proxy([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_network_proxy() : cstring;
+
+    [global, bind = gmval]
+    function fmod_system_set_network_timeout(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_network_timeout() : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_version() : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_channels_playing_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_cpu_usage_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_file_usage_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_default_mix_matrix_multiplatform(arg0 : real, arg1 : real, arg2 : real, [allow_raw_ptr] arg3 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_speaker_mode_channels(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_sound_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_stream_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real, [allow_raw_ptr] arg2 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_dsp() : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_dsp_by_type(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_channel_group([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_sound_group([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_reverb_3d() : real;
+
+    [global, bind = gmval]
+    function fmod_system_play_sound_multiplatform(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_play_dsp_multiplatform(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_channel(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_master_channel_group() : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_master_sound_group() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_3d_listener_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_3d_listener_attributes_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_reverb_properties_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_reverb_properties_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_attach_channel_group_to_port_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_detach_channel_group_from_port(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_record_num_drivers_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_record_driver_info_multiplatform(arg0 : real, [allow_raw_ptr] arg1 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_record_position(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_record_start(arg0 : real, arg1 : real, arg2 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_record_stop(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_is_recording(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_create_geometry(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_geometry_settings(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_geometry_settings() : real;
+
+    [global, bind = gmval]
+    function fmod_system_load_geometry_multiplatform([allow_raw_ptr] arg0 : cstring, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_geometry_occlusion_multiplatform([allow_raw_ptr] arg0 : cstring) : real;
+
+    [global, bind = gmval]
+    function fmod_system_lock_dsp() : real;
+
+    [global, bind = gmval]
+    function fmod_system_unlock_dsp() : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_callback(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_set_user_data(arg0 : real, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_system_get_user_data(arg0 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_fetch_callbacks([allow_raw_ptr] arg0 : cstring, arg1 : real) : real;
+
+    [global, bind = gmval]
+    function fmod_last_result() : real;
+
+}
+

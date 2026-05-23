@@ -1,1 +1,1 @@
-draw_self();
+draw_sprite(sprite_index, 0, AlignToGuiX(fa_right, -80), AlignToGuiY(fa_bottom, -80));
