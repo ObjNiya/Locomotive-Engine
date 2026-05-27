@@ -1,4 +1,4 @@
-#macro CATCH_UNDEFINED_CHAR char = __get_char__(char) if (char == undefined) { trace("The given character does not exist.") return -1 }
+#macro CATCH_UNDEFINED_CHAR char = __get_char__(char) if (char == undefined) { quick_log(["The given character does not exist."]) return -1 }
 
 global.characters = array_create(MAX_CHARACTERS, undefined);
 

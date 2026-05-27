@@ -1,28 +1,72 @@
 /// @ignore
-function state_tv_idle_start()
+function StateTvIdleStart()
 { 
     if (sprite_index != spr_tv_turnon_damian)
-        sprite_index = spr_tv_idle_damian;
-    
-    idle_animation_timer.start();
+        sprite_index = playerId.spr_tv_idle;
+    else
+        sprite_index = playerId.spr_tv_turnon;
 }
 
 /// @ignore
-function state_tv_idle_step()
+function StateTvIdleStep()
 {
-    if (sprite_index == spr_tv_turnon_damian)
+    if (sprite_index == playerId.spr_tv_turnon)
     {
-        animation_end(spr_tv_idle_damian);
+        animation_end(playerId.spr_tv_idle);
         return;
     }
     
-    animation_end_ext((equals_to_any(sprite_index, [spr_tv_idle_animation1, spr_tv_idle_animation2])), spr_tv_idle_damian);
+    if (playerId.state_id == state_player_mach && playerId.movespeed >= 12)
+    {
+        if (playerId.sprite_index == playerId.spr_mach4)
+            idleDoMach4Tv();
+        else
+            idleDoMach3Tv();
+    }
+    
+    if (playerId.state_id == state_player_noclip)
+    {
+        sprite_index = playerId.spr_tv_noclip;
+        return;
+    }
+    
+    if (is_showtime())
+    {
+        sprite_index = (global.laps >= 2) ? playerId.spr_tv_lap2 : playerId.spr_tv_showtime;
+        
+        if (instance_exists(obj_secret_marker))
+            sprite_index = playerId.spr_tv_showtimesecret;
+        
+        return;
+    }
+
+    if (instance_exists(obj_secret_marker))
+        sprite_index = playerId.spr_tv_secret;
+    else if (global.combo >= 50)
+        sprite_index = playerId.spr_tv_heat;
+    else if (global.combo >= 3)
+        sprite_index = playerId.spr_tv_combo;
+    else if (!equals_to_any(sprite_index, [playerId.spr_tv_idleanim1, playerId.spr_tv_idleanim2]))
+    {
+        sprite_index = playerId.spr_tv_idle;
+        
+        if (animation_end() && IdleAnimTimer-- <= 0)
+        {
+            sprite_index = choose(playerId.spr_tv_idleanim1, playerId.spr_tv_idleanim2);
+            image_index = 0;
+        }
+    }
+    else if (animation_end())
+    {
+        sprite_index = playerId.spr_tv_idle;
+        IdleAnimTimer = 240 + (60 * irandom_range(-1, 2));
+    }
 }
 
 /// @ignore
-function state_tv_idle_end()
+function StateTvIdleEnd()
 {
-    idle_animation_timer.stop();
+    
 }
 
 /**
@@ -30,7 +74,7 @@ function state_tv_idle_end()
  * @returns {Array<Function>}
  * @pure
  */
-function state_tv_idle()
+function StateTvIdle()
 {
-    return [state_tv_idle_start, state_tv_idle_step, state_tv_idle_end];
+    return [StateTvIdleStart, StateTvIdleStep, StateTvIdleEnd];
 }

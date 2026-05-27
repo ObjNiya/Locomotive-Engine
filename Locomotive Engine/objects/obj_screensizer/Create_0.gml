@@ -14,7 +14,7 @@ enum RESIZING_MODES
 
 resizingMode = RESIZING_MODES.FIT;
 
-appIsScaled = false;
+appIsScaled = true;
 appX = 0;
 appY = 0;
 appXScale = 1;
@@ -34,8 +34,8 @@ guiSurf = -1;
 guiDoResize = false;
 guiWidth = GAME_WIDTH;
 guiHeight = GAME_HEIGHT;
-maxGuiScale = 1;
-guiScale = 2;
+guiMaxScale = 1;
+guiScale = 1;
 
 application_surface_draw_enable(false);
 window_enable_borderless_fullscreen(true); 

@@ -83,13 +83,25 @@ function ScreenUpdate()
     }
 }
 
+function CalcGuiX(xx)
+{
+    var mult = (obj_screensizer.guiWidth / obj_screensizer.guiScale) / GAME_WIDTH;
+    return xx * mult;
+}
+
+function CalcGuiY(yy)
+{
+    var mult = (obj_screensizer.guiHeight / obj_screensizer.guiScale) / GAME_HEIGHT;
+    return yy * mult;
+}
+
 function AlignToGuiX(align, offset = 0)
 {
     if (align == fa_left)
         return offset;
     
     var divider = (align == fa_center) ? 2 : 1;
-    return (obj_screensizer.guiWidth / divider) + offset;
+    return ((obj_screensizer.guiWidth / obj_screensizer.guiScale) / divider) + offset;
 }
 
 function AlignToGuiY(align, offset = 0)
@@ -98,5 +110,5 @@ function AlignToGuiY(align, offset = 0)
         return offset;
     
     var divider = (align == fa_middle) ? 2 : 1;
-    return (obj_screensizer.guiHeight / divider) + offset;
+    return ((obj_screensizer.guiHeight / obj_screensizer.guiScale) / divider) + offset;
 }

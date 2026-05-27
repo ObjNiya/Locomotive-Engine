@@ -12,13 +12,14 @@ global.levels = [];
  * @parameter {String} titlecard_music The FMOD Studio event path of the titlecards music that plays upon entering a level.
  * @parameter {Bool} has_secrets_and_treasure (OPTIONAL) Whether or not the level contains secrets and treasure to be collected.
  */
-function Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, titlecard_music, has_secrets_and_treasure = true) constructor
+function Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, titlecard_music, tvbg_color, has_secrets_and_treasure = true) constructor
 {
     starting_rm = starting_room;
     self.showtime_time = showtime_time;
     s_rank_points = s_rank_requirement; 
     title_index = titlecard_index;
     title_music = titlecard_music;
+    self.tvbg_color = tvbg_color;
     has_collects = has_secrets_and_treasure;
 }
 
@@ -32,9 +33,9 @@ function Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, 
  * @parameter {String} titlecard_music The FMOD Studio event path of the titlecards music that plays upon entering a level.
  * @parameter {Bool} has_secrets_and_treasure (OPTIONAL) Whether or not the level contains secrets and treasure to be collected.
  */
-function lvl_define(index, starting_room, showtime_time, s_rank_requirement, titlecard_index, titlecard_music, has_secrets_and_treasure = true)
+function lvl_define(index, starting_room, showtime_time, s_rank_requirement, titlecard_index, titlecard_music, tvbg_color, has_secrets_and_treasure = true)
 {
-    array_insert(global.levels, index, new Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, titlecard_music, has_secrets_and_treasure));
+    array_insert(global.levels, index, new Lvl(starting_room, showtime_time, s_rank_requirement, titlecard_index, titlecard_music, tvbg_color, has_secrets_and_treasure));
 }
 
 /// @ignore

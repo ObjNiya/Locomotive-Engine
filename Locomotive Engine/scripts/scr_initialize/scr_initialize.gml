@@ -29,12 +29,14 @@
 
 // Code shortcuts
 
-#macro SINGLETON if (instance_number(object_index) > 1) { instance_destroy(); }
+#macro SINGLETON if (instance_number(object_index) > 1) { kill myself }
+#macro LEVEL_HUD_ROOM_END if (!annie_are_you_ok(obj_level)) { kill myself }
 
 // Bullshit
 
 #macro ts self
 #macro bro other
+#macro annie_are_you_ok instance_exists
 #macro maybe choose(false, true)
 #macro larp with
 #macro theresnolimittothelarp larp (all)

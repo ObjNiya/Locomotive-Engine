@@ -11,4 +11,4 @@ if (appWidth < GAME_WIDTH)
 if (appHeight < GAME_HEIGHT)
     gui_yscale *= appYScale;
 
-draw_surface_ext(guiSurf, gui_x, gui_y, gui_xscale, gui_yscale, 0, c_white, 1);
+draw_surface_ext(guiSurf, gui_x, gui_y, gui_xscale * guiScale, gui_yscale * guiScale, 0, c_white, 1);

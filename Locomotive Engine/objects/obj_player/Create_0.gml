@@ -231,3 +231,10 @@ mach_afterimage_timer = new Timer(6, time_source_units_frames, function() {
         use_alpha = other.mach_afterimage_use_alpha;
 });
 mach_afterimage_timer.set_ext(1, true);
+
+/////////////////////////////
+// Other variables
+/////////////////////////////
+
+hudBookId = noone;
+hudTvId = noone;

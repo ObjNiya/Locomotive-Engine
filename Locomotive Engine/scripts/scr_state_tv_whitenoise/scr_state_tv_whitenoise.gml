@@ -1,6 +1,8 @@
 /// @ignore
-function state_tv_whitenoise_start()
+function StateTvWhitenoiseStart()
 {
+    whitenoise.set_sprite(playerId.spr_tv_whitenoise);
+    
     with (whitenoise)
     {
         image_index = 0;
@@ -10,7 +12,7 @@ function state_tv_whitenoise_start()
 }
 
 /// @ignore
-function state_tv_whitenoise_step()
+function StateTvWhitenoiseStep()
 {
     with (whitenoise)
     {
@@ -18,11 +20,12 @@ function state_tv_whitenoise_step()
             return;
     }
     
-    smc_set_state(whitenoise_next_state);
+    smc_set_state(whitenoiseNextState);
+    sprite_index = whitenoiseNextSprite;
 }
 
 /// @ignore
-function state_tv_whitenoise_end()
+function StateTvWhitenoiseEnd()
 {
     with (whitenoise)
     {
@@ -37,7 +40,7 @@ function state_tv_whitenoise_end()
  * @returns {Array<Function>}
  * @pure
  */
-function state_tv_whitenoise()
+function StateTvWhitenoise()
 {
-    return [state_tv_whitenoise_start, state_tv_whitenoise_step, state_tv_whitenoise_end];
+    return [StateTvWhitenoiseStart, StateTvWhitenoiseStep, StateTvWhitenoiseEnd];
 }

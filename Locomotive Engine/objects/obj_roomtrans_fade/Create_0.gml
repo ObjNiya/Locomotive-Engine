@@ -2,7 +2,7 @@ SINGLETON;
 
 image_blend = c_black;
 image_alpha = fade_start;
-depth = DEPTHS.FARTHEST;
+depth = DEPTHS.MIDDLE;
 
 fade_in = false;
 

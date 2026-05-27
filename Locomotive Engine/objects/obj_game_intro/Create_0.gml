@@ -1,6 +1,6 @@
 depth = DEPTHS.CLOSEST;
 
-var intro_path = "data\\intro.mp4";
+var intro_path = "data\\intro.mov";
 
 if (!file_exists(intro_path))
 {

@@ -3,6 +3,11 @@ if (!surface_exists(guiSurf))
 else if (guiDoResize)
 { 
     surface_resize(guiSurf, display_get_gui_width(), display_get_gui_height());
+    
+    guiMaxScale = min(floor(display_get_gui_width() / GAME_WIDTH), floor(display_get_gui_height() / GAME_HEIGHT));
+    guiMaxScale = max(guiMaxScale, 1);
+    guiScale = clamp(guiScale, 1, guiMaxScale);
+    
     guiDoResize = false;
 }
 

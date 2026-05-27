@@ -1,21 +1,22 @@
 /// @ignore
-function state_tv_expression_start()
+function StateTvExpressionStart()
 {
-    sprite_index = current_expr.sprite_index;
+    
 }
 
 /// @ignore
-function state_tv_expression_step()
+function StateTvExpressionStep()
 {
-    if (current_expr.func())
+    if (exprStep() && exprTimer-- > 0)
         return;
     
-    whitenoise_next_state = state_tv_idle();
-    smc_set_state(state_tv_whitenoise);
+    whitenoiseNextState = StateTvIdle;
+    whitenoiseNextSprite = playerId.spr_tv_idle;
+    smc_set_state(StateTvWhitenoise);
 }
 
 /// @ignore
-function state_tv_expression_end()
+function StateTvExpressionEnd()
 {
     
 }
@@ -25,7 +26,7 @@ function state_tv_expression_end()
  * @returns {Array<Function>}
  * @pure
  */
-function state_tv_expression()
+function StateTvExpression()
 {
-    return [state_tv_expression_start, state_tv_expression_step, state_tv_expression_end];
+    return [StateTvExpressionStart, StateTvExpressionStep, StateTvExpressionEnd];
 }
