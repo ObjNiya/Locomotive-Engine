@@ -163,20 +163,29 @@ function NewTimer(max_time, time_units, finish_function) constructor
     tickFuncs = [];
     pointFuncs = [];
     
+    
+    ///////////////////
+    // Setter functions
+    ///////////////////
+    
+    
     static AddTickFunction = function(tick_function, tick_function_interval, tick_function_arguments = [])
     {
         array_push(tickFuncs, [tick_function, tick_function_interval, tick_function_arguments]);
     }
+    
     
     static AddPointFunction = function(point_function, point_function_trigger_point, point_function_arguments = [])
     {
         array_push(pointFuncs, [point_function, point_function_trigger_point, point_function_arguments, false]);
     }
     
+    
     static SetFinishArguments = function(arguments)
     {
         finishFuncArgs = arguments;
     }
+    
     
     static SetTickSpeed = function(tick_speed)
     {
@@ -186,11 +195,94 @@ function NewTimer(max_time, time_units, finish_function) constructor
             tickSpeed /= game_get_speed(gamespeed_fps);
     }
     
+    
     static SetRepeating = function(repeat_finish_function, repeat_timer)
     {
         repeatFinish = repeat_finish_function;
         repeatTimer = repeat_timer;
     }
+    
+    
+    static SetCountdownMode = function(is_countdown_mode)
+    {
+        isCountdown = is_countdown_mode;
+    }
+    
+    
+    ///////////////////
+    // Getter functions
+    ///////////////////
+    
+    
+    static GetMiliseconds = function()
+    {
+        var time = curTime * 1000;
+        
+        if (timeUnits != time_source_units_seconds)
+            time /= game_get_speed(gamespeed_fps);
+        
+        return floor(time);
+    }
+    
+    static GetCentiseconds = function()
+    {
+        return floor(GetMiliseconds() / 10);
+    }
+    
+    static GetDeciseconds = function()
+    {
+        return floor(GetMiliseconds() / 100);
+    }
+    
+    
+    static GetSeconds = function()
+    {
+        return floor(GetMiliseconds() / 1000);
+    }
+    
+    
+    static GetMinutes = function()
+    {
+        return floor(GetMiliseconds() / 60000);
+    }
+
+    
+    static GetHours = function()
+    {
+        return floor(GetMiliseconds() / 3600000);
+    }
+    
+    
+    static GetTimeArray = function(subsecond_precision)
+    {
+        var smh = [GetHours(), GetMinutes(), GetSeconds()];
+        var i = 0;
+        
+        repeat (3)
+        {
+            if (i - 1 >= 0)
+                smh[i] -= 60 * smh[i - 1];
+            i++;
+        }
+        
+        if (subsecond_precision <= 0)
+            return smh;
+        
+        subsecond_precision--;
+        
+        var dcm = [GetDeciseconds(), GetCentiseconds(), GetMiliseconds()];
+        var dcm_mults = [10, 100, 1000];
+        var time = dcm[subsecond_precision] - (dcm_mults[subsecond_precision] * GetSeconds());
+        
+        array_push(smh, time);
+        return smh;
+    }
+
+    
+    ///////////////////
+    // Active functions
+    ///////////////////
+    
     
     static Start = function()
     {
@@ -201,12 +293,14 @@ function NewTimer(max_time, time_units, finish_function) constructor
             p_func[3] = false;
         });
     }
-        
+    
+    
     static Stop = function()
     {
         state = TIMER_STATES.STOPPED;
         curTime = maxTime * real(!isCountdown);
     }
+    
     
     static TogglePause = function()
     {
@@ -216,16 +310,6 @@ function NewTimer(max_time, time_units, finish_function) constructor
             state = TIMER_STATES.STARTED;
     }
     
-    static SetCountdownMode = function(is_countdown_mode)
-    {
-        isCountdown = is_countdown_mode;
-    }
-    
-    SetTickSpeed(1);
-    SetFinishArguments([]);
-    SetRepeating(false, false);
-    SetCountdownMode(true);
-    Stop();
     
     static Step = function()
     {
@@ -275,73 +359,116 @@ function NewTimer(max_time, time_units, finish_function) constructor
             Start();
     }
     
-    static GetMiliseconds = function()
+    
+    static __DrawPrepareTxt__ = function(length, short_start, subsecond_precision)
     {
-        if (timeUnits == time_source_units_seconds)
-            return floor(curTime * 1000);
+        var time_array = GetTimeArray(subsecond_precision);
+        var time_length = array_length(time_array) - 1;
         
-        return floor((curTime / game_get_speed(gamespeed_fps)) * 1000);
+        length = clamp(length, 0, time_length);
+        
+        var start = time_length - length;
+        var i = start;
+        
+        repeat (length + 1)
+        {
+            var min_length = 1;
+            if (short_start && i == start)
+            {
+                
+                min_length = 0;
+            }
+            else if (i == 3)
+            {
+                
+                min_length = subsecond_precision;
+            }
+            
+            var padding_0s = "";
+            time_array[i] = string(time_array[i]);
+            
+            while (string_length(time_array[i]) < min_length) 
+            {
+                padding_0s += "0";
+                time_array[i] = padding_0s + time_array[i];
+            }
+            
+            if (i == 2 && time_length >= 3)
+                time_array[i] += ".";
+            else if (i != 3)
+                time_array[i] += ":";
+            i++;
+        }
+        
+        quick_log([time_array])
+        return time_array;
     }
+    
+    
+    static DrawTransformedColor = function(x, y, xscale, yscale, angle, c1, c2, c3, c4, alpha, subsecond_precision, length, short_start = true)
+    {
+        var align = draw_get_halign();
+        var time_arr_str = __DrawPrepareTxt__(length, short_start, subsecond_precision);
+        
+        if (align == fa_center)
+        {
+            draw_text_transformed_color(x, y, string_concat_ext(time_arr_str), xscale, yscale, angle, c1, c2, c3, c4, alpha);
+            return;
+        }
+        
+        var time_length = array_length(time_arr_str);
+        var i = (align == fa_right) ? time_length - 1 : 0; 
+        var x_offset = 0;
+        
+        repeat (time_length)
+        {
+            var time_txt = time_arr_str[i];
+            
+            draw_text_transformed_color(x + x_offset, y, time_txt, xscale, yscale, angle, c1, c2, c3, c4, alpha);
+            
+            if (align == fa_right)
+            {
+                x_offset -= string_width(time_txt);
+                i--;
+            }
+            else
+            { 
+                x_offset += string_width(time_txt);
+                i++;
+            }
+        }
+    }
+    
+    
+    static DrawTransformed = function(x, y, xscale, yscale, angle, subsecond_precision, length, short_start = true)
+    {
+        var color = draw_get_color();
+        var alpha = draw_get_alpha();
+        
+        DrawTransformedColor(x, y, xscale, yscale, angle, color, color, color, color, alpha, subsecond_precision, length, short_start);
+    }
+    
+    
+    static DrawColor = function(x, y, c1, c2, c3, c4, alpha, subsecond_precision, length, short_start = true)
+    {
+        DrawTransformedColor(x, y, 1, 1, 0, c1, c2, c3, c4, alpha, subsecond_precision, length, short_start);
+    }
+    
+    
+    static Draw = function(x, y, subsecond_precision, length, short_start = true)
+    {
+        DrawTransformed(x, y, 1, 1, 0, subsecond_precision, length, short_start);
+    }
+    
+    SetTickSpeed(1);
+    SetFinishArguments([]);
+    SetRepeating(false, false);
+    SetCountdownMode(true);
+    Stop();
+}
 
-    static GetSeconds = function()
-    {
-        return floor(GetMiliseconds() / 1000); 
-    }
-    
-    static GetMinutes = function()
-    {
-        return floor(GetSeconds() / 60);
-    }
-    
-    static GetHours = function()
-    {
-        return floor(GetMinutes() / 60);
-    }
-    
-    static GetDays = function()
-    {
-        return floor(GetHours() / 24);
-    }
-    
-    /// @ignore
-    static __FormatTime__= function(time, length, sep_char = ":", is_start = false)
-    {
-        if (is_start && time == 0)
-            return "";
-        
-        time = string(time);
-        
-        while (length > string_length(time) && !is_start && length > 0)
-            time = string_insert("0", time, 1);
-        
-        return time + sep_char;
-    }
-    
-    static GetTime = function()
-    {
-        var days = GetDays();
-        var hours = GetHours();
-        var minutes = GetMinutes();
-        var seconds = GetSeconds();
-        var centiseconds = GetMiliseconds();
-        
-        var days_txt = __FormatTime__(days, 0, ":", true);
-        var hours_txt = __FormatTime__(hours - (24 * days), 2);
-        var minutes_txt = __FormatTime__(minutes - (60 * hours), 2);
-        var seconds_txt = __FormatTime__(seconds - (60 * minutes), 2, ".");
-        var centiseconds_txt = __FormatTime__(centiseconds - (1000 * seconds), 3, "");
-        
-        return days_txt + hours_txt + minutes_txt + seconds_txt + centiseconds_txt;
-    }
-    
-    static GetTimeCompact = function()
-    {
-        var minutes = GetMinutes();
-        var seconds = GetSeconds();
-        
-        var minutes_txt = __FormatTime__(minutes, 1, ":", false);
-        var seconds_txt = __FormatTime__(seconds - (60 * minutes), 2, "");
-        
-        return minutes_txt + seconds_txt;
-    }
+function TimerFire(max_time, time_units, finish_function)
+{
+    var timer = new NewTimer(max_time, time_units, finish_function);
+    timer.Start();
 }
