@@ -1,6 +1,6 @@
 if (!room_exists(target_room))
 {
-    log(obj_room_goto, LOG_TYPES.WARNING, ["The target room index is ", target_room, ", which is not a room or it doesn't exist. Cancelling out of the function early..."]);
+    Log(obj_room_goto, LOG_TYPES.WARNING, "The target room index is ", target_room, ", which is not a room or it doesn't exist. Cancelling out of the function early...");
     exit;
 }
 

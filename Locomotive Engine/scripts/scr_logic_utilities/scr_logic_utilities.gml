@@ -1,13 +1,21 @@
 /**
- * This function will return whether or not the given value is equal to any of the other provided values.
- * @parameter {Any} value The value to check if it equals to anything.
- * @parameter {Array<Any>} values The values to go trough.
+ * This function will return whether or not the first argument equates to any of the later arguments.
  * @pure
  * @returns {Bool}
  */
-function equals_to_any(value, values)
+function EqualsToAny()
 {
-    return (array_get_index(values, value) != -1);
+    var i = 1;
+    
+    repeat (argument_count - 1)
+    {
+        if (argument[0] == argument[i])
+            return true;
+        
+        i++;
+    }
+    
+    return false;
 }
 
 

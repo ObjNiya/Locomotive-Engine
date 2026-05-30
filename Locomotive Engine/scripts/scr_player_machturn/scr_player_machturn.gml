@@ -15,7 +15,7 @@ function state_player_machturn_step()
     
     if (movespeed <= 0 && grounded)
     {
-        var mach3 = (equals_to_any(sprite_index, [spr_mach3_turn_intro, spr_mach3_turn]));
+        var mach3 = (EqualsToAny(sprite_index, spr_mach3_turn_intro, spr_mach3_turn));
 
         dir *= -1;
         movespeed = (mach3) ? 12 : 10;

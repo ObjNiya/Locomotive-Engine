@@ -26,22 +26,25 @@ function fmod_studio_event_instance_move(event_instance_ref, x, y)
 }
 
 
-function fmod_studio_event_instance_move_several(event_instance_refs, x, y)
+function fmod_studio_event_instance_move_several()
 {
-    var event_instance_count = array_length(event_instance_refs);
+    var i = 2;
     var fmod_3d_attributes = new Fmod3DAttributes();
     
     with (fmod_3d_attributes)
     {
-        position.x = x;
-        position.y = y;
+        position.x = argument[0];
+        position.y = argument[1];
         
         forward.z = 1;
         up.y = 1;
     }
     
-    for (var i = 0; i < event_instance_count; i++)
-        fmod_studio_event_instance_set_3d_attributes(event_instance_refs[i], fmod_3d_attributes);
+    repeat (argument_count - 2)
+    {
+        fmod_studio_event_instance_set_3d_attributes(argument[i], fmod_3d_attributes);
+        i++;
+    }
 }
 
 

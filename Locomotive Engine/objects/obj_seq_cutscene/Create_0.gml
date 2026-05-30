@@ -4,7 +4,7 @@ seq_element = -1;
 
 if (!sequence_exists(sequence))
 {
-    log(obj_seq_cutscene, LOG_TYPES.ERROR, ["The given sequence is ", sequence, " which does not exist. Cancelling the cutscene and resuming gameplay if paused..."]);
+    Log(obj_seq_cutscene, LOG_TYPES.ERROR, "The given sequence is ", sequence, " which does not exist. Cancelling the cutscene and resuming gameplay if paused...");
     instance_destroy();
     
     exit;

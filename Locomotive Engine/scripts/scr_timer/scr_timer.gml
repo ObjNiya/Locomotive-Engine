@@ -479,12 +479,23 @@ function Timer(max_time, time_units, finish_function) constructor
     Stop();
 }
 
+
+/**
+ * This function will create a timer and start it. Said timer will be discarded once it has reached its goal.
+ * @parameter {Real} max_time The time to reach or tick down from in seconds or frames.
+ * @parameter {Constant.TimeSourceUnits} time_units In which time unit time is supposed to pass. (seconds or frames)
+ * @parameter {Function} finish_function The function to call once the timer has reached its goal, it will be called within its bound context.
+ */
 function TimerFire(max_time, time_units, finish_function)
 {
     var timer = new Timer(max_time, time_units, finish_function);
     timer.Start();
 }
 
+
+/**
+ * This function will treat all of the passed in arguments as timers and will run the ```Step``` function for all of them.
+ */
 function StepTimers()
 {
     var i = 0;

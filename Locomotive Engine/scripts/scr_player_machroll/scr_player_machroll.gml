@@ -37,7 +37,7 @@ function state_player_machroll_step()
         
         image_speed = 1;
         
-        if ((movespeed < 12 || !animation_end()) && !equals_to_any(sprite_index, [spr_backslide_land, spr_backslide]))
+        if ((movespeed < 12 || !animation_end()) && !EqualsToAny(sprite_index, spr_backslide_land, spr_backslide))
         {
             sprite_index = spr_machroll;
             image_speed = movespeed / 5.5;

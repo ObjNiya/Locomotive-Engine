@@ -88,14 +88,14 @@ function state_player_normal_step()
         if (player_do_groundpound())
             return;
         
-        if (equals_to_any(sprite_index, [spr_stomp, spr_stomp_fall]))
+        if (EqualsToAny(sprite_index, spr_stomp, spr_stomp_fall))
         {
             animation_end(spr_stomp_fall);
             return;
         }
         
         var no_fall_spr = (sprite_index == spr_grabdash_bump)
-        var fall_spr_on_end = equals_to_any(sprite_index, [spr_jump, spr_grabdash_cancel]);
+        var fall_spr_on_end = EqualsToAny(sprite_index, spr_jump, spr_grabdash_cancel);
         
         if ((!fall_spr_on_end || (fall_spr_on_end && animation_end())) && !no_fall_spr)
             sprite_index = spr_fall;
@@ -170,9 +170,9 @@ function state_player_normal_step()
     }
     
     var dance_spr = (sprite_index == spr_breakdance);
-    var land_spr = equals_to_any(sprite_index, [spr_land, spr_land_walk]);
+    var land_spr = EqualsToAny(sprite_index, spr_land, spr_land_walk);
 
-    if (equals_to_any(sprite_index, [spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump, spr_stomp, spr_stomp_fall]) && !land_spr)
+    if (EqualsToAny(sprite_index, spr_jump, spr_fall, spr_grabdash_cancel, spr_grabdash_bump, spr_stomp, spr_stomp_fall) && !land_spr)
     {
         land_spr = true;
         
@@ -226,7 +226,7 @@ function state_player_normal_step()
     if (dance_spr)
         return;
     
-    var groundpound_spr = equals_to_any(sprite_index, [spr_groundpound_idle_intro, spr_groundpound_idle]);
+    var groundpound_spr = EqualsToAny(sprite_index, spr_groundpound_idle_intro, spr_groundpound_idle);
     var panting_spr = (sprite_index == spr_panting_idle);
     
     cloud_particle_timer.Stop();

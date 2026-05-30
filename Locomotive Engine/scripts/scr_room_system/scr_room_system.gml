@@ -2,7 +2,7 @@ function set_spawn_align(x_align, y_align)
 {
     if (!is_numeric(x_align) || !is_numeric(y_align))
     {
-        log(set_spawn_align, LOG_TYPES.WARNING, ["The given align values are ", x_align, " and ", y_align, ", which aren't numbers. Cancelling out of the function early..."]);
+        Log(set_spawn_align, LOG_TYPES.WARNING, "The given align values are ", x_align, " and ", y_align, ", which aren't numbers. Cancelling out of the function early...");
         return false;
     }
     
@@ -19,7 +19,7 @@ function set_spawn_offset(x_offset, y_offset)
 {
     if (!is_numeric(x_offset) || !is_numeric(y_offset))
     {
-        log(set_spawn_offset, LOG_TYPES.WARNING, ["The given offset values are ", x_offset, " and ", y_offset, ", which aren't numbers. Cancelling out of the function early..."]);
+        Log(set_spawn_offset, LOG_TYPES.WARNING, "The given offset values are ", x_offset, " and ", y_offset, ", which aren't numbers. Cancelling out of the function early...");
         return false;
     }
     
@@ -36,13 +36,13 @@ function queue_room(index, spawn)
 {
     if (!room_exists(index))
     {
-        log(queue_room, LOG_TYPES.WARNING, ["The given room index is ", index, ", which is not a room or it doesn't exist. Cancelling out of the function early..."]);
+        Log(queue_room, LOG_TYPES.WARNING, "The given room index is ", index, ", which is not a room or it doesn't exist. Cancelling out of the function early...");
         return false;
     }
     
     if (!object_exists(spawn))
     {
-        log(queue_room, LOG_TYPES.WARNING, ["The given spawn object index is ", index, ", which is not an object or it doesn't exist. Cancelling out of the function early..."]);
+        Log(queue_room, LOG_TYPES.WARNING, "The given spawn object index is ", index, ", which is not an object or it doesn't exist. Cancelling out of the function early...");
         return false;
     }
     
@@ -65,13 +65,13 @@ function trans_room(transition_obj, event_path = sfx_transition_fade)
 {
     if (!object_exists(transition_obj))
     {
-        log(trans_room, LOG_TYPES.WARNING, ["The given transition object is ", transition_obj, ", which is not an object or it doesn't exist. Cancelling out of the function early..."]);
+        Log(trans_room, LOG_TYPES.WARNING, "The given transition object is ", transition_obj, ", which is not an object or it doesn't exist. Cancelling out of the function early...");
         return noone;
     }
     
     if (object_get_parent(transition_obj) != par_roomtransition)
     {
-        log(trans_room, LOG_TYPES.WARNING, ["The given transition objects parent is ", object_get_parent(transition_obj), ", which is incorrect as it always should be par_roomtransition. Cancelling out of the function early..."]);
+        Log(trans_room, LOG_TYPES.WARNING, "The given transition objects parent is ", object_get_parent(transition_obj), ", which is incorrect as it always should be par_roomtransition. Cancelling out of the function early...");
         return noone;
     }
     

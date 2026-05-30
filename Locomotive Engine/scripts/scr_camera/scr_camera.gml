@@ -6,7 +6,7 @@ function Camera() constructor
     {
         if (cur_viewport++ > 7)
         {
-            log(Camera, LOG_TYPES.WARNING, ["All viewports are already occupied, returning -1."]);
+            Log(Camera, LOG_TYPES.WARNING, "All viewports are already occupied, returning -1.");
             return -1;
         }
     }

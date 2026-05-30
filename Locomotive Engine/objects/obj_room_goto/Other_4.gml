@@ -12,7 +12,7 @@ with (target_spawn)
 
 if (is_undefined(spawn_x) || spawn_x == undefined || is_undefined(spawn_y) || spawn_y == undefined)
 {
-    log(obj_room_goto, LOG_TYPES.WARNING, ["The target spawn is: ", target_spawn, ", which does not exist in this room. Cancelling out of the function early..."]);
+    Log(obj_room_goto, LOG_TYPES.WARNING, "The target spawn is: ", target_spawn, ", which does not exist in this room. Cancelling out of the function early...");
     exit;
 }
 

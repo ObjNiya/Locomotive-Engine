@@ -32,7 +32,7 @@ function state_player_crouch_step()
     
     if (!grounded)
     {
-        if (!equals_to_any(sprite_index, [spr_crouch_jump, spr_crouch_fall]) || (sprite_index == spr_crouch_jump && animation_end()))
+        if (!EqualsToAny(sprite_index, spr_crouch_jump, spr_crouch_fall) || (sprite_index == spr_crouch_jump && animation_end()))
             sprite_index = spr_crouch_fall;
         return;    
     }

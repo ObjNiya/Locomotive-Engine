@@ -23,7 +23,7 @@ function state_player_mach_start()
     
     dir = sign(image_xscale);
     
-    if (!grounded && !equals_to_any(sprite_index, [spr_longjump_intro, spr_longjump, spr_mach2_jump_intro, spr_mach2_jump]))
+    if (!grounded && !EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_mach2_jump_intro, spr_mach2_jump))
         sprite_set(spr_mach2_jump_intro, 0);
     else
         sprite_set(spr_mach1, 0);
@@ -38,7 +38,7 @@ function state_player_mach_start()
 /// @ignore
 function state_player_mach_step()
 {
-    var mach3 = (movespeed >= 12 && equals_to_any(sprite_index, [spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel]));
+    var mach3 = (movespeed >= 12 && EqualsToAny(sprite_index, spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel));
 
     accel = 0.1;
     
@@ -163,7 +163,7 @@ function state_player_mach_step()
         
         if (roll_getup_spr)
             machsnd_ground = false;
-        else if (!equals_to_any(sprite_index, [spr_longjump_intro, spr_longjump]))
+        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump))
             image_speed = (movespeed / 5.5);
         
         if (grounded)
@@ -183,13 +183,13 @@ function state_player_mach_step()
             
             create_particle_repeating(x, y + 45, obj_mach2_cloud_particle);
         }
-        else if (!equals_to_any(sprite_index, [spr_longjump_intro, spr_longjump, spr_mach2_jump_intro, spr_mach2_jump, spr_walljump_intro, spr_walljump]))
+        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_mach2_jump_intro, spr_mach2_jump, spr_walljump_intro, spr_walljump))
             sprite_set(spr_mach2_jump_intro, 0);
         
     }
     else
     {
-        var sjump_spr = (equals_to_any(sprite_index, [spr_sjump_cancel_intro, spr_sjump_cancel]) && !grounded);
+        var sjump_spr = (EqualsToAny(sprite_index, spr_sjump_cancel_intro, spr_sjump_cancel) && !grounded);
         
         machsnd_state = 2;
         
@@ -209,7 +209,7 @@ function state_player_mach_step()
             machsnd_state = 3;
             create_particle_repeating(x, y, obj_woosh_particle);
         }
-        else if (sprite_index != spr_mach3 && !equals_to_any(sprite_index, [spr_mach3_hit_enemy, spr_mach3_jump, spr_mach3_dashpad]) && !roll_getup_spr && !sjump_spr)
+        else if (sprite_index != spr_mach3 && !EqualsToAny(sprite_index, spr_mach3_hit_enemy, spr_mach3_jump, spr_mach3_dashpad) && !roll_getup_spr && !sjump_spr)
             sprite_index = spr_mach3;
 
         create_particle_repeating(x, y + 45, obj_mach3_cloud_particle);

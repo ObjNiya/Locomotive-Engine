@@ -46,7 +46,7 @@ function StateTvIdleStep()
         sprite_index = playerId.spr_tv_heat;
     else if (global.combo >= 3)
         sprite_index = playerId.spr_tv_combo;
-    else if (!equals_to_any(sprite_index, [playerId.spr_tv_idleanim1, playerId.spr_tv_idleanim2]))
+    else if (!EqualsToAny(sprite_index, playerId.spr_tv_idleanim1, playerId.spr_tv_idleanim2))
     {
         sprite_index = playerId.spr_tv_idle;
         

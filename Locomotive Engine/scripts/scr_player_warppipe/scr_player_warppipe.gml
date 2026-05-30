@@ -1,7 +1,7 @@
 /// @ignore
 function state_player_warppipe_start()
 {
-    if (!equals_to_any(sprite_index, [spr_warppipe_down, spr_warppipe_up]))
+    if (!EqualsToAny(sprite_index, spr_warppipe_down, spr_warppipe_up))
         sprite_set(spr_warppipe_down, 0);
     
     image_speed = 1;

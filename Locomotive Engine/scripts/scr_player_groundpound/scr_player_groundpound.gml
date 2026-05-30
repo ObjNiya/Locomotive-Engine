@@ -22,7 +22,7 @@ function state_player_groundpound_start()
 /// @ignore
 function state_player_groundpound_step()
 {
-    var landed = equals_to_any(sprite_index, [spr_groundpound_land, spr_divebomb_land])
+    var landed = EqualsToAny(sprite_index, spr_groundpound_land, spr_divebomb_land)
     
     if (grounded || landed)
     {

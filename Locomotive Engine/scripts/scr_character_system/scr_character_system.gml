@@ -44,7 +44,7 @@ function cache_charsprites(char)
         var charspr_value = get_charspr(sprite, char);
         
         variable_instance_set(id, charspr_name, charspr_value);
-        log(cache_charsprites, LOG_TYPES.INFO, ["Caching charspr ", charspr_name, " with value ", charspr_value]);
+        Log(cache_charsprites, LOG_TYPES.INFO, "Caching charspr ", charspr_name, " with value ", charspr_value);
         
         i++;
     }
@@ -64,7 +64,7 @@ function get_charsnd(event_path, char)
     
     if (!is_string(event_path))
     {
-        log(get_charsnd, LOG_TYPES.WARNING, ["Shit"]);
+        Log(get_charsnd, LOG_TYPES.WARNING, "Shit");
         return "event:/Event Defaults/3D SFX Action";
     }
     

@@ -24,19 +24,29 @@ function log_type_set_hidden(type, hidden)
     }
 }
 
-function quick_log(txt)
+function quick_log()
 {
     if (IDE_BUILD)
     {
-        show_debug_message(string_concat_ext(txt));
+        var i = 0;
+        var txt = "";
+        
+        repeat (argument_count)
+        {
+            txt += string(argument[i]);
+            i++;
+        }
+        
+        show_debug_message(txt);
     }
 }
 
-function log(source, type, txt)
+function Log()
 {
     if (IDE_BUILD)
     {
         var log_type;
+        var type = argument[1];
         
         if (global.log_type_hidden[? type])
             return;
@@ -48,6 +58,8 @@ function log(source, type, txt)
             case LOG_TYPES.ERROR: log_type = "ERROR" break;     
         }
         
+        var source = argument[0];
+        
         if (object_exists(source))
             source = object_get_name(source);
         else if (script_exists(source))
@@ -57,7 +69,14 @@ function log(source, type, txt)
             source = "UNKNOWN";
         
         var prefix = source + " - [" + log_type + "] ";
-        txt = string_concat_ext(txt);
+        var txt = "";
+        var i = 2;
+        
+        repeat (argument_count - 2)
+        {
+            txt += string(argument[i]);
+            i++;
+        }
         
         show_debug_message(prefix + txt);
     }
