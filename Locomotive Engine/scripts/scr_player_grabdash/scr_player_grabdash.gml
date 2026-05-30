@@ -17,7 +17,7 @@ function state_player_grabdash_start()
     
     sprite_set(spr_grabdash_intro, 0);
     sound_instance_start(snd_grabdash);
-    blur_afterimage_timer.start();
+    blur_afterimage_timer.Start();
 }
 
 /// @ignore
@@ -105,7 +105,7 @@ function state_player_grabdash_step()
 /// @ignore
 function state_player_grabdash_end()
 {
-    blur_afterimage_timer.stop();
+    blur_afterimage_timer.Stop();
 }
 
 /**

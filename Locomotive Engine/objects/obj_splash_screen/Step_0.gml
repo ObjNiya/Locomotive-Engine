@@ -1,3 +1,5 @@
+splash_timer.Step();
+
 fade_alpha = approach(fade_alpha, real(fade_out), 0.03);
 
 if (splash_index == -1)
@@ -16,7 +18,7 @@ if (InputPressedMany([INPUT_VERB.JUMP]) || (fade_out && fade_alpha >= 1))
         instance_create(0, 0, obj_game_intro);
 
         splash_index = -1;
-        splash_timer.stop();
+        splash_timer.Stop();
         
         fade_alpha = 1.2;
         
@@ -25,7 +27,7 @@ if (InputPressedMany([INPUT_VERB.JUMP]) || (fade_out && fade_alpha >= 1))
     
     splash_index++;
     splash_timer.active = false;
-    splash_timer.start();
+    splash_timer.Start();
     
     fade_alpha = 1;
 }

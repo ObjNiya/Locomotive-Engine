@@ -1,3 +1,5 @@
+lifespan.Step();
+
 depth = spawner_id.depth - 1;
 
 x = spawner_id.x;

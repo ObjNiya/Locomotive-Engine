@@ -3,7 +3,7 @@ function state_enemy_grabbed_start()
 {
     sprite_index = stun_sprite;
     
-    thrown_blur_afterimage_timer.start();
+    thrown_blur_afterimage_timer.Start();
 }
 
 /// @ignore
@@ -15,7 +15,7 @@ function state_enemy_grabbed_step()
 /// @ignore
 function state_enemy_grabbed_end()
 {
-    thrown_blur_afterimage_timer.stop();
+    thrown_blur_afterimage_timer.Stop();
 }
 
 /**

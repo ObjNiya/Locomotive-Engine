@@ -7,7 +7,7 @@ function state_player_machroll_start()
     with (instance_create(x, y + 45, obj_burst_cloud_particle))
         image_xscale = other.image_xscale;
     
-    blur_afterimage_timer.start();
+    blur_afterimage_timer.Start();
     
     if (sound_instance_get_playback_state(snd_machroll) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
         sound_instance_start(snd_machroll);
@@ -68,7 +68,7 @@ function state_player_machroll_end()
     mask_index = spr_player_mask;
     image_speed = 1;
     
-    blur_afterimage_timer.stop();
+    blur_afterimage_timer.Stop();
     
     sound_instance_stop(snd_machroll, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

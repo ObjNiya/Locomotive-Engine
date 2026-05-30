@@ -80,8 +80,8 @@ function state_player_normal_step()
         }
         
         dance_hold_time = 0;
-        cloud_particle_timer.stop();
-        blur_afterimage_timer.stop();
+        cloud_particle_timer.Stop();
+        blur_afterimage_timer.Stop();
         
         player_do_jumpstop();
         
@@ -130,7 +130,7 @@ function state_player_normal_step()
     
     if (dance_hold_time >= dance_hold_require)
     {
-        cloud_particle_timer.stop();
+        cloud_particle_timer.Stop();
         
         sprite_index = spr_breakdance;
         image_speed = dance_spr_speed;
@@ -146,8 +146,11 @@ function state_player_normal_step()
 
     if (dance_spr_speed >= 1.15)
     {
-        blur_afterimage_timer.start();
-        note_particle_timer.start();
+        if (blur_afterimage_timer.state != TIMER_STATES.STARTED)
+            blur_afterimage_timer.Start();
+        
+        if (note_particle_timer.state != TIMER_STATES.STARTED)
+            note_particle_timer.Start();
         
         if (!instance_exists(obj_beatbox) || (instance_exists(obj_beatbox) && obj_beatbox.player != id))
         {
@@ -162,8 +165,8 @@ function state_player_normal_step()
     }
     else
     {
-        note_particle_timer.stop();
-        blur_afterimage_timer.stop();
+        note_particle_timer.Stop();
+        blur_afterimage_timer.Stop();
     }
     
     var dance_spr = (sprite_index == spr_breakdance);
@@ -199,7 +202,8 @@ function state_player_normal_step()
         if (dance_spr)
             return;
         
-        cloud_particle_timer.start();
+        if (cloud_particle_timer.state != TIMER_STATES.STARTED)
+            cloud_particle_timer.Start();
         
         if (machslide_spr || land_spr)
         {
@@ -225,7 +229,7 @@ function state_player_normal_step()
     var groundpound_spr = equals_to_any(sprite_index, [spr_groundpound_idle_intro, spr_groundpound_idle]);
     var panting_spr = (sprite_index == spr_panting_idle);
     
-    cloud_particle_timer.stop();
+    cloud_particle_timer.Stop();
     
     if (machslide_spr || land_spr) 
     {
@@ -298,9 +302,9 @@ function state_player_normal_end()
 {
     image_speed = 1;
     
-    cloud_particle_timer.stop();
-    blur_afterimage_timer.stop();
-    note_particle_timer.stop();
+    cloud_particle_timer.Stop();
+    blur_afterimage_timer.Stop();
+    note_particle_timer.Stop();
     
     panting_spr_time = 0;
     idle_spr_time = 150;

@@ -13,7 +13,7 @@ function state_player_warppipe_start()
     movespeed = 0;
     vert_movespeed = 0;
     
-    warppipe_failsave_timer.start();
+    warppipe_failsave_timer.Start();
 }
 
 /// @ignore
@@ -35,7 +35,7 @@ function state_player_warppipe_end()
     image_speed = 1;
     
     grav = 0.5;    
-    warppipe_failsave_timer.stop();
+    warppipe_failsave_timer.Stop();
 }
 
 /**

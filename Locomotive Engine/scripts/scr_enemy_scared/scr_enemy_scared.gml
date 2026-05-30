@@ -10,19 +10,19 @@ function state_enemy_scared_scared_start()
     else
         vsp = 0;
     
-    scared_timer.start();
+    scared_timer.Start();
 }
 
 /// @ignore
 function state_enemy_scared_scared_step()
 {
-    scared_timer.step();
+    scared_timer.Step();
 }
 
 /// @ignore
 function state_enemy_scared_scared_end()
 {
-    scared_timer.stop();
+    scared_timer.Stop();
 }
 
 /**

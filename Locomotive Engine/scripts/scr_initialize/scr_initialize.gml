@@ -122,9 +122,8 @@ function initialize_globals()
             
         });
         combo_timer = new Timer(6.75, time_source_units_seconds, function() {
-            
             global.combo = 0;
-        })
+        });
             
         plushies = {
             waddledoo: false,

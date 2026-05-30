@@ -6,7 +6,7 @@ function state_enemy_stunned_start()
     
     sprite_index = spr_stunned;
     
-    stunned_timer.start();
+    stunned_timer.Start();
 }
 
 /// @ignore
@@ -26,7 +26,7 @@ function state_enemy_stunned_step()
 /// @ignore
 function state_enemy_stunned_end()
 {
-    stunned_timer.stop();
+    stunned_timer.Stop();
 }
 
 /**

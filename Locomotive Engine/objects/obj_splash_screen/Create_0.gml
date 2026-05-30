@@ -10,7 +10,7 @@ splash_index = 0;
 splash_timer = new Timer(SPLASH_DURATION, time_source_units_seconds, function() {
     fade_out = true;
 });
-splash_timer.start();
+splash_timer.Start();
 
 fade_out = false;
 fade_alpha = 1;

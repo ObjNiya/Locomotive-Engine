@@ -9,7 +9,7 @@ function state_player_rolling_jump_start()
     sprite_index = spr_rolling_jump;
     mask_index = spr_crouchmask;
     
-    blur_afterimage_timer.start();
+    blur_afterimage_timer.Start();
 
 }
 
@@ -22,7 +22,7 @@ function state_player_rolling_jump_step()
     if (PLAYER_HIT_WALL)
     {
         mach_afterimage_use_alpha = false;
-        mach_afterimage_timer.start();
+        mach_afterimage_timer.Start();
         
         image_xscale *= -1;
         dir *= -1;
@@ -44,8 +44,8 @@ function state_player_rolling_jump_end()
     grav = 0.5;
     
     mach_afterimage_use_alpha = true;
-    mach_afterimage_timer.stop();
-    blur_afterimage_timer.stop();
+    mach_afterimage_timer.Stop();
+    blur_afterimage_timer.Stop();
 }
 
 /**

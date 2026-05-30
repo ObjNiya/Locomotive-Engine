@@ -10,4 +10,4 @@ skip_func = function() {};
 
 fade_out = false;
 lifespan = new Timer(2, time_source_units_seconds, function() { fade_out = true xstart -= skip_txt.get_width() });
-lifespan.start();
+lifespan.Start();

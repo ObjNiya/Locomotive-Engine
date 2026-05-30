@@ -15,7 +15,7 @@ function state_player_groundpound_start()
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.max_time = 5;
     
-    blur_afterimage_timer.start();
+    blur_afterimage_timer.Start();
     sound_instance_start(snd_groundpound);
 }
 
@@ -55,12 +55,12 @@ function state_player_groundpound_step()
             
             mach_afterimage_use_alpha = true;
 			
-            mach_afterimage_timer.stop();
+            mach_afterimage_timer.Stop();
             mach_afterimage_timer.max_time = 6;
             
-            blur_afterimage_timer.stop();
-            downwards_woosh_particle_timer.stop();
-            air_cloud_particle_timer.stop();
+            blur_afterimage_timer.Stop();
+            downwards_woosh_particle_timer.Stop();
+            air_cloud_particle_timer.Stop();
             
             create_particle(x, y + 45, obj_groundpound_slam_particle);
             instance_destroy(groundpound_effect_id);
@@ -119,12 +119,16 @@ function state_player_groundpound_step()
     {
         grav = 1;
         
-        air_cloud_particle_timer.start();
+        if (air_cloud_particle_timer.state != TIMER_STATES.STARTED)
+            air_cloud_particle_timer.Start();
         
         if (vsp > 17)
         {
-            mach_afterimage_timer.start();
-            downwards_woosh_particle_timer.start();
+            if (mach_afterimage_timer.state != TIMER_STATES.STARTED)
+                mach_afterimage_timer.Start();
+            
+            if (downwards_woosh_particle_timer.state != TIMER_STATES.STARTED)
+                downwards_woosh_particle_timer.Start();
         }
     }
     
@@ -165,12 +169,12 @@ function state_player_groundpound_end()
     
     mach_afterimage_use_alpha = true;
     
-    mach_afterimage_timer.stop();
+    mach_afterimage_timer.Stop();
     mach_afterimage_timer.max_time = 6;
     
-    blur_afterimage_timer.stop();
-    downwards_woosh_particle_timer.stop();
-    air_cloud_particle_timer.stop();
+    blur_afterimage_timer.Stop();
+    downwards_woosh_particle_timer.Stop();
+    air_cloud_particle_timer.Stop();
     
     instance_destroy(groundpound_effect_id);
     

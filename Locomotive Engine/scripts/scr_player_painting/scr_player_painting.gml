@@ -25,7 +25,7 @@ function state_player_painting_step()
     
     if (x != target_x && grounded)
     {
-        cloud_particle_timer.start();
+        cloud_particle_timer.Start();
         
         movespeed = approach(movespeed, 6, accel);
         x = approach(x, target_x, movespeed);
@@ -42,7 +42,7 @@ function state_player_painting_step()
     }
     else if (grounded)
     {
-        cloud_particle_timer.stop();
+        cloud_particle_timer.Stop();
         sound_instance_one_shot(sfx_jump, x, y);
         
         vsp = -15;

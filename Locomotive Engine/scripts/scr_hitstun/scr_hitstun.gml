@@ -32,7 +32,7 @@ function hitstun_apply()
     }
     
     hitstun_timer.max_time = hitstun_time;
-    hitstun_timer.start();
+    hitstun_timer.Start();
 }
 
 /**
@@ -42,7 +42,7 @@ function hitstun_apply()
  */
 function hitstun_step()
 {
-    if (hitstun_timer.active)
+    if (hitstun_timer.state == TIMER_STATES.STARTED)
     {
         x = xstart + irandom_range(-hitstun_shake_magnitude, hitstun_shake_magnitude);
         y = ystart + irandom_range(-hitstun_shake_magnitude, hitstun_shake_magnitude);

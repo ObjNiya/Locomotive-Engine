@@ -7,12 +7,12 @@ flicker_timer = new Timer(5, time_source_units_frames, function()
     visible = !visible;
     
     if (visible)
-        flicker_timer.max_time = 20;
+        flicker_timer.maxTime = 20;
     else
-        flicker_timer.max_time = 5;
+        flicker_timer.maxTime = 5;
 });
-flicker_timer.set_ext(1, true);
-flicker_timer.start();
+flicker_timer.SetRepeating(false, true);
+flicker_timer.Start();
 
 number = 1;
 

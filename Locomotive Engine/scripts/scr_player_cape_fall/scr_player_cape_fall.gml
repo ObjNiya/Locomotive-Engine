@@ -5,7 +5,7 @@ function state_player_cape_fall_start()
     
     accel = 0.75;
     
-    mach_afterimage_timer.start();
+    mach_afterimage_timer.Start();
 }
 
 /// @ignore
@@ -55,7 +55,7 @@ function state_player_cape_fall_step()
 /// @ignore
 function state_player_cape_fall_end()
 {
-    mach_afterimage_timer.stop();
+    mach_afterimage_timer.Stop();
 }
 
 /**

@@ -2,8 +2,8 @@ SINGLETON;
 
 with (global)
 {
-    showtime_timer.stop();
-    combo_timer.stop();
+    showtime_timer.Stop();
+    combo_timer.Stop();
     
     rank = RANKS.D;
     points = 0;

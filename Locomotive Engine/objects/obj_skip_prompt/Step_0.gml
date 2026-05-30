@@ -1,3 +1,5 @@
+lifespan.Step();
+
 x = approach(x, xstart, 2);
 image_alpha = approach(image_alpha, real(!fade_out), 0.1);
 

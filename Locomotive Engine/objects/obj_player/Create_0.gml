@@ -184,32 +184,32 @@ cloud_particle_timer = new Timer(12, time_source_units_frames, function() {
     if (state_id == state_player_normal || state_id == state_player_painting || state_id == state_player_ladder)
         sound_instance_one_shot(sfx_step, x, y);
 });
-cloud_particle_timer.set_ext(1, true);
+cloud_particle_timer.SetRepeating(false, true);
 
 air_cloud_particle_timer = new Timer(8, time_source_units_frames, function() {
     create_particle(x + irandom_range(-25, 25), y + irandom_range(-10, 35), obj_cloud_particle, false);
 });
-air_cloud_particle_timer.set_ext(1, true);
+air_cloud_particle_timer.SetRepeating(false, true);
 
 
 flame_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
     create_particle(x, y + 45, obj_flame_particle, false);
 });
-flame_particle_timer.set_ext(1, true);
+flame_particle_timer.SetRepeating(false, true);
 
 
 downwards_woosh_particle_timer = new Timer(0.25, time_source_units_seconds, function() {
     with (create_particle(x, y, obj_woosh_particle, false))
         image_angle = 90;
 });
-downwards_woosh_particle_timer.set_ext(1, true);
+downwards_woosh_particle_timer.SetRepeating(false, true);
 
 
 upwards_woosh_particle_timer = new Timer(0.25, time_source_units_seconds, function() {
     with (create_particle(x, y, obj_woosh_particle, false))
         image_angle = -90;
 });
-upwards_woosh_particle_timer.set_ext(1, true);
+upwards_woosh_particle_timer.SetRepeating(false, true);
 
 /////////////////////////////
 // Afterimage timers
@@ -222,7 +222,7 @@ blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
             image_index = floor(other.image_index);
     }
 });
-blur_afterimage_timer.set_ext(1, true);
+blur_afterimage_timer.SetRepeating(false, true);
 
 
 mach_afterimage_use_alpha = true;
@@ -230,7 +230,7 @@ mach_afterimage_timer = new Timer(6, time_source_units_frames, function() {
     with (create_afterimage_vh(x, y, obj_mach_afterimage))
         use_alpha = other.mach_afterimage_use_alpha;
 });
-mach_afterimage_timer.set_ext(1, true);
+mach_afterimage_timer.SetRepeating(false, true);
 
 /////////////////////////////
 // Other variables

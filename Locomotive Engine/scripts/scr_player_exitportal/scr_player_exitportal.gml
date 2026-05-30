@@ -14,7 +14,7 @@ function state_player_exitportal_start()
     sprite_index = spr_bananaslip_bump;
     image_xscale = 1;
     
-    blur_afterimage_timer.start();
+    blur_afterimage_timer.Start();
 }
 
 /// @ignore
@@ -30,7 +30,7 @@ function state_player_exitportal_step()
             sprite_set(spr_bananaslip_land, 0);
             create_particle(x, y + 45, obj_bang_particle);
             sound_instance_one_shot(sfx_player_banana_slip_bump, x, y);
-            blur_afterimage_timer.stop();
+            blur_afterimage_timer.Stop();
         }
         else if (animation_end())
             smc_set_state(state_player_normal);

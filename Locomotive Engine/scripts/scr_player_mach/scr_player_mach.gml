@@ -29,7 +29,7 @@ function state_player_mach_start()
         sprite_set(spr_mach1, 0);
     
     mach_afterimage_use_alpha = true;
-    mach_afterimage_timer.start();
+    mach_afterimage_timer.Start();
 
     if (sound_instance_get_playback_state(snd_mach) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
         sound_instance_start(snd_mach);
@@ -202,8 +202,8 @@ function state_player_mach_step()
                 create_particle(x, y, obj_mach4_puff_particle);
                 create_flash_effect(true);
                 
-                flame_particle_timer.start();
-                blur_afterimage_timer.start();
+                flame_particle_timer.Start();
+                blur_afterimage_timer.Start();
             }
             
             machsnd_state = 3;
@@ -230,9 +230,9 @@ function state_player_mach_end()
 {
     image_speed = 1;
     
-    blur_afterimage_timer.stop();
-    mach_afterimage_timer.stop();
-    flame_particle_timer.stop();
+    blur_afterimage_timer.Stop();
+    mach_afterimage_timer.Stop();
+    flame_particle_timer.Stop();
     
     instance_destroy(speedlines_effect_id);
     instance_destroy(charge_effect_id);

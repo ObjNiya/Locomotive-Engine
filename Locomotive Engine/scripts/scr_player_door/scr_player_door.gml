@@ -14,7 +14,7 @@ function state_player_door_start()
     
     sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     
-    warppipe_failsave_timer.start();
+    warppipe_failsave_timer.Start();
 }
 
 /// @ignore
@@ -44,7 +44,7 @@ function state_player_door_end()
     image_speed = 1;
     
     grav = 0.5;
-    warppipe_failsave_timer.start();
+    warppipe_failsave_timer.Start();
 }
 
 /**

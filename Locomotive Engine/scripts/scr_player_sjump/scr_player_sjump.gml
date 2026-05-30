@@ -10,9 +10,9 @@ function state_player_sjump_start()
     grounded = false;
     
     mach_afterimage_use_alpha = false;
-    mach_afterimage_timer.start();
-    air_cloud_particle_timer.start();
-    upwards_woosh_particle_timer.start();
+    mach_afterimage_timer.Start();
+    air_cloud_particle_timer.Start();
+    upwards_woosh_particle_timer.Start();
     
     instance_create(x, y, obj_explosion_particle_alt);
     
@@ -55,10 +55,10 @@ function state_player_sjump_step()
     if (sprite_index != spr_sjump_cancel_prepare)
         return;
     
-    mach_afterimage_timer.stop();
-    upwards_woosh_particle_timer.stop();
-    blur_afterimage_timer.stop();
-    air_cloud_particle_timer.stop();
+    mach_afterimage_timer.Stop();
+    upwards_woosh_particle_timer.Stop();
+    blur_afterimage_timer.Stop();
+    air_cloud_particle_timer.Stop();
     
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
@@ -88,10 +88,10 @@ function state_player_sjump_end()
     grav = 0.5;
     mach_afterimage_use_alpha = true;
     
-    mach_afterimage_timer.stop();
-    upwards_woosh_particle_timer.stop();
-    blur_afterimage_timer.stop();
-    air_cloud_particle_timer.stop();
+    mach_afterimage_timer.Stop();
+    upwards_woosh_particle_timer.Stop();
+    blur_afterimage_timer.Stop();
+    air_cloud_particle_timer.Stop();
     
     sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

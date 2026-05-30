@@ -9,7 +9,7 @@ function state_player_ladder_start()
     movespeed = 0;
     vert_movespeed = 6;
     
-    cloud_particle_timer.start();
+    cloud_particle_timer.Start();
 }
 
 /// @ignore
@@ -67,7 +67,7 @@ function state_player_ladder_end()
 {
     ladder_id = noone;
     cloud_particle_timer.set_paused(false);
-    cloud_particle_timer.stop();
+    cloud_particle_timer.Stop();
     
     image_speed = 1;
     image_index = 0;

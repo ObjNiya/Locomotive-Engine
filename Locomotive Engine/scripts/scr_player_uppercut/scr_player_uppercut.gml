@@ -9,7 +9,7 @@ function state_player_uppercut_start()
     vsp = (grounded) ? -14 : -10;
     
     mach_afterimage_use_alpha = false;
-    mach_afterimage_timer.start();
+    mach_afterimage_timer.Start();
 }
 
 /// @ignore
@@ -25,7 +25,7 @@ function state_player_uppercut_step()
         image_speed = 0;
     
     if (vsp > 0)
-        mach_afterimage_timer.stop();
+        mach_afterimage_timer.Stop();
     
     if (!grounded)
         return;
@@ -38,7 +38,7 @@ function state_player_uppercut_step()
 function state_player_uppercut_end()
 {
     mach_afterimage_use_alpha = true;
-    mach_afterimage_timer.stop();
+    mach_afterimage_timer.Stop();
     
     image_speed = 1;
 }

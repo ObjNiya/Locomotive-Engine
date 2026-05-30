@@ -58,13 +58,13 @@ function state_player_wallclimb_step()
     {
         sprite_index = spr_wallclimb_dash;
         
-        wallclimb_dash_timer.start();
+        wallclimb_dash_timer.Start();
         
         sound_instance_start(snd_grabdash);
         create_flash_effect(true);
     }
     
-    wallclimb_dash_timer.step();
+    wallclimb_dash_timer.Step();
     
     vert_accel = (sprite_index == spr_wallclimb_dash) ? 0.3 : 0.15;
     
@@ -88,7 +88,7 @@ function state_player_wallclimb_end()
 {
     grav = 0.5;
     
-    wallclimb_dash_timer.stop();
+    wallclimb_dash_timer.Stop();
     
     sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);

@@ -20,7 +20,7 @@ function scare_enemy(forced = false)
         if (state_id != state_enemy_scared)
             smc_set_state(state_enemy_scared);
         
-        scared_timer.start();
+        scared_timer.Start();
         
         return true;
     }
