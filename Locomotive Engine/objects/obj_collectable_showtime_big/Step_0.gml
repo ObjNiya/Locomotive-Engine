@@ -1,4 +1,4 @@
-if (!is_showtime())
+if (!IsShowtime())
 {
     image_alpha = 0.5;
     exit;

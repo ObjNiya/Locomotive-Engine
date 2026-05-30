@@ -1,4 +1,4 @@
-if (!is_showtime())
+if (!IsShowtime())
     exit;
 
 event_inherited();

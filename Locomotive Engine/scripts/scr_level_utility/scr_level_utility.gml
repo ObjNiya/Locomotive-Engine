@@ -1,6 +1,6 @@
-function is_showtime()
+function IsShowtime()
 {
-    return global.showtime_timer.active && !global.showtime_timer.paused
+    return global.showtime_timer.state == TIMER_STATES.STARTED;
 }
 
 function is_secret()

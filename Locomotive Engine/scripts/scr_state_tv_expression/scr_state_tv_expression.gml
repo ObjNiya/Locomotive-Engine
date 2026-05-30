@@ -1,24 +1,19 @@
 /// @ignore
 function StateTvExpressionStart()
 {
-    
+    exprTimer.Start();
 }
 
 /// @ignore
 function StateTvExpressionStep()
 {
-    if (exprStep() && exprTimer-- > 0)
-        return;
-    
-    whitenoiseNextState = StateTvIdle;
-    whitenoiseNextSprite = playerId.spr_tv_idle;
-    smc_set_state(StateTvWhitenoise);
+
 }
 
 /// @ignore
 function StateTvExpressionEnd()
 {
-    
+
 }
 
 /**

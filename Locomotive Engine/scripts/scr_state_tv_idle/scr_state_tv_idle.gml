@@ -2,7 +2,15 @@
 function StateTvIdleStart()
 { 
     if (sprite_index != spr_tv_turnon_damian)
+    {
         sprite_index = playerId.spr_tv_idle;
+        
+        if (playerId.state_id == state_player_mach && playerId.movespeed >= 12)
+        {
+            sprite_index = (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3;
+            smc_set_state(StateTvMach);
+        }
+    }
     else
         sprite_index = playerId.spr_tv_turnon;
 }
@@ -17,12 +25,7 @@ function StateTvIdleStep()
     }
     
     if (playerId.state_id == state_player_mach && playerId.movespeed >= 12)
-    {
-        if (playerId.sprite_index == playerId.spr_mach4)
-            idleDoMach4Tv();
-        else
-            idleDoMach3Tv();
-    }
+        TvDoWhitenoise(id, StateTvMach, (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3);
     
     if (playerId.state_id == state_player_noclip)
     {
@@ -30,7 +33,7 @@ function StateTvIdleStep()
         return;
     }
     
-    if (is_showtime())
+    if (IsShowtime())
     {
         sprite_index = (global.laps >= 2) ? playerId.spr_tv_lap2 : playerId.spr_tv_showtime;
         

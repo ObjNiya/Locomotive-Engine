@@ -874,6 +874,7 @@
     {"id":{"name":"scr_state_machine","path":"scripts/scr_state_machine/scr_state_machine.yy",},},
     {"id":{"name":"scr_state_tv_expression","path":"scripts/scr_state_tv_expression/scr_state_tv_expression.yy",},},
     {"id":{"name":"scr_state_tv_idle","path":"scripts/scr_state_tv_idle/scr_state_tv_idle.yy",},},
+    {"id":{"name":"scr_state_tv_mach","path":"scripts/scr_state_tv_mach/scr_state_tv_mach.yy",},},
     {"id":{"name":"scr_state_tv_whitenoise","path":"scripts/scr_state_tv_whitenoise/scr_state_tv_whitenoise.yy",},},
     {"id":{"name":"scr_stencil_utilities","path":"scripts/scr_stencil_utilities/scr_stencil_utilities.yy",},},
     {"id":{"name":"scr_struct_utilities","path":"scripts/scr_struct_utilities/scr_struct_utilities.yy",},},

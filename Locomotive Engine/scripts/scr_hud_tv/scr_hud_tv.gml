@@ -1,19 +1,20 @@
-function TvTriggerExpr(tv_id, sprite, whitenoise, duration, step_func = function() { return true })
+function TvDoWhitenoise(tv_id, next_state, next_sprite)
 {
     with (tv_id)
     {
-        whitenoiseNextState = StateTvExpression;
-        whitenoiseNextSprite = sprite;
+        whitenoiseNextState = next_state;
+        whitenoiseNextSprite = next_sprite;
         
-        exprTimer = duration;
-        exprStep = step_func;
-        
-        if (whitenoise && state_id != StateTvWhitenoise) 
+        if (state_id != StateTvWhitenoise)
             smc_set_state(StateTvWhitenoise);
-        else if (!whitenoise)
-        {
-            sprite_index = sprite;
-            smc_set_state(StateTvExpression);
-        }
+    }
+}
+
+function TvDoExpression(tv_id, sprite, duration)
+{
+    with (tv_id)
+    {
+        exprTimer.maxTime = duration;
+        TvDoWhitenoise(tv_id, StateTvExpression, sprite);
     }
 }

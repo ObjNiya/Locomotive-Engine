@@ -85,6 +85,7 @@
     {"name":"scr_screensizer","order":9,"path":"scripts/scr_screensizer/scr_screensizer.yy",},
     {"name":"scr_state_tv_expression","order":1,"path":"scripts/scr_state_tv_expression/scr_state_tv_expression.yy",},
     {"name":"scr_state_tv_idle","order":2,"path":"scripts/scr_state_tv_idle/scr_state_tv_idle.yy",},
+    {"name":"scr_state_tv_mach","order":3,"path":"scripts/scr_state_tv_mach/scr_state_tv_mach.yy",},
     {"name":"scr_struct_utilities","order":1,"path":"scripts/scr_struct_utilities/scr_struct_utilities.yy",},
     {"name":"scr_window_utilities","order":3,"path":"scripts/scr_window_utilities/scr_window_utilities.yy",},
     {"name":"Script524","order":1,"path":"scripts/Script524/Script524.yy",},

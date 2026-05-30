@@ -2,5 +2,5 @@ event_inherited();
 
 canCollide = function()
 {
-    return is_showtime();
+    return IsShowtime();
 }

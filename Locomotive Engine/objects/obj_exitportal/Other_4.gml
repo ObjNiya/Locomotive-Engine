@@ -1,6 +1,6 @@
-if (is_showtime() || check_saveroom())
+if (IsShowtime() || check_saveroom())
 {
-    if (!is_showtime())
+    if (!IsShowtime())
         visible = false;
     exit;
 }
