@@ -74,7 +74,7 @@ function state_player_cape_step()
         return;
     }
     
-    if (PLAYER_TAUNT)
+    if (InputPressed(INPUT_VERB.TAUNT))
     {
         smc_set_state(state_player_taunt);
         return;
@@ -86,7 +86,7 @@ function state_player_cape_step()
         return;
     }
     
-    if (PLAYER_HIT_WALL)
+    if (PlayerHitWall())
     {
         image_xscale *= -1;
         dir *= -1;

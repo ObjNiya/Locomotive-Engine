@@ -23,16 +23,20 @@ function state_player_mach_start()
     
     dir = sign(image_xscale);
     
-    if (!grounded && !EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_mach2_jump_intro, spr_mach2_jump))
-        sprite_set(spr_mach2_jump_intro, 0);
-    else
-        sprite_set(spr_mach1, 0);
-    
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.Start();
 
     if (sound_instance_get_playback_state(snd_mach) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
         sound_instance_start(snd_mach);
+    
+    if (EqualsToAny(sprite_index, spr_mach1, spr_mach2, spr_mach2_jump_intro, spr_mach2_jump, spr_mach3, spr_mach3_jump, spr_mach3_hit_enemy, spr_mach4,
+          spr_longjump_intro, spr_longjump, spr_sjump_cancel_intro, spr_sjump_cancel))
+        return;
+    
+    if (!grounded)
+        sprite_set(spr_mach2_jump_intro, 0);
+    else
+        sprite_set(spr_mach1, 0);
 }
 
 /// @ignore
@@ -76,19 +80,19 @@ function state_player_mach_step()
     if (player_do_cape())
         return;
     
-    if (PLAYER_SJUMP_PREPARE)
+    if (PlayerSjump())
     {
         smc_set_state(state_player_sjump_prepare);
         return;
     }
     
-    if (PLAYER_CROUCH || PLAYER_DIVE)
+    if (PlayerCrouch() || PlayerDive())
     {
         smc_set_state(state_player_machroll);
         return;
     }
     
-    if (PLAYER_TAUNT)
+    if (InputPressed(INPUT_VERB.TAUNT))
     {
         smc_set_state(state_player_taunt);
         return;
@@ -96,7 +100,7 @@ function state_player_mach_step()
     
     if (player_do_machturn())
         return;
-    else if (PLAYER_MACHINSTATURN)
+    else if (PlayerMachinstaturn())
     {
         dir *= -1;
         image_xscale *= -1;
@@ -105,19 +109,19 @@ function state_player_mach_step()
     
     if (player_do_machslide())
         return;
-    else if (PLAYER_MACHSTOP)
+    else if (PlayerMachstop())
     {
         smc_set_state(state_player_normal);
         return;
     }
         
-    if (PLAYER_WALLCLIMB)
+    if (PlayerWallclimb())
     {
         smc_set_state(state_player_wallclimb);
         return;
     }
     
-    if (PLAYER_HIT_WALL)
+    if (PlayerHitWall())
     {
         if (!mach3)
             player_do_wallsplat();

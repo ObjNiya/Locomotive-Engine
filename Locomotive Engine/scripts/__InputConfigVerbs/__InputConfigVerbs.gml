@@ -20,6 +20,8 @@ function __InputConfigVerbs()
         GRABDASH,
         TAUNT,
         MACHRUN,
+        GROUNDPOUND,
+        SUPERJUMP,
     }
     
     enum INPUT_CLUSTER
@@ -49,6 +51,8 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    ["X", mb_right],        gp_face3);
         InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       ["C", "E"],        gp_face4);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
+        InputDefineVerb(INPUT_VERB.SUPERJUMP,      "up",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
+        InputDefineVerb(INPUT_VERB.GROUNDPOUND,    "down",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
         
     }
     else //Flip A/B over on Switch
@@ -71,6 +75,8 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    "X",        gp_face4);
         InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       "C",        gp_face3);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
+        InputDefineVerb(INPUT_VERB.SUPERJUMP,      "up",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
+        InputDefineVerb(INPUT_VERB.GROUNDPOUND,    "down",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
     }
     
     //Define a cluster of verbs for moving around

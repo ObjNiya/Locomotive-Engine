@@ -21,7 +21,7 @@ function state_player_crouch_step()
     
     image_xscale = side(dir, image_xscale);
     
-    if (PLAYER_NOTHING_ABOVE && PLAYER_JUMP)
+    if (PlayerNothingAbove() && PlayerJump())
     {
         player_do_jump(false, spr_crouch_jump, -8);
         grounded = false;
@@ -37,7 +37,7 @@ function state_player_crouch_step()
         return;    
     }
     
-    if (PLAYER_GET_UP)
+    if (PlayerGetUp())
     {
         smc_set_state(state_player_normal);
         return;

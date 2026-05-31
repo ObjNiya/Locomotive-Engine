@@ -26,7 +26,7 @@ function state_player_groundpound_step()
     
     if (grounded || landed)
     {
-        if (grounded_slope)
+        if (groundedSlope)
         {
             smc_set_state(state_player_mach); 
             sprite_set(spr_machroll_getup, 0);

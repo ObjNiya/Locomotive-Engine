@@ -24,8 +24,8 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_collider_manager, obj_camera_manager, obj_hud_timer]
-#macro STARTING_OBJECTS_COUNT 8
+#macro STARTING_OBJECTS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_camera_manager, obj_hud_timer]
+#macro STARTING_OBJECTS_COUNT 7
 
 // Code shortcuts
 

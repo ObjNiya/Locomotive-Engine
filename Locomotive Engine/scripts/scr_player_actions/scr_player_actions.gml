@@ -1,6 +1,6 @@
 function player_do_cape(forced = false)
 {
-    if (!PLAYER_CAPE && !forced)
+    if (!PlayerCape() && !forced)
         return false;
     
     sound_instance_one_shot(sfx_damian_cape_start, x, y);
@@ -12,7 +12,7 @@ function player_do_cape(forced = false)
 
 function player_do_grabdash(forced = false)
 {
-    if (!PLAYER_GRABDASH && !forced)
+    if (!PlayerGrabdash() && !forced)
         return false;
     
     create_particle(x, y + 45, obj_burst_cloud_particle);
@@ -22,7 +22,7 @@ function player_do_grabdash(forced = false)
 
 function player_do_groundpound(forced = false, divebomb = false)
 {
-    if (((!PLAYER_GROUNDPOUND && !divebomb) || (!PLAYER_DIVEBOMB && divebomb)) && !forced)
+    if (((!PlayerGroundpound() && !divebomb) || (!PlayerDivebomb() && divebomb)) && !forced)
         return false;
     
     smc_set_state(state_player_groundpound);
@@ -35,7 +35,7 @@ function player_do_groundpound(forced = false, divebomb = false)
 
 function player_do_machslide(forced = false)
 {
-    if (!PLAYER_MACHSLIDE && !forced)
+    if (!PlayerMachslide() && !forced)
         return false;
     
     sound_instance_one_shot(sfx_mach_brake, x, y);
@@ -46,7 +46,7 @@ function player_do_machslide(forced = false)
 
 function player_do_machturn(forced = false)
 {
-    if (!PLAYER_MACHTURN && !forced)
+    if (!PlayerMachturn() && !forced)
         return false;
     
     sound_instance_one_shot(sfx_mach_turn, x, y);
@@ -57,7 +57,7 @@ function player_do_machturn(forced = false)
 
 function player_do_uppercut(forced = false)
 {
-    if (!PLAYER_UPPERCUT && !forced)
+    if (!PlayerUppercut() && !forced)
         return false;
     
     sound_instance_one_shot(sfx_player_uppercut, x, y);
@@ -105,7 +105,7 @@ function player_do_ladder()
 
 function player_do_wallsplat(forced = false)
 {
-    if (!PLAYER_HIT_WALL && !forced)
+    if (!PlayerHitWall() && !forced)
         return false;
     
     smc_set_state(state_player_animation);
@@ -120,7 +120,7 @@ function player_do_wallsplat(forced = false)
 
 function player_do_ceilingsplat(forced = false)
 {
-    if (!PLAYER_HIT_CEILING && !forced)
+    if (!PlayerHitCeiling() && !forced)
         return false;
         
     smc_set_state(state_player_animation);
@@ -135,7 +135,7 @@ function player_do_ceilingsplat(forced = false)
 
 function player_do_jump(forced = false, sprite_to_set = spr_jump, jump_height = -11, particle = true)
 {
-    if (!PLAYER_JUMP && !forced)
+    if (!PlayerJump() && !forced)
         return false;
     
     coyote_jump();
@@ -153,7 +153,7 @@ function player_do_jump(forced = false, sprite_to_set = spr_jump, jump_height = 
 
 function player_do_longjump(forced = false, jump_height = -11)
 {
-    if (!PLAYER_JUMP && !forced)
+    if (!PlayerJump() && !forced)
         return false;
     
     coyote_jump();

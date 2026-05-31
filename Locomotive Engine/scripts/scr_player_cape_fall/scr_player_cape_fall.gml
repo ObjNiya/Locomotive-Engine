@@ -1,10 +1,10 @@
 /// @ignore
 function state_player_cape_fall_start()
 {
-    sprite_set(spr_cape_end, 0);
+    if (sprite_index != spr_cape_end && sprite_index != spr_cape_fall)
+        sprite_set(spr_cape_end, 0);
     
     accel = 0.75;
-    
     mach_afterimage_timer.Start();
 }
 
@@ -16,13 +16,13 @@ function state_player_cape_fall_step()
     if (player_do_grabdash())
         return;
     
-    if (PLAYER_TAUNT)
+    if (InputPressed(INPUT_VERB.TAUNT))
     {
         smc_set_state(state_player_taunt);
         return;
     }
     
-    if (PLAYER_WALLCLIMB)
+    if (PlayerWallclimb())
     {
         smc_set_state(state_player_wallclimb);
         return;
@@ -42,7 +42,7 @@ function state_player_cape_fall_step()
     {
         movespeed = max(12, movespeed);
         
-        if (PLAYER_MACHRUN)
+        if (PlayerMachrun())
             smc_set_state(state_player_mach);
         else
         {

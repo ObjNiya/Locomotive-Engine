@@ -21,7 +21,7 @@ function state_player_sjump_prepare_step()
         return;
     }
     
-    if (PLAYER_SJUMP_RELEASE)
+    if (PlayerSjumpRelease())
     {
         smc_set_state(state_player_sjump);
         return;

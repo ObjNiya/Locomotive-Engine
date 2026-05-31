@@ -19,7 +19,7 @@ function state_player_rolling_jump_step()
     hurt_enemy();
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
     
-    if (PLAYER_HIT_WALL)
+    if (PlayerHitWall())
     {
         mach_afterimage_use_alpha = false;
         mach_afterimage_timer.Start();

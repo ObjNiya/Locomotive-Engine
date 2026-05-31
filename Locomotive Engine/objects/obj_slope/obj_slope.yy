@@ -4,16 +4,14 @@
   "eventList":[],
   "managed":true,
   "name":"obj_slope",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_collider","path":"objects/par_collider/par_collider.yy",},"propertyId":{"name":"is_slope","path":"objects/par_collider/par_collider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
-  ],
+  "overriddenProperties":[],
   "parent":{
-    "name":"Collision",
-    "path":"folders/Objects/Game Structure/Collision.yy",
+    "name":"Unown's Collisions",
+    "path":"folders/Objects/Unown's Collisions.yy",
   },
   "parentObjectId":{
-    "name":"par_collider",
-    "path":"objects/par_collider/par_collider.yy",
+    "name":"par_collision",
+    "path":"objects/par_collision/par_collision.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

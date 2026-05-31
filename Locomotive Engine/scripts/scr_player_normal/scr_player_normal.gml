@@ -8,6 +8,11 @@ function state_player_normal_start()
     deccel = 0.1;
     momentum = false;
     
+    if (EqualsToAny(sprite_index, spr_jump, spr_fall, spr_grabdash_bump, spr_land, spr_land_walk, 
+        spr_showtime_idle, spr_highcombo_idle, spr_combo_idle, spr_idle, spr_idle_animation1, spr_idle_animation2,
+        spr_highcombo_walk, spr_walk))
+        return;
+    
     if (!grounded)
     {
         sprite_index = spr_fall;
@@ -36,7 +41,8 @@ function state_player_normal_step()
             movespeed = 5;
         return;
     }
-    if (PLAYER_TAUNT)
+    
+    if (InputPressed(INPUT_VERB.TAUNT))
     {
         smc_set_state(state_player_taunt);
         return;
@@ -108,7 +114,7 @@ function state_player_normal_step()
     /////////////////////////////
     
     
-    if (PLAYER_MACHRUN)
+    if (PlayerMachrun())
     {
         smc_set_state(state_player_mach);
         return;
@@ -117,7 +123,7 @@ function state_player_normal_step()
     if (player_do_jump())
         return;
     
-    if (PLAYER_CROUCH)
+    if (PlayerCrouch())
     {
         smc_set_state(state_player_crouch);
         return;

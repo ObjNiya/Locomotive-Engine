@@ -1,32 +1,6 @@
 event_inherited();
 
 /////////////////////////////
-// Condition macros
-/////////////////////////////
-
-#macro PLAYER_HIT_WALL (place_meeting_collision(x + dir, y, Exclude.SLOPES))
-#macro PLAYER_HIT_CEILING (check_collide(collider, 0, -1))
-#macro PLAYER_CROUCH (grounded && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
-#macro PLAYER_NOTHING_ABOVE (!check_collide(collider, 0, -32)) 
-#macro PLAYER_GET_UP (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != 1 && PLAYER_NOTHING_ABOVE && grounded)
-#macro PLAYER_JUMP (can_jump && InputPressed(INPUT_VERB.JUMP) && !check_collide(collider, 0, -1))
-#macro PLAYER_GRABDASH (InputPressed(INPUT_VERB.GRABDASH) && (grabdash_bump_buffer <= 0 || sprite_index != spr_grabdash_bump))
-#macro PLAYER_UPPERCUT (PLAYER_GRABDASH && sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1)
-#macro PLAYER_GROUNDPOUND (InputPressed(INPUT_VERB.DOWN) && !grounded)  
-#macro PLAYER_TAUNT (InputPressed(INPUT_VERB.TAUNT))
-#macro PLAYER_MACHRUN (!PLAYER_HIT_WALL && InputCheck(INPUT_VERB.MACHRUN) && grounded)
-#macro PLAYER_MACHINSTATURN (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == -dir && movespeed <= 8 && grounded)
-#macro PLAYER_MACHTURN (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == -dir && movespeed > 8 && grounded)
-#macro PLAYER_MACHSTOP (!InputCheck(INPUT_VERB.MACHRUN) && movespeed <= 8 && grounded)
-#macro PLAYER_MACHSLIDE (!InputCheck(INPUT_VERB.MACHRUN) && movespeed > 8 && grounded)
-#macro PLAYER_WALLCLIMB (PLAYER_HIT_WALL && (!grounded || (grounded && grounded_slope)))
-#macro PLAYER_DIVE (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
-#macro PLAYER_DIVEBOMB (InputPressed(INPUT_VERB.JUMP) && !grounded)
-#macro PLAYER_CAPE (InputPressed(INPUT_VERB.UP) && !grounded && player_get_mach_stage() >= 3) 
-#macro PLAYER_SJUMP_PREPARE (InputCheck(INPUT_VERB.UP) && grounded && player_get_mach_stage() >= 3)   
-#macro PLAYER_SJUMP_RELEASE (!InputCheck(INPUT_VERB.UP) && grounded) 
-
-/////////////////////////////
 // Set built-ins
 /////////////////////////////
 
@@ -41,10 +15,9 @@ camera = new Camera();
 cam_painting_up = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
 cam_painting_up_ind = camera.add_y_offset(0);
 
-physics_init();
-//scr_collision_init();
-//grav = 0.5;
-//terminalVelocity = 20;
+scr_collision_init();
+grav = 0.5;
+terminalVelocity = 20;
 
 hitstun_initialize();
 coyote_initialize();
@@ -78,9 +51,6 @@ smc_set_state(state_player_normal);
 
 has_key = false;
 has_catripi = false;
-
-collider = new Collider(bbox_left, bbox_top, bbox_bottom, bbox_right);
-collider.persists = true;
 
 /////////////////////////////
 // State specific variables
@@ -122,15 +92,6 @@ stored_sprite_index = -1;
 stored_image_index = 0;
 
 taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
-    grav = 0.5;
-    
-    sprite_index = stored_sprite_index;
-    image_index = stored_image_index;
-    
-    vsp = stored_vsp;
-    hsp = stored_hsp;
-    movespeed = stored_movespeed;
-    
     smc_restore_state();
 });
 

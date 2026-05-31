@@ -36,7 +36,7 @@ function state_player_grabdash_step()
     if (player_do_longjump())
         return;
     
-    if (PLAYER_WALLCLIMB)
+    if (PlayerWallclimb())
     {
         wallclimb_grab_buffer = 10;
         smc_set_state(state_player_wallclimb);
@@ -52,7 +52,7 @@ function state_player_grabdash_step()
     
     if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && animation_end()))
     {
-        if (PLAYER_MACHRUN && sign_input_x == dir)
+        if (PlayerMachrun() && sign_input_x == dir)
         {
             smc_set_state(state_player_mach);
             sprite_index = spr_mach2;
@@ -73,7 +73,7 @@ function state_player_grabdash_step()
         return;
     }
     
-    if (PLAYER_HIT_WALL)
+    if (PlayerHitWall())
     {
         smc_set_state(state_player_normal);
         

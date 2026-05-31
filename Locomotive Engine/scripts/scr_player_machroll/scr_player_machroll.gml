@@ -26,7 +26,7 @@ function state_player_machroll_step()
     
     if (grounded)
     {
-        if (PLAYER_GET_UP)
+        if (PlayerGetUp())
         {
             smc_set_state(state_player_mach);
             sprite_set(spr_machroll_getup, 0);

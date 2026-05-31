@@ -8,17 +8,12 @@
   ],
   "managed":true,
   "name":"par_block",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_collider","path":"objects/par_collider/par_collider.yy",},"propertyId":{"name":"breakable","path":"objects/par_collider/par_collider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
-  ],
+  "overriddenProperties":[],
   "parent":{
     "name":"Parents",
     "path":"folders/Objects/Level Structure/Blocks/Parents.yy",
   },
-  "parentObjectId":{
-    "name":"par_collider",
-    "path":"objects/par_collider/par_collider.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_collision_physics",
+  "%Name":"scr_player_checks",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_collision_physics",
+  "name":"scr_player_checks",
   "parent":{
-    "name":"Collision",
-    "path":"folders/Scripts/Collision.yy",
+    "name":"Player",
+    "path":"folders/Scripts/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

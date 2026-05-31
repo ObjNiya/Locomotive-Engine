@@ -73,7 +73,7 @@ function state_player_wallclimb_step()
     
     vsp = -vert_movespeed;
     
-    if (!PLAYER_HIT_WALL)
+    if (!PlayerHitWall())
     {
         movespeed = abs(vsp);
         vsp = 0;
