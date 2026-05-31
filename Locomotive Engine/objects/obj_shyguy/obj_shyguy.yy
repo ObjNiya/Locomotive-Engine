@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_shyguy",
+    "path":"sprites/spr_shyguy/spr_shyguy.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

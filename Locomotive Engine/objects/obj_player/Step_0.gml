@@ -1,12 +1,13 @@
 HITSTUN_STEP;
 
 sound_instance_move_several(x, y, snd_grabdash, snd_groundpound, snd_mach, snd_superjump, snd_machroll, snd_dive, snd_roll_getup);
-StepTimers(taunt_timer, note_particle_timer, cloud_particle_timer, air_cloud_particle_timer, flame_particle_timer, downwards_woosh_particle_timer, upwards_woosh_particle_timer,
-            blur_afterimage_timer, mach_afterimage_timer);
+StepTimers(taunt_timer, note_particle_timer, cloud_particle_timer, air_cloud_particle_timer, flame_particle_timer, downwards_woosh_particle_timer, upwards_woosh_particle_timer, 
+        blur_afterimage_timer, mach_afterimage_timer);
 
 scr_collision();
 coyote_step();
 smc_step();
+
 if (place_meeting(x, y, obj_levelpainting) && state_id == state_player_normal && dir == 0 && grounded)
     cam_painting_up.set_seek_target(1);
 else

@@ -9,6 +9,7 @@ function state_player_sjump_start()
     grav = -0.1;
     grounded = false;
     
+    instakillmove = true;
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.Start();
     air_cloud_particle_timer.Start();
@@ -25,18 +26,17 @@ function state_player_sjump_start()
 /// @ignore
 function state_player_sjump_step()
 {
+    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
+    if (PlayerDoInstakill())
+        vsp = -12;
+    
     if (sprite_index == spr_springlaunch)
     {
-        hurt_enemy();
         destroy_blocks(x, y + vsp);
         player_do_ceilingsplat();
         
         return;
     }
-    
-    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
-    if (hurt_enemy())
-        vsp = -12;
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
@@ -87,6 +87,7 @@ function state_player_sjump_end()
 {
     grav = 0.5;
     mach_afterimage_use_alpha = true;
+    instakillmove = false;
     
     mach_afterimage_timer.Stop();
     upwards_woosh_particle_timer.Stop();

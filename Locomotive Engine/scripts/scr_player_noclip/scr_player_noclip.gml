@@ -16,7 +16,7 @@ function state_player_noclip_start()
 /// @ignore
 function state_player_noclip_step()
 {
-    scare_enemy();
+    ScareEnemy();
     
     var speed_multiplier = (InputCheck(INPUT_VERB.MACHRUN)) ? 16 : 8;
     

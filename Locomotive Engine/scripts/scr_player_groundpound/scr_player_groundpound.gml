@@ -12,8 +12,9 @@ function state_player_groundpound_start()
     
     terminalVelocity = infinity;
     
+    instakillmove = true;
     mach_afterimage_use_alpha = false;
-    mach_afterimage_timer.max_time = 5;
+    mach_afterimage_timer.maxTime = 5;
     
     blur_afterimage_timer.Start();
     sound_instance_start(snd_groundpound);
@@ -89,7 +90,7 @@ function state_player_groundpound_step()
     }
     
     destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
-    hurt_enemy();
+    PlayerDoInstakill();
     
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
@@ -167,6 +168,7 @@ function state_player_groundpound_end()
     grav = 0.5;
     terminalVelocity = 20;
     
+    instakillmove = false;
     mach_afterimage_use_alpha = true;
     
     mach_afterimage_timer.Stop();

@@ -17,7 +17,7 @@ function state_player_machroll_start()
 function state_player_machroll_step()
 {
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
-    stun_enemy();
+    StunEnemy();
     
     hsp = movespeed * dir;
     

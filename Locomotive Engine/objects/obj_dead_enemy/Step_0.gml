@@ -1,10 +1,27 @@
-vsp += grav;
+if (vsp < 20)
+    vsp += grav;
+
 x += hsp;
-y += vsp;
+y += floor(vsp);
 
-hsp = approach(hsp, 0, 0.1);
+cloudPartTimer.Step();
 
-shake_magnitude = approach(shake_magnitude, 0, shake_decrease);
+if (collideBuffer > 0)
+{
+    collideBuffer--;
+    exit;
+}
 
-visual_xscale = approach(visual_xscale, 1, 0.04);
-visual_yscale = approach(visual_yscale, 1, 0.04);
+var player = instance_place(x, y, obj_player);
+if (player == noone || !player.instakillmove)
+    exit;
+
+vsp = random_range(-10, -18);
+hsp = sign(x - player.x) * random_range(10, 18);
+collideBuffer = 10;
+
+cloudPartTimer.Start();
+instance_create(x, y, obj_bang_particle);
+
+if (x != player.x)
+    image_xscale = -sign(x - player.x);

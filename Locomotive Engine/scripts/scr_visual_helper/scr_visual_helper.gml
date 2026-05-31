@@ -1,8 +1,7 @@
 /**
  * This function will initialize various variables to modify sprite drawing on the current instance without affecting collision interactions, those being:
- * ```visual_x```, ```visual_y```, ```visual_xscale```, ```visual_yscale``` and ```visual_angle``` which are all pretty self explanatory.
- * You may manually take these variables into account in your draw event, but there are special functions to automate this process:
- * ```vh_draw_sprite_ext``` and ```vh_draw_self```.
+ * ```visual_x```, ```visual_y```, ```visual_xscale```, ```visual_yscale``` and ```visual_angle```.
+ * The functions ```vh_draw_sprite_ext``` and ```vh_draw_self``` will automatically take the visual helper variables into account when drawing.
  */
 function visual_helper_initialize()
 {

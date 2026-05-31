@@ -18,13 +18,13 @@ function state_player_ladder_step()
     vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     
     image_speed = 1;
-    cloud_particle_timer.set_paused(true);
+    cloud_particle_timer.TogglePause();
     
     switch (vert_dir)
     {
         case -1:
             sprite_index = spr_ladder_up;
-            cloud_particle_timer.set_paused(false);
+            cloud_particle_timer.TogglePause();
             vert_movespeed = 6;
             break;
         case 0:
@@ -66,7 +66,7 @@ function state_player_ladder_step()
 function state_player_ladder_end()
 {
     ladder_id = noone;
-    cloud_particle_timer.set_paused(false);
+    cloud_particle_timer.TogglePause();
     cloud_particle_timer.Stop();
     
     image_speed = 1;

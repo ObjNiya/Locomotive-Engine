@@ -12,8 +12,8 @@
   "name":"obj_screensizer",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Objects/Game Structure.yy",
+    "name":"Backend",
+    "path":"folders/Objects/Game Structure/Backend.yy",
   },
   "parentObjectId":null,
   "persistent":true,

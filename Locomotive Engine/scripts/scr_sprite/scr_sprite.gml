@@ -62,7 +62,4 @@ function Sprite(sprite_index) constructor
     }
     
     set_sprite(sprite_index);
-    
-    array_push(obj_struct_updater.structs, self);
-    id = array_length(obj_struct_updater.structs);
 }

@@ -15,12 +15,14 @@ function state_enemy_stunned_step()
     visual_xscale = approach(visual_xscale, 1, 0.03);
     visual_yscale = approach(visual_yscale, 1, 0.03);
     
-    unstunnable_buffer = max(unstunnable_buffer - 1, 0);
+    if (unstunableBuffer > 0)
+        unstunableBuffer--;
     
     movespeed = approach(movespeed, 0, 0.3);
     hsp = movespeed * -image_xscale;
     
-    //create_particle_repeating(x, y + 43, obj_machturn_particle);
+    if (movespeed > 4 && grounded)
+        create_particle_repeating(x, y + 43, obj_machturn_particle);
 }
 
 /// @ignore

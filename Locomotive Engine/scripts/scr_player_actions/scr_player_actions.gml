@@ -178,3 +178,31 @@ function player_do_jumpstop(forced = false, divisor = 20)
     
     return true;
 }
+
+function PlayerDoInstakill()
+{
+    var hurt_enemy = instance_place(x, y, par_enemy);
+    if (hurt_enemy == noone)
+        return false;
+    
+    camera.shake_set(3, 0.05);
+    sound_instance_one_shot(sfx_player_punch, x, y);
+    hitstunApply(5);
+    
+    instance_create(hurt_enemy.x, hurt_enemy.y, obj_parry_particle);
+    instance_create(hurt_enemy.x, hurt_enemy.y, obj_kungfu_particle);
+    
+    repeat (3)
+        instance_create(x, y, obj_slap_star_debris);
+    
+    repeat (3)
+        instance_create(x, y, obj_enemy_debris);
+    
+    HurtEnemy(1, hurt_enemy);
+    return true;
+}
+
+function PlayerDoHurt()
+{
+    
+}

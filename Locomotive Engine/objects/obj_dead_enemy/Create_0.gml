@@ -1,22 +1,29 @@
 // Built-ins
 
-depth = 2;
-
-// Physics
+depth = DEPTHS.BACK;
 
 grav = 0.4;
 hsp = random_range(-10, -18);
 vsp = random_range(-10, -18);
 
-// Effects
+onGui = false;
+collideBuffer = 10;
 
-visual_helper_initialize();
+paletteSpr = -1;
+paletteIndex = 0;
 
-visual_xscale = 0.4;
-visual_yscale = 1.6;
+draw = function()
+{
+    if (sprite_exists(paletteSpr))
+        pal_swap_set(paletteSpr, paletteIndex, false);
+    
+    draw_self();
+    pal_swap_reset();
+}
 
-spr_palette = -1;
-spr_palette_index = 0;
-
-shake_magnitude = 3;
-shake_decrease = 0.05;
+cloudPartTimer = new Timer(5, time_source_units_frames, function() {
+    var offset = irandom_range(-40, 40);
+    instance_create(x + offset, y + offset, obj_cloud_particle);
+});
+cloudPartTimer.SetRepeating(false, true);
+cloudPartTimer.Start();

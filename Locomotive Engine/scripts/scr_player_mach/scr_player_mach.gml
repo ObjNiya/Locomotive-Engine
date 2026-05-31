@@ -30,7 +30,7 @@ function state_player_mach_start()
         sound_instance_start(snd_mach);
     
     if (EqualsToAny(sprite_index, spr_mach1, spr_mach2, spr_mach2_jump_intro, spr_mach2_jump, spr_mach3, spr_mach3_jump, spr_mach3_hit_enemy, spr_mach4,
-          spr_longjump_intro, spr_longjump, spr_sjump_cancel_intro, spr_sjump_cancel))
+          spr_walljump_intro, spr_walljump, spr_longjump_intro, spr_longjump, spr_sjump_cancel_intro, spr_sjump_cancel))
         return;
     
     if (!grounded)
@@ -54,12 +54,18 @@ function state_player_mach_step()
         momentum = true;
         
         destroy_blocks(x + hsp, y, []);
-        scare_enemy();
+        ScareEnemy();
+        
+        instakillmove = true;
+        if (PlayerDoInstakill())
+            sprite_set(spr_mach3_hit_enemy, 0);
     }
     else
     {
+        instakillmove = false;
+        
         destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
-        stun_enemy();
+        StunEnemy();
     }
 
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
@@ -234,6 +240,7 @@ function state_player_mach_end()
 {
     image_speed = 1;
     
+    instakillmove = false;
     blur_afterimage_timer.Stop();
     mach_afterimage_timer.Stop();
     flame_particle_timer.Stop();

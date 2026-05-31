@@ -8,6 +8,7 @@ function state_player_uppercut_start()
     
     vsp = (grounded) ? -14 : -10;
     
+    instakillmove = true;
     mach_afterimage_use_alpha = false;
     mach_afterimage_timer.Start();
 }
@@ -15,7 +16,7 @@ function state_player_uppercut_start()
 /// @ignore
 function state_player_uppercut_step()
 {
-    hurt_enemy();
+    PlayerDoInstakill();
     destroy_blocks(x, y - 50, [obj_block_metal, obj_block_metal_tiles]);
     
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
@@ -37,6 +38,7 @@ function state_player_uppercut_step()
 /// @ignore
 function state_player_uppercut_end()
 {
+    instakillmove = false;
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.Stop();
     

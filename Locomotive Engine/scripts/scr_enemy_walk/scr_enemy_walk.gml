@@ -4,6 +4,7 @@ function state_enemy_walk_start()
     sprite_index = spr_walk;
     
     movespeed = 1;
+    hurtbox.active = true;
 }
 
 /// @ignore
@@ -11,24 +12,27 @@ function state_enemy_walk_step()
 {
     walk_prefix();
     
-    if (grounded && !place_meeting(x + image_xscale, y + 1, obj_solid)) || (place_meeting(x + image_xscale, y, obj_solid))
+    var end_of_floor = !place_meeting_collision(x + sign(image_xscale) * 15, y + 31);
+    var touch_wall = place_meeting_collision(x + image_xscale, y, Exclude.SLOPES);
+    
+    if ((end_of_floor && grounded) || touch_wall)
         image_xscale *= -1;
  
     hsp = movespeed * image_xscale;
-       
+    
+    if (animation_end() && grounded)
+    {
+        instance_create(x, y + 43, obj_cloud_particle);
+        image_index = 0;
+    }
+    
     walk_postfix();
-    
-    if (!animation_end() || !grounded)
-        return;
-    
-    instance_create(x, y + 43, obj_cloud_particle);
-    image_index = 0;
 }
 
 /// @ignore
 function state_enemy_walk_end()
 {
-    
+    hurtbox.active = false;
 }
 
 /**

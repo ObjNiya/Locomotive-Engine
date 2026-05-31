@@ -9,8 +9,8 @@
   "name":"obj_struct_updater",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Objects/Game Structure.yy",
+    "name":"Backend",
+    "path":"folders/Objects/Game Structure/Backend.yy",
   },
   "parentObjectId":null,
   "persistent":true,

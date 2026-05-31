@@ -95,12 +95,14 @@ function state_player_cape_step()
     
     if (sprite_index == spr_cape_spin)
     {
-        hurt_enemy();
+        PlayerDoInstakill();
+        instakillmove = true;
         
         if (animation_end(spr_cape))
         {
             mach_afterimage_use_alpha = true;
             mach_afterimage_timer.Stop();
+            instakillmove = false;
             
             image_speed = 0;
         }
@@ -148,6 +150,7 @@ function state_player_cape_end()
     
     grav = 0.5;
     
+    instakillmove = false;
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.Stop();
     blur_afterimage_timer.Stop();

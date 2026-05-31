@@ -6,8 +6,8 @@
   "name":"par_room_switcher",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Objects/Game Structure.yy",
+    "name":"Backend",
+    "path":"folders/Objects/Game Structure/Backend.yy",
   },
   "parentObjectId":null,
   "persistent":false,

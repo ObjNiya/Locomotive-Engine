@@ -1,8 +1,7 @@
 depth = DEPTHS.FAR;
+mask_index = spr_waddledee_mask;
 
-dead_hsp = 0;
-dead_vsp = 0;
-
+my_killer = noone;
 
 /////////////////////////////
 // State variables
@@ -55,11 +54,8 @@ spr_palette_index = 0;
 
 spr_dead = spr_waddledee_dead;
 
+unstunableBuffer = 0;
 hp = 1;
-invincible = false;
-invincibility_timer = new Timer(5, time_source_units_frames, function() {
-    invincible = false;
-});
 
 /////////////////////////////
 // Initialize various systems
@@ -71,6 +67,11 @@ terminalVelocity = 20;
 
 movement_helpers_initialize();
 visual_helper_initialize();
+
+hurtboxInit();
+hurtbox = instance_create(x, y, obj_hurtbox);
+hurtbox.active = false;
+hurtbox.addTarget(obj_player, PlayerDoHurt);
 
 state_machine_initialize();
 smc_set_state(state_enemy_walk);
