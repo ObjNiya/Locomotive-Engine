@@ -1,70 +1,3 @@
-/**
- * This function will initialize the neccessary functions on the current instance to use the other state machine functions, which all start with ```smc_```.
- * The ```state_id``` contains the function ID of the current state, which can be used to identify the current state.
- */
-function state_machine_initialize()
-{
-    stored_state = array_create(3, -1);
-    state = stored_state;
-    
-    stored_state_id = -1;
-    state_id = -1;
-    
-    // 0, State Start
-    // 1, State Step,
-    // 2, State End
-}
-
-/**
- * This function will update the state machine and run the step function of the current instances' state (if applicable).
- */
-function smc_step()
-{
-    if (state[1] != -1)
-        state[1]();
-}
-
-/**
- * This function will set the current instances' state to the given one.
- * @parameter {Function} state_to_set The state to set (as a function).
- */
-function smc_set_state(state_to_set)
-{
-    if (state[2] != -1)
-        state[2]();
-
-    var new_states = state_to_set();
-       
-    if (new_states[0] != -1)
-        new_states[0]();
-    
-    state = new_states;
-    state_id = state_to_set;
-}
-
-/**
- * This function will store the current instances' state to be later restored using the ```smc_restore_state``` function.
- */
-function smc_store_state()
-{
-    stored_state_id = state_id;
-    stored_state = state;
-}
-
-/**
- * This function will restore the current instances' state that was last stored using ```smc_store_state```, unless the stored state does not exist.
- */
-function smc_restore_state()
-{
-    if (stored_state_id != -1)
-        smc_set_state(stored_state_id);
-}
-
-function smc_empty_state()
-{
-    return [-1, -1, -1];
-}
-
 enum STATE_EVENTS
 {
     CREATE = 0,
@@ -215,6 +148,7 @@ function __CacheState__(state_name)
     repeat (ev_count)
     {
         var substate = state_name + global.stateEventNames[i];
+        substate = asset_get_index(substate);
         
         if (!script_exists(substate))
         {
@@ -223,7 +157,7 @@ function __CacheState__(state_name)
             continue;
         }
         
-        global.stateEventFuncs[$ state_name][i] = asset_get_index(substate);
+        global.stateEventFuncs[$ state_name][i] = substate;
         i++;
     }
 }
@@ -231,7 +165,10 @@ function __CacheState__(state_name)
 
 function SmcInit()
 {
+    statePrefix = "State";
     stateName = -1;
+    
+    
     stateFuncs = [];
     stateHistory = {};
 }
@@ -239,13 +176,16 @@ function SmcInit()
 
 function SmcSetState(state_name)
 {
-    if (global.stateEventFuncs[$ state_name] == undefined)
-        __CacheState__(state_name);
+    var name_with_prefix = statePrefix + state_name;
     
-    SmcRunEvent(STATE_EVENTS.DESTROY);
+    if (global.stateEventFuncs[$ name_with_prefix] == undefined)
+        __CacheState__(name_with_prefix);
+    
+    if (stateName != -1)
+        SmcRunEvent(STATE_EVENTS.DESTROY);
     
     stateName = state_name;
-    stateFuncs = global.stateEventFuncs[$ stateName];
+    stateFuncs = global.stateEventFuncs[$ name_with_prefix];
     
     SmcRunEvent(STATE_EVENTS.CREATE);
 }
@@ -264,7 +204,7 @@ function SmcRunEvent(state_event)
 
 function SmcAddToHistory(entry_name)
 {
-    struct_set(stateHistory, entry_name, stateFuncs);
+    struct_set(stateHistory, entry_name, stateName);
 }
 
 

@@ -1,11 +1,12 @@
 /// @ignore
-function state_player_animation_start()
+function StatePlayerAnimCreate()
 {
+    PLAYER_STATE_FAILSAVE;
     image_index = 0;
 }
 
 /// @ignore
-function state_player_animation_step()
+function StatePlayerAnimStep()
 {
     if (grounded)
         movespeed = 0;
@@ -15,21 +16,11 @@ function state_player_animation_step()
     image_xscale = side(image_xscale, dir);
     
     if (animation_end())
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
 }
 
 /// @ignore
-function state_player_animation_end()
+function StatePlayerAnimDestroy()
 {
     grav = 0.5;
-}
-
-/**
- * This function will return an array of the player's animation state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_animation()
-{
-    return [state_player_animation_start, state_player_animation_step, state_player_animation_end];
 }

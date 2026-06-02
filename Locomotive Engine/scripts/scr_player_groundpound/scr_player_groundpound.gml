@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_groundpound_start()
+function StatePlayerGroundpoundCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_set(spr_groundpound_intro, 0);
     
     accel = 0.25;
@@ -21,7 +23,7 @@ function state_player_groundpound_start()
 }
 
 /// @ignore
-function state_player_groundpound_step()
+function StatePlayerGroundpoundStep()
 {
     var landed = EqualsToAny(sprite_index, spr_groundpound_land, spr_divebomb_land)
     
@@ -29,7 +31,7 @@ function state_player_groundpound_step()
     {
         if (groundedSlope)
         {
-            smc_set_state(state_player_mach); 
+            SmcSetState("Mach"); 
             sprite_set(spr_machroll_getup, 0);
             
             if (groundpound_smash > 20)
@@ -82,7 +84,7 @@ function state_player_groundpound_step()
         
         if (animation_end())
         {
-            smc_set_state(state_player_normal);
+            SmcSetState("Normal");
             sprite_set(spr_groundpound_idle_intro, 0);
         }
         
@@ -94,7 +96,7 @@ function state_player_groundpound_step()
     
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
-        smc_set_state(state_player_sjump);
+        SmcSetState("Sjump");
         sprite_set(spr_sjump_cancel_prepare, 0);
         instance_destroy(obj_explosion_particle_alt);
         
@@ -163,7 +165,7 @@ function state_player_groundpound_step()
 }
 
 /// @ignore
-function state_player_groundpound_end()
+function StatePlayerGroundpoundDestroy()
 {
     grav = 0.5;
     terminalVelocity = 20;
@@ -179,16 +181,5 @@ function state_player_groundpound_end()
     air_cloud_particle_timer.Stop();
     
     instance_destroy(groundpound_effect_id);
-    
     sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-}
-
-/**
- * This function will return an array of the player's groundpound state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_groundpound()
-{
-    return [state_player_groundpound_start, state_player_groundpound_step, state_player_groundpound_end];
 }

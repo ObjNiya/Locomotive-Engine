@@ -19,7 +19,7 @@ if (!animation_end())
 
 with (obj_player)
 {
-    smc_set_state(state_player_groundpound);
+    SmcSetState("Groundpound");
     sprite_set(spr_groundpound_intro, 0);
     
     visual_xscale = 1;

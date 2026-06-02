@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_exitportal_start()
+function StatePlayerExitportalCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     grav = 0.2;
     vsp = -3;
     hsp = 0;
@@ -18,7 +20,7 @@ function state_player_exitportal_start()
 }
 
 /// @ignore
-function state_player_exitportal_step()
+function StatePlayerExitportalStep()
 {
     if (grounded)
     {
@@ -33,7 +35,7 @@ function state_player_exitportal_step()
             blur_afterimage_timer.Stop();
         }
         else if (animation_end())
-            smc_set_state(state_player_normal);
+            SmcSetState("Normal");
         
         return;
     }
@@ -46,17 +48,7 @@ function state_player_exitportal_step()
 }
 
 /// @ignore
-function state_player_exitportal_end()
+function StatePlayerExitportalDestroy()
 {
     grav = 0.5;
-}
-
-/**
- * This function will return an array of the player exit portal state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_exitportal()
-{
-    return [state_player_exitportal_start, state_player_exitportal_step, state_player_exitportal_end];
 }

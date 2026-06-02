@@ -8,9 +8,9 @@ hurtSysStep();
 stepHitboxes(hitbox);
 scr_collision();
 coyote_step();
-smc_step();
+SmcRunEvent(STATE_EVENTS.STEP);
 
-if (place_meeting(x, y, obj_levelpainting) && state_id == state_player_normal && dir == 0 && grounded)
+if (place_meeting(x, y, obj_levelpainting) && stateName == "Normal" && dir == 0 && grounded)
     cam_painting_up.set_seek_target(1);
 else
     cam_painting_up.set_seek_target(0);

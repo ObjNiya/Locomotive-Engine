@@ -1,4 +1,14 @@
-function player_do_cape(forced = false)
+function PlayerDoTaunt(forced = false)
+{
+    if (!InputPressed(INPUT_VERB.TAUNT) && !forced)
+        return false;
+    
+    SmcAddToHistory("tauntStoredState");
+    SmcSetState("Taunt");
+    return true;
+}
+
+function PlayerDoCape(forced = false)
 {
     if (!PlayerCape() && !forced)
         return false;
@@ -6,26 +16,26 @@ function player_do_cape(forced = false)
     sound_instance_one_shot(sfx_damian_cape_start, x, y);
     create_flash_effect(true);
     
-    smc_set_state(state_player_cape);
+    SmcSetState("Cape");
     return true
 }
 
-function player_do_grabdash(forced = false)
+function PlayerDoGrabdash(forced = false)
 {
     if (!PlayerGrabdash() && !forced)
         return false;
     
     create_particle(x, y + 45, obj_burst_cloud_particle);
-    smc_set_state(state_player_grabdash);
+    SmcSetState("Grabdash");
     return true
 }
 
-function player_do_groundpound(forced = false, divebomb = false)
+function PlayerDoGroundpound(forced = false, divebomb = false)
 {
     if (((!PlayerGroundpound() && !divebomb) || (!PlayerDivebomb() && divebomb)) && !forced)
         return false;
     
-    smc_set_state(state_player_groundpound);
+    SmcSetState("Groundpound");
     
     if (divebomb)
         sprite_set(spr_divebomb, 0);
@@ -33,29 +43,29 @@ function player_do_groundpound(forced = false, divebomb = false)
     return true
 }
 
-function player_do_machslide(forced = false)
+function PlayerDoMachslide(forced = false)
 {
     if (!PlayerMachslide() && !forced)
         return false;
     
     sound_instance_one_shot(sfx_mach_brake, x, y);
-    smc_set_state(state_player_machslide);
+    SmcSetState("Machslide");
     
     return true
 }
 
-function player_do_machturn(forced = false)
+function PlayerDoMachturn(forced = false)
 {
     if (!PlayerMachturn() && !forced)
         return false;
     
     sound_instance_one_shot(sfx_mach_turn, x, y);
-    smc_set_state(state_player_machturn);
+    SmcSetState("Machturn");
     
     return true
 }
 
-function player_do_uppercut(forced = false)
+function PlayerDoUppercut(forced = false)
 {
     if (!PlayerUppercut() && !forced)
         return false;
@@ -63,11 +73,11 @@ function player_do_uppercut(forced = false)
     sound_instance_one_shot(sfx_player_uppercut, x, y);
     instance_create(x, y + 45, obj_jump_particle);
     
-    smc_set_state(state_player_uppercut);
+    SmcSetState("Uppercut");
     return true
 }
 
-function player_do_ladder()
+function PlayerDoLadder()
 {
     var ladder = instance_place(x, y, obj_ladder);
     var ladder_below = instance_place(x, y + 1, obj_ladder);
@@ -83,7 +93,7 @@ function player_do_ladder()
         ladder_id = ladder_below;
         x = (ladder_id.x - ladder_id.sprite_xoffset) + (ladder_id.sprite_width / 2);
         
-        smc_set_state(state_player_ladder);
+        SmcSetState("Ladder");
         sprite_index = spr_ladder_down;
         
         return true;
@@ -94,7 +104,7 @@ function player_do_ladder()
         ladder_id = ladder;
         x = (ladder_id.x - ladder_id.sprite_xoffset) + (ladder_id.sprite_width / 2);
         
-        smc_set_state(state_player_ladder);
+        SmcSetState("Ladder");
         sprite_index = spr_ladder_up;
         
         return true;
@@ -103,12 +113,12 @@ function player_do_ladder()
     return false;
 }
 
-function player_do_wallsplat(forced = false)
+function PlayerDoWallsplat(forced = false)
 {
     if (!PlayerHitWall() && !forced)
         return false;
     
-    smc_set_state(state_player_animation);
+    SmcSetState("Anim");
     sound_instance_one_shot(sfx_player_wall_splat, x, y);
     sprite_set(spr_wallsplat, 0);
             
@@ -118,12 +128,12 @@ function player_do_wallsplat(forced = false)
     return true;
 }
 
-function player_do_ceilingsplat(forced = false)
+function PlayerDoCeilingsplat(forced = false)
 {
     if (!PlayerHitCeiling() && !forced)
         return false;
         
-    smc_set_state(state_player_animation);
+    SmcSetState("Anim");
     sound_instance_one_shot(sfx_player_groundpound_land, x, y);
     sprite_set(spr_sjump_hit_ceiling, 0);
             
@@ -133,7 +143,7 @@ function player_do_ceilingsplat(forced = false)
     return true
 }
 
-function player_do_jump(forced = false, sprite_to_set = spr_jump, jump_height = -11, particle = true)
+function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -11, particle = true)
 {
     if (!PlayerJump() && !forced)
         return false;
@@ -151,13 +161,13 @@ function player_do_jump(forced = false, sprite_to_set = spr_jump, jump_height = 
     return true;
 }
 
-function player_do_longjump(forced = false, jump_height = -11)
+function PlayerDoLongjump(forced = false, jump_height = -11)
 {
     if (!PlayerJump() && !forced)
         return false;
     
     coyote_jump();
-    smc_set_state(state_player_mach);
+    SmcSetState("Mach");
     sprite_set(spr_longjump_intro, 0);
     instance_create(x, y + 45, obj_jump_particle);
     
@@ -169,7 +179,7 @@ function player_do_longjump(forced = false, jump_height = -11)
     return true;
 }
 
-function player_do_jumpstop(forced = false, divisor = 20)
+function PlayerDoJumpstop(forced = false, divisor = 20)
 {
     if ((!InputReleased(INPUT_VERB.JUMP) || vsp >= 0 || grounded) && !forced)
         return false;
@@ -198,11 +208,6 @@ function PlayerDoInstakill()
     repeat (3)
         instance_create(x, y, obj_enemy_debris);
     
-    AttackEnemy(hurt_enemy);
+    AttackEnemy(hurt_enemy, id);
     return true;
-}
-
-function PlayerDoHurt()
-{
-    
 }

@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_cape_fall_start()
+function StatePlayerCapeFallCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     if (sprite_index != spr_cape_end && sprite_index != spr_cape_fall)
         sprite_set(spr_cape_end, 0);
     
@@ -9,22 +11,19 @@ function state_player_cape_fall_start()
 }
 
 /// @ignore
-function state_player_cape_fall_step()
+function StatePlayerCapeFallStep()
 {
-    player_do_jumpstop();
+    PlayerDoJumpstop();
     
-    if (player_do_grabdash())
+    if (PlayerDoGrabdash())
         return;
     
-    if (InputPressed(INPUT_VERB.TAUNT))
-    {
-        smc_set_state(state_player_taunt);
+    if (PlayerDoTaunt())
         return;
-    }
     
     if (PlayerWallclimb())
     {
-        smc_set_state(state_player_wallclimb);
+        SmcSetState("Wallclimb");
         return;
     }
     
@@ -43,27 +42,17 @@ function state_player_cape_fall_step()
         movespeed = max(12, movespeed);
         
         if (PlayerMachrun())
-            smc_set_state(state_player_mach);
+            SmcSetState("Mach");
         else
         {
-            smc_set_state(state_player_normal);
+            SmcSetState("Normal");
             sprite_set(spr_fall, 0);
         }
     }
 }
 
 /// @ignore
-function state_player_cape_fall_end()
+function StatePlayerCapeFallDestroy()
 {
     mach_afterimage_timer.Stop();
-}
-
-/**
- * This function will return an array of the player cape fall state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_cape_fall()
-{
-    return [state_player_cape_fall_start, state_player_cape_fall_step, state_player_cape_fall_end];
 }

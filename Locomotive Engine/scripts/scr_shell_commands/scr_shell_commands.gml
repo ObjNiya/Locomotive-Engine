@@ -8,7 +8,7 @@ function sh_noclip(args)
         return "ERROR -- The specified player doesn't exist.";
     
     with (player)
-        smc_set_state(state_player_noclip);
+        SmcSetState("Noclip");
 }
 
 /// @ignore

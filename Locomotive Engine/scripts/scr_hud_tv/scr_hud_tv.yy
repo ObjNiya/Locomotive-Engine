@@ -6,7 +6,7 @@
   "name":"scr_hud_tv",
   "parent":{
     "name":"TV",
-    "path":"folders/Scripts/HUD/TV.yy",
+    "path":"folders/Scripts/Object Structure/HUD/TV.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

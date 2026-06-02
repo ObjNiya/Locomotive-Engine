@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_cape_start()
+function StatePlayerCapeCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_index = spr_cape;
     image_speed = 0;
     
@@ -27,7 +29,7 @@ function state_player_cape_start()
 }
 
 /// @ignore
-function state_player_cape_step()
+function StatePlayerCapeStep()
 {
     vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     
@@ -50,7 +52,7 @@ function state_player_cape_step()
     
     if (InputPressed(INPUT_VERB.JUMP))
     {
-        smc_set_state(state_player_cape_fall);
+        SmcSetState("CapeFall");
         return;
     }
     
@@ -74,15 +76,12 @@ function state_player_cape_step()
         return;
     }
     
-    if (InputPressed(INPUT_VERB.TAUNT))
-    {
-        smc_set_state(state_player_taunt);
+    if (PlayerDoTaunt())
         return;
-    }
     
     if (grounded)
     {
-        smc_set_state(state_player_machroll);
+        SmcSetState("Machroll");
         return;
     }
     
@@ -144,7 +143,7 @@ function state_player_cape_step()
 }
 
 /// @ignore
-function state_player_cape_end()
+function StatePlayerCapeDestroy()
 {
     image_speed = 1;
     
@@ -154,14 +153,4 @@ function state_player_cape_end()
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.Stop();
     blur_afterimage_timer.Stop();
-}
-
-/**
- * This function will return an array of the player cape state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_cape()
-{
-    return [state_player_cape_start, state_player_cape_step, state_player_cape_end];
 }

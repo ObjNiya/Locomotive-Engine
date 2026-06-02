@@ -1,11 +1,13 @@
 /// @ignore
-function state_player_machturn_start()
+function StatePlayerMachturnCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_set((player_get_mach_stage() > 2) ? spr_mach3_turn_intro : spr_mach2_turn_intro, 0);
 }
 
 /// @ignore
-function state_player_machturn_step()
+function StatePlayerMachturnStep()
 {
     movespeed = approach(movespeed, 0, 0.4);
     hsp = movespeed * dir;
@@ -22,7 +24,7 @@ function state_player_machturn_step()
         
         image_xscale = dir;
         
-        smc_set_state(state_player_mach);
+        SmcSetState("Mach");
         sprite_set((mach3) ? spr_mach3 : spr_mach2, 0);
             
         return;
@@ -30,20 +32,4 @@ function state_player_machturn_step()
     
     if (grounded)
         create_particle_repeating(x, y + 45, obj_machturn_particle);
-}
-
-/// @ignore
-function state_player_machturn_end()
-{
-
-}
-
-/**
- * This function will return an array of the player's machturn state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_machturn()
-{
-    return [state_player_machturn_start, state_player_machturn_step, state_player_machturn_end];
 }

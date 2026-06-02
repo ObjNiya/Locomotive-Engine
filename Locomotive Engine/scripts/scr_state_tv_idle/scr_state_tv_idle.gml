@@ -1,14 +1,14 @@
 /// @ignore
-function StateTvIdleStart()
+function StateTvIdleCreate()
 { 
     if (sprite_index != spr_tv_turnon_damian)
     {
         sprite_index = playerId.spr_tv_idle;
         
-        if (playerId.state_id == state_player_mach && playerId.movespeed >= 12)
+        if (playerId.stateName == "Mach" && playerId.movespeed >= 12)
         {
             sprite_index = (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3;
-            smc_set_state(StateTvMach);
+            smc_set_state("Mach");
         }
     }
     else
@@ -24,10 +24,10 @@ function StateTvIdleStep()
         return;
     }
     
-    if (playerId.state_id == state_player_mach && playerId.movespeed >= 12)
-        TvDoWhitenoise(id, StateTvMach, (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3);
+    if (playerId.stateName == "Mach" && playerId.movespeed >= 12)
+        TvDoWhitenoise(id, "Mach", (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3);
     
-    if (playerId.state_id == state_player_noclip)
+    if (playerId.stateName == "Noclip")
     {
         sprite_index = playerId.spr_tv_noclip;
         return;
@@ -64,20 +64,4 @@ function StateTvIdleStep()
         sprite_index = playerId.spr_tv_idle;
         IdleAnimTimer = 240 + (60 * irandom_range(-1, 2));
     }
-}
-
-/// @ignore
-function StateTvIdleEnd()
-{
-    
-}
-
-/**
- * This function will return an array of the tv idle state events to be given to the ```smc_set_state``` function to change the tv's state.
- * @returns {Array<Function>}
- * @pure
- */
-function StateTvIdle()
-{
-    return [StateTvIdleStart, StateTvIdleStep, StateTvIdleEnd];
 }

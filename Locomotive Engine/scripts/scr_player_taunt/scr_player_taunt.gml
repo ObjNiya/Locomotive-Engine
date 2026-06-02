@@ -1,16 +1,12 @@
 /// @ignore
-function state_player_taunt_start()
+function StatePlayerTauntCreate()
 {
     stored_sprite_index = sprite_index;
     stored_image_index = image_index;
-    
-    quick_log(stored_sprite_index)
-    
+
     stored_vsp = vsp;
     stored_hsp = hsp;
     stored_movespeed = movespeed;
-    
-    smc_store_state();
     
     grav = 0;
     vsp = 0;
@@ -25,13 +21,7 @@ function state_player_taunt_start()
 }
 
 /// @ignore
-function state_player_taunt_step()
-{
-
-}
-
-/// @ignore
-function state_player_taunt_end()
+function StatePlayerTauntDestroy()
 {
     grav = 0.5;
     
@@ -41,14 +31,4 @@ function state_player_taunt_end()
     vsp = stored_vsp;
     hsp = stored_hsp;
     movespeed = stored_movespeed;
-}
-
-/**
- * This function will return an array of the player's taunt state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_taunt()
-{
-    return [state_player_taunt_start, state_player_taunt_step, state_player_taunt_end];
 }

@@ -42,8 +42,9 @@ sfx_voice_hurt = get_charsnd(sfx_damian_voice_hurt, character);
 sfx_voice_plushie = get_charsnd(sfx_damian_voice_plushie, character);
 sfx_voice_catripi = get_charsnd(sfx_damian_voice_catripi, character);
 
-state_machine_initialize();
-smc_set_state(state_player_normal);
+SmcInit();
+statePrefix = "StatePlayer";
+SmcSetState("Normal");
 
 hurtSysInit();
 hitbox = createHitbox();
@@ -101,7 +102,8 @@ stored_sprite_index = -1;
 stored_image_index = 0;
 
 taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
-    smc_restore_state();
+    SmcSetState(stateHistory[$ "tauntStoredState"]);
+    SmcDeleteFromHistory("tauntStoredState");
 });
 
 // Ground Pound
@@ -137,7 +139,7 @@ wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
 // Warp Pipe
 
 warppipe_failsave_timer = new Timer(3, time_source_units_seconds, function() {
-    smc_set_state(state_player_normal);
+    SmcSetState("Normal");
 });
 warppipe_id = noone;
 
@@ -151,7 +153,7 @@ note_particle_timer = new Timer(0.1, time_source_units_seconds, function() {
 cloud_particle_timer = new Timer(12, time_source_units_frames, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if (state_id == state_player_normal || state_id == state_player_painting || state_id == state_player_ladder)
+    if (stateName == "Normal" || stateName == "Painting" || stateName == "Ladder")
         sound_instance_one_shot(sfx_step, x, y);
 });
 cloud_particle_timer.SetRepeating(false, true);
@@ -188,7 +190,7 @@ upwards_woosh_particle_timer.SetRepeating(false, true);
 blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
     with (create_afterimage_vh(x, y, obj_blur_afterimage))
     {
-        if (other.state_id == state_player_cape)
+        if (other.stateName == "Cape")
             image_index = floor(other.image_index);
     }
 });

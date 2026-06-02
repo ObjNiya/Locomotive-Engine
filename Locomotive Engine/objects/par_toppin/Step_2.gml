@@ -63,7 +63,7 @@ if state == "normal"
 		//in basegame they always are at length from the player
 		//(meaning they can go into walls, or very noticeably when wallclimbing they go very far away from the wall)
 		//and i personally disliked that
-		if basefollowobj.object_index == obj_player
+		if false //basefollowobj.object_index == obj_player
 		{
 			if !(basefollowobj.hitstun_timer.active || basefollowobj.state_id = state_player_taunt)
 			{

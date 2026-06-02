@@ -11,14 +11,14 @@ with (other)
     
     if (spring_dir == -1)
     {
-        smc_set_state(state_player_groundpound);
+        SmcSetState("Groundpound");
         
         vsp = 10;
         sprite_index = spr_bananaslip_bump;
     }
     else if (spring_dir == 1)
     {
-        smc_set_state(state_player_sjump);
+        SmcSetState("Sjump");
         vsp = -10;
         
         sprite_index = spr_springlaunch;

@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_machroll_start()
+function StatePlayerMachrollCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_set((sprite_index == spr_rolling_jump) ? spr_backslide_land : spr_machroll, 0);
     mask_index = spr_crouchmask;
     
@@ -14,21 +16,21 @@ function state_player_machroll_start()
 }
 
 /// @ignore
-function state_player_machroll_step()
+function StatePlayerMachrollStep()
 {
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
     hitboxDoAttack(hitbox, "stunEnemy");
     
     hsp = movespeed * dir;
     
-    if (player_do_wallsplat())
+    if (PlayerDoWallsplat())
         return;
     
     if (grounded)
     {
         if (PlayerGetUp())
         {
-            smc_set_state(state_player_mach);
+            SmcSetState("Mach");
             sprite_set(spr_machroll_getup, 0);
             sound_instance_start(snd_roll_getup);
             
@@ -59,26 +61,17 @@ function state_player_machroll_step()
         sprite_index = spr_machroll_dive;
     }
     
-    player_do_groundpound(false, true);
+    PlayerDoGroundpound(false, true);
 }
 
 /// @ignore
-function state_player_machroll_end()
+function StatePlayerMachrollDestroy()
 {
+    quick_log("Tung")
     mask_index = spr_player_mask;
     image_speed = 1;
     
     blur_afterimage_timer.Stop();
     
     sound_instance_stop(snd_machroll, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-}
-
-/**
- * This function will return an array of the player's machroll state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_machroll()
-{
-    return [state_player_machroll_start, state_player_machroll_step, state_player_machroll_end];
 }

@@ -8,5 +8,4 @@ vh_draw_self();
 if (palette_swapping)
     pal_swap_reset();
 
-if (state_id == StateEnemyStunned)
-    bird.draw();
+SmcRunEvent(STATE_EVENTS.DRAW);

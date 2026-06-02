@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_sjump_start()
+function StatePlayerSjumpCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_set(spr_sjump, 0);
     
     vsp = -12;
@@ -24,7 +26,7 @@ function state_player_sjump_start()
 }
 
 /// @ignore
-function state_player_sjump_step()
+function StatePlayerSjumpStep()
 {
     destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
     if (PlayerDoInstakill())
@@ -33,7 +35,7 @@ function state_player_sjump_step()
     if (sprite_index == spr_springlaunch)
     {
         destroy_blocks(x, y + vsp);
-        player_do_ceilingsplat();
+        PlayerDoCeilingsplat();
         
         return;
     }
@@ -49,7 +51,7 @@ function state_player_sjump_step()
         grav = 0;
     }
     
-    if (player_do_ceilingsplat())
+    if (PlayerDoCeilingsplat())
         return;
     
     if (sprite_index != spr_sjump_cancel_prepare)
@@ -70,7 +72,7 @@ function state_player_sjump_step()
     if (!animation_end())
         return;
     
-    smc_set_state(state_player_mach);
+    SmcSetState("Mach");
     
     vsp = -5;
     movespeed = 12;
@@ -83,7 +85,7 @@ function state_player_sjump_step()
 }
 
 /// @ignore
-function state_player_sjump_end()
+function StatePlayerSjumpDestroy()
 {
     grav = 0.5;
     mach_afterimage_use_alpha = true;
@@ -95,14 +97,4 @@ function state_player_sjump_end()
     air_cloud_particle_timer.Stop();
     
     sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-}
-
-/**
- * This function will return an array of the player's superjump state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_sjump()
-{
-    return [state_player_sjump_start, state_player_sjump_step, state_player_sjump_end];
 }

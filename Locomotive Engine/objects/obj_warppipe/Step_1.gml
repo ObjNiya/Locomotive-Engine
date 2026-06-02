@@ -1,10 +1,10 @@
 with (obj_player)
 {
-    if (state_id == state_player_hurt || state_id == state_player_bananaslip || state_id == state_player_warppipe || state_id == state_player_animation)
+    if (stateName == "Hurt" || stateName == "Bananaslip" || stateName == "Warppipe" || stateName == "Anim")
         exit;
     
-    var up_warppipe = (place_meeting(x, y - 1, other) && other.image_yscale == -1 && bbox_top >= other.bbox_bottom && floor(vsp) <= 0 && !grounded && (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1 || state_id == state_player_sjump));
-    var down_warppipe = (place_meeting(x, y + 1, other) && other.image_yscale == 1 && bbox_bottom <= other.bbox_top && grounded && (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1 || state_id == state_player_groundpound));
+    var up_warppipe = (place_meeting(x, y - 1, other) && other.image_yscale == -1 && bbox_top >= other.bbox_bottom && floor(vsp) <= 0 && !grounded && (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == -1 || stateName == "Sjump"));
+    var down_warppipe = (place_meeting(x, y + 1, other) && other.image_yscale == 1 && bbox_bottom <= other.bbox_top && grounded && (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1 || stateName == "Groundpound"));
 
     if (!up_warppipe && !down_warppipe)
         exit;
@@ -21,14 +21,14 @@ with (obj_player)
     if (up_warppipe)
     {
         sprite_set(spr_warppipe_up, 0);
-        if (state_id == state_player_sjump)
+        if (stateName == "Sjump")
             image_index = image_number / 2;
     }
-    else if (down_warppipe && state_id == state_player_groundpound)
+    else if (down_warppipe && stateName == "Groundpound")
         image_index = image_number / 2;
     
     warppipe_id = other.id;
-    smc_set_state(state_player_warppipe);
+    SmcSetState("Warppipe");
     
     sound_instance_one_shot(sfx_warp_pipe_enter);
 }

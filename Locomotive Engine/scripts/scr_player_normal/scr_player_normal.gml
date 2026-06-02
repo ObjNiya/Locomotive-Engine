@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_normal_start()
+function StatePlayerNormalCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     dir = sign(hsp);
     movespeed = abs(hsp);
     
@@ -23,7 +25,7 @@ function state_player_normal_start()
 }
 
 /// @ignore
-function state_player_normal_step()
+function StatePlayerNormalStep()
 {
     /////////////////////////////
     // General Logic
@@ -33,22 +35,19 @@ function state_player_normal_step()
     static idle_anims = [spr_idle_animation1, spr_idle_animation2]; // Which idle animations may the player randomly play?
     static idle_anims_count = 2; // How many random idle animations are available?
     
-    if (player_do_uppercut())
+    if (PlayerDoUppercut())
         return;
-    if (player_do_grabdash())
+    if (PlayerDoGrabdash())
     {
         if (!grounded)
             movespeed = 5;
         return;
     }
     
-    if (InputPressed(INPUT_VERB.TAUNT))
-    {
-        smc_set_state(state_player_taunt);
+    if (PlayerDoTaunt())
         return;
-    }
     
-    if (player_do_ladder())
+    if (PlayerDoLadder())
         return;
     
     var input_x = InputX(INPUT_CLUSTER.NAVIGATION);
@@ -89,9 +88,9 @@ function state_player_normal_step()
         cloud_particle_timer.Stop();
         blur_afterimage_timer.Stop();
         
-        player_do_jumpstop();
+        PlayerDoJumpstop();
         
-        if (player_do_groundpound())
+        if (PlayerDoGroundpound())
             return;
         
         if (EqualsToAny(sprite_index, spr_stomp, spr_stomp_fall))
@@ -116,16 +115,16 @@ function state_player_normal_step()
     
     if (PlayerMachrun())
     {
-        smc_set_state(state_player_mach);
+        SmcSetState("Mach");
         return;
     }
     
-    if (player_do_jump())
+    if (PlayerDoJump())
         return;
     
     if (PlayerCrouch())
     {
-        smc_set_state(state_player_crouch);
+        SmcSetState("Crouch");
         return;
     }
     
@@ -304,7 +303,7 @@ function state_player_normal_step()
 }
 
 /// @ignore
-function state_player_normal_end()
+function StatePlayerNormalDestroy()
 {
     image_speed = 1;
     
@@ -315,14 +314,4 @@ function state_player_normal_end()
     panting_spr_time = 0;
     idle_spr_time = 150;
     dance_hold_time = 0;
-}
-
-/**
- * This function will return an array of the player's normal state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_normal()
-{
-    return [state_player_normal_start, state_player_normal_step, state_player_normal_end];
 }

@@ -4,7 +4,7 @@ if (instance_exists(player))
 with (other)
 {
     sprite_index = spr_hurt;
-    smc_set_state(smc_empty_state);
+    SmcSetState("None");
     camera.properties_set_locked(true, true, false);
     
     other.player = id;

@@ -1,5 +1,5 @@
 /// @ignore
-function StateEnemyScaredStart()
+function StateEnemyScaredCreate()
 {
     ENEMY_STATE_FAILSAVE;
     
@@ -23,17 +23,7 @@ function StateEnemyScaredStep()
 }
 
 /// @ignore
-function StateEnemyScaredEnd()
+function StateEnemyScaredDestroy()
 {
     scared_timer.Stop();
-}
-
-/**
- * This function will return an array of the enemies' scared state events to be given to the ```smc_set_state``` function to change the enemies' state.
- * @returns {Array<Function>}
- * @pure
- */
-function StateEnemyScared()
-{
-    return [StateEnemyScaredStart, StateEnemyScaredStep, StateEnemyScaredEnd];
 }

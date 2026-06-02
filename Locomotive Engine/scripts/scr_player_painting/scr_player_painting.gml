@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_painting_start()
+function StatePlayerPaintingCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_index = spr_walk;
     
     hsp = 0;
@@ -12,11 +14,11 @@ function state_player_painting_start()
 }
 
 /// @ignore
-function state_player_painting_step()
+function StatePlayerPaintingStep()
 {
     if (!instance_exists(painting_id))
     {
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         return;
     }
     
@@ -85,19 +87,9 @@ function state_player_painting_step()
 }
 
 /// @ignore
-function state_player_painting_end()
+function StatePlayerPaintingDestroy()
 {
     camera.properties_set_locked(false, false, false);
     
     visible = true;
-}
-
-/**
- * This function will return an array of the player Y state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_painting()
-{
-    return [state_player_painting_start, state_player_painting_step, state_player_painting_end];
 }

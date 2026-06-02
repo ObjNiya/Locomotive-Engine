@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_crouch_start()
+function StatePlayerCrouchCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     mask_index = spr_crouchmask;
     image_speed = 1;
     
@@ -14,7 +16,7 @@ function state_player_crouch_start()
 }
 
 /// @ignore
-function state_player_crouch_step()
+function StatePlayerCrouchStep()
 {
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     hsp = movespeed * dir;
@@ -23,11 +25,11 @@ function state_player_crouch_step()
     
     if (PlayerNothingAbove() && PlayerJump())
     {
-        player_do_jump(false, spr_crouch_jump, -8);
+        PlayerDoJump(false, spr_crouch_jump, -8);
         grounded = false;
     }
     
-    if (player_do_ladder())
+    if (PlayerDoLadder())
         return;
     
     if (!grounded)
@@ -39,7 +41,7 @@ function state_player_crouch_step()
     
     if (PlayerGetUp())
     {
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         return;
     }
     
@@ -50,17 +52,7 @@ function state_player_crouch_step()
 }
 
 /// @ignore
-function state_player_crouch_end()
+function StatePlayerCrouchDestroy()
 {
     mask_index = spr_player_mask;
-}
-
-/**
- * This function will return an array of the player's crouch state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_crouch()
-{
-    return [state_player_crouch_start, state_player_crouch_step, state_player_crouch_end];
 }

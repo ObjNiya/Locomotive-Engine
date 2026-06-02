@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_wallclimb_start()
+function StatePlayerWallclimbCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_index = spr_wallclimb;
     
     vert_movespeed = movespeed;
@@ -18,7 +20,7 @@ function state_player_wallclimb_start()
 }
 
 /// @ignore
-function state_player_wallclimb_step()
+function StatePlayerWallclimbStep()
 {
     wallclimb_grab_buffer--;
     
@@ -29,7 +31,7 @@ function state_player_wallclimb_step()
     
     if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimb_grab_buffer <= 0)
     {
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         
         hsp = -6 * dir;
         
@@ -45,13 +47,13 @@ function state_player_wallclimb_step()
         dir *= -1;
         image_xscale = dir;
         
-        smc_set_state(state_player_mach);
-        player_do_jump(true, spr_walljump_intro, -11, false);
+        SmcSetState("Mach");
+        PlayerDoJump(true, spr_walljump_intro, -11, false);
         
         return;
     }
     
-    if (player_do_ceilingsplat())
+    if (PlayerDoCeilingsplat())
         return;
     
     if (InputPressed(INPUT_VERB.GRABDASH) && sprite_index != spr_wallclimb_dash)
@@ -78,13 +80,13 @@ function state_player_wallclimb_step()
         movespeed = abs(vsp);
         vsp = 0;
         
-        smc_set_state(state_player_mach);
+        SmcSetState("Mach");
         create_particle(x, y + 43, obj_jump_particle, false);
     }
 }
 
 /// @ignore
-function state_player_wallclimb_end()
+function StatePlayerWallclimbDestroy()
 {
     grav = 0.5;
     
@@ -92,14 +94,4 @@ function state_player_wallclimb_end()
     
     sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
     sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-}
-
-/**
- * This function will return an array of the player's wallclimb state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_wallclimb()
-{
-    return [state_player_wallclimb_start, state_player_wallclimb_step, state_player_wallclimb_end];
 }

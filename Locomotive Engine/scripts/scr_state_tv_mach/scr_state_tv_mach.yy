@@ -6,7 +6,7 @@
   "name":"scr_state_tv_mach",
   "parent":{
     "name":"States",
-    "path":"folders/Scripts/HUD/TV/States.yy",
+    "path":"folders/Scripts/Object Structure/HUD/TV/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

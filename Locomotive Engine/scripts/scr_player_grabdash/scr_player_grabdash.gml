@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_grabdash_start()
+function StatePlayerGrabdashCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     momentum = true;
     grabdash_airborne = !grounded;
     accel = 0.5;
@@ -21,7 +23,7 @@ function state_player_grabdash_start()
 }
 
 /// @ignore
-function state_player_grabdash_step()
+function StatePlayerGrabdashStep()
 {
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
 
@@ -31,22 +33,22 @@ function state_player_grabdash_step()
     hsp = movespeed * dir;
     
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
-    player_do_jumpstop();
+    PlayerDoJumpstop();
     
-    if (player_do_longjump())
+    if (PlayerDoLongjump())
         return;
     
     if (PlayerWallclimb())
     {
         wallclimb_grab_buffer = 10;
-        smc_set_state(state_player_wallclimb);
+        SmcSetState("Wallclimb");
         
         return;
     }
     
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) == 1)
     {
-        smc_set_state(state_player_rolling_jump);
+        SmcSetState("RollingJump");
         return;
     }
     
@@ -54,13 +56,13 @@ function state_player_grabdash_step()
     {
         if (PlayerMachrun() && sign_input_x == dir)
         {
-            smc_set_state(state_player_mach);
+            SmcSetState("Mach");
             sprite_index = spr_mach2;
             
             return;
         }
     
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         
         if (!grounded && sign_input_x == -dir)
         {
@@ -75,7 +77,7 @@ function state_player_grabdash_step()
     
     if (PlayerHitWall())
     {
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         
         sound_instance_one_shot(sfx_player_bump_wall, x, y);
         sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
@@ -103,17 +105,7 @@ function state_player_grabdash_step()
 }
 
 /// @ignore
-function state_player_grabdash_end()
+function StatePlayerGrabdashDestroy()
 {
     blur_afterimage_timer.Stop();
-}
-
-/**
- * This function will return an array of the player's grabdash state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_grabdash()
-{
-    return [state_player_grabdash_start, state_player_grabdash_step, state_player_grabdash_end];
 }

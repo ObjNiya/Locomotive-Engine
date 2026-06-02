@@ -18,5 +18,4 @@ draw_sprite_ext(sprite_index, image_index, tv_x, tv_y, image_xscale, image_yscal
 whitenoise.x = tv_x;
 whitenoise.y = tv_y;
 
-if (state_id == StateTvWhitenoise)
-    whitenoise.draw();
+SmcRunEvent(STATE_EVENTS.DRAW);

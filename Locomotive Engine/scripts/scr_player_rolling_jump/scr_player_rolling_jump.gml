@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_rolling_jump_start()
+function StatePlayerRollingJumpCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     movespeed = max(movespeed, 12);
     
     grav = 1;
@@ -14,7 +16,7 @@ function state_player_rolling_jump_start()
 }
 
 /// @ignore
-function state_player_rolling_jump_step()
+function StatePlayerRollingJumpStep()
 {
     PlayerDoInstakill();
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
@@ -33,11 +35,11 @@ function state_player_rolling_jump_step()
     if (!grounded)
         return;
     
-    smc_set_state((hsp == 0) ? state_player_normal : state_player_machroll);
+    SmcSetState((hsp == 0)  ? "Normal" : "Machroll");
 }
 
 /// @ignore
-function state_player_rolling_jump_end()
+function StatePlayerRollingJumpDestroy()
 {
     mask_index = spr_player_mask;
     
@@ -47,14 +49,4 @@ function state_player_rolling_jump_end()
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.Stop();
     blur_afterimage_timer.Stop();
-}
-
-/**
- * This function will return an array of the player's rolling_jump state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_rolling_jump()
-{
-    return [state_player_rolling_jump_start, state_player_rolling_jump_step, state_player_rolling_jump_end];
 }

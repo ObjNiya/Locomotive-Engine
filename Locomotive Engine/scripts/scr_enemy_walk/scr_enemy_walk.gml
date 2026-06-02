@@ -1,5 +1,5 @@
 /// @ignore
-function StateEnemyWalkStart()
+function StateEnemyWalkCreate()
 {
     ENEMY_STATE_FAILSAVE;
     
@@ -27,20 +27,4 @@ function StateEnemyWalkStep()
     }
     
     walk_postfix();
-}
-
-/// @ignore
-function StateEnemyWalkEnd()
-{
-    
-}
-
-/**
- * This function will return an array of the enemies' walk state events to be given to the ```smc_set_state``` function to change the enemies' state.
- * @returns {Array<Function>}
- * @pure
- */
-function StateEnemyWalk()
-{
-    return [StateEnemyWalkStart, StateEnemyWalkStep, StateEnemyWalkEnd];
 }

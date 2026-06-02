@@ -16,8 +16,10 @@ function player_get_mach_stage()
 }
 
 /// @ignore
-function state_player_mach_start()
+function StatePlayerMachCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     movespeed = max(movespeed, 6);
     accel = 0.1;
     
@@ -40,7 +42,7 @@ function state_player_mach_start()
 }
 
 /// @ignore
-function state_player_mach_step()
+function StatePlayerMachStep()
 {
     var mach3 = (movespeed >= 12 && EqualsToAny(sprite_index, spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel));
 
@@ -77,34 +79,31 @@ function state_player_mach_step()
     if (panting_spr_time < 2000)
         panting_spr_time++;
     
-    player_do_jump(false, (mach3) ? spr_mach3_jump : spr_mach2_jump_intro);
+    PlayerDoJump(false, (mach3) ? spr_mach3_jump : spr_mach2_jump_intro);
 
-    if (player_do_grabdash())
+    if (PlayerDoGrabdash())
         return;
-    if (player_do_uppercut())
+    if (PlayerDoUppercut())
         return;
-    if (player_do_cape())
+    if (PlayerDoCape())
         return;
     
     if (PlayerSjump())
     {
-        smc_set_state(state_player_sjump_prepare);
+        SmcSetState("SjumpPrep");
         return;
     }
     
     if (PlayerCrouch() || PlayerDive())
     {
-        smc_set_state(state_player_machroll);
+        SmcSetState("Machroll");
         return;
     }
     
-    if (InputPressed(INPUT_VERB.TAUNT))
-    {
-        smc_set_state(state_player_taunt);
+    if (PlayerDoTaunt())
         return;
-    }
     
-    if (player_do_machturn())
+    if (PlayerDoMachturn())
         return;
     else if (PlayerMachinstaturn())
     {
@@ -113,27 +112,27 @@ function state_player_mach_step()
         movespeed = 6;
     }
     
-    if (player_do_machslide())
+    if (PlayerDoMachslide())
         return;
     else if (PlayerMachstop())
     {
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         return;
     }
         
     if (PlayerWallclimb())
     {
-        smc_set_state(state_player_wallclimb);
+        SmcSetState("Wallclimb");
         return;
     }
     
     if (PlayerHitWall())
     {
         if (!mach3)
-            player_do_wallsplat();
+            PlayerDoWallsplat();
         else
         {
-            smc_set_state(state_player_animation);
+            SmcSetState("Anim");
             sprite_set(spr_mach3_hit_wall, 0);
             
             vsp = -6;
@@ -147,7 +146,7 @@ function state_player_mach_step()
         return;
     }    
     
-    player_do_jumpstop();
+    PlayerDoJumpstop();
     
     animation_end_ext((sprite_index == spr_mach1), spr_mach2);
     animation_end_ext((sprite_index == spr_mach2_jump_intro), spr_mach2_jump);
@@ -236,7 +235,7 @@ function state_player_mach_step()
 }
 
 /// @ignore
-function state_player_mach_end()
+function StatePlayerMachDestroy()
 {
     image_speed = 1;
     
@@ -249,14 +248,4 @@ function state_player_mach_end()
     instance_destroy(charge_effect_id);
     
     sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-}
-
-/**
- * This function will return an array of the player's mach state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_mach()
-{
-    return [state_player_mach_start, state_player_mach_step, state_player_mach_end];
 }

@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_uppercut_start()
+function StatePlayerUppercutCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_set(spr_uppercut, 0);
     
     movespeed = 4;
@@ -14,7 +16,7 @@ function state_player_uppercut_start()
 }
 
 /// @ignore
-function state_player_uppercut_step()
+function StatePlayerUppercutStep()
 {
     PlayerDoInstakill();
     destroy_blocks(x, y - 50, [obj_block_metal, obj_block_metal_tiles]);
@@ -31,26 +33,16 @@ function state_player_uppercut_step()
     if (!grounded)
         return;
     
-    smc_set_state(state_player_normal);
+    SmcSetState("Normal");
     return;
 }
 
 /// @ignore
-function state_player_uppercut_end()
+function StatePlayerUppercutDestroy()
 {
     instakillmove = false;
     mach_afterimage_use_alpha = true;
     mach_afterimage_timer.Stop();
     
     image_speed = 1;
-}
-
-/**
- * This function will return an array of the player uppercut state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_uppercut()
-{
-    return [state_player_uppercut_start, state_player_uppercut_step, state_player_uppercut_end];
 }

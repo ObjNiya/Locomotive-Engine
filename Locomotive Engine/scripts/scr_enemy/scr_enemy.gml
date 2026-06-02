@@ -1,4 +1,4 @@
-#macro ENEMY_STATE_FAILSAVE var parent = object_get_parent(object_index) if (parent != par_enemy) { smc_set_state(smc_empty_state) Log(object_index, LOG_TYPES.WARNING, "Attempted to enter an enemy state despite not being an enemy! Setting state to empty...") return }
+#macro ENEMY_STATE_FAILSAVE var parent = object_get_parent(object_index) if (parent != par_enemy) { SmcSetState("None") Log(object_index, LOG_TYPES.WARNING, "Attempted to enter an enemy state despite not being an enemy! Setting state to empty...") return }
 
 /**
  * This function will attack the given Enemy, meant to be exclusively called by obj_hitbox.
@@ -35,7 +35,7 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
             unstunableBuffer = 5;
             invincibleBuffer = 15;
             
-            smc_set_state(StateEnemyStunned);
+            SmcSetState("Stunned");
             
             sound_instance_one_shot(sfx_player_mach2_bump, x, y);
         }
@@ -70,7 +70,7 @@ function StunEnemy(enemy_id, attacker_id)
         unstunableBuffer = 15;
         invincibleBuffer = 5;
         
-        smc_set_state(StateEnemyStunned);
+        SmcSetState("Stunned");
         
         sound_instance_one_shot(sfx_player_mach2_bump, x, y);
         instance_create(x, y, obj_bang_particle);
@@ -98,8 +98,8 @@ function ScareEnemies()
         if (x != other.x)
             image_xscale = -sign(x - other.x);
     
-        if (state_id != StateEnemyScared)
-            smc_set_state(StateEnemyScared);
+        if (stateName != "Scared")
+            SmcSetState("Scared");
     
         scared_timer.Start();
     }

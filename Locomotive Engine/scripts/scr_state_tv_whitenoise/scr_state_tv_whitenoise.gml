@@ -1,5 +1,5 @@
 /// @ignore
-function StateTvWhitenoiseStart()
+function StateTvWhitenoiseCreate()
 {
     whitenoise.set_sprite(playerId.spr_tv_whitenoise);
     
@@ -20,12 +20,12 @@ function StateTvWhitenoiseStep()
             return;
     }
     
-    smc_set_state(whitenoiseNextState);
+    SmcSetState(whitenoiseNextState);
     sprite_index = whitenoiseNextSprite;
 }
 
 /// @ignore
-function StateTvWhitenoiseEnd()
+function StateTvWhitenoiseDestroy()
 {
     with (whitenoise)
     {
@@ -33,14 +33,4 @@ function StateTvWhitenoiseEnd()
         image_speed = 0;
         image_alpha = 0;
     }
-}
-
-/**
- * This function will return an array of the tvwhitenoise state events to be given to the ```smc_set_state``` function to change the tv's state.
- * @returns {Array<Function>}
- * @pure
- */
-function StateTvWhitenoise()
-{
-    return [StateTvWhitenoiseStart, StateTvWhitenoiseStep, StateTvWhitenoiseEnd];
 }

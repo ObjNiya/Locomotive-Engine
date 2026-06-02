@@ -5,7 +5,7 @@ with (obj_player)
     hudTvId = tv;
     
     with (tv)
-        smc_set_state(StateTvIdle);
+        SmcSetState("Idle");
     
     var book = instance_create(5, 390, obj_hud_book);
     book.playerId = id;

@@ -10,7 +10,7 @@ with (obj_player)
     x = other.x;
     y = other.y;
     
-    smc_set_state(state_player_exitportal);
+    SmcSetState("Exitportal");
     sound_instance_one_shot(sfx_player_banana_slip, x, y);
 }
 

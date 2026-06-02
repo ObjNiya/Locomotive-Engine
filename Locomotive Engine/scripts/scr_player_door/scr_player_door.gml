@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_door_start()
+function StatePlayerDoorCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_set(spr_lookdoor, 0);
     
     image_speed = 1;
@@ -18,28 +20,19 @@ function state_player_door_start()
 }
 
 /// @ignore
-function state_player_door_step()
+function StatePlayerDoorStep()
 {
-    if (sprite_index == spr_walk_forward)
-    {
-        if (animation_end())
-            smc_set_state(state_player_normal);
-        
+    if (!animation_end())
         return;
-    }
     
-    if (animation_end())
+    if (sprite_index == spr_walk_forward)
+        SmcSetState("Normal");
+    else
         image_speed = 0;
-    
-    if (room == get_target_room())
-    {
-        sprite_set(spr_walk_forward, 0);
-        image_speed = 1;
-    }
 }
 
 /// @ignore
-function state_player_door_end()
+function StatePlayerDoorDestroy()
 {
     image_speed = 1;
     
@@ -47,12 +40,9 @@ function state_player_door_end()
     warppipe_failsave_timer.Start();
 }
 
-/**
- * This function will return an array of the player door state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_door()
+/// @ignore
+function StatePlayerDoorRoomStart()
 {
-    return [state_player_door_start, state_player_door_step, state_player_door_end];
+    sprite_set(spr_walk_forward, 0);
+    image_speed = 1;
 }

@@ -1,5 +1,5 @@
 /// @ignore
-function state_player_sjump_prepare_start()
+function StatePlayerSjumpPrepCreate()
 {
     sprite_set(spr_sjump_prepare_intro, 0);
     image_xscale = abs(image_xscale);
@@ -11,7 +11,7 @@ function state_player_sjump_prepare_start()
 }
 
 /// @ignore
-function state_player_sjump_prepare_step()
+function StatePlayerSjumpPrepStep()
 {
     if (sprite_index == spr_sjump_prepare_intro && !animation_end())
     {
@@ -23,7 +23,7 @@ function state_player_sjump_prepare_step()
     
     if (PlayerSjumpRelease())
     {
-        smc_set_state(state_player_sjump);
+        SmcSetState("Sjump");
         return;
     }
     
@@ -35,17 +35,7 @@ function state_player_sjump_prepare_step()
 }
 
 /// @ignore
-function state_player_sjump_prepare_end()
+function StatePlayerSjumpPrepDestroy()
 {
     mask_index = spr_player_mask;
-}
-
-/**
- * This function will return an array of the player's superjump prepare state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_sjump_prepare()
-{
-    return [state_player_sjump_prepare_start, state_player_sjump_prepare_step, state_player_sjump_prepare_end];
 }

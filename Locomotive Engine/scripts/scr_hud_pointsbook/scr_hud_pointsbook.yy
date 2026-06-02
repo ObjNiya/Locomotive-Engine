@@ -6,7 +6,7 @@
   "name":"scr_hud_pointsbook",
   "parent":{
     "name":"HUD",
-    "path":"folders/Scripts/HUD.yy",
+    "path":"folders/Scripts/Object Structure/HUD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,6 +1,8 @@
 /// @ignore
-function state_player_hurt_start()
+function StatePlayerHurtCreate()
 {
+    PLAYER_STATE_FAILSAVE;
+    
     sprite_index = spr_hurt;
     
     movespeed = -6;
@@ -11,29 +13,13 @@ function state_player_hurt_start()
 }
 
 /// @ignore
-function state_player_hurt_step()
+function StatePlayerHurtStep()
 {
     hsp = movespeed * dir;
     
     if (grounded)
     {
-        smc_set_state(state_player_normal);
+        SmcSetState("Normal");
         return;
     }
-}
-
-/// @ignore
-function state_player_hurt_end()
-{
-    
-}
-
-/**
- * This function will return an array of the player hurt state events to be given to the ```smc_set_state``` function to change the player's state.
- * @returns {Array<Function>}
- * @pure
- */
-function state_player_hurt()
-{
-    return [state_player_hurt_start, state_player_hurt_step, state_player_hurt_end];
 }

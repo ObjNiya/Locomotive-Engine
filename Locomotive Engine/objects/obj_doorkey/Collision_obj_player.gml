@@ -7,7 +7,7 @@ with (other)
     hsp = 0;
     movespeed = 0;
     
-    smc_set_state(state_player_animation);
+    SmcSetState("Anim");
     sprite_set(spr_key_collect, 0);
 }
 

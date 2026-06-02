@@ -5,8 +5,8 @@ function TvDoWhitenoise(tv_id, next_state, next_sprite)
         whitenoiseNextState = next_state;
         whitenoiseNextSprite = next_sprite;
         
-        if (state_id != StateTvWhitenoise)
-            smc_set_state(StateTvWhitenoise);
+        if (stateName != "Whitenoise")
+            SmcSetState("Whitenoise");
     }
 }
 
@@ -15,6 +15,6 @@ function TvDoExpression(tv_id, sprite, duration)
     with (tv_id)
     {
         exprTimer.maxTime = duration;
-        TvDoWhitenoise(tv_id, StateTvExpression, sprite);
+        TvDoWhitenoise(tv_id, "Expression", sprite);
     }
 }

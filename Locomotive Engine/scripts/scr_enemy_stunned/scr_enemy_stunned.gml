@@ -1,5 +1,5 @@
 /// @ignore
-function StateEnemyStunnedStart()
+function StateEnemyStunnedCreate()
 {
     ENEMY_STATE_FAILSAVE;
     
@@ -27,17 +27,13 @@ function StateEnemyStunnedStep()
 }
 
 /// @ignore
-function StateEnemyStunnedEnd()
+function StateEnemyStunnedDestroy()
 {
     stunned_timer.Stop();
 }
 
-/**
- * This function will return an array of the enemies' stunned state events to be given to the ```smc_set_state``` function to change the enemies' state.
- * @returns {Array<Function>}
- * @pure
- */
-function StateEnemyStunned()
+/// @ignore
+function StateEnemyStunnedDraw()
 {
-    return [StateEnemyStunnedStart, StateEnemyStunnedStep, StateEnemyStunnedEnd];
+    bird.draw();
 }
