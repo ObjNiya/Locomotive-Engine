@@ -4,6 +4,8 @@ sound_instance_move_several(x, y, snd_grabdash, snd_groundpound, snd_mach, snd_s
 StepTimers(taunt_timer, note_particle_timer, cloud_particle_timer, air_cloud_particle_timer, flame_particle_timer, downwards_woosh_particle_timer, upwards_woosh_particle_timer, 
         blur_afterimage_timer, mach_afterimage_timer);
 
+hurtSysStep();
+stepHitboxes(hitbox);
 scr_collision();
 coyote_step();
 smc_step();

@@ -1,25 +1,30 @@
-function HurtEnemy(damage = 1, enemy_id = noone)
+#macro ENEMY_STATE_FAILSAVE var parent = object_get_parent(object_index) if (parent != par_enemy) { smc_set_state(smc_empty_state) Log(object_index, LOG_TYPES.WARNING, "Attempted to enter an enemy state despite not being an enemy! Setting state to empty...") return }
+
+/**
+ * This function will attack the given Enemy, meant to be exclusively called by obj_hitbox.
+ * @parameter {Instance.Id} enemy_id Which Enemy instance to attack.
+ * @parameter {Instance.Id} attacker_id The instance that Enemy was attacked by.
+ * @parameter {Real} damage The amount of damage to deal to the given Enemy.
+ */
+function AttackEnemy(enemy_id, attacker_id, damage = 1)
 {
-    if (enemy_id == noone)
-        enemy_id = instance_place(x, y, par_enemy);
-    if (enemy_id == noone)
-        return false;
+    var parent = object_get_parent(enemy_id.object_index);
+    
+    if (parent != par_enemy)
+        return;
     
     with (enemy_id)
     {
-        if (invincibleBuffer > 0)
-            return false;
-        
         hp -= damage;
         
         if (hp <= 0)
         {
-            my_killer = other.id;
+            my_killer = attacker_id;
             instance_destroy();
         }
         else
         {
-            image_xscale = -side(sign(other.hsp), sign(other.image_xscale));
+            image_xscale = -side(sign(attacker_id.hsp), sign(attacker_id.image_xscale));
             
             visual_xscale = 0.8;
             visual_yscale = 1.3;
@@ -30,39 +35,42 @@ function HurtEnemy(damage = 1, enemy_id = noone)
             unstunableBuffer = 5;
             invincibleBuffer = 15;
             
-            smc_set_state(state_enemy_stunned);
+            smc_set_state(StateEnemyStunned);
             
             sound_instance_one_shot(sfx_player_mach2_bump, x, y);
         }
     }
-    
-    return true;
 }
 
-function StunEnemy(enemy_id = noone)
+/**
+ * This function will stun the given Enemy, meant to be exclusively called by obj_hitbox.
+ * @parameter {Instance.Id} enemy_id Which Enemy instance to stun.
+ * @parameter {Instance.Id} attacker_id The instance that Enemy was stunned by.
+ */
+function StunEnemy(enemy_id, attacker_id)
 {
-    if (enemy_id == noone)
-        enemy_id = instance_place(x, y, par_enemy);
-    if (enemy_id == noone)
-        return false;
+    var parent = object_get_parent(enemy_id.object_index);
+    
+    if (parent != par_enemy)
+        return;
     
     with (enemy_id)
     {
-        if (invincibleBuffer > 0 || unstunableBuffer > 0)
+        if (unstunableBuffer > 0)
             return false;
         
-        image_xscale = -sign(other.image_xscale);
+        image_xscale = -sign(attacker_id.image_xscale);
         
         visual_xscale = 0.8;
         visual_yscale = 1.3;
         
         movespeed = 12;
-        vsp = (other.y - 180 - y) / 60;
+        vsp = (attacker_id.y - 180 - y) / 60;
         
         unstunableBuffer = 15;
         invincibleBuffer = 5;
         
-        smc_set_state(state_enemy_stunned);
+        smc_set_state(StateEnemyStunned);
         
         sound_instance_one_shot(sfx_player_mach2_bump, x, y);
         instance_create(x, y, obj_bang_particle);
@@ -73,11 +81,9 @@ function StunEnemy(enemy_id = noone)
                 vspeed = irandom_range(-6, -11);
         }
     }
-    
-    return true;
 }
 
-function ScareEnemy()
+function ScareEnemies()
 {
     with (par_enemy)
     {
@@ -92,8 +98,8 @@ function ScareEnemy()
         if (x != other.x)
             image_xscale = -sign(x - other.x);
     
-        if (state_id != state_enemy_scared)
-            smc_set_state(state_enemy_scared);
+        if (state_id != StateEnemyScared)
+            smc_set_state(StateEnemyScared);
     
         scared_timer.Start();
     }

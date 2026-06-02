@@ -6,7 +6,7 @@
   "name":"scr_player_actions",
   "parent":{
     "name":"Player",
-    "path":"folders/Scripts/Player.yy",
+    "path":"folders/Scripts/Object Structure/Player.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

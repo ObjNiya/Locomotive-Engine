@@ -1,0 +1,17 @@
+```gml
+/**
+ * This function will attack the given DOC_X, meant to be exclusively called by obj_hitbox.
+ * @parameter {Instance.Id} PARAM_X_id Which DOC_X instance to attack.
+ * @parameter {Instance.Id} attacker_id The instance that DOC_X was attacked by.
+ */
+function AttackX(PARAM_X_id, attacker_id)
+{
+    if (PARAM_X_id.object_index != OBJ_X) // Failsave, you may remove this for optimizations sake.
+        return;
+    
+    with (PARAM_X_id)
+    {
+        // Your own code here
+    }
+}
+```

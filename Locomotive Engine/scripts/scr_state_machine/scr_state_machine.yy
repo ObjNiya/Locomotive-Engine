@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_state_machine",
   "parent":{
-    "name":"Object Structure",
-    "path":"folders/Scripts/Object Structure.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -45,10 +45,14 @@ sfx_voice_catripi = get_charsnd(sfx_damian_voice_catripi, character);
 state_machine_initialize();
 smc_set_state(state_player_normal);
 
-hurtboxInit();
-parryHurtbox = instance_create(x, y, obj_hurtbox);
-parryHurtbox.active = false;
-//parryHurtbox.addTarget(par_enemy,)
+hurtSysInit();
+hitbox = createHitbox();
+
+with (hitbox)
+{
+    new Target("stunEnemy", par_enemy, StunEnemy);
+    new Target("attackEnemy", par_enemy, AttackEnemy);
+}
 
 /////////////////////////////
 // General variables

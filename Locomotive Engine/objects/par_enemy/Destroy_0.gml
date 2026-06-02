@@ -1,4 +1,4 @@
-with (hurtbox)
+with (hitbox)
     instance_destroy();
 
 with (instance_create(x, y, obj_dead_enemy))

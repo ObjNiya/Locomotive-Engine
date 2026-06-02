@@ -6,7 +6,7 @@
   "name":"scr_enemy",
   "parent":{
     "name":"Enemy",
-    "path":"folders/Scripts/Enemy.yy",
+    "path":"folders/Scripts/Object Structure/Enemy.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,14 +1,14 @@
 /// @ignore
-function state_enemy_walk_start()
+function StateEnemyWalkStart()
 {
-    sprite_index = spr_walk;
+    ENEMY_STATE_FAILSAVE;
     
+    sprite_index = spr_walk;
     movespeed = 1;
-    hurtbox.active = true;
 }
 
 /// @ignore
-function state_enemy_walk_step()
+function StateEnemyWalkStep()
 {
     walk_prefix();
     
@@ -30,9 +30,9 @@ function state_enemy_walk_step()
 }
 
 /// @ignore
-function state_enemy_walk_end()
+function StateEnemyWalkEnd()
 {
-    hurtbox.active = false;
+    
 }
 
 /**
@@ -40,7 +40,7 @@ function state_enemy_walk_end()
  * @returns {Array<Function>}
  * @pure
  */
-function state_enemy_walk()
+function StateEnemyWalk()
 {
-    return [state_enemy_walk_start, state_enemy_walk_step, state_enemy_walk_end];
+    return [StateEnemyWalkStart, StateEnemyWalkStep, StateEnemyWalkEnd];
 }

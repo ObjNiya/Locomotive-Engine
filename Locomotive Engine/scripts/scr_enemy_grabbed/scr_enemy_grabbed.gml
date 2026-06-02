@@ -1,19 +1,22 @@
 /// @ignore
-function state_enemy_grabbed_start()
+function StateEnemyGrabbedStart()
 {
-    sprite_index = stun_sprite;
+    ENEMY_STATE_FAILSAVE;
     
+    sprite_index = stun_sprite;
     thrown_blur_afterimage_timer.Start();
 }
 
 /// @ignore
-function state_enemy_grabbed_step()
+function StateEnemyGrabbedStep()
 {
+    grabbed_prefix();
     thrown_blur_afterimage_timer.step();
+    grabbed_postfix();
 }
 
 /// @ignore
-function state_enemy_grabbed_end()
+function StateEnemyGrabbedEnd()
 {
     thrown_blur_afterimage_timer.Stop();
 }
@@ -23,7 +26,7 @@ function state_enemy_grabbed_end()
  * @returns {Array<Function>}
  * @pure
  */
-function state_enemy_grabbed()
+function StateEnemyGrabbed()
 {
-    return [state_enemy_grabbed_start, state_enemy_grabbed_step, state_enemy_grabbed_end];
+    return [StateEnemyGrabbedStart, StateEnemyGrabbedStep, StateEnemyGrabbedEnd];
 }

@@ -1,8 +1,9 @@
 /// @ignore
-function state_enemy_scared_scared_start()
+function StateEnemyScaredStart()
 {
-    sprite_index = spr_scared;
+    ENEMY_STATE_FAILSAVE;
     
+    sprite_index = spr_scared;
     hsp = 0;
     
     if (grounded)
@@ -14,13 +15,15 @@ function state_enemy_scared_scared_start()
 }
 
 /// @ignore
-function state_enemy_scared_scared_step()
+function StateEnemyScaredStep()
 {
+    scared_prefix();
     scared_timer.Step();
+    scared_postfix();
 }
 
 /// @ignore
-function state_enemy_scared_scared_end()
+function StateEnemyScaredEnd()
 {
     scared_timer.Stop();
 }
@@ -30,7 +33,7 @@ function state_enemy_scared_scared_end()
  * @returns {Array<Function>}
  * @pure
  */
-function state_enemy_scared()
+function StateEnemyScared()
 {
-    return [state_enemy_scared_scared_start, state_enemy_scared_scared_step, state_enemy_scared_scared_end];
+    return [StateEnemyScaredStart, StateEnemyScaredStep, StateEnemyScaredEnd];
 }

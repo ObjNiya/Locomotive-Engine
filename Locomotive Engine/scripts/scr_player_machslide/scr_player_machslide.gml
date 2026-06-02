@@ -10,7 +10,7 @@ function state_player_machslide_step()
     movespeed = approach(movespeed, 0, 0.4);
     hsp = movespeed * dir;
     
-    StunEnemy();
+    hitboxDoAttack(hitbox, "stunEnemy");
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
     
     if (movespeed <= 0)

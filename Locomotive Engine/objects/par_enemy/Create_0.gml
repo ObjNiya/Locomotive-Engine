@@ -21,7 +21,7 @@ grabbed_postfix = function() {};
 
 spr_scared = spr_waddledee_scared;
 scared_timer = new Timer(1.4, time_source_units_seconds, function() {
-    smc_set_state(state_enemy_walk);
+    smc_set_state(StateEnemyWalk);
 })
 
 scared_prefix = function() {};
@@ -32,7 +32,7 @@ scared_postfix = function() {};
 unstunnable_buffer = 0;
 bird = new Sprite(spr_enemybird);
 stunned_timer = new Timer(200, time_source_units_frames, function() {
-    smc_set_state(state_enemy_walk);
+    smc_set_state(StateEnemyWalk);
 });
 
 stunned_prefix = function() {};
@@ -68,10 +68,11 @@ terminalVelocity = 20;
 movement_helpers_initialize();
 visual_helper_initialize();
 
-hurtboxInit();
-hurtbox = instance_create(x, y, obj_hurtbox);
-hurtbox.active = false;
-hurtbox.addTarget(obj_player, PlayerDoHurt);
+hurtSysInit();
+hitbox = createHitbox();
+
+with (hitbox)
+    new Target("player", obj_player, PlayerDoHurt);
 
 state_machine_initialize();
-smc_set_state(state_enemy_walk);
+smc_set_state(StateEnemyWalk);

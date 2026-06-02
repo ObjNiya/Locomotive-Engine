@@ -54,7 +54,7 @@ function state_player_mach_step()
         momentum = true;
         
         destroy_blocks(x + hsp, y, []);
-        ScareEnemy();
+        ScareEnemies();
         
         instakillmove = true;
         if (PlayerDoInstakill())
@@ -65,7 +65,7 @@ function state_player_mach_step()
         instakillmove = false;
         
         destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
-        StunEnemy();
+        hitboxDoAttack(hitbox, "stunEnemy");
     }
 
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));

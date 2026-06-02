@@ -181,7 +181,7 @@ function player_do_jumpstop(forced = false, divisor = 20)
 
 function PlayerDoInstakill()
 {
-    var hurt_enemy = instance_place(x, y, par_enemy);
+    var hurt_enemy = hitboxDoAttack(hitbox, "attackEnemy", false);
     if (hurt_enemy == noone)
         return false;
     
@@ -198,7 +198,7 @@ function PlayerDoInstakill()
     repeat (3)
         instance_create(x, y, obj_enemy_debris);
     
-    HurtEnemy(1, hurt_enemy);
+    AttackEnemy(hurt_enemy);
     return true;
 }
 

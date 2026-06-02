@@ -6,7 +6,7 @@
   "name":"scr_enemy_grabbed",
   "parent":{
     "name":"States",
-    "path":"folders/Scripts/Enemy/States.yy",
+    "path":"folders/Scripts/Object Structure/Enemy/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

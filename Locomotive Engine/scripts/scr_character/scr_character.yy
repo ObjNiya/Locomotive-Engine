@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_character",
   "parent":{
-    "name":"Character",
-    "path":"folders/Scripts/Object Structure/Character.yy",
+    "name":"Character System",
+    "path":"folders/Scripts/Character System.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

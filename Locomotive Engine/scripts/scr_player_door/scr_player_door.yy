@@ -6,7 +6,7 @@
   "name":"scr_player_door",
   "parent":{
     "name":"States",
-    "path":"folders/Scripts/Player/States.yy",
+    "path":"folders/Scripts/Object Structure/Player/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

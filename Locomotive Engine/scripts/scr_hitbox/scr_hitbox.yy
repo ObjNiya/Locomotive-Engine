@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script524",
+  "%Name":"scr_hitbox",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script524",
+  "name":"scr_hitbox",
   "parent":{
-    "name":"Locomotive Engine",
-    "path":"Locomotive Engine.yyp",
+    "name":"Object Structure",
+    "path":"folders/Scripts/Object Structure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
