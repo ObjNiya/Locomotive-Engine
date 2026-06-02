@@ -1,3 +1,5 @@
+hurtSysInit();
+
 active = true;
 owner = noone;
 

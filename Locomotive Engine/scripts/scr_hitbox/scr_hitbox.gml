@@ -57,8 +57,9 @@ function hitboxDoAttack(hitbox_id, target, auto_exec = true)
         
         var attacker = (instance_exists(owner)) ? owner : id;
         
-        if (auto_exec)
+        if (auto_exec && meeting_target.invincibleBuffer <= 0)
             target.attackFunc(meeting_target, attacker);
+        
         return meeting_target;
     }
 }

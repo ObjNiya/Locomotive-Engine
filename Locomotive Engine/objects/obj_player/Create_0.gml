@@ -106,6 +106,36 @@ taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
     SmcDeleteFromHistory("tauntStoredState");
 });
 
+parryHitbox = createHitbox();
+parryHitbox.mask_index = spr_parryhitbox;
+
+with (parryHitbox)
+{
+    new Target("parryEnemy", obj_hitbox, function(hitbox_id, parrier_id) {
+        if (hitbox_id.owner == parrier_id.id)
+            return;
+        
+        with (parrier_id)
+        {
+            SmcSetState("Parry");
+            parryTarget = hitbox_id.owner; 
+           
+            create_particle(x, y, obj_parry_particle);
+            sound_instance_one_shot(sfx_player_parry, x, y);
+        }
+    });
+}    
+
+
+
+
+parryHitboxBuffer = 8;
+
+// Parry
+
+parryTarget = noone;
+parryCount = 0;
+
 // Ground Pound
 
 groundpound_smash = -14;
@@ -142,6 +172,19 @@ warppipe_failsave_timer = new Timer(3, time_source_units_seconds, function() {
     SmcSetState("Normal");
 });
 warppipe_id = noone;
+
+// Hurt
+
+hurtFlickerTimer = new Timer(2, time_source_units_frames, function() {
+    visible = !visible;
+    
+    if (invincibleBuffer <= 0 && visible)
+    {
+        hurtFlickerTimer.SetRepeating(false, false);
+        hurtFlickerTimer.Stop();
+    }
+});
+hurtFlickerTimer.SetRepeating(false, true);
 
 /////////////////////////////
 // Particle timers

@@ -12,12 +12,20 @@ function StatePlayerTauntCreate()
     vsp = 0;
     hsp = 0;
     movespeed = 0;
+    parryHitboxBuffer = 8;
     
     sprite_set(spr_taunt, irandom(sprite_get_number(spr_taunt)));
     create_particle(x, y + 45, obj_taunt_particle);
     
     taunt_timer.Start();
     sound_instance_one_shot(sfx_player_taunt, x, y);
+}
+
+/// @ignore
+function StatePlayerTauntStep()
+{
+    if (--parryHitboxBuffer > 0)
+        hitboxDoAttack(parryHitbox, "parryEnemy");
 }
 
 /// @ignore

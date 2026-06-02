@@ -18,7 +18,9 @@
  */
 #macro FIX_POPUP false
 
-#macro FIX_TAUNT_BUFFERING false
+#macro FIX_PARRYABLE_FORKNIGHTS_DURING_STUN false
+
+#macro FIX_MISSING_PARRY_HITSTUN false
 
 #macro ANALOG_CONTROLS true
 

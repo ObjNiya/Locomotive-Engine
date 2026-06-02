@@ -56,6 +56,7 @@ spr_dead = spr_waddledee_dead;
 
 unstunableBuffer = 0;
 hp = 1;
+parryable = true;
 
 /////////////////////////////
 // Initialize various systems

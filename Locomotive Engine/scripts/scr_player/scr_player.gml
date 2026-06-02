@@ -12,6 +12,30 @@ function AttackPlayer(player, attacker_id)
     
     with (player)
     {
-       
+        if (stateName == "Hurt")
+            return;
+        
+        var old_xscale = image_xscale;
+        
+        if (x != attacker_id.x)
+            image_xscale = sign(attacker_id.x - x);
+        dir = image_xscale;
+        
+        sleep(100);
+        SmcSetState("Hurt");
+        
+        //if (old_xscale == -image_xscale)
+            //sprite_index = spr_hurtjump;
+        
+        if (irandom(100) <= 50)
+            sound_instance_one_shot(sfx_voice_hurt, x, y);
+        
+        instance_create(x, y, obj_bang_particle);
+        instance_create(x, y, obj_hurt_stars_particle);
+        
+        repeat (5)
+            instance_create(x, y, obj_hurt_star_debris);
+        
+        global.points -= max(global.points - 50, 0);
     }
 }

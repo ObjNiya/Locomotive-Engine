@@ -1,18 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_hitbox",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_hurt_stars_particle",
+  "eventList":[],
   "managed":true,
-  "name":"obj_hitbox",
+  "name":"obj_hurt_stars_particle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Objects/Game Structure.yy",
+    "name":"Particles",
+    "path":"folders/Objects/Effects/Particles.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_particle",
+    "path":"objects/par_particle/par_particle.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_hurt_stars_particle",
+    "path":"sprites/spr_hurt_stars_particle/spr_hurt_stars_particle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
