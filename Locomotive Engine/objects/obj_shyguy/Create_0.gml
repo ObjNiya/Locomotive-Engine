@@ -7,6 +7,7 @@ spr_walk = spr_shyguy;
 spr_scared = spr_shyguy_scared;
 spr_stunned = spr_shyguy_stun;
 spr_dead = spr_shyguy_dead;
+spr_turn = spr_shyguy_turn;
 
 hitbox.mask_index = spr_shyguyhitbox;
 

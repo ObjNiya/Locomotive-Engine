@@ -3,9 +3,6 @@ function StateEnemyStunnedCreate()
 {
     ENEMY_STATE_FAILSAVE;
     
-    visual_xscale = 1.3;
-    visual_yscale = 0.8;
-    
     sprite_index = spr_stunned;
     stunned_timer.Start();
 }
@@ -13,6 +10,9 @@ function StateEnemyStunnedCreate()
 /// @ignore
 function StateEnemyStunnedStep()
 {
+    if (instance_exists(obj_player) && obj_player.stateName == "Taunt" && grounded)
+        stunned_timer.curTime = 0;
+    
     visual_xscale = approach(visual_xscale, 1, 0.03);
     visual_yscale = approach(visual_yscale, 1, 0.03);
     
@@ -29,6 +29,9 @@ function StateEnemyStunnedStep()
 /// @ignore
 function StateEnemyStunnedDestroy()
 {
+    visual_xscale = 1;
+    visual_yscale = 1;
+    
     stunned_timer.Stop();
 }
 

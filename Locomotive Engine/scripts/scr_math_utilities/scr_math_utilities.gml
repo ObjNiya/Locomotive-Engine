@@ -20,7 +20,8 @@ function approach(a, b, amt)
 */
 function side(n, fallback)
 {
-    return (sign(n) == 0) ? fallback : n;
+    n = sign(n);
+    return (n == 0) ? fallback : n;
 }
 
 /**

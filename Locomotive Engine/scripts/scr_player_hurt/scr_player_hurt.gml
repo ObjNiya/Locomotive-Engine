@@ -3,9 +3,10 @@ function StatePlayerHurtCreate()
 {
     PLAYER_STATE_FAILSAVE;
     
-    sprite_index = spr_hurt;
+    if (sprite_index != spr_back_hurt)
+        sprite_index = spr_hurt;
     
-    movespeed = 8;
+    movespeed = -8;
     vsp = -14;
     
     sound_instance_one_shot(sfx_player_hurt, x, y);

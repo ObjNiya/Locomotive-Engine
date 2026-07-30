@@ -1,12 +1,12 @@
 /// @ignore
-function StatePlayerParryStart()
+function StatePlayerParryCreate()
 {
     movespeed = -8;
     parryCount = 0;
     
     sprite_index = choose(spr_parry1, spr_parry2, spr_parry3, spr_parry4);
     image_index = 0;
-    image_speed = 0.5;
+    image_speed = 1.15;
     
     create_flash_effect(true);
 }
@@ -23,6 +23,7 @@ function StatePlayerParryStep()
     }
     
     movespeed = approach(movespeed, 0, 0.5);
+    hsp = movespeed * dir;
     
     if (parryCount >= 8)
         return;
@@ -33,26 +34,17 @@ function StatePlayerParryStep()
     {
         static parry_threshold = 84;
         
-        if (other.parryTarget != id && distance_to_object(other) > parry_threshold)
-            return;
-        
-        if (FIX_PARRYABLE_FORKNIGHTS_DURING_STUN)
-        {
-            if (stateName != "Walk" || hitstunTimer.state == TIMER_STATES.STARTED)
-                return;
-        }
-        else
-        {
-            if ((stateName != "Walk" && (stateName != "Stunned" || object_index != obj_shyguy)) || hitstunTimer.state == TIMER_STATES.STARTED)
-                return;
-        }
+        if ((other.parryTarget != id && distance_to_object(other) > parry_threshold) 
+            || hitstunTimer.state == TIMER_STATES.STARTED || !parryable)
+            continue;
         
         // TODO: Add Combo
         
         other.image_xscale = -image_xscale;
+        other.dir = other.image_xscale;
         
-        hitstunApply(5);
         SmcSetState("Death");
+        hitstunApply(5);
         
         with (other)
         {
@@ -69,5 +61,9 @@ function StatePlayerParryStep()
         repeat (3)
             instance_create(x, y, obj_enemy_debris);
         instance_create(x, y, obj_parry_particle);
+        
+        call_later(1, time_source_units_frames, function() {
+            instance_create(x, y, obj_bang_particle);
+        });
     }
 }

@@ -67,7 +67,6 @@ function StatePlayerMachrollStep()
 /// @ignore
 function StatePlayerMachrollDestroy()
 {
-    quick_log("Tung")
     mask_index = spr_player_mask;
     image_speed = 1;
     

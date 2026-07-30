@@ -5,6 +5,7 @@ function hitstunInit()
     hitstunShakeMag = 4;
     hitstunX = 0;
     hitstunY = 0;
+    hitstunImageSpeed = 1;
     
     hitstunTimer = new Timer(5, time_source_units_frames, function() {
         x = hitstunX;
@@ -21,6 +22,7 @@ function hitstunApply(duration, shake_magnitude = 4)
     
     hitstunX = x;
     hitstunY = y;
+    hitstunImageSpeed = image_speed;
     
     hitstunTimer.Start();
 }
@@ -32,6 +34,7 @@ function hitstunStep()
     if (hitstunTimer.state != TIMER_STATES.STARTED)
         return false;
     
+    image_speed = 0;
     x = hitstunX + irandom_range(-hitstunShakeMag, hitstunShakeMag);
     y = hitstunY + irandom_range(-hitstunShakeMag, hitstunShakeMag);
     

@@ -53,6 +53,23 @@ with (hitbox)
 {
     new Target("stunEnemy", par_enemy, StunEnemy);
     new Target("attackEnemy", par_enemy, AttackEnemy);
+    
+    var grab_func = function(enemy_id, player_id)
+    {
+        with (enemy_id)
+            SmcSetState("Grabbed");
+        
+        with (player_id)
+        {
+            carryingId = enemy_id;
+            movespeed = 0;
+            
+            sprite_set((grounded) ? spr_hauling_intro : spr_hauling_jump, 0);
+            SmcSetState("Normal");
+        }
+    }
+    
+    new Target("grabEnemy", par_enemy, grab_func);
 }
 
 /////////////////////////////
@@ -107,27 +124,30 @@ taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
 });
 
 parryHitbox = createHitbox();
-parryHitbox.mask_index = spr_parryhitbox;
 
 with (parryHitbox)
 {
-    new Target("parryEnemy", obj_hitbox, function(hitbox_id, parrier_id) {
-        if (hitbox_id.owner == parrier_id.id)
+    mask_index = spr_parryhitbox;
+    
+    var parry_func = function(hitbox_id, player_id)
+    {
+        var enemy_id = hitbox_id.owner;
+        
+        if (enemy_id == player_id || !enemy_id.parryable)
             return;
         
-        with (parrier_id)
+        with (player_id)
         {
+            parryTarget = enemy_id;
+            
             SmcSetState("Parry");
-            parryTarget = hitbox_id.owner; 
-           
             create_particle(x, y, obj_parry_particle);
             sound_instance_one_shot(sfx_player_parry, x, y);
         }
-    });
-}    
-
-
-
+    }
+    
+    new Target("parryEnemy", obj_hitbox, parry_func);
+}
 
 parryHitboxBuffer = 8;
 
@@ -196,8 +216,10 @@ note_particle_timer = new Timer(0.1, time_source_units_seconds, function() {
 cloud_particle_timer = new Timer(12, time_source_units_frames, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if (stateName == "Normal" || stateName == "Painting" || stateName == "Ladder")
-        sound_instance_one_shot(sfx_step, x, y);
+    if ((stateName != "Normal" && stateName != "Painting" && stateName != "Ladder") || carryingId == noone)
+        return;
+    
+    sound_instance_one_shot(sfx_step, x, y);
 });
 cloud_particle_timer.SetRepeating(false, true);
 
@@ -251,6 +273,7 @@ mach_afterimage_timer.SetRepeating(false, true);
 // Other variables
 /////////////////////////////
 
+carryingId = noone;
 hudBookId = noone;
 hudTvId = noone;
 instakillmove = false;

@@ -17,6 +17,9 @@ function StateEnemyScaredCreate()
 /// @ignore
 function StateEnemyScaredStep()
 {
+    if (instance_exists(obj_player) && obj_player.stateName == "Taunt")
+        scared_timer.curTime = 0;
+    
     scared_prefix();
     scared_timer.Step();
     scared_postfix();

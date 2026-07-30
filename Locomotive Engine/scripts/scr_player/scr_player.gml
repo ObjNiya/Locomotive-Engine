@@ -24,8 +24,8 @@ function AttackPlayer(player, attacker_id)
         sleep(100);
         SmcSetState("Hurt");
         
-        //if (old_xscale == -image_xscale)
-            //sprite_index = spr_hurtjump;
+        if (old_xscale == -image_xscale)
+            sprite_index = spr_back_hurt;
         
         if (irandom(100) <= 50)
             sound_instance_one_shot(sfx_voice_hurt, x, y);

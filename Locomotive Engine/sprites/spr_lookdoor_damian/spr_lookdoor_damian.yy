@@ -19,8 +19,6 @@
     {"$GMSpriteFrame":"v1","%Name":"dfb02fae-96c6-406f-a4b6-f22a82eac3f7","name":"dfb02fae-96c6-406f-a4b6-f22a82eac3f7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"429e5064-ee8e-4727-8f44-44758bbc3cee","name":"429e5064-ee8e-4727-8f44-44758bbc3cee","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
     {"$GMSpriteFrame":"v1","%Name":"88bfd947-b773-4eec-a0f7-2b4e5b783bde","name":"88bfd947-b773-4eec-a0f7-2b4e5b783bde","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"70277f67-614d-459c-b2e5-8ca06d5e0b52","name":"70277f67-614d-459c-b2e5-8ca06d5e0b52","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"1dac6938-8caf-4872-95ce-e1e1261da641","name":"1dac6938-8caf-4872-95ce-e1e1261da641","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -93,13 +91,7 @@
               },"Disabled":false,"id":"5ef98199-7055-4a7b-a4b5-8f4f7ed8049c","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"88bfd947-b773-4eec-a0f7-2b4e5b783bde","path":"sprites/spr_lookdoor_damian/spr_lookdoor_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"3b229b66-33f0-42b8-9826-c155022492fd","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"70277f67-614d-459c-b2e5-8ca06d5e0b52","path":"sprites/spr_lookdoor_damian/spr_lookdoor_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"7af4ed86-9a88-4b29-8fdb-245a44cf7987","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1dac6938-8caf-4872-95ce-e1e1261da641","path":"sprites/spr_lookdoor_damian/spr_lookdoor_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"79999587-4d31-495f-8fdf-f7b87c938001","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+              },"Disabled":false,"id":"3b229b66-33f0-42b8-9826-c155022492fd","IsCreationKey":false,"Key":5.0,"Length":3.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

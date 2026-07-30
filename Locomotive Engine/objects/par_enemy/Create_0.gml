@@ -41,6 +41,7 @@ stunned_postfix = function() {};
 // Walk State
 
 spr_walk = spr_waddledee_walk;
+spr_turn = -1;
 
 walk_prefix = function() {};
 walk_postfix = function() {};

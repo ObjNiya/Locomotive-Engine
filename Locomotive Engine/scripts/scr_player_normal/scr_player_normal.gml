@@ -10,7 +10,7 @@ function StatePlayerNormalCreate()
     deccel = 0.1;
     momentum = false;
     
-    if (EqualsToAny(sprite_index, spr_jump, spr_fall, spr_grabdash_bump, spr_land, spr_land_walk, 
+    if (EqualsToAny(sprite_index, spr_jump, spr_fall, spr_grabdash_bump, spr_hauling_intro, spr_land, spr_land_walk, 
         spr_showtime_idle, spr_highcombo_idle, spr_combo_idle, spr_idle, spr_idle_animation1, spr_idle_animation2,
         spr_highcombo_walk, spr_walk))
         return;
@@ -35,26 +35,56 @@ function StatePlayerNormalStep()
     static idle_anims = [spr_idle_animation1, spr_idle_animation2]; // Which idle animations may the player randomly play?
     static idle_anims_count = 2; // How many random idle animations are available?
     
-    if (PlayerDoUppercut())
+    with (carryingId)
+    {
+        var x_offset = 12 * other.image_xscale;
+        var y_offset = 62;
+        
+        if (other.sprite_index == other.spr_hauling_intro)
+        {
+            switch (floor(other.image_index))
+            {
+                case 0: y_offset = 0; break;
+                case 1: y_offset = 2; break;    
+                case 2: y_offset = 43; break;
+            }
+        }
+
+        x = floor(other.x + x_offset);
+        y = floor(other.y - y_offset);
+    }
+    
+    if (carryingId == noone && PlayerDoUppercut())
         return;
-    if (PlayerDoGrabdash())
+    if (carryingId == noone && PlayerDoGrabdash())
     {
         if (!grounded)
             movespeed = 5;
         return;
     }
+    else if (carryingId != noone && PlayerGrabdash())
+    {
+        SmcSetState("Throw");
+        if (PlayerUppercut())
+            sprite_set(spr_throw_uppercut, 0);
+        
+        return;
+    }
     
-    if (PlayerDoTaunt())
+    if (carryingId == noone && PlayerDoTaunt())
         return;
     
-    if (PlayerDoLadder())
+    if (carryingId == noone && PlayerDoLadder())
         return;
     
+    var max_speed = (carryingId == noone) ? 8 : 6;
     var input_x = InputX(INPUT_CLUSTER.NAVIGATION);
     var sign_input_x = sign(input_x);
-    var approach_spd = (movespeed > 8) ? deccel : accel;
+    var approach_spd = (movespeed > max_speed) ? deccel : accel;
     
-    movespeed = approach(movespeed, (ANALOG_CONTROLS) ? 8 * abs(input_x) : 1 * abs(sign_input_x), approach_spd);
+    approach_spd *= global.deltaTime;
+    
+    movespeed = approach(movespeed, (ANALOG_CONTROLS) ? max_speed * abs(input_x) * global.deltaTime : 1 * abs(sign_input_x), approach_spd);
     if (sign_input_x != dir)
     {
         dir = sign_input_x;
@@ -90,6 +120,16 @@ function StatePlayerNormalStep()
         
         PlayerDoJumpstop();
         
+        if (carryingId != noone)
+        {
+            if (sprite_index == spr_jump)
+                sprite_index = spr_hauling_jump;
+            
+            if (!EqualsToAny(sprite_index, spr_hauling_jump, spr_hauling_fall) || (sprite_index == spr_hauling_jump && animation_end()))
+                sprite_index = spr_hauling_fall;
+            return;
+        }
+        
         if (PlayerDoGroundpound())
             return;
         
@@ -113,7 +153,7 @@ function StatePlayerNormalStep()
     /////////////////////////////
     
     
-    if (PlayerMachrun())
+    if (carryingId == noone && PlayerMachrun())
     {
         SmcSetState("Mach");
         return;
@@ -124,11 +164,15 @@ function StatePlayerNormalStep()
     
     if (PlayerCrouch())
     {
+        with (carryingId)
+            SmcSetState("Stunned");
         SmcSetState("Crouch");
+        
+        carryingId = noone;
         return;
     }
     
-    if (InputCheck(INPUT_VERB.TAUNT))
+    if (carryingId == noone && InputCheck(INPUT_VERB.TAUNT))
         dance_hold_time++;
     else
         dance_hold_time = 0;
@@ -187,8 +231,16 @@ function StatePlayerNormalStep()
         instance_create(x, y + 45, obj_land_cloud_particle);
         sound_instance_one_shot(sfx_step, x, y);
     }
+    else if (EqualsToAny(sprite_index, spr_hauling_jump, spr_hauling_fall))
+    {
+        land_spr = true;
+        
+        sprite_set(spr_hauling_land, 0);
+        instance_create(x, y + 45, obj_land_cloud_particle);
+    }
     
     var machslide_spr = (sprite_index == spr_machslide_end);
+    
     
     ////////////////////////////
     // Walking Logic
@@ -197,18 +249,26 @@ function StatePlayerNormalStep()
     
     if (sign_input_x != 0)
     {
+        if (cloud_particle_timer.state != TIMER_STATES.STARTED)
+            cloud_particle_timer.Start();
+        
         var image_speed_curve = [1, 1.25, 1.5];
-        
         var image_speed_curve_index = floor(abs(hsp) / 3);
-        image_speed_curve_index = clamp(image_speed_curve_index, 0, array_length(image_speed_curve) - 1);
         
+        if (carryingId != noone)
+            image_speed_curve = [1, 1.1, 1.25];
+        
+        image_speed_curve_index = clamp(image_speed_curve_index, 0, array_length(image_speed_curve) - 1);
         image_speed = image_speed_curve[image_speed_curve_index];
+        
+        if (carryingId != noone)
+        {
+            sprite_index = spr_hauling_walk;
+            return;
+        }
         
         if (dance_spr)
             return;
-        
-        if (cloud_particle_timer.state != TIMER_STATES.STARTED)
-            cloud_particle_timer.Start();
         
         if (machslide_spr || land_spr)
         {
@@ -231,17 +291,26 @@ function StatePlayerNormalStep()
     if (dance_spr)
         return;
     
+    cloud_particle_timer.Stop();
+    
+    if (carryingId != noone)
+    {
+        if (land_spr || sprite_index == spr_hauling_intro)
+            animation_end(spr_hauling_idle);
+        else
+            sprite_index = spr_hauling_idle;
+        return;
+    }
+    
     var groundpound_spr = EqualsToAny(sprite_index, spr_groundpound_idle_intro, spr_groundpound_idle);
     var panting_spr = (sprite_index == spr_panting_idle);
-    
-    cloud_particle_timer.Stop();
     
     if (machslide_spr || land_spr) 
     {
         animation_end(spr_idle);
         return;
     }    
-
+    
     if (--idle_spr_time < 0)
     {
         if (sprite_index != spr_idle && animation_end())

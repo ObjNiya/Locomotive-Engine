@@ -35,6 +35,9 @@ function StatePlayerGrabdashStep()
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
     PlayerDoJumpstop();
     
+    if (hitboxDoAttack(hitbox, "grabEnemy") != noone)
+        return;
+    
     if (PlayerDoLongjump())
         return;
     

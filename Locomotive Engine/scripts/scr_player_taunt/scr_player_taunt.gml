@@ -12,6 +12,8 @@ function StatePlayerTauntCreate()
     vsp = 0;
     hsp = 0;
     movespeed = 0;
+    
+    invincibleBuffer = 8;
     parryHitboxBuffer = 8;
     
     sprite_set(spr_taunt, irandom(sprite_get_number(spr_taunt)));
@@ -39,4 +41,6 @@ function StatePlayerTauntDestroy()
     vsp = stored_vsp;
     hsp = stored_hsp;
     movespeed = stored_movespeed;
+    
+    taunt_timer.Stop();
 }

@@ -18,7 +18,7 @@
  */
 #macro FIX_POPUP false
 
-#macro FIX_PARRYABLE_FORKNIGHTS_DURING_STUN false
+#macro FIX_PARRYING_FORKNIGHTS_OUTSIDE_WALK false
 
 #macro FIX_MISSING_PARRY_HITSTUN false
 
@@ -26,8 +26,8 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_camera_manager, obj_hud_timer]
-#macro STARTING_OBJECTS_COUNT 7
+#macro STARTING_OBJECTS [obj_delta_timer, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_camera_manager, obj_hud_timer]
+#macro STARTING_OBJECTS_COUNT 8
 
 // Code shortcuts
 
