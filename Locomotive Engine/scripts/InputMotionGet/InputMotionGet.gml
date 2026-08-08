@@ -4,9 +4,9 @@
 /// containing accelerometer and gyroscope values:
 /// 
 /// {
-///     .accelX
-///     .accelY
-///     .accelZ
+///     .accelerationX
+///     .accelerationY
+///     .accelerationZ
 ///     .angularVelocityX
 ///     .angularVelocityY
 ///     .angularVelocityZ

@@ -13,7 +13,7 @@ function __InputMotionClass(_device) constructor
     
     __isCalibrated = false;
     
-    if (INPUT_ON_SWITCH || INPUT_ON_PS4 || INPUT_ON_PS5)
+    if (INPUT_ON_SWITCH_X || INPUT_ON_PS4 || INPUT_ON_PS5)
     {
         //Console platforms are presumed to always have motion data available for their first-party gamepads
         __hasData = InputDeviceIsGamepad(__device);
@@ -37,9 +37,9 @@ function __InputMotionClass(_device) constructor
     
     static __Clear = function()
     {
-        accelX =  0.0;
-        accelY = -1.0;
-        accelZ =  0.0;
+        accelerationX =  0.0;
+        accelerationY = -1.0;
+        accelerationZ =  0.0;
 
         angularVelocityX = 0.0;
         angularVelocityY = 0.0;
@@ -106,9 +106,9 @@ function __InputMotionClass(_device) constructor
                     }
                 }
                 
-                accelX = _signX * switch_controller_accel(__device, _axisX, _sensor);
-                accelY = -switch_controller_accel(__device, switch_controller_axis_z, _sensor);
-                accelZ = _signZ * switch_controller_accel(__device, _axisZ, _sensor);
+                accelerationX = _signX * switch_controller_acceleration(__device, _axisX, _sensor);
+                accelerationY = -switch_controller_acceleration(__device, switch_controller_axis_z, _sensor);
+                accelerationZ = _signZ * switch_controller_acceleration(__device, _axisZ, _sensor);
 
                 angularVelocityX = _signX * degtorad(switch_controller_angular_velocity(__device, _axisX, _sensor)/5) * 570.6;
                 angularVelocityY = -degtorad(switch_controller_angular_velocity(__device, switch_controller_axis_z, _sensor)/5) * 570.6;
@@ -117,9 +117,9 @@ function __InputMotionClass(_device) constructor
 
             case os_ps4:
             case os_ps5:
-                accelX =  gamepad_axis_value(__device, gp_axis_accel_x);
-                accelY = -gamepad_axis_value(__device, gp_axis_accel_y);
-                accelZ = -gamepad_axis_value(__device, gp_axis_accel_z);
+                accelerationX =  gamepad_axis_value(__device, gp_axis_acceleration_x);
+                accelerationY = -gamepad_axis_value(__device, gp_axis_acceleration_y);
+                accelerationZ = -gamepad_axis_value(__device, gp_axis_acceleration_z);
                 
                 angularVelocityX =  gamepad_axis_value(__device, gp_axis_angular_velocity_x) / pi;
                 angularVelocityY = -gamepad_axis_value(__device, gp_axis_angular_velocity_y) / pi;
@@ -142,9 +142,9 @@ function __InputMotionClass(_device) constructor
                     
                     __hasData = true;
                     
-                    accelX =  _steamData.pos_accel_x / 16384;
-                    accelY = -_steamData.pos_accel_y / 16384;
-                    accelZ = -_steamData.pos_accel_z / 16384;
+                    accelerationX =  _steamData.pos_accel_x / 16384;
+                    accelerationY = -_steamData.pos_accel_y / 16384;
+                    accelerationZ = -_steamData.pos_accel_z / 16384;
                     
                     var _toX = _steamData.rot_quat_x;
                     var _toY = _steamData.rot_quat_y;

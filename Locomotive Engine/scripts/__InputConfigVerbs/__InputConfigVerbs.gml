@@ -31,7 +31,7 @@ function __InputConfigVerbs()
         NAVIGATION,
     }
     
-    if (not INPUT_ON_SWITCH)
+    if (not INPUT_ON_SWITCH_X)
     {
         InputDefineVerb(INPUT_VERB.MENU_UP,      "menu_up",          vk_up,      [-gp_axislv, gp_padu]);
         InputDefineVerb(INPUT_VERB.MENU_DOWN,    "menu_down",        vk_down,    [ gp_axislv, gp_padd]);
@@ -51,8 +51,8 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    ["X", mb_right],        gp_face3);
         InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       ["C", "E"],        gp_face4);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
-        InputDefineVerb(INPUT_VERB.SUPERJUMP,      "up",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
-        InputDefineVerb(INPUT_VERB.GROUNDPOUND,    "down",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
+        InputDefineVerb(INPUT_VERB.SUPERJUMP,      "superjump",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
+        InputDefineVerb(INPUT_VERB.GROUNDPOUND,    "groundpound",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
         
     }
     else //Flip A/B over on Switch
@@ -75,8 +75,8 @@ function __InputConfigVerbs()
         InputDefineVerb(INPUT_VERB.GRABDASH,"grabdash",    "X",        gp_face4);
         InputDefineVerb(INPUT_VERB.TAUNT,   "taunt",       "C",        gp_face3);
         InputDefineVerb(INPUT_VERB.MACHRUN, "machrun",     vk_shift,   [gp_shoulderr, gp_shoulderrb]);
-        InputDefineVerb(INPUT_VERB.SUPERJUMP,      "up",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
-        InputDefineVerb(INPUT_VERB.GROUNDPOUND,    "down",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
+        InputDefineVerb(INPUT_VERB.SUPERJUMP,      "superjump",          [vk_up, "W"],      [-gp_axislv, gp_padu]);
+        InputDefineVerb(INPUT_VERB.GROUNDPOUND,    "groundpound",        [vk_down, "S"],    [ gp_axislv, gp_padd]);
     }
     
     //Define a cluster of verbs for moving around
