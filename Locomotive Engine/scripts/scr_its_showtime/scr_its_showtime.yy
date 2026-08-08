@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_its_showtime",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_its_showtime",
+  "parent":{
+    "name":"Configurations",
+    "path":"folders/Scripts/Configurations.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -30,11 +30,11 @@ function AttackPlayer(player, attacker_id)
         if (irandom(100) <= 50)
             sound_instance_one_shot(sfx_voice_hurt, x, y);
         
-        instance_create(x, y, obj_bang_particle);
-        instance_create(x, y, obj_hurt_stars_particle);
+        InstanceCreate(x, y, obj_bang_particle);
+        InstanceCreate(x, y, obj_hurt_stars_particle);
         
         repeat (5)
-            instance_create(x, y, obj_hurt_star_debris);
+            InstanceCreate(x, y, obj_hurt_star_debris);
         
         global.points -= max(global.points - 50, 0);
     }

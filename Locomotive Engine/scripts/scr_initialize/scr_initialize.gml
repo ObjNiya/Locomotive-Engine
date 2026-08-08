@@ -26,8 +26,8 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_delta_timer, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_struct_updater, obj_layer_manager, obj_camera_manager, obj_hud_timer]
-#macro STARTING_OBJECTS_COUNT 8
+#macro STARTING_OBJECTS [obj_delta_timer, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_struct_updater, obj_layer_manager, obj_camera_manager, obj_hud_timer]
+#macro STARTING_OBJECTS_COUNT 9
 
 // Code shortcuts
 
@@ -72,12 +72,12 @@ function initialize_globals()
     
     enum RANKS 
     {
-        L = 0,
-        S = 1,
-        A = 2,
-        B = 3,
-        C = 4,
-        D = 5, 
+        D = 0,
+        C = 1,
+        B = 2,
+        A = 3,
+        S = 4,
+        L = 5,
     }
     
     with (global)
@@ -160,7 +160,7 @@ function initialize_objects()
     var objects = STARTING_OBJECTS;
     
     for (var i = 0; i < STARTING_OBJECTS_COUNT; i++)
-        instance_create(0, 0, objects[i]);
+        InstanceCreate(0, 0, objects[i]);
     
     if (DBG_CONSOLE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);

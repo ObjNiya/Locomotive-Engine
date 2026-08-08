@@ -57,13 +57,13 @@ function StatePlayerParryStep()
         }
         
         repeat (3)
-            instance_create(x, y, obj_slap_star_debris);
+            InstanceCreate(x, y, obj_slap_star_debris);
         repeat (3)
-            instance_create(x, y, obj_enemy_debris);
-        instance_create(x, y, obj_parry_particle);
+            InstanceCreate(x, y, obj_enemy_debris);
+        InstanceCreate(x, y, obj_parry_particle);
         
         call_later(1, time_source_units_frames, function() {
-            instance_create(x, y, obj_bang_particle);
+            InstanceCreate(x, y, obj_bang_particle);
         });
     }
 }

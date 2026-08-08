@@ -1,1 +1,2 @@
-DESTROY_SAVEROOM;
+cutsceneStarted = false;
+//DESTROY_SAVEROOM;

@@ -1,0 +1,1 @@
+runRoomEv(ROOM_EVS.BEGIN_STEP);

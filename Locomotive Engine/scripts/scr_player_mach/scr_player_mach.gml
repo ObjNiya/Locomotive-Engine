@@ -138,7 +138,7 @@ function StatePlayerMachStep()
             vsp = -6;
             movespeed = -6;
             
-            instance_create(x + (dir * 15), y + 10, obj_bump_particle);
+            InstanceCreate(x + (dir * 15), y + 10, obj_bump_particle);
             sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
             camera.shake_set(20, 0.666);
         }

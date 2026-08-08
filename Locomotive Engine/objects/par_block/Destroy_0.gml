@@ -2,7 +2,7 @@ repeat (debris_amount)
 {
     var debris_offset = effects_get_offset();
     
-    with (instance_create(x + debris_offset[0], y + debris_offset[1], obj_block_debris))
+    with (InstanceCreate(x + debris_offset[0], y + debris_offset[1], obj_block_debris))
         sprite_index = other.debris_sprite;
 }
 

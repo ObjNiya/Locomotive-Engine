@@ -17,7 +17,7 @@ function LoadHUD(hud_to_load)
     array_foreach(rm_ins, function(ins_struct, index) {
         var obj_to_spawn = asset_get_index_fast(ins_struct.object_index, asset_object);
         
-        with (instance_create(ins_struct.x, ins_struct.y, obj_to_spawn))
+        with (InstanceCreate(ins_struct.x, ins_struct.y, obj_to_spawn))
         {
             image_xscale = ins_struct.xscale;
             image_yscale = ins_struct.yscale;

@@ -203,9 +203,9 @@ function StatePlayerNormalStep()
         
         if (!instance_exists(obj_beatbox) || (instance_exists(obj_beatbox) && obj_beatbox.player != id))
         {
-            instance_create(x, y, obj_puff_particle);
+            InstanceCreate(x, y, obj_puff_particle);
             
-            with (instance_create(x, y, obj_beatbox))
+            with (InstanceCreate(x, y, obj_beatbox))
             {
                 vsp = -11;
                 player = other.id;
@@ -228,7 +228,7 @@ function StatePlayerNormalStep()
         image_index = 0;
         sprite_index = (sign_input_x == 0) ? spr_land : spr_land_walk;
         
-        instance_create(x, y + 45, obj_land_cloud_particle);
+        InstanceCreate(x, y + 45, obj_land_cloud_particle);
         sound_instance_one_shot(sfx_step, x, y);
     }
     else if (EqualsToAny(sprite_index, spr_hauling_jump, spr_hauling_fall))
@@ -236,7 +236,7 @@ function StatePlayerNormalStep()
         land_spr = true;
         
         sprite_set(spr_hauling_land, 0);
-        instance_create(x, y + 45, obj_land_cloud_particle);
+        InstanceCreate(x, y + 45, obj_land_cloud_particle);
     }
     
     var machslide_spr = (sprite_index == spr_machslide_end);

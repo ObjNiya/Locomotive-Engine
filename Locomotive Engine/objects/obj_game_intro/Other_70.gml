@@ -6,7 +6,7 @@ else if (type == "video_end")
 {
     draw_video = false;
     
-    instance_create(0, 0, obj_file_select);
+    InstanceCreate(0, 0, obj_file_select);
     instance_destroy();
     video_close();
 }

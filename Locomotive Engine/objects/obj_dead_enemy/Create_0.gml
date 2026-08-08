@@ -23,7 +23,7 @@ draw = function()
 
 cloudPartTimer = new Timer(5, time_source_units_frames, function() {
     var offset = irandom_range(-40, 40);
-    instance_create(x + offset, y + offset, obj_cloud_particle);
+    InstanceCreate(x + offset, y + offset, obj_cloud_particle);
 });
 cloudPartTimer.SetRepeating(false, true);
 cloudPartTimer.Start();

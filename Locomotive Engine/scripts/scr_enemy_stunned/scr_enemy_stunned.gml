@@ -4,6 +4,8 @@ function StateEnemyStunnedCreate()
     ENEMY_STATE_FAILSAVE;
     
     sprite_index = spr_stunned;
+    
+    stunned_timer.maxTime = 200;
     stunned_timer.Start();
 }
 

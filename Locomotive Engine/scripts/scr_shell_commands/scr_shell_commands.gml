@@ -102,6 +102,10 @@ function meta_set_game_speed() {
 	}
 }
 
+function sh_start_showtime() {
+    StartShowtime();
+}
+
 if (IDE_BUILD)
 {
     /// @ignore

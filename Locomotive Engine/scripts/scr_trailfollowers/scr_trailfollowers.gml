@@ -3,7 +3,7 @@ global.trailfollowers_map = ds_map_create()
 //create EVERY follower objects with this function, do NOT use instance create
 function create_follower(_x = x,_y =  y,objecttospawn,followingbase = id)
 {
-	var thing = instance_create(_x,_y,objecttospawn)
+	var thing = InstanceCreate(_x,_y,objecttospawn)
 	with thing
 	{
 		scr_setupfollowingbase(followingbase)

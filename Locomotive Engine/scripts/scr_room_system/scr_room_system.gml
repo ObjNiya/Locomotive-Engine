@@ -86,7 +86,7 @@ function trans_room(transition_obj, event_path = sfx_transition_fade)
             sound_instance_one_shot(event_path);
     }
     
-    return instance_create(0, 0, transition_obj);
+    return InstanceCreate(0, 0, transition_obj);
 }
 
 // Getters

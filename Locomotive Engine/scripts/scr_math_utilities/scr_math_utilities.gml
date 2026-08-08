@@ -41,3 +41,8 @@ function bsign(b)
 function abs_floor(val) {
 	return (val > 0 ? floor(val) : ceil(val));
 }
+
+function distance_to_pos(arg0, arg1, arg2, arg3, arg4, arg5)
+{
+    return abs(arg0 - arg2) <= arg4 && abs(arg1 - arg3) <= arg5;
+}

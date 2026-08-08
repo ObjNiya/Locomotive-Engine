@@ -1,7 +1,7 @@
 /// @ignore
 function create_effect(x, y, effect_object)
 {
-    with (instance_create(x, y, effect_object))
+    with (InstanceCreate(x, y, effect_object))
     {
         spawner_id = other.id;
         

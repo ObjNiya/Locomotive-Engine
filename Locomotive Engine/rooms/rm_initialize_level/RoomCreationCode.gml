@@ -1,13 +1,13 @@
 with (obj_player)
 {
-    var tv = instance_create(845, 80, obj_hud_tv);
+    var tv = InstanceCreate(845, 80, obj_hud_tv);
     tv.playerId = id;
     hudTvId = tv;
     
     with (tv)
         SmcSetState("Idle");
     
-    var book = instance_create(5, 390, obj_hud_book);
+    var book = InstanceCreate(5, 390, obj_hud_book);
     book.playerId = id;
     hudBookId = book;
 }

@@ -1,2 +1,2 @@
-
-create_pillar_cutscene(obj_player, id);
+sound_instance_one_shot(sfx_patrick_pillar_destroy);
+StartShowtime();

@@ -6,7 +6,7 @@ function StatePlayerMachrollCreate()
     sprite_set((sprite_index == spr_rolling_jump) ? spr_backslide_land : spr_machroll, 0);
     mask_index = spr_crouchmask;
     
-    with (instance_create(x, y + 45, obj_burst_cloud_particle))
+    with (InstanceCreate(x, y + 45, obj_burst_cloud_particle))
         image_xscale = other.image_xscale;
     
     blur_afterimage_timer.Start();

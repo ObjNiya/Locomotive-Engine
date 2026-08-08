@@ -4,7 +4,7 @@
  */
 function createHitbox()
 {
-    with (instance_create(x, y, obj_hitbox))
+    with (InstanceCreate(x, y, obj_hitbox))
     {
         owner = other.id;
         persistent = other.persistent;

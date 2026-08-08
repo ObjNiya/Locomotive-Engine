@@ -5,8 +5,7 @@ if (selected)
     if (!sound_instance_is_valid(select_snd) && !finished)
     {
         finished = true
-        queue_room(rm_initialize_gameplay, obj_spawn_a);
-        trans_room(obj_roomtrans_fade);
+
     }
     exit;
 }

@@ -21,7 +21,7 @@ hsp = sign(x - player.x) * random_range(10, 18);
 collideBuffer = 10;
 
 cloudPartTimer.Start();
-instance_create(x, y, obj_bang_particle);
+InstanceCreate(x, y, obj_bang_particle);
 
 if (x != player.x)
     image_xscale = -sign(x - player.x);

@@ -17,7 +17,7 @@ function StatePlayerSjumpCreate()
     air_cloud_particle_timer.Start();
     upwards_woosh_particle_timer.Start();
     
-    instance_create(x, y, obj_explosion_particle_alt);
+    InstanceCreate(x, y, obj_explosion_particle_alt);
     
     if (sound_instance_get_playback_state() != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
         sound_instance_start(snd_superjump);

@@ -15,7 +15,7 @@ if (InputPressedMany([INPUT_VERB.JUMP]) || (fade_out && fade_alpha >= 1))
     
     if (splash_index + 1 >= array_length(splashes))
     {
-        instance_create(0, 0, obj_game_intro);
+        InstanceCreate(0, 0, obj_game_intro);
 
         splash_index = -1;
         splash_timer.Stop();

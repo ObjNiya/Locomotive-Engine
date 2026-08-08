@@ -1,4 +1,5 @@
-end_func();
+if (suspendGame)
+    ResumeGame();
 
-if (suspend_game)
-    reactivate_game();
+if (is_callable(endEvent))
+    endEvent();

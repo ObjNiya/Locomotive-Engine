@@ -3,6 +3,7 @@ function StatePlayerAnimCreate()
 {
     PLAYER_STATE_FAILSAVE;
     image_index = 0;
+    image_speed = 1;
 }
 
 /// @ignore

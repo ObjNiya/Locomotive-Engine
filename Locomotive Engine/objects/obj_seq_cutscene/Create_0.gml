@@ -1,13 +1,25 @@
 event_inherited();
 
-seq_element = -1;
+seqElem = -1;
+seqLayer = -1;
+seqLayerSurf = -1;
 
-if (!sequence_exists(sequence))
+setCutscenePos = function(pos)
 {
-    Log(obj_seq_cutscene, LOG_TYPES.ERROR, "The given sequence is ", sequence, " which does not exist. Cancelling the cutscene and resuming gameplay if paused...");
-    instance_destroy();
-    
-    exit;
+    layer_sequence_headpos(seqElem, pos);
 }
 
-seq_element = layer_sequence_create(seq_layer, x, y, sequence);
+getCutsceneLen = function()
+{
+    return layer_sequence_get_length(seqElem);
+}
+
+getCutscenePos = function()
+{
+    return layer_sequence_get_headpos(seqElem);
+}
+
+performSkip = function(skip_frame)
+{
+    layer_sequence_headpos(seqElem, skip_frame);
+}

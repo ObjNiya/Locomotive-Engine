@@ -5,6 +5,6 @@ instance_destroy();
 
 if (is_secret())
 {
-    with (instance_create(x, y, obj_ghostcollectable))
+    with (InstanceCreate(x, y, obj_ghostcollectable))
         sprite_index = other.sprite_index;
 }

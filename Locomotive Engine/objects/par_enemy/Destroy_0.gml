@@ -1,7 +1,7 @@
 with (hitbox)
     instance_destroy();
 
-with (instance_create(x, y, obj_dead_enemy))
+with (InstanceCreate(x, y, obj_dead_enemy))
 { 
     sprite_index = other.spr_dead;
     image_xscale = other.image_xscale;
@@ -24,7 +24,7 @@ with (instance_create(x, y, obj_dead_enemy))
 }
 
 sound_instance_one_shot(sfx_enemy_death, x, y);
-instance_create(x, y, obj_bang_particle);
+InstanceCreate(x, y, obj_bang_particle);
 
 array_foreach(global.cameras, function(camera, index) {
     camera.shake_set(3, 0.05);

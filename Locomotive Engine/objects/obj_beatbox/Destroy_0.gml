@@ -1,1 +1,1 @@
-instance_create(x, y, obj_puff_particle);
+InstanceCreate(x, y, obj_puff_particle);

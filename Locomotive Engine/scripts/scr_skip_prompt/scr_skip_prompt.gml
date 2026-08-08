@@ -8,7 +8,7 @@ function create_skip_prompt(verb, func, x = 16, y = GAME_HEIGHT - 48)
     with (obj_skip_prompt)
         instance_destroy();
     
-    with (instance_create(x, y, obj_skip_prompt))
+    with (InstanceCreate(x, y, obj_skip_prompt))
     {
         xstart = x;
         self.x -= 24;

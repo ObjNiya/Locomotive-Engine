@@ -1,15 +1,17 @@
-if (global.points >= global.level.s_rank_points)
-{
-    if (global.secrets_found > SECRET_COUNT && global.laps >= 2 && global.treasure_found && global.full_combo)
-        global.rank = RANKS.L;
+with (global) {
+    if (points >= level.s_rank_points)
+    {
+        if (secrets_found > SECRET_COUNT && laps >= 2 && treasure_found && full_combo)
+            rank = RANKS.L;
+        else
+            rank = RANKS.S;
+    } 
+    else if (points >= other.a_rank_points)
+        rank = RANKS.A;
+    else if (points >= other.b_rank_points)
+        rank = RANKS.B;
+    else if (points >= other.c_rank_points)
+        rank = RANKS.C;
     else
-        global.rank = RANKS.S;
-} 
-else if (global.points >= a_rank_points)
-    global.rank = RANKS.A;
-else if (global.points >= b_rank_points)
-    global.rank = RANKS.B;
-else if (global.points >= c_rank_points)
-    global.rank = RANKS.C;
-else
-    global.rank = RANKS.D;
+        rank = RANKS.D;
+}

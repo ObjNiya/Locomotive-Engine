@@ -15,6 +15,7 @@ enum RESIZING_MODES
 resizingMode = RESIZING_MODES.FIT;
 
 appIsScaled = true;
+appOverlay = -1;
 appX = 0;
 appY = 0;
 appXScale = 1;
@@ -31,6 +32,7 @@ prevWindowWidth = window_get_width();
 prevWindowHeight = window_get_height();
 
 guiSurf = -1;
+guiOverlay = -1;
 guiDoResize = false;
 guiWidth = GAME_WIDTH;
 guiHeight = GAME_HEIGHT;

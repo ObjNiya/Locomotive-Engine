@@ -17,7 +17,7 @@ function PlayerDoCape(forced = false)
     create_flash_effect(true);
     
     SmcSetState("Cape");
-    return true
+    return true;
 }
 
 function PlayerDoGrabdash(forced = false)
@@ -27,7 +27,7 @@ function PlayerDoGrabdash(forced = false)
     
     create_particle(x, y + 45, obj_burst_cloud_particle);
     SmcSetState("Grabdash");
-    return true
+    return true;
 }
 
 function PlayerDoGroundpound(forced = false, divebomb = false)
@@ -40,7 +40,7 @@ function PlayerDoGroundpound(forced = false, divebomb = false)
     if (divebomb)
         sprite_set(spr_divebomb, 0);
     
-    return true
+    return true;
 }
 
 function PlayerDoMachslide(forced = false)
@@ -51,7 +51,7 @@ function PlayerDoMachslide(forced = false)
     sound_instance_one_shot(sfx_mach_brake, x, y);
     SmcSetState("Machslide");
     
-    return true
+    return true;
 }
 
 function PlayerDoMachturn(forced = false)
@@ -62,7 +62,7 @@ function PlayerDoMachturn(forced = false)
     sound_instance_one_shot(sfx_mach_turn, x, y);
     SmcSetState("Machturn");
     
-    return true
+    return true;
 }
 
 function PlayerDoUppercut(forced = false)
@@ -71,10 +71,10 @@ function PlayerDoUppercut(forced = false)
         return false;
     
     sound_instance_one_shot(sfx_player_uppercut, x, y);
-    instance_create(x, y + 45, obj_jump_particle);
+    InstanceCreate(x, y + 45, obj_jump_particle);
     
     SmcSetState("Uppercut");
-    return true
+    return true;
 }
 
 function PlayerDoLadder()
@@ -140,7 +140,7 @@ function PlayerDoCeilingsplat(forced = false)
     vsp = 0;
     grav = 0;
     
-    return true
+    return true;
 }
 
 function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -11, particle = true)
@@ -152,7 +152,7 @@ function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -1
     sprite_set(sprite_to_set, 0);
     
     if (particle)
-        instance_create(x, y + 45, obj_jump_particle);
+        InstanceCreate(x, y + 45, obj_jump_particle);
     
     sound_instance_one_shot(sfx_jump, x, y);
     
@@ -169,7 +169,7 @@ function PlayerDoLongjump(forced = false, jump_height = -11)
     coyote_jump();
     SmcSetState("Mach");
     sprite_set(spr_longjump_intro, 0);
-    instance_create(x, y + 45, obj_jump_particle);
+    InstanceCreate(x, y + 45, obj_jump_particle);
     
     sound_instance_start(snd_roll_getup);
     
@@ -199,14 +199,14 @@ function PlayerDoInstakill()
     sound_instance_one_shot(sfx_player_punch, x, y);
     hitstunApply(5);
     
-    instance_create(hurt_enemy.x, hurt_enemy.y, obj_parry_particle);
-    instance_create(hurt_enemy.x, hurt_enemy.y, obj_kungfu_particle);
+    InstanceCreate(hurt_enemy.x, hurt_enemy.y, obj_parry_particle);
+    InstanceCreate(hurt_enemy.x, hurt_enemy.y, obj_kungfu_particle);
     
     repeat (3)
-        instance_create(x, y, obj_slap_star_debris);
+        InstanceCreate(x, y, obj_slap_star_debris);
     
     repeat (3)
-        instance_create(x, y, obj_enemy_debris);
+        InstanceCreate(x, y, obj_enemy_debris);
     
     AttackEnemy(hurt_enemy, id);
     return true;

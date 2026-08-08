@@ -38,7 +38,7 @@ function StateEnemyWalkStep()
     
     if (animation_end() && grounded)
     {
-        instance_create(x, y + 43, obj_cloud_particle);
+        InstanceCreate(x, y + 43, obj_cloud_particle);
         image_index = 0;
     }
     

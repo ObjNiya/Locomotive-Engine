@@ -1,15 +1,22 @@
-function create_pillar_cutscene(player_ins, pillar_ins)
+function StartPillarCutscene(player_ins, pillar_ins)
 {
-    with (instance_create(0, 0, obj_pillar_cutscene))
+    /*if (instance_exists(obj_pillar_cutscene))
+        return;
+        
+    with (InstanceCreate(0, 0, obj_pillar_cutscene))
     {
-        camera = player_ins.camera;
+        playerId = player_ins;
+        pillarId = pillar_ins;
         
-        player_spr.set_sprite(player_ins.sprite_index);
-        player_spr.x = player_ins.x;
-        player_spr.y = player_ins.y;
+        event_user(0);
+    }*/
+    
+    with (InstanceCreate(0, 0, obj_seq_cutscene))
+    {
+        sequence = seq_pillar_destroy;
+        seq_layer = "Instances_1";
         
-        sprite_index = player_ins.spr_pillarpunch;
-        
-        deactivate_game(true);
+        x = player_ins.camera.x + (GAME_WIDTH / 2);
+        y = player_ins.camera.y + (GAME_HEIGHT / 2);
     }
 }
