@@ -1,4 +1,4 @@
-set_music(mu_title_screen);
+SetMusic(mu_title_screen);
 
 cur_file = 1;
 select_snd = 0;

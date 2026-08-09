@@ -5,7 +5,7 @@
 			<value>State</value>
 		</property>
 		<relationship name="folder">
-			<destination>{58f91b3d-484f-4cb0-9454-dd85e19e854d}</destination>
+			<destination>{edd98b85-2701-47e4-8e27-e2dff2c9f51d}</destination>
 		</relationship>
 		<relationship name="parameter">
 			<destination>{61744ab1-5208-48d4-97e3-3b260f17ddc6}</destination>

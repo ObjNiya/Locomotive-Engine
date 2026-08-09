@@ -5,13 +5,16 @@
 			<value>Volume</value>
 		</property>
 		<relationship name="folder">
-			<destination>{58f91b3d-484f-4cb0-9454-dd85e19e854d}</destination>
+			<destination>{b413f6a9-33c1-46e7-b7b8-1af0c188fed6}</destination>
 		</relationship>
 		<relationship name="parameter">
 			<destination>{ea68512d-c740-44e7-9df6-8691a4f73b67}</destination>
 		</relationship>
 	</object>
 	<object class="GameParameter" id="{ea68512d-c740-44e7-9df6-8691a4f73b67}">
+		<property name="maximum">
+			<value>1.2</value>
+		</property>
 		<property name="initialValue">
 			<value>1</value>
 		</property>

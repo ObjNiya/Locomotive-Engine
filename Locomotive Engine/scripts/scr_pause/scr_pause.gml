@@ -1,4 +1,4 @@
-global.__ImportantObjs__ = [obj_fmod_studio, obj_screensizer, obj_room_goto, obj_layer_manager, obj_room_events, __InputUpdateController];
+global.__ImportantObjs__ = [obj_delta_timer, obj_struct_updater, obj_layer_manager, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_struct_updater, obj_camera_manager, obj_music, obj_hud_timer, __InputUpdateController]
 
 function PauseGame(notme, show_menu)
 {

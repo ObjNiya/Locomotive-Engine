@@ -5,7 +5,7 @@
 			<value>Master Volume</value>
 		</property>
 		<relationship name="folder">
-			<destination>{58f91b3d-484f-4cb0-9454-dd85e19e854d}</destination>
+			<destination>{b413f6a9-33c1-46e7-b7b8-1af0c188fed6}</destination>
 		</relationship>
 		<relationship name="parameter">
 			<destination>{7a55a829-16b0-4ea3-9c60-fe5ff625b1a8}</destination>

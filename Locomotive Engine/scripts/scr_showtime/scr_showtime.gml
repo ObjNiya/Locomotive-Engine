@@ -9,7 +9,7 @@ function StartShowtime()
     
     with (obj_player)
         camera.shake_set(3, 0);
-    set_music(mu_showtime)
+    SetMusic(mu_showtime)
     
     InstanceDestroySafe(obj_its_showtime);
     InstanceCreate(0, 0, obj_its_showtime);

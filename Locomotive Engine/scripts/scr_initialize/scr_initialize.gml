@@ -26,7 +26,7 @@
 
 // Game start configurations
 
-#macro STARTING_OBJECTS [obj_delta_timer, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_struct_updater, obj_layer_manager, obj_camera_manager, obj_hud_timer]
+#macro STARTING_OBJECTS 
 #macro STARTING_OBJECTS_COUNT 9
 
 // Code shortcuts
@@ -157,10 +157,10 @@ function initialize_globals()
  */
 function initialize_objects()
 {
-    var objects = STARTING_OBJECTS;
-    
-    for (var i = 0; i < STARTING_OBJECTS_COUNT; i++)
-        InstanceCreate(0, 0, objects[i]);
+    array_foreach(global.__ImportantObjs__, function(obj, index) {
+        if (!instance_exists(obj) && obj != __InputUpdateController)
+            InstanceCreate(0, 0, obj);
+    });
     
     if (DBG_CONSOLE)
         instance_create_layer(0, 0, "Instances_1", obj_shell);

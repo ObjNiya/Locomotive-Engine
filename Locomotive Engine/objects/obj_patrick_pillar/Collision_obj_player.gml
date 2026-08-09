@@ -4,5 +4,6 @@ if (cutsceneStarted)
 if (other.instakillmove || other.stateName == "Grabdash")
 {
     cutsceneStarted = true;
-    StartPillarCutscene(other, id);
+    instance_destroy();
+    //StartPillarCutscene(other, id);
 }

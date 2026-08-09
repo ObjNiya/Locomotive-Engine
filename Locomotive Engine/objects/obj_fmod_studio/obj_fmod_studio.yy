@@ -9,8 +9,8 @@
   "name":"obj_fmod_studio",
   "overriddenProperties":[],
   "parent":{
-    "name":"Backend",
-    "path":"folders/Objects/Game Structure/Backend.yy",
+    "name":"Audio",
+    "path":"folders/Objects/Game Structure/Audio.yy",
   },
   "parentObjectId":null,
   "persistent":true,

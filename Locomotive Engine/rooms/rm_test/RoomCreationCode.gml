@@ -1,1 +1,1 @@
-set_music(mu_hub);
+SetMusic(mu_hub);

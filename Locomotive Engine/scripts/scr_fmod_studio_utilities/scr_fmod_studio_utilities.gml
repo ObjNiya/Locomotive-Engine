@@ -83,12 +83,6 @@ function fmod_studio_event_instance_change(event_instance_ref, event_path, resta
         return -1;
 
     var paused = fmod_studio_event_instance_get_paused(event_instance_ref);
-    var pitch = fmod_studio_event_instance_get_pitch(event_instance_ref);
-    var channel_priority = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.CHANNELPRIORITY);
-    var cooldown = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.COOLDOWN);
-    var _max = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAX);
-    var maximum_dist = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAXIMUM_DISTANCE);
-    var minimum_dist = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MINIMUM_DISTANCE);
     var scheduele_delay = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_DELAY);
     var scheduele_lookahead = fmod_studio_event_instance_get_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_LOOKAHEAD);
     var timeline_pos = (restart_timeline) ? 0 : fmod_studio_event_instance_get_timeline_position(event_instance_ref);
@@ -103,12 +97,6 @@ function fmod_studio_event_instance_change(event_instance_ref, event_path, resta
     event_instance_ref = fmod_studio_event_instance_create(event_path);
     
     fmod_studio_event_instance_set_paused(event_instance_ref, paused);
-    fmod_studio_event_instance_set_pitch(event_instance_ref, pitch);
-    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.CHANNELPRIORITY, channel_priority);
-    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.COOLDOWN, cooldown);
-    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAX, _max);
-    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MAXIMUM_DISTANCE, maximum_dist);
-    fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.MINIMUM_DISTANCE, minimum_dist);
     fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_DELAY, scheduele_delay);
     fmod_studio_event_instance_set_property(event_instance_ref, FMOD_STUDIO_EVENT_PROPERTY.SCHEDULE_LOOKAHEAD, scheduele_lookahead);
     fmod_studio_event_instance_set_timeline_position(event_instance_ref, timeline_pos);
