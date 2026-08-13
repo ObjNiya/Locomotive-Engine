@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_combat",
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Scripts/Game Structure.yy",
+    "name":"Essential",
+    "path":"folders/Scripts/Essential.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

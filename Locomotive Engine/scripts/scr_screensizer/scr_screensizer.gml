@@ -1,114 +1,173 @@
-function ScreenSetSize(width, height)
+/**
+ * Returns the aspect ratio of the given resolution's width and height as a decimal.
+ * @parameter {Real} width The width of the resolution to get the aspect ratio of.
+ * @parameter {Real} height The height of the resolution to get the aspect ratio of.
+ * @pure
+ */
+function GetResAspectRatio(width, height)
 {
-    width = floor(width);
-    height = floor(height);
+    return width / height;
+}
+
+
+/**
+ * Returns the current aspect ratio of your application in the given format.
+ * @parameter {String} format Either String, Number or Array. (```string = "16:9"```, ```number = 1.77```, ```array = [16, 9]```)
+ * @pure
+ */
+function AppGetAspectRatio(format)
+{
+    format = string_lower(format);
     
-    with (obj_screensizer)
+    switch (format)
     {
-        if (appVisualWidth == width && appVisualHeight == height)
-            return;
-        
-        appVisualWidth = width;
-        appVisualHeight = height;
-        appVisualXScale = appVisualWidth / GAME_WIDTH;
-        appVisualYScale = appVisualHeight / GAME_HEIGHT;
-        
-        if (appIsScaled)
-        {
-            appWidth = GAME_WIDTH;
-            appHeight = GAME_HEIGHT;
+        case "string":
+            return string_concat(global.aspectRatio[0], ":", global.aspectRatio[1]);
             
-            appXScale = appVisualXScale;
-            appYScale = appVisualYScale;
-            
-            guiWidth = GAME_WIDTH;
-            guiHeight = GAME_HEIGHT;
-        }
-        else
-        {
-            appWidth = appVisualWidth;
-            appHeight = appVisualHeight;
-            
-            appXScale = 1;
-            appYScale = 1;
-            
-            guiWidth = max(appWidth, GAME_WIDTH);
-            guiHeight = max(appHeight, GAME_HEIGHT);
-        }
+        case "number":
+            return global.aspectRatio[0] / global.aspectRatio[1];   
         
-        var window_width = window_get_width();
-        var window_height = window_get_height();
-        
-        appX = (window_width / 2) - (appVisualWidth / 2);
-        appY = (window_height / 2) - (appVisualHeight / 2);
-        
-        if (appWidth != surface_get_width(application_surface) || appHeight != surface_get_height(application_surface))
-            surface_resize(application_surface, appWidth, appHeight);
-        
-        if (guiWidth != display_get_gui_width() || guiHeight != display_get_gui_height())
-        {
-            display_set_gui_size(guiWidth, guiHeight);
-            guiDoResize = true;
-        }
+        case "array":        
+            return global.aspectRatio;    
     }
 }
 
-function ScreenUpdate()
+
+/**
+ * Sets the aspect ratio of your application to the given String, Number or Array.
+ * @parameter {String|Array<Real>|Real} aspect_ratio The aspect ratio to set. (Possible formats: "16:9", 1.77, [16, 9])
+ */
+function AppSetAspectRatio(aspect_ratio)
 {
-    with (obj_screensizer)
-    { 
-        if (resizingMode == RESIZING_MODES.STRETCH)
-        {
-            ScreenSetSize(window_get_width(), window_get_height());
-            return;
-        }
+    switch (typeof(aspect_ratio))
+    {
+        case "string":
+            aspect_ratio = string_split(aspect_ratio, ":");
+            if (array_length(aspect_ratio) < 2)
+                return false;
+            
+            var i = 0;
+            repeat (2)
+            {
+                aspect_ratio[i] = string_digits(aspect_ratio[i]);
+                if (aspect_ratio[i] == "")
+                    return false;
+                
+                aspect_ratio[i] = real(aspect_ratio[i]);
+                i++;
+            }
+            
+            return AppSetAspectRatio(aspect_ratio);
         
-        var game_xscale = window_get_width() / GAME_WIDTH;
-        var game_yscale = window_get_height() / GAME_HEIGHT;
+        case "number":
+            var old_aspect_ratio = global.aspectRatio[0] / global.aspectRatio[1];
+            
+            if (old_aspect_ratio == aspect_ratio)
+                return false;
+            
+            if (aspect_ratio % 1 == 0)
+            {
+                AppSetAspectRatio([aspect_ratio, 1]);
+                return true;
+            }
+            
+            var width = display_get_width();
+            var height = display_get_height();
+            
+            var decimal_places = string(aspect_ratio);
+            decimal_places = string_split(decimal_places, ".")[1];
+            decimal_places = string_length(decimal_places);
+            
+            var denominator = power(10, decimal_places);
+            var numerator = round(aspect_ratio * denominator);
+            
+            var divisor = abs(__Gcd__(width, height));
+            return AppSetAspectRatio([width / divisor, height / divisor]);
         
-        game_xscale = min(game_xscale, game_yscale);
-        game_yscale = game_xscale;
-        
-        if (resizingMode != RESIZING_MODES.INTEGER)
-        {
-            ScreenSetSize(GAME_WIDTH * game_xscale, GAME_HEIGHT * game_yscale);
-            return;
-        }
-        
-        var floor_scale = floor(game_xscale);
-        if (floor_scale == 0)
-            floor_scale = game_xscale;
-        
-        ScreenSetSize(GAME_WIDTH * floor_scale, GAME_HEIGHT * floor_scale);
+        case "array":
+            if (array_length(aspect_ratio) < 2 || !is_real(aspect_ratio[0]) || !is_real(aspect_ratio[1]))
+                return false;
+            if (aspect_ratio[0] == global.aspectRatio[0] && aspect_ratio[1] == global.aspectRatio[1])
+                return false;
+            
+            global.aspectRatio = aspect_ratio;
+            global.baseAppWidth = global.baseAppHeight * AppGetAspectRatio("number");
+            __ResizeScreen__();
+            
+            return true;
     }
 }
 
-function CalcGuiX(xx)
+
+/**
+ * Flips the current aspect ratio of your application, meant for rotatable screens like mobile phone screens. 
+ */
+function AppFlipAspectRatio()
 {
-    var mult = (obj_screensizer.guiWidth / obj_screensizer.guiScale) / GAME_WIDTH;
-    return xx * mult;
+    AppSetAspectRatio(array_reverse(global.aspectRatio));
 }
 
-function CalcGuiY(yy)
-{
-    var mult = (obj_screensizer.guiHeight / obj_screensizer.guiScale) / GAME_HEIGHT;
-    return yy * mult;
-}
 
-function AlignToGuiX(align, offset = 0)
+/**
+ * Toggles Pixel Perfect based on the given boolean.
+ * @parameter {Bool} enabled Whether or not to enable Pixel Perfect.
+ */
+function AppSetPixelPerfect(enabled)
 {
-    if (align == fa_left)
-        return offset;
+    if (global.pixelPerfect == enabled)
+        return false;
     
-    var divider = (align == fa_center) ? 2 : 1;
-    return ((obj_screensizer.guiWidth / obj_screensizer.guiScale) / divider) + offset;
+    global.pixelPerfect = enabled;
+    __ResizeScreen__();
+    
+    return true;
 }
 
-function AlignToGuiY(align, offset = 0)
+
+/**
+ * Sets Resizing Mode based on the given RESIZING_MODES enum member.
+ * @parameter {Real} resizing_mode Which RESIZING_MODES enum member to set Resizing Mode to.
+ */
+function AppSetResizingMode(resizing_mode)
 {
-    if (align == fa_top)
-        return offset;
+    if (global.resizingMode == resizing_mode)
+        return false;
     
-    var divider = (align == fa_middle) ? 2 : 1;
-    return ((obj_screensizer.guiHeight / obj_screensizer.guiScale) / divider) + offset;
+    global.resizingMode = resizing_mode;
+    __ResizeScreen__();
+    
+    return true;
+}
+
+
+/**
+ * Creates and returns a sprite of your application (excluding the GUI) to be used when your application is paused.
+ * @pure
+ */
+function AppGetPauseSpr(smooth)
+{ 
+    var w = surface_get_width(application_surface);
+    var h = surface_get_height(application_surface);
+        
+    return sprite_create_from_surface(application_surface, 0, 0, w, h, false, smooth, 0, 0);
+}
+
+
+/**
+ * With this function you can assign a function to your application and it will be called before your application is rendered. (Excluding the GUI)
+ * @parameter {Function} name The function to assign to your application, or -1 to not assign any.
+ */
+function AppScriptBegin(script)
+{
+    obj_screensizer.appScriptBegin = script;
+}
+
+
+/**
+ * With this function you can assign a function to your application and it will be called after your application is rendered. (Excluding the GUI)
+ * @parameter {Function} name The function to assign to your application, or -1 to not assign any.
+ */
+function AppScriptEnd(script)
+{
+    obj_screensizer.appScriptEnd = script;
 }

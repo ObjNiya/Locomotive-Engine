@@ -8,7 +8,7 @@ function StatePlayerParryCreate()
     image_index = 0;
     image_speed = 1.15;
     
-    create_flash_effect(true);
+    FlashEffectSet();
 }
 
 /// @ignore

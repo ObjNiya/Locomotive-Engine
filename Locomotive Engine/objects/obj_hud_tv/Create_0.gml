@@ -1,4 +1,4 @@
-x -= GAME_WIDTH;
+//x -= global.baseAppWidth;
 depth = DEPTHS.CLOSEST;
 sprite_index = spr_tv_turnon_damian;
 

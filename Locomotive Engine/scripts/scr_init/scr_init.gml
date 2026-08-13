@@ -22,6 +22,8 @@
 
 #macro FIX_MISSING_PARRY_HITSTUN false
 
+#macro RANDOMIZE_COLLECTABLE_FRAME_OFFSET true
+
 #macro ANALOG_CONTROLS true
 
 // Game start configurations
@@ -68,8 +70,6 @@ enum DEPTHS
  */
 function initialize_globals()
 {
-    audio_master_gain(0);
-    
     enum RANKS 
     {
         D = 0,

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_screen_effects",
+  "%Name":"scr_init",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_screen_effects",
+  "name":"scr_init",
   "parent":{
-    "name":"Effects",
-    "path":"folders/Scripts/Effects.yy",
+    "name":"Backend",
+    "path":"folders/Scripts/Essential/Backend.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

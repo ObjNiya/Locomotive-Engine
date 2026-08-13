@@ -80,7 +80,7 @@ function StatePlayerSjumpStep()
     sprite_index = spr_sjump_cancel_intro;
     image_speed = 1;
     
-    create_flash_effect(true);
+    FlashEffectSet();
     create_particle(x, y, obj_woosh_particle);
 }
 

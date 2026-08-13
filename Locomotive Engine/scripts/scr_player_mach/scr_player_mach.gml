@@ -184,7 +184,7 @@ function StatePlayerMachStep()
             
             if (movespeed >= 12)
             {
-                create_flash_effect(true);
+                FlashEffectSet();
                 
                 if (!roll_getup_spr)
                     sprite_index = spr_mach3;
@@ -209,7 +209,7 @@ function StatePlayerMachStep()
                 sprite_index = spr_mach4;
                 
                 create_particle(x, y, obj_mach4_puff_particle);
-                create_flash_effect(true);
+                FlashEffectSet();
                 
                 flame_particle_timer.Start();
                 blur_afterimage_timer.Start();

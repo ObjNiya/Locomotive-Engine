@@ -1,0 +1,10 @@
+# Game Options
+* Platform Settings > X > Scaling: Full scale
+* Platform Settings > X > [ ] Allow fullscreen switching 
+
+# Additional Notes
+* Set camera width to ```global.baseAppWidth``` every Step
+* Set camera height to ```global.baseAppHeight``` every Step
+* ```scr_screensizer_config``` Contains information about all of the configurations.
+* All functions related to the screen/application start with "App"
+* All functions related to the GUI start with "Gui"

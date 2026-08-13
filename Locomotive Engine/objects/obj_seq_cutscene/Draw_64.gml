@@ -1,3 +1,3 @@
 event_inherited();
-draw_surface(seqLayerSurf, 0, 0);
+draw_surface_ext(seqLayerSurf, x, y, image_xscale * global.guiMaxScale, image_yscale * global.guiMaxScale, image_angle, image_blend, image_alpha);
 drawSkipTxt();

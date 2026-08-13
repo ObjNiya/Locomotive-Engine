@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_screensizer",
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Scripts/Game Structure.yy",
+    "name":"Screensizer",
+    "path":"folders/Scripts/Essential/Screensizer.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

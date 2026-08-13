@@ -14,7 +14,7 @@ function PlayerDoCape(forced = false)
         return false;
     
     sound_instance_one_shot(sfx_damian_cape_start, x, y);
-    create_flash_effect(true);
+    FlashEffectSet();
     
     SmcSetState("Cape");
     return true;

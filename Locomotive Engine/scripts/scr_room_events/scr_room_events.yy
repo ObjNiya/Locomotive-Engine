@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_room_events",
   "parent":{
-    "name":"Backend",
-    "path":"folders/Scripts/Game Structure/Backend.yy",
+    "name":"Essential",
+    "path":"folders/Scripts/Essential.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

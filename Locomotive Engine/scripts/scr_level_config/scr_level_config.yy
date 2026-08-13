@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_level_definitions",
+  "%Name":"scr_level_config",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_level_definitions",
+  "name":"scr_level_config",
   "parent":{
     "name":"Level",
-    "path":"folders/Scripts/Game Structure/Level.yy",
+    "path":"folders/Scripts/Essential/Level.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

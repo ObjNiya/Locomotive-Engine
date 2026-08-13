@@ -31,5 +31,5 @@ array_foreach(timings, function(time, index) {
     
     quick_log(txtParts[index])
     
-    draw_sprite_ext(sprite_index, index, AlignToGuiX(fa_center, shake_x), AlignToGuiY(fa_top, CalcGuiY(y + shake_y)), image_xscale * scale, image_yscale * scale, image_angle, image_blend, image_alpha);
+    draw_sprite_ext(sprite_index, index, GuiCalcX(fa_center, shake_x), GuiCalcY(fa_top, y + shake_y), image_xscale * scale, image_yscale * scale, image_angle, image_blend, image_alpha);
 })

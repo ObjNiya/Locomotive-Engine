@@ -63,7 +63,7 @@ function StatePlayerWallclimbStep()
         wallclimb_dash_timer.Start();
         
         sound_instance_start(snd_grabdash);
-        create_flash_effect(true);
+        FlashEffectSet();
     }
     
     wallclimb_dash_timer.Step();

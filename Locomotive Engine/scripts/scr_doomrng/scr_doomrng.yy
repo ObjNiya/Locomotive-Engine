@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_initialize",
+  "%Name":"scr_doomrng",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_initialize",
+  "name":"scr_doomrng",
   "parent":{
-    "name":"Game Structure",
-    "path":"folders/Scripts/Game Structure.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

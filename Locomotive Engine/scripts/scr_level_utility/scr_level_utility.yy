@@ -6,7 +6,7 @@
   "name":"scr_level_utility",
   "parent":{
     "name":"Level",
-    "path":"folders/Scripts/Game Structure/Level.yy",
+    "path":"folders/Scripts/Essential/Level.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

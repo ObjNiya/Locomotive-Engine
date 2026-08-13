@@ -1,5 +1,5 @@
-var tv_x = AlignToGuiX(fa_right, x);
-var tv_y = AlignToGuiY(fa_top, y);
+var tv_x = GuiCalcX(fa_right, 0);
+var tv_y = GuiCalcY(fa_top, y);
 
 var tv_width = sprite_get_width(playerId.spr_tv_idle);
 var tv_height = sprite_get_height(playerId.spr_tv_idle);

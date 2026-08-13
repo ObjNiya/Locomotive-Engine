@@ -1,3 +1,4 @@
+exit
 camera_x_previous = camera_x;
 camera_y_previous = camera_y;
 

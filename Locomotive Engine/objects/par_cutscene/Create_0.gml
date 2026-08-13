@@ -24,8 +24,8 @@ drawSkipTxt = function() {
     if (alarm[1] <= 0)
         return;
     
-    var skip_x = AlignToGuiX(fa_left, 16);
-    var skip_y = AlignToGuiY(fa_bottom, -48);
+    var skip_x = GuiCalcX(fa_left, 16);
+    var skip_y = GuiCalcY(fa_bottom, -48);
     
     skipTxt.draw(skip_x, skip_y);
     skipBindTxt.draw(skip_x + 16, skip_y);

@@ -6,8 +6,10 @@ spawner_prev_x = 0;
 alarm[0] = 3;
 alarm[1] = 15;
 
+color = c_white;
+
 call_later(1, time_source_units_frames, function() {
-    image_blend = choose(c_purple, c_yellow);
+    color = choose(c_purple, c_yellow);
     
     with (spawner_id)
         other.spawner_prev_x = x;

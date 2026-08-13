@@ -1,14 +1,41 @@
 /**
- * This function will create a flash effect that follows the current instance.
- * @parameter {Bool} has_vh Whether or not the instance to follow has sprite drawing variables initialized by ```visual_helper_initialize```, so the flash effect can account for them.
- * @returns {Id.Instance}
+ * Creates variables neccessary for the Flash Effect to be applied on the current instance.
  */
-function create_flash_effect(has_vh = false)
+function FlashEffectInit()
 {
-    with (create_effect(x, y, obj_flash_effect))
-    {
-        self.has_vh = has_vh;
-        
-        return id;
-    }
+    flashTime = 0;
+}
+
+
+/**
+ * Sets the Flash Time for the flash effect on the current instance.
+ * @parameter {Real} duration (OPTIONAL) The duration of the flash effect in frames.
+ */
+function FlashEffectSet(duration = 8)
+{
+    flashTime = duration;
+}
+
+
+/**
+ * Enables the Flash Effect drawing if the current instances' Flash Time hasn't expired.
+ */
+function FlashEffectDraw()
+{
+    flashTime -= global.deltaTime;
+    if (flashTime <= 0)
+        return false;
+    
+    SetColorMix(COLOR_MIX_MODES.MIX, 1, c_white, true);
+    return true;
+}
+
+
+/**
+ * Disables the Flash Effect drawing if it was enabled beforehand.
+ */
+function FlashEffectDrawReset()
+{
+    if (shader_current() == shd_color_mix)
+        shader_reset();
 }

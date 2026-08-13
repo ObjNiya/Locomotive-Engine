@@ -10,7 +10,7 @@ function StatePlayerHurtCreate()
     vsp = -14;
     
     sound_instance_one_shot(sfx_player_hurt, x, y);
-    create_flash_effect(true);
+    FlashEffectSet();
 }
 
 /// @ignore

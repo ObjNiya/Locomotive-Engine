@@ -38,8 +38,8 @@ function Camera() constructor
     zoom_locked = false;
     zoom_offsets = [1];
     
-    width = GAME_WIDTH;
-    height = GAME_HEIGHT;
+    width = global.baseAppWidth;
+    height = global.baseAppHeight;
     
     shake_mag = 0;
     shake_mag_deccel = 0;
@@ -93,14 +93,14 @@ function Camera() constructor
     static room_start = function()
     {
         view_visible[viewport] = true;
-        view_wport[viewport] = GAME_WIDTH;
-        view_hport[viewport] = GAME_HEIGHT;
-        view_xport[viewport] = GAME_WIDTH * viewport;
+        view_wport[viewport] = global.baseAppWidth;
+        view_hport[viewport] = global.baseAppHeight;
+        view_xport[viewport] = global.baseAppHeight * viewport;
         
-        while (view_xport[viewport] > obj_screensizer.appVisualWidth)
+        while (view_xport[viewport] > global.appVisualWidth)
         {
-            view_xport[viewport] -= GAME_WIDTH * 2;
-            view_yport[viewport] += GAME_HEIGHT;
+            view_xport[viewport] -= global.baseAppWidth * 2;
+            view_yport[viewport] += global.baseAppHeight;
         }
         
         id = view_camera[viewport];
@@ -122,8 +122,8 @@ function CameraStep(camera_to_update)
         if (!zoom_locked)
             zoom = 1 * array_get_sum(zoom_offsets);
         
-        width = GAME_WIDTH * zoom;
-        height = GAME_HEIGHT * zoom;
+        width = global.baseAppWidth * zoom;
+        height = global.baseAppHeight * zoom;
         
         camera_set_view_size(id, width, height);
         

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_screensizer_config",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_screensizer_config",
+  "parent":{
+    "name":"Screensizer",
+    "path":"folders/Scripts/Essential/Screensizer.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

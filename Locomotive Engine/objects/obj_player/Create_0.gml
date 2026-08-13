@@ -20,6 +20,7 @@ grav = 0.5;
 terminalVelocity = 20;
 
 hitstunInit();
+FlashEffectInit();
 coyote_initialize();
 movement_helpers_initialize();
 visual_helper_initialize();

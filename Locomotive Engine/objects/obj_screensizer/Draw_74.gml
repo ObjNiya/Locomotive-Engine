@@ -1,13 +1,11 @@
+var gui_width = display_get_gui_width();
+var gui_height = display_get_gui_height();
+
 if (!surface_exists(guiSurf))
-    guiSurf = surface_create(display_get_gui_width(), display_get_gui_height());
+    guiSurf = surface_create(gui_width, gui_height);
 else if (guiDoResize)
 { 
-    surface_resize(guiSurf, display_get_gui_width(), display_get_gui_height());
-    
-    guiMaxScale = min(floor(display_get_gui_width() / GAME_WIDTH), floor(display_get_gui_height() / GAME_HEIGHT));
-    guiMaxScale = max(guiMaxScale, 1);
-    guiScale = clamp(guiScale, 1, guiMaxScale);
-    
+    surface_resize(guiSurf, gui_width, gui_height);
     guiDoResize = false;
 }
 

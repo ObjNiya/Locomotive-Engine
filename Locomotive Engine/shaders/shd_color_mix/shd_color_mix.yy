@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"shd_blend",
-  "name":"shd_blend",
+  "%Name":"shd_color_mix",
+  "name":"shd_color_mix",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",

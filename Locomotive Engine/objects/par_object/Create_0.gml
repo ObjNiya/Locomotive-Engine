@@ -11,6 +11,6 @@ ManageAlarms = function()
 {
     array_foreach(alarm, function(time, index) {
         if (time > -1)
-            time -= (timescale - 1);
+            time -= (timescale - 1) + (global.deltaTime - 1);
     });
 }

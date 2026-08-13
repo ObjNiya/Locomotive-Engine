@@ -1,1 +1,0 @@
-flicker_timer.Step();
