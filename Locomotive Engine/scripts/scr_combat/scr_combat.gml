@@ -1,8 +1,8 @@
 /**
- * This function will create a new hitbox object, set its ```persistent``` and ```mask_index``` variables to that of the current instance and return its id.
+ * Creates a new hitbox object, set its ```persistent``` and ```mask_index``` variables to that of the current instance and return its id.
  * @returns {Instance.Id}
  */
-function createHitbox()
+function HitboxCreate()
 {
     with (InstanceCreate(x, y, obj_hitbox))
     {
@@ -16,9 +16,9 @@ function createHitbox()
 
 
 /**
- * This function will update all of the given hitbox instances position, scale and angle to that of the current instance.
+ * Updates all of the given hitbox instances position, scale and angle to that of the current instance.
  */
-function stepHitboxes()
+function HitboxesStep()
 {
     var i = 0;
     
@@ -37,14 +37,15 @@ function stepHitboxes()
     }
 }
 
+
 /**
- * This function will make the given hitbox instance try to attack the given target that was previously defined on the hitbox instance and return the id of the attacked instance.
+ * Makes the given hitbox instance try to attack the given target that was previously defined on the hitbox instance and return the id of the attacked instance.
  * @parameter {Instance.Id} hitbox_id Which hitbox instance to attack with.
  * @parameter {String} target Which target on the hitbox's ```targets``` struct to attack.
  * @parameter {Bool} auto_exec Whether or not the hitbox should run the attack function assigned to the given target. (Default is true)
  * @returns {Instance.Id}
  */
-function hitboxDoAttack(hitbox_id, target, auto_exec = true)
+function HitboxDoAttack(hitbox_id, target, auto_exec = true)
 {
     with (hitbox_id)
     {
@@ -63,7 +64,10 @@ function hitboxDoAttack(hitbox_id, target, auto_exec = true)
     }
 }
 
-function hurtSysInit()
+/**
+ * Creates the neccessary variables for taking damage and getting parried on the current instance.
+ */
+function HurtSysInit()
 {
     invincibleBuffer = 0;
     
@@ -71,10 +75,13 @@ function hurtSysInit()
     parryLethal = true;
 }
 
-function hurtSysStep()
+/**
+ * Counts down the Invinciblity Time on the current instance.
+ */
+function HurtSysStep()
 {
     if (invincibleBuffer <= 0)
         return;
     
-    invincibleBuffer = max(invincibleBuffer - global.deltaTime, 0);
+    invincibleBuffer--;
 }

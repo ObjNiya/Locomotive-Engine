@@ -25,9 +25,8 @@ function StatePlayerHurtStep()
         return;
     
     invincibleBuffer = 80;
-    hurtFlickerTimer.SetRepeating(false, true);
-    hurtFlickerTimer.Start();
+    time_source_start(hurtFlickerTimer);
     
     SmcSetState("Normal");
-    sprite_set(spr_land, 0);
+    SpriteSet(spr_land, 0);
 }

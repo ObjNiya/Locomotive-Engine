@@ -1,1 +1,1 @@
-hurtSysStep();
+HurtSysStep();

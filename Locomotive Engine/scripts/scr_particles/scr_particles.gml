@@ -10,7 +10,7 @@ function create_particle(x, y, particle_object, face_me = true)
     with (create_effect(x, y, particle_object))
     {
         if (face_me)
-            image_xscale = side(other.image_xscale, 1);
+            image_xscale = Side(other.image_xscale, 1);
         
         return id;
     }
@@ -31,3 +31,5 @@ function create_particle_repeating(x, y, particle_object, face_me = true)
     
     return noone;
 }
+
+// TODO: Refactor

@@ -1,39 +1,40 @@
 /**
- * This function will move ```a``` to ```b``` by the given amount.
+ * Returns number ```a``` moved to number ```b``` by the given amount.
  * @parameter {Real} a The value to move from.
  * @parameter {Real} b The value to move to.
  * @parameter {Real} amt By how much to move to the goal value.
  * @pure
  * @returns {Real}
 */
-function approach(a, b, amt)
+function Approach(a, b, amt)
 {
     return a + clamp(b - a, -amt, amt);
 }
 
 /**
- * This function will return the sign of the given number. Howevever, if said sign equates to 0, the return value will fall back to the given fall back value.
+ * Returns the sign of the given number if it's not 0. If it is, it returns the given fallback number instead.
  * @parameter {Real} n The number to get the sign of.
- * @parameter {Real} fallback The number to fall back to if the sign of n equates to 0.
+ * @parameter {Real} fallback The number to fall back to if the sign of n is equal to 0.
  * @pure
  * @returns {Real}
 */
-function side(n, fallback)
+function Side(n, fallback)
 {
     n = sign(n);
     return (n == 0) ? fallback : n;
 }
 
 /**
- * This function will return the sign of the given boolean, returning -1 if it's false and 1 if it's true.
+ * Returns the sign of the given bool, returning -1 if the bool is false and 1 vice-versa.
  * @parameter {Bool} b The boolean to get the sign of.
  * @pure
  * @returns {Real}
  */
-function bsign(b)
+function BSign(b)
 {
     return (!b) ? -1 : 1;
 }
+
 
 /// @description Returns the absolute floor of val, that is, val floored down to its least magnitude in either direction.
 /// @param {real} val The value to absolute floor.	
@@ -41,6 +42,8 @@ function bsign(b)
 function abs_floor(val) {
 	return (val > 0 ? floor(val) : ceil(val));
 }
+
+// TODO: BASE GAME FUNCTION
 
 function distance_to_pos(arg0, arg1, arg2, arg3, arg4, arg5)
 {

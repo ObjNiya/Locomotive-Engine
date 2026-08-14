@@ -1,3 +1,5 @@
+// TODO: Make usage of time sources and rewrite
+
 /// @description This constructor will give a data structure that stores the value of the provided animation curves channel at it's seek position in the property ```value```; Which can be moved smoothly to a specified point.
 /// @parameter {Asset.GMAnimCurve|Struct.AnimCurve} curve_struct_or_id The ID or struct pointer of the animation curve to target.
 /// @parameter {String|Real} channel_name_or_index The channel name (a string) or the channel index (an integer).
@@ -210,6 +212,6 @@ function Tween(curve_struct_or_id, channel_name_or_index, duration, duration_uni
     set_animcurve_ext(curve_struct_or_id, channel_name_or_index, channel_name_or_index);
     set_duration(duration, duration_units);
     
-    array_push(obj_struct_updater.structs, self);
-    id = array_length(obj_struct_updater.structs);
+    //array_push(obj_struct_updater.structs, self);
+    //id = array_length(obj_struct_updater.structs);
 }

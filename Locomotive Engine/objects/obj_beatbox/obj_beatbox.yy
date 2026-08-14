@@ -12,9 +12,12 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Player",
-    "path":"folders/Objects/Game Structure/Player.yy",
+    "path":"folders/Objects/Essential/Player.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_object",
+    "path":"objects/par_object/par_object.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

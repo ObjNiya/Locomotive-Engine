@@ -18,12 +18,11 @@ function FlashEffectSet(duration = 8)
 
 
 /**
- * Enables the Flash Effect drawing if the current instances' Flash Time hasn't expired.
+ * Enables the Flash Effect drawing if the current instances' Flash Time hasn't expired and counts down the Flash Time.
  */
 function FlashEffectDraw()
 {
-    flashTime -= global.deltaTime;
-    if (flashTime <= 0)
+    if (--flashTime <= 0)
         return false;
     
     SetColorMix(COLOR_MIX_MODES.MIX, 1, c_white, true);

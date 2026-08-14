@@ -26,9 +26,9 @@ if variable_instance_exists(basefollowobj,"hsp")
 	_hsp = followingobj.hsp
 }
 
-if variable_instance_exists(basefollowobj,"visual_xscale")
+if variable_instance_exists(basefollowobj,"visualXScale")
 {
-	ixs = followingobj.visual_xscale
+	ixs = followingobj.visualXScale
 }
 
 
@@ -63,7 +63,7 @@ if (ds_queue_size(followqueue) > (LAG_STEPS))
 		{
 			x = lerp(x, thingie.x + space, interp);
 			y = lerp(y, thingie.y, interp);
-			interp = approach(interp, 1, 0.01);
+			interp = Approach(interp, 1, 0.01);
 		}
 		else
 		{

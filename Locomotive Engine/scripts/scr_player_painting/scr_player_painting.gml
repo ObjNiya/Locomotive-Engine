@@ -7,7 +7,7 @@ function StatePlayerPaintingCreate()
     
     hsp = 0;
     movespeed = 0;
-    vert_movespeed = 0;
+    vertMovespeed = 0;
     accel = 0.5;
     
     camera.properties_set_locked(false, true, false);
@@ -16,21 +16,22 @@ function StatePlayerPaintingCreate()
 /// @ignore
 function StatePlayerPaintingStep()
 {
-    if (!instance_exists(painting_id))
+    if (!instance_exists(paintingId))
     {
         SmcSetState("Normal");
         return;
     }
     
-    var target_dir = bsign(painting_id.x < x);
-    var target_x = painting_id.x + (120 * target_dir);
+    var target_dir = BSign(paintingId.x < x);
+    var target_x = paintingId.x + (120 * target_dir);
     
     if (x != target_x && grounded)
     {
-        cloud_particle_timer.Start();
+        if (time_source_get_state(cloudParticleTimer) != time_source_state_active)
+            time_source_start(cloudParticleTimer); 
         
-        movespeed = approach(movespeed, 6, accel);
-        x = approach(x, target_x, movespeed);
+        movespeed = Approach(movespeed, 6, accel );
+        x = Approach(x, target_x, movespeed);
         
         sprite_index = spr_walk;
         image_xscale = target_dir;
@@ -44,25 +45,25 @@ function StatePlayerPaintingStep()
     }
     else if (grounded)
     {
-        cloud_particle_timer.Stop();
-        sound_instance_one_shot(sfx_jump, x, y);
+        time_source_stop(cloudParticleTimer); 
+        sound_instance_one_shot(SfxJump, x, y);
         
         vsp = -15;
         hsp = -2.5 * target_dir;
         movespeed = 0;
         
-        sprite_set(spr_jump, 0);
+        SpriteSet(spr_jump, 0);
         image_speed = 1;
         image_xscale = -target_dir;
     }
     else
     {
-        animation_end(spr_fall);
+        AnimationEnd(spr_fall);
         
         if (sign(vsp) == -1)
             exit;
         
-        if (y > painting_id.ystart && visible)
+        if (y > paintingId.ystart && visible)
         {
             visible = false;
             
@@ -70,15 +71,15 @@ function StatePlayerPaintingStep()
             vsp = 0;
             grav = 0;
             
-            with (painting_id)
+            with (paintingId)
             {
-                ripple_speed = 0.032;
+                rippleSpeed = 0.032;
                 alarm[0] = 45;
             }
 
             sound_instance_one_shot(sfx_enter_painting);
         }
-        else if (y + vsp > painting_id.ystart)
+        else if (y + vsp > paintingId.ystart)
         {
             create_afterimage(x, y, obj_blur_afterimage);
             FlashEffectSet();

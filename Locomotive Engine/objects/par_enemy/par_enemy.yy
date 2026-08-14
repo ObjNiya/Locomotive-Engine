@@ -13,10 +13,13 @@
   "name":"par_enemy",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Objects/Level Structure.yy",
+    "name":"Enemies",
+    "path":"folders/Objects/Level Structure/Enemies.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_object",
+    "path":"objects/par_object/par_object.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

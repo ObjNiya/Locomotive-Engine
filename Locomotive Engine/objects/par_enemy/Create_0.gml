@@ -1,3 +1,5 @@
+event_inherited();
+
 depth = DEPTHS.FAR;
 mask_index = spr_waddledee_mask;
 
@@ -67,12 +69,12 @@ scr_collision_init();
 grav = 0.5;
 terminalVelocity = 20;
 
-movement_helpers_initialize();
-visual_helper_initialize();
-hitstunInit();
+MovementHelpersInit();
+VisualHelperInit();
+HitstunInit();
 
-hurtSysInit();
-hitbox = createHitbox();
+HurtSysInit();
+hitbox = HitboxCreate();
 
 with (hitbox)
     new Target("player", obj_player, AttackPlayer);

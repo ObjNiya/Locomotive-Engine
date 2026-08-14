@@ -1,14 +1,14 @@
-var target_fade = real(!fade_in);
+var target_fade = real(!fadeIn);
 
-image_alpha = approach(image_alpha, target_fade, fade_speed);
+image_alpha = Approach(image_alpha, target_fade, fadeSpd);
 
 if (image_alpha != target_fade)
     exit;
 
-if (--end_lag > 0)
+if (--endLag > 0)
     exit;
 
-if (fade_in)
+if (fadeIn)
 {
     instance_destroy();
     exit;
@@ -16,6 +16,6 @@ if (fade_in)
 
 with (obj_player)
     frozen = false;
-fade_in = true;
+fadeIn = true;
 
-goto_room();
+RoomGoto();

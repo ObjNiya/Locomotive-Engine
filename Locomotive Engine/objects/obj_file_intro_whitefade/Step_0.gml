@@ -1,1 +1,1 @@
-image_alpha = approach(image_alpha, 1, 0.1);
+image_alpha = Approach(image_alpha, 1, 0.1);

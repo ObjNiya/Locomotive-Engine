@@ -4,47 +4,47 @@ function StatePlayerCapeCreate()
     PLAYER_STATE_FAILSAVE;
     
     sprite_index = spr_cape;
-    image_speed = 0;
+    image_speed = 1;
     
     grav = 0;
-    vert_movespeed = 15;
+    vertMovespeed = 15;
     
-    vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
+    vertDir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     
-    if (vert_dir == 0)
+    if (vertDir == 0)
     {
         vsp = 3;
         image_index = 7;
     }
     else
     {
-        vsp = 12 * vert_dir;
-        image_index = image_number * real(vert_dir == 1);
+        vsp = 12 * vertDir;
+        image_index = image_number * real(vertDir == 1);
     }
     
     accel = 0.025;
-    vert_accel = 0.8;
+    vertAccel = 0.8;
     
-    blur_afterimage_timer.Start();
+    time_source_start(blurAfterimageTimer);
 }
 
 /// @ignore
 function StatePlayerCapeStep()
 {
-    vert_dir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
+    vertDir = sign(InputY(INPUT_CLUSTER.NAVIGATION));
     
     if (sprite_index == spr_cape_bounce)
     {
         vsp = 0;
         
-        if (animation_end(spr_cape))
+        if (AnimationEnd(spr_cape))
         {
             image_xscale *= -1;
             dir = image_xscale;
             
-            vsp = vert_movespeed * vert_dir;
+            vsp = vertMovespeed * vertDir;
             
-            image_speed = 0;
+            image_speed = 1;
         }
         
         return;
@@ -58,20 +58,22 @@ function StatePlayerCapeStep()
     
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
-        dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
+        dir = Side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
 
         movespeed += 0.5 * (dir == image_xscale);
         movespeed = median(12, movespeed, 20);
         
         image_xscale = dir;
         
-        sprite_set(spr_cape_spin, 0);
+        SpriteSet(spr_cape_spin, 0);
         image_speed = 1;
         
-        sound_instance_start(snd_grabdash);
+        sound_instance_start(sndGrabdash);
         
-        mach_afterimage_use_alpha = false;
-        mach_afterimage_timer.Start();
+        machAfterimageUseAlpha = false;
+        
+        if (time_source_get_state(machAfterimageTimer) != time_source_state_active)
+            time_source_start(machAfterimageTimer);
 
         return;
     }
@@ -97,48 +99,48 @@ function StatePlayerCapeStep()
         PlayerDoInstakill();
         instakillmove = true;
         
-        if (animation_end(spr_cape))
+        if (AnimationEnd(spr_cape))
         {
-            mach_afterimage_use_alpha = true;
-            mach_afterimage_timer.Stop();
+            machAfterimageUseAlpha = true;
+            time_source_stop(machAfterimageTimer);
             instakillmove = false;
             
-            image_speed = 0;
+            image_speed = 1;
         }
     }
     
-    switch (vert_dir)
+    switch (vertDir)
     {
-        case 1: vert_accel = 1.5 break;
-        case 0: vert_accel = 0.25 break;
-        case -1: vert_accel = 0.75 break;
+        case 1: vertAccel = 1.5 break;
+        case 0: vertAccel = 0.25 break;
+        case -1: vertAccel = 0.75 break;
     }
     
-    if (vert_dir != sign(vsp) && vert_dir != 0)
-        vert_accel = 1.25;
+    if (vertDir != sign(vsp) && vertDir != 0)
+        vertAccel = 1.25;
     
-    var target_speed = vert_movespeed * vert_dir;
+    var target_speed = vertMovespeed * vertDir;
     var approach_speed = sprite_get_speed(sprite_index);
     
     if (sprite_get_speed_type(sprite_index) == spritespeed_framespersecond)
         approach_speed /= game_get_speed(gamespeed_fps);
     
-    if (vert_dir == 0)
+    if (vertDir == 0)
     {
         target_speed = 3;
         
         if (sprite_index == spr_cape)
-            image_index = approach(image_index, 7, approach_speed);
+            image_index = Approach(image_index, 7, approach_speed);
     }
     else if (sprite_index == spr_cape)
-        image_index = approach(image_index, (image_number - 1) * real(vert_dir == 1), approach_speed);
+        image_index = Approach(image_index, (image_number - 1) * real(vertDir == 1), approach_speed);
     
-    vert_movespeed = (vert_dir == 1) ? 20 : 14;
+    vertMovespeed = (vertDir == 1) ? 20 : 14;
     
     if (movespeed > 16) 
         movespeed += accel;
 
-    vsp = approach(vsp, target_speed, vert_accel);
+    vsp = Approach(vsp, target_speed, vertAccel);
     hsp = movespeed * dir;
 }
 
@@ -150,7 +152,8 @@ function StatePlayerCapeDestroy()
     grav = 0.5;
     
     instakillmove = false;
-    mach_afterimage_use_alpha = true;
-    mach_afterimage_timer.Stop();
-    blur_afterimage_timer.Stop();
+    machAfterimageUseAlpha = true;
+    
+    time_source_stop(machAfterimageTimer);
+    time_source_stop(blurAfterimageTimer);
 }

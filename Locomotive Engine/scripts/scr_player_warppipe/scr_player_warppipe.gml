@@ -4,7 +4,7 @@ function StatePlayerWarppipeCreate()
     PLAYER_STATE_FAILSAVE;
     
     if (!EqualsToAny(sprite_index, spr_warppipe_down, spr_warppipe_up))
-        sprite_set(spr_warppipe_down, 0);
+        SpriteSet(spr_warppipe_down, 0);
     
     image_speed = 1;
     
@@ -13,18 +13,16 @@ function StatePlayerWarppipeCreate()
     grav = 0;
     
     movespeed = 0;
-    vert_movespeed = 0;
-    
-    warppipe_failsave_timer.Start();
+    vertMovespeed = 0;
 }
 
 /// @ignore
 function StatePlayerWarppipeStep()
 {
-    if (animation_end() && image_speed != 0)
+    if (AnimationEnd() && image_speed != 0)
     {
         image_speed = 0;
-        trans_room(obj_roomtrans_fade, -1);
+        RoomTrans(obj_roomtrans_fade, -1);
     }
 }
 
@@ -34,7 +32,6 @@ function StatePlayerWarppipeDestroy()
     image_speed = 1;
     
     grav = 0.5;    
-    warppipe_failsave_timer.Stop();
 }
 
 /// @ignore

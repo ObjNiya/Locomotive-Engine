@@ -9,25 +9,25 @@ with (obj_player)
     if (!up_warppipe && !down_warppipe)
         exit;
     
-    if (!queue_room(other.target_room, other.target_spawn))
+    if (!RoomQueue(other.targetRoom, other.targetSpawn))
         exit;
     
-    set_spawn_align(SPAWN_XALIGN.RIGHT, SPAWN_YALIGN.BOTTOM);
-    set_spawn_offset(0, 0);
+    SpawnSetAlign(fa_right, fa_bottom);
+    SpawnSetOffset(0, 0);
     
     x = other.x;
     other.depth = DEPTHS.CLOSE;
     
     if (up_warppipe)
     {
-        sprite_set(spr_warppipe_up, 0);
+        SpriteSet(spr_warppipe_up, 0);
         if (stateName == "Sjump")
             image_index = image_number / 2;
     }
     else if (down_warppipe && stateName == "Groundpound")
         image_index = image_number / 2;
     
-    warppipe_id = other.id;
+    warppipeId = other.id;
     SmcSetState("Warppipe");
     
     sound_instance_one_shot(sfx_warp_pipe_enter);

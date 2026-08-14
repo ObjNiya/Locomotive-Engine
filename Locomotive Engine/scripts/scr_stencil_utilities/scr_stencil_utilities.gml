@@ -1,3 +1,5 @@
+// TODO: Ask dawid what this does to document it
+
 function draw_set_mask_begin()
 {
     gpu_push_state()

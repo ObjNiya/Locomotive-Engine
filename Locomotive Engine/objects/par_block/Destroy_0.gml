@@ -14,6 +14,6 @@ repeat (dust_amount)
         sprite_index = other.dust_sprite;
 }
 
-sleep(5);
+Sleep(5);
 sound_instance_one_shot(destroy_sound, x, y);
 add_saveroom();

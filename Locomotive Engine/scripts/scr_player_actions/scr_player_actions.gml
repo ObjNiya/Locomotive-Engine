@@ -38,7 +38,7 @@ function PlayerDoGroundpound(forced = false, divebomb = false)
     SmcSetState("Groundpound");
     
     if (divebomb)
-        sprite_set(spr_divebomb, 0);
+        SpriteSet(spr_divebomb, 0);
     
     return true;
 }
@@ -48,7 +48,7 @@ function PlayerDoMachslide(forced = false)
     if (!PlayerMachslide() && !forced)
         return false;
     
-    sound_instance_one_shot(sfx_mach_brake, x, y);
+    sound_instance_one_shot(SfxMachBrake, x, y);
     SmcSetState("Machslide");
     
     return true;
@@ -59,7 +59,7 @@ function PlayerDoMachturn(forced = false)
     if (!PlayerMachturn() && !forced)
         return false;
     
-    sound_instance_one_shot(sfx_mach_turn, x, y);
+    sound_instance_one_shot(SfxMachTurn, x, y);
     SmcSetState("Machturn");
     
     return true;
@@ -90,7 +90,7 @@ function PlayerDoLadder()
     if (instance_exists(ladder_below) && !place_meeting(x, y + 1, obj_solid) && sign_input_y == 1 && grounded)
     {
         y++;
-        ladder_id = ladder_below;
+        ladderId = ladder_below;
         x = (ladder_id.x - ladder_id.sprite_xoffset) + (ladder_id.sprite_width / 2);
         
         SmcSetState("Ladder");
@@ -101,7 +101,7 @@ function PlayerDoLadder()
     
     if (instance_exists(ladder) && sign_input_y == -1)
     {
-        ladder_id = ladder;
+        ladderId = ladder;
         x = (ladder_id.x - ladder_id.sprite_xoffset) + (ladder_id.sprite_width / 2);
         
         SmcSetState("Ladder");
@@ -120,7 +120,7 @@ function PlayerDoWallsplat(forced = false)
     
     SmcSetState("Anim");
     sound_instance_one_shot(sfx_player_wall_splat, x, y);
-    sprite_set(spr_wallsplat, 0);
+    SpriteSet(spr_wallsplat, 0);
             
     vsp = 0;
     grav = 0;
@@ -135,7 +135,7 @@ function PlayerDoCeilingsplat(forced = false)
         
     SmcSetState("Anim");
     sound_instance_one_shot(sfx_player_groundpound_land, x, y);
-    sprite_set(spr_sjump_hit_ceiling, 0);
+    SpriteSet(spr_sjump_hit_ceiling, 0);
             
     vsp = 0;
     grav = 0;
@@ -148,13 +148,13 @@ function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -1
     if (!PlayerJump() && !forced)
         return false;
     
-    coyote_jump();
-    sprite_set(sprite_to_set, 0);
+    CoyoteTimeJump();
+    SpriteSet(sprite_to_set, 0);
     
     if (particle)
         InstanceCreate(x, y + 45, obj_jump_particle);
     
-    sound_instance_one_shot(sfx_jump, x, y);
+    sound_instance_one_shot(SfxJump, x, y);
     
     vsp = jump_height;
     
@@ -166,12 +166,12 @@ function PlayerDoLongjump(forced = false, jump_height = -11)
     if (!PlayerJump() && !forced)
         return false;
     
-    coyote_jump();
+    CoyoteTimeJump();
     SmcSetState("Mach");
-    sprite_set(spr_longjump_intro, 0);
+    SpriteSet(spr_longjump_intro, 0);
     InstanceCreate(x, y + 45, obj_jump_particle);
     
-    sound_instance_start(snd_roll_getup);
+    sound_instance_start(sndRollGetup);
     
     movespeed = max(movespeed, 10);
     vsp = jump_height;
@@ -191,13 +191,13 @@ function PlayerDoJumpstop(forced = false, divisor = 20)
 
 function PlayerDoInstakill()
 {
-    var hurt_enemy = hitboxDoAttack(hitbox, "attackEnemy", false);
+    var hurt_enemy = HitboxDoAttack(hitbox, "attackEnemy", false);
     if (hurt_enemy == noone)
         return false;
     
     camera.shake_set(3, 0.05);
     sound_instance_one_shot(sfx_player_punch, x, y);
-    hitstunApply(5);
+    HitstunSet(5);
     
     InstanceCreate(hurt_enemy.x, hurt_enemy.y, obj_parry_particle);
     InstanceCreate(hurt_enemy.x, hurt_enemy.y, obj_kungfu_particle);

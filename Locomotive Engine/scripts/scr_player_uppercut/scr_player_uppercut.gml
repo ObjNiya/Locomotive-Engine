@@ -3,7 +3,7 @@ function StatePlayerUppercutCreate()
 {
     PLAYER_STATE_FAILSAVE;
     
-    sprite_set(spr_uppercut, 0);
+    SpriteSet(spr_uppercut, 0);
     
     movespeed = 4;
     accel = 0.5;
@@ -11,8 +11,9 @@ function StatePlayerUppercutCreate()
     vsp = (grounded) ? -14 : -10;
     
     instakillmove = true;
-    mach_afterimage_use_alpha = false;
-    mach_afterimage_timer.Start();
+    machAfterimageUseAlpha = false;
+    
+    time_source_start(machAfterimageTimer);
 }
 
 /// @ignore
@@ -22,13 +23,13 @@ function StatePlayerUppercutStep()
     destroy_blocks(x, y - 50, [obj_block_metal, obj_block_metal_tiles]);
     
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    hsp = approach(hsp, movespeed * dir, accel);
+    hsp = Approach(hsp, movespeed * dir, accel );
     
-    if (animation_end())
+    if (AnimationEnd())
         image_speed = 0;
     
     if (vsp > 0)
-        mach_afterimage_timer.Stop();
+        time_source_stop(machAfterimageTimer);
     
     if (!grounded)
         return;
@@ -41,8 +42,9 @@ function StatePlayerUppercutStep()
 function StatePlayerUppercutDestroy()
 {
     instakillmove = false;
-    mach_afterimage_use_alpha = true;
-    mach_afterimage_timer.Stop();
+    machAfterimageUseAlpha = true;
+    
+    time_source_stop(machAfterimageTimer);
     
     image_speed = 1;
 }

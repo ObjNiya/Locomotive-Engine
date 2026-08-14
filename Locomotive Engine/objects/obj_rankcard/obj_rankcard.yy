@@ -9,7 +9,10 @@
     "name":"Rank",
     "path":"folders/Objects/Cutscene/Rank.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_object",
+    "path":"objects/par_object/par_object.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

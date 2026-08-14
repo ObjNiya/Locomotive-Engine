@@ -1,5 +1,83 @@
 /**
- * This function is a constructor and it will create a new Sprite that can aims to replicate the functionality of GameMakers built-in ```sprite_index``` 
+ * Creates a virtual sprite to be drawn that automatically animates.
+ * @parameter {Asset.GMSprite} sprite_index The sprite to animate and draw.
+ */
+function Animator(sprite_index) constructor
+{
+    spriteIndex = -1;
+    spriteSpeed = 0;
+    
+    imageIndex = 0;
+    imageNumber = 0;
+    imageSpeed = 1;
+    imageXScale = 1;
+    imageYScale = 1;
+    imageAngle = 0;
+    imageBlend = c_white;
+    imageAlpha = 1;
+    
+    timescale = 1;
+    
+    
+    /**
+     * Sets the Animators sprite and associated variables.
+     * @parameter {Asset.GMSprite} sprite_index The sprite to set.
+     */
+    static SetSprite = function(sprite_index)
+    {
+        spriteIndex = sprite_index;
+        if (!sprite_exists(spriteIndex))
+            return;
+        
+        var new_image_num = sprite_get_number(spriteIndex);
+        var image_index_mult = min(new_image_num, imageNumber) / max(new_image_num, imageNumber);
+        
+        imageNumber = new_image_num;
+        imageIndex *= image_index_mult;
+        spriteSpeed = sprite_get_speed(spriteIndex);
+        
+        if (sprite_get_speed_type(spriteIndex) == spritespeed_framespersecond)
+            spriteSpeed /= game_get_speed(gamespeed_fps);
+    }
+    
+    
+    /// @ignore
+    static Step = function()
+    {
+        if (imageIndex > imageNumber)
+            imageIndex = 0;
+        
+        imageIndex += spriteSpeed * imageSpeed;
+    }
+    
+    
+    /**
+     * Destroys the Animators Time Source that it used to automatically animate to prevent memory leaking.
+     */
+    static CleanUp = function()
+    {
+        time_source_stop(stepTimeSource);
+        time_source_destroy(stepTimeSource);
+    }
+    
+    
+    /**
+     * Draws the Animators sprite with its transformations at the given position.
+     * @parameter {Real} x The x position to draw the sprite at.
+     * @parameter {Real} y The y position to draw the sprite at.
+     */
+    static Draw = function(x, y)
+    {
+        draw_sprite_ext(spriteIndex, imageIndex, x, y, imageXScale, imageYScale, imageAngle, imageBlend, imageAlpha);
+    }
+    
+    stepTimeSource = time_source_create(time_source_game, 1, time_source_units_frames, Step, [], -1);
+    SetSprite(sprite_index);
+}
+
+
+/**
+ * DEPRECATED This function is a constructor and it will create a new Sprite that can aims to replicate the functionality of GameMakers built-in ```sprite_index``` 
  * and other associated variables inside of a struct.
  * @parameter {Asset.GMSprite} sprite_index The index of the sprite to assign to the Sprite struct.
  */

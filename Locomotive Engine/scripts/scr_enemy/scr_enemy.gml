@@ -1,10 +1,10 @@
 #macro ENEMY_STATE_FAILSAVE var parent = object_get_parent(object_index) if (parent != par_enemy) { SmcSetState("None") Log(object_index, LOG_TYPES.WARNING, "Attempted to enter an enemy state despite not being an enemy! Setting state to empty...") return }
 
 /**
- * This function will attack the given Enemy, meant to be exclusively called by obj_hitbox.
+ * Attacks the given Enemy, meant for obj_hitbox.
  * @parameter {Instance.Id} enemy_id Which Enemy instance to attack.
- * @parameter {Instance.Id} attacker_id The instance that Enemy was attacked by.
- * @parameter {Real} damage The amount of damage to deal to the given Enemy.
+ * @parameter {Instance.Id} attacker_id The instance that the Enemy was attacked by.
+ * @parameter {Real} damage The amount of damage to deal to the Enemy.
  */
 function AttackEnemy(enemy_id, attacker_id, damage = 1)
 {
@@ -24,10 +24,10 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
         }
         else
         {
-            image_xscale = -side(sign(attacker_id.hsp), sign(attacker_id.image_xscale));
+            image_xscale = -Side(sign(attacker_id.hsp), sign(attacker_id.image_xscale));
             
-            visual_xscale = 0.8;
-            visual_yscale = 1.3;
+            visualXScale = 0.8;
+            visualYScale = 1.3;
             
             movespeed = 12;
             vsp = -5;
@@ -43,7 +43,7 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
 }
 
 /**
- * This function will stun the given Enemy, meant to be exclusively called by obj_hitbox.
+ * Stuns the given Enemy, meant for obj_hitbox.
  * @parameter {Instance.Id} enemy_id Which Enemy instance to stun.
  * @parameter {Instance.Id} attacker_id The instance that Enemy was stunned by.
  */
@@ -61,8 +61,8 @@ function StunEnemy(enemy_id, attacker_id)
         
         image_xscale = -sign(attacker_id.image_xscale);
         
-        visual_xscale = 0.8;
-        visual_yscale = 1.3;
+        visualXScale = 0.8;
+        visualYScale = 1.3;
         
         movespeed = 12;
         vsp = (attacker_id.y - 180 - y) / 60;
@@ -83,6 +83,10 @@ function StunEnemy(enemy_id, attacker_id)
     }
 }
 
+
+/**
+ * Scares every Enemy that has the instance the function was called by in their sight.
+ */
 function ScareEnemies()
 {
     with (par_enemy)

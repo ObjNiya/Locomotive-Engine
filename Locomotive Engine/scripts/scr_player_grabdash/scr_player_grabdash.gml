@@ -4,7 +4,7 @@ function StatePlayerGrabdashCreate()
     PLAYER_STATE_FAILSAVE;
     
     momentum = true;
-    grabdash_airborne = !grounded;
+    grabdashAirborne = !grounded;
     accel = 0.5;
     
     image_speed = 1;
@@ -17,9 +17,9 @@ function StatePlayerGrabdashCreate()
     if (movespeed < 10 && grounded)
         movespeed = max(movespeed, 10);
     
-    sprite_set(spr_grabdash_intro, 0);
-    sound_instance_start(snd_grabdash);
-    blur_afterimage_timer.Start();
+    SpriteSet(spr_grabdash_intro, 0);
+    sound_instance_start(sndGrabdash);
+    time_source_start(blurAfterimageTimer);
 }
 
 /// @ignore
@@ -35,7 +35,7 @@ function StatePlayerGrabdashStep()
     destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
     PlayerDoJumpstop();
     
-    if (hitboxDoAttack(hitbox, "grabEnemy") != noone)
+    if (HitboxDoAttack(hitbox, "grabEnemy") != noone)
         return;
     
     if (PlayerDoLongjump())
@@ -43,7 +43,7 @@ function StatePlayerGrabdashStep()
     
     if (PlayerWallclimb())
     {
-        wallclimb_grab_buffer = 10;
+        wallclimbGrabTime = 10;
         SmcSetState("Wallclimb");
         
         return;
@@ -55,7 +55,7 @@ function StatePlayerGrabdashStep()
         return;
     }
     
-    if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && animation_end()))
+    if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && AnimationEnd()))
     {
         if (PlayerMachrun() && sign_input_x == dir)
         {
@@ -69,7 +69,7 @@ function StatePlayerGrabdashStep()
         
         if (!grounded && sign_input_x == -dir)
         {
-            sprite_set(spr_grabdash_cancel, 0);
+            SpriteSet(spr_grabdash_cancel, 0);
             sound_instance_one_shot(sfx_player_grab_cancel, x, y);
         }
         else if (sign_input_x == -dir)
@@ -83,26 +83,25 @@ function StatePlayerGrabdashStep()
         SmcSetState("Normal");
         
         sound_instance_one_shot(sfx_player_bump_wall, x, y);
-        sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+        sound_instance_stop(sndGrabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
         create_particle(x + (10 * image_xscale), y + 10, obj_bump_particle, false);
         
         vsp = -4;
         grounded = false;
-        grabdash_bump_buffer = 60;
         
         sprite_index = spr_grabdash_bump;
         return;
     }
     
-    animation_end_ext((sprite_index == spr_grabdash_intro), spr_grabdash);
+    AnimationEndExt((sprite_index == spr_grabdash_intro), spr_grabdash);
     
     if (!grounded)
         return;
     
-    animation_end_ext((sprite_index == spr_grabdash), spr_grabdash_end);
+    AnimationEndExt((sprite_index == spr_grabdash), spr_grabdash_end);
     
-    if (grabdash_airborne && sprite_index == spr_grabdash)
-        sprite_set(spr_grabdash_end, 0);
+    if (grabdashAirborne && sprite_index == spr_grabdash)
+        SpriteSet(spr_grabdash_end, 0);
     
     create_particle_repeating(x, y + 45, obj_slide_cloud_particle);
 }
@@ -110,5 +109,5 @@ function StatePlayerGrabdashStep()
 /// @ignore
 function StatePlayerGrabdashDestroy()
 {
-    blur_afterimage_timer.Stop();
+    time_source_stop(blurAfterimageTimer);
 }

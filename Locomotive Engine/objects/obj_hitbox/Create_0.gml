@@ -1,4 +1,5 @@
-hurtSysInit();
+event_inherited();
+HurtSysInit();
 
 active = true;
 owner = noone;

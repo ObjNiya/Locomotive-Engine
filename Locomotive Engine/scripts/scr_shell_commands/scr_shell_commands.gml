@@ -46,10 +46,10 @@ function sh_goto_room(args)
     var rm = asset_get_index(args[1]);
     var spawn = asset_get_index(args[2]);
     
-    if (!queue_room(rm, spawn))
+    if (!RoomQueue(rm, spawn))
         return;
     
-    trans_room(obj_roomtrans_fade, -1);
+    RoomTrans(obj_roomtrans_fade, -1);
 }
 
 /// @ignore
@@ -115,9 +115,9 @@ if (IDE_BUILD)
     
         switch (string_lower(args[1]))
         {
-            case "info": log_type_set_hidden(LOG_TYPES.INFO, hidden) break;
-            case "warning": log_type_set_hidden(LOG_TYPES.WARNING, hidden) break; 
-            case "error": log_type_set_hidden(LOG_TYPES.ERROR, hidden) break;       
+            case "info": LogTypeSetHidden(LOG_TYPES.INFO, hidden) break;
+            case "warning": LogTypeSetHidden(LOG_TYPES.WARNING, hidden) break; 
+            case "error": LogTypeSetHidden(LOG_TYPES.ERROR, hidden) break;       
         }
     }
     

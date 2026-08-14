@@ -1,3 +1,5 @@
+/// TODO: refactor
+
 function Camera() constructor
 {
     var cur_viewport = 0;
@@ -120,14 +122,14 @@ function CameraStep(camera_to_update)
     with (camera_to_update)
     {
         if (!zoom_locked)
-            zoom = 1 * array_get_sum(zoom_offsets);
+            zoom = 1 * ArrayGetSum(zoom_offsets);
         
         width = global.baseAppWidth * zoom;
         height = global.baseAppHeight * zoom;
         
         camera_set_view_size(id, width, height);
         
-        shake_mag = approach(shake_mag, 0, shake_mag_deccel);
+        shake_mag = Approach(shake_mag, 0, shake_mag_deccel);
         
         var target_exists = instance_exists(target);
         
@@ -136,13 +138,13 @@ function CameraStep(camera_to_update)
         
         if (!x_locked && target_exists)
         {
-            x = (target.x + array_get_sum(x_offsets)) - cam_x_center;
+            x = (target.x + ArrayGetSum(x_offsets)) - cam_x_center;
             x = clamp(x, 0, room_width - width);
         }
         
         if (!y_locked && target_exists)
         {
-            y = (target.y + array_get_sum(y_offsets)) - (50 + cam_y_center);
+            y = (target.y + ArrayGetSum(y_offsets)) - (50 + cam_y_center);
             y = clamp(y, 0, room_height - height);
         }
          

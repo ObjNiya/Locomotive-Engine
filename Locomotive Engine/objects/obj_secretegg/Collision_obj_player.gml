@@ -11,6 +11,6 @@ with (other)
 }
 
 sound_instance_one_shot(sfx_secretegg_enter, x, y);
-queue_room(target_room, obj_secretegg_spawn);
-sprite_set(spr_secretegg_close, 0);
+RoomQueue(targetRoom, obj_secretegg_spawn);
+SpriteSet(spr_secretegg_close, 0);
 add_saveroom();

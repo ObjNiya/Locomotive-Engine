@@ -1,9 +1,9 @@
-#macro CATCH_UNDEFINED_CHAR char = __get_char__(char) if (char == undefined) { quick_log("The given character does not exist.") return -1 }
+#macro CATCH_UNDEFINED_CHAR char = __GetChar__(char) if (char == undefined) { QuickLog("The given character does not exist.") return -1 }
 
-global.characters = array_create(MAX_CHARACTERS, undefined);
+global.characters = [];
 
 /// @ignore
-function __get_char__(char)
+function __GetChar__(char)
 {
     if (is_struct(char))
         return char;
@@ -13,29 +13,21 @@ function __get_char__(char)
     return char;
 }
 
+
 /**
- * This constructor will return a Char Struct, containing all the neccessary information for all of the character related functions to be used on it.
- * @parameter {String} sprite_suffix With what the name of the characters sprites end.
- * @parameter {String} event_name The name of the character within the path to their FMOD Studio event.
- * @parameter {String} name The characters display name in-game.
+ * Creates a new Character to be given to be used with function that start with ```Char```.
+ * @parameter {Real} index The index of the Character as an ```CHARS``` enum member.
+ * @parameter {String} sprite_suffix aWith what the Characters sprites' names end with.
+ * @parameter {String} event_name The name of the Character within their FMOD Studio event paths.
+ * @parameter {String} display_name The characters display name in-game.
 */
-function Char(sprite_suffix, event_name, name) constructor 
+function Char(index, sprite_suffix, event_name, display_name) constructor
 {
-    self.sprite_suffix = sprite_suffix;
-    self.event_name = event_name;
-    self.name = name;
+    sprSuffix = sprite_suffix;
+    evName = event_name;
+    displayName = display_name;
+    
+    global.characters[index] = self;
 }
 
-/**
- * This function will define a character using the Char constructor and insert it into the global characters array.
- * @parameter {Real} index Which index of the characters array to insert the level into.
- * @parameter {String} sprite_suffix With what the name of the characters sprites end.
- * @parameter {String} event_name The name of the character within the path to their FMOD Studio event.
- * @parameter {String} name The characters display name in-game.
- */
-function char_define(index, sprite_suffix, event_name, name)
-{
-    global.characters[index] = new Char(sprite_suffix, event_name, name);
-}
-
-__define_characters__();
+__DefineChars__();

@@ -1,5 +1,5 @@
 /**
- * This function will return whether or not the first argument equates to any of the later arguments.
+ * Returns whether or not the first argument is equal to any of the latter ones.
  * @pure
  * @returns {Bool}
  */
@@ -20,11 +20,11 @@ function EqualsToAny()
 
 
 /**
- * This function will pause the current code for the specified amount of miliseconds.
+ * Pauses code execution for the current script.
  * @parameter {Real} ms For how long to pause the current code in miliseconds.
  * @returns {Real}
  */
-function sleep(ms)
+function Sleep(ms)
 {
     var time = current_time;
     

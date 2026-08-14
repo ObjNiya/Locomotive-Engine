@@ -13,7 +13,7 @@ function StateEnemyWalkStep()
 {
     walk_prefix();
     
-    if (animation_end() && sprite_index == spr_turn)
+    if (AnimationEnd() && sprite_index == spr_turn)
     {
         sprite_index = spr_walk;
         image_xscale *= -1;
@@ -27,7 +27,7 @@ function StateEnemyWalkStep()
     {
         if (sprite_exists(spr_turn) && sprite_index != spr_turn)
         {
-            sprite_set(spr_turn, 0);
+            SpriteSet(spr_turn, 0);
             movespeed = 0;
         }
         else if (!sprite_exists(spr_turn))
@@ -36,7 +36,7 @@ function StateEnemyWalkStep()
     
     hsp = movespeed * image_xscale;
     
-    if (animation_end() && grounded)
+    if (AnimationEnd() && grounded)
     {
         InstanceCreate(x, y + 43, obj_cloud_particle);
         image_index = 0;

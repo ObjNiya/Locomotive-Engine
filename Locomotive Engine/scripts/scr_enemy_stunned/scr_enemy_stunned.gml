@@ -15,13 +15,13 @@ function StateEnemyStunnedStep()
     if (instance_exists(obj_player) && obj_player.stateName == "Taunt" && grounded)
         stunned_timer.curTime = 0;
     
-    visual_xscale = approach(visual_xscale, 1, 0.03);
-    visual_yscale = approach(visual_yscale, 1, 0.03);
+    visualXScale = Approach(visualXScale, 1, 0.03);
+    visualYScale = Approach(visualYScale, 1, 0.03);
     
     if (unstunableBuffer > 0)
         unstunableBuffer--;
     
-    movespeed = approach(movespeed, 0, 0.3);
+    movespeed = Approach(movespeed, 0, 0.3);
     hsp = movespeed * -image_xscale;
     
     if (movespeed > 4 && grounded)
@@ -31,8 +31,8 @@ function StateEnemyStunnedStep()
 /// @ignore
 function StateEnemyStunnedDestroy()
 {
-    visual_xscale = 1;
-    visual_yscale = 1;
+    visualXScale = 1;
+    visualYScale = 1;
     
     stunned_timer.Stop();
 }

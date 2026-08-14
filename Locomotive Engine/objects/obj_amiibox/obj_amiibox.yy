@@ -8,8 +8,8 @@
   "name":"obj_amiibox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Collectables",
-    "path":"folders/Objects/Level Structure/Collectables.yy",
+    "name":"Plushies",
+    "path":"folders/Objects/Level Structure/Plushies.yy",
   },
   "parentObjectId":null,
   "persistent":false,

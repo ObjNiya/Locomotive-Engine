@@ -211,7 +211,7 @@ function scr_collision() {
 
 	// Gravity
 	if (vsp < terminalVelocity) {
-		vsp += grav;
+		vsp += grav ;
 	}
 
 	

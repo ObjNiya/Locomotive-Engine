@@ -1,3 +1,5 @@
+// TODO: Improve
+
 enum STATE_EVENTS
 {
     CREATE = 0,
@@ -37,7 +39,7 @@ enum STATE_EVENTS
     BOUNDARY_VIEW7 = 34,
     ROOM_START = 35,
     ROOM_END = 36,
-    ANIMATION_END = 37,
+    AnimationEnd = 37,
     ANIMATION_UPDATE = 38,
     ANIMATION_EVENT = 39,
     END_OF_PATH = 40,

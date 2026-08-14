@@ -4,10 +4,10 @@ function StatePlayerCapeFallCreate()
     PLAYER_STATE_FAILSAVE;
     
     if (sprite_index != spr_cape_end && sprite_index != spr_cape_fall)
-        sprite_set(spr_cape_end, 0);
+        SpriteSet(spr_cape_end, 0);
     
     accel = 0.75;
-    mach_afterimage_timer.Start();
+    time_source_start(machAfterimageTimer);
 }
 
 /// @ignore
@@ -27,9 +27,9 @@ function StatePlayerCapeFallStep()
         return;
     }
     
-    animation_end_ext((sprite_index == spr_cape_end), spr_cape_fall);
+    AnimationEndExt((sprite_index == spr_cape_end), spr_cape_fall);
     
-    dir = side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
+    dir = Side(sign(InputX(INPUT_CLUSTER.NAVIGATION)), image_xscale);
     
     if (abs(hsp) < 12 || dir == -sign(hsp))
         hsp += accel * dir;
@@ -46,7 +46,7 @@ function StatePlayerCapeFallStep()
         else
         {
             SmcSetState("Normal");
-            sprite_set(spr_fall, 0);
+            SpriteSet(spr_fall, 0);
         }
     }
 }
@@ -54,5 +54,5 @@ function StatePlayerCapeFallStep()
 /// @ignore
 function StatePlayerCapeFallDestroy()
 {
-    mach_afterimage_timer.Stop();
+    time_source_stop(blurAfterimageTimer);
 }

@@ -3,7 +3,7 @@ function StatePlayerDoorCreate()
 {
     PLAYER_STATE_FAILSAVE;
     
-    sprite_set(spr_lookdoor, 0);
+    SpriteSet(spr_lookdoor, 0);
     
     image_speed = 1;
     
@@ -12,17 +12,15 @@ function StatePlayerDoorCreate()
     grav = 0;
     
     movespeed = 0;
-    vert_movespeed = 0;
+    vertMovespeed = 0;
     
-    sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-    
-    warppipe_failsave_timer.Start();
+    sound_instance_stop(sndSuperjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }
 
 /// @ignore
 function StatePlayerDoorStep()
 {
-    if (!animation_end())
+    if (!AnimationEnd())
         return;
     
     if (sprite_index == spr_walk_forward)
@@ -37,12 +35,11 @@ function StatePlayerDoorDestroy()
     image_speed = 1;
     
     grav = 0.5;
-    warppipe_failsave_timer.Start();
 }
 
 /// @ignore
 function StatePlayerDoorRoomStart()
 {
-    sprite_set(spr_walk_forward, 0);
+    SpriteSet(spr_walk_forward, 0);
     image_speed = 1;
 }

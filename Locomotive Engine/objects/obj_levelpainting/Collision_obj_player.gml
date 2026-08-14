@@ -1,9 +1,9 @@
 with (other)
 {
-    if (cam_painting_up.seek_target != 1 || stateName == "Painting" || sign(InputY(INPUT_CLUSTER.NAVIGATION)) != -1)
+    if (camPaintingUp.seek_target != 1 || stateName == "Painting" || sign(InputY(INPUT_CLUSTER.NAVIGATION)) != -1)
         exit;
     
-    StopMusic();
-    painting_id = other.id;
+    MusicStop();
+    paintingId = other.id;
     SmcSetState("Painting");
 }

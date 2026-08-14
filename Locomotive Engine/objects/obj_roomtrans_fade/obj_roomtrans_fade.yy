@@ -31,9 +31,9 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"fade_speed","filters":[],"listItems":[],"multiselect":false,"name":"fade_speed","rangeEnabled":false,"rangeMax":1.0,"rangeMin":0.05,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"end_lag","filters":[],"listItems":[],"multiselect":false,"name":"end_lag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"fade_start","filters":[],"listItems":[],"multiselect":false,"name":"fade_start","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"fadeSpd","filters":[],"listItems":[],"multiselect":false,"name":"fadeSpd","rangeEnabled":true,"rangeMax":1.0,"rangeMin":0.01,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.1","varDescription":"How fast the screen will fade in and out.","varFriendlyName":"Fade Speed","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"fadeStart","filters":[],"listItems":[],"multiselect":false,"name":"fadeStart","rangeEnabled":true,"rangeMax":1.0,"rangeMin":0.01,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varDescription":"By how much the screen should have already faded to black when the room transition begins.","varFriendlyName":"Fade Start","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"endLag","filters":[],"listItems":[],"multiselect":false,"name":"endLag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varDescription":"How long to wait while the screen is fully faded out. (In frames)","varFriendlyName":"End Lag","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

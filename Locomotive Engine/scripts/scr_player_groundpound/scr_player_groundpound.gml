@@ -3,7 +3,7 @@ function StatePlayerGroundpoundCreate()
 {
     PLAYER_STATE_FAILSAVE;
     
-    sprite_set(spr_groundpound_intro, 0);
+    SpriteSet(spr_groundpound_intro, 0);
     
     accel = 0.25;
     deccel = 0.05;
@@ -13,13 +13,11 @@ function StatePlayerGroundpoundCreate()
     vsp = -6;
     
     terminalVelocity = infinity;
-    
     instakillmove = true;
-    mach_afterimage_use_alpha = false;
-    mach_afterimage_timer.maxTime = 5;
+    machAfterimageUseAlpha = false;
     
-    blur_afterimage_timer.Start();
-    sound_instance_start(snd_groundpound);
+    time_source_start(blurAfterimageTimer);
+    sound_instance_start(sndGroundpound);
 }
 
 /// @ignore
@@ -32,15 +30,15 @@ function StatePlayerGroundpoundStep()
         if (groundedSlope)
         {
             SmcSetState("Mach"); 
-            sprite_set(spr_machroll_getup, 0);
+            SpriteSet(spr_machroll_getup, 0);
             
-            if (groundpound_smash > 20)
+            if (groundpoundSmash > 20)
                 movespeed = 12;
             else
                 movespeed = 8;
             
             dir = sign(-instance_place(x, y + 1, obj_slope).image_xscale);
-            image_xscale = side(dir, image_xscale);
+            image_xscale = Side(dir, image_xscale);
             
             create_particle(x, y + 45, obj_jump_particle);
             return;
@@ -48,7 +46,7 @@ function StatePlayerGroundpoundStep()
         
         if (!landed)
         {
-            sprite_set((sprite_index == spr_divebomb) ? spr_divebomb_land : spr_groundpound_land, 0);
+            SpriteSet((sprite_index == spr_divebomb) ? spr_divebomb_land : spr_groundpound_land, 0);
             image_speed = 1;
             
             hsp = 0;
@@ -56,25 +54,23 @@ function StatePlayerGroundpoundStep()
             
             camera.shake_set(5, 0.25);
             
-            mach_afterimage_use_alpha = true;
+            machAfterimageUseAlpha = true;
 			
-            mach_afterimage_timer.Stop();
-            mach_afterimage_timer.max_time = 6;
-            
-            blur_afterimage_timer.Stop();
-            downwards_woosh_particle_timer.Stop();
-            air_cloud_particle_timer.Stop();
-            
+            time_source_stop(machAfterimageTimer);
+            time_source_stop(machAfterimageTimer);
+            time_source_stop(downwardsWooshPartTimer);
+            time_source_stop(airCloudParticleTimer);
+
             create_particle(x, y + 45, obj_groundpound_slam_particle);
-            instance_destroy(groundpound_effect_id);
+            instance_destroy(groundpoundEffectId);
             
-            if (groundpound_smash >= 10)
+            if (groundpoundSmash >= 10)
             {
                 while (place_meeting(x, y + 1, [obj_block_metal, obj_block_metal_tiles]))
                     instance_destroy(instance_place(x, y + 1, [obj_block_metal, obj_block_metal_tiles]));
             }
             
-            sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+            sound_instance_stop(sndGroundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
             sound_instance_one_shot(sfx_player_groundpound_land, x, y);
             
             return;
@@ -82,10 +78,10 @@ function StatePlayerGroundpoundStep()
         
         vsp = 0;
         
-        if (animation_end())
+        if (AnimationEnd())
         {
             SmcSetState("Normal");
-            sprite_set(spr_groundpound_idle_intro, 0);
+            SpriteSet(spr_groundpound_idle_intro, 0);
         }
         
         return;
@@ -97,7 +93,7 @@ function StatePlayerGroundpoundStep()
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
         SmcSetState("Sjump");
-        sprite_set(spr_sjump_cancel_prepare, 0);
+        SpriteSet(spr_sjump_cancel_prepare, 0);
         instance_destroy(obj_explosion_particle_alt);
         
         sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
@@ -107,36 +103,36 @@ function StatePlayerGroundpoundStep()
         return;
     }
 
-    groundpound_smash++;
+    groundpoundSmash++;
     
     if (vsp < 0)
-        groundpound_smash = -14;  
+        groundpoundSmash = -14;  
     
-    if (groundpound_smash >= 10)
+    if (groundpoundSmash >= 10)
     {
-        if (!instance_exists(groundpound_effect_id))
-            groundpound_effect_id = create_particle(x, y, obj_groundpound_effect, false);
+        if (!instance_exists(groundpoundEffectId))
+            groundpoundEffectId = create_particle(x, y, obj_groundpound_effect, false);
     }
     
     if (vsp >= 2)
     {
         grav = 1;
         
-        if (air_cloud_particle_timer.state != TIMER_STATES.STARTED)
-            air_cloud_particle_timer.Start();
+        if (time_source_get_state(airCloudParticleTimer) != time_source_state_active)
+            time_source_start(airCloudParticleTimer);
         
         if (vsp > 17)
         {
-            if (mach_afterimage_timer.state != TIMER_STATES.STARTED)
-                mach_afterimage_timer.Start();
+            if (time_source_get_state(machAfterimageTimer) != time_source_state_active)
+                time_source_start(machAfterimageTimer);
             
-            if (downwards_woosh_particle_timer.state != TIMER_STATES.STARTED)
-                downwards_woosh_particle_timer.Start();
+            if (time_source_get_state(downwardsWooshPartTimer) != time_source_state_active)
+                time_source_start(downwardsWooshPartTimer);
         }
     }
     
     
-    animation_end_ext((sprite_index == spr_groundpound_intro), spr_groundpound);
+    AnimationEndExt((sprite_index == spr_groundpound_intro), spr_groundpound);
     
     if (sprite_index == spr_bananaslip_bump)
     {
@@ -161,7 +157,7 @@ function StatePlayerGroundpoundStep()
     }        
     
     if (sprite_index != spr_divebomb)
-        image_xscale = side(sign_input_x, image_xscale);
+        image_xscale = Side(sign_input_x, image_xscale);
 }
 
 /// @ignore
@@ -171,15 +167,13 @@ function StatePlayerGroundpoundDestroy()
     terminalVelocity = 20;
     
     instakillmove = false;
-    mach_afterimage_use_alpha = true;
+    machAfterimageUseAlpha = true;
     
-    mach_afterimage_timer.Stop();
-    mach_afterimage_timer.max_time = 6;
+    time_source_stop(machAfterimageTimer);
+    time_source_stop(machAfterimageTimer);
+    time_source_stop(downwardsWooshPartTimer);
+    time_source_stop(airCloudParticleTimer);
     
-    blur_afterimage_timer.Stop();
-    downwards_woosh_particle_timer.Stop();
-    air_cloud_particle_timer.Stop();
-    
-    instance_destroy(groundpound_effect_id);
-    sound_instance_stop(snd_groundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    instance_destroy(groundpoundEffectId);
+    sound_instance_stop(sndGroundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

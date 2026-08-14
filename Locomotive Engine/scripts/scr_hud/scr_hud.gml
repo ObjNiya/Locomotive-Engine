@@ -15,7 +15,7 @@ function LoadHUD(hud_to_load)
     var rm_ins = room_get_info(hud_to_load, false, true, false, false, false, false).instances;
     
     array_foreach(rm_ins, function(ins_struct, index) {
-        var obj_to_spawn = asset_get_index_fast(ins_struct.object_index, asset_object);
+        var obj_to_spawn = AssetGetIndexFast(ins_struct.object_index, asset_object);
         
         with (InstanceCreate(ins_struct.x, ins_struct.y, obj_to_spawn))
         {

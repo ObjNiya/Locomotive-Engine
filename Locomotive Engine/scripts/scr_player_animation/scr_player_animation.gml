@@ -2,6 +2,7 @@
 function StatePlayerAnimCreate()
 {
     PLAYER_STATE_FAILSAVE;
+    
     image_index = 0;
     image_speed = 1;
 }
@@ -14,9 +15,9 @@ function StatePlayerAnimStep()
     
     hsp = movespeed * dir;
     
-    image_xscale = side(image_xscale, dir);
+    image_xscale = Side(image_xscale, dir);
     
-    if (animation_end())
+    if (AnimationEnd())
         SmcSetState("Normal");
 }
 

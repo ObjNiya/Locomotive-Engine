@@ -1,5 +1,8 @@
 SINGLETON;
 
+global.targetRoom = -1;
+global.targetSpawn = noone;
+
 // Spawn alignment enums
 
 enum SPAWN_XALIGN
@@ -18,11 +21,8 @@ enum SPAWN_YALIGN
 
 // User properties
 
-target_room = -1;
-target_spawn = noone;
+spawnXAlign = fa_center;
+spawnYAlign = fa_bottom;
 
-spawn_xalign = SPAWN_XALIGN.CENTER;
-spawn_yalign = SPAWN_YALIGN.BOTTOM;
-
-spawn_xoffset = 0;
-spawn_yoffset = 0;
+spawnXOffset = 0;
+spawnYOffset = 0;

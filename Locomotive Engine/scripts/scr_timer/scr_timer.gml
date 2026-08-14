@@ -1,3 +1,5 @@
+// TODO: Make usage of time sources
+
 enum TIMER_STATES
 {
     STARTED = 0,

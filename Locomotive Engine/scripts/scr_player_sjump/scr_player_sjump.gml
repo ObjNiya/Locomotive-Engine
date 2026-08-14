@@ -3,7 +3,7 @@ function StatePlayerSjumpCreate()
 {
     PLAYER_STATE_FAILSAVE;
     
-    sprite_set(spr_sjump, 0);
+    SpriteSet(spr_sjump, 0);
     
     vsp = -12;
     hsp = 0;
@@ -12,17 +12,19 @@ function StatePlayerSjumpCreate()
     grounded = false;
     
     instakillmove = true;
-    mach_afterimage_use_alpha = false;
-    mach_afterimage_timer.Start();
-    air_cloud_particle_timer.Start();
-    upwards_woosh_particle_timer.Start();
+    machAfterimageUseAlpha = false;
     
+    time_source_start(blurAfterimageTimer);
+    time_source_start(machAfterimageTimer);
+    time_source_start(airCloudParticleTimer);
+    time_source_start(upwardsWooshPartTimer);
+
     InstanceCreate(x, y, obj_explosion_particle_alt);
     
     if (sound_instance_get_playback_state() != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
-        sound_instance_start(snd_superjump);
+        sound_instance_start(sndSuperjump);
     
-    sound_instance_set_parameter_by_name(snd_superjump, "State", 1);
+    sound_instance_set_parameter_by_name(sndSuperjump, "State", 1);
 }
 
 /// @ignore
@@ -42,9 +44,9 @@ function StatePlayerSjumpStep()
     
     if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
     {
-        sprite_set(spr_sjump_cancel_prepare, 0);
+        SpriteSet(spr_sjump_cancel_prepare, 0);
         
-        sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+        sound_instance_stop(sndSuperjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
         sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
         
         vsp = 0;
@@ -57,11 +59,11 @@ function StatePlayerSjumpStep()
     if (sprite_index != spr_sjump_cancel_prepare)
         return;
     
-    mach_afterimage_timer.Stop();
-    upwards_woosh_particle_timer.Stop();
-    blur_afterimage_timer.Stop();
-    air_cloud_particle_timer.Stop();
-    
+    time_source_stop(blurAfterimageTimer);
+    time_source_stop(machAfterimageTimer);
+    time_source_stop(airCloudParticleTimer);
+    time_source_stop(upwardsWooshPartTimer);
+
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
     if (dir == 0)
@@ -69,7 +71,7 @@ function StatePlayerSjumpStep()
     else
         image_xscale = dir;
     
-    if (!animation_end())
+    if (!AnimationEnd())
         return;
     
     SmcSetState("Mach");
@@ -88,13 +90,13 @@ function StatePlayerSjumpStep()
 function StatePlayerSjumpDestroy()
 {
     grav = 0.5;
-    mach_afterimage_use_alpha = true;
+    machAfterimageUseAlpha = true;
     instakillmove = false;
     
-    mach_afterimage_timer.Stop();
-    upwards_woosh_particle_timer.Stop();
-    blur_afterimage_timer.Stop();
-    air_cloud_particle_timer.Stop();
+    time_source_stop(blurAfterimageTimer);
+    time_source_stop(machAfterimageTimer);
+    time_source_stop(airCloudParticleTimer);
+    time_source_stop(upwardsWooshPartTimer);
     
-    sound_instance_stop(snd_superjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    sound_instance_stop(sndSuperjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

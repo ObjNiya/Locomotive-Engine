@@ -1,7 +1,7 @@
 with (global) {
-    if (points >= level.s_rank_points)
+    if (points >= level.sRankPoints)
     {
-        if (secrets_found > SECRET_COUNT && laps >= 2 && treasure_found && full_combo)
+        if (secrets_found > 3 && laps >= 2 && treasure_found && fullCombo)
             rank = RANKS.L;
         else
             rank = RANKS.S;

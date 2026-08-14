@@ -12,8 +12,8 @@
   "name":"obj_screensizer",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Essential",
+    "path":"folders/Objects/Essential.yy",
   },
   "parentObjectId":null,
   "persistent":true,

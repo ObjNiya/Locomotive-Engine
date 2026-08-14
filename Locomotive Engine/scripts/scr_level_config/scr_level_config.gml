@@ -1,7 +1,5 @@
-#macro SECRET_COUNT 3
-
 /// @ignore
-function __define_levels__()
+function ___LvlsDefine__()
 {
     enum LVLS
     {
@@ -14,9 +12,9 @@ function __define_levels__()
         WIGGLERS_GARDEN = 4,
     }
     
-    lvl_define(LVLS.TUTORIAL,        -1,           infinity, infinity, -1, mu_hallway_title, #000000, false);
-    lvl_define(LVLS.HALLWAY_LONGWAY, Nhall_1, 240,       30000,         0, mu_hallway_title, #401940);
-    lvl_define(LVLS.BLOOM_AND_DOOM,  -1,           240,      0,        -1, mu_hallway_title, #000000);
-    lvl_define(LVLS.FOREST_MAZE,     -1,           240,      0,        -1, mu_hallway_title, #000000);
-    lvl_define(LVLS.WIGGLERS_GARDEN, -1,           240,      0,        -1, mu_hallway_title, #000000);
+    new Lvl(LVLS.TUTORIAL, -1, infinity, infinity, mu_tutorial, -1, mu_hallway_title, #000000, false);
+    new Lvl(LVLS.HALLWAY_LONGWAY, Nhall_1, 240, 30000, mu_hallway, 0, mu_hallway_title, #401940);
+    new Lvl(LVLS.BLOOM_AND_DOOM, -1, 240, 0, mu_doom, -1, mu_hallway_title, #000000);
+    new Lvl(LVLS.FOREST_MAZE, -1, 240, 0, mu_maze, -1, mu_hallway_title, #000000);
+    new Lvl(LVLS.WIGGLERS_GARDEN, -1, 240, 0, mu_hallway, -1, mu_hallway_title, #000000);
 }

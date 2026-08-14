@@ -6,7 +6,7 @@ with (obj_player)
     hsp = 0;
     vsp = 0;
     movespeed = 0;
-    vert_movespeed = 0;
+    vertMovespeed = 0;
     
     x = other.x;
     y = other.y;
@@ -14,16 +14,16 @@ with (obj_player)
     visible = false;
 }
 
-if (!animation_end())
+if (!AnimationEnd())
     exit;
 
 with (obj_player)
 {
     SmcSetState("Groundpound");
-    sprite_set(spr_groundpound_intro, 0);
+    SpriteSet(spr_groundpound_intro, 0);
     
-    visual_xscale = 1;
-    visual_yscale = 1;
+    visualXScale = 1;
+    visualYScale = 1;
     
     vsp = -5;
     visible = true;

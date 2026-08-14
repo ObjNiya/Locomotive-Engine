@@ -31,12 +31,12 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"target_room","filters":[
+    {"$GMObjectProperty":"v2","%Name":"targetRoom","filters":[
         "GMRoom",
-      ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_test","varType":5,},
-    {"$GMObjectProperty":"v2","%Name":"target_spawn","filters":[
+      ],"listItems":[],"multiselect":false,"name":"targetRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_test","varDescription":"The room the players will be transported to.","varFriendlyName":"Target Room","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"targetSpawn","filters":[
         "GMObject",
-      ],"listItems":[],"multiselect":false,"name":"target_spawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"obj_spawn_a","path":"objects/obj_spawn_a/obj_spawn_a.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"obj_spawn_a","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"targetSpawn","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"obj_spawn_a","path":"objects/obj_spawn_a/obj_spawn_a.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"obj_spawn_a","varDescription":"The spawn the players will be positioned to upon entering the Target Room.","varFriendlyName":"Target Spawn","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

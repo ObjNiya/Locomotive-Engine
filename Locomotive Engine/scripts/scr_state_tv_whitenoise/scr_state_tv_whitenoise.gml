@@ -16,7 +16,7 @@ function StateTvWhitenoiseStep()
 {
     with (whitenoise)
     {
-        if (!animation_end())
+        if (!AnimationEnd())
             return;
     }
     

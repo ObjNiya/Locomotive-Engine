@@ -11,7 +11,7 @@ function StatePlayerRollingJumpCreate()
     sprite_index = spr_rolling_jump;
     mask_index = spr_crouchmask;
     
-    blur_afterimage_timer.Start();
+    time_source_start(blurAfterimageTimer);
     instakillmove = true;
 }
 
@@ -23,9 +23,9 @@ function StatePlayerRollingJumpStep()
     
     if (PlayerHitWall())
     {
-        mach_afterimage_use_alpha = false;
-        mach_afterimage_timer.Start();
-        
+        machAfterimageUseAlpha = false;
+        time_source_start(machAfterimageTimer);
+
         image_xscale *= -1;
         dir *= -1;
     }
@@ -46,7 +46,8 @@ function StatePlayerRollingJumpDestroy()
     grav = 0.5;
     
     instakillmove = false;
-    mach_afterimage_use_alpha = true;
-    mach_afterimage_timer.Stop();
-    blur_afterimage_timer.Stop();
+    machAfterimageUseAlpha = true;
+    
+    time_source_stop(machAfterimageTimer);
+    time_source_stop(blurAfterimageTimer);
 }

@@ -30,4 +30,4 @@ var gui_surf = obj_screensizer.guiSurf;
 if (surface_exists(gui_surf))
     guiSprite = sprite_create_from_surface(gui_surf, 0, 0, surface_get_width(gui_surf), surface_get_height(gui_surf), false, false, 0, 0);
 
-PauseGame(true, false);
+GamePause(true, false);

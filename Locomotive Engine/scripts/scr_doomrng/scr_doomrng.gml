@@ -53,6 +53,46 @@ function DoomRngReset()
     global.rngIndexGameplay = 0;
 }
 
+
+function DoomRngVisualsInt(n)
+{
+    return DoomRngVisuals() % (n + 1);
+}
+
+
+function DoomRngVisualsSign(n)
+{
+    var rn = DoomRngVisualsInt(n * 2);
+    if (rn > 4)
+        rn -= n * 2;
+    
+    return rn;
+}
+
+
+
+function DoomRngGameplayInt(n)
+{
+    return DoomRngGameplay() % (n + 1);
+}
+
+
+function DoomRngGameplaySign(n)
+{
+    var rn = DoomRngGameplayInt(n * 2);
+    if (rn > 4)
+        rn -= n * 2;
+    
+    return rn;
+}
+
+
 #macro M_Random DoomRngVisuals
 #macro P_Random DoomRngGameplay
 #macro M_ClearRandom DoomRngReset
+
+#macro M_RandomInt DoomRngVisualsInt
+#macro M_RandomSign DoomRngVisualsSign
+
+#macro P_RandomInt DoomRngGameplayInt
+#macro P_RandomSign DoomRngGameplaySign

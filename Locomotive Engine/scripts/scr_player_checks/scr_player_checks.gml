@@ -25,7 +25,7 @@ function PlayerGetUp()
 
 function PlayerJump()
 {
-    return can_jump && InputPressed(INPUT_VERB.JUMP) && !place_meeting_collision(x, y - 1);
+    return canJump && InputPressed(INPUT_VERB.JUMP) && !place_meeting_collision(x, y - 1);
 }
 
 function PlayerGrabdash()
@@ -85,12 +85,12 @@ function PlayerDivebomb()
 
 function PlayerCape()
 {
-    return InputPressed(INPUT_VERB.SUPERJUMP) && !grounded && player_get_mach_stage() >= 3;
+    return InputPressed(INPUT_VERB.SUPERJUMP) && !grounded && PlayerGetMachStage() >= 3;
 }
 
 function PlayerSjump()
 {
-    return InputPressed(INPUT_VERB.SUPERJUMP) && grounded && player_get_mach_stage() >= 3;
+    return InputPressed(INPUT_VERB.SUPERJUMP) && grounded && PlayerGetMachStage() >= 3;
 }
 
 function PlayerSjumpRelease()

@@ -1,4 +1,4 @@
 depth = DEPTHS.BACK;
 
-palette_index = 0;
+paletteIndex = 0;
 close = false;

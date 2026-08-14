@@ -1,9 +1,6 @@
 event_inherited();
 
-spawn_xalign = SPAWN_XALIGN.LEFT;
-spawn_yalign = SPAWN_YALIGN.TOP;
-
-get_spawn_offset = function(player)
+GetSpawnOffset = function(player)
 {
     var x_offset = player.bbox_left - bbox_left;
     var y_offset = -78;

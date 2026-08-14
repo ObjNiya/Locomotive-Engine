@@ -1,5 +1,5 @@
 #macro DESTROY_SAVEROOM if (check_saveroom()) instance_destroy(id, false)
-
+// TODO: Refactor Prob
 /**
  * This function will add the given instance to the save room map so it is remembered and won't reappear when leaving an entering the room.
  * @parameter {Id.Instance} instance (OPTIONAL) The instance to add to the save room map (defaults to the current instances' id).

@@ -1,16 +1,19 @@
 timescale = 1;
-imageSpeed = 1;
+image_speed = 1;
 
 TimescaleStep = function()
 {
-    timescale = abs(timescale);
-    image_speed = imageSpeed * timescale;
+    //image_speed = imageSpeed * timescale;
 }
 
 ManageAlarms = function()
 {
-    array_foreach(alarm, function(time, index) {
-        if (time > -1)
-            time -= (timescale - 1) + (global.deltaTime - 1);
-    });
+    /*var i = 0;
+    repeat (12)
+    {
+        if (alarm[i] > -1)
+            alarm[i] -= (global.deltaTime - 1) * timescale;
+        
+        i++;
+    }*/
 }

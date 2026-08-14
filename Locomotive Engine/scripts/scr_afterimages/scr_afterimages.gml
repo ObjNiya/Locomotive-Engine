@@ -1,3 +1,5 @@
+// TODO: Refactor
+
 /**
  * This function will create the given afterimage object at the given position and will set all of the afterimage sprite drawing variables to the values from the instance who spawned it.
  * @parameter {Real} x The x position the afterimage will be created at.
@@ -24,7 +26,7 @@ function create_afterimage(x, y, afterimage_object)
 }
 
 /**
- * This function will do the same as the ```create_afterimage``` function, except that it accounts for sprite drawing variables created by the ```visual_helper_initialize``` function.
+ * This function will do the same as the ```create_afterimage``` function, except that it accounts for sprite drawing variables created by the ```VisualHelperInit``` function.
  * @parameter {Real} x The x position the afterimage will be created at.
  * @parameter {Real} y The y position the afterimage will be created at.
  * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
@@ -32,12 +34,12 @@ function create_afterimage(x, y, afterimage_object)
  */
 function create_afterimage_vh(x, y, afterimage_object)
 {
-    with (create_afterimage(x + visual_x, y + visual_y, afterimage_object))
+    with (create_afterimage(x + visualX, y + visualY, afterimage_object))
     {
-        image_xscale *= other.visual_xscale;
-        image_yscale *= other.visual_yscale;
+        image_xscale *= other.visualXScale;
+        image_yscale *= other.visualYScale;
         
-        image_angle += other.visual_angle;
+        image_angle += other.visualAngle;
         
         return id;
     }
@@ -59,7 +61,7 @@ function create_afterimage_repeating(x, y, afterimage_object)
 }
 
 /**
- * This function will do the same as the ```create_afterimage_repeating``` function, except that it accounts for sprite drawing variables created by the ```visual_helper_initialize``` function.
+ * This function will do the same as the ```create_afterimage_repeating``` function, except that it accounts for sprite drawing variables created by the ```VisualHelperInit``` function.
  * @parameter {Real} x The x position the afterimage will be created at.
  * @parameter {Real} y The y position the afterimage will be created at.
  * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.

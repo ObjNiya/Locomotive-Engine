@@ -1,4 +1,4 @@
-active = (get_target_spawn() == object_index);
+active = (global.targetSpawn == object_index);
 
 image_speed = real(active);
 visible = active;

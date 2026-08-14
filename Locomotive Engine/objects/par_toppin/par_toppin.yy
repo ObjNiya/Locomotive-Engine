@@ -10,8 +10,8 @@
   "name":"par_toppin",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Plushies",
+    "path":"folders/Objects/Level Structure/Plushies.yy",
   },
   "parentObjectId":{
     "name":"par_trailfollowobject",

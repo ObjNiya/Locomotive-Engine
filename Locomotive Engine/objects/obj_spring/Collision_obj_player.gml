@@ -1,7 +1,7 @@
 if (sprite_index == spr_spring_activate)
     exit;
 
-sprite_set(spr_spring_activate, 0);
+SpriteSet(spr_spring_activate, 0);
 
 with (other)
 {

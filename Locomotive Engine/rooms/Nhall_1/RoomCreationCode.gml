@@ -1,2 +1,2 @@
 if (!IsShowtime())
-    SetMusic(mu_hallway);
+    MusicSet(mu_hallway);

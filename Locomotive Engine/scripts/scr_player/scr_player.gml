@@ -28,7 +28,7 @@ function AttackPlayer(player, attacker_id)
             sprite_index = spr_back_hurt;
         
         if (irandom(100) <= 50)
-            sound_instance_one_shot(sfx_voice_hurt, x, y);
+            sound_instance_one_shot(SfxVoiceHurt, x, y);
         
         InstanceCreate(x, y, obj_bang_particle);
         InstanceCreate(x, y, obj_hurt_stars_particle);

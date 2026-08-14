@@ -29,9 +29,9 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"target_room","filters":[
+    {"$GMObjectProperty":"v2","%Name":"targetRoom","filters":[
         "GMRoom",
-      ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_test","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"targetRoom","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_test","varDescription":"The room the egg transports the players to.","varFriendlyName":"Target Room","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

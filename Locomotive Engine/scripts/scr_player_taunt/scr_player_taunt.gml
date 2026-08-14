@@ -1,12 +1,12 @@
 /// @ignore
 function StatePlayerTauntCreate()
 {
-    stored_sprite_index = sprite_index;
-    stored_image_index = image_index;
+    storedSpriteIndex = sprite_index;
+    storedImageIndex = image_index;
 
-    stored_vsp = vsp;
-    stored_hsp = hsp;
-    stored_movespeed = movespeed;
+    storedVsp = vsp;
+    storedHsp = hsp;
+    storedMovespeed = movespeed;
     
     grav = 0;
     vsp = 0;
@@ -16,10 +16,9 @@ function StatePlayerTauntCreate()
     invincibleBuffer = 8;
     parryHitboxBuffer = 8;
     
-    sprite_set(spr_taunt, irandom(sprite_get_number(spr_taunt)));
+    SpriteSet(spr_taunt, irandom(sprite_get_number(spr_taunt)));
     create_particle(x, y + 45, obj_taunt_particle);
     
-    taunt_timer.Start();
     sound_instance_one_shot(sfx_player_taunt, x, y);
 }
 
@@ -27,7 +26,13 @@ function StatePlayerTauntCreate()
 function StatePlayerTauntStep()
 {
     if (--parryHitboxBuffer > 0)
-        hitboxDoAttack(parryHitbox, "parryEnemy");
+        HitboxDoAttack(parryHitbox, "parryEnemy");
+
+    if (--tauntTimer > 0)
+        return;
+    
+    SmcSetState(stateHistory[$ "tauntStoredState"]);
+    SmcDeleteFromHistory("tauntStoredState");
 }
 
 /// @ignore
@@ -35,12 +40,10 @@ function StatePlayerTauntDestroy()
 {
     grav = 0.5;
     
-    sprite_index = stored_sprite_index;
-    image_index = stored_image_index;
+    sprite_index = storedSpriteIndex;
+    image_index = storedImageIndex;
     
-    vsp = stored_vsp;
-    hsp = stored_hsp;
-    movespeed = stored_movespeed;
-    
-    taunt_timer.Stop();
+    vsp = storedVsp;
+    hsp = storedHsp;
+    movespeed = storedMovespeed;
 }

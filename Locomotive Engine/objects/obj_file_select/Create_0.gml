@@ -1,4 +1,6 @@
-SetMusic(mu_title_screen);
+// old placeholder lol
+
+MusicSet(mu_title_screen);
 
 cur_file = 1;
 select_snd = 0;

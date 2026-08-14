@@ -58,7 +58,7 @@ if (ds_queue_size(followqueue) > (LAG_STEPS)) // if behind the correct ammount o
 	{
 		x = lerp(x, thingie.x + space, interp);
 		y = lerp(y, thingie.y, interp);
-		interp = approach(interp, 1, 0.01);
+		interp = Approach(interp, 1, 0.01);
 	}
 	else
 	{

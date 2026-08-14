@@ -7,7 +7,7 @@ function StatePlayerCrouchCreate()
     image_speed = 1;
     
     if (sign(hsp) == 0)
-        sprite_set(spr_crouch_intro, 0);
+        SpriteSet(spr_crouch_intro, 0);
     else
         sprite_index = spr_crawl;
     
@@ -21,7 +21,7 @@ function StatePlayerCrouchStep()
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     hsp = movespeed * dir;
     
-    image_xscale = side(dir, image_xscale);
+    image_xscale = Side(dir, image_xscale);
     
     if (PlayerNothingAbove() && PlayerJump())
     {
@@ -34,7 +34,7 @@ function StatePlayerCrouchStep()
     
     if (!grounded)
     {
-        if (!EqualsToAny(sprite_index, spr_crouch_jump, spr_crouch_fall) || (sprite_index == spr_crouch_jump && animation_end()))
+        if (!EqualsToAny(sprite_index, spr_crouch_jump, spr_crouch_fall) || (sprite_index == spr_crouch_jump && AnimationEnd()))
             sprite_index = spr_crouch_fall;
         return;    
     }
@@ -45,7 +45,7 @@ function StatePlayerCrouchStep()
         return;
     }
     
-    if ((dir == 0 && sprite_index != spr_crouch_intro) || (dir == 0 && sprite_index == spr_crouch_intro && animation_end()))
+    if ((dir == 0 && sprite_index != spr_crouch_intro) || (dir == 0 && sprite_index == spr_crouch_intro && AnimationEnd()))
         sprite_index = spr_crouch;
     else
     	sprite_index = spr_crawl;

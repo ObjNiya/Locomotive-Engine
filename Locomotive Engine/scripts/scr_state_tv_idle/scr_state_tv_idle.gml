@@ -20,7 +20,7 @@ function StateTvIdleStep()
 {
     if (sprite_index == playerId.spr_tv_turnon)
     {
-        animation_end(playerId.spr_tv_idle);
+        AnimationEnd(playerId.spr_tv_idle);
         return;
     }
     
@@ -53,13 +53,13 @@ function StateTvIdleStep()
     {
         sprite_index = playerId.spr_tv_idle;
         
-        if (animation_end() && IdleAnimTimer-- <= 0)
+        if (AnimationEnd() && IdleAnimTimer-- <= 0)
         {
             sprite_index = choose(playerId.spr_tv_idleanim1, playerId.spr_tv_idleanim2);
             image_index = 0;
         }
     }
-    else if (animation_end())
+    else if (AnimationEnd())
     {
         sprite_index = playerId.spr_tv_idle;
         IdleAnimTimer = 240 + (60 * irandom_range(-1, 2));

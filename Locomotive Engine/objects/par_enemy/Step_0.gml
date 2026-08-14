@@ -1,10 +1,11 @@
 HITSTUN_STEP;
 
+
 StepTimers(thrown_blur_afterimage, scared_timer, stunned_timer);
 bird.step();
 scr_collision();
 SmcRunEvent(STATE_EVENTS.STEP);
-stepHitboxes(hitbox);
+HitboxesStep(hitbox);
 
 
 bird.x = x;

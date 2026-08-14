@@ -1,21 +1,21 @@
 /// @ignore
 function StatePlayerSjumpPrepCreate()
 {
-    sprite_set(spr_sjump_prepare_intro, 0);
+    SpriteSet(spr_sjump_prepare_intro, 0);
     image_xscale = abs(image_xscale);
     
     mask_index = spr_crouchmask;
     
-    sound_instance_start(snd_superjump);
-    sound_instance_set_parameter_by_name(snd_superjump, "State", 0);
+    sound_instance_start(sndSuperjump);
+    sound_instance_set_parameter_by_name(sndSuperjump, "State", 0);
 }
 
 /// @ignore
 function StatePlayerSjumpPrepStep()
 {
-    if (sprite_index == spr_sjump_prepare_intro && !animation_end())
+    if (sprite_index == spr_sjump_prepare_intro && !AnimationEnd())
     {
-        movespeed = approach(movespeed, 0, 1);
+        movespeed = Approach(movespeed, 0, 1);
         hsp = movespeed * sign(hsp);
         
         return;

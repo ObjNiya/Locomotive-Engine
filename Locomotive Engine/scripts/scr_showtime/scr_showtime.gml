@@ -1,15 +1,23 @@
+/**
+ * Returns whether or not the Showtime/Escape sequence is active.
+ * @pure
+ */
 function IsShowtime()
 {
-    return global.showtime_timer.state == TIMER_STATES.STARTED;
+    return global.showtimeTimer.state == TIMER_STATES.STARTED;
 }
 
+
+/**
+ * Begins the Showtime/Escape sequence.
+ */
 function StartShowtime()
 {
-    global.showtime_timer.Start();
+    global.showtimeTimer.Start();
     
     with (obj_player)
         camera.shake_set(3, 0);
-    SetMusic(mu_showtime)
+    MusicSet(mu_showtime)
     
     InstanceDestroySafe(obj_its_showtime);
     InstanceCreate(0, 0, obj_its_showtime);

@@ -75,7 +75,7 @@ if state == "normal"
 					if abs(gotonum) <= 1
 						gotonum = 1
 					gotonum = xoffset / 15
-					space = approach(space, thing * -thingie.xscale,gotonum)
+					space = Approach(space, thing * -thingie.xscale,gotonum)
 				}
 				else
 				{
@@ -83,7 +83,7 @@ if state == "normal"
 					if abs(gotonum) <= 1
 						gotonum = 1
 					gotonum = xoffset / 15 //about 30 frames to go to either side evenly
-					space = approach(space, 0,gotonum)
+					space = Approach(space, 0,gotonum)
 				}
 			}
 		}
@@ -92,7 +92,7 @@ if state == "normal"
 		{
 			x = lerp(x, thingie.x + space, interp);
 			y = lerp(y, thingie.y, interp);
-			interp = approach(interp, 1, 0.01);
+			interp = Approach(interp, 1, 0.01);
 		}
 		else
 		{

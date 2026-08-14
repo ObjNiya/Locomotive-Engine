@@ -16,13 +16,13 @@ function StatePlayerParryStep()
 {
     invincibleBuffer = 1;
     
-    if (animation_end())
+    if (AnimationEnd())
     {
         SmcSetState("Normal");
         return;
     }
     
-    movespeed = approach(movespeed, 0, 0.5);
+    movespeed = Approach(movespeed, 0, 0.5);
     hsp = movespeed * dir;
     
     if (parryCount >= 8)
@@ -44,13 +44,13 @@ function StatePlayerParryStep()
         other.dir = other.image_xscale;
         
         SmcSetState("Death");
-        hitstunApply(5);
+        HitstunSet(5);
         
         with (other)
         {
             camera.shake_set(3, 0.05);
             if (FIX_MISSING_PARRY_HITSTUN)
-                hitstunApply(5);
+                HitstunSet(5);
             if (!grounded)
                 vsp = -6;
             

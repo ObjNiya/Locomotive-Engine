@@ -1,13 +1,13 @@
 if (transitioned)
     exit;
 
-if (!queue_room(target_room, target_spawn))
+if (!RoomQueue(targetRoom, targetSpawn))
     exit;
 
-set_spawn_align(spawn_xalign, spawn_yalign);
+SpawnSetAlign(spawnXAlign, spawnYAlign);
 
-var spawn_offsets = get_spawn_offset(other);
-set_spawn_offset(spawn_offsets[0], spawn_offsets[1]);
+var spawn_offsets = GetSpawnOffset(other);
+SpawnSetOffset(spawn_offsets[0], spawn_offsets[1]);
 
-if (trans_room(obj_roomtrans_fade))
+if (RoomTrans(obj_roomtrans_fade))
     transitioned = true;

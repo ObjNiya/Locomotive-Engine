@@ -13,5 +13,5 @@ hitbox.mask_index = spr_shyguyhitbox;
 
 walk_postfix = function()
 {
-    hitboxDoAttack(hitbox, "player");
+    HitboxDoAttack(hitbox, "player");
 }

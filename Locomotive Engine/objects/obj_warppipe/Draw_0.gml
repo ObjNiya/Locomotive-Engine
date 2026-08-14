@@ -1,3 +1,3 @@
-pal_swap_set(spr_warppipe_palette, palette_index, false);
+pal_swap_set(spr_warppipe_palette, paletteIndex, false);
 draw_self();
 pal_swap_reset();

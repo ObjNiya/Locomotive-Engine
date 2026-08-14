@@ -1,6 +1,10 @@
 if (flashAlpha != -1)
     exit;
 
+var ITS_SHOWTIME_SEG_SPAWN_OFFSET = 150;
+var ITS_SHOWTIME_SEG_STARTING_SCALE = 1.6;
+var ITS_SHOWTIME_SEG_SHAKE_MAG = 4;
+
 array_foreach(timings, function(time, index) {
     var music_pos = sound_instance_get_timeline_position(global.music);
     
@@ -20,7 +24,7 @@ array_foreach(timings, function(time, index) {
     var scale = lerp(1, ITS_SHOWTIME_SEG_STARTING_SCALE, scale_prog);
     
     if (txtParts[index] != -1)
-        txtParts[index] = approach(txtParts[index], 0, 0.05);
+        txtParts[index] = Approach(txtParts[index], 0, 0.05);
     
     if (scale_prog <= 0 && txtParts[index] == -1)
         txtParts[index] = ITS_SHOWTIME_SEG_SHAKE_MAG;
@@ -29,7 +33,7 @@ array_foreach(timings, function(time, index) {
     var shake_x = IRandomSign(shake_mag);
     var shake_y = IRandomSign(shake_mag);
     
-    quick_log(txtParts[index])
+    QuickLog(txtParts[index])
     
     draw_sprite_ext(sprite_index, index, GuiCalcX(fa_center, shake_x), GuiCalcY(fa_top, y + shake_y), image_xscale * scale, image_yscale * scale, image_angle, image_blend, image_alpha);
 })

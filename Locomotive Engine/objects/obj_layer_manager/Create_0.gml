@@ -1,3 +1,4 @@
+// TODO: Move functionality and remove
 layers = [];
 
 // Secret Tiles

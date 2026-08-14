@@ -28,7 +28,7 @@ for (var i = 0; i < array_length(stickers); i++)
     draw_sprite(stickers[i].sprite_index, stickers[i].image_index, stickers[i].x, stickers[i].y);
 }
 
-draw_set_font(global.pointsbookfont);
+draw_set_font(global.fntPointsbook);
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 

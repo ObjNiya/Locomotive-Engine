@@ -5,31 +5,31 @@ function StatePlayerWallclimbCreate()
     
     sprite_index = spr_wallclimb;
     
-    vert_movespeed = movespeed;
-    vert_movespeed = max(0, vert_movespeed);
+    vertMovespeed = movespeed;
+    vertMovespeed = max(0, vertMovespeed);
     
-    vert_accel = 0.15;
+    vertAccel = 0.15;
     
     hsp = 0;
     movespeed = 0;
     grav = 0;
     
-    sound_instance_start(snd_mach);
-    sound_instance_set_parameter_by_name(snd_mach, "Grounded", true);
-    sound_instance_set_parameter_by_name(snd_mach, "State", 1);
+    sound_instance_start(sndMach);
+    sound_instance_set_parameter_by_name(sndMach, "Grounded", true);
+    sound_instance_set_parameter_by_name(sndMach, "State", 1);
 }
 
 /// @ignore
 function StatePlayerWallclimbStep()
 {
-    wallclimb_grab_buffer--;
+    wallclimbGrabTime--;
     
-    if (panting_spr_time < 200)
-        panting_spr_time++;
+    if (pantingSprTime < 200)
+        pantingSprTime++;
     
     destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
     
-    if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimb_grab_buffer <= 0)
+    if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimbGrabTime <= 0)
     {
         SmcSetState("Normal");
         
@@ -60,20 +60,23 @@ function StatePlayerWallclimbStep()
     {
         sprite_index = spr_wallclimb_dash;
         
-        wallclimb_dash_timer.Start();
+        wallclimbDashTimer = 21;
         
-        sound_instance_start(snd_grabdash);
+        sound_instance_start(sndGrabdash);
         FlashEffectSet();
     }
     
-    wallclimb_dash_timer.Step();
+    wallclimbDashTimer--;
     
-    vert_accel = (sprite_index == spr_wallclimb_dash) ? 0.3 : 0.15;
+    if (wallclimbDashTimer <= 0 && sprite_index == spr_wallclimb_dash)
+        sprite_index = spr_wallclimb;
     
-    if (vert_movespeed < 20)
-        vert_movespeed += vert_accel;
+    vertAccel = (sprite_index == spr_wallclimb_dash) ? 0.3 : 0.15;
     
-    vsp = -vert_movespeed;
+    if (vertMovespeed < 20)
+        vertMovespeed += vertAccel;
+    
+    vsp = -vertMovespeed;
     
     if (!PlayerHitWall())
     {
@@ -89,9 +92,8 @@ function StatePlayerWallclimbStep()
 function StatePlayerWallclimbDestroy()
 {
     grav = 0.5;
+    wallclimbDashTimer = 0;
     
-    wallclimb_dash_timer.Stop();
-    
-    sound_instance_stop(snd_mach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-    sound_instance_stop(snd_grabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    sound_instance_stop(sndMach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    sound_instance_stop(sndGrabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

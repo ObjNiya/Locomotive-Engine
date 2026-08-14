@@ -1,5 +1,4 @@
-initialize_game();
-save_initialize();
+InitGame();
 InstanceCreate(0, 0, obj_player);
-queue_room(rm_file_select, obj_spawn_a);
-goto_room();
+RoomQueue(rm_file_select, obj_spawn_a);
+RoomGoto();

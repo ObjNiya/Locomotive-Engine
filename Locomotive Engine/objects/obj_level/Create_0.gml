@@ -2,8 +2,8 @@ SINGLETON;
 
 with (global)
 {
-    showtime_timer.Stop();
-    combo_timer.Stop();
+    showtimeTimer.Stop();
+    comboTimer.Stop();
     
     rank = RANKS.D;
     points = 0;
@@ -12,9 +12,9 @@ with (global)
     laps = 0;
     treasure_found = false;
     
-    showtime_timer.max_time = level.showtime_time;
+    showtimeTimer.max_time = level.showtimeTime;
 }
 
-a_rank_points = global.level.s_rank_points / 2;
+a_rank_points = global.level.sRankPoints / 2;
 b_rank_points = a_rank_points / 2;
 c_rank_points = b_rank_points / 2;

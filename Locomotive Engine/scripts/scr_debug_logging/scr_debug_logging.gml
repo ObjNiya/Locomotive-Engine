@@ -7,24 +7,34 @@ enum LOG_TYPES
     ERROR = 3,
 }
 
-global.log_type_hidden = ds_map_create();
+global.__LogTypeHidden__ = ds_map_create();
 
 if (IDE_BUILD)
 {
-    ds_map_set(global.log_type_hidden, LOG_TYPES.INFO, false);
-    ds_map_set(global.log_type_hidden, LOG_TYPES.WARNING, false);
-    ds_map_set(global.log_type_hidden, LOG_TYPES.ERROR, false);
+    ds_map_set(global.__LogTypeHidden__, LOG_TYPES.INFO, false);
+    ds_map_set(global.__LogTypeHidden__, LOG_TYPES.WARNING, false);
+    ds_map_set(global.__LogTypeHidden__, LOG_TYPES.ERROR, false);
 }
 
-function log_type_set_hidden(type, hidden)
+
+/**
+ * Toggles whether or not to log the given log type.
+ * @parameter {Real} type Which log type from the ```LOG_TYPES``` enum.
+ * @parameter {Bool} hidden Whethe or not to hide the given log type.
+ */
+function LogTypeSetHidden(type, hidden)
 {
     if (IDE_BUILD)
     {
-        global.log_type_hidden[? type] = hidden;
+        global.__LogTypeHidden__[? type] = hidden;
     }
 }
 
-function quick_log()
+
+/**
+ * Concatenates every argument into one string, turns non-string arguments into strings and prints the result to the output.
+ */
+function QuickLog()
 {
     if (IDE_BUILD)
     {
@@ -41,6 +51,14 @@ function quick_log()
     }
 }
 
+
+/**
+ * Prints a detailed log into the output with the given source and log type. 
+ * Argument 2 and onward will be concatenated into one string, turns non-string arguments into strings and prints the result to the output alongside the 
+ * source of the log and its type.
+ * @parameter {Function|Asset.GMObject} source From what function or object the log is coming from.
+ * @parameter {Real} type What type of log should be printed.
+ */
 function Log()
 {
     if (IDE_BUILD)
@@ -48,7 +66,7 @@ function Log()
         var log_type;
         var type = argument[1];
         
-        if (global.log_type_hidden[? type])
+        if (global.__LogTypeHidden__[? type])
             return;
         
         switch (type)

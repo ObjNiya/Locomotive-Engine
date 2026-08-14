@@ -8,15 +8,15 @@ function StatePlayerExitportalCreate()
     hsp = 0;
     
     movespeed = 0;
-    vert_movespeed = 0;
+    vertMovespeed = 0;
     
-    visual_xscale = 0;
-    visual_yscale = 0;
+    visualXScale = 0;
+    visualYScale = 0;
     
     sprite_index = spr_bananaslip_bump;
     image_xscale = 1;
     
-    blur_afterimage_timer.Start();
+    time_source_start(blurAfterimageTimer);
 }
 
 /// @ignore
@@ -26,25 +26,26 @@ function StatePlayerExitportalStep()
     {
         if (sprite_index != spr_bananaslip_land)
         {
-            visual_xscale = 1;
-            visual_yscale = 1;
+            visualXScale = 1;
+            visualYScale = 1;
             
-            sprite_set(spr_bananaslip_land, 0);
+            time_source_stop(blurAfterimageTimer);
             create_particle(x, y + 45, obj_bang_particle);
             sound_instance_one_shot(sfx_player_banana_slip_bump, x, y);
-            blur_afterimage_timer.Stop();
+            
+            sprite_index = spr_bananaslip_land;
         }
-        else if (animation_end())
+        else if (AnimationEnd())
             SmcSetState("Normal");
         
         return;
     }
     
-    visual_xscale = approach(visual_xscale, 1, 0.04);
-    visual_yscale = approach(visual_yscale, 1, 0.04);
+    visualXScale = Approach(visualXScale, 1, 0.04);
+    visualYScale = Approach(visualYScale, 1, 0.04);
     
     if (grav < 0.4)
-        grav += 0.007;
+        grav += 0.007 ;
 }
 
 /// @ignore

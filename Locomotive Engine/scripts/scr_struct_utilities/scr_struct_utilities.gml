@@ -1,4 +1,9 @@
-function struct_get_sum(struct)
+/**
+ * Adds every numeric entry in the given strct together and returns the result.
+ * @parameter {Struct} struct The struct to get the sum of.
+ * @pure
+ */
+function StructGetSum(struct)
 {
     var total = 0;
     var i = 0;
@@ -8,7 +13,10 @@ function struct_get_sum(struct)
     
     repeat (struct_name_count)
     {
-        total += struct[$ struct_names[i]];
+        var entry = struct[$ struct_names[i]];
+        
+        if (is_numeric(entry))
+            total += real(entry);
         i++;
     }
     

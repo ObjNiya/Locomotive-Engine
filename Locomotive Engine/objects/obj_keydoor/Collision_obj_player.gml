@@ -3,21 +3,21 @@ with (other)
     if (sign(InputY(INPUT_CLUSTER.NAVIGATION)) != -1 || !grounded || stateName == "Grabdash" || stateName == "Bananaslip" || stateName == "Anim" || stateName == "Door")
         exit;
     
-    if (has_key)
+    if (hasKey)
     {
         add_saveroom(other);
-        has_key = false;
+        hasKey = false;
     }
 
     if (!check_saveroom(other))
         exit;
-        
-    if (!queue_room(other.target_room, other.target_spawn))
+    
+    if (!RoomQueue(other.targetRoom, other.targetSpawn))
         exit;
     
-    set_spawn_align(SPAWN_XALIGN.CENTER, SPAWN_YALIGN.BOTTOM);
-    set_spawn_offset(0, 0);
+    SpawnSetAlign(fa_center, fa_bottom);
+    SpawnSetOffset(0, 0);
     
     SmcSetState("Door");
-    trans_room(obj_roomtrans_fade);
+    RoomTrans(obj_roomtrans_fade);
 }

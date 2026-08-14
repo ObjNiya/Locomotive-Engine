@@ -1,3 +1,5 @@
+// TODO: Refactor
+
 function destroy_blocks(x, y, excludes = [])
 {
     var destroyable_list = ds_list_create();

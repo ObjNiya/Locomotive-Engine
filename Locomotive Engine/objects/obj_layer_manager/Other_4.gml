@@ -26,8 +26,8 @@ repeat (layer_count)
         {
             shader_set(shd_secret_tiles);
             
-            shader_set_uniform_f(scrt_ts_pos_uniform, global.scrt_ts_circle_x, global.scrt_ts_circle_y);
-            shader_set_uniform_f(scrt_ts_radius_uniform, global.scrt_ts_circle_radius);
+            shader_set_uniform_f(scrt_ts_pos_uniform, global.ScrtTsCircleX, global.ScrtTsCircleY);
+            shader_set_uniform_f(scrt_ts_radius_uniform, global.ScrtTsCircleRadius);
         }
     });
     

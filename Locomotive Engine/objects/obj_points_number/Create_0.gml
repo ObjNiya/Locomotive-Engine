@@ -1,3 +1,5 @@
+event_inherited();
+
 vspeed = -3;
 depth = DEPTHS.BACK;
 visible = false;

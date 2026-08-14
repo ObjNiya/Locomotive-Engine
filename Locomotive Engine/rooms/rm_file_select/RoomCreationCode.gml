@@ -20,7 +20,7 @@ with (splash)
 SetRoomEvent(ROOM_EVS.STEP, function() {
     if (InputPressed(INPUT_VERB.JUMP) && !instance_exists(par_cutscene))
     {
-        queue_room(rm_initialize_gameplay, obj_spawn_a);
-        trans_room(obj_roomtrans_fade);
+        RoomQueue(rm_initialize_gameplay, obj_spawn_a);
+        RoomTrans(obj_roomtrans_fade);
     }
 })

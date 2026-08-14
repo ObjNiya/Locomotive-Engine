@@ -1,4 +1,4 @@
-var sine_range = GAME_HEIGHT;
+var sine_range = global.baseAppHeight;
 var sine_speed_div = sine_range * 2;
 var scroll_speed_div = 9;
 

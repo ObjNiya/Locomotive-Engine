@@ -10,7 +10,7 @@ repeat (debris_amount)
     }
 }
 
-sleep(5);
+Sleep(5);
 InstanceCreate(x + 32, y + 32, obj_bang_particle);
 sound_instance_one_shot(destroy_sound, x, y);
 add_saveroom();

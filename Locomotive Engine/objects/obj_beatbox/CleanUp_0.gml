@@ -1,1 +1,1 @@
-sound_instance_kill(beatbox_music);
+sound_instance_kill(beatboxMusic);
