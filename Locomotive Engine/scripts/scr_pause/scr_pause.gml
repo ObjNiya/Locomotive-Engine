@@ -16,6 +16,9 @@ function GamePause(notme, show_menu = true)
         instance_activate_object(obj);
     });
     
+    time_source_pause(time_source_global);
+    time_source_pause(time_source_game);
+    
     global.gamePaused = true;
 }
 
@@ -26,6 +29,9 @@ function GameResume()
 { 
     instance_activate_all();
     InstanceDestroySafe(obj_pause_screen);
+    
+    time_source_resume(time_source_global);
+    time_source_resume(time_source_game);
     
     global.gamePaused = false;
 }

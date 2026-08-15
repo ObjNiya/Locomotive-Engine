@@ -39,6 +39,7 @@ function StatePlayerTauntStep()
 function StatePlayerTauntDestroy()
 {
     grav = 0.5;
+    tauntTimer = 18;
     
     sprite_index = storedSpriteIndex;
     image_index = storedImageIndex;
@@ -46,4 +47,5 @@ function StatePlayerTauntDestroy()
     vsp = storedVsp;
     hsp = storedHsp;
     movespeed = storedMovespeed;
+    
 }

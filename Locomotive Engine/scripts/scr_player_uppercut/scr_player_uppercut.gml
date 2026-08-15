@@ -20,10 +20,10 @@ function StatePlayerUppercutCreate()
 function StatePlayerUppercutStep()
 {
     PlayerDoInstakill();
-    destroy_blocks(x, y - 50, [obj_block_metal, obj_block_metal_tiles]);
+    BlocksDestroy(x, y - 50, false, true, [obj_metalblock]);
     
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    hsp = Approach(hsp, movespeed * dir, accel );
+    hsp = Approach(hsp, movespeed * dir, accel);
     
     if (AnimationEnd())
         image_speed = 0;

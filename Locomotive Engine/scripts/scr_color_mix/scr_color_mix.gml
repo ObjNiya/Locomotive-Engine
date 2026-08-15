@@ -12,7 +12,7 @@ enum COLOR_MIX_MODES
  * @parameter {Constant.Color} color Which color to mix with the current draw color.
  * @parameter {Bool} inverse Whether or not to inverse the color sum of the current draw color for the ```COLOR_MIX_MODES.MIX``` and ```COLOR_MIX_MODES.MIX_ALT``` mode.
  */
-function SetColorMix(mode, strength = 1, color = image_blend, inverse = false)
+function ColorMixSet(mode, strength = 1, color = image_blend, inverse = false)
 {
     shader_set(shd_color_mix);
     

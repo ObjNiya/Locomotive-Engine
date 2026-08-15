@@ -91,7 +91,7 @@ function PlayerDoLadder()
     {
         y++;
         ladderId = ladder_below;
-        x = (ladder_id.x - ladder_id.sprite_xoffset) + (ladder_id.sprite_width / 2);
+        x = (ladderId.x - ladderId.sprite_xoffset) + (ladderId.sprite_width / 2);
         
         SmcSetState("Ladder");
         sprite_index = spr_ladder_down;
@@ -102,7 +102,7 @@ function PlayerDoLadder()
     if (instance_exists(ladder) && sign_input_y == -1)
     {
         ladderId = ladder;
-        x = (ladder_id.x - ladder_id.sprite_xoffset) + (ladder_id.sprite_width / 2);
+        x = (ladderId.x - ladderId.sprite_xoffset) + (ladderId.sprite_width / 2);
         
         SmcSetState("Ladder");
         sprite_index = spr_ladder_up;

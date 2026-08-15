@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_destroy_tiles",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_destroy_tiles",
+  "parent":{
+    "name":"Backend",
+    "path":"folders/Scripts/Essential/Backend.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

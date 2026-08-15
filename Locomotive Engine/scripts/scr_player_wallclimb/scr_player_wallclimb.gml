@@ -27,8 +27,8 @@ function StatePlayerWallclimbStep()
     if (pantingSprTime < 200)
         pantingSprTime++;
     
-    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
-    
+    BlocksDestroy(x, floor(y + (vsp - vertAccel)), false, true, [obj_metalblock]);
+
     if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimbGrabTime <= 0)
     {
         SmcSetState("Normal");

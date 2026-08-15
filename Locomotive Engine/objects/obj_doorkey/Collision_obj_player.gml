@@ -12,5 +12,5 @@ with (other)
 }
 
 sound_instance_one_shot(sfx_collect_key);
-add_saveroom();
+SaveroomAdd();
 instance_destroy();

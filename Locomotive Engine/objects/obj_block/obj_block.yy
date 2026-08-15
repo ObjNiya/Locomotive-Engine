@@ -1,7 +1,12 @@
 {
   "$GMObject":"",
   "%Name":"obj_block",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_block",
   "overriddenProperties":[],
@@ -10,8 +15,8 @@
     "path":"folders/Objects/Level Structure/Blocks.yy",
   },
   "parentObjectId":{
-    "name":"par_block",
-    "path":"objects/par_block/par_block.yy",
+    "name":"obj_solid",
+    "path":"objects/obj_solid/obj_solid.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -26,7 +31,9 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"targetTiles","filters":[],"listItems":[],"multiselect":false,"name":"targetTiles","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varDescription":"What tile layers' tiles should be destroyed if they overlap with this block.","varFriendlyName":"Target Tiles","varType":4,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

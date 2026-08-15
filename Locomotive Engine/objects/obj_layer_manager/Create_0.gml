@@ -21,10 +21,10 @@ collision_objs = [
     obj_ladder,
     
     obj_point_of_interest, 
-    obj_secret_tiles, 
-    obj_block_metal_tiles, 
-    obj_block_tiles_big, 
-    obj_block_tiles,
+    //obj_secret_tiles, 
+    //obj_block_metal_tiles, 
+    //obj_block_tiles_big, 
+    //obj_block_tiles,
     
     obj_spawn_a, 
     obj_spawn_b,

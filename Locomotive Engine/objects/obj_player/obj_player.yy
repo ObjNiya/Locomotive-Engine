@@ -17,10 +17,7 @@
     "name":"Player",
     "path":"folders/Objects/Essential/Player.yy",
   },
-  "parentObjectId":{
-    "name":"par_object",
-    "path":"objects/par_object/par_object.yy",
-  },
+  "parentObjectId":null,
   "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

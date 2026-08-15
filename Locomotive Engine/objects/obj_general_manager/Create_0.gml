@@ -1,5 +1,3 @@
-event_inherited();
-
 with (global)
 {
     // Delta Time

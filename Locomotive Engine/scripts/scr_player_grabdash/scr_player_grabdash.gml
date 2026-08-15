@@ -32,7 +32,8 @@ function StatePlayerGrabdashStep()
     
     hsp = movespeed * dir;
     
-    destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
+    var x_pos = (sign(hsp) == 1) ? ceil(x + hsp) : floor(x + hsp);
+    BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
     PlayerDoJumpstop();
     
     if (HitboxDoAttack(hitbox, "grabEnemy") != noone)

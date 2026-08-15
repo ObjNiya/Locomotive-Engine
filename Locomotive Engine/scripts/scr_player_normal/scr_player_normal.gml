@@ -108,7 +108,7 @@ function StatePlayerNormalStep()
     {
         if (sign(vsp) == -1)
         {
-            if (destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]))
+            if (BlocksDestroy(x, y + vsp, false, true, [obj_metalblock]))
                 vsp = max(0, vsp);
         }
         

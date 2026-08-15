@@ -1,4 +1,5 @@
-with (global) {
+with (global) 
+{
     if (points >= level.sRankPoints)
     {
         if (secrets_found > 3 && laps >= 2 && treasure_found && fullCombo)

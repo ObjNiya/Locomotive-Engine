@@ -30,13 +30,14 @@ function StatePlayerSjumpCreate()
 /// @ignore
 function StatePlayerSjumpStep()
 {
-    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
+    BlocksDestroy(x, floor(y + vsp + grav), false, true, [obj_metalblock]);
+    
     if (PlayerDoInstakill())
         vsp = -12;
     
     if (sprite_index == spr_springlaunch)
     {
-        destroy_blocks(x, y + vsp);
+        BlocksDestroy(x, floor(y + vsp + grav), false, true, [obj_metalblock]);
         PlayerDoCeilingsplat();
         
         return;

@@ -13,10 +13,7 @@
     "name":"New File Intro",
     "path":"folders/Objects/Cutscene/New File Intro.yy",
   },
-  "parentObjectId":{
-    "name":"par_object",
-    "path":"objects/par_object/par_object.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

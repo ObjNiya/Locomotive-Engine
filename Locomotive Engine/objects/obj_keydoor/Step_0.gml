@@ -1,1 +1,0 @@
-image_index = real(!check_saveroom());

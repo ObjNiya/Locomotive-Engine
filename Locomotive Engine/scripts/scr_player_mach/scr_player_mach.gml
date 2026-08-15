@@ -45,7 +45,6 @@ function StatePlayerMachCreate()
 function StatePlayerMachStep()
 {
     var mach3 = (movespeed >= 12 && EqualsToAny(sprite_index, spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel));
-
     accel = 0.1;
     
     if (mach3)
@@ -55,7 +54,8 @@ function StatePlayerMachStep()
         
         momentum = true;
         
-        destroy_blocks(x + hsp, y, []);
+        var x_pos = (sign(hsp) == 1) ? ceil(x + hsp + accel) : floor(x + hsp + accel);
+        BlocksDestroy(x_pos, y, true, false);
         ScareEnemies();
         
         instakillmove = true;
@@ -66,7 +66,8 @@ function StatePlayerMachStep()
     {
         instakillmove = false;
         
-        destroy_blocks(x + hsp, y, [obj_block_metal, obj_block_metal_tiles]);
+        var x_pos = (sign(hsp) == 1) ? ceil(x + hsp + accel) : floor(x + hsp + accel);
+        BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
         HitboxDoAttack(hitbox, "stunEnemy");
     }
 

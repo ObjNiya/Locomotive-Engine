@@ -25,7 +25,7 @@ function FlashEffectDraw()
     if (--flashTime <= 0)
         return false;
     
-    SetColorMix(COLOR_MIX_MODES.MIX, 1, c_white, true);
+    ColorMixSet(COLOR_MIX_MODES.MIX, 1, c_white, true);
     return true;
 }
 

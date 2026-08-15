@@ -57,7 +57,7 @@ function StatePlayerGroundpoundStep()
             machAfterimageUseAlpha = true;
 			
             time_source_stop(machAfterimageTimer);
-            time_source_stop(machAfterimageTimer);
+            time_source_stop(blurAfterimageTimer);
             time_source_stop(downwardsWooshPartTimer);
             time_source_stop(airCloudParticleTimer);
 
@@ -65,10 +65,7 @@ function StatePlayerGroundpoundStep()
             instance_destroy(groundpoundEffectId);
             
             if (groundpoundSmash >= 10)
-            {
-                while (place_meeting(x, y + 1, [obj_block_metal, obj_block_metal_tiles]))
-                    instance_destroy(instance_place(x, y + 1, [obj_block_metal, obj_block_metal_tiles]));
-            }
+                BlocksDestroy(x, y + 1, false, true);
             
             sound_instance_stop(sndGroundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
             sound_instance_one_shot(sfx_player_groundpound_land, x, y);
@@ -87,7 +84,8 @@ function StatePlayerGroundpoundStep()
         return;
     }
     
-    destroy_blocks(x, y + vsp, [obj_block_metal, obj_block_metal_tiles]);
+    var y_pos = (sign(vsp) == 1) ? ceil(x + vsp + grav) : floor(x + vsp + grav);
+    BlocksDestroy(x, y_pos, false, true, [obj_metalblock]);
     PlayerDoInstakill();
     
     if (InputPressed(INPUT_VERB.GRABDASH))
@@ -170,7 +168,7 @@ function StatePlayerGroundpoundDestroy()
     machAfterimageUseAlpha = true;
     
     time_source_stop(machAfterimageTimer);
-    time_source_stop(machAfterimageTimer);
+    time_source_stop(blurAfterimageTimer);
     time_source_stop(downwardsWooshPartTimer);
     time_source_stop(airCloudParticleTimer);
     

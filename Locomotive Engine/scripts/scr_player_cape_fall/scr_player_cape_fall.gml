@@ -54,5 +54,5 @@ function StatePlayerCapeFallStep()
 /// @ignore
 function StatePlayerCapeFallDestroy()
 {
-    time_source_stop(blurAfterimageTimer);
+    time_source_stop(machAfterimageTimer);
 }

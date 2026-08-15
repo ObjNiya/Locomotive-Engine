@@ -4,6 +4,6 @@ with (spawner_id)
         exit;
 }
 
-SetColorMix(COLOR_MIX_MODES.OVERLAY, 0.5, color);
+ColorMixSet(COLOR_MIX_MODES.OVERLAY, 0.5, color);
 draw_self();
 shader_reset();

@@ -21,7 +21,7 @@ function AttackPlayer(player, attacker_id)
             image_xscale = sign(attacker_id.x - x);
         dir = image_xscale;
         
-        sleep(100);
+        Sleep(100);
         SmcSetState("Hurt");
         
         if (old_xscale == -image_xscale)

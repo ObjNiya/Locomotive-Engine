@@ -9,10 +9,7 @@
     "name":"Backend",
     "path":"folders/Objects/Essential/Backend.yy",
   },
-  "parentObjectId":{
-    "name":"par_object",
-    "path":"objects/par_object/par_object.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

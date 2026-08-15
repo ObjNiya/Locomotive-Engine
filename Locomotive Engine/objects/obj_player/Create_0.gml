@@ -122,12 +122,6 @@ storedSpriteIndex = -1;
 storedImageIndex = 0;
 
 tauntTimer = 18;
-
-taunt_timer = new Timer(0.3, time_source_units_seconds, function() {
-    SmcSetState(stateHistory[$ "tauntStoredState"]);
-    SmcDeleteFromHistory("tauntStoredState");
-});
-
 parryHitbox = HitboxCreate();
 
 with (parryHitbox)
@@ -189,16 +183,6 @@ sndRollGetup = sound_instance_create(sfx_player_roll_getup);
 wallclimbGrabTime = 0;
 wallclimbDashTimer = 0;
 
-/*wallclimb_dash_timer = new Timer(0.35, time_source_units_seconds, function() {
-    sprite_index = spr_wallclimb;
-});*/
-
-// Warp Pipe
-/*
-warppipe_failsave_timer = new Timer(3, time_source_units_seconds, function() {
-    SmcSetState("Normal");
-});*/
-
 warppipeId = noone;
 
 // Hurt
@@ -207,19 +191,8 @@ hurtFlickerTimer = time_source_create(playerTimeSources, 2, time_source_units_fr
     visible = !visible;
     
     if (invincibleBuffer <= 0 && visible)
-        time_source_stop(hurtFlickerTimerN);
+        time_source_stop(hurtFlickerTimer);
 }, [], -1);
-/*
-hurtFlickerTimer = new Timer(2, time_source_units_frames, function() {
-    visible = !visible;
-    
-    if (invincibleBuffer <= 0 && visible)
-    {
-        hurtFlickerTimer.SetRepeating(false, false);
-        hurtFlickerTimer.Stop();
-    }
-});
-hurtFlickerTimer.SetRepeating(false, true);*/
 
 /////////////////////////////
 // Particle timers
@@ -241,32 +214,6 @@ airCloudParticleTimer = time_source_create(playerTimeSources, 8, time_source_uni
     create_particle(x + irandom_range(-25, 25), y + irandom_range(-10, 35), obj_cloud_particle, false);
 }, [], -1);
 
-/*
-note_particle_timer = new Timer(0.1, time_source_units_seconds, function() {
-    create_particle(x + irandom_range(-70, 70), y + irandom_range(-70, 70), obj_note_particle, false);
-})
-cloud_particle_timer = new Timer(12, time_source_units_frames, function() {
-    create_particle(x, y + 43, obj_cloud_particle, false);
-    
-    if ((stateName != "Normal" && stateName != "Painting" && stateName != "Ladder") || carryingId == noone)
-        return;
-    
-    sound_instance_one_shot(SfxStep, x, y);
-});
-cloud_particle_timer.SetRepeating(false, true);
-
-air_cloud_particle_timer = new Timer(8, time_source_units_frames, function() {
-    create_particle(x + irandom_range(-25, 25), y + irandom_range(-10, 35), obj_cloud_particle, false);
-});
-air_cloud_particle_timer.SetRepeating(false, true);
-
-
-flame_particle_timer = new Timer(0.2, time_source_units_seconds, function() {
-    create_particle(x, y + 45, obj_flame_particle, false);
-});
-flame_particle_timer.SetRepeating(false, true);
-*/
-
 downwardsWooshPartTimer = time_source_create(playerTimeSources, 0.25, time_source_units_seconds, function() {
     with (create_particle(x, y, obj_woosh_particle, false))
         image_angle = 90;
@@ -276,20 +223,6 @@ upwardsWooshPartTimer = time_source_create(playerTimeSources, 0.25, time_source_
     with (create_particle(x, y, obj_woosh_particle, false))
         image_angle = -90;
 }, [], -1);
-
-/*
-downwards_woosh_particle_timer = new Timer(0.25, time_source_units_seconds, function() {
-    with (create_particle(x, y, obj_woosh_particle, false))
-        image_angle = 90;
-});
-downwards_woosh_particle_timer.SetRepeating(false, true);
-
-
-upwards_woosh_particle_timer = new Timer(0.25, time_source_units_seconds, function() {
-    with (create_particle(x, y, obj_woosh_particle, false))
-        image_angle = -90;
-});
-upwards_woosh_particle_timer.SetRepeating(false, true);*/
 
 /////////////////////////////
 // Afterimage timers
@@ -302,17 +235,6 @@ blurAfterimageTimer = time_source_create(playerTimeSources, 2, time_source_units
             image_index = floor(other.image_index);
     }
 }, [], -1);
-
-/*
-blur_afterimage_timer = new Timer(2, time_source_units_frames, function() {
-    with (create_afterimage_vh(x, y, obj_blur_afterimage))
-    {
-        if (other.stateName == "Cape")
-            image_index = floor(other.image_index);
-    }
-});
-blur_afterimage_timer.SetRepeating(false, true);*/
-
 
 machAfterimageUseAlpha = true;
 

@@ -5,11 +5,11 @@ with (other)
     
     if (hasKey)
     {
-        add_saveroom(other);
+        SaveroomAdd(other);
         hasKey = false;
     }
 
-    if (!check_saveroom(other))
+    if (!SaveroomCheck(other))
         exit;
     
     if (!RoomQueue(other.targetRoom, other.targetSpawn))

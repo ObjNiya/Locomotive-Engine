@@ -57,7 +57,7 @@ function StatePlayerLadderStep()
         return;
     }
     
-    if (!instance_exists(ladder_id) || !place_meeting(x, y, ladder_id) || (grounded && vertDir == 1 && !place_meeting(x, y, obj_platform)))
+    if (!instance_exists(ladderId) || !place_meeting(x, y, ladderId) || (grounded && vertDir == 1 && !place_meeting(x, y, obj_platform)))
     {
         vsp = 0;
         SmcSetState("Normal");

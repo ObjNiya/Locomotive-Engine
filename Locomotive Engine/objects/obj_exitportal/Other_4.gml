@@ -1,4 +1,4 @@
-if (IsShowtime() || check_saveroom())
+if (IsShowtime() || SaveroomCheck())
 {
     if (!IsShowtime())
         visible = false;
@@ -15,4 +15,4 @@ with (obj_player)
 }
 
 alarm[0] = 90;
-add_saveroom();
+SaveroomAdd();
