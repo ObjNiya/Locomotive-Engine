@@ -14,8 +14,8 @@
     "path":"folders/Objects/Level Structure/Plushies.yy",
   },
   "parentObjectId":{
-    "name":"par_trailfollowobject",
-    "path":"objects/par_trailfollowobject/par_trailfollowobject.yy",
+    "name":"par_follower",
+    "path":"objects/par_follower/par_follower.yy",
   },
   "persistent":true,
   "physicsAngularDamping":0.1,

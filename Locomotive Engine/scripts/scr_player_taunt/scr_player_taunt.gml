@@ -1,6 +1,16 @@
 /// @ignore
 function StatePlayerTauntCreate()
 {
+	if !is_undefined(global.trailfollowers_map[? id]) {
+		for (var i = 0; i < ds_list_size(global.trailfollowers_map[? id]); i++) {
+			with global.trailfollowers_map[? id][| i] {
+				create_particle(x, y, obj_taunt_particle).sprite_index = spr_taunt_particle_small;
+				lock = true
+				sprite_index = spr_taunt
+				image_index = irandom(image_number)
+			}
+		}
+	}
     storedSpriteIndex = sprite_index;
     storedImageIndex = image_index;
 
@@ -38,6 +48,14 @@ function StatePlayerTauntStep()
 /// @ignore
 function StatePlayerTauntDestroy()
 {
+	if !is_undefined(global.trailfollowers_map[? id]) {
+		for (var i = 0; i < ds_list_size(global.trailfollowers_map[? id]); i++) {
+			with global.trailfollowers_map[? id][| i] {
+				lock = false
+				sprite_index = spr_idle
+			}
+		}
+	}
     grav = 0.5;
     tauntTimer = 18;
     

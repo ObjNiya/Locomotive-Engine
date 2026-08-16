@@ -1,0 +1,1 @@
+scr_delete_follower(basefollowobj)

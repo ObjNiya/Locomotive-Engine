@@ -10,7 +10,7 @@ function AddCombo(value, time)
         combo = max(combo + value, 0);
         
         if (combo <= 0)
-            return false;
+			exit;
         
         comboTimer.time = clamp(comboTimer.time + time, 0, 6.75);
     }
