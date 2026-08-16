@@ -4,10 +4,10 @@ global.trailfollowers_map = ds_map_create()
 function create_follower(_tag, _x = x,_y =  y,followingbase = id) {
 	with InstanceCreate(_x,_y, par_follower) {
 		spr_intro = asset_get_index("spr_" + _tag + "_intro")
-		spr_panic = asset_get_index("spr_" + _tag + "panic")
-		spr_run = asset_get_index("spr_" + _tag + "run")
-		spr_runpanic = asset_get_index("spr_" + _tag + "runpanic")
-		spr_taunt = asset_get_index("spr_" + _tag + "taunt")
+		spr_panic = asset_get_index("spr_" + _tag + "_panic")
+		spr_run = asset_get_index("spr_" + _tag + "_run")
+		spr_runpanic = asset_get_index("spr_" + _tag + "_runpanic")
+		spr_taunt = asset_get_index("spr_" + _tag + "_taunt")
 		spr_idle = asset_get_index("spr_" + _tag)
 		sprite_index = spr_intro
 		image_index = 0
