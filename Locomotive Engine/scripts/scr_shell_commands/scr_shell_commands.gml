@@ -11,6 +11,7 @@ function sh_noclip(args)
         SmcSetState("Noclip");
 }
 
+
 /// @ignore
 function meta_noclip()
 {
@@ -24,21 +25,40 @@ function meta_noclip()
 
 
 /// @ignore
-function sh_toggle_collisions()
+function sh_show_collisions()
 {
     with (obj_layer_manager)
         set_collision_visible(!show_collisions);
 }
 
+
 /// @ignore
-function meta_toggle_collisions()
+function meta_show_collisions()
 {
     return
     {
-        description: "Toggles the visiblity of collision objects."
+        description: "Toggles the visiblity of collision instances."
     }
 }
 
+
+global.__showHitboxes__ = false;
+
+/// @ignore
+function sh_show_hitboxes()
+{
+    global.__showHitboxes__ = !global.__showHitboxes__;
+}
+
+
+/// @ignore
+function meta_show_hitboxes()
+{
+    return
+    {
+        description: "Toggles the visibility of hitbox instances."
+    }
+}
 
 /// @ignore
 function sh_goto_room(args)
@@ -51,6 +71,7 @@ function sh_goto_room(args)
     
     RoomTrans(obj_roomtrans_fade, -1);
 }
+
 
 /// @ignore
 function meta_goto_room()
@@ -84,11 +105,15 @@ function meta_goto_room()
     }
 }
 
+
+/// @ignore
 function sh_set_game_speed (args) {
 	var type = args[2] == "microseconds" ? gamespeed_microseconds : gamespeed_fps
 	game_set_speed(floor(real(args[1])), type);
 }
 
+
+/// @ignore
 function meta_set_game_speed() {
 	return {
 		description: "Set the games framerate, or microseconds per game frame",
@@ -102,9 +127,12 @@ function meta_set_game_speed() {
 	}
 }
 
+
+/// @ignore
 function sh_start_showtime() {
     StartShowtime();
 }
+
 
 if (IDE_BUILD)
 {

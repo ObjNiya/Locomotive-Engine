@@ -13,7 +13,7 @@ function StatePlayerGroundpoundCreate()
     vsp = -6;
     
     terminalVelocity = infinity;
-    instakillmove = true;
+    instakillHitbox.canAttack = true;
     machAfterimageUseAlpha = false;
     
     time_source_start(blurAfterimageTimer);
@@ -84,7 +84,7 @@ function StatePlayerGroundpoundStep()
         return;
     }
     
-    var y_pos = (sign(vsp) == 1) ? ceil(x + vsp + grav) : floor(x + vsp + grav);
+    var y_pos = (sign(vsp) == 1) ? ceil(y + vsp + grav) : floor(y + vsp + grav);
     BlocksDestroy(x, y_pos, false, true, [obj_metalblock]);
     PlayerDoInstakill();
     
@@ -164,7 +164,7 @@ function StatePlayerGroundpoundDestroy()
     grav = 0.5;
     terminalVelocity = 20;
     
-    instakillmove = false;
+    instakillHitbox.canAttack = false;
     machAfterimageUseAlpha = true;
     
     time_source_stop(machAfterimageTimer);

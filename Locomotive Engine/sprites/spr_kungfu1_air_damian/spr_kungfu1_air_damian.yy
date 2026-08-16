@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_kungfu1air_damian",
+  "%Name":"spr_kungfu1_air_damian",
   "bboxMode":0,
   "bbox_bottom":87,
   "bbox_left":54,
@@ -23,7 +23,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"4c3248f6-e5ce-4968-9282-3d810e56b4a4","blendMode":0,"displayName":"default","isLocked":false,"name":"4c3248f6-e5ce-4968-9282-3d810e56b4a4","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_kungfu1air_damian",
+  "name":"spr_kungfu1_air_damian",
   "nineSlice":null,
   "origin":4,
   "parent":{
@@ -35,7 +35,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_kungfu1air_damian",
+    "%Name":"spr_kungfu1_air_damian",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -59,10 +59,10 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_kungfu1air_damian",
+    "name":"spr_kungfu1_air_damian",
     "playback":1,
-    "playbackSpeed":1.0,
-    "playbackSpeedType":1,
+    "playbackSpeed":20.0,
+    "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
     "showBackdrop":true,
@@ -71,10 +71,10 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9cdb566c-ac15-4067-8bcc-cb98d8810a62","path":"sprites/spr_kungfu1air_damian/spr_kungfu1air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9cdb566c-ac15-4067-8bcc-cb98d8810a62","path":"sprites/spr_kungfu1_air_damian/spr_kungfu1_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"011ef7e8-cd7b-4cde-b4f4-d009c3dea775","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5f743537-cf4b-404d-943a-53efd8653e16","path":"sprites/spr_kungfu1air_damian/spr_kungfu1air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5f743537-cf4b-404d-943a-53efd8653e16","path":"sprites/spr_kungfu1_air_damian/spr_kungfu1_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"c2c7b453-f2a0-42b2-a955-fb539e0a64ff","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

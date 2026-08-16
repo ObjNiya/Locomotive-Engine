@@ -1,5 +1,5 @@
 exprTimer.Step();
-SmcRunEvent(STATE_EVENTS.STEP);
+SmcRunEvent("Step");
 
 if (playerId.x > (room_width - 224) && playerId.y < 187)
     y = Approach(y, ystart - 300, 15);

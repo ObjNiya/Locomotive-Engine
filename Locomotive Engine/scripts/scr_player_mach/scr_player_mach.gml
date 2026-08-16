@@ -32,7 +32,7 @@ function StatePlayerMachCreate()
         sound_instance_start(sndMach);
     
     if (EqualsToAny(sprite_index, spr_mach1, spr_mach2, spr_mach2_jump_intro, spr_mach2_jump, spr_mach3, spr_mach3_jump, spr_mach3_hit_enemy, spr_mach4,
-          spr_walljump_intro, spr_walljump, spr_longjump_intro, spr_longjump, spr_sjump_cancel_intro, spr_sjump_cancel))
+          spr_walljump_intro, spr_walljump, spr_longjump_intro, spr_longjump, spr_kungfu_backflip, spr_sjump_cancel_intro, spr_sjump_cancel))
         return;
     
     if (!grounded)
@@ -58,17 +58,18 @@ function StatePlayerMachStep()
         BlocksDestroy(x_pos, y, true, false);
         ScareEnemies();
         
-        instakillmove = true;
+        instakillHitbox.canAttack = true;
         if (PlayerDoInstakill())
             SpriteSet(spr_mach3_hit_enemy, 0);
     }
     else
     {
-        instakillmove = false;
+        instakillHitbox.canAttack = false;
         
         var x_pos = (sign(hsp) == 1) ? ceil(x + hsp + accel) : floor(x + hsp + accel);
         BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
-        HitboxDoAttack(hitbox, "stunEnemy");
+        
+        StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
     }
 
     var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
@@ -175,7 +176,7 @@ function StatePlayerMachStep()
         
         if (roll_getup_spr)
             machsnd_ground = false;
-        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump))
+        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_kungfu_backflip))
             image_speed = (movespeed / 5.5);
         
         if (grounded)
@@ -195,7 +196,7 @@ function StatePlayerMachStep()
             
             create_particle_repeating(x, y + 45, obj_mach2_cloud_particle);
         }
-        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_mach2_jump_intro, spr_mach2_jump, spr_walljump_intro, spr_walljump))
+        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_kungfu_backflip, spr_mach2_jump_intro, spr_mach2_jump, spr_walljump_intro, spr_walljump))
             SpriteSet(spr_mach2_jump_intro, 0);
         
     }
@@ -246,7 +247,7 @@ function StatePlayerMachDestroy()
 {
     image_speed = 1;
     
-    instakillmove = false;
+    instakillHitbox.canAttack = false;
     flameParticleTimer = 12;
     
     time_source_stop(blurAfterimageTimer);

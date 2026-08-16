@@ -2,7 +2,7 @@
 function StateEnemyDeathCreate()
 {
     ENEMY_STATE_FAILSAVE;
-    sprite_index = spr_stunned;
+    sprite_index = stunnedSpr;
 }
 
 function StateEnemyDeathStep()

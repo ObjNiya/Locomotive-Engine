@@ -13,10 +13,16 @@ function StatePlayerTauntCreate()
     hsp = 0;
     movespeed = 0;
     
-    invincibleBuffer = 8;
     parryHitboxBuffer = 8;
     
-    SpriteSet(spr_taunt, irandom(sprite_get_number(spr_taunt)));
+    with (hitbox)
+    {
+        x = other.x;
+        y = other.y;
+        mask_index = spr_parryhitbox;
+    }
+    
+    SpriteSet(spr_taunt, M_RandomInt(sprite_get_number(spr_taunt)));
     create_particle(x, y + 45, obj_taunt_particle);
     
     sound_instance_one_shot(sfx_player_taunt, x, y);
@@ -25,14 +31,13 @@ function StatePlayerTauntCreate()
 /// @ignore
 function StatePlayerTauntStep()
 {
-    if (--parryHitboxBuffer > 0)
-        HitboxDoAttack(parryHitbox, "parryEnemy");
+    if (--parryHitboxBuffer <= 0)
+        hitbox.mask_index = spr_player_mask;
 
     if (--tauntTimer > 0)
         return;
     
-    SmcSetState(stateHistory[$ "tauntStoredState"]);
-    SmcDeleteFromHistory("tauntStoredState");
+    SmcSetState(tauntStoredState);
 }
 
 /// @ignore

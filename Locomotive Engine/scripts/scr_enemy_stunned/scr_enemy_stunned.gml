@@ -3,23 +3,28 @@ function StateEnemyStunnedCreate()
 {
     ENEMY_STATE_FAILSAVE;
     
-    sprite_index = spr_stunned;
-    
-    stunned_timer.maxTime = 200;
-    stunned_timer.Start();
+    sprite_index = stunnedSpr;
+    stunnedTimer = 200;
 }
 
 /// @ignore
 function StateEnemyStunnedStep()
 {
+    unstunnableTime--;
+    stunnedTimer--;
+    
     if (instance_exists(obj_player) && obj_player.stateName == "Taunt" && grounded)
-        stunned_timer.curTime = 0;
+        stunnedTimer = 0;
+    
+    if (stunnedTimer <= 0)
+    {
+        SmcSetState("Walk");
+        return;
+    }
+    
     
     visualXScale = Approach(visualXScale, 1, 0.03);
     visualYScale = Approach(visualYScale, 1, 0.03);
-    
-    if (unstunableBuffer > 0)
-        unstunableBuffer--;
     
     movespeed = Approach(movespeed, 0, 0.3);
     hsp = movespeed * -image_xscale;
@@ -33,12 +38,10 @@ function StateEnemyStunnedDestroy()
 {
     visualXScale = 1;
     visualYScale = 1;
-    
-    stunned_timer.Stop();
 }
 
 /// @ignore
 function StateEnemyStunnedDraw()
 {
-    bird.draw();
+    stunBird.Draw(x, y - 40);
 }

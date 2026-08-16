@@ -3,15 +3,17 @@ event_inherited();
 mask_index = spr_shyguy_mask;
 sprite_index = spr_shyguy;
 
-spr_walk = spr_shyguy;
-spr_scared = spr_shyguy_scared;
-spr_stunned = spr_shyguy_stun;
-spr_dead = spr_shyguy_dead;
-spr_turn = spr_shyguy_turn;
+walkSpr = spr_shyguy;
+scaredSpr = spr_shyguy_scared;
+grabbedSpr = spr_shyguy_stun;
+stunnedSpr = spr_shyguy_stun;
+deadSpr = spr_shyguy_dead;
+turnSpr = spr_shyguy_turn;
 
-hitbox.mask_index = spr_shyguyhitbox;
+SmcSetStateNamePrefix("Shyguy");
 
-walk_postfix = function()
-{
-    HitboxDoAttack(hitbox, "player");
-}
+hurtbox.mask_index = spr_shyguy_mask;
+attackHitbox.canAttack = true;
+attackHitbox.mask_index = spr_shyguyhitbox;
+
+DESTROY_SAVEROOM;

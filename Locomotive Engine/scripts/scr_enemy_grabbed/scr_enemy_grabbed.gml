@@ -3,7 +3,7 @@ function StateEnemyGrabbedCreate()
 {
     ENEMY_STATE_FAILSAVE;
     
-    sprite_index = spr_stunned;
+    sprite_index = grabbedSpr;
     grav = 0;
     movespeed = 0;
     //thrown_blur_afterimage_timer.Start();
@@ -12,9 +12,9 @@ function StateEnemyGrabbedCreate()
 /// @ignore
 function StateEnemyGrabbedStep()
 {
-    grabbed_prefix();
+    //grabbed_prefix();
     //thrown_blur_afterimage_timer.step();
-    grabbed_postfix();
+    //grabbed_postfix();
 }
 
 /// @ignore

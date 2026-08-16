@@ -4,8 +4,6 @@ if (vsp < 20)
 x += hsp;
 y += floor(vsp);
 
-cloudPartTimer.Step();
-
 if (collideBuffer > 0)
 {
     collideBuffer--;
@@ -13,14 +11,14 @@ if (collideBuffer > 0)
 }
 
 var player = instance_place(x, y, obj_player);
-if (player == noone || !player.instakillmove)
+if (player == noone || !player.instakillHitbox.canAttack)
     exit;
 
 vsp = random_range(-10, -18);
 hsp = sign(x - player.x) * random_range(10, 18);
 collideBuffer = 10;
 
-cloudPartTimer.Start();
+alarm[0] = 5;
 InstanceCreate(x, y, obj_bang_particle);
 
 if (x != player.x)

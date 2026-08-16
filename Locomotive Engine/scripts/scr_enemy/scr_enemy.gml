@@ -36,7 +36,6 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
             invincibleBuffer = 15;
             
             SmcSetState("Stunned");
-            
             sound_instance_one_shot(sfx_player_mach2_bump, x, y);
         }
     }
@@ -49,14 +48,11 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
  */
 function StunEnemy(enemy_id, attacker_id)
 {
-    var parent = object_get_parent(enemy_id.object_index);
-    
-    if (parent != par_enemy)
-        return;
-    
     with (enemy_id)
     {
-        if (unstunableBuffer > 0)
+        var parent = object_get_parent(enemy_id.object_index);
+    
+        if (parent != par_enemy || unstunnableTime > 0)
             return false;
         
         image_xscale = -sign(attacker_id.image_xscale);
@@ -67,7 +63,7 @@ function StunEnemy(enemy_id, attacker_id)
         movespeed = 12;
         vsp = (attacker_id.y - 180 - y) / 60;
         
-        unstunableBuffer = 15;
+        unstunnableTime = 15;
         invincibleBuffer = 5;
         
         SmcSetState("Stunned");
@@ -104,7 +100,5 @@ function ScareEnemies()
     
         if (stateName != "Scared")
             SmcSetState("Scared");
-    
-        scared_timer.Start();
     }
 }

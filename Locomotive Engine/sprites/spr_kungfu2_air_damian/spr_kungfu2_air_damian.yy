@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_kungfu_air_2_damian",
+  "%Name":"spr_kungfu2_air_damian",
   "bboxMode":0,
   "bbox_bottom":95,
   "bbox_left":15,
@@ -27,7 +27,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"30f99f53-41d3-4ac0-8444-877fbc4d3597","blendMode":0,"displayName":"default","isLocked":false,"name":"30f99f53-41d3-4ac0-8444-877fbc4d3597","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_kungfu_air_2_damian",
+  "name":"spr_kungfu2_air_damian",
   "nineSlice":null,
   "origin":4,
   "parent":{
@@ -39,7 +39,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_kungfu_air_2_damian",
+    "%Name":"spr_kungfu2_air_damian",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -63,7 +63,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_kungfu_air_2_damian",
+    "name":"spr_kungfu2_air_damian",
     "playback":1,
     "playbackSpeed":20.0,
     "playbackSpeedType":0,
@@ -75,22 +75,22 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"23b76af5-09a5-43f9-b3a3-7be396f73bb6","path":"sprites/spr_kungfu_air_2_damian/spr_kungfu_air_2_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"23b76af5-09a5-43f9-b3a3-7be396f73bb6","path":"sprites/spr_kungfu2_air_damian/spr_kungfu2_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"413edcad-ff79-43f5-b23f-b6025f9985c3","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4ef9b03a-0cb8-4a5d-bf97-d8685d1c6403","path":"sprites/spr_kungfu_air_2_damian/spr_kungfu_air_2_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4ef9b03a-0cb8-4a5d-bf97-d8685d1c6403","path":"sprites/spr_kungfu2_air_damian/spr_kungfu2_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"78d6b378-926b-4f6b-b9d6-468d611e10aa","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4fb8af6b-a4ad-4878-b0b6-c09ee1210a70","path":"sprites/spr_kungfu_air_2_damian/spr_kungfu_air_2_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"4fb8af6b-a4ad-4878-b0b6-c09ee1210a70","path":"sprites/spr_kungfu2_air_damian/spr_kungfu2_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"f2259f6e-ee0f-46c9-b159-2c796b6e367d","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"651587c5-9169-4d70-85a1-fb437515a502","path":"sprites/spr_kungfu_air_2_damian/spr_kungfu_air_2_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"651587c5-9169-4d70-85a1-fb437515a502","path":"sprites/spr_kungfu2_air_damian/spr_kungfu2_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"47a20567-2219-4326-8287-313b24e43032","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e9874d54-25d5-4702-83c6-c0c18b35498b","path":"sprites/spr_kungfu_air_2_damian/spr_kungfu_air_2_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"e9874d54-25d5-4702-83c6-c0c18b35498b","path":"sprites/spr_kungfu2_air_damian/spr_kungfu2_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"13c09bcc-5ce8-43db-9a9d-e4c3567caa3d","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"66d9ec86-92d8-4ed6-b84d-719ed2b2c6d9","path":"sprites/spr_kungfu_air_2_damian/spr_kungfu_air_2_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"66d9ec86-92d8-4ed6-b84d-719ed2b2c6d9","path":"sprites/spr_kungfu2_air_damian/spr_kungfu2_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"5e00f912-fcb3-4eb4-a485-b4935f722ca2","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

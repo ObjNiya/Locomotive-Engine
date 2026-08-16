@@ -45,35 +45,12 @@ SfxVoiceHurt = CharGetSnd(sfx_damian_voice_hurt, character);
 SfxVoicePlushie = CharGetSnd(sfx_damian_voice_plushie, character);
 SfxVoiceCatripi = CharGetSnd(sfx_damian_voice_catripi, character);
 
-SmcInit();
-statePrefix = "StatePlayer";
+SmcInit("Player");
 SmcSetState("Normal");
 
-HurtSysInit();
 hitbox = HitboxCreate();
-
-with (hitbox)
-{
-    new Target("stunEnemy", par_enemy, StunEnemy);
-    new Target("attackEnemy", par_enemy, AttackEnemy);
-    
-    var grab_func = function(enemy_id, player_id)
-    {
-        with (enemy_id)
-            SmcSetState("Grabbed");
-        
-        with (player_id)
-        {
-            carryingId = enemy_id;
-            movespeed = 0;
-            
-            SpriteSet((grounded) ? spr_hauling_intro : spr_hauling_jump, 0);
-            SmcSetState("Normal");
-        }
-    }
-    
-    new Target("grabEnemy", par_enemy, grab_func);
-}
+instakillHitbox = HitboxCreate();
+instakillHitbox.canAttack = false;
 
 /////////////////////////////
 // General variables
@@ -121,33 +98,9 @@ storedMovespeed = 0;
 storedSpriteIndex = -1;
 storedImageIndex = 0;
 
+tauntStoredState = "";
 tauntTimer = 18;
-parryHitbox = HitboxCreate();
-
-with (parryHitbox)
-{
-    mask_index = spr_parryhitbox;
-    
-    var parry_func = function(hitbox_id, player_id)
-    {
-        var enemy_id = hitbox_id.owner;
-        
-        if (enemy_id == player_id || !enemy_id.parryable)
-            return;
-        
-        with (player_id)
-        {
-            parryTarget = enemy_id;
-            
-            SmcSetState("Parry");
-            create_particle(x, y, obj_parry_particle);
-            sound_instance_one_shot(sfx_player_parry, x, y);
-        }
-    }
-    
-    new Target("parryEnemy", obj_hitbox, parry_func);
-}
-
+parryHitboxTime = 8;
 parryHitboxBuffer = 8;
 
 // Parry
@@ -190,7 +143,7 @@ warppipeId = noone;
 hurtFlickerTimer = time_source_create(playerTimeSources, 2, time_source_units_frames, function() {
     visible = !visible;
     
-    if (invincibleBuffer <= 0 && visible)
+    if (invincibilityTime <= 0 && visible)
         time_source_stop(hurtFlickerTimer);
 }, [], -1);
 
@@ -243,12 +196,6 @@ machAfterimageTimer = time_source_create(playerTimeSources, 6, time_source_units
         use_alpha = other.machAfterimageUseAlpha;
 }, [], -1);
 
-mach_afterimage_timer = new Timer(6, time_source_units_frames, function() {
-    with (create_afterimage_vh(x, y, obj_mach_afterimage))
-        use_alpha = other.machAfterimageUseAlpha;
-});
-mach_afterimage_timer.SetRepeating(false, true);
-
 /////////////////////////////
 // Other variables
 /////////////////////////////
@@ -256,4 +203,5 @@ mach_afterimage_timer.SetRepeating(false, true);
 carryingId = noone;
 hudBookId = noone;
 hudTvId = noone;
-instakillmove = false;
+instakillHitbox.canAttack = false;
+invincibilityTime = 0;

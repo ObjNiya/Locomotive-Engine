@@ -35,7 +35,7 @@ function StatePlayerParryStep()
         static parry_threshold = 84;
         
         if ((other.parryTarget != id && distance_to_object(other) > parry_threshold) 
-            || hitstunTimer.state == TIMER_STATES.STARTED || !parryable)
+            || time_source_get_state(hitstunTimer) == time_source_state_active || !parryable)
             continue;
         
         // TODO: Add Combo

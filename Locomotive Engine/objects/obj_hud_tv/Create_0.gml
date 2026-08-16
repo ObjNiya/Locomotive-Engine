@@ -7,8 +7,7 @@ sprite_index = spr_tv_turnon_damian;
 
 playerId = noone;
 
-SmcInit();
-statePrefix = "StateTv";
+SmcInit("Tv");
 
 // State variables
 

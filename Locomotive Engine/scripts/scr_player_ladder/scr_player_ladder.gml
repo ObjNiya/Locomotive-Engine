@@ -31,7 +31,7 @@ function StatePlayerLadderStep()
             break;
         case 0:
             sprite_index = spr_ladder_up;
-            image_speed = 1;
+            image_speed = 0;
             break;
         case 1:
             sprite_index = spr_ladder_down;

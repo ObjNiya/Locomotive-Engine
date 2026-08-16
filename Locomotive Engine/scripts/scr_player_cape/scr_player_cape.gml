@@ -97,13 +97,13 @@ function StatePlayerCapeStep()
     if (sprite_index == spr_cape_spin)
     {
         PlayerDoInstakill();
-        instakillmove = true;
+        instakillHitbox.canAttack = true;
         
         if (AnimationEnd(spr_cape))
         {
             machAfterimageUseAlpha = true;
             time_source_stop(machAfterimageTimer);
-            instakillmove = false;
+            instakillHitbox.canAttack = false;
             
             image_speed = 1;
         }
@@ -151,7 +151,7 @@ function StatePlayerCapeDestroy()
     
     grav = 0.5;
     
-    instakillmove = false;
+    instakillHitbox.canAttack = false;
     machAfterimageUseAlpha = true;
     
     time_source_stop(machAfterimageTimer);

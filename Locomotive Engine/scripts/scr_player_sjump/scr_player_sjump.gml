@@ -11,7 +11,7 @@ function StatePlayerSjumpCreate()
     grav = -0.1;
     grounded = false;
     
-    instakillmove = true;
+    instakillHitbox.canAttack = true;
     machAfterimageUseAlpha = false;
     
     time_source_start(blurAfterimageTimer);
@@ -30,7 +30,7 @@ function StatePlayerSjumpCreate()
 /// @ignore
 function StatePlayerSjumpStep()
 {
-    BlocksDestroy(x, floor(y + vsp + grav), false, true, [obj_metalblock]);
+    BlocksDestroy(x, floor(y + vsp + grav), false, true);
     
     if (PlayerDoInstakill())
         vsp = -12;
@@ -92,7 +92,7 @@ function StatePlayerSjumpDestroy()
 {
     grav = 0.5;
     machAfterimageUseAlpha = true;
-    instakillmove = false;
+    instakillHitbox.canAttack = false;
     
     time_source_stop(blurAfterimageTimer);
     time_source_stop(machAfterimageTimer);

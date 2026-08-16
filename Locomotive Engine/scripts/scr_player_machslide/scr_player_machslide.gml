@@ -12,7 +12,8 @@ function StatePlayerMachslideStep()
     movespeed = Approach(movespeed, 0, 0.4);
     hsp = movespeed * dir;
     
-    HitboxDoAttack(hitbox, "stunEnemy");
+    StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
+    
     var x_pos = (sign(hsp) == 1) ? ceil(x + hsp) : floor(x + hsp);
     BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
     

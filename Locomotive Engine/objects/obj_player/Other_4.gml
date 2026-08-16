@@ -1,1 +1,1 @@
-SmcRunEvent(STATE_EVENTS.ROOM_START);
+SmcRunEvent("RoomStart");

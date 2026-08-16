@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_kungfu_air_3_damian",
+  "%Name":"spr_kungfu3_air_damian",
   "bboxMode":0,
   "bbox_bottom":92,
   "bbox_left":74,
@@ -25,7 +25,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"ca511925-5c65-4729-bb23-6be9f40e64e3","blendMode":0,"displayName":"default","isLocked":false,"name":"ca511925-5c65-4729-bb23-6be9f40e64e3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_kungfu_air_3_damian",
+  "name":"spr_kungfu3_air_damian",
   "nineSlice":null,
   "origin":4,
   "parent":{
@@ -37,7 +37,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_kungfu_air_3_damian",
+    "%Name":"spr_kungfu3_air_damian",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -61,7 +61,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_kungfu_air_3_damian",
+    "name":"spr_kungfu3_air_damian",
     "playback":1,
     "playbackSpeed":20.0,
     "playbackSpeedType":0,
@@ -73,16 +73,16 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"adab849e-b469-462b-887f-1082974dcfcf","path":"sprites/spr_kungfu_air_3_damian/spr_kungfu_air_3_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"adab849e-b469-462b-887f-1082974dcfcf","path":"sprites/spr_kungfu3_air_damian/spr_kungfu3_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"2baf3cc3-f4df-43b6-8164-c8f784b94c75","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bca05e09-35c4-449c-83a0-e78381941db8","path":"sprites/spr_kungfu_air_3_damian/spr_kungfu_air_3_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bca05e09-35c4-449c-83a0-e78381941db8","path":"sprites/spr_kungfu3_air_damian/spr_kungfu3_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"c49dc8a5-7753-4a13-ab79-ce834f90f032","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"595baf41-b201-453e-ba74-6bf420973321","path":"sprites/spr_kungfu_air_3_damian/spr_kungfu_air_3_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"595baf41-b201-453e-ba74-6bf420973321","path":"sprites/spr_kungfu3_air_damian/spr_kungfu3_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"3641b28a-45ed-49f6-936e-2df902cbbc2b","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5f70c24d-24f0-4e5c-9b8c-e68bdfbbf725","path":"sprites/spr_kungfu_air_3_damian/spr_kungfu_air_3_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"5f70c24d-24f0-4e5c-9b8c-e68bdfbbf725","path":"sprites/spr_kungfu3_air_damian/spr_kungfu3_air_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"448d95d7-21a8-4e18-ab43-40d4052b9e15","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

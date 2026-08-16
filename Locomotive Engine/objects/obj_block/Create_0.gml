@@ -15,3 +15,5 @@ dustSpr = spr_block_dust_particle;
 dustAmnt = 1;
 
 alarm[0] = 1;
+
+DESTROY_SAVEROOM;

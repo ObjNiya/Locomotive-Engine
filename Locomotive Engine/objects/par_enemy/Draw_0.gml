@@ -1,11 +1,6 @@
-var palette_swapping = sprite_exists(spr_palette);
-
-if (palette_swapping)
-    pal_swap_set(spr_palette, spr_palette_index, false);
-
+if (paletteSpr != -1)
+    pal_swap_set(paletteSpr, paletteIndex, false);
 VhDrawSelf();
+pal_swap_reset();
 
-if (palette_swapping)
-    pal_swap_reset();
-
-SmcRunEvent(STATE_EVENTS.DRAW);
+SmcRunEvent("Draw");

@@ -3,7 +3,7 @@ function PlayerDoTaunt(forced = false)
     if (!InputPressed(INPUT_VERB.TAUNT) && !forced)
         return false;
     
-    SmcAddToHistory("tauntStoredState");
+    tauntStoredState = stateName;
     SmcSetState("Taunt");
     return true;
 }
@@ -191,10 +191,10 @@ function PlayerDoJumpstop(forced = false, divisor = 20)
 
 function PlayerDoInstakill()
 {
-    var hurt_enemy = HitboxDoAttack(hitbox, "attackEnemy", false);
+    var hurt_enemy = HitboxPlace(instakillHitbox, par_enemy, "hurtbox");
     if (hurt_enemy == noone)
         return false;
-    
+  
     camera.shake_set(3, 0.05);
     sound_instance_one_shot(sfx_player_punch, x, y);
     HitstunSet(5);

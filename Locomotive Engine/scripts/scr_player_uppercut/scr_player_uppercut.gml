@@ -10,7 +10,7 @@ function StatePlayerUppercutCreate()
     
     vsp = (grounded) ? -14 : -10;
     
-    instakillmove = true;
+    instakillHitbox.canAttack = true;
     machAfterimageUseAlpha = false;
     
     time_source_start(machAfterimageTimer);
@@ -41,7 +41,7 @@ function StatePlayerUppercutStep()
 /// @ignore
 function StatePlayerUppercutDestroy()
 {
-    instakillmove = false;
+    instakillHitbox.canAttack = false;
     machAfterimageUseAlpha = true;
     
     time_source_stop(machAfterimageTimer);

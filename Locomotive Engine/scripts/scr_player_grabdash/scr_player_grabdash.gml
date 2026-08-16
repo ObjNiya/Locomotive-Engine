@@ -1,6 +1,9 @@
 /// @ignore
 function StatePlayerGrabdashCreate()
 {
+    SmcSetState("Kungfu");
+    exit;
+    
     PLAYER_STATE_FAILSAVE;
     
     momentum = true;
@@ -36,8 +39,8 @@ function StatePlayerGrabdashStep()
     BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
     PlayerDoJumpstop();
     
-    if (HitboxDoAttack(hitbox, "grabEnemy") != noone)
-        return;
+    //if (HitboxDoAttack(hitbox, "grabEnemy") != noone)
+        //return;
     
     if (PlayerDoLongjump())
         return;

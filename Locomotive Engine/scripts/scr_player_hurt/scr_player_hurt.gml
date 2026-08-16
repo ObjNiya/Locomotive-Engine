@@ -24,7 +24,7 @@ function StatePlayerHurtStep()
     if (!grounded || vsp < 0)
         return;
     
-    invincibleBuffer = 80;
+    invincibilityTime = 80;
     time_source_start(hurtFlickerTimer);
     
     SmcSetState("Normal");

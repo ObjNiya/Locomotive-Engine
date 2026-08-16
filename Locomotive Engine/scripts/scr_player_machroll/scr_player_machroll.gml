@@ -20,7 +20,8 @@ function StatePlayerMachrollStep()
 {
     var x_pos = (sign(hsp) == 1) ? ceil(x + hsp) : floor(x + hsp);
     BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
-    HitboxDoAttack(hitbox, "stunEnemy");
+    
+    StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
     
     hsp = movespeed * dir;
     

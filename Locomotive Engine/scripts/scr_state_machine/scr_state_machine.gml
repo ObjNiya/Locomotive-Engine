@@ -1,216 +1,110 @@
-// TODO: Improve
-
-enum STATE_EVENTS
-{
-    CREATE = 0,
-    DESTROY = 1,
-    STEP = 2,
-    STEP_BEGIN = 3,
-    STEP_END = 4,
-    ALARM0 = 5,
-    ALARM1 = 6,
-    ALARM2 = 7,
-    ALARM3 = 8,
-    ALARM4 = 9,
-    ALARM5 = 10,
-    ALARM6 = 11,
-    ALARM7 = 12,
-    ALARM8 = 13,
-    ALARM9 = 14,
-    ALARM10 = 15,
-    ALARM11 = 16,
-    OUTSIDE_ROOM = 17,
-    INTERSECT_BOUNDARY = 18,
-    OUTSIDE_VIEW0 = 19,
-    OUTSIDE_VIEW1 = 20,
-    OUTSIDE_VIEW2 = 21,
-    OUTSIDE_VIEW3 = 22,
-    OUTSIDE_VIEW4 = 23,
-    OUTSIDE_VIEW5 = 24,
-    OUTSIDE_VIEW6 = 25,
-    OUTSIDE_VIEW7 = 26,
-    BOUNDARY_VIEW0 = 27,
-    BOUNDARY_VIEW1 = 28,
-    BOUNDARY_VIEW2 = 29,
-    BOUNDARY_VIEW3 = 30,
-    BOUNDARY_VIEW4 = 31,
-    BOUNDARY_VIEW5 = 32,
-    BOUNDARY_VIEW6 = 33,
-    BOUNDARY_VIEW7 = 34,
-    ROOM_START = 35,
-    ROOM_END = 36,
-    AnimationEnd = 37,
-    ANIMATION_UPDATE = 38,
-    ANIMATION_EVENT = 39,
-    END_OF_PATH = 40,
-    USER0 = 41,
-    USER1 = 42,
-    USER2 = 43,
-    USER3 = 44,
-    USER4 = 45,
-    USER5 = 46,
-    USER6 = 47,
-    USER7 = 48,
-    USER8 = 49,
-    USER9 = 50,
-    USER10 = 51,
-    USER11 = 52,
-    USER12 = 53,
-    USER13 = 54,
-    USER14 = 55,
-    USER15 = 56,
-    DRAW = 57,
-    DRAW_BEGIN = 58,
-    DRAW_END = 59,
-    DRAW_PRE = 60,
-    DRAW_POST = 61,
-    DRAW_GUI = 62,
-    DRAW_GUI_BEGIN = 63,
-    DRAW_GUI_END = 64,
-}
-
-global.stateEventNames = [
-    "Create",
-    "Destroy",
-    "Step",
-    "StepBegin",
-    "StepEnd",
-    "Alarm0",
-    "Alarm1",
-    "Alarm2",
-    "Alarm3",
-    "Alarm4",
-    "Alarm5",
-    "Alarm6",
-    "Alarm7",
-    "Alarm8",
-    "Alarm9",
-    "Alarm10",
-    "Alarm11",
-    "OutsideRoom",
-    "IntersectBoundary",
-    "OutsideView0",
-    "OutsideView1",
-    "OutsideView2",
-    "OutsideView3",
-    "OutsideView4",
-    "OutsideView5",
-    "OutsideView6",
-    "OutsideView7",
-    "BoundaryView0",
-    "BoundaryView1",
-    "BoundaryView2",
-    "BoundaryView3",
-    "BoundaryView4",
-    "BoundaryView5",
-    "BoundaryView6",
-    "BoundaryView7",
-    "RoomStart",
-    "RoomEnd",
-    "AnimationEnd",
-    "AnimationUpdate",
-    "AnimationEvent",
-    "EndOfPath",
-    "User0",
-    "User1",
-    "User2",
-    "User3",
-    "User4",
-    "User5",
-    "User6",
-    "User7",
-    "User8",
-    "User9",
-    "User10",
-    "User11",
-    "User12",
-    "User13",
-    "User14",
-    "User15",
-    "Draw",
-    "DrawBegin",
-    "DrawEnd",
-    "DrawPre",
-    "DrawPost",
-    "DrawGui",
-    "DrawGuiBegin",
-    "DrawGuiEnd"
-]
+#macro GLOBAL_STATE_PREFIX "State"
+#macro STATE_START_EVENT_NAME "Create"
+#macro STATE_END_EVENT_NAME "Destroy"
 
 global.stateEventFuncs = {};
 
-function __CacheState__(state_name)
+function __SmcCacheStates__(name_prefix)
 {
-    if (global.stateEventFuncs[$ state_name] == undefined)
-        struct_set(global.stateEventFuncs, state_name, []);
+    if (struct_exists(global.stateEventFuncs, name_prefix) || name_prefix == "")
+        return;
     
+    global.stateEventFuncs[$ GLOBAL_STATE_PREFIX + name_prefix] = {};
+    
+    var search_prefix = GLOBAL_STATE_PREFIX + name_prefix;
+    var scripts = asset_get_ids(asset_script);
+    var script_count = array_length(scripts);
     var i = 0;
-    var ev_count = array_length(global.stateEventNames);
     
-    repeat (ev_count)
+    repeat (script_count)
     {
-        var substate = state_name + global.stateEventNames[i];
-        substate = asset_get_index(substate);
+        var scr_name = script_get_name(scripts[i]);
         
-        if (!script_exists(substate))
+        if (!string_starts_with(scr_name, search_prefix))
         {
-            global.stateEventFuncs[$ state_name][i] = -1;
             i++;
             continue;
         }
         
-        global.stateEventFuncs[$ state_name][i] = substate;
+        scr_name = string_trim_start(scr_name, [search_prefix]);
+        global.stateEventFuncs[$ search_prefix][$ scr_name] = scripts[i];
+        
         i++;
     }
 }
 
-
-function SmcInit()
+function SmcInit(state_name_prefix, state_parent_name_prefix = "")
 {
-    statePrefix = "State";
-    stateName = -1;
+    statePrefix = state_name_prefix;
+    stateName = "";
+    stateFullName = statePrefix;
+    stateParentPrefix = state_parent_name_prefix;
     
-    
-    stateFuncs = [];
-    stateHistory = {};
+    __SmcCacheStates__(statePrefix);
+    __SmcCacheStates__(stateParentPrefix);
 }
 
-
-function SmcSetState(state_name)
+function SmcSetStateNamePrefix(state_name_prefix)
 {
-    var name_with_prefix = statePrefix + state_name;
-    
-    if (global.stateEventFuncs[$ name_with_prefix] == undefined)
-        __CacheState__(name_with_prefix);
-    
-    if (stateName != -1)
-        SmcRunEvent(STATE_EVENTS.DESTROY);
-    
-    stateName = state_name;
-    stateFuncs = global.stateEventFuncs[$ name_with_prefix];
-    
-    SmcRunEvent(STATE_EVENTS.CREATE);
+    statePrefix = state_name_prefix;
+    __SmcCacheStates__(statePrefix);
 }
 
-
-function SmcRunEvent(state_event)
+function SmcSetStateParentNamePrefix(state_parent_name_prefix)
 {
-    state_event = stateFuncs[state_event];
+    stateParentPrefix = state_parent_name_prefix;
+    __SmcCacheStates__(stateParentPrefix);
+}
+
+enum STATE_EVENT_EXISTS
+{
+    NO,
+    YES,
+    PARENT,
+}
+
+function SmcStateEventExists(state_name, event_name)
+{
+    var exists = STATE_EVENT_EXISTS.YES;
     
-    if (state_event == -1)
+    if (!struct_exists(global.stateEventFuncs, GLOBAL_STATE_PREFIX + statePrefix))
+        exists = STATE_EVENT_EXISTS.NO;
+    else if (!struct_exists(global.stateEventFuncs[$ GLOBAL_STATE_PREFIX + statePrefix], state_name + event_name))
+        exists = STATE_EVENT_EXISTS.NO;
+    
+    if (exists == STATE_EVENT_EXISTS.YES)
+        return exists;
+    
+    exists = STATE_EVENT_EXISTS.PARENT;
+    
+    if (!struct_exists(global.stateEventFuncs, GLOBAL_STATE_PREFIX + stateParentPrefix))
+        exists = STATE_EVENT_EXISTS.NO;
+    else if (!struct_exists(global.stateEventFuncs[$ GLOBAL_STATE_PREFIX + stateParentPrefix], state_name + event_name))
+        exists = STATE_EVENT_EXISTS.NO;
+    
+    return exists;
+}
+
+function SmcRunEvent(name)
+{
+    var ev_exists = SmcStateEventExists(stateName, name)
+    if (ev_exists == STATE_EVENT_EXISTS.NO)
         return;
     
-    state_event();
+    var prefix = (ev_exists == STATE_EVENT_EXISTS.YES) ? statePrefix : stateParentPrefix;
+    var event = global.stateEventFuncs[$ GLOBAL_STATE_PREFIX + prefix][$ stateName + name];
+
+    event();
 }
 
-
-function SmcAddToHistory(entry_name)
+function SmcSetState(name, run_start = true, run_end = true)
 {
-    struct_set(stateHistory, entry_name, stateName);
-}
-
-
-function SmcDeleteFromHistory(entry_name)
-{
-    struct_remove(stateHistory, entry_name);
+    if (run_end && SmcStateEventExists(stateName, STATE_END_EVENT_NAME))
+        SmcRunEvent(STATE_END_EVENT_NAME);
+    
+    stateName = name;
+    stateFullname = statePrefix + stateName;
+    
+    if (run_start && SmcStateEventExists(stateName, STATE_START_EVENT_NAME))
+        SmcRunEvent(STATE_START_EVENT_NAME);
 }

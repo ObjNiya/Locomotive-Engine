@@ -1,7 +1,7 @@
 if (cutsceneStarted)
     exit;
 
-if (other.instakillmove || other.stateName == "Grabdash")
+if (other.instakillHitbox.canAttack || other.stateName == "Grabdash")
 {
     cutsceneStarted = true;
     instance_destroy();

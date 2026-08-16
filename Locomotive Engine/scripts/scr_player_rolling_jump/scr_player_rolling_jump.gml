@@ -12,7 +12,7 @@ function StatePlayerRollingJumpCreate()
     mask_index = spr_crouchmask;
     
     time_source_start(blurAfterimageTimer);
-    instakillmove = true;
+    instakillHitbox.canAttack = true;
 }
 
 /// @ignore
@@ -47,7 +47,7 @@ function StatePlayerRollingJumpDestroy()
     
     grav = 0.5;
     
-    instakillmove = false;
+    instakillHitbox.canAttack = false;
     machAfterimageUseAlpha = true;
     
     time_source_stop(machAfterimageTimer);

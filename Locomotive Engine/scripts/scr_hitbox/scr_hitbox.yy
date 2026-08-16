@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_combat",
+  "%Name":"scr_hitbox",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_combat",
+  "name":"scr_hitbox",
   "parent":{
     "name":"Essential",
     "path":"folders/Scripts/Essential.yy",
