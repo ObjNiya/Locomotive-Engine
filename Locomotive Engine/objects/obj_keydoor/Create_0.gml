@@ -1,3 +1,3 @@
 event_inherited();
 
-image_index = real(!SaveroomCheck());
+image_index = !SaveroomCheck();

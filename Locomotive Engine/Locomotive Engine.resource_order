@@ -125,6 +125,8 @@
     {"name":"rm_level_hud","order":1,"path":"rooms/rm_level_hud/rm_level_hud.yy",},
     {"name":"rm_rank","order":2,"path":"rooms/rm_rank/rm_rank.yy",},
     {"name":"rm_test","order":16,"path":"rooms/rm_test/rm_test.yy",},
+    {"name":"rm_test2","order":19,"path":"rooms/rm_test2/rm_test2.yy",},
+    {"name":"rm_test3","order":20,"path":"rooms/rm_test3/rm_test3.yy",},
     {"name":"__InputBindingIsThumbstick","order":1,"path":"scripts/__InputBindingIsThumbstick/__InputBindingIsThumbstick.yy",},
     {"name":"__InputBindingScan","order":2,"path":"scripts/__InputBindingScan/__InputBindingScan.yy",},
     {"name":"__InputClassCluster","order":1,"path":"scripts/__InputClassCluster/__InputClassCluster.yy",},

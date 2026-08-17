@@ -22,6 +22,9 @@ function StatePlayerDoorStep()
 {
     if (!AnimationEnd())
         return;
+	
+	if (image_speed != 0 && sprite_index == spr_keydoor)
+		RoomTrans(obj_roomtrans_fade);
     
     if (sprite_index == spr_walk_forward)
         SmcSetState("Normal");

@@ -103,6 +103,7 @@ SINGLETON;
 #macro sfx_patripi_hurt "event:/SFX/Level Structure/Patripi Hurt"
 #macro sfx_patripi_spawn "event:/SFX/Level Structure/Patripi Spawn"
 #macro sfx_warp_pipe_enter "event:/SFX/Level Structure/Warp Pipe Enter"
+#macro sfx_door_unlock "event:/SFX/Level Structure/Door Unlock"
 
 // Player Banana Slip
 

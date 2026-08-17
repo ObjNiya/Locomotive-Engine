@@ -451,6 +451,8 @@
     {"id":{"name":"rm_rank","path":"rooms/rm_rank/rm_rank.yy",},},
     {"id":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+    {"id":{"name":"rm_test2","path":"rooms/rm_test2/rm_test2.yy",},},
+    {"id":{"name":"rm_test3","path":"rooms/rm_test3/rm_test3.yy",},},
     {"id":{"name":"rm_titlecard","path":"rooms/rm_titlecard/rm_titlecard.yy",},},
     {"id":{"name":"__InputBindingIsThumbstick","path":"scripts/__InputBindingIsThumbstick/__InputBindingIsThumbstick.yy",},},
     {"id":{"name":"__InputBindingScan","path":"scripts/__InputBindingScan/__InputBindingScan.yy",},},
@@ -1633,6 +1635,8 @@
     {"roomId":{"name":"rm_initialize_gameplay","path":"rooms/rm_initialize_gameplay/rm_initialize_gameplay.yy",},},
     {"roomId":{"name":"rm_level_hud","path":"rooms/rm_level_hud/rm_level_hud.yy",},},
     {"roomId":{"name":"rm_rank","path":"rooms/rm_rank/rm_rank.yy",},},
+    {"roomId":{"name":"rm_test2","path":"rooms/rm_test2/rm_test2.yy",},},
+    {"roomId":{"name":"rm_test3","path":"rooms/rm_test3/rm_test3.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
