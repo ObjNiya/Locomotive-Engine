@@ -56,8 +56,10 @@ function TryHurtPlayer(player_id, attacker_id)
         
         if (stateName == "Taunt" && parryHitboxBuffer > 0)
         { 
+            parryTarget = attacker_id;
+            
             SmcSetState("Parry");
-            create_particle(x, y, obj_parry_particle);
+            InstanceDestroySafe(obj_taunt_particle);
             sound_instance_one_shot(sfx_player_parry, x, y);
             
             return PLAYER_HURT_STATUS.PARRIED;

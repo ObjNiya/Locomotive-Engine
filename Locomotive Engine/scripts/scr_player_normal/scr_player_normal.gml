@@ -52,6 +52,7 @@ function StatePlayerNormalStep()
 
         x = floor(other.x + x_offset);
         y = floor(other.y - y_offset);
+        image_xscale = -other.image_xscale;
     }
     
     if (carryingId == noone && PlayerDoUppercut())
@@ -112,23 +113,38 @@ function StatePlayerNormalStep()
                 vsp = max(0, vsp);
         }
         
+        var enemy = HitboxPlace(hitbox, par_enemy, "hurtbox");
+        
+        if (sprite_index != spr_stomp && sign(vsp) == 1 && StompEnemy(enemy, self))
+        {
+            InstanceCreate(x, y, obj_stomp_stars_particle);
+            SpriteSet(spr_stomp, 0);
+            
+            vsp = (InputCheck(INPUT_VERB.JUMP)) ? -14 : -9;
+        }
+        
         danceHoldTime = 0;
         
         time_source_stop(blurAfterimageTimer);
         time_source_stop(cloudParticleTimer);
-        PlayerDoJumpstop();
+        
+        if (sprite_index != spr_stomp && sprite_index != spr_stomp_fall) 
+            PlayerDoJumpstop();
+        
+        if (PlayerDoGroundpound())
+            return;
         
         if (carryingId != noone)
         {
             if (sprite_index == spr_jump)
                 sprite_index = spr_hauling_jump;
-            
-            if (!EqualsToAny(sprite_index, spr_hauling_jump, spr_hauling_fall) || (sprite_index == spr_hauling_jump && AnimationEnd()))
+            else if (sprite_index != spr_hauling_jump || AnimationEnd())
                 sprite_index = spr_hauling_fall;
-            return;
+                
+            return; 
         }
         
-        if (PlayerDoGroundpound())
+        if (sprite_index == spr_piledriver_jump && !AnimationEnd())
             return;
         
         if (EqualsToAny(sprite_index, spr_stomp, spr_stomp_fall))
@@ -261,6 +277,9 @@ function StatePlayerNormalStep()
         
         if (carryingId != noone)
         {
+            if (sprite_index == spr_hauling_intro && !AnimationEnd())
+                return;
+            
             sprite_index = spr_hauling_walk;
             return;
         }

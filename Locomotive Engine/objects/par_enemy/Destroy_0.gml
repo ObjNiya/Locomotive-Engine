@@ -20,10 +20,19 @@ with (InstanceCreate(x, y, obj_dead_enemy))
         image_xscale = -sign(x - killer_x);
 }
 
-SaveroomAdd();
 sound_instance_one_shot(sfx_enemy_death, x, y);
+repeat (3)
+{
+    with (InstanceCreate(x, y, obj_slap_star_debris))
+    {
+        hspeed = M_RandomSign(5);
+        vspeed = M_RandomSign(10);
+    }
+}
 InstanceCreate(x, y, obj_bang_particle);
 
 array_foreach(global.cameras, function(camera, index) {
     camera.shake_set(3, 0.05);
-})
+});
+
+SaveroomAdd();

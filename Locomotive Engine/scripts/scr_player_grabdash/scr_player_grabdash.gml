@@ -1,9 +1,6 @@
 /// @ignore
 function StatePlayerGrabdashCreate()
 {
-    SmcSetState("Kungfu");
-    exit;
-    
     PLAYER_STATE_FAILSAVE;
     
     momentum = true;
@@ -39,8 +36,34 @@ function StatePlayerGrabdashStep()
     BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
     PlayerDoJumpstop();
     
-    //if (HitboxDoAttack(hitbox, "grabEnemy") != noone)
-        //return;
+    var enemy = HitboxPlace(hitbox, par_enemy, "hurtbox");
+    if (enemy != noone)
+    {
+        with (enemy)
+            SmcSetState("Grabbed");
+        
+        carryingId = enemy;
+        
+        if (InputCheck(INPUT_VERB.UP))
+        {
+            PlayerDoGroundpound(true);
+            vsp = -14;
+            return;
+        }
+        
+        if (movespeed <= 10)
+        {
+            SmcSetState("Normal");
+            sprite_index = (grounded) ? spr_hauling_intro : spr_hauling_jump;
+        }
+        else
+            SmcSetState("Swingding");
+        
+        if (!grounded)
+            vsp = -6;
+        return;
+    }
+    
     
     if (PlayerDoLongjump())
         return;

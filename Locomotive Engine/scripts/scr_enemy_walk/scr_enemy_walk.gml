@@ -5,14 +5,11 @@ function StateEnemyWalkCreate()
     
     sprite_index = walkSpr;
     movespeed = 1;
-    //parryable = true;
 }
 
 /// @ignore
 function StateEnemyWalkStep()
 {
-    //walk_prefix();
-    
     if (sprite_index == turnSpr)
     {
         if (!AnimationEnd())
@@ -44,12 +41,10 @@ function StateEnemyWalkStep()
     
     InstanceCreate(x, y + 43, obj_cloud_particle);
     image_index = 0;
-    
-    //walk_postfix();
 }
 
 /// @ignore
 function StateEnemyWalkDestroy()
 {
-    //parryable = false;
+    
 }

@@ -12,8 +12,7 @@
 #macro FIX_INSTATURN false // Toggles being able to instantly turn and maintaing all speed.
 #macro FIX_HIGHJUMP false // Toggles being able to high jump by pressing several keys on the same frame.
 #macro FIX_POPUP false // Toggles climbing to the end of a wall suspending you in the air for a moment.
-#macro FIX_PARRYING_FORKNIGHTS_OUTSIDE_WALK false // Toggles being able to parry forknights when they're not walking.
-#macro FIX_MISSING_PARRY_HITSTUN false // Toggles missing parry hitstun on the player.
+#macro FIX_MISSING_PARRY_HITSTUN true // Toggles missing parry hitstun on the player.
 
 /**
  * Enable/Disable minor Enhancements

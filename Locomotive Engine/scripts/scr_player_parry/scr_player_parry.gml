@@ -35,35 +35,36 @@ function StatePlayerParryStep()
         static parry_threshold = 84;
         
         if ((other.parryTarget != id && distance_to_object(other) > parry_threshold) 
-            || time_source_get_state(hitstunTimer) == time_source_state_active || !parryable)
+            || hitstunTimer > 0 || !parryable || stateName == "Grabbed")
             continue;
-        
-        // TODO: Add Combo
         
         other.image_xscale = -image_xscale;
         other.dir = other.image_xscale;
         
-        SmcSetState("Death");
+        attackHitbox.canAttack = false;
         HitstunSet(5);
         
         with (other)
         {
             camera.shake_set(3, 0.05);
-            if (FIX_MISSING_PARRY_HITSTUN)
-                HitstunSet(5);
             if (!grounded)
                 vsp = -6;
-            
         }
         
         repeat (3)
             InstanceCreate(x, y, obj_slap_star_debris);
         repeat (3)
             InstanceCreate(x, y, obj_enemy_debris);
+        
         InstanceCreate(x, y, obj_parry_particle);
+        InstanceCreate(x, y, obj_puff_particle);
         
         call_later(1, time_source_units_frames, function() {
             InstanceCreate(x, y, obj_bang_particle);
         });
+        
+        call_later(5, time_source_units_frames, function() {
+            instance_destroy();
+        })
     }
 }

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_enemy_death",
+  "%Name":"scr_player_swingding",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_enemy_death",
+  "name":"scr_player_swingding",
   "parent":{
     "name":"States",
-    "path":"folders/Scripts/Object Structure/Enemy/States.yy",
+    "path":"folders/Scripts/Object Structure/Player/States.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -49,6 +49,7 @@ SmcInit("Player");
 SmcSetState("Normal");
 
 hitbox = HitboxCreate();
+throwHitbox = HitboxCreate();
 instakillHitbox = HitboxCreate();
 instakillHitbox.canAttack = false;
 
@@ -146,6 +147,10 @@ hurtFlickerTimer = time_source_create(playerTimeSources, 2, time_source_units_fr
     if (invincibilityTime <= 0 && visible)
         time_source_stop(hurtFlickerTimer);
 }, [], -1);
+
+// Swingding
+
+sndSpin = sound_instance_create(sfx_player_spin);
 
 /////////////////////////////
 // Particle timers

@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_enemyswing_damian",
+  "%Name":"spr_swingding_damian",
   "bboxMode":0,
   "bbox_bottom":95,
   "bbox_left":18,
@@ -29,7 +29,7 @@
   "layers":[
     {"$GMImageLayer":"","%Name":"2922410c-9e97-48f9-b19b-2c0cb1392288","blendMode":0,"displayName":"default","isLocked":false,"name":"2922410c-9e97-48f9-b19b-2c0cb1392288","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_enemyswing_damian",
+  "name":"spr_swingding_damian",
   "nineSlice":null,
   "origin":4,
   "parent":{
@@ -41,7 +41,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_enemyswing_damian",
+    "%Name":"spr_swingding_damian",
     "autoRecord":true,
     "backdropHeight":1080,
     "backdropImageOpacity":0.5,
@@ -65,7 +65,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_enemyswing_damian",
+    "name":"spr_swingding_damian",
     "playback":1,
     "playbackSpeed":20.0,
     "playbackSpeedType":0,
@@ -77,28 +77,28 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bdde16bf-67a4-488a-a04b-66459f1d4f69","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"bdde16bf-67a4-488a-a04b-66459f1d4f69","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"e946c554-3ac7-4232-9ed4-1855983a9f51","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c6c2a1b-8c58-4f7c-ae4c-dbadefe8cdc9","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c6c2a1b-8c58-4f7c-ae4c-dbadefe8cdc9","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"3d264093-d753-489b-8648-cce273fdbcc5","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba40aca3-d253-4a63-aacc-14ba825c048e","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ba40aca3-d253-4a63-aacc-14ba825c048e","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"c810b541-c959-4926-9155-c7cc03bf95e6","IsCreationKey":false,"Key":2.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fc7a0681-e6c5-41ee-a769-fc086bcc498d","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fc7a0681-e6c5-41ee-a769-fc086bcc498d","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"1fc0bf70-87e3-46ac-b5e6-46212e647e55","IsCreationKey":false,"Key":3.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0500374e-acea-4d87-af5e-87e3c64c85f5","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0500374e-acea-4d87-af5e-87e3c64c85f5","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"d41f8e63-e1ea-4235-a0d3-c8fd2c581dfe","IsCreationKey":false,"Key":4.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fd870280-8d2b-4524-a0a3-2fffeadd1bdc","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fd870280-8d2b-4524-a0a3-2fffeadd1bdc","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"67176289-0b8a-42a5-b154-953ddd768693","IsCreationKey":false,"Key":5.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"852d3af2-c75d-41f4-be76-8172a27fe11e","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"852d3af2-c75d-41f4-be76-8172a27fe11e","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"e4a8166f-4480-4aa8-8a74-906d7774d4e8","IsCreationKey":false,"Key":6.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9f8853ed-8ad3-459a-9442-97f431cf3b5f","path":"sprites/spr_enemyswing_damian/spr_enemyswing_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"9f8853ed-8ad3-459a-9442-97f431cf3b5f","path":"sprites/spr_swingding_damian/spr_swingding_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"758ce24e-f115-47a9-9a46-f3e20c844524","IsCreationKey":false,"Key":7.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],

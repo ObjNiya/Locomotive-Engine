@@ -15,3 +15,8 @@ function AddCombo(value, time)
         comboTimer.time = clamp(comboTimer.time + time, 0, 6.75);
     }
 }
+
+function ComboSetTime(time)
+{
+    
+}

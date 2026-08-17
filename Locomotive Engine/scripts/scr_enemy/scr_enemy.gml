@@ -8,13 +8,11 @@
  */
 function AttackEnemy(enemy_id, attacker_id, damage = 1)
 {
-    var parent = object_get_parent(enemy_id.object_index);
-    
-    if (parent != par_enemy)
-        return;
-    
     with (enemy_id)
     {
+        if (object_get_parent(object_index) != par_enemy || stateName == "Thrown")
+            return false;
+        
         hp -= damage;
         
         if (hp <= 0)
@@ -39,6 +37,8 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
             sound_instance_one_shot(sfx_player_mach2_bump, x, y);
         }
     }
+    
+    return true;
 }
 
 /**
@@ -52,10 +52,11 @@ function StunEnemy(enemy_id, attacker_id)
     {
         var parent = object_get_parent(enemy_id.object_index);
     
-        if (parent != par_enemy || unstunnableTime > 0)
+        if (parent != par_enemy || unstunnableTime > 0 || stateName == "Thrown")
             return false;
         
         image_xscale = -sign(attacker_id.image_xscale);
+        dir = -image_xscale;
         
         visualXScale = 0.8;
         visualYScale = 1.3;
@@ -79,6 +80,37 @@ function StunEnemy(enemy_id, attacker_id)
     }
 }
 
+function StompEnemy(enemy_id, attacker_id)
+{
+    with (enemy_id)
+    {
+        var parent = object_get_parent(enemy_id.object_index);
+    
+        if (parent != par_enemy || unstompableTime > 0 || !stompable || attacker_id.y >= y || stateName == "Thrown")
+            return false;
+        
+        unstompableTime = 15;
+        
+        if (attacker_id.x != x)
+            image_xscale = -sign(x - attacker_id.x);
+        
+        movespeed = 5;
+        dir = sign(attacker_id.image_xscale);
+        
+        if (vsp >= 0 && grounded)
+            vsp = -5;
+        
+        stunnedTimer = max(100, stunnedTimer);
+        
+        visualXScale = 0.6;
+        visualYScale = 1.4;
+        
+        SmcSetState("Stunned");
+        sound_instance_one_shot(sfx_enemy_stomped, x, y);
+        
+        return true;
+    }
+}
 
 /**
  * Scares every Enemy that has the instance the function was called by in their sight.
@@ -87,6 +119,9 @@ function ScareEnemies()
 {
     with (par_enemy)
     {
+        if (stateName != "Walk" && stateName != "Scared")
+            continue;
+        
         var in_sight = (collision_rectangle(x - (400 * (image_xscale == -1)), y - 130, x + (400 * (image_xscale == 1)), y + 90, other, false, false));
         if (!in_sight)
             continue;
@@ -97,8 +132,7 @@ function ScareEnemies()
         
         if (x != other.x)
             image_xscale = -sign(x - other.x);
-    
-        if (stateName != "Scared")
-            SmcSetState("Scared");
+            
+        SmcSetState("Scared");
     }
 }

@@ -4,6 +4,8 @@ function StatePlayerGroundpoundCreate()
     PLAYER_STATE_FAILSAVE;
     
     SpriteSet(spr_groundpound_intro, 0);
+    if (carryingId != noone)
+        sprite_index = spr_piledriver;
     
     accel = 0.25;
     deccel = 0.05;
@@ -23,11 +25,11 @@ function StatePlayerGroundpoundCreate()
 /// @ignore
 function StatePlayerGroundpoundStep()
 {
-    var landed = EqualsToAny(sprite_index, spr_groundpound_land, spr_divebomb_land)
+    var landed = EqualsToAny(sprite_index, spr_groundpound_land, spr_divebomb_land, spr_piledriverland);
     
     if (grounded || landed)
     {
-        if (groundedSlope)
+        if (groundedSlope && carryingId == noone)
         {
             SmcSetState("Mach"); 
             SpriteSet(spr_machroll_getup, 0);
@@ -70,22 +72,56 @@ function StatePlayerGroundpoundStep()
             sound_instance_stop(sndGroundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
             sound_instance_one_shot(sfx_player_groundpound_land, x, y);
             
+            if (carryingId != noone)
+            {
+                SpriteSet(spr_piledriverland, 0);
+                create_particle(x, y + 35, obj_bang_particle);
+                create_particle(x, y + 45, obj_land_cloud_particle);
+            }    
+           
+            // TODO: Make enemies JUMP
+            
             return;
         }
         
         vsp = 0;
         
-        if (AnimationEnd())
+        if (!AnimationEnd())
+            return;
+        
+        SmcSetState("Normal");
+        
+        if (carryingId == noone)
         {
-            SmcSetState("Normal");
             SpriteSet(spr_groundpound_idle_intro, 0);
+            return;
         }
         
+        var prev_carry = carryingId;
+        carryingId = noone;
+        
+        PlayerDoInstakill(prev_carry);
+        
+        if (InputCheck(INPUT_VERB.JUMP))
+            vsp = -11;
+        else
+            vsp = -0.55;
+        
+        SpriteSet(spr_piledriver_jump, 0);
         return;
+    }
+    
+    with (carryingId)
+    {
+        x = other.x + (16 * other.image_xscale);
+        y = other.y + 16;
+        depth = DEPTHS.CLOSE;
     }
     
     var y_pos = (sign(vsp) == 1) ? ceil(y + vsp + grav) : floor(y + vsp + grav);
     BlocksDestroy(x, y_pos, false, true, [obj_metalblock]);
+    if (carryingId == noone)
+        InputVerbConsume(INPUT_VERB.JUMP);
     PlayerDoInstakill();
     
     if (InputPressed(INPUT_VERB.GRABDASH))
@@ -128,7 +164,8 @@ function StatePlayerGroundpoundStep()
                 time_source_start(downwardsWooshPartTimer);
         }
     }
-    
+    else
+        grav = 0.5;
     
     AnimationEndExt((sprite_index == spr_groundpound_intro), spr_groundpound);
     
@@ -154,7 +191,7 @@ function StatePlayerGroundpoundStep()
         movespeed = 0;
     }        
     
-    if (sprite_index != spr_divebomb)
+    if (sprite_index != spr_divebomb && sprite_index != spr_piledriver)
         image_xscale = Side(sign_input_x, image_xscale);
 }
 

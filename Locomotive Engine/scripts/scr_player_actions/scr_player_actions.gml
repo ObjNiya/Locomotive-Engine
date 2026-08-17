@@ -189,18 +189,20 @@ function PlayerDoJumpstop(forced = false, divisor = 20)
     return true;
 }
 
-function PlayerDoInstakill()
+function PlayerDoInstakill(enemy_to_kill = noone)
 {
-    var hurt_enemy = HitboxPlace(instakillHitbox, par_enemy, "hurtbox");
-    if (hurt_enemy == noone)
+    if (enemy_to_kill == noone)
+        enemy_to_kill = HitboxPlace(instakillHitbox, par_enemy, "hurtbox");
+    if (enemy_to_kill == noone || enemy_to_kill == carryingId)
         return false;
   
     camera.shake_set(3, 0.05);
     sound_instance_one_shot(sfx_player_punch, x, y);
     HitstunSet(5);
     
-    InstanceCreate(hurt_enemy.x, hurt_enemy.y, obj_parry_particle);
-    InstanceCreate(hurt_enemy.x, hurt_enemy.y, obj_kungfu_particle);
+    InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_puff_particle);
+    InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_parry_particle);
+    InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_kungfu_particle);
     
     repeat (3)
         InstanceCreate(x, y, obj_slap_star_debris);
@@ -208,6 +210,9 @@ function PlayerDoInstakill()
     repeat (3)
         InstanceCreate(x, y, obj_enemy_debris);
     
-    AttackEnemy(hurt_enemy, id);
+    AttackEnemy(enemy_to_kill, id);
+    if (InputCheck(INPUT_VERB.JUMP))
+        vsp = -11;
+    
     return true;
 }

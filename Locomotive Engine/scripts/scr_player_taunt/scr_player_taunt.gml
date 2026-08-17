@@ -43,6 +43,7 @@ function StatePlayerTauntStep()
 /// @ignore
 function StatePlayerTauntDestroy()
 {
+    hitbox.mask_index = spr_player_mask;
     grav = 0.5;
     tauntTimer = 18;
     

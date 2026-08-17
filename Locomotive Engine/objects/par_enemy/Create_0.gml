@@ -8,12 +8,18 @@ enemyTimeSources = time_source_create(time_source_game, 1, time_source_units_fra
 // State variables
 /////////////////////////////
 
-// Grabbed State
+// Thrown State
 
-grabbedSpr = spr_waddledee_stun;
+throwAngle = 0;
+throwSpr = spr_waddledee_dead;
 thrownBlurAfterimgTimer = time_source_create(enemyTimeSources, 2, time_source_units_frames, function() {
     create_afterimage(x, y, obj_blur_afterimage);
 }, [], -1);
+
+// Grabbed State
+
+grabbedSpr = spr_waddledee_stun;
+
 
 // Scared State
 
@@ -26,6 +32,8 @@ stunnedSpr = spr_waddledee_stun;
 stunBird = new Animator(spr_enemybird);
 unstunnableTime = 0;
 stunnedTimer = 200;
+unstompableTime = 0;
+stompable = true;
 
 // Walk State
 

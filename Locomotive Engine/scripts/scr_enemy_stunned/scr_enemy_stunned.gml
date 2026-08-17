@@ -22,12 +22,11 @@ function StateEnemyStunnedStep()
         return;
     }
     
-    
     visualXScale = Approach(visualXScale, 1, 0.03);
     visualYScale = Approach(visualYScale, 1, 0.03);
     
     movespeed = Approach(movespeed, 0, 0.3);
-    hsp = movespeed * -image_xscale;
+    hsp = movespeed * dir;
     
     if (movespeed > 4 && grounded)
         create_particle_repeating(x, y + 43, obj_machturn_particle);
