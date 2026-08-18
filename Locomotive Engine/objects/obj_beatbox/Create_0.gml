@@ -1,5 +1,3 @@
-depth = DEPTHS.FARTHEST;
-
 scr_collision_init();
 grav = 0.5;
 terminalVelocity = 20;

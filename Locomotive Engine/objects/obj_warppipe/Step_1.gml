@@ -16,7 +16,6 @@ with (obj_player)
     SpawnSetOffset(0, 0);
     
     x = other.x;
-    other.depth = DEPTHS.CLOSE;
     
     if (up_warppipe)
     {

@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_patrickblock_on",
-    "path":"sprites/spr_patrickblock_on/spr_patrickblock_on.yy",
+    "name":"spr_patrickblock",
+    "path":"sprites/spr_patrickblock/spr_patrickblock.yy",
   },
   "spriteMaskId":null,
   "visible":true,

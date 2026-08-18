@@ -1,7 +1,7 @@
 // TODO: Refactor Prop
 
 //x -= global.baseAppWidth;
-depth = DEPTHS.CLOSEST;
+
 sprite_index = spr_tv_turnon_damian;
 
 

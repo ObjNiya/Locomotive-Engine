@@ -1,6 +1,6 @@
 // Built-ins
 
-depth = DEPTHS.BACK;
+
 
 grav = 0.4;
 hsp = random_range(-10, -18);

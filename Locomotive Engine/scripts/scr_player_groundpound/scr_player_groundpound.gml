@@ -115,7 +115,7 @@ function StatePlayerGroundpoundStep()
     {
         x = other.x + (16 * other.image_xscale);
         y = other.y + 16;
-        depth = DEPTHS.CLOSE;
+        
     }
     
     var y_pos = (sign(vsp) == 1) ? ceil(y + vsp + grav) : floor(y + vsp + grav);

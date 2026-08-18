@@ -4,7 +4,7 @@ SINGLETON;
 
 x = 0;
 y = global.base / 4;
-depth = DEPTHS.CLOSEST;
+
 
 timings = array_create(4, 0);
 

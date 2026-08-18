@@ -46,23 +46,6 @@
  * Enums
  */
 
-enum DEPTHS
-{
-    FRONT = -50,
-    
-    CLOSEST = -30,
-    CLOSER = -20,
-    CLOSE = -10,
-    
-    MIDDLE = 0,
-    
-    FAR = 10,
-    FARTHER = 20,
-    FARTHEST = 30,
-    
-    BACK = 50,
-}
-
 enum RANKS 
 {
     D = 0,
@@ -170,16 +153,5 @@ function InitGame()
 {
     pal_swap_init_system(shd_pal_swapper, shd_pal_html_sprite, shd_pal_html_surface);
     InitGlobals();
-    InitObjects();
-}
-
-
-/**
- * Returns the games Delta Time multiplied by the current instances' timescale.
- * @pure
- * @returns {Real}
- */
-function GetDeltaTime()
-{
-    return 1//global.deltaTime * timescale;
+    //InitObjects();
 }

@@ -1,4 +1,11 @@
-// TODO: Move functionality and remove
+
+with (global)
+{
+    ScrtTsCircleX = 0;
+    ScrtTsCircleY = 0;
+    ScrtTsCircleRadius = 0;
+}
+
 layers = [];
 
 // Secret Tiles

@@ -54,7 +54,7 @@ function StatePlayerSwingdingStep()
     }
     
     var x_offset = 0;
-    var targ_depth = DEPTHS.FAR;
+    var targ_depth = DEPTHS.LOW;
     
     switch (floor(image_index))
     {
@@ -66,22 +66,22 @@ function StatePlayerSwingdingStep()
             break;
         case 3:
             x_offset = -50;
-            targ_depth = DEPTHS.CLOSE;
+            targ_depth = DEPTHS.HIGH;
             break;
         case 4:
             x_offset = -25;
-            targ_depth = DEPTHS.CLOSE;
+            targ_depth = DEPTHS.HIGH;
             break;
         case 5:
-            targ_depth = DEPTHS.CLOSE;
+            targ_depth = DEPTHS.HIGH;
             break;
         case 6:
             x_offset = 25;
-            targ_depth = DEPTHS.CLOSE;
+            targ_depth = DEPTHS.HIGH;
             break;
         case 7:
             x_offset = 50;
-            targ_depth = DEPTHS.CLOSE;
+            targ_depth = DEPTHS.HIGH;
             break;
     }
     

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_depths",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_depths",
+  "parent":{
+    "name":"Backend",
+    "path":"folders/Scripts/Essential/Backend.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

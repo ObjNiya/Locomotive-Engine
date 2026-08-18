@@ -5,6 +5,6 @@ magnetizeSpd = 5;
 
 magnetizeTarget = noone;
 
-depth = DEPTHS.FARTHER;
+
 
 DESTROY_SAVEROOM;

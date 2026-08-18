@@ -4,7 +4,6 @@ event_inherited();
 // Set built-ins
 /////////////////////////////
 
-depth = DEPTHS.MIDDLE;
 mask_index = spr_player_mask;
 
 /////////////////////////////

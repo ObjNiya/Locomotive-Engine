@@ -1,2 +1,1 @@
 active = false;
-depth = DEPTHS.FARTHER;

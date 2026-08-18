@@ -1,6 +1,6 @@
 event_inherited();
 
-depth = DEPTHS.BACK;
+
 image_speed = 0;
 image_index = clamp(levelId, 0, sprite_get_number(sprite_index));
 

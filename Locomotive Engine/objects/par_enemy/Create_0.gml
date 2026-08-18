@@ -1,4 +1,4 @@
-depth = DEPTHS.FAR;
+
 mask_index = spr_waddledee_mask;
 
 my_killer = noone;
