@@ -1,7 +1,7 @@
 /**
  * What layer instances created with ```InstanceCreate()``` will be placed on.
  */
-#macro DEFAULT_INSTANCES_LAYER "Instances_1"
+
 
 
 /**
@@ -14,17 +14,9 @@
  */
 function InstanceCreate(x, y, obj, var_struct = {})
 {
-    var my_depth = ObjGetDepth(obj);
-    if (is_undefined(my_depth))
-        my_depth = ObjGetDepth(object_get_parent(obj));
-    if (is_undefined(my_depth))
-        my_depth = 0;
     
-    with (instance_create_depth(x, y, my_depth, obj, var_struct))
-    {
-        //depth = layer_get_depth(DEFAULT_INSTANCES_LAYER) + my_depth;
+    with (instance_create_depth(x, y, global.baseDepth + ObjDepthGet(obj), obj, var_struct))
         return id;
-    }
 }
 
 

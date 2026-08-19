@@ -1,5 +1,5 @@
 hud_pointsbook_add_collect_effect(value);
-create_points_number(value);
+PointsNumberCreate(value);
 sound_instance_one_shot(eventPath, x, y);
 instance_destroy();
 

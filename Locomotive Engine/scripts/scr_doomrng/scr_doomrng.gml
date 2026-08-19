@@ -54,12 +54,22 @@ function DoomRngReset()
 }
 
 
+/**
+ * Advances the RNG index for Visuals and returns a random integer between 0 and the given number.
+ * @parameter {Real} n The highest number that can be rolled.
+ * @pure
+ */
 function DoomRngVisualsInt(n)
 {
     return DoomRngVisuals() % (n + 1);
 }
 
 
+/**
+ * Advances the RNG index for Visuals and returns a random integer between the give number but negative and the given number.
+ * @parameter {Real} n The highest and lowest number that can be rolled.
+ * @pure
+ */
 function DoomRngVisualsSign(n)
 {
     var rn = DoomRngVisualsInt(n * 2);
@@ -70,13 +80,22 @@ function DoomRngVisualsSign(n)
 }
 
 
-
+/**
+ * Advances the RNG index for Gameplay and returns a random integer between 0 and the given number.
+ * @parameter {Real} n The highest number that can be rolled.
+ * @pure
+ */
 function DoomRngGameplayInt(n)
 {
     return DoomRngGameplay() % (n + 1);
 }
 
 
+/**
+ * Advances the RNG index for Gameplay and returns a random integer between the give number but negative and the given number.
+ * @parameter {Real} n The highest and lowest number that can be rolled.
+ * @pure
+ */
 function DoomRngGameplaySign(n)
 {
     var rn = DoomRngGameplayInt(n * 2);

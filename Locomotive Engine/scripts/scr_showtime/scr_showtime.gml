@@ -4,7 +4,7 @@
  */
 function IsShowtime()
 {
-    return global.showtimeTimer.state == TIMER_STATES.STARTED;
+    return time_source_get_state(global.showtimeTimer) == time_source_state_active;
 }
 
 
@@ -13,7 +13,7 @@ function IsShowtime()
  */
 function StartShowtime()
 {
-    global.showtimeTimer.Start();
+    time_source_start(global.showtimeTimer);
     
     with (obj_player)
         camera.shake_set(3, 0);

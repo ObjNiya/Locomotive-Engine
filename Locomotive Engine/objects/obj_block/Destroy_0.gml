@@ -10,6 +10,9 @@ repeat (dustAmnt)
         sprite_index = other.dustSpr;
 }
 
+with (instance_place(x, y, [par_points, obj_secretegg]))
+    visible = true;
+
 SaveroomAdd();
 Sleep(5);
 sound_instance_one_shot(destroySnd, x, y);

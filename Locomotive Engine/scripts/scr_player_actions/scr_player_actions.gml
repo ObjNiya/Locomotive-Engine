@@ -1,3 +1,7 @@
+/**
+ * Makes the current player instance taunt if the taunt key is pressed, or it's being forced. Returns if the player has taunted or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and taunt anyway. Default is false.
+ */
 function PlayerDoTaunt(forced = false)
 {
     if (!InputPressed(INPUT_VERB.TAUNT) && !forced)
@@ -8,6 +12,11 @@ function PlayerDoTaunt(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance fly with the cape if the superjump key is pressed and the player is at mach 3+, or it's being forced. Returns if the player has started flying with the cape or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and fly with the cape anyway. Default is false.
+ */
 function PlayerDoCape(forced = false)
 {
     if (!PlayerCape() && !forced)
@@ -20,6 +29,11 @@ function PlayerDoCape(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance grabdash if the grab key is pressed, or it's being forced. Returns if the player has grabdashed or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and grabdash anyway. Default is false.
+ */
 function PlayerDoGrabdash(forced = false)
 {
     if (!PlayerGrabdash() && !forced)
@@ -30,6 +44,11 @@ function PlayerDoGrabdash(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance groundpound if the groundpound key is pressed and they're off the ground, or it's being forced. Returns if the player has groundpounded or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and groundpound anyway. Default is false.
+ */
 function PlayerDoGroundpound(forced = false, divebomb = false)
 {
     if (((!PlayerGroundpound() && !divebomb) || (!PlayerDivebomb() && divebomb)) && !forced)
@@ -43,6 +62,11 @@ function PlayerDoGroundpound(forced = false, divebomb = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance machslide if the mach run key is released and their speed is greater than 8, or it's being forced. Returns if the player has machslid or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and machslide anyway. Default is false.
+ */
 function PlayerDoMachslide(forced = false)
 {
     if (!PlayerMachslide() && !forced)
@@ -54,6 +78,11 @@ function PlayerDoMachslide(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance machturn if the opposite direction is pressed and their speed is greater than 8, or it's being forced. Returns if the player has machturned or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and machturn anyway. Default is false.
+ */
 function PlayerDoMachturn(forced = false)
 {
     if (!PlayerMachturn() && !forced)
@@ -65,6 +94,11 @@ function PlayerDoMachturn(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance uppercut if the up and grabdash key are pressed, or it's being forced. Returns if the player has taunted or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and taunt anyway. Default is false.
+ */
 function PlayerDoUppercut(forced = false)
 {
     if (!PlayerUppercut() && !forced)
@@ -77,6 +111,11 @@ function PlayerDoUppercut(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance climb up a ladder if the up or down key is pressed and is near a ladder, or it's being forced. Returns if the player has grabbed onto the ladder or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and grab onto the ladder anyway. Default is false.
+ */
 function PlayerDoLadder()
 {
     var ladder = instance_place(x, y, obj_ladder);
@@ -113,6 +152,11 @@ function PlayerDoLadder()
     return false;
 }
 
+
+/**
+ * Makes the current player instance wallsplat if they hit a wall, or it's being forced. Returns if the player has wallsplatted or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and wallsplat anyway. Default is false.
+ */
 function PlayerDoWallsplat(forced = false)
 {
     if (!PlayerHitWall() && !forced)
@@ -128,6 +172,11 @@ function PlayerDoWallsplat(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance ceilingplat if they hit a ceiling, or it's being forced. Returns if the player has ceilingplat or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and ceilingplat anyway. Default is false.
+ */
 function PlayerDoCeilingsplat(forced = false)
 {
     if (!PlayerHitCeiling() && !forced)
@@ -143,6 +192,14 @@ function PlayerDoCeilingsplat(forced = false)
     return true;
 }
 
+
+/**
+ * Makes the current player instance jump if the jump key is pressed and they're on the ground, or it's being forced. Returns if the player has jumped or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and jump anyway. Default is false.
+ * @parameter {Asset.GMSprite} sprite_to_set (OPTIONAL) Which sprite to set if the player jumps. Default is spr_jump.
+ * @parameter {Real} jump_height (OPTIONAL) How high the player should jump. Default is -11.
+ * @parameter {Bool} particle (OPTIONAL) Whether or not to spawn a particle if the player jumps. Default is true.
+ */
 function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -11, particle = true)
 {
     if (!PlayerJump() && !forced)
@@ -161,6 +218,12 @@ function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -1
     return true;
 }
 
+
+/**
+ * Makes the current player instance longjump if the jump key is pressed and they're on the ground, or it's being forced. Returns if the player has longjumped or not.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and longjump anyway. Default is false.
+ * @parameter {Real} jump_height (OPTIONAL) How high the player should longjump. Default is -11.
+ */
 function PlayerDoLongjump(forced = false, jump_height = -11)
 {
     if (!PlayerJump() && !forced)
@@ -179,6 +242,12 @@ function PlayerDoLongjump(forced = false, jump_height = -11)
     return true;
 }
 
+
+/**
+ * Makes the current player instance stop their upwards jump momentum if the jump key is released, or if it's being forced. Returns if the upwards jumping momentum has been stopped.
+ * @parameter {Bool} forced (OPTIONAL) Whether or not to ignore the check and force the player to stop their upwards jumping momentum. Default is false.
+ * @parameter {Real} divisor (OPTIONAL) By how much to divide the players veritcal speed to stop their upwards jumping momentum. Default is 20.
+ */
 function PlayerDoJumpstop(forced = false, divisor = 20)
 {
     if ((!InputReleased(INPUT_VERB.JUMP) || vsp >= 0 || grounded) && !forced)
@@ -189,6 +258,11 @@ function PlayerDoJumpstop(forced = false, divisor = 20)
     return true;
 }
 
+
+/**
+ * Makes the current player instance instantly kill any enemies they touch, or the enemy that is given. Returns if an enemy was killed or not.
+ * @parameter {Id.Instance} enemy_to_kill (OPTIONAL) Which enemy to kill. Default is noone, making the function search for collision with another enemy.
+ */
 function PlayerDoInstakill(enemy_to_kill = noone)
 {
     if (enemy_to_kill == noone)

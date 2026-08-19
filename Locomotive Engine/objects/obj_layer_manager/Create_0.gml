@@ -1,4 +1,3 @@
-
 with (global)
 {
     ScrtTsCircleX = 0;

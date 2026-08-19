@@ -1,7 +1,7 @@
 #macro ENEMY_STATE_FAILSAVE var parent = object_get_parent(object_index) if (parent != par_enemy) { SmcSetState("None") Log(object_index, LOG_TYPES.WARNING, "Attempted to enter an enemy state despite not being an enemy! Setting state to empty...") return }
 
 /**
- * Attacks the given Enemy, meant for obj_hitbox.
+ * Attacks the given Enemy instance and returns if the enemy was hurt or not.
  * @parameter {Instance.Id} enemy_id Which Enemy instance to attack.
  * @parameter {Instance.Id} attacker_id The instance that the Enemy was attacked by.
  * @parameter {Real} damage The amount of damage to deal to the Enemy.
@@ -42,9 +42,9 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
 }
 
 /**
- * Stuns the given Enemy, meant for obj_hitbox.
+ * Tries to stun the given Enemy instance and returns whether or not it has succeeded.
  * @parameter {Instance.Id} enemy_id Which Enemy instance to stun.
- * @parameter {Instance.Id} attacker_id The instance that Enemy was stunned by.
+ * @parameter {Instance.Id} attacker_id The instance the Enemy was stunned by.
  */
 function StunEnemy(enemy_id, attacker_id)
 {
@@ -77,9 +77,16 @@ function StunEnemy(enemy_id, attacker_id)
             with (InstanceCreate(x, y, obj_slap_star_debris))
                 vspeed = irandom_range(-6, -11);
         }
+        
+        return true;
     }
 }
 
+/**
+ * Tries to stomp the given Enemy instance and returns whether or not it succeeded.
+ * @parameter {Id.Instance} enemy_id Which Enemy instance to stomp.
+ * @parameter {Id.Instance} attacker_id The instance the Enemy was stomped by.
+ */
 function StompEnemy(enemy_id, attacker_id)
 {
     with (enemy_id)
@@ -119,7 +126,7 @@ function ScareEnemies()
 {
     with (par_enemy)
     {
-        if (stateName != "Walk" && stateName != "Scared")
+        if (stateName != "Walk")
             continue;
         
         var in_sight = (collision_rectangle(x - (400 * (image_xscale == -1)), y - 130, x + (400 * (image_xscale == 1)), y + 90, other, false, false));

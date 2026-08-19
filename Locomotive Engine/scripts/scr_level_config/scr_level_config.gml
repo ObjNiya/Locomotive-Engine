@@ -12,9 +12,14 @@ function ___LvlsDefine__()
         WIGGLERS_GARDEN = 4,
     }
     
-    new Lvl(LVLS.TUTORIAL, -1, infinity, infinity, mu_tutorial, -1, mu_hallway_title, #000000, false);
-    new Lvl(LVLS.HALLWAY_LONGWAY, Nhall_1, 240, 30000, mu_hallway, 0, mu_hallway_title, #401940);
-    new Lvl(LVLS.BLOOM_AND_DOOM, -1, 240, 0, mu_doom, -1, mu_hallway_title, #000000);
-    new Lvl(LVLS.FOREST_MAZE, -1, 240, 0, mu_maze, -1, mu_hallway_title, #000000);
-    new Lvl(LVLS.WIGGLERS_GARDEN, -1, 240, 0, mu_hallway, -1, mu_hallway_title, #000000);
+    var lvl = new Lvl(LVLS.TUTORIAL, -1, infinity, infinity, false);
+    lvl.SetVisuals(c_black, mu_tutorial);
+    
+    lvl = new Lvl(LVLS.HALLWAY_LONGWAY, Nhall_1, 240, 30000);
+    lvl.SetTitlecard(0, mu_hallway_title);
+    lvl.SetVisuals(#401940, mu_hallway);
+    
+    lvl = new Lvl(LVLS.BLOOM_AND_DOOM, -1, 240, 0);
+    lvl = new Lvl(LVLS.FOREST_MAZE, -1, 240, 0);
+    lvl = new Lvl(LVLS.WIGGLERS_GARDEN, -1, 240, 0);
 }

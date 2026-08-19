@@ -10,6 +10,9 @@ repeat (debrisAmnt)
     }
 }
 
+with (instance_place(x, y, [par_points, obj_secretegg]))
+    visible = true;
+
 SaveroomAdd();
 Sleep(5);
 InstanceCreate(x + 32, y + 32, obj_bang_particle);

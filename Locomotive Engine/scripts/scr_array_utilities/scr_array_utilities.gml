@@ -24,7 +24,9 @@ function ArrayGetSum(array)
 
 
 /**
- * Returns whether or not the given index is within the array bounds.
+ * Returns whether or not the given index is within the given arrays bounds.
+ * @parameter {Array} array The array to check.
+ * @parameter {Real} index The index to check.
  * @pure
  */
 function ArrayInBounds(array, index)
@@ -35,9 +37,20 @@ function ArrayInBounds(array, index)
 
 /**
  * Returns a random entry from the given array.
+ * @parameter {Array} array The array to get the random value from.
  * @pure
  */
 function ArrayGetRandom(array)
 {
     return array[irandom(array_length(array) - 1)];
+}
+
+/**
+ * Returns whether or not the given array is empty.
+ * @parameter {Array} array The array to check.
+ * @pure
+ */
+function ArrayIsEmpty(array)
+{
+    return array_length(array) <= 0;
 }

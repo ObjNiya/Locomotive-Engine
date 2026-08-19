@@ -99,13 +99,19 @@ function InitGlobals()
         // Level data
     
         level = -1;
-    
-        showtimeTimer = new Timer(60, time_source_units_seconds, function() {
-            
-        });
-        comboTimer = new Timer(6.75, time_source_units_seconds, function() {
+        
+        showtimeTimerFunc = function()
+        {
+            InstanceCreate(obj_player.x, obj_player.y, obj_marx);
+        }
+        
+        showtimeTimer = time_source_create(time_source_game, 60, time_source_units_seconds, showtimeTimerFunc);
+        
+        comboTimerFunc = function()
+        {
             global.combo = 0;
-        });
+        }
+        comboTimer = time_source_create(time_source_game, 6.75, time_source_units_seconds, comboTimerFunc);
             
         plushies = {
             waddledoo: false,

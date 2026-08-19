@@ -39,7 +39,6 @@ function following_obj_init()
 	basefollowobj = noone
 	followingobj = noone
 	lock = false;
-	depth = -6;
 }
 
 //use this to set a followers base follow object, can be used at the start of creation or in the middle of it following another object and it will work automatically

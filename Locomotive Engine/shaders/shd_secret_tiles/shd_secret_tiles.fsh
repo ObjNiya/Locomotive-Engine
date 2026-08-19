@@ -7,7 +7,6 @@ varying vec4 v_vColour;
 
 uniform float u_fCircleRadius;
 uniform vec2 u_vCirclePos;
-uniform vec2 u_vRoomSize;
 
 #define CIRCLE_BORDER_SIZE 0.
 

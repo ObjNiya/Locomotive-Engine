@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_exit_pointer",
+  "%Name":"obj_marx",
   "eventList":[],
   "managed":true,
-  "name":"obj_exit_pointer",
+  "name":"obj_marx",
   "overriddenProperties":[],
   "parent":{
     "name":"Showtime",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_idle_nautatv",
-    "path":"sprites/spr_idle_nautatv/spr_idle_nautatv.yy",
+    "name":"spr_marx_head",
+    "path":"sprites/spr_marx_head/spr_marx_head.yy",
   },
   "spriteMaskId":null,
   "visible":true,

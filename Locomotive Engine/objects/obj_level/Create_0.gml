@@ -2,9 +2,9 @@ SINGLETON;
 
 with (global)
 {
-    showtimeTimer.Stop();
-    comboTimer.Stop();
-    
+    time_source_stop(showtimeTimer);
+    time_source_stop(comboTimer);
+
     rank = RANKS.D;
     points = 0;
     combo = 0;

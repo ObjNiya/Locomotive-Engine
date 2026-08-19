@@ -14,7 +14,7 @@ function TvDoExpression(tv_id, sprite, duration)
 {
     with (tv_id)
     {
-        exprTimer.maxTime = duration;
+        time_source_reconfigure(exprTimer, duration, time_source_units_frames, exprTimerFunc);
         TvDoWhitenoise(tv_id, "Expression", sprite);
     }
 }

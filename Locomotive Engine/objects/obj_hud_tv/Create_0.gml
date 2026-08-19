@@ -17,6 +17,9 @@ whitenoise = new Sprite(spr_tv_whitenoise_damian);
 whitenoiseNextState = "Idle";
 whitenoiseNextSprite = spr_tv_idle_damian;
 
-exprTimer = new Timer(60, time_source_units_frames, function() {
+exprTimerFunc = function()
+{
     TvDoWhitenoise(id, "Idle", playerId.spr_tv_idle);
-});
+}
+
+exprTimer = time_source_create(time_source_game, 60, time_source_units_frames, exprTimerFunc);

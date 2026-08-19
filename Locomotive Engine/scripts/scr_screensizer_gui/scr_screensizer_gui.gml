@@ -53,7 +53,7 @@ function GuiCalcY(align)
 
 
 /**
- * Creates and returns a sprite of the GUI to be used when your application is paused.
+ * Creates and returns a sprite of the GUI to be used when the application is paused.
  * @pure
  */
 function GuiGetPauseSpr(smooth)

@@ -2,6 +2,7 @@ var meeting_scrt_ts = false;
 with (obj_player)
     meeting_scrt_ts = place_meeting(x, y, obj_secret_tiles);
 
+scrt_ts_circle_rad.step();
 global.ScrtTsCircleRadius = scrt_ts_circle_rad.value;
 
 if (!meeting_scrt_ts)

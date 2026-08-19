@@ -91,7 +91,7 @@ function StatePlayerSwingdingStep()
     {
         y = floor(other.y);
         x = floor(other.x + x_offset);
-        depth = targ_depth;
+        DepthSet(targ_depth);
     }
 }
 

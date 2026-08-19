@@ -1,5 +1,5 @@
-if (sprite_index != spr_secretegg_close)
-    visible = true;
+//if (sprite_index != spr_secretegg_close)
+    //visible = true;
 
 with (player)
 {

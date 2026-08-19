@@ -1,7 +1,7 @@
 /// @ignore
 function StateTvExpressionStart()
 {
-    exprTimer.Start();
+    time_source_start(exprTimer);
 }
 
 /// @ignore

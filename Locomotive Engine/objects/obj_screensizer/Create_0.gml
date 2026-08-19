@@ -23,8 +23,6 @@ guiPauseSpr = -1;
 guiScriptBegin = -1;
 guiScriptEnd = -1;
 
-pauseSmooth = false;
-
 prevWindowWidth = window_get_width();
 prevWindowHeight = window_get_height();
 
@@ -41,4 +39,4 @@ if (is_string(fullscreenKey))
 
 application_surface_draw_enable(false);
 window_enable_borderless_fullscreen(true);
-AppSetAspectRatio(GetResAspectRatio(global.baseAppWidth, global.baseAppHeight));
+AppSetAspectRatio(GetResAspectRatio());

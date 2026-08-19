@@ -6,8 +6,8 @@
   "name":"obj_lap_ring",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Objects/Level Structure.yy",
+    "name":"Showtime",
+    "path":"folders/Objects/Level Structure/Showtime.yy",
   },
   "parentObjectId":null,
   "persistent":false,

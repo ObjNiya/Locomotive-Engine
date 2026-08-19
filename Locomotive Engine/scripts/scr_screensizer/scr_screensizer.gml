@@ -1,17 +1,26 @@
 /**
- * Returns the aspect ratio of the given resolution's width and height as a decimal.
- * @parameter {Real} width The width of the resolution to get the aspect ratio of.
- * @parameter {Real} height The height of the resolution to get the aspect ratio of.
+ * Returns the aspect ratio of the application as a decimal.
  * @pure
  */
-function GetResAspectRatio(width, height)
+function GetResAspectRatio()
 {
-    return width / height;
+    return surface_get_width(application_surface) / surface_get_height(application_surface);
 }
 
 
 /**
- * Returns the current aspect ratio of your application in the given format.
+ * Returns how much the application is scaled from the base resolution as an array. Index 0 is x scale, Index 1 is y scale.
+ * @pure
+ * @returns {Array<Real>}
+ */
+function GetResScale()
+{
+    return [surface_get_width(application_surface) / global.baseAppWidth, surface_get_height(application_surface) / global.baseAppHeight];
+}
+
+
+/**
+ * Returns the current aspect ratio of the application in the given format.
  * @parameter {String} format Either String, Number or Array. (```string = "16:9"```, ```number = 1.77```, ```array = [16, 9]```)
  * @pure
  */
@@ -34,7 +43,7 @@ function AppGetAspectRatio(format)
 
 
 /**
- * Sets the aspect ratio of your application to the given String, Number or Array.
+ * Sets the aspect ratio of the application to the given String, Number or Array.
  * @parameter {String|Array<Real>|Real} aspect_ratio The aspect ratio to set. (Possible formats: "16:9", 1.77, [16, 9])
  */
 function AppSetAspectRatio(aspect_ratio)
@@ -100,7 +109,7 @@ function AppSetAspectRatio(aspect_ratio)
 
 
 /**
- * Flips the current aspect ratio of your application, meant for rotatable screens like mobile phone screens. 
+ * Flips the current aspect ratio of the application, meant for rotatable screens like mobile phone screens. 
  */
 function AppFlipAspectRatio()
 {
@@ -141,7 +150,7 @@ function AppSetResizingMode(resizing_mode)
 
 
 /**
- * Creates and returns a sprite of your application (excluding the GUI) to be used when your application is paused.
+ * Creates and returns a sprite of the application (excluding the GUI) to be used when the application is paused.
  * @pure
  */
 function AppGetPauseSpr(smooth)
@@ -154,8 +163,8 @@ function AppGetPauseSpr(smooth)
 
 
 /**
- * With this function you can assign a function to your application and it will be called before your application is rendered. (Excluding the GUI)
- * @parameter {Function} name The function to assign to your application, or -1 to not assign any.
+ * With this function you can assign a function to the application and it will be called before the application is rendered. (Excluding the GUI)
+ * @parameter {Function} name The function to assign to the application, or -1 to not assign any.
  */
 function AppScriptBegin(script)
 {
@@ -164,8 +173,8 @@ function AppScriptBegin(script)
 
 
 /**
- * With this function you can assign a function to your application and it will be called after your application is rendered. (Excluding the GUI)
- * @parameter {Function} name The function to assign to your application, or -1 to not assign any.
+ * With this function you can assign a function to the application and it will be called after the application is rendered. (Excluding the GUI)
+ * @parameter {Function} name The function to assign to the application, or -1 to not assign any.
  */
 function AppScriptEnd(script)
 {

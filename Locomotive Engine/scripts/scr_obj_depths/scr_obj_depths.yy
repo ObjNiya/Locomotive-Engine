@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_depths",
+  "%Name":"scr_obj_depths",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_depths",
+  "name":"scr_obj_depths",
   "parent":{
     "name":"Backend",
     "path":"folders/Scripts/Essential/Backend.yy",

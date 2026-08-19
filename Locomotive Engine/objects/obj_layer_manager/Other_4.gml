@@ -1,75 +1,41 @@
-set_collision_visible(show_collisions);
+var layers = layer_get_all();
 
-var ins_layers = layer_get_all();
-var ins_layer_count = array_length(ins_layers);
+global.baseDepth = 0;
 
-for (var i = 0; i < ins_layer_count; i++;)
-{
-    var lay_name = string_lower(layer_get_name(ins_layers[i]));
+array_foreach(layers, function(lay, index) {
+    var name = string_lower(layer_get_name(lay));
     
-    while (string_pos("instances", lay_name) == -1)
-    {
-        array_delete(ins_layers, i, 1);
-        lay_name = string_lower(layer_get_name(ins_layers[i]));
-    }
-}
-
-var mid_depth = floor(array_length(ins_layers) / 2);
-mid_depth = ins_layers[mid_depth];
-
-global.baseDepth = layer_get_depth(mid_depth);
-QuickLog(global.baseDepth)
-
-with (all)
-{
-    var my_depth = ObjGetDepth(object_index);
-    if (is_undefined(my_depth))
-        my_depth = ObjGetDepth(object_get_parent(object_index));
-    if (is_undefined(my_depth))
-        continue;
+    if (name == string_lower(LAYER_DEPTH_BASE))
+        global.baseDepth = layer_get_depth(lay);
     
-    
-    var lay_depth = (layer_exists(layer_get_name(layer))) ? layer_get_depth(layer_get_name(layer)) : global.baseDepth;
-    //layer = -1;
-    QuickLog(object_index, " ", lay_depth + my_depth);
-    depth = my_depth;
-}    
-
-
-/*
-layers = layer_get_all();
-
-var layer_count = array_length(layers);
-var i = 0;
-
-var closest_depth = -50;
-var furthest_depth = 0;
-
-var scrt_ts_lay_count = 0;
-
-repeat (layer_count)
-{
-    var lay = layers[i];
-    var lay_name = layer_get_name(lay);
-    
-    if (string_pos("Secret", layer_get_name(lay)) == 0)
-    {
-        i++;
-        break;
-    }
+    if (string_pos("secret", name) == -1)
+        return;
     
     layer_script_begin(lay, function() {
-        if (event_type == ev_draw && event_number == ev_draw_normal)
-        {
-            shader_set(shd_secret_tiles);
-            
-            shader_set_uniform_f(scrt_ts_pos_uniform, global.ScrtTsCircleX, global.ScrtTsCircleY);
-            shader_set_uniform_f(scrt_ts_radius_uniform, global.ScrtTsCircleRadius);
-        }
+        if (event_type != ev_draw || event_number != ev_draw_normal)
+            return;
+        
+        shader_set(shd_secret_tiles);
+        
+        var circ_rad_uniform = shader_get_uniform(shd_secret_tiles, "u_fCircleRadius");
+        var circ_pos_uniform = shader_get_uniform(shd_secret_tiles, "u_vCirclePos");
+        
+        shader_set_uniform_f(circ_rad_uniform, global.ScrtTsCircleRadius);
+        shader_set_uniform_f(circ_pos_uniform, global.ScrtTsCircleX, global.ScrtTsCircleY);
     });
     
     layer_script_end(lay, function() {
         if (event_type == ev_draw && event_number == ev_draw_normal)
             shader_reset();
-    })
+    });
+});
+
+
+with (all)
+{
+    if (!ObjDepthExists(object_index))
+        continue;
+    
+    DepthSet();
+    Log(obj_layer_manager, LOG_TYPES.INFO, "Setting ", object_index, "s depth to: ", depth)
 }

@@ -3,7 +3,7 @@
  * @parameter {Real} value How many points to add.
  * @parameter {Real} time What to set the Combo Timer to.
  */
-function AddCombo(value, time)
+function ComboAdd(value, time)
 {
     with (global)
     {
@@ -12,11 +12,18 @@ function AddCombo(value, time)
         if (combo <= 0)
             return false;
         
-        comboTimer.time = clamp(comboTimer.time + time, 0, 6.75);
+        var combo_period = time_source_get_period(comboTimer);
+        
+        time_source_reconfigure(comboTimer, combo_period + time, time_source_units_seconds, comboTimerFunc);
     }
 }
 
+/**
+ * Sets the remaining combo time until the combo ends.
+ * @parameter {Real} time The time to set.
+ */
 function ComboSetTime(time)
 {
-    
+    with (global)
+        time_source_reconfigure(comboTimer, time, time_source_units_seconds, comboTimerFunc);
 }
