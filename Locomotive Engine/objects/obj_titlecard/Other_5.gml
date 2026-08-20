@@ -1,0 +1,1 @@
+global.gameState = GAME_STATES.LEVEL;

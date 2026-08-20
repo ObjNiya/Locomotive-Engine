@@ -21,8 +21,8 @@
   ],
   "name":"rm_titlecard",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Level Structure",
+    "path":"folders/Rooms/Level Structure.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

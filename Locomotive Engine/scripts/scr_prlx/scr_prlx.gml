@@ -20,7 +20,11 @@ __PrlxDefinitions__();
  */
 function PrlxStep(camera_index)
 {
-    var cam = view_camera[camera_index];
+    if (is_real(camera_index))
+        var cam = view_camera[camera_index];
+    else
+        var cam = camera_index;
+    
     var cam_w = camera_get_view_width(cam);
     var cam_h = camera_get_view_height(cam);
     
@@ -28,15 +32,16 @@ function PrlxStep(camera_index)
     {
         biggestCamW = max(biggestCamW, cam_w);
         biggestCamH = max(biggestCamH, cam_h);
+        
+        var struct_names = struct_get_names(cfg[PRLX_CFG_TYPES.LAYER]);
+        var struct_length = array_length(struct_names);
+        var i = 0;
+          
+        repeat (struct_length)
+        {
+            cfg[PRLX_CFG_TYPES.LAYER][$ struct_names[i]].Step(camera_index);
+            i++;
+        }
     }
-    
-    var struct_names = struct_get_names(global.prlxData.cfg[PRLX_CFG_TYPES.LAYER]);
-    var struct_length = array_length(struct_names);
-    var i = 0;
-    
-    repeat (struct_length)
-    {
-        global.prlxData.cfg[PRLX_CFG_TYPES.LAYER][$ struct_names[i]].Step(camera_index);
-        i++;
-    }
+
 }

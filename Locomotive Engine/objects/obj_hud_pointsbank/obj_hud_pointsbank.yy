@@ -1,21 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_titlecard",
+  "%Name":"obj_hud_pointsbank",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":5,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_titlecard",
+  "name":"obj_hud_pointsbank",
   "overriddenProperties":[],
   "parent":{
-    "name":"Cutscene",
-    "path":"folders/Objects/Cutscene.yy",
+    "name":"Hub",
+    "path":"folders/Objects/HUD/Hub.yy",
   },
   "parentObjectId":null,
-  "persistent":false,
+  "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -32,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_points_bank",
+    "path":"sprites/spr_points_bank/spr_points_bank.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

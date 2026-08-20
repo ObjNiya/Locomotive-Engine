@@ -13,9 +13,6 @@ with (global)
     laps = 0;
     treasure_found = false;
     
-    if (room == level.firstRm && MusicGetPlaybackState() == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
-        MusicSet(level.music);
-    
     level.prlxInit();
 }
 

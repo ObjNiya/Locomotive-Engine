@@ -10,6 +10,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
     x = 0;
     y = 0;
     
+    onBgLay = -1;
     type = PRLX_CFG_TYPES.LAYER;
     fx = {};
     elements = [];
@@ -42,6 +43,18 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         return self;
     }
     
+    /**
+     * Sets the Parallax Layer to be completely still on either given axis.
+     * @parameter {Bool} x_still Whether or not to make the Parallax Layer still on the x axis.
+     * @parameter {Bool} y_still Whether or not to make the Parallax Layer still on the y axis.
+     */
+    static SetStill = function(x_still, y_still)
+    {
+        xStill = x_still;
+        yStill = y_still;
+        
+        return self;
+    }
     
     /**
      * Sets the offset for both axis. (Stacks with the offsets of the layer that the Parallax Layer will be assigned to)
@@ -368,6 +381,9 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         array_foreach(lay_elems, function(elem, index) {
             var elem_type = layer_get_element_type(elem);
             
+            if (elem_type == layerelementtype_background && onBgLay == -1)
+                onBgLay = elem;
+            
             var tilemap_lay_surf = ((elem_type == layerelementtype_tilemap || elem_type == layerelementtype_oldtilemap) && (other.xScale != 1 || other.yScale != 1 || other.blend != c_white || other.alpha != 1));
             var sequence_lay_surf = ((elem_type == layerelementtype_sequence) && (other.blend != c_white || other.alpha != -1));
     
@@ -386,7 +402,8 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
             else
                 array_push(other.elements, new __LayerelementData__(elem));
         });
-             
+        
+         
         layer_script_begin(id, function() {
             if (surfMode == PRLX_LAYER.NO_SURF || event_type != ev_draw || event_number != ev_draw_normal)
             {
@@ -491,6 +508,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         yScroll.pos = 0;
         
         elements = [];
+        onBgLay = -1;
     }
     
     
@@ -500,7 +518,12 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         if (id == -1)
             return;
         
-        var cam = view_camera[camera_index];
+        var cam;
+        
+        if (is_real(camera_index))
+            cam = view_camera[camera_index];
+        else
+            cam = camera_index;
         
         rmEditrXScroll += rmEditrXSpeed;
         rmEditrYScroll += rmEditrYSpeed;
@@ -508,13 +531,52 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         xScroll.Step();
         yScroll.Step();
         
-        var base_x = (rmEditrXOffset + rmEditrXScroll + xOffset + xScroll.pos);
-        var prlx_x = (camera_get_view_x(cam) * xPrlx);
-        x = base_x + prlx_x;
+        var cam_x = camera_get_view_x(cam);
+        var cam_y = camera_get_view_y(cam);
         
-        var base_y = (rmEditrYOffset + rmEditrYScroll + yOffset + yScroll.pos);
-        var prlx_y = (camera_get_view_y(cam) * yPrlx);
-        y = base_y + prlx_y;
+        if (!xStill)
+        {
+            var base_x = (rmEditrXOffset + rmEditrXScroll + xOffset + xScroll.pos);
+            var prlx_x = (cam_x * xPrlx);
+            x = base_x + prlx_x;
+        }
+        else if (onBgLay != -1)
+        {
+            var cam_w = camera_get_view_width(cam);
+            var cam_x_scalar = cam_x / (room_width - cam_w);
+            
+            var bg_spr = layer_background_get_sprite(onBgLay);
+            var bg_spr_xorigin = sprite_get_xoffset(bg_spr);
+            
+            var max_bg_x = sprite_get_width(bg_spr) - cam_w;
+            max_bg_x = max(max_bg_x, 0);
+            
+            x = cam_x - bg_spr_xorigin - lerp(0, max_bg_x, cam_x_scalar);
+        }
+        else
+            x = cam_x;
+        
+        if (!yStill)
+        {
+            var base_y = (rmEditrYOffset + rmEditrYScroll + yOffset + yScroll.pos);
+            var prlx_y = (cam_y * yPrlx);
+            y = base_y + prlx_y;
+        }
+        else if (onBgLay != -1)
+        {
+            var cam_h = camera_get_view_height(cam);
+            var cam_y_scalar = cam_y / (room_height - cam_h);
+            
+            var bg_spr = layer_background_get_sprite(onBgLay);
+            var bg_spr_yorigin = sprite_get_yoffset(bg_spr);
+            
+            var max_bg_y = sprite_get_height(bg_spr) - cam_h;
+            max_bg_y = max(max_bg_y, 0);
+            
+            y = cam_y - bg_spr_yorigin - lerp(0, max_bg_y, cam_y_scalar);
+        }
+        else
+            y = cam_y;
         
         var lay_x = x;
         var lay_y = y;
@@ -532,8 +594,8 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         
         layer_x(id, lay_x);
         layer_y(id, lay_y);
-        
-        struct_foreach(valueModifiers, function(name, value) {
+
+        struct_foreach(valueModifiers, method( { cam_index: cam }, function(name, value) { // I will kill myself
             var val_scroller = value[PRLX_LAYER.VAL_MOD_SCROLLER];
             var val_prlx_axis = value[PRLX_LAYER.VAL_MOD_PRLX_AXIS];
             var val_prlx_mult = value[PRLX_LAYER.VAL_MOD_PRLX_MULT];
@@ -543,7 +605,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         
             val_scroller.Step();
             
-            var cam = view_camera[camera_index];
+            var cam = view_camera[cam_index];
             var prlx;
             
             switch (val_prlx_axis)
@@ -568,28 +630,28 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
                 var fx_param = fx_get_parameter(other.fx, val_name);
                 
                 if (!is_array(fx_param))
-                    fx_param = val_scroller_.pos + prlx;
+                    fx_param = val_scroller.pos + prlx;
                 else
                 {
                     value[PRLX_LAYER.VAL_MOD_ARR_VAL_INDEX] = clamp(arr_val_index, 0, array_length(fx_param) - 1);
-                    fx_param[arr_val_index] = val_scroller_.pos + prlx;
+                    fx_param[arr_val_index] = val_scroller.pos + prlx;
                 }
                     
                 fx_set_parameter(other.fx, val_name, fx_param);
-                layer_set_fx(id, fx);
+                layer_set_fx(other.id, other.fx);
                 return;
             }
             
             var val = other[$ val_name];
             
             if (!is_array(val))
-                other[$ val_name] = val_scroller_.pos + prlx;
+                other[$ val_name] = val_scroller.pos + prlx;
             else
             {
                 value[PRLX_LAYER.VAL_MOD_ARR_VAL_INDEX] = clamp(arr_val_index, 0, array_length(val) - 1);
-                other[$ val_name][arr_val_index] = val_scroller_.pos + prlx;
+                other[$ val_name][arr_val_index] = val_scroller.pos + prlx;
             }
-        });
+        }));
         
         if (surfMode != PRLX_LAYER.NO_SURF)
             return;
@@ -599,6 +661,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
     
     SetDepthFog(PrlxCfgDepthFogGetCol(), 0);
     SetPrlx(x_prlx_factor, y_prlx_factor);
+    SetStill(false, false);
     SetScroll(0, 0);
     SetDrawFuncs(-1, -1);
     SetOffset(0, 0);

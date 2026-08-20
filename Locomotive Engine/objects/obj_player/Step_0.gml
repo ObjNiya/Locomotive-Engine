@@ -7,7 +7,7 @@ scr_collision();
 SmcRunEvent("Step");
 sound_instance_move_several(x, y, sndGrabdash, sndGroundpound, sndMach, sndSuperjump, sndMachroll, sndDive, sndRollGetup, sndSpin);
 CameraStep(camera);
-PrlxStep(0);
+PrlxStep(camera.id);
 
 
 var cam_pan_up = (place_meeting(x, y, obj_levelpainting) && stateName == "Normal" && dir == 0 && grounded);

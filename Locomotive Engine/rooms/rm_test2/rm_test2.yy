@@ -31,8 +31,8 @@
   ],
   "name":"rm_test2",
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Sprites.yy",
+    "name":"Testing",
+    "path":"folders/Rooms/Testing.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -25,8 +25,8 @@
   ],
   "name":"rm_file_select",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Game Start",
+    "path":"folders/Rooms/Game Start.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -20,7 +20,13 @@ with (splash)
 SetRoomEvent(ROOM_EVS.STEP, function() {
     if (InputPressed(INPUT_VERB.JUMP) && !instance_exists(par_cutscene))
     {
-        RoomQueue(rm_initialize_gameplay, obj_spawn_a);
+        var skip = true;
+        
+        if (skip)
+            RoomQueue(rm_hub_start, obj_spawn_a);
+        else
+            RoomQueue(rm_newfile_cutscene, obj_spawn_a);
+        global.gameState = GAME_STATES.HUB;
         RoomTrans(obj_roomtrans_fade);
     }
 })
