@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerRollingJumpCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     movespeed = max(movespeed, 12);
     

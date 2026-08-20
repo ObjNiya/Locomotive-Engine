@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerNormalCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     dir = sign(hsp);
     movespeed = abs(hsp);

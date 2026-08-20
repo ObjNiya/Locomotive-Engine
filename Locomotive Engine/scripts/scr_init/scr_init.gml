@@ -66,7 +66,7 @@ function InitGlobals()
     {
         // Internal global variables
         
-        __ImportantObjs__ = [obj_general_manager, obj_layer_manager, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_camera_manager, obj_hud_timer, __InputUpdateController];
+        __ImportantObjs__ = [obj_general_manager, obj_layer_manager, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_camera_manager, obj_hud_timer, obj_parallax_manager, __InputUpdateController];
         
         // Secret Tiles TODO: MOVE
         

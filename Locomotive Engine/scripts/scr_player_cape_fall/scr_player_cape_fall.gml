@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerCapeFallCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     if (sprite_index != spr_cape_end && sprite_index != spr_cape_fall)
         SpriteSet(spr_cape_end, 0);

@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerLadderCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     sprite_index = spr_ladder_up;
     image_speed = 1;

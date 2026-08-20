@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerExitportalCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     grav = 0.2;
     vsp = -3;

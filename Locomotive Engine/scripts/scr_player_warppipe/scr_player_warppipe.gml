@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerWarppipeCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     if (!EqualsToAny(sprite_index, spr_warppipe_down, spr_warppipe_up))
         SpriteSet(spr_warppipe_down, 0);

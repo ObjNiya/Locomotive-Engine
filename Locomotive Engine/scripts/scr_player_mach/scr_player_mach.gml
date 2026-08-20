@@ -18,7 +18,7 @@ function PlayerGetMachStage()
 /// @ignore
 function StatePlayerMachCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     movespeed = max(movespeed, 6);
     accel = 0.1;

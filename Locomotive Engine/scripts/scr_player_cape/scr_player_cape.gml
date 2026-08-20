@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerCapeCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     sprite_index = spr_cape;
     image_speed = 1;

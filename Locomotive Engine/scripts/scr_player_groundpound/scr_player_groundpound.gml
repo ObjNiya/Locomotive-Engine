@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerGroundpoundCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet(spr_groundpound_intro, 0);
     if (carryingId != noone)

@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerWallclimbCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     sprite_index = spr_wallclimb;
     

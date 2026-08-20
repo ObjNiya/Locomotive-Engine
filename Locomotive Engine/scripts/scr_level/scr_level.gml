@@ -35,17 +35,19 @@ function Lvl(index, first_room, showtime_time, s_rank_points, has_secrets_and_tr
      * Sets the TV background color of the players TV HUD and the music.
      * @parameter {Constant.Color} tvbg_color The TV background color to set.
      * @parameter {String} music The FMOD Studio event path to the music to set.
+     * @parameter {String} prlx_init The function to run to initialize Parallax.
      */
-    static SetVisuals = function(tvbg_color, music)
+    static SetVisuals = function(tvbg_color, music, prlx_init)
     {
         tvbgColor = tvbg_color;
         self.music = music;
+        prlxInit = prlx_init;
         
         return self;
     }
     
     SetTitlecard(0, mu_hallway_title);
-    SetVisuals(c_black, mu_hallway);
+    SetVisuals(c_black, mu_hallway, __PrlxDefinitions__);
     
     global.levels[index] = self;
     

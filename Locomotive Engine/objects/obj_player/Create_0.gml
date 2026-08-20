@@ -161,7 +161,7 @@ flameParticleTimer = 12;
 cloudParticleTimer = time_source_create(playerTimeSources, 12, time_source_units_frames, function() {
     create_particle(x, y + 43, obj_cloud_particle, false);
     
-    if ((stateName != "Normal" && stateName != "Painting" && stateName != "Ladder") || carryingId == noone)
+    if ((stateName != "Normal" && stateName != "Painting" && stateName != "Ladder") || carryingId != noone)
         return;
     
     sound_instance_one_shot(SfxStep, x, y);

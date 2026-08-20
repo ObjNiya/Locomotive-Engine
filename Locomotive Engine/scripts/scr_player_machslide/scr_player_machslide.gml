@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerMachslideCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet(spr_machslide_intro, 0);
 }

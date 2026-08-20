@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerMachrollCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet((sprite_index == spr_rolling_jump) ? spr_backslide_land : spr_machroll, 0);
     mask_index = spr_crouchmask;

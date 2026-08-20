@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerMachturnCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet((PlayerGetMachStage() > 2) ? spr_mach3_turn_intro : spr_mach2_turn_intro, 0);
 }

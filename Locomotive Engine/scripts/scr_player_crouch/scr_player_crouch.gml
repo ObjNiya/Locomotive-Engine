@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerCrouchCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     mask_index = spr_crouchmask;
     image_speed = 1;

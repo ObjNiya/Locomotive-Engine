@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerNoclipCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     sprite_index = spr_parry_intro;
     image_index = 1;

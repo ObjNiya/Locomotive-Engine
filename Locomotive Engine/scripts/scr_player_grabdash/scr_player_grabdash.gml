@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerGrabdashCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     momentum = true;
     grabdashAirborne = !grounded;

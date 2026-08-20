@@ -4,7 +4,8 @@ with (global)
 {
     time_source_stop(showtimeTimer);
     time_source_stop(comboTimer);
-
+    time_source_reconfigure(showtimeTimer, level.showtimeTime, time_source_units_seconds, showtimeTimerFunc);
+    
     rank = RANKS.D;
     points = 0;
     combo = 0;
@@ -12,7 +13,10 @@ with (global)
     laps = 0;
     treasure_found = false;
     
-    showtimeTimer.max_time = level.showtimeTime;
+    if (room == level.firstRm && MusicGetPlaybackState() == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
+        MusicSet(level.music);
+    
+    level.prlxInit();
 }
 
 a_rank_points = global.level.sRankPoints / 2;

@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerHurtCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     if (sprite_index != spr_back_hurt)
         sprite_index = spr_hurt;

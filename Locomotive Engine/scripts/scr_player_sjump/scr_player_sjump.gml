@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerSjumpCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet(spr_sjump, 0);
     

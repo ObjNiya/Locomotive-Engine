@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerPaintingCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     sprite_index = spr_walk;
     

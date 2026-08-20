@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerUppercutCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet(spr_uppercut, 0);
     

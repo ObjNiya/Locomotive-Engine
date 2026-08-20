@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_prlx",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_prlx",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Parallaxer/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

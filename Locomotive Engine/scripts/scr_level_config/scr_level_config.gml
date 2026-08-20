@@ -13,11 +13,11 @@ function ___LvlsDefine__()
     }
     
     var lvl = new Lvl(LVLS.TUTORIAL, -1, infinity, infinity, false);
-    lvl.SetVisuals(c_black, mu_tutorial);
+    lvl.SetVisuals(c_black, mu_tutorial, __PrlxDefinitions__);
     
     lvl = new Lvl(LVLS.HALLWAY_LONGWAY, Nhall_1, 240, 30000);
     lvl.SetTitlecard(0, mu_hallway_title);
-    lvl.SetVisuals(#401940, mu_hallway);
+    lvl.SetVisuals(#401940, mu_hallway, PrlxInitHallway);
     
     lvl = new Lvl(LVLS.BLOOM_AND_DOOM, -1, 240, 0);
     lvl = new Lvl(LVLS.FOREST_MAZE, -1, 240, 0);

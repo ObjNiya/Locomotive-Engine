@@ -1,7 +1,7 @@
 /// @ignore
 function StatePlayerDoorCreate()
 {
-    PLAYER_STATE_FAILSAVE;
+    
     
     SpriteSet(spr_lookdoor, 0);
     
