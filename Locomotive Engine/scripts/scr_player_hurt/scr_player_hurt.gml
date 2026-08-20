@@ -9,7 +9,7 @@ function StatePlayerHurtCreate()
     movespeed = -8;
     vsp = -14;
     
-    sound_instance_one_shot(sfx_player_hurt, x, y);
+    sound_instance_one_shot(sfx_playerhurt, x, y);
     FlashEffectSet();
 }
 

@@ -77,7 +77,7 @@ function StatePlayerPaintingStep()
                 alarm[0] = 45;
             }
 
-            sound_instance_one_shot(sfx_enter_painting);
+            sound_instance_one_shot(sfx_enterpainting);
         }
         else if (y + vsp > paintingId.ystart)
         {

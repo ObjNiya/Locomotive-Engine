@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{a584966d-d200-434a-b860-a6b81380ec60}">
 		<property name="name">
-			<value>Marx Screech</value>
+			<value>Screech</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

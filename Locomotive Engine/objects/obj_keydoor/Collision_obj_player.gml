@@ -24,7 +24,7 @@ with (other)
 	if play_keydoor_animation
 	{
 		SpriteSet(spr_keydoor, 0);
-		sound_instance_one_shot(sfx_door_unlock);
+		sound_instance_one_shot(sfx_doorunlock);
 	}
 	else
 		RoomTrans(obj_roomtrans_fade);

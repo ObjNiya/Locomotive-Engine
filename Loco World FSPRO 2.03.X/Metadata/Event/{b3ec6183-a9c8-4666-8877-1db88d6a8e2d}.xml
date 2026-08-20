@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{b3ec6183-a9c8-4666-8877-1db88d6a8e2d}">
 		<property name="name">
-			<value>Damian Voice Idle</value>
+			<value>Idle</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

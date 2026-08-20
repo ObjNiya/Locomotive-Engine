@@ -1,0 +1,1 @@
+sprite_index = choose(spr_techdifficulties_damian, spr_techdifficulties_damian_2);

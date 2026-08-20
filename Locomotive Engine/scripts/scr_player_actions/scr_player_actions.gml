@@ -271,7 +271,7 @@ function PlayerDoInstakill(enemy_to_kill = noone)
         return false;
   
     camera.shake_set(3, 0.05);
-    sound_instance_one_shot(sfx_player_punch, x, y);
+    sound_instance_one_shot(sfx_playerpunch, x, y);
     HitstunSet(5);
     
     InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_puff_particle);

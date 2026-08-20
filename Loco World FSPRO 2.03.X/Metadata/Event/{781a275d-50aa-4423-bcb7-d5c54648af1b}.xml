@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{781a275d-50aa-4423-bcb7-d5c54648af1b}">
 		<property name="name">
-			<value>Damian Step</value>
+			<value>Step</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

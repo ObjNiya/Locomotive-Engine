@@ -48,31 +48,18 @@ function PrlxInitSecret()
  */
 function PrlxInitHallway()
 {
-    var prlx_name = (global.targetRoom == Nhall_8 || global.targetRoom == Nhall_9) ? "hallway_alt" : "hallway";
-    
-    if (PrlxCfgNameGet() == prlx_name)
+    if (PrlxCfgNameGet() == "hallway")
         return;
     
     PrlxCfgClear();
     
-    if (prlx_name == "hallway_alt")
-    {
-        var prlx = new PrlxLayer(0.4, 0.4);
-        PrlxCfgCommit("Backgrounds_1", prlx);
+    var prlx = new PrlxLayer(0.6, 0.6);
+    PrlxCfgCommit("Backgrounds_2", prlx);
         
-        prlx = new PrlxLayer(0.6, 0.6);
-        PrlxCfgCommit("Backgrounds_2", prlx);
-    }
-    else
-    {
-        var prlx = new PrlxLayer(0.6, 0.6);
-        PrlxCfgCommit("Backgrounds_1", prlx);
-        
-        prlx = new PrlxLayer(0.002, 0.05);
-        PrlxCfgCommit("Tiles_BG1", prlx);
-    }
+    prlx = new PrlxLayer(0.4, 0.4);
+    PrlxCfgCommit("Backgrounds_1", prlx);
     
-    PrlxCfgNameSet(prlx_name);
+    PrlxCfgNameSet("hallway");
 }
 
 

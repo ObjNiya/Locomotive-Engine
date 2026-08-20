@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{f88868a0-89e8-4c40-94d1-e5308f090bae}">
 		<property name="name">
-			<value>Marx Laser Charge</value>
+			<value>Laser Charge</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

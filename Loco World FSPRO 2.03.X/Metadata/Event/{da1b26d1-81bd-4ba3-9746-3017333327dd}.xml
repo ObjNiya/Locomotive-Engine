@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{da1b26d1-81bd-4ba3-9746-3017333327dd}">
 		<property name="name">
-			<value>Collectable Big</value>
+			<value>Big Points</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{bac19c92-172e-4039-9117-7f47b6bac6d0}">
 		<property name="name">
-			<value>Damian Mach Brake</value>
+			<value>Brake</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

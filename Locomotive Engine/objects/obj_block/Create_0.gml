@@ -3,7 +3,7 @@ event_inherited();
 big = false;
 bigSprite = spr_bigblock;
 
-destroySnd = sfx_destroyable;
+destroySnd = sfx_destroy_block;
 
 paletteSpr = -1;
 paletteIndex = 0;

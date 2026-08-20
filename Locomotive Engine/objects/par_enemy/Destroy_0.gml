@@ -20,7 +20,7 @@ with (InstanceCreate(x, y, obj_dead_enemy))
         image_xscale = -sign(x - killer_x);
 }
 
-sound_instance_one_shot(sfx_enemy_death, x, y);
+sound_instance_one_shot(sfx_enemydeath, x, y);
 repeat (3)
 {
     with (InstanceCreate(x, y, obj_slap_star_debris))

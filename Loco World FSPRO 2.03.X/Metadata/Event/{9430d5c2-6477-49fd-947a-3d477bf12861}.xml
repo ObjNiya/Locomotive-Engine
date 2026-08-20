@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{9430d5c2-6477-49fd-947a-3d477bf12861}">
 		<property name="name">
-			<value>Lap Ring Exit</value>
+			<value>Exit</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

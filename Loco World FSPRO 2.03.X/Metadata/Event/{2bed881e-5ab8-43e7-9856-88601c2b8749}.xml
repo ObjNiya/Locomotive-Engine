@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{2bed881e-5ab8-43e7-9856-88601c2b8749}">
 		<property name="name">
-			<value>Collectable Showtime Big</value>
+			<value>Big Escape Points</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -96,7 +96,7 @@
 	</object>
 	<object class="MultiSound" id="{ecd4726c-f6c6-4ebf-800d-025b666d9cc9}">
 		<relationship name="sounds">
-			<destination>{bca34e6d-e4ea-4097-8b6f-aa2f6dca7a04}</destination>
+			<destination>{27ea2981-aabf-4fb4-a449-7bba55891ecf}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{33415953-33e6-4c42-8ab7-9aa661a3d07a}">
@@ -127,9 +127,9 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7bd314b2-6406-472b-ab6b-7cc1662539a0}" />
-	<object class="SingleSound" id="{bca34e6d-e4ea-4097-8b6f-aa2f6dca7a04}">
+	<object class="SingleSound" id="{27ea2981-aabf-4fb4-a449-7bba55891ecf}">
 		<relationship name="audioFile">
-			<destination>{7218ac87-0d8c-4b57-a895-afbd642ccd61}</destination>
+			<destination>{a4a4705a-f031-4300-a83f-cbaaddef724f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{a979cc59-bbc0-417a-a89a-330e154710b3}" />

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{7f33f6a1-65fa-4f20-b302-c9e290709af6}">
 		<property name="name">
-			<value>Rank Screen Rating</value>
+			<value>Rating</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -74,7 +74,11 @@
 			<destination>{05e78fec-2cd2-47cc-a88d-4adf9ec4b8ec}</destination>
 		</relationship>
 	</object>
-	<object class="Timeline" id="{75cb8c11-f341-4b1d-b3a7-bdf84013e67a}" />
+	<object class="Timeline" id="{75cb8c11-f341-4b1d-b3a7-bdf84013e67a}">
+		<property name="isProxyEnabled">
+			<value>false</value>
+		</property>
+	</object>
 	<object class="ParameterProxy" id="{e1bc4714-2f6e-4bb4-ba7d-c9494437515a}">
 		<relationship name="modules">
 			<destination>{ceea19d1-6e34-45e2-878d-ccdf6cd91140}</destination>

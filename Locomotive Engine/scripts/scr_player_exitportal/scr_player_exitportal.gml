@@ -31,7 +31,7 @@ function StatePlayerExitportalStep()
             
             time_source_stop(blurAfterimageTimer);
             create_particle(x, y + 45, obj_bang_particle);
-            sound_instance_one_shot(sfx_player_banana_slip_bump, x, y);
+            sound_instance_one_shot(sfx_player_bananaslip_bump, x, y);
             
             sprite_index = spr_bananaslip_land;
         }

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{75644472-cf93-4bee-9155-bb0273b1b140}">
 		<property name="name">
-			<value>Damian Voice Plushie</value>
+			<value>Collect Plushie</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

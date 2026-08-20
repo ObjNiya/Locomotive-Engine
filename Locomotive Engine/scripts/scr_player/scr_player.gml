@@ -23,7 +23,7 @@ function TryHurtPlayer(player_id, attacker_id)
             
             SmcSetState("Parry");
             InstanceDestroySafe(obj_taunt_particle);
-            sound_instance_one_shot(sfx_player_parry, x, y);
+            sound_instance_one_shot(sfx_playerparry, x, y);
             
             return PLAYER_HURT_STATUS.PARRIED;
         }
@@ -68,11 +68,11 @@ function PlayerCreateSnds()
     sfxMach = CharGetSnd(sfx_damian_mach, character);
     sfxMachTurn = CharGetSnd(sfx_damian_mach_turn, character);
     sfxMachBrake = CharGetSnd(sfx_damian_mach_brake, character);
-    sfxVoiceIdle = CharGetSnd(sfx_damian_voice_idle, character);
-    sfxVoiceHappy = CharGetSnd(sfx_damian_voice_happy, character);
-    sfxVoiceHurt = CharGetSnd(sfx_damian_voice_hurt, character);
-    sfxVoicePlushie = CharGetSnd(sfx_damian_voice_plushie, character);
-    sfxVoiceCatripi = CharGetSnd(sfx_damian_voice_catripi, character);
+    sfxVoiceIdle = CharGetSnd(sfx_damianvoice_idle, character);
+    sfxVoiceHappy = CharGetSnd(sfx_damianvoice_happy, character);
+    sfxVoiceHurt = CharGetSnd(sfx_damianvoice_hurt, character);
+    sfxVoicePlushie = CharGetSnd(sfx_damianvoice_plushie, character);
+    sfxVoiceCatripi = CharGetSnd(sfx_damianvoice_catripi, character);
     
     sndGrabdash = sound_instance_create(sfx_player_grabdash);
     sndGroundpound = sound_instance_create(sfx_player_groundpound);
@@ -81,8 +81,8 @@ function PlayerCreateSnds()
     
     sndMachroll = sound_instance_create(sfx_player_machroll);
     sndDive = sound_instance_create(sfx_player_dive);
-    sndRollGetup = sound_instance_create(sfx_player_roll_getup);
-    sndSpin = sound_instance_create(sfx_player_spin);
+    sndRollGetup = sound_instance_create(sfx_player_rollgetup);
+    sndSpin = sound_instance_create(sfx_playerspin);
     
     sndsInitialized = true;
 }

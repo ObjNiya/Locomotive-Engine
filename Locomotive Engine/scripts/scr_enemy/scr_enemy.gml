@@ -113,7 +113,7 @@ function StompEnemy(enemy_id, attacker_id)
         visualYScale = 1.4;
         
         SmcSetState("Stunned");
-        sound_instance_one_shot(sfx_enemy_stomped, x, y);
+        sound_instance_one_shot(sfx_enemystomped, x, y);
         
         return true;
     }

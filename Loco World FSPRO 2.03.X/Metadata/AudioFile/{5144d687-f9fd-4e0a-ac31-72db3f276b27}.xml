@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{5144d687-f9fd-4e0a-ac31-72db3f276b27}">
 		<property name="assetPath">
-			<value>SFX/Level Structure/Egg/Egg Crack.ogg</value>
+			<value>SFX/Level Structure/Secret Egg/Secret Egg Crack.ogg</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -11,6 +11,6 @@ with (other)
     SpriteSet(spr_key_collect, 0);
 }
 
-sound_instance_one_shot(sfx_collect_key);
+sound_instance_one_shot(sfx_collectkey);
 SaveroomAdd();
 instance_destroy();

@@ -4,8 +4,8 @@
   "bboxMode":0,
   "bbox_bottom":387,
   "bbox_left":11,
-  "bbox_right":410,
-  "bbox_top":24,
+  "bbox_right":404,
+  "bbox_top":83,
   "collisionKind":1,
   "collisionTolerance":0,
   "ConfigValues":{},
@@ -14,7 +14,6 @@
   "For3D":false,
   "frames":[
     {"$GMSpriteFrame":"v1","%Name":"78b387bc-3f21-4c0e-9a73-b3aa16eb5dd4","name":"78b387bc-3f21-4c0e-9a73-b3aa16eb5dd4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"74e35654-8411-4d65-a340-14333e4c21bb","name":"74e35654-8411-4d65-a340-14333e4c21bb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
@@ -27,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Cutscene",
-    "path":"folders/Sprites/Player/Damian/Cutscene.yy",
+    "name":"Technical Difficulties",
+    "path":"folders/Sprites/Cutscene/Technical Difficulties.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -51,7 +50,7 @@
     },
     "eventStubScript":null,
     "eventToFunction":{},
-    "length":2.0,
+    "length":1.0,
     "lockOrigin":false,
     "moments":{
       "$KeyframeStore<MomentsEventKeyframe>":"",
@@ -73,9 +72,6 @@
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
                 "0":{"$SpriteFrameKeyframe":"","Id":{"name":"78b387bc-3f21-4c0e-9a73-b3aa16eb5dd4","path":"sprites/spr_techdifficulties_damian/spr_techdifficulties_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
               },"Disabled":false,"id":"6a77ae4b-136b-48f8-bf49-0b599a3dfec2","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
-            {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"74e35654-8411-4d65-a340-14333e4c21bb","path":"sprites/spr_techdifficulties_damian/spr_techdifficulties_damian.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a6d10b3b-debd-429c-abc5-650a21ecd185","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{2affd243-f675-4b29-bd25-4c6995f6d398}">
 		<property name="name">
-			<value>Destroyable</value>
+			<value>Destroy</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{ae3566c3-910c-4476-94c3-39854e5d4f47}</destination>
+			<destination>{a1c39fff-5f8f-4251-b992-fc5e75671bf1}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{df1e142c-8964-4213-a71e-b3465d87516e}</destination>

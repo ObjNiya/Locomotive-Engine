@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{b674a593-8497-4678-9434-455728aa8502}">
 		<property name="name">
-			<value>Rank Screen Plushie</value>
+			<value>Plushie</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>

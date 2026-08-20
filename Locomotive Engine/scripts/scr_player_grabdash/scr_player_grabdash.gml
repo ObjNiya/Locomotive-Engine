@@ -109,7 +109,7 @@ function StatePlayerGrabdashStep()
     {
         SmcSetState("Normal");
         
-        sound_instance_one_shot(sfx_player_bump_wall, x, y);
+        sound_instance_one_shot(sfx_player_bumpwall, x, y);
         sound_instance_stop(sndGrabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
         create_particle(x + (10 * image_xscale), y + 10, obj_bump_particle, false);
         

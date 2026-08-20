@@ -185,7 +185,7 @@ ObjDepthSet(obj_hud_timer, DEPTHS.MID);
 
 // Highest
 
-ObjDepthSet(obj_loadingscreen, DEPTHS.HIGHEST);
+ObjDepthSet([obj_techdifficulties_out, obj_loadingscreen], DEPTHS.HIGHEST);
 
 // Front
 

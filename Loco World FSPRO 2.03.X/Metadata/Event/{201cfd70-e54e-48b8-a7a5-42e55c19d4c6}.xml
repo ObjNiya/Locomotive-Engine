@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{201cfd70-e54e-48b8-a7a5-42e55c19d4c6}">
 		<property name="name">
-			<value>Egg Exit</value>
+			<value>Exit</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{ae3566c3-910c-4476-94c3-39854e5d4f47}</destination>
+			<destination>{6b30bac5-2324-4e96-a6fd-b681d35ca153}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{df1e142c-8964-4213-a71e-b3465d87516e}</destination>

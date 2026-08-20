@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{f23f5f6e-a7f6-43b9-a972-f66c78ac349d}">
 		<property name="name">
-			<value>Patripi Spawn</value>
+			<value>Spawn</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{ae3566c3-910c-4476-94c3-39854e5d4f47}</destination>
+			<destination>{c5326a2c-94e7-4894-9a55-4069291d8fe5}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{b10730d1-fe54-45f8-ac9b-cd6b86e2257e}</destination>

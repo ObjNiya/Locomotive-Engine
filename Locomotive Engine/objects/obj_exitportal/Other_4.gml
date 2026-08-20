@@ -11,7 +11,7 @@ with (obj_player)
     y = other.y;
     
     SmcSetState("Exitportal");
-    sound_instance_one_shot(sfx_player_banana_slip, x, y);
+    sound_instance_one_shot(sfx_player_bananaslip, x, y);
 }
 
 alarm[0] = 90;

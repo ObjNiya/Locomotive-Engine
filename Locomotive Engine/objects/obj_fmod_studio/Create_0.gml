@@ -28,9 +28,9 @@ SINGLETON;
 
 // Menues
 
-#macro mu_title_screen "event:/Music/Title Screen"
-#macro mu_pause_screen "event:/Music/Pause Screen"
-#macro mu_credits_screen "event:/Music/Credits Screen"
+#macro mu_titlescreen "event:/Music/Title Screen"
+#macro mu_pausescreen "event:/Music/Pause Screen"
+#macro mu_creditsscreen "event:/Music/Credits Screen"
 
 // Hub
 
@@ -55,81 +55,80 @@ SINGLETON;
 // SFX macros
 /////////////////////////////
 
-#macro sfx_enter_painting "event:/SFX/Enter Painting"
+#macro sfx_enterpainting "event:/SFX/Hub/Enter Painting"
 
 // Dialouge
 
-#macro sfx_dial_start "event:/SFX/Dialouge/Dialouge Start"
-#macro sfx_dial_talk "event:/SFX/Dialouge/Dialouge Talk"
-#macro sfx_dial_end "event:/SFX/Dialouge/Dialouge End"
+#macro sfx_dialtoggle "event:/SFX/Hub/Dialouge Toggle"
+#macro sfx_dialtalk "event:/SFX/Hub/Dialouge Talk"
 
 // Collectables
 
-#macro sfx_collect_catripi "event:/SFX/Level Structure/Collectables/Collect Catripi"
-#macro sfx_collect_key "event:/SFX/Level Structure/Collectables/Collect Key"
-#macro sfx_collect_plushie "event:/SFX/Level Structure/Collectables/Collect Plushie"
-#macro sfx_collect_treasure "event:/SFX/Level Structure/Collectables/Collect Treasure"
-#macro sfx_collectable_big "event:/SFX/Level Structure/Collectables/Collectable Big"
-#macro sfx_collectable "event:/SFX/Level Structure/Collectables/Collectable Normal"
-#macro sfx_collectable_showtime_big "event:/SFX/Level Structure/Collectables/Collectable Showtime Big"
-#macro sfx_collectable_showtime "event:/SFX/Level Structure/Collectables/Collectable Showtime"
+#macro sfx_collectcatripi "event:/SFX/Level Structure/Collectables/Catripi"
+#macro sfx_collectkey "event:/SFX/Level Structure/Collectables/Key"
+#macro sfx_collectplushie "event:/SFX/Level Structure/Collectables/Plushie"
+#macro sfx_collecttreasure "event:/SFX/Level Structure/Collectables/Treasure"
+#macro sfx_bigpoints "event:/SFX/Level Structure/Collectables/Big Points"
+#macro sfx_points "event:/SFX/Level Structure/Collectables/Points"
+#macro sfx_bigescapepoints "event:/SFX/Level Structure/Collectables/Big Escape Points"
+#macro sfx_escapepoints "event:/SFX/Level Structure/Collectables/Escape Points"
 
 // Combo
 
-#macro sfx_combo_end "event:/SFX/Level Structure/Combo/Combo End"
-#macro sfx_combo_up "event:/SFX/Level Structure/Combo/Combo Up"
+#macro sfx_comboend "event:/SFX/Level Structure/Combo/End"
+#macro sfx_comboup "event:/SFX/Level Structure/Combo/Up"
 
 // Enemy
 
-#macro sfx_enemy_charge "event:/SFX/Level Structure/Enemy/Enemy Charge"
-#macro sfx_enemy_coming_out_of_ground "event:/SFX/Level Structure/Enemy/Enemy Coming Out Of Ground"
-#macro sfx_enemy_death "event:/SFX/Level Structure/Enemy/Enemy Death"
-#macro sfx_enemy_scream "event:/SFX/Level Structure/Enemy/Enemy Scream"
-#macro sfx_showtime_spawn "event:/SFX/Level Structure/Enemy/Enemy Showtime Spawn"
-#macro sfx_enemy_stomped "event:/SFX/Level Structure/Enemy/Enemy Stomped"
-#macro sfx_enemy_stunned "event:/SFX/Level Structure/Enemy/Enemy Stunned"
-#macro sfx_enemy_throw_projectile "event:/SFX/Level Structure/Enemy/Enemy Throw Projectile"
+#macro sfx_enemycharge "event:/SFX/Level Structure/Enemy/Charge"
+#macro sfx_enemy_comingoutofground "event:/SFX/Level Structure/Enemy/Coming out of Ground"
+#macro sfx_enemydeath "event:/SFX/Level Structure/Enemy/Death"
+#macro sfx_enemyscream "event:/SFX/Level Structure/Enemy/Scream"
+#macro sfx_escapespawn "event:/SFX/Level Structure/Enemy/Escape Spawn"
+#macro sfx_enemystomped "event:/SFX/Level Structure/Enemy/Stomped"
+#macro sfx_enemystunned "event:/SFX/Level Structure/Enemy/Stunned"
+#macro sfx_enemy_throwprojectile "event:/SFX/Level Structure/Enemy/Throw Projectile"
 
 // Lap Ring
 
-#macro sfx_lap_ring_bell "event:/SFX/Level Structure/Lap Ring/Lap Ring Bell"
-#macro sfx_lap_ring_enter "event:/SFX/Level Structure/Lap Ring/Lap Ring Enter"
-#macro sfx_lap_ring_exit "event:/SFX/Level Structure/Lap Ring/Lap Ring Exit"
+#macro sfx_lapring_bell "event:/SFX/Level Structure/Lap Ring/Bell"
+#macro sfx_lapring_enter "event:/SFX/Level Structure/Lap Ring/Enter"
+#macro sfx_lapring_exit "event:/SFX/Level Structure/Lap Ring/Exit"
 
 // Marx
 
-#macro sfx_marx_laser_charge "event:/SFX/Level Structure/Marx/Marx Laser Charge"
-#macro sfx_marx_shoot "event:/SFX/Level Structure/Marx/Marx Laser Shoot"
-#macro sfx_marx_laugh "event:/SFX/Level Structure/Marx/Marx Laugh"
-#macro sfx_marx_scream "event:/SFX/Level Structure/Marx/Marx Scream"
-#macro sfx_marx_screech "event:/SFX/Level Structure/Marx/Marx Screech"   
+#macro sfx_marx_lasercharge "event:/SFX/Level Structure/Marx/Laser Charge"
+#macro sfx_marx_lasershoot "event:/SFX/Level Structure/Marx/Laser Shoot"
+#macro sfx_marxlaugh "event:/SFX/Level Structure/Marx/Laugh"
+#macro sfx_marxscream "event:/SFX/Level Structure/Marx/Scream"
+#macro sfx_marxscreech "event:/SFX/Level Structure/Marx/Screech"   
 
 // Rank Screen
 
-#macro sfx_rank_screen_plushie "event:/SFX/Level Structure/Rank Screen/Rank Screen Plushie"
-#macro sfx_rank_screen_rating "event:/SFX/Level Structure/Rank Screen/Rank Screen Rating" 
+#macro sfx_rankscreen_plushie "event:/SFX/Level Structure/Rank Screen/Plushie"
+#macro sfx_rankscreen_rating "event:/SFX/Level Structure/Rank Screen/Rating" 
 
 // Other Level SFX
 
-#macro sfx_amiibox_alert "event:/SFX/Level Structure/Amiibox Alert"
+#macro sfx_amiiboxalert "event:/SFX/Level Structure/Amiibox Alert"
 #macro sfx_dashpad "event:/SFX/Level Structure/Dashpad"
-#macro sfx_destroyable_metal "event:/SFX/Level Structure/Destroyable Metal"
-#macro sfx_destroyable "event:/SFX/Level Structure/Destroyable"
-#macro sfx_secretegg_enter "event:/SFX/Level Structure/Egg Enter"
-#macro sfx_secretegg_exit "event:/SFX/Level Structure/Egg Exit"
-#macro sfx_exit_level_jingle "event:/SFX/Level Structure/Exit Level Jingle"
-#macro sfx_explosion "event:/SFX/Level Structure/Explosion"
-#macro sfx_patrick_pillar_destroy "event:/SFX/Level Structure/Patrick Pillar Destroy" 
-#macro sfx_patripi_hurt "event:/SFX/Level Structure/Patripi Hurt"
-#macro sfx_patripi_spawn "event:/SFX/Level Structure/Patripi Spawn"
-#macro sfx_warp_pipe_enter "event:/SFX/Level Structure/Warp Pipe Enter"
-#macro sfx_door_unlock "event:/SFX/Level Structure/Door Unlock"
+#macro sfx_destroy_metalblock "event:/SFX/Level Structure/Blocks/Destroy Metal"
+#macro sfx_destroy_block "event:/SFX/Level Structure/Blocks/Destroy"
+#macro sfx_secretegg_enter "event:/SFX/Level Structure/Secret Egg/Enter"
+#macro sfx_secretegg_exit "event:/SFX/Level Structure/Secret Egg/Exit"
+#macro sfx_exitlevel_jingle "event:/SFX/Level Structure/Exit Level Jingle"
+#macro sfx_explosion "event:/SFX/Explosion"
+#macro sfx_patrickpillar_destroy "event:/SFX/Level Structure/Patrick Pillar Destroy" 
+#macro sfx_patripihurt "event:/SFX/Level Structure/Patripi/Hurt"
+#macro sfx_patripispawn "event:/SFX/Level Structure/Patripi/Spawn"
+#macro sfx_warppipe_enter "event:/SFX/Level Structure/Warp Pipe Enter"
+#macro sfx_doorunlock "event:/SFX/Level Structure/Door Unlock"
 
 // Player Banana Slip
 
-#macro sfx_player_banana_slip_bump "event:/SFX/Player/Banana Slip/Banana Slip Bump"
-#macro sfx_player_banana_slip_end "event:/SFX/Player/Banana Slip/Banana Slip End"
-#macro sfx_player_banana_slip "event:/SFX/Player/Banana Slip/Banana Slip"
+#macro sfx_player_bananaslip_bump "event:/SFX/Player/Banana Slip/Bump"
+#macro sfx_player_bananaslip_end "event:/SFX/Player/Banana Slip/End"
+#macro sfx_player_bananaslip "event:/SFX/Player/Banana Slip/Slip"
 
 // Player Superjump
 
@@ -142,17 +141,17 @@ SINGLETON;
 #macro sfx_player_ball_roll "event:/SFX/Player/Ball Roll"
 #macro sfx_player_breakdance_voice "event:/SFX/Player/Breakdance Voice"
 #macro sfx_player_breakdance "event:/SFX/Player/Breakdance"  
-#macro sfx_player_bump_wall "event:/SFX/Player/Bump Wall"
+#macro sfx_player_bumpwall "event:/SFX/Player/Bump Wall"
 #macro sfx_player_dive "event:/SFX/Player/Dive"
 #macro sfx_player_grabdash "event:/SFX/Player/Grabdash"
 #macro sfx_player_groundpound_land "event:/SFX/Player/Ground Pound Land"
 #macro sfx_player_groundpound "event:/SFX/Player/Ground Pound"
-#macro sfx_player_hurt "event:/SFX/Player/Hurt"
-#macro sfx_player_killing_blow "event:/SFX/Player/Killing Blow"
+#macro sfx_playerhurt "event:/SFX/Player/Hurt"
+#macro sfx_player_killingblow "event:/SFX/Player/Killing Blow"
 #macro sfx_player_machroll "event:/SFX/Player/Machroll"
-#macro sfx_player_parry "event:/SFX/Player/Parry"
-#macro sfx_player_punch "event:/SFX/Player/Punch"
-#macro sfx_player_roll_getup "event:/SFX/Player/Roll Getup"
+#macro sfx_playerparry "event:/SFX/Player/Parry"
+#macro sfx_playerpunch "event:/SFX/Player/Punch"
+#macro sfx_player_rollgetup "event:/SFX/Player/Roll Getup"
 #macro sfx_player_taunt "event:/SFX/Player/Taunt"
 #macro sfx_player_transformation_end "event:/SFX/Player/Transformation End"
 #macro sfx_player_uppercut "event:/SFX/Player/Uppercut"
@@ -162,39 +161,44 @@ SINGLETON;
 #macro sfx_player_mach3_wallcrash "event:/SFX/Player/Mach 3 Wall Crash"
 #macro sfx_player_mach2_bump "event:/SFX/Player/Mach 2 Bump"
 #macro sfx_player_grab_cancel "event:/SFX/Player/Grab Cancel"
-#macro sfx_player_spin "event:/SFX/Player/Spin"
+#macro sfx_playerspin "event:/SFX/Player/Spin"
 
 // Damian Cape
 
-#macro sfx_damian_cape_down "event:/SFX/Player/Damian/Cape/Cape Down"
-#macro sfx_damian_cape_start "event:/SFX/Player/Damian/Cape/Cape Start"
-#macro sfx_damian_cape_up "event:/SFX/Player/Damian/Cape/Cape Up"
+#macro sfx_damian_cape_down "event:/SFX/Player/Damian/Cape/Down"
+#macro sfx_damian_cape_start "event:/SFX/Player/Damian/Cape/Start"
+#macro sfx_damian_cape_up "event:/SFX/Player/Damian/Cape/Up"
 
 // Damian Mach
 
-#macro sfx_damian_mach_brake "event:/SFX/Player/Damian/Mach/Damian Mach Brake"
-#macro sfx_damian_mach "event:/SFX/Player/Damian/Mach/Damian Mach"
-#macro sfx_damian_mach_turn "event:/SFX/Player/Damian/Mach/Damian Mach Turn"   
+#macro sfx_damian_mach_brake "event:/SFX/Player/Damian/Mach/Brake"
+#macro sfx_damian_mach "event:/SFX/Player/Damian/Mach/Mach"
+#macro sfx_damian_mach_turn "event:/SFX/Player/Damian/Mach/Turn"   
 
 // Damian Voice
 
-#macro sfx_damian_voice_plushie "event:/SFX/Player/Damian/Voice/Damian Voice Plushie"
-#macro sfx_damian_voice_catripi "event:/SFX/Player/Damian/Voice/Damian Collect Catripi"
-#macro sfx_damian_voice_happy "event:/SFX/Player/Damian/Voice/Damian Voice Happy"
-#macro sfx_damian_voice_hurt "event:/SFX/Player/Damian/Voice/Damian Voice Hurt"
-#macro sfx_damian_voice_idle "event:/SFX/Player/Damian/Voice/Damian Voice Idle"
+#macro sfx_damianvoice_plushie "event:/SFX/Player/Damian/Voice/Collect Plushie"
+#macro sfx_damianvoice_catripi "event:/SFX/Player/Damian/Voice/Collect Catripi"
+#macro sfx_damianvoice_happy "event:/SFX/Player/Damian/Voice/Happy"
+#macro sfx_damianvoice_hurt "event:/SFX/Player/Damian/Voice/Hurt"
+#macro sfx_damianvoice_idle "event:/SFX/Player/Damian/Voice/Idle"
 
 // Damian Other SFX
 
-#macro sfx_damian_hair_scratch "event:/SFX/Player/Damian/Damian Hair Scratch"
-#macro sfx_damian_jump "event:/SFX/Player/Damian/Damian Jump"
-#macro sfx_damian_step "event:/SFX/Player/Damian/Damian Step"
+#macro sfx_damian_hairscratch "event:/SFX/Player/Damian/Hair Scratch"
+#macro sfx_damian_jump "event:/SFX/Player/Damian/Jump"
+#macro sfx_damian_step "event:/SFX/Player/Damian/Step"
 
-// Room Transition
+// Room Transition (Yes I am purposefully abbreviating to trans)
 
-#macro sfx_transition_circle_in "event:/SFX/Room Transition/Transition Circle In"
-#macro sfx_transition_circle_out "event:/SFX/Room Transition/Transition Circle Out"
-#macro sfx_transition_fade "event:/SFX/Room Transition/Transition Fade"
+#macro sfx_trans_circlein "event:/SFX/Room Transition/Circle In"
+#macro sfx_trans_circleout "event:/SFX/Room Transition/Circle Out"
+#macro sfx_trans_fade "event:/SFX/Room Transition/Fade"
+
+// Technical Difficulties
+
+#macro sfx_techdifficulties_in "event:/SFX/Technical Difficulties/In"
+#macro sfx_techdifficulties_out "event:/SFX/Technical Difficulties/Out"
 
 /////////////////////////////
 // Function macros

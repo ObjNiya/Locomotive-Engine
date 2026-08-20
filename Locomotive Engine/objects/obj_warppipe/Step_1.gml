@@ -29,5 +29,5 @@ with (obj_player)
     warppipeId = other.id;
     SmcSetState("Warppipe");
     
-    sound_instance_one_shot(sfx_warp_pipe_enter);
+    sound_instance_one_shot(sfx_warppipe_enter);
 }

@@ -1,6 +1,6 @@
 // old placeholder lol
 
-MusicSet(mu_title_screen);
+MusicSet(mu_titlescreen);
 
 cur_file = 1;
 select_snd = 0;

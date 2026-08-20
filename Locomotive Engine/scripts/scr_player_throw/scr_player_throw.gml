@@ -58,8 +58,8 @@ function StatePlayerThrowStep()
             repeat (3)
                 InstanceCreate(x, y, obj_enemy_debris);
             
-            sound_instance_one_shot(sfx_player_punch, x, y);
-            sound_instance_one_shot(sfx_player_killing_blow, x, y);
+            sound_instance_one_shot(sfx_playerpunch, x, y);
+            sound_instance_one_shot(sfx_player_killingblow, x, y);
             
             HitstunSet();
             SmcSetState("Thrown");

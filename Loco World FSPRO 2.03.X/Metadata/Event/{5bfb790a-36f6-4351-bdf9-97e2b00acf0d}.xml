@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{5bfb790a-36f6-4351-bdf9-97e2b00acf0d}">
 		<property name="name">
-			<value>Patripi Hurt</value>
+			<value>Hurt</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{ae3566c3-910c-4476-94c3-39854e5d4f47}</destination>
+			<destination>{c5326a2c-94e7-4894-9a55-4069291d8fe5}</destination>
 		</relationship>
 		<relationship name="tags">
 			<destination>{df1e142c-8964-4213-a71e-b3465d87516e}</destination>

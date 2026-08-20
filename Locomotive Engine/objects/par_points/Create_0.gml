@@ -1,4 +1,4 @@
-eventPath = sfx_collectable;
+eventPath = sfx_points;
 
 value = 10;
 magnetizeSpd = 5;

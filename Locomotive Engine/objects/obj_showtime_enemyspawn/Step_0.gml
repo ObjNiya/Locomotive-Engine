@@ -11,7 +11,7 @@ else if (!visible || floor(image_index) <= 5 || instance_exists(enemyId))
     exit;
 
 instance_activate_object(enemyId);
-sound_instance_one_shot(sfx_showtime_spawn, x, y);
+sound_instance_one_shot(sfx_escapespawn, x, y);
 
 with (enemyId)
 {
