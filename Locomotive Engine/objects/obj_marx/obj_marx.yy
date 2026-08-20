@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_marx_head",
-    "path":"sprites/spr_marx_head/spr_marx_head.yy",
+    "name":"spr_marx_idle",
+    "path":"sprites/spr_marx_idle/spr_marx_idle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

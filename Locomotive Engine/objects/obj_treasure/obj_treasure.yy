@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_treasure_default",
-    "path":"sprites/spr_treasure_default/spr_treasure_default.yy",
+    "name":"spr_defaultreasure",
+    "path":"sprites/spr_defaultreasure/spr_defaultreasure.yy",
   },
   "spriteMaskId":null,
   "visible":true,

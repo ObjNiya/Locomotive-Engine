@@ -414,8 +414,8 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
                 exit;
             }
             
-            var surf_width = global.largestCamW;
-            var surf_height = global.largestCamH;
+            var surf_width = global.prlxData.biggestCamW;
+            var surf_height = global.prlxData.biggestCamH;
             
             if (surfMode == PRLX_LAYER.ROOM_SIZED_SURF)
             {
@@ -534,6 +534,13 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
         var cam_x = camera_get_view_x(cam);
         var cam_y = camera_get_view_y(cam);
         
+        if (onBgLay != -1)
+        {
+            var bg_spr = layer_background_get_sprite(onBgLay);
+            if (bg_spr == -1)
+                onBgLay = -1;
+        }
+        
         if (!xStill)
         {
             var base_x = (rmEditrXOffset + rmEditrXScroll + xOffset + xScroll.pos);
@@ -545,9 +552,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
             var cam_w = camera_get_view_width(cam);
             var cam_x_scalar = cam_x / (room_width - cam_w);
             
-            var bg_spr = layer_background_get_sprite(onBgLay);
             var bg_spr_xorigin = sprite_get_xoffset(bg_spr);
-            
             var max_bg_x = sprite_get_width(bg_spr) - cam_w;
             max_bg_x = max(max_bg_x, 0);
             
@@ -567,9 +572,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
             var cam_h = camera_get_view_height(cam);
             var cam_y_scalar = cam_y / (room_height - cam_h);
             
-            var bg_spr = layer_background_get_sprite(onBgLay);
             var bg_spr_yorigin = sprite_get_yoffset(bg_spr);
-            
             var max_bg_y = sprite_get_height(bg_spr) - cam_h;
             max_bg_y = max(max_bg_y, 0);
             

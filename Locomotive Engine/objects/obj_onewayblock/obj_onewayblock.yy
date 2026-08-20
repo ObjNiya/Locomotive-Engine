@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_block_oneway",
-    "path":"sprites/spr_block_oneway/spr_block_oneway.yy",
+    "name":"spr_onewayblock",
+    "path":"sprites/spr_onewayblock/spr_onewayblock.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_points_bank",
-    "path":"sprites/spr_points_bank/spr_points_bank.yy",
+    "name":"spr_pointsbank",
+    "path":"sprites/spr_pointsbank/spr_pointsbank.yy",
   },
   "spriteMaskId":null,
   "visible":true,

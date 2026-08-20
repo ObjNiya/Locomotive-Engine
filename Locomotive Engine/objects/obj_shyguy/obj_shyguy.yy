@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_shyguy",
-    "path":"sprites/spr_shyguy/spr_shyguy.yy",
+    "name":"spr_shyguy_walk",
+    "path":"sprites/spr_shyguy_walk/spr_shyguy_walk.yy",
   },
   "spriteMaskId":null,
   "visible":true,

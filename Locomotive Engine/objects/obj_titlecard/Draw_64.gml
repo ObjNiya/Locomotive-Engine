@@ -1,3 +1,7 @@
+draw_set_color(c_black);
+draw_rectangle(0, 0, GuiCalcX(fa_right), GuiCalcY(fa_bottom), false);
+draw_set_color(c_white);
+
 with (global)
 {
     draw_sprite_ext(spr_titlecards, level.titlecardIndex, 0, 0, guiMaxScale, guiMaxScale, 0, other.image_blend, other.image_alpha);

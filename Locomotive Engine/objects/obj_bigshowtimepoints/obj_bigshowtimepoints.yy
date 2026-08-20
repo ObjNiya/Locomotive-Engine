@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_collectable_showtime_big",
-    "path":"sprites/spr_collectable_showtime_big/spr_collectable_showtime_big.yy",
+    "name":"spr_bigescapepoints",
+    "path":"sprites/spr_bigescapepoints/spr_bigescapepoints.yy",
   },
   "spriteMaskId":null,
   "visible":true,

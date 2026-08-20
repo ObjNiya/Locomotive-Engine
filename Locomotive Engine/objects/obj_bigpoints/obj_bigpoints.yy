@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_collectable_big1",
-    "path":"sprites/spr_collectable_big1/spr_collectable_big1.yy",
+    "name":"spr_bigpoints_1",
+    "path":"sprites/spr_bigpoints_1/spr_bigpoints_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

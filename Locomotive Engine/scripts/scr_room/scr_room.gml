@@ -90,8 +90,9 @@ function RoomGoto()
  * Goes to the previously queued room with the given transition and moves all players to the set spawn.
  * @parameter {Asset.GMObject} transition_obj (OPTIONAL) The transition object to use.
  * @parameter {String} event_path (OPTIONAL) The FMOD Studio event path to the sound to play.
+ * @parameter {Function|Real} on_switch (OPTIONAL) A function that is ran when the room is switched to the target. Default is `-1`, making it run nothing.
  */
-function RoomTrans(transition_obj = obj_roomtrans_fade, event_path = sfx_transition_fade)
+function RoomTrans(transition_obj = obj_roomtrans_fade, event_path = sfx_transition_fade, on_switch = -1)
 {
     if (!object_exists(transition_obj))
     {
@@ -116,5 +117,9 @@ function RoomTrans(transition_obj = obj_roomtrans_fade, event_path = sfx_transit
             sound_instance_one_shot(event_path);
     }
     
-    return InstanceCreate(0, 0, transition_obj);
+    with (InstanceCreate(0, 0, transition_obj))
+    {
+        onSwitch = on_switch;
+        return id;
+    }
 }

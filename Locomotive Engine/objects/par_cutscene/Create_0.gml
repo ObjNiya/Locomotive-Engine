@@ -16,7 +16,7 @@ skipBindPressed = false;
 skipBindTxt = -1;
 
 skipTxt = scribble("[spr_keyboard_icons] Skip");
-skipTxt.starting_format("spr_mediumfont", image_blend);
+skipTxt.starting_format("spr_fnt_medium", image_blend);
 skipTxt.align(fa_left, fa_top);
 skipTxt.blend(image_blend, image_alpha);
 

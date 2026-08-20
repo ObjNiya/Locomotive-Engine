@@ -48,8 +48,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Patrickblocks",
-    "path":"folders/Sprites/Level Structure/Patrickblocks.yy",
+    "name":"Level Structure",
+    "path":"folders/Sprites/Level Structure.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

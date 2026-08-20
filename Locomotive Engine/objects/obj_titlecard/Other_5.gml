@@ -1,1 +1,1 @@
-global.gameState = GAME_STATES.LEVEL;
+GameStateSet(GAME_STATES.LEVEL);

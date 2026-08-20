@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"1e14a96d-fece-4e12-9c19-b86f7932a7bc","name":"1e14a96d-fece-4e12-9c19-b86f7932a7bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"20c3cf0f-1a5f-4b3f-98cd-b7805f9bcc50","name":"20c3cf0f-1a5f-4b3f-98cd-b7805f9bcc50","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":32,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"10e320a0-7821-4aad-803d-8c86fb63538a","blendMode":0,"displayName":"default","isLocked":false,"name":"10e320a0-7821-4aad-803d-8c86fb63538a","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b5851751-bb84-48aa-91a7-e394c8c26948","blendMode":0,"displayName":"default","isLocked":false,"name":"b5851751-bb84-48aa-91a7-e394c8c26948","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_vert_hallway",
   "nineSlice":{
@@ -78,7 +78,7 @@
     },
     "name":"spr_vert_hallway",
     "playback":1,
-    "playbackSpeed":24.0,
+    "playbackSpeed":20.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",
@@ -88,8 +88,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1e14a96d-fece-4e12-9c19-b86f7932a7bc","path":"sprites/spr_vert_hallway/spr_vert_hallway.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2647b791-8fb5-4d17-bfb7-6a53d01a3814","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"20c3cf0f-1a5f-4b3f-98cd-b7805f9bcc50","path":"sprites/spr_vert_hallway/spr_vert_hallway.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"0e8bf2bd-3b64-4dc0-a947-99b3ec7ace9c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

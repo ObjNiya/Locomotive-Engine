@@ -1,5 +1,5 @@
 skipBindTxt = scribble(InputVerbGetBindingName(skipBind));
-skipBindTxt.starting_format("spr_signfont", image_blend);
+skipBindTxt.starting_format("spr_fnt_sign", image_blend);
 skipBindTxt.align(fa_left, fa_top);
 skipBindTxt.blend(image_blend, image_alpha);
 

@@ -26,8 +26,8 @@
   },
   "name":"seq_pillar_destroy",
   "parent":{
-    "name":"Sequences",
-    "path":"folders/Sequences.yy",
+    "name":"Level",
+    "path":"folders/Sequences/Level.yy",
   },
   "playback":0,
   "playbackSpeed":60.0,

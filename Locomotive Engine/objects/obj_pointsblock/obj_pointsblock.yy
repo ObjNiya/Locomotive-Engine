@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_block_points",
-    "path":"sprites/spr_block_points/spr_block_points.yy",
+    "name":"spr_pointsblock",
+    "path":"sprites/spr_pointsblock/spr_pointsblock.yy",
   },
   "spriteMaskId":null,
   "visible":true,

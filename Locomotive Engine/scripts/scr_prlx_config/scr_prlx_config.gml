@@ -42,6 +42,29 @@ function PrlxCfgDepthFogSetColHsv(hue, saturation, value)
 
 
 /**
+ * Sets the name for the current Parallax Config.
+ * @parameter {String} name The name to set.
+ */
+function PrlxCfgNameSet(name)
+{
+    struct_set(global.prlxData.cfg[PRLX_CFG_TYPES.GLOBAL], "cfgName", name);
+}
+
+
+/**
+ * Returns the name of the current Parallax Config. If none was set, it will return `-1` instead.
+ * @returns {String|Real}
+ */
+function PrlxCfgNameGet()
+{
+    if (!struct_exists(global.prlxData.cfg[PRLX_CFG_TYPES.GLOBAL], "cfgName"))
+        return -1;
+    
+    return global.prlxData.cfg[PRLX_CFG_TYPES.GLOBAL][$ "cfgName"];
+}
+
+
+/**
  * Returns the default depth fog color. If none is set, it will return `c_white` instead.
  * @returns {Constant.Color}
  * @pure
@@ -82,5 +105,5 @@ function PrlxCfgDelete(layer_name)
 function PrlxCfgClear()
 {
     struct_remove(global.prlxData, "cfg");
-    struct_set(global.prlxData, "cfg", array_create(2, {}));
+    struct_set(global.prlxData, "cfg", [{}, {}]);
 }

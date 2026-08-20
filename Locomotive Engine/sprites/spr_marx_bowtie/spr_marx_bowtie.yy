@@ -40,8 +40,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Marx",
-    "path":"folders/Sprites/Bosses/Marx.yy",
+    "name":"Body Segments",
+    "path":"folders/Sprites/Bosses/Marx/Body Segments.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,7 +1,7 @@
 event_inherited();
 
 big = false;
-bigSprite = spr_block_big;
+bigSprite = spr_bigblock;
 
 destroySnd = sfx_destroyable;
 

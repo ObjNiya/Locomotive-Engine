@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_johnescapeenemy",
-    "path":"sprites/spr_johnescapeenemy/spr_johnescapeenemy.yy",
+    "name":"spr_enemyescapespawner",
+    "path":"sprites/spr_enemyescapespawner/spr_enemyescapespawner.yy",
   },
   "spriteMaskId":null,
   "visible":true,

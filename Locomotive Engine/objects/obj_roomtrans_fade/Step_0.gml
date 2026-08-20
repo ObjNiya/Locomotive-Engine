@@ -19,3 +19,5 @@ with (obj_player)
 fadeIn = true;
 
 RoomGoto();
+if (onSwitch != -1)
+    onSwitch();

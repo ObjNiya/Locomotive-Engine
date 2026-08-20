@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Combo",
-    "path":"folders/Sprites/HUD/Combo.yy",
+    "name":"Combo Bar",
+    "path":"folders/Sprites/HUD/Combo Bar.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

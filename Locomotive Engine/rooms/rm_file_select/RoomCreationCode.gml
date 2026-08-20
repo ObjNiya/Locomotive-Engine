@@ -26,7 +26,8 @@ SetRoomEvent(ROOM_EVS.STEP, function() {
             RoomQueue(rm_hub_start, obj_spawn_a);
         else
             RoomQueue(rm_newfile_cutscene, obj_spawn_a);
-        global.gameState = GAME_STATES.HUB;
-        RoomTrans(obj_roomtrans_fade);
+        RoomTrans(obj_roomtrans_fade, "", function() {
+            GameStateSet(GAME_STATES.HUB);
+        });
     }
 })

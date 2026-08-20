@@ -5,7 +5,7 @@ enum PRLX_CFG_TYPES
 }
 
 global.prlxData = {
-    cfg: array_create(2, {}),
+    cfg: [{}, {}],
     layerDepths: ds_map_create(),
     biggestCamW: 0,
     biggestCamH: 0
@@ -32,14 +32,17 @@ function PrlxStep(camera_index)
     {
         biggestCamW = max(biggestCamW, cam_w);
         biggestCamH = max(biggestCamH, cam_h);
-        
-        var struct_names = struct_get_names(cfg[PRLX_CFG_TYPES.LAYER]);
+    }
+    
+    with (global.prlxData.cfg[PRLX_CFG_TYPES.LAYER]) 
+    {
+        var struct_names = struct_get_names(self);
         var struct_length = array_length(struct_names);
         var i = 0;
           
         repeat (struct_length)
         {
-            cfg[PRLX_CFG_TYPES.LAYER][$ struct_names[i]].Step(camera_index);
+            self[$ struct_names[i]].Step(camera_index);
             i++;
         }
     }

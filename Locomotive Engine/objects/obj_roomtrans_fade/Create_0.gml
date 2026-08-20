@@ -1,3 +1,5 @@
+event_inherited();
+
 SINGLETON;
 
 image_blend = c_black;

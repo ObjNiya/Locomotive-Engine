@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_collectable1",
-    "path":"sprites/spr_collectable1/spr_collectable1.yy",
+    "name":"spr_points_1",
+    "path":"sprites/spr_points_1/spr_points_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

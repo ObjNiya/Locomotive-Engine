@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_collectable_showtime",
-    "path":"sprites/spr_collectable_showtime/spr_collectable_showtime.yy",
+    "name":"spr_escapepoints",
+    "path":"sprites/spr_escapepoints/spr_escapepoints.yy",
   },
   "spriteMaskId":null,
   "visible":true,

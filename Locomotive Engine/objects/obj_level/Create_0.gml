@@ -12,8 +12,6 @@ with (global)
     secrets_found = 0;
     laps = 0;
     treasure_found = false;
-    
-    level.prlxInit();
 }
 
 a_rank_points = global.level.sRankPoints / 2;

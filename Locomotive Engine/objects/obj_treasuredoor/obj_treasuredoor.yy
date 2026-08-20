@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_catripidoor",
-    "path":"sprites/spr_catripidoor/spr_catripidoor.yy",
+    "name":"spr_treasuredoor",
+    "path":"sprites/spr_treasuredoor/spr_treasuredoor.yy",
   },
   "spriteMaskId":null,
   "visible":true,
