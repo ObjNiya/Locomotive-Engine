@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{38fceadf-dcf7-4dfe-91e0-42f33f820c08}">
 		<property name="name">
-			<value>Player Banana Slip Bump</value>
+			<value>Banana Slip Bump</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{bc9fcc37-a0fe-4964-8202-c3607e665283}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{61148773-33db-41bc-9807-e937f779da6e}">

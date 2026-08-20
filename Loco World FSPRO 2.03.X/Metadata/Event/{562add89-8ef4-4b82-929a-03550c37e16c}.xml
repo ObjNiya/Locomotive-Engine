@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{562add89-8ef4-4b82-929a-03550c37e16c}">
 		<property name="name">
-			<value>Player Mach 2 Bump</value>
+			<value>Mach 2 Bump</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{281a6884-d046-4ded-837f-01f8c180cc27}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{0051299d-9763-4599-b665-6fc1552c61f0}">

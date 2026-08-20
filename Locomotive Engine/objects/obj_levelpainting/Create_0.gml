@@ -1,6 +1,5 @@
 event_inherited();
 
-
 image_speed = 0;
 image_index = clamp(levelId, 0, sprite_get_number(sprite_index));
 
@@ -19,3 +18,6 @@ visualY = ystart - y;
 
 rippleSpeed = 0;
 rippleTime = 0;
+
+fmodBankLoad = -1;
+fmodBankCheck = -1;

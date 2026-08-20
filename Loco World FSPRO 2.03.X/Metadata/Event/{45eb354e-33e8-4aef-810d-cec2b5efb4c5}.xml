@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{45eb354e-33e8-4aef-810d-cec2b5efb4c5}">
 		<property name="name">
-			<value>Player Mach 3 Wall Crash</value>
+			<value>Mach 3 Wall Crash</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{8d60bc76-2d5f-4ba7-bdd4-6efea1ed3bf0}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{deb5713e-9f0b-49c2-ae04-33a8dfa4f5e9}">

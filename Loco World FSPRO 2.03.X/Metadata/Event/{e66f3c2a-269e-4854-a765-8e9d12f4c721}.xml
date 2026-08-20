@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{e66f3c2a-269e-4854-a765-8e9d12f4c721}">
 		<property name="name">
-			<value>Player Parry</value>
+			<value>Parry</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{69b1ffee-ff01-4d7e-be5b-d5bf34b591b9}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{d9c3c2ce-04ba-4b75-8a72-86605a1c38cf}">

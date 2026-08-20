@@ -125,8 +125,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_damian",
+    "path":"texturegroups/texgroup_damian",
   },
   "type":0,
   "VTile":false,

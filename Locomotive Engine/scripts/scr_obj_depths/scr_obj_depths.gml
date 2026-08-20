@@ -183,6 +183,10 @@ ObjDepthSet(obj_its_showtime, DEPTHS.LOW);
 
 ObjDepthSet(obj_hud_timer, DEPTHS.MID);
 
+// Highest
+
+ObjDepthSet(obj_loadingscreen, DEPTHS.HIGHEST);
+
 // Front
 
 ObjDepthSet(obj_shell, DEPTHS.FRONT);

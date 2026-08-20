@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{b76bb25f-1810-4229-b095-0d05d65ec05f}">
 		<property name="name">
-			<value>Damian</value>
+			<value>Damian Showtime</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{85763ae3-7423-423c-a48a-73c17e9691fe}</destination>
+			<destination>{f70af894-a967-4e25-826e-5b8912907a6a}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{c9364db1-f3a7-4286-ba18-dcec755c9633}</destination>
@@ -34,6 +34,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{fb6959ef-eb6f-46b1-a9a6-f3bd4ea83234}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{86136678-9818-4e97-99e4-5971e34d2a40}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{c9364db1-f3a7-4286-ba18-dcec755c9633}">
@@ -65,6 +68,9 @@
 		</relationship>
 		<relationship name="panner">
 			<destination>{4b69ab0d-e403-4bc1-92f6-c34125a9271c}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{e02e33e3-404d-419b-8b98-eeadce5ff067}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{25ede3a2-7f7d-409e-8cad-f657babdc307}">

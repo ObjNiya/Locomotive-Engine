@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{7b98f619-f23d-43f9-ba18-b76215052e4d}">
 		<property name="name">
-			<value>Player Kungfu</value>
+			<value>Kungfu</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -36,7 +36,7 @@
 			<destination>{5b512a60-df1b-4adf-979f-b4409c31f25f}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a5ed58ac-e0f2-40b6-ae58-d7fab2782939}">

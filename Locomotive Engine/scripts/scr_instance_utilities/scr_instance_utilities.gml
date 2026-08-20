@@ -1,10 +1,4 @@
 /**
- * What layer instances created with ```InstanceCreate()``` will be placed on.
- */
-
-
-
-/**
  * Creates a new instance of the given object at the given point in the room on the default instances layer.
  * @parameter {Real} x The x position the object will be created at.
  * @parameter {Real} y The y position the object will be created at.

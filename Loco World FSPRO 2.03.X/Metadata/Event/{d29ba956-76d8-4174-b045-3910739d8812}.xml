@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{d29ba956-76d8-4174-b045-3910739d8812}">
 		<property name="name">
-			<value>Player Dive</value>
+			<value>Dive</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{6d1bcfd3-39b6-40ce-ad68-ecef9a84fe6b}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{70b7144f-26bf-4779-a4cf-38f215830d79}">

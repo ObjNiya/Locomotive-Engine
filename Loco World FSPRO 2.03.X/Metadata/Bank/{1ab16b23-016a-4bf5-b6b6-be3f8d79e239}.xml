@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="Bank" id="{8601bde4-b3c4-4b1c-beea-150cab42e0dc}">
+	<object class="Bank" id="{1ab16b23-016a-4bf5-b6b6-be3f8d79e239}">
 		<property name="name">
-			<value>PLAYER</value>
+			<value>FAKE DAMIAN BOSS</value>
 		</property>
 		<relationship name="folder">
-			<destination>{ed7ee845-64ce-432b-80ea-ecbe40a8c943}</destination>
+			<destination>{69c173b9-926b-4656-8b96-00d0bb5435a9}</destination>
 		</relationship>
 	</object>
 </objects>

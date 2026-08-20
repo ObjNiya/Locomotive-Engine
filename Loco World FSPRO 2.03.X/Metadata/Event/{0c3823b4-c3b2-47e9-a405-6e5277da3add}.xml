@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{0c3823b4-c3b2-47e9-a405-6e5277da3add}">
 		<property name="name">
-			<value>TV Nauta</value>
+			<value>TV Nauta Showtime</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{85763ae3-7423-423c-a48a-73c17e9691fe}</destination>
+			<destination>{f70af894-a967-4e25-826e-5b8912907a6a}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{73e5eae6-e20a-4c63-8a14-f18c74aa8e78}</destination>
@@ -34,6 +34,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{03f03170-bc06-4f76-b59d-1dedc0470d58}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{e31024ac-6ebf-476d-9485-3cf56c19da7f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{73e5eae6-e20a-4c63-8a14-f18c74aa8e78}">
@@ -65,6 +68,9 @@
 		</relationship>
 		<relationship name="panner">
 			<destination>{d1d4d463-10ca-46cc-ba70-506c68869954}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{e02e33e3-404d-419b-8b98-eeadce5ff067}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{33285789-daa9-400d-a5fd-8f8f1ca119f3}">

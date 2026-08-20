@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{008855fa-b992-4665-b4cf-2d496c975b89}">
 		<property name="name">
-			<value>Player Machroll</value>
+			<value>Machroll</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -36,7 +36,7 @@
 			<destination>{a65b3954-5cf7-4345-b72b-692ea1781537}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{0f41a166-e6ec-4526-aafc-3f49a43a4b98}">

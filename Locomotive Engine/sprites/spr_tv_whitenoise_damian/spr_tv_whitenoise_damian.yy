@@ -98,8 +98,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_levelstructure",
-    "path":"texturegroups/texgroup_levelstructure",
+    "name":"texgroup_damian",
+    "path":"texturegroups/texgroup_damian",
   },
   "type":0,
   "VTile":false,

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{1f24e071-236c-4d35-ada1-c13ccb08266a}">
 		<property name="name">
-			<value>Player Transformation End</value>
+			<value>Transformation End</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{0c8c4037-9452-4a04-9dd0-77b2e14cd7ff}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{e1c48735-46da-4095-b17a-f541fa2abca0}">

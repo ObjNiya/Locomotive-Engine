@@ -86,8 +86,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"texgroup_titlescreen",
-    "path":"texturegroups/texgroup_titlescreen",
+    "name":"texgroup_fileselect",
+    "path":"texturegroups/texgroup_fileselect",
   },
   "type":0,
   "VTile":false,

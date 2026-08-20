@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{08f0c696-175d-4b91-9528-e19e10c9e8aa}">
 		<property name="name">
-			<value>Player Ground Pound Land</value>
+			<value>Ground Pound Land</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{9d9b2055-9eea-4f78-876b-9e5474b27a99}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{bc82bf6e-8d06-4b19-b280-73fb2f339985}">

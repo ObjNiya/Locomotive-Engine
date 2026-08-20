@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{02732844-68c7-4ec8-9204-edc178244f5f}">
 		<property name="name">
-			<value>Player Grabdash</value>
+			<value>Grabdash</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{bcb1037f-669d-484c-a33a-d5bdd2894e5b}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{094caf43-72cf-4175-9dd0-d66c2efbb570}">

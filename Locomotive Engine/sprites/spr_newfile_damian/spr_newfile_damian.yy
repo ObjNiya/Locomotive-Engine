@@ -117,8 +117,8 @@
   "swatchColours":null,
   "swfPrecision":0.5,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"texgroup_fileselect",
+    "path":"texturegroups/texgroup_fileselect",
   },
   "type":0,
   "VTile":false,

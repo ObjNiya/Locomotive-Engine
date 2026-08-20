@@ -31,6 +31,9 @@
   "physicsStartAwake":true,
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"levelId","filters":[],"listItems":[],"multiselect":false,"name":"levelId","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"texgroup","filters":[],"listItems":[],"multiselect":false,"name":"texgroup","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"texgroup_hallway\"","varDescription":"Which texture group to load when entering the level.","varFriendlyName":"Texture group","varType":2,},
+    {"$GMObjectProperty":"v2","%Name":"bank","filters":[],"listItems":[],"multiselect":false,"name":"bank","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"bnk_hallway","varDescription":"Which FMOD Studio Bank to load when entering the level.","varFriendlyName":"Bank","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"bankRef","filters":[],"listItems":[],"multiselect":false,"name":"bankRef","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"hallwayBank\"","varDescription":"The name of the bank reference variable from obj_fmod_studio.","varFriendlyName":"Bank Reference","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

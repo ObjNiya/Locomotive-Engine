@@ -45,7 +45,7 @@ function TryHurtPlayer(player_id, attacker_id)
             sprite_index = spr_back_hurt;
         
         if (M_RandomInt(100) <= 50)
-            sound_instance_one_shot(SfxVoiceHurt, x, y);
+            sound_instance_one_shot(sfxVoiceHurt, x, y);
         
         InstanceCreate(x, y, obj_bang_particle);
         InstanceCreate(x, y, obj_hurt_stars_particle);
@@ -55,4 +55,52 @@ function TryHurtPlayer(player_id, attacker_id)
         
         global.points -= max(global.points - 50, 0);
     }
+}
+
+
+function PlayerCreateSnds()
+{
+    if (sndsInitialized)
+        exit;
+    QuickLog("Creating sounds for ", id)
+    sfxStep = CharGetSnd(sfx_damian_step, character);
+    sfxJump = CharGetSnd(sfx_damian_jump, character);
+    sfxMach = CharGetSnd(sfx_damian_mach, character);
+    sfxMachTurn = CharGetSnd(sfx_damian_mach_turn, character);
+    sfxMachBrake = CharGetSnd(sfx_damian_mach_brake, character);
+    sfxVoiceIdle = CharGetSnd(sfx_damian_voice_idle, character);
+    sfxVoiceHappy = CharGetSnd(sfx_damian_voice_happy, character);
+    sfxVoiceHurt = CharGetSnd(sfx_damian_voice_hurt, character);
+    sfxVoicePlushie = CharGetSnd(sfx_damian_voice_plushie, character);
+    sfxVoiceCatripi = CharGetSnd(sfx_damian_voice_catripi, character);
+    
+    sndGrabdash = sound_instance_create(sfx_player_grabdash);
+    sndGroundpound = sound_instance_create(sfx_player_groundpound);
+    sndMach = sound_instance_create(sfxMach);
+    sndSuperjump = sound_instance_create(sfx_player_sjump);
+    
+    sndMachroll = sound_instance_create(sfx_player_machroll);
+    sndDive = sound_instance_create(sfx_player_dive);
+    sndRollGetup = sound_instance_create(sfx_player_roll_getup);
+    sndSpin = sound_instance_create(sfx_player_spin);
+    
+    sndsInitialized = true;
+}
+
+function PlayerDestroySnds()
+{
+    if (!sndsInitialized)
+        exit;
+    
+    sound_instance_kill(sndGrabdash);
+    sound_instance_kill(sndGroundpound);
+    sound_instance_kill(sndMach);
+    sound_instance_kill(sndSuperjump);
+    
+    sound_instance_kill(sndMachroll);
+    sound_instance_kill(sndDive);
+    sound_instance_kill(sndRollGetup);
+    sound_instance_kill(sndSpin);
+    
+    sndsInitialized = false;
 }

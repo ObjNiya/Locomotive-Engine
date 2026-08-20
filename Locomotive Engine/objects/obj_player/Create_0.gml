@@ -33,16 +33,16 @@ VisualHelperInit();
 character = CHARS.DAMIAN;
 CharCacheSprs(character);
 
-SfxStep = CharGetSnd(sfx_damian_step, character);
-SfxJump = CharGetSnd(sfx_damian_jump, character);
-SfxMach = CharGetSnd(sfx_damian_mach, character);
-SfxMachTurn = CharGetSnd(sfx_damian_mach_turn, character);
-SfxMachBrake = CharGetSnd(sfx_damian_mach_brake, character);
-SfxVoiceIdle = CharGetSnd(sfx_damian_voice_idle, character);
-SfxVoiceHappy = CharGetSnd(sfx_damian_voice_happy, character);
-SfxVoiceHurt = CharGetSnd(sfx_damian_voice_hurt, character);
-SfxVoicePlushie = CharGetSnd(sfx_damian_voice_plushie, character);
-SfxVoiceCatripi = CharGetSnd(sfx_damian_voice_catripi, character);
+sfxStep = "";
+sfxJump = "";
+sfxMach = "";
+sfxMachTurn = "";
+sfxMachBrake = "";
+sfxVoiceIdle = "";
+sfxVoiceHappy = "";
+sfxVoiceHurt = "";
+sfxVoicePlushie = "";
+sfxVoiceCatripi = "";
 
 SmcInit("Player");
 SmcSetState("Normal");
@@ -56,6 +56,7 @@ instakillHitbox.canAttack = false;
 // General variables
 /////////////////////////////
 
+sndsInitialized = false;
 hasKey = false;
 hasCatripi = false;
 playerTimeSources = time_source_create(time_source_game, 1, time_source_units_frames, function() {});
@@ -87,7 +88,7 @@ grabdashAirborne = false;
 grabdashCloudParticleId = noone;
 grabbedInstanceId = noone;
 
-sndGrabdash = sound_instance_create(sfx_player_grabdash);
+sndGrabdash = -1;
 
 // Taunt
 
@@ -112,24 +113,24 @@ parryCount = 0;
 
 groundpoundSmash = -14;
 groundpoundEffectId = noone;
-sndGroundpound = sound_instance_create(sfx_player_groundpound);
+sndGroundpound = -1;
 
 // Mach
 
 chargeEffectId = noone;
 speedlinesEffectId = noone;
 
-sndMach = sound_instance_create(SfxMach);
+sndMach = -1;
 
 // Super Jump
 
-sndSuperjump = sound_instance_create(sfx_player_sjump);
+sndSuperjump = -1;
 
 // Mach Roll
 
-sndMachroll = sound_instance_create(sfx_player_machroll);
-sndDive = sound_instance_create(sfx_player_dive);
-sndRollGetup = sound_instance_create(sfx_player_roll_getup);
+sndMachroll = -1;
+sndDive = -1;
+sndRollGetup = -1;
 
 // Wall Climb
 
@@ -149,7 +150,7 @@ hurtFlickerTimer = time_source_create(playerTimeSources, 2, time_source_units_fr
 
 // Swingding
 
-sndSpin = sound_instance_create(sfx_player_spin);
+sndSpin = -1;
 
 /////////////////////////////
 // Particle timers
@@ -164,7 +165,7 @@ cloudParticleTimer = time_source_create(playerTimeSources, 12, time_source_units
     if ((stateName != "Normal" && stateName != "Painting" && stateName != "Ladder") || carryingId != noone)
         return;
     
-    sound_instance_one_shot(SfxStep, x, y);
+    sound_instance_one_shot(sfxStep, x, y);
 }, [], -1);
 
 airCloudParticleTimer = time_source_create(playerTimeSources, 8, time_source_units_frames, function() {

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{9f956b0a-698a-49c4-acd3-02c7695715c7}">
 		<property name="name">
-			<value>Player Wall Splat</value>
+			<value>Wall Splat</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{2def9b94-852b-4670-a376-fdc4a7a29b16}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{48d008dc-da4e-4250-9a83-f23f2eb054ff}">

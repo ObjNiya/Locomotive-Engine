@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{7bd26e87-d41c-488c-986e-8e64d5d36772}">
 		<property name="name">
-			<value>Player Superjump Cancel</value>
+			<value>Superjump Cancel</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -36,7 +36,7 @@
 			<destination>{c63b149e-46c6-465d-a772-b460fa70204e}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b2b3784e-263a-486e-bfb2-f312f7483bbd}">

@@ -33,6 +33,7 @@ function GameStateSet(state)
     { 
         case GAME_STATES.HUB:
             PrlxInitHub();
+            MusicSet(mu_hub);
             InstanceCreate(0, 0, obj_hud_pointsbank);
             break;       
         

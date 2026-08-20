@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Backend",
-    "path":"folders/Objects/Game Structure/Backend.yy",
+    "path":"folders/Objects/Essential/Backend.yy",
   },
   "parentObjectId":null,
   "persistent":true,

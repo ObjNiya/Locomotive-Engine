@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{962e46be-ec84-4fe2-8c65-aad63dc1078f}">
 		<property name="name">
-			<value>Transition Fade</value>
+			<value>Fade</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -39,7 +39,7 @@
 			<destination>{f1dda3b0-5d5a-4910-be80-f7f8c3841405}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{e84a25f6-4b5a-4984-ba34-2138ddc7874c}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{bd75acd0-19f8-47be-873f-9704520b0ee0}">

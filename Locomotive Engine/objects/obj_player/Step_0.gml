@@ -5,7 +5,8 @@ invincibilityTime--;
 CoyoteTimeStep();
 scr_collision();
 SmcRunEvent("Step");
-sound_instance_move_several(x, y, sndGrabdash, sndGroundpound, sndMach, sndSuperjump, sndMachroll, sndDive, sndRollGetup, sndSpin);
+if (sndsInitialized)
+    sound_instance_move_several(x, y, sndGrabdash, sndGroundpound, sndMach, sndSuperjump, sndMachroll, sndDive, sndRollGetup, sndSpin);
 CameraStep(camera);
 PrlxStep(camera.id);
 

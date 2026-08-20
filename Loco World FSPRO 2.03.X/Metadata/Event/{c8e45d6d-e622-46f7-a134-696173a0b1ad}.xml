@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{c8e45d6d-e622-46f7-a134-696173a0b1ad}">
 		<property name="name">
-			<value>Player Grab Cancel</value>
+			<value>Grab Cancel</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -36,7 +36,7 @@
 			<destination>{4e261605-bb14-4c0e-80cf-103237abbc01}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{a5b9d0b2-b1d4-4030-969e-8d989b3d2b45}">

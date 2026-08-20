@@ -243,7 +243,7 @@ function StatePlayerNormalStep()
         sprite_index = (sign_input_x == 0) ? spr_land : spr_land_walk;
         
         InstanceCreate(x, y + 45, obj_land_cloud_particle);
-        sound_instance_one_shot(SfxStep, x, y);
+        sound_instance_one_shot(sfxStep, x, y);
     }
     else if (EqualsToAny(sprite_index, spr_hauling_jump, spr_hauling_fall))
     {
@@ -344,7 +344,7 @@ function StatePlayerNormalStep()
         }
         
         if (irandom(100) <= 25)
-            sound_instance_one_shot(SfxVoiceIdle, x, y);
+            sound_instance_one_shot(sfxVoiceIdle, x, y);
         
         var target_anim = irandom(idle_anims_count - 1);
         SpriteSet(idle_anims[target_anim], 0);

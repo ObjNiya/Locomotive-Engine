@@ -72,7 +72,7 @@ function PlayerDoMachslide(forced = false)
     if (!PlayerMachslide() && !forced)
         return false;
     
-    sound_instance_one_shot(SfxMachBrake, x, y);
+    sound_instance_one_shot(sfxMachBrake, x, y);
     SmcSetState("Machslide");
     
     return true;
@@ -88,7 +88,7 @@ function PlayerDoMachturn(forced = false)
     if (!PlayerMachturn() && !forced)
         return false;
     
-    sound_instance_one_shot(SfxMachTurn, x, y);
+    sound_instance_one_shot(sfxMachTurn, x, y);
     SmcSetState("Machturn");
     
     return true;
@@ -211,7 +211,7 @@ function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -1
     if (particle)
         InstanceCreate(x, y + 45, obj_jump_particle);
     
-    sound_instance_one_shot(SfxJump, x, y);
+    sound_instance_one_shot(sfxJump, x, y);
     
     vsp = jump_height;
     

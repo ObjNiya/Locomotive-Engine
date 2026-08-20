@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{ade2de20-65ca-4836-9b73-a771c68c0f8f}">
 		<property name="name">
-			<value>Player Roll Getup</value>
+			<value>Roll Getup</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{63f7d45e-8991-4b69-85c3-4ac122a04a19}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{41752d87-1bf3-4606-a6c1-1f679296322d}">

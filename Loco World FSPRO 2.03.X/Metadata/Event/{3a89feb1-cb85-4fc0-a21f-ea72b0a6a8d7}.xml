@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{3a89feb1-cb85-4fc0-a21f-ea72b0a6a8d7}">
 		<property name="name">
-			<value>Transition Circle Out</value>
+			<value>Circle Out</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -39,7 +39,7 @@
 			<destination>{7ae672d9-9e59-472b-96d7-664ebbd06a33}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{e84a25f6-4b5a-4984-ba34-2138ddc7874c}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{79556ef8-2ef7-453e-965b-4ce3c083db03}">

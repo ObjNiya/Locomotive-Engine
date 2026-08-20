@@ -1,7 +1,27 @@
 SINGLETON;
 
 #macro snd_null "event:/Null"
- 
+
+// Bank Path Macros
+
+
+#macro bnk_doom "data\\sound\\Desktop\\DOOM AND BLOOM.bank" 
+#macro bnk_damian "data\\sound\\Desktop\\DAMIAN.bank" 
+#macro bnk_fake_boss "data\\sound\\Desktop\\FAKE DAMIAN BOSS.bank" 
+#macro bnk_maze "data\\sound\\Desktop\\FOREST MAZE.bank" 
+#macro bnk_ending "data\\sound\\Desktop\\GAME END.bank"
+#macro bnk_title "data\\sound\\Desktop\\GAME START.bank"
+#macro bnk_global "data\\sound\\Desktop\\GLOBAL.bank"
+#macro bnk_hallway "data\\sound\\Desktop\\HALLWAY LONGWAY.bank"
+#macro bnk_hub "data\\sound\\Desktop\\HUB.bank"
+#macro bnk_levelstruct "data\\sound\\Desktop\\LEVEL STRUCTURE.bank"
+#macro bnk_marx_boss "data\\sound\\Desktop\\MARX BOSS.bank"
+#macro bnk_master "data\\sound\\Desktop\\MASTER.bank"
+#macro bnk_master_str "data\\sound\\Desktop\\MASTER.strings.bank"
+#macro bnk_tutorii "data\\sound\\Desktop\\TUTORIAL.bank"
+#macro bnk_tv_nauta "data\\sound\\Desktop\\TV NAUTA.bank"
+#macro bnk_wiggler "data\\sound\\Desktop\\WIGGLERS GARDEN.bank"
+
 /////////////////////////////
 // Music macros
 /////////////////////////////
@@ -14,12 +34,12 @@ SINGLETON;
 
 // Hub
 
-#macro mu_hub "event:/Music/Hub/Hub"
-#macro mu_hallway_title "event:/Music/Hub/Hallway Longway Titlecard" 
+#macro mu_hub "event:/Music/Hub"
+#macro mu_hallway_title "event:/Music/Title Cards/Hallway Longway Titlecard" 
 
 // Level Structure
 
-#macro mu_showtime "event:/Music/Level Structure/Showtime"
+#macro mu_showtime_damian "event:/Music/Level Structure/Damian Showtime"
 #macro mu_rank "event:/Music/Level Structure/Rank Screen"
 #macro mu_rank_loop "event:/Music/Level Structure/Rank Screen Loop"
 #macro mu_patrickpillar "event:/Music/Level Structure/Patrick Pillar"
@@ -107,42 +127,42 @@ SINGLETON;
 
 // Player Banana Slip
 
-#macro sfx_player_banana_slip_bump "event:/SFX/Player/Banana Slip/Player Banana Slip Bump"
-#macro sfx_player_banana_slip_end "event:/SFX/Player/Banana Slip/Player Banana Slip End"
-#macro sfx_player_banana_slip "event:/SFX/Player/Banana Slip/Player Banana Slip"
+#macro sfx_player_banana_slip_bump "event:/SFX/Player/Banana Slip/Banana Slip Bump"
+#macro sfx_player_banana_slip_end "event:/SFX/Player/Banana Slip/Banana Slip End"
+#macro sfx_player_banana_slip "event:/SFX/Player/Banana Slip/Banana Slip"
 
 // Player Superjump
 
-#macro sfx_player_sjump "event:/SFX/Player/Player Superjump"
-#macro sfx_player_sjump_cancel "event:/SFX/Player/Player Superjump Cancel"   
+#macro sfx_player_sjump "event:/SFX/Player/Superjump"
+#macro sfx_player_sjump_cancel "event:/SFX/Player/Superjump Cancel"   
 
 // Player Other SFX
 
-#macro sfx_player_ball_end "event:/SFX/Player/Player Ball End"
-#macro sfx_player_ball_roll "event:/SFX/Player/Player Ball Roll"
-#macro sfx_player_breakdance_voice "event:/SFX/Player/Player Breakdance Voice"
-#macro sfx_player_breakdance "event:/SFX/Player/Player Breakdance"  
-#macro sfx_player_bump_wall "event:/SFX/Player/Player Bump Wall"
-#macro sfx_player_dive "event:/SFX/Player/Player Dive"
-#macro sfx_player_grabdash "event:/SFX/Player/Player Grabdash"
-#macro sfx_player_groundpound_land "event:/SFX/Player/Player Ground Pound Land"
-#macro sfx_player_groundpound "event:/SFX/Player/Player Ground Pound"
-#macro sfx_player_hurt "event:/SFX/Player/Player Hurt"
-#macro sfx_player_killing_blow "event:/SFX/Player/Player Killing Blow"
-#macro sfx_player_machroll "event:/SFX/Player/Player Machroll"
-#macro sfx_player_parry "event:/SFX/Player/Player Parry"
-#macro sfx_player_punch "event:/SFX/Player/Player Punch"
-#macro sfx_player_roll_getup "event:/SFX/Player/Player Roll Getup"
-#macro sfx_player_taunt "event:/SFX/Player/Player Taunt"
-#macro sfx_player_transformation_end "event:/SFX/Player/Player Transformation End"
-#macro sfx_player_uppercut "event:/SFX/Player/Player Uppercut"
-#macro sfx_player_kungfu "event:/SFX/Player/Player Kungfu"
-#macro sfx_player_wall_splat "event:/SFX/Player/Player Wall Splat"
+#macro sfx_player_ball_end "event:/SFX/Player/Ball End"
+#macro sfx_player_ball_roll "event:/SFX/Player/Ball Roll"
+#macro sfx_player_breakdance_voice "event:/SFX/Player/Breakdance Voice"
+#macro sfx_player_breakdance "event:/SFX/Player/Breakdance"  
+#macro sfx_player_bump_wall "event:/SFX/Player/Bump Wall"
+#macro sfx_player_dive "event:/SFX/Player/Dive"
+#macro sfx_player_grabdash "event:/SFX/Player/Grabdash"
+#macro sfx_player_groundpound_land "event:/SFX/Player/Ground Pound Land"
+#macro sfx_player_groundpound "event:/SFX/Player/Ground Pound"
+#macro sfx_player_hurt "event:/SFX/Player/Hurt"
+#macro sfx_player_killing_blow "event:/SFX/Player/Killing Blow"
+#macro sfx_player_machroll "event:/SFX/Player/Machroll"
+#macro sfx_player_parry "event:/SFX/Player/Parry"
+#macro sfx_player_punch "event:/SFX/Player/Punch"
+#macro sfx_player_roll_getup "event:/SFX/Player/Roll Getup"
+#macro sfx_player_taunt "event:/SFX/Player/Taunt"
+#macro sfx_player_transformation_end "event:/SFX/Player/Transformation End"
+#macro sfx_player_uppercut "event:/SFX/Player/Uppercut"
+#macro sfx_player_kungfu "event:/SFX/Player/Kungfu"
+#macro sfx_player_wall_splat "event:/SFX/Player/Wall Splat"
 #macro sfx_player_supertaunt "event:/SFX/Player/Supertaunt"
-#macro sfx_player_mach3_wallcrash "event:/SFX/Player/Player Mach 3 Wall Crash"
-#macro sfx_player_mach2_bump "event:/SFX/Player/Player Mach 2 Bump"
-#macro sfx_player_grab_cancel "event:/SFX/Player/Player Grab Cancel"
-#macro sfx_player_spin "event:/SFX/Player/Player Spin"
+#macro sfx_player_mach3_wallcrash "event:/SFX/Player/Mach 3 Wall Crash"
+#macro sfx_player_mach2_bump "event:/SFX/Player/Mach 2 Bump"
+#macro sfx_player_grab_cancel "event:/SFX/Player/Grab Cancel"
+#macro sfx_player_spin "event:/SFX/Player/Spin"
 
 // Damian Cape
 
@@ -313,15 +333,19 @@ else
 
 sound_instances = [];
 
-master_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-master_strings_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\MASTER.strings.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-
-player_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\PLAYER.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-damian_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DAMIAN.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-hub_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\HUB.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-level_structure_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\LEVEL STRUCTURE.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-tutorial_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\TUTORIAL.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-hallway_longway_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\HALLWAY LONGWAY.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-bloom_and_doom_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\DOOM AND BLOOM.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-forest_maze_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\FOREST MAZE.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
-wigglers_garden_bank = fmod_studio_system_load_bank_file(fmod_path_bundle("data\\sound\\Desktop\\WIGGLERS GARDEN.bank"), FMOD_STUDIO_LOAD_BANK.NORMAL);
+doomBank = -1;
+damianBank = -1;
+fakeBossBank = -1;
+mazeBank = -1;
+endingBank = -1;
+titleBank = -1;
+_globalBank = -1;
+hallwayBank = -1;
+hubBank = -1;
+levelstructBank = -1;
+marxBossBank = -1;
+masterBank = -1;
+masterBankStr = -1;
+tutoriiBank = -1;
+tvNautaBank = -1;
+wigglerBank = -1;

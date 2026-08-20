@@ -46,7 +46,7 @@ function StatePlayerPaintingStep()
     else if (grounded)
     {
         time_source_stop(cloudParticleTimer); 
-        sound_instance_one_shot(SfxJump, x, y);
+        sound_instance_one_shot(sfxJump, x, y);
         
         vsp = -15;
         hsp = -2.5 * target_dir;

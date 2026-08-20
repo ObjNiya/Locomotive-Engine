@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{96db6ec8-ed17-4703-b9da-1ac83b72845f}">
 		<property name="name">
-			<value>Player Uppercut</value>
+			<value>Uppercut</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -39,7 +39,7 @@
 			<destination>{d3691ff3-b599-4c49-8e7c-9aa03872f67d}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{8601bde4-b3c4-4b1c-beea-150cab42e0dc}</destination>
+			<destination>{d0621d9d-8a2f-48f2-804f-15aa6cb4a108}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{b3b54d95-7e90-4605-b3e4-33da66020325}">
