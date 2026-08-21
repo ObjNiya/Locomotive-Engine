@@ -39,6 +39,20 @@ function Animator(sprite_index) constructor
         if (sprite_get_speed_type(spriteIndex) == spritespeed_framespersecond)
             spriteSpeed /= game_get_speed(gamespeed_fps);
     }
+	
+	
+	static AnimationEnded = function(sprite_to_set = -1)
+	{
+	    if (round(imageIndex) >= imageNumber - 1)
+	    {
+	        if (sprite_exists(sprite_to_set))
+	            spriteIndex = sprite_to_set;
+        
+	        return true;
+	    }
+    
+	    return false;
+	}
     
     
     /// @ignore
@@ -68,7 +82,8 @@ function Animator(sprite_index) constructor
      */
     static Draw = function(x, y)
     {
-        draw_sprite_ext(spriteIndex, imageIndex, x, y, imageXScale, imageYScale, imageAngle, imageBlend, imageAlpha);
+		if imageAlpha > 0
+			draw_sprite_ext(spriteIndex, imageIndex, x, y, imageXScale, imageYScale, imageAngle, imageBlend, imageAlpha);
     }
     
     stepTimeSource = time_source_create(time_source_game, 1, time_source_units_frames, Step, [], -1);

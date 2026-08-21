@@ -5,7 +5,7 @@
 			<value>Cheers</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1c9c61f5-5fbb-4c8c-8c70-3b752914de9c}</destination>
@@ -122,7 +122,6 @@
 	<object class="MixerBusEffectChain" id="{947f1fa7-e2ff-42d4-9f78-c82ae47e9b55}">
 		<relationship name="effects">
 			<destination>{7e3ea2e0-e13d-4089-a77b-0d391cdee0ba}</destination>
-			<destination>{7ab48441-7958-47a5-a91e-03fe8f3f641d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{fbb6c94e-bea2-4996-82a0-36a6b96e0f6d}" />
@@ -145,14 +144,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{c999fa5d-97a5-4f0c-a6a5-8ecff20f413c}" />
 	<object class="MixerBusFader" id="{7e3ea2e0-e13d-4089-a77b-0d391cdee0ba}" />
-	<object class="ProxyEffect" id="{7ab48441-7958-47a5-a91e-03fe8f3f641d}">
-		<property name="inputFormat">
-			<value>1</value>
-		</property>
-		<relationship name="preset">
-			<destination>{597d8602-524d-40dd-b82f-651cb3239490}</destination>
-		</relationship>
-	</object>
 	<object class="Automator" id="{d21138a5-0b1b-4139-b8ae-2ce6bf08ad7b}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>volume</value>

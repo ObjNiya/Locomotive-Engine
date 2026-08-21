@@ -5,13 +5,13 @@
 			<value>Door Unlock</value>
 		</property>
 		<property name="outputFormat">
-			<value>5</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ae3566c3-910c-4476-94c3-39854e5d4f47}</destination>
 		</relationship>
 		<relationship name="tags">
-			<destination>{df1e142c-8964-4213-a71e-b3465d87516e}</destination>
+			<destination>{b10730d1-fe54-45f8-ac9b-cd6b86e2257e}</destination>
 			<destination>{55a92181-a5d0-45aa-a09c-de1c22987cc3}</destination>
 		</relationship>
 		<relationship name="mixer">
