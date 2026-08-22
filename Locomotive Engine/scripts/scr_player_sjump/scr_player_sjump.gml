@@ -54,7 +54,7 @@ function StatePlayerSjumpStep()
         grav = 0;
     }
     
-    if (PlayerDoCeilingsplat())
+    if (sprite_index == spr_sjump && PlayerDoCeilingsplat())
         return;
     
     if (sprite_index != spr_sjump_cancel_prepare)
@@ -72,9 +72,19 @@ function StatePlayerSjumpStep()
     else
         image_xscale = dir;
     
+    with (carryingId)
+    {
+        x = other.x + 38 * other.image_xscale;
+        y = other.y - 16;
+    }
+    
     if (!AnimationEnd())
         return;
     
+    var prev_carrying_id = carryingId;
+    carryingId = noone;
+    
+    PlayerDoInstakill(prev_carrying_id);
     SmcSetState("Mach");
     
     vsp = -5;

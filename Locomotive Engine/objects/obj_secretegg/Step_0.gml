@@ -1,6 +1,3 @@
-//if (sprite_index != spr_secretegg_close)
-    //visible = true;
-
 with (player)
 {
     hsp = 0;

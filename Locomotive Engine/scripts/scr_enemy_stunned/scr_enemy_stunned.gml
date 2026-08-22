@@ -42,5 +42,6 @@ function StateEnemyStunnedDestroy()
 /// @ignore
 function StateEnemyStunnedDraw()
 {
+    stunBird.Step();
     stunBird.Draw(x, y - 40);
 }

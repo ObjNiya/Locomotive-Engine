@@ -14,18 +14,27 @@ if ((y >= -800 && y < room_height + 300) || instance_exists(par_cutscene))
     exit;
 
 var techdifficulties = CreateCutscene(seq_techdifficulties, false, false);
-techdifficulties.endEvent = function()
+var TechdifficultiesEnd = function()
 {
     SpawnGoto();
     InstanceCreate(0, 0, obj_techdifficulties_out);
     with (obj_player)
 	{
         SmcSetState("Normal");
+        visible = true;
 	}
 }
 
 with (techdifficulties)
+{
+    endEvent = TechdifficultiesEnd;
     DepthSet(DEPTHS.HIGHEST);
+}
 
-SmcSetState("Nothing");
+visible = false;
 hsp = 0;
+vsp = 0;
+camera.ShakeSet(3, 0.05, 0);
+
+sound_instance_one_shot(sfx_player_groundpound_land, x, room_height - 100);
+SmcSetState("Nothing");

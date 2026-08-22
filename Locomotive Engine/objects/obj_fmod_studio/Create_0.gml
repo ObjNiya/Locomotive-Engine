@@ -112,6 +112,7 @@ SINGLETON;
 
 #macro sfx_amiiboxalert "event:/SFX/Level Structure/Amiibox Alert"
 #macro sfx_dashpad "event:/SFX/Level Structure/Dashpad"
+#macro sfx_spring "event:/SFX/Level Structure/Enemy/Spring"
 #macro sfx_destroy_metalblock "event:/SFX/Level Structure/Blocks/Destroy Metal"
 #macro sfx_destroy_block "event:/SFX/Level Structure/Blocks/Destroy"
 #macro sfx_secretegg_enter "event:/SFX/Level Structure/Secret Egg/Enter"

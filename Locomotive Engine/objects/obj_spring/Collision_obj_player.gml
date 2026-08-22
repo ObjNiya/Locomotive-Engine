@@ -2,6 +2,7 @@ if (sprite_index == spr_spring_activate)
     exit;
 
 SpriteSet(spr_spring_activate, 0);
+sound_instance_one_shot(sfx_spring, x, y);
 
 with (other)
 {

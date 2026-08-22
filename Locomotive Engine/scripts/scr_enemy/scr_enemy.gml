@@ -140,6 +140,9 @@ function ScareEnemies()
         if (x != other.x)
             image_xscale = -sign(x - other.x);
             
+        if (M_RandomInt(100) <= 5)
+            sound_instance_one_shot(sfx_enemyscream, x, y);
+        
         SmcSetState("Scared");
     }
 }
