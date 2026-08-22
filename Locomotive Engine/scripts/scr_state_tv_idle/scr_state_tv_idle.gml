@@ -5,10 +5,10 @@ function StateTvIdleCreate()
     {
         sprite_index = playerId.spr_tv_idle;
         
-        if (playerId.stateName == "Mach" && playerId.movespeed >= 12)
+        if (TvGetMachSprite() != noone)
         {
-            sprite_index = (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3;
-            smc_set_state("Mach");
+            SmcSetState("Mach");
+            sprite_index = TvGetMachSprite();
         }
     }
     else
@@ -24,9 +24,9 @@ function StateTvIdleStep()
         return;
     }
     
-    if (playerId.stateName == "Mach" && playerId.movespeed >= 12)
-        TvDoWhitenoise(id, "Mach", (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3);
-    
+    if (TvGetMachSprite() != noone)
+        TvDoWhitenoise(id, "Mach", TvGetMachSprite());
+	
     if (playerId.stateName == "Noclip")
     {
         sprite_index = playerId.spr_tv_noclip;
@@ -42,7 +42,7 @@ function StateTvIdleStep()
         
         return;
     }
-
+	
     if (instance_exists(obj_secret_marker))
         sprite_index = playerId.spr_tv_secret;
     else if (global.combo >= 50)
@@ -64,4 +64,12 @@ function StateTvIdleStep()
         sprite_index = playerId.spr_tv_idle;
         IdleAnimTimer = 240 + (60 * irandom_range(-1, 2));
     }
+}
+
+function TvGetMachSprite()
+{
+	if (playerId.stateName == "Mach" && playerId.movespeed >= 12)
+        return (playerId.sprite_index == playerId.spr_mach4) ? playerId.spr_tv_mach4 : playerId.spr_tv_mach3;
+	
+	return noone;
 }

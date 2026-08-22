@@ -2,8 +2,7 @@
 
 //x -= global.baseAppWidth;
 
-sprite_index = spr_tv_turnon_damian;
-
+yOffset = 80;
 
 playerId = noone;
 
@@ -13,9 +12,16 @@ SmcInit("Tv");
 
 IdleAnimTimer = 240 + (60 * irandom_range(-1, 2));
 
-whitenoise = new Sprite(spr_tv_whitenoise_damian);
+whitenoise = new Animator(spr_combobar);
 whitenoiseNextState = "Idle";
 whitenoiseNextSprite = spr_tv_idle_damian;
+
+comboBar = { count: 0, x: 0, y: 0, xOffset: 0, yOffset: 0, vsp: 0, state: "Fall" };
+comboSkull = new Animator(spr_combobar_skull);
+comboSkull.x = 0; comboSkull.y = 0;
+comboPlaceholderAnimShow = false // Makes the combo meter do it's animations. Set to false if it gets annoying.
+
+whitenoise.imageAlpha = 0
 
 exprTimerFunc = function()
 {

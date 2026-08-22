@@ -19,10 +19,13 @@ techdifficulties.endEvent = function()
     SpawnGoto();
     InstanceCreate(0, 0, obj_techdifficulties_out);
     with (obj_player)
+	{
         SmcSetState("Normal");
+	}
 }
 
 with (techdifficulties)
     DepthSet(DEPTHS.HIGHEST);
 
-SmcSetState("Nothing", false, false);
+SmcSetState("Nothing");
+hsp = 0;

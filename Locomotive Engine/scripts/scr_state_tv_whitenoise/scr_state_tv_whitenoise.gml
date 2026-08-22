@@ -1,13 +1,13 @@
 /// @ignore
 function StateTvWhitenoiseCreate()
 {
-    whitenoise.set_sprite(playerId.spr_tv_whitenoise);
+    whitenoise.SetSprite(playerId.spr_tv_whitenoise);
     
     with (whitenoise)
     {
-        image_index = 0;
-        image_speed = 1;
-        image_alpha = 1;
+        imageIndex = 0;
+        imageSpeed = 1;
+        imageAlpha = 1;
     }
 }
 
@@ -16,12 +16,12 @@ function StateTvWhitenoiseStep()
 {
     with (whitenoise)
     {
-        if (!AnimationEnd())
+        if (!AnimationEnded())
             return;
     }
     
-    SmcSetState(whitenoiseNextState);
     sprite_index = whitenoiseNextSprite;
+    SmcSetState(whitenoiseNextState);
 }
 
 /// @ignore
@@ -29,8 +29,7 @@ function StateTvWhitenoiseDestroy()
 {
     with (whitenoise)
     {
-        image_index = 0;
-        image_speed = 0;
-        image_alpha = 0;
+        imageSpeed = 0;
+        imageAlpha = 0;
     }
 }

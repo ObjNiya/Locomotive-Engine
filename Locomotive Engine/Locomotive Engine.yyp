@@ -450,6 +450,7 @@
     {"id":{"name":"testy","path":"objects/testy/testy.yy",},},
     {"id":{"name":"ps_flames","path":"particles/ps_flames/ps_flames.yy",},},
     {"id":{"name":"pth_test","path":"paths/pth_test/pth_test.yy",},},
+    {"id":{"name":"my_room","path":"rooms/my_room/my_room.yy",},},
     {"id":{"name":"Nhall_1","path":"rooms/Nhall_1/Nhall_1.yy",},},
     {"id":{"name":"Nhall_10","path":"rooms/Nhall_10/Nhall_10.yy",},},
     {"id":{"name":"Nhall_11","path":"rooms/Nhall_11/Nhall_11.yy",},},
@@ -1210,6 +1211,7 @@
     {"id":{"name":"spr_exitportal","path":"sprites/spr_exitportal/spr_exitportal.yy",},},
     {"id":{"name":"spr_explosion_particle_alt","path":"sprites/spr_explosion_particle_alt/spr_explosion_particle_alt.yy",},},
     {"id":{"name":"spr_explosion_particle","path":"sprites/spr_explosion_particle/spr_explosion_particle.yy",},},
+    {"id":{"name":"spr_facehole_damian","path":"sprites/spr_facehole_damian/spr_facehole_damian.yy",},},
     {"id":{"name":"spr_fall_damian","path":"sprites/spr_fall_damian/spr_fall_damian.yy",},},
     {"id":{"name":"spr_fast_fall_damian","path":"sprites/spr_fast_fall_damian/spr_fast_fall_damian.yy",},},
     {"id":{"name":"spr_fastest_fall_damian","path":"sprites/spr_fastest_fall_damian/spr_fastest_fall_damian.yy",},},
@@ -1608,6 +1610,7 @@
     {"roomId":{"name":"rm_test3","path":"rooms/rm_test3/rm_test3.yy",},},
     {"roomId":{"name":"rm_hub_start","path":"rooms/rm_hub_start/rm_hub_start.yy",},},
     {"roomId":{"name":"rm_timesup","path":"rooms/rm_timesup/rm_timesup.yy",},},
+    {"roomId":{"name":"my_room","path":"rooms/my_room/my_room.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

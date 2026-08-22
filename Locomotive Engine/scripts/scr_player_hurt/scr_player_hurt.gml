@@ -1,8 +1,6 @@
 /// @ignore
 function StatePlayerHurtCreate()
 {
-    
-    
     if (sprite_index != spr_back_hurt)
         sprite_index = spr_hurt;
     
@@ -11,6 +9,7 @@ function StatePlayerHurtCreate()
     
     sound_instance_one_shot(sfx_playerhurt, x, y);
     FlashEffectSet();
+	TvDoExpression(hudTvId, spr_tv_hurt, 150)
 }
 
 /// @ignore

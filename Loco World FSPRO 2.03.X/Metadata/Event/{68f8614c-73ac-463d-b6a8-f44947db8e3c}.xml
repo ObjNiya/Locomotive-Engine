@@ -5,7 +5,7 @@
 			<value>Unlock</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1c9c61f5-5fbb-4c8c-8c70-3b752914de9c}</destination>
@@ -123,7 +123,6 @@
 		<relationship name="effects">
 			<destination>{a99dc6dd-40c9-44eb-ac08-f0a277618995}</destination>
 			<destination>{90382119-9100-44ea-b80c-6f2ff9b91b83}</destination>
-			<destination>{2c3cb091-782a-417b-8abf-e94490893be9}</destination>
 			<destination>{d7a31c11-054d-4fd1-8be2-aad06da546d5}</destination>
 		</relationship>
 	</object>
@@ -154,14 +153,6 @@
 		<property name="midGain">
 			<value>-9</value>
 		</property>
-	</object>
-	<object class="ProxyEffect" id="{2c3cb091-782a-417b-8abf-e94490893be9}">
-		<property name="inputFormat">
-			<value>1</value>
-		</property>
-		<relationship name="preset">
-			<destination>{597d8602-524d-40dd-b82f-651cb3239490}</destination>
-		</relationship>
 	</object>
 	<object class="SFXReverbEffect" id="{d7a31c11-054d-4fd1-8be2-aad06da546d5}">
 		<property name="decayTime">

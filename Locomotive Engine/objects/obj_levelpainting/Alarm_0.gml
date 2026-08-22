@@ -11,6 +11,7 @@ var on_switch = function()
 with (LvlGoto(levelId, obj_roomtrans_fade))
 {
     image_blend = c_white;
+	faceTransition = false
     fadeSpd = 0.01;
     endLag = 30;
     

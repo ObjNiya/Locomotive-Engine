@@ -21,8 +21,13 @@ function draw_set_mask_end(inv)
 
 function draw_set_mask(spr, ind, x, y, inv = false)
 {
+    draw_set_mask_ext(spr, ind, x, y, 1, 1, 0, draw_get_color(), draw_get_alpha(), inv)
+}
+
+function draw_set_mask_ext(spr, ind, x, y, xscale, yscale, rot, col, alpha, inv = false)
+{
     draw_set_mask_begin()
-    draw_sprite(spr, ind, x, y)
+    draw_sprite_ext(spr, ind, x, y, xscale, yscale, rot, col, alpha)
     draw_set_mask_end(inv)
 }
 

@@ -27,7 +27,7 @@ function PrlxLayer(x_prlx_factor, y_prlx_factor) constructor
     
     valueModifiers = {};
 
-    #region Setter functions
+    // #region Setter functions
     
     
     /**
