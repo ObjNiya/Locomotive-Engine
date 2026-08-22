@@ -54,7 +54,7 @@ function StatePlayerGroundpoundStep()
             hsp = 0;
             movespeed = 0;
             
-            camera.shake_set(5, 0.25);
+            camera.ShakeSet(5, 0.25, 0);
             
             machAfterimageUseAlpha = true;
 			

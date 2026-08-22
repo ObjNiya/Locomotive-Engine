@@ -1,13 +1,7 @@
-if (global.adaptAspectRatio)
-{
-    if (AppSetAspectRatio(display_get_width() / display_get_height()))
-        exit;
-}
+if (global.adaptAspectRatio && AppSetAspectRatio(display_get_width() / display_get_height()))
+    exit;
 
-var width = window_get_width();
-var height = window_get_height();
-
-if (toggleFullscreen && keyboard_check_pressed(fullscreenKey))
+if (keyboard_check_pressed(fullscreenKey) && toggleFullscreen)
 {
     window_set_fullscreen(!window_get_fullscreen());
     window_center();
@@ -15,6 +9,9 @@ if (toggleFullscreen && keyboard_check_pressed(fullscreenKey))
     
     exit;
 }
+
+var width = window_get_width();
+var height = window_get_height();
 
 if (prevWindowWidth == width && prevWindowHeight == height)
     exit;

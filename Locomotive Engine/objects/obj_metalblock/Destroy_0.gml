@@ -17,6 +17,4 @@ SaveroomAdd();
 Sleep(5);
 InstanceCreate(x + 32, y + 32, obj_bang_particle);
 sound_instance_one_shot(destroySnd, x, y);
-
-with (obj_player)
-    camera.shake_set(20, 0.666);
+obj_player.camera.ShakeSet(20, 0.666, 0);

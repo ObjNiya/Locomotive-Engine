@@ -30,9 +30,4 @@ repeat (3)
     }
 }
 InstanceCreate(x, y, obj_bang_particle);
-
-array_foreach(global.cameras, function(camera, index) {
-    camera.shake_set(3, 0.05);
-});
-
 SaveroomAdd();

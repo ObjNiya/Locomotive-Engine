@@ -5,7 +5,7 @@ with (other)
 {
     sprite_index = spr_hurt;
     SmcSetState("None");
-    camera.properties_set_locked(true, true, false);
+    camera.LockSet(CAM_LOCK.ON);
     
     other.player = id;
 }

@@ -15,9 +15,13 @@ function StartShowtime()
 {
     time_source_start(global.showtimeTimer);
     
-    with (obj_player)
-        camera.shake_set(3, 0);
-    MusicSet(mu_showtime)
+    with (obj_player.camera)
+    {
+        ShakeSet(3, 0, 0);
+        ShakeSetMin(3);
+    }
+    
+    MusicSet(mu_showtime_damian);
     
     InstanceDestroySafe(obj_its_showtime);
     InstanceCreate(0, 0, obj_its_showtime);

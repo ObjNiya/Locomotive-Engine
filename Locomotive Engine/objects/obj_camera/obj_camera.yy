@@ -3,7 +3,7 @@
   "%Name":"obj_camera",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_camera",
@@ -27,15 +27,11 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"target","filters":[
+    {"$GMObjectProperty":"v2","%Name":"followTarget","filters":[
         "GMObject",
-      ],"listItems":[],"multiselect":false,"name":"target","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"obj_player","varDescription":"Which object/instance to follow.","varFriendlyName":"Target","varType":5,},
-    {"$GMObjectProperty":"v2","%Name":"width","filters":[],"listItems":[],"multiselect":false,"name":"width","rangeEnabled":false,"rangeMax":1000.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"960","varDescription":"The width of the camera. (In pixels)","varFriendlyName":"Width","varType":1,},
-    {"$GMObjectProperty":"v2","%Name":"height","filters":[],"listItems":[],"multiselect":false,"name":"height","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"540","varDescription":"The height of the camera. (In pixels)","varFriendlyName":"Height","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"xShakeMag","filters":[],"listItems":[],"multiselect":false,"name":"xShakeMag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"xShakeDeccel","filters":[],"listItems":[],"multiselect":false,"name":"xShakeDeccel","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"yShakeMag","filters":[],"listItems":[],"multiselect":false,"name":"yShakeMag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"yShakeDeccel","filters":[],"listItems":[],"multiselect":false,"name":"yShakeDeccel","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
+      ],"listItems":[],"multiselect":false,"name":"followTarget","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[0, 0]","varDescription":"Which object/instance to follow.","varFriendlyName":"Target","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"followSpeed","filters":[],"listItems":[],"multiselect":false,"name":"followSpeed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"followSpeedType","filters":[],"listItems":[],"multiselect":false,"name":"followSpeedType","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

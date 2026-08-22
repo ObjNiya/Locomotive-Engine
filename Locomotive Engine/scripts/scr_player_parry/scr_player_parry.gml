@@ -46,7 +46,7 @@ function StatePlayerParryStep()
         
         with (other)
         {
-            camera.shake_set(3, 0.05);
+            camera.ShakeSet(3, 0.05, 0);
             if (!grounded)
                 vsp = -6;
         }

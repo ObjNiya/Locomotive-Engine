@@ -10,7 +10,7 @@ function StatePlayerPaintingCreate()
     vertMovespeed = 0;
     accel = 0.5;
     
-    camera.properties_set_locked(false, true, false);
+    camera.LockSet(CAM_LOCK.ON);
 }
 
 /// @ignore
@@ -90,7 +90,7 @@ function StatePlayerPaintingStep()
 /// @ignore
 function StatePlayerPaintingDestroy()
 {
-    camera.properties_set_locked(false, false, false);
+    camera.LockSet(CAM_LOCK.OFF);
     
     visible = true;
 }

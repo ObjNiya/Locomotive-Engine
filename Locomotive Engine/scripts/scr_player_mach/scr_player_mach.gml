@@ -18,8 +18,6 @@ function PlayerGetMachStage()
 /// @ignore
 function StatePlayerMachCreate()
 {
-    
-    
     movespeed = max(movespeed, 6);
     accel = 0.1;
     
@@ -144,7 +142,7 @@ function StatePlayerMachStep()
             
             InstanceCreate(x + (dir * 15), y + 10, obj_bump_particle);
             sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
-            camera.shake_set(20, 0.666);
+            camera.ShakeSet(20, 0.666, 0);
         }
 
         return;

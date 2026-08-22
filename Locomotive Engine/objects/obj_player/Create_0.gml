@@ -12,9 +12,61 @@ mask_index = spr_player_mask;
 
 global.leadingPlayer = -1;
 
-camera = new Camera();
-camPaintingUp = new Tween(ac_ease, "out", 0.6, time_source_units_seconds);
-camPaintingUpInd = camera.add_y_offset(0);
+camera = InstanceCreate(0, 0, obj_camera);
+
+with (camera)
+{
+    TargetSet(other.id);
+    yAxis.OffsetterAdd("baseUp", -50, false, 0, 0);
+    
+    var PaintingPan = function()
+    {
+        with (followTarget)
+        {
+            if (place_meeting(x, y, obj_levelpainting) && stateName == "Normal")
+                return -120;
+        }
+        
+        return 0;
+    }
+    
+    yAxis.OffsetterAdd("paintingPan", PaintingPan, true, ac_cam_painting_up_spd, asset_animationcurve);
+    
+    
+    var ExtendCam = function()
+    {
+        with (followTarget)
+        {
+            if (PlayerGetMachStage() < 3)
+                return 0;
+            
+            if (PlayerGetMachStage() < 4 && stateName != "Mach" && abs(hsp) < 16)
+                return 0;
+            
+            return (abs(hsp) / 4) * 50 * image_xscale;
+        }
+    }
+    
+    var ExtendCamSpd = function()
+    {
+        with (followTarget)
+        {
+            if (stateName == "Mach" && PlayerGetMachStage() >= 3)
+                return 0.3;
+            else if (PlayerGetMachStage() >= 4)
+            {
+                var extend_sign = sign(camera.xAxis.offsetters[$ "extendCam"].pos);
+                return (extend_sign != sign(hsp)) ? 8 : 2;
+            }
+            else if (stateName == "Machslide" || stateName == "Machturn")
+                return 10;
+            else
+                return 6;
+        }
+    }
+    
+    xAxis.OffsetterAdd("extendCam", ExtendCam, true, ExtendCamSpd, asset_script);
+}
 
 scr_collision_init();
 grav = 0.5;

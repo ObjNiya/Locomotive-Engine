@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_cameranew",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_cameranew",
+  "parent":{
+    "name":"Essential",
+    "path":"folders/Scripts/Essential.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

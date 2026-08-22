@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{38fceadf-dcf7-4dfe-91e0-42f33f820c08}">
 		<property name="name">
-			<value>Banana Slip Bump</value>
+			<value>Bump</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

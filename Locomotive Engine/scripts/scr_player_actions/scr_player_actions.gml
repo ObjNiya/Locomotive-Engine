@@ -270,7 +270,7 @@ function PlayerDoInstakill(enemy_to_kill = noone)
     if (enemy_to_kill == noone || enemy_to_kill == carryingId)
         return false;
   
-    camera.shake_set(3, 0.05);
+    camera.ShakeSet(3, 0.05, 0);
     sound_instance_one_shot(sfx_playerpunch, x, y);
     HitstunSet(5);
     

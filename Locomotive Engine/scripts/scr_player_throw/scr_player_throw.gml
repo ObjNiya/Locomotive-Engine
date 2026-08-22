@@ -41,7 +41,7 @@ function StatePlayerThrowStep()
     {
         movespeed = 0;
         vsp = -6;
-        camera.shake_set(3, 0.05);
+        camera.ShakeSet(3, 0.05, 0);
         ComboSetTime(99);
 
         with (carryingId)

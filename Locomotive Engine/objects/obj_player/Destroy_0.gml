@@ -1,1 +1,1 @@
-CameraDestroy(camera);
+instance_destroy(camera);
