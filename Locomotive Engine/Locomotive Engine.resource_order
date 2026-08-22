@@ -532,6 +532,7 @@
     {"name":"spr_bigescapepoints_notime","order":1,"path":"sprites/spr_bigescapepoints_notime/spr_bigescapepoints_notime.yy",},
     {"name":"spr_dither","order":14,"path":"sprites/spr_dither/spr_dither.yy",},
     {"name":"spr_enemy_bandaid","order":4,"path":"sprites/spr_enemy_bandaid/spr_enemy_bandaid.yy",},
+    {"name":"spr_facehole_damian","order":1,"path":"sprites/spr_facehole_damian/spr_facehole_damian.yy",},
     {"name":"spr_grabdash_icon","order":3,"path":"sprites/spr_grabdash_icon/spr_grabdash_icon.yy",},
     {"name":"spr_kungfu_particle","order":1,"path":"sprites/spr_kungfu_particle/spr_kungfu_particle.yy",},
     {"name":"spr_marx_bowtie","order":13,"path":"sprites/spr_marx_bowtie/spr_marx_bowtie.yy",},

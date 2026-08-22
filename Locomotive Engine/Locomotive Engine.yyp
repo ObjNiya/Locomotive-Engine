@@ -1199,6 +1199,7 @@
     {"id":{"name":"spr_exitportal","path":"sprites/spr_exitportal/spr_exitportal.yy",},},
     {"id":{"name":"spr_explosion_particle_alt","path":"sprites/spr_explosion_particle_alt/spr_explosion_particle_alt.yy",},},
     {"id":{"name":"spr_explosion_particle","path":"sprites/spr_explosion_particle/spr_explosion_particle.yy",},},
+    {"id":{"name":"spr_facehole_damian","path":"sprites/spr_facehole_damian/spr_facehole_damian.yy",},},
     {"id":{"name":"spr_fall_damian","path":"sprites/spr_fall_damian/spr_fall_damian.yy",},},
     {"id":{"name":"spr_fast_fall_damian","path":"sprites/spr_fast_fall_damian/spr_fast_fall_damian.yy",},},
     {"id":{"name":"spr_fastest_fall_damian","path":"sprites/spr_fastest_fall_damian/spr_fastest_fall_damian.yy",},},

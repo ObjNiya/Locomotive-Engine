@@ -49,3 +49,8 @@ function distance_to_pos(arg0, arg1, arg2, arg3, arg4, arg5)
 {
     return abs(arg0 - arg2) <= arg4 && abs(arg1 - arg3) <= arg5;
 }
+
+function map(value, in_min, in_max, out_min, out_max)
+{
+	return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
