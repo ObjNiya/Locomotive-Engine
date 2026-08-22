@@ -1,173 +1,184 @@
-/// TODO: refactor
-
-function Camera() constructor
+enum CAM_LOCK
 {
-    var cur_viewport = 0;
-    
-    while (global.viewport_taken[cur_viewport])
-    {
-        if (cur_viewport++ > 7)
-        {
-            Log(Camera, LOG_TYPES.WARNING, "All viewports are already occupied, returning -1.");
-            return -1;
-        }
-    }
-    
-    global.viewport_taken[cur_viewport] = true;
-    viewport = cur_viewport;
-    
-    id = view_camera[viewport];
-    target = other.id;
-    
-    fmod_studio_system_set_num_listeners(viewport);
-    fmod_attr = new Fmod3DAttributes();
-    
-    with (fmod_attr)
-    {
-        forward.z = 1;
-        up.y = 1; 
-    }
-    
-    x = 0;
-    x_locked = false;
-    x_offsets = [];
-    
-    y = 0;
-    y_locked = false;
-    y_offsets = [];
-    
-    zoom = 1;
-    zoom_locked = false;
-    zoom_offsets = [1];
-    
-    width = global.baseAppWidth;
-    height = global.baseAppHeight;
-    
-    shake_mag = 0;
-    shake_mag_deccel = 0;
-
-    static add_x_offset = function(offset_value)
-    {
-        array_push(x_offsets, offset_value);
-        return array_length(x_offsets) - 1;
-    }
-    
-    static remove_x_offset = function(offset_index)
-    {
-        array_delete(x_offsets, offset_index, 1);
-    }
-    
-    static add_y_offset = function(offset_value)
-    {
-        array_push(y_offsets, offset_value);
-        return array_length(y_offsets) - 1;
-    }
-    
-    static remove_y_offset = function(offset_index)
-    {
-        array_delete(y_offsets, offset_index, 1);
-    }
-    
-    static add_zoom_offset = function(offset_value)
-    {
-        array_push(zoom_offsets, offset_value);
-        return array_length(zoom_offsets) - 1;
-    }
-    
-    static remove_zoom_offset = function(offset_index)
-    {
-        array_delete(zoom_offsets, offset_index, 1);
-    }
-    
-    static properties_set_locked = function(lock_x, lock_y, lock_zoom)
-    {
-        x_locked = lock_x;
-        y_locked = lock_y;
-        zoom_locked = lock_zoom;
-    }
-    
-    static shake_set = function(shake_magnitude, shake_magnitude_decceleration)
-    {
-        shake_mag = shake_magnitude;
-        shake_mag_deccel = shake_magnitude_decceleration;
-    }
-    
-    static room_start = function()
-    {
-        view_visible[viewport] = true;
-        view_wport[viewport] = global.baseAppWidth;
-        view_hport[viewport] = global.baseAppHeight;
-        view_xport[viewport] = global.baseAppHeight * viewport;
-        
-        while (view_xport[viewport] > global.appVisualWidth)
-        {
-            view_xport[viewport] -= global.baseAppWidth * 2;
-            view_yport[viewport] += global.baseAppHeight;
-        }
-        
-        id = view_camera[viewport];
-        
-        if (id == -1)
-        {
-            id = camera_create_view(0, 0, width, height);
-            view_camera[viewport] = id;
-        }
-    }
-    
-    array_push(global.cameras, self);
+    OFF,
+    PARTIAL,
+    ON,
 }
 
-function CameraStep(camera_to_update)
+
+/// @ignore
+function CameraAxis(speed, speed_type) constructor
 {
-    with (camera_to_update)
+    val = new Approacher();
+    val.SpeedSet(speed, speed_type);
+    
+    pos = 0;
+    
+    lock = false;
+    
+    shake = new Approacher();
+    shake.priority = -1;
+    shake.targetPos = 0;
+    
+    offsetters = new ApproacherGroup();
+    
+    /**
+     * Sets how fast the axis can follow its target position.
+     * @parameter {Real|Function|Asset.GMAnimCurve} target_speed The speed to set. If its a function, it should return a real. If it's an animation curve, it will use the normalized distance from the target position as the x position on the animation curve channel. If the speed is 0, the axis will instantly snap to its target position.
+     * @parameter {Constant.AssetType} target_speed_type The type of the previously set speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.
+     * @parameter {Real} target_speed_animcurve_channel (OPTIONAL) The index of which animation curve channel to use if the target speed is an animation curve. Default is 0.
+     */
+    static SpeedSet = function(target_speed, target_speed_type, target_speed_animcurve_channel = 0)
     {
-        if (!zoom_locked)
-            zoom = 1 * ArrayGetSum(zoom_offsets);
+        val.SpeedSet(target_speed, target_speed_type, target_speed_animcurve_channel);
+    }
+    
+    
+    /**
+     * Returns whether or not an offsetter with the given name exists.
+     * @parameter {String} offsetter_name The name of the offsetter to check for.
+     * @pure
+     */
+    static OffsetterExists = function(offsetter_name)
+    {
+        return offsetters.Exists(offsetter_name);
+    }
+    
+    
+    /**
+     * Adds an offsetter to the axis position that will increment to the given offset at the given speed.
+     * @parameter {String} offsetter_name The name of the offsetter to add.
+     * @parameter {Real|Function} offsetter_target_pos The offsetters target position. If its a function, it should return a real.
+     * @parameter {Bool} offsetter_target_pos_is_func Whether or not the offsetters target position is a function or not.
+     * @parameter {Real|Function|Asset.GMAnimCurve} offsetter_speed The offsetters speed. If its a function, it should return a real. If it's an animation curve, it will use the normalized distance from the target offset as the x position on the animation curve channel. If the speed is 0, the offsetter will instantly snap to its target offset.
+     * @parameter {Constant.AssetType} offsetter_speed_type The type of the offsetters previously set speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.
+     * @parameter {Real} offsetter_speed_animcurve_channel (OPTIONAL) The index of which animation curve channel to use if the offsetters speed is an animation curve. Default is 0.
+     * @parameter {Real} offsetter_priority (OPTIONAL) The priority of this offsetter over others. If its priority is the same as others, their offsets will stack.
+     * @returns {String}
+     */
+    static OffsetterAdd = function(offsetter_name, offsetter_target_pos, offsetter_target_pos_is_func, offsetter_speed, offsetter_speed_type, offsetter_speed_animcurve_channel = 0, offsetter_priority = 0)
+    {
+        return offsetters.Add(offsetter_name, offsetter_target_pos, offsetter_target_pos_is_func, offsetter_speed, offsetter_speed_type, offsetter_speed_animcurve_channel, offsetter_priority);
+    }
+    
+    
+    /**
+     * Sets the given offsetters speed at which it increments to the target offset.
+     * @parameter {String} offsetter_name The name of the offsetter to set the speed of.
+     * @parameter {Real|Function|Asset.GMAnimCurve} offsetter_speed The speed to set. If its a function, it should return a real. If it's an animation curve, it will use the normalized distance from the target offset as the x position on the animation curve channel. If the speed is 0, the offsetter will instantly snap to its target offset.
+     * @parameter {Constant.AssetType} offsetter_speed_type The type of the offsetters previously set speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.
+     * @parameter {Real} offsetter_speed_animcurve_channel (OPTIONAL) The index of which animation curve channel to use if the given speed is an animation curve. Default is 0.
+     */
+    static OffsetterSpeedSet = function(offsetter_name, offsetter_speed, offsetter_speed_type, offsetter_speed_animcurve_channel = 0)
+    {
+        offsetters.SpeedSet(offsetter_name, offsetter_speed, offsetter_speed_type, offsetter_speed_animcurve_channel);
+    }
+    
+    
+    /**
+     * Sets the given offsetters offset to increment to.
+     * @parameter {String} offsetter_name The name of the offsetter to set the offset of.
+     * @parameter {Real|Function} offsetter_target_pos The target offset to set. If its a function, it should return a real.
+     * @parameter {Bool} offsetter_target_pos_is_func Whether or not if the previously set target offset is a function.
+     */
+    static OffsetterTargetSet = function(offsetter_name, offsetter_target_pos, offsetter_target_pos_is_func)
+    {
+        offsetters.TargetSet(offsetter_name, offsetter_target_pos, offsetter_target_pos_is_func);
+    }
+    
+    
+    /**
+     * Sets the given offsetters priority over other offsetters.
+     * @parameter {String} offsetter_name The name of the offsetter to set the priority of.
+     * @parameter {Real} offsetter_priority The priority to set. If its priority is the same as others, their offsets will stack.
+     */
+    static OffsetterPrioritySet = function(offsetter_name, offsetter_priority) 
+    {
+        offsetters.PrioritySet(offsetter_name, offsetter_priority);
+    }
+    
+    
+    /**
+     * Removes the given offsetter.
+     * @parameter {String} offsetter_name The name of the offsetter to remove.
+     * @returns {Bool}
+     */
+    static OffsetterRemove = function(offsetter_name)
+    {
+        return offsetters.Remove(offsetter_name);
+    }
+    
+    
+    /**
+     * Sets how much the axis shakes away from its target position.
+     * @parameter {Real} shake_magnitude How much the axis should shake.
+     * @parameter {Real|Function|Asset.GMAnimCurve} shake_deceleration How fast the axis' shaking should decelerate to the minimum shaking. (The default minimum shaking is 0). If its a function, it should return a real. It will use the normalized distance from the minimum shaking as x position on the animation curve channel.
+     * @parameter {Constant.AssetType} shake_deceleration_type The type of the previously set shaking celeration. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.
+     * @parameter {Real} deceleration_animcurve_channel (OPTIONAL) The index of which animation curve channel to use if the previously set shaking deceleration is an animation curve. Default is 0.
+     * @parameter {Real} shake_priority (OPTIONAL) The priority over other `ShakeSet()` calls while the axis' shaking is above the minimum shaking. Default is 0.
+     */
+    static ShakeSet = function(shake_magnitude, shake_deceleration, shake_deceleration_type, deceleration_animcurve_channel = 0, shake_priority = 0)
+    {
+        if (shake.priority > shake_priority && shake.pos > 0)
+            return false;
         
-        width = global.baseAppWidth * zoom;
-        height = global.baseAppHeight * zoom;
+        shake.pos = shake_magnitude;
+        shake.SpeedSet(shake_deceleration, shake_deceleration_type, deceleration_animcurve_channel);
+        shake.priority = shake_priority;
+    }
+    
+    
+    /**
+     * Sets the minimum of how much the axis shakes away from its target position.
+     * @parameter {Real} shake_minimum (OPTIONAL) The minimum shake to set. Default is 0.
+     */
+    static ShakeSetMin = function(shake_minimum = 0)
+    {
+        shake.targetPos = shake_minimum;
+    }
+    
+    
+    /**
+     * Sets the lock mode of the axis from the `CAM_LOCK` enum.
+     * @parameter {Real} lock_mode The lock mode to set.
+     */
+    static LockSet = function(lock_mode)
+    {
+        lock = lock_mode;
+    }
+    
+    /// @ignore
+    static Step = function(target_pos)
+    {
+        shake.Step();
+        offsetters.Step();
         
-        camera_set_view_size(id, width, height);
+        var offsetter_pos = offsetters.Evaluate(false);
+        var shake_mag = irandom_range(-shake.pos, shake.pos);
         
-        shake_mag = Approach(shake_mag, 0, shake_mag_deccel);
+        val.targetPos = target_pos;
+        if (lock == CAM_LOCK.OFF)
+            val.Step();
         
-        var target_exists = instance_exists(target);
-        
-        var cam_x_center = width / 2;
-        var cam_y_center = height / 2;
-        
-        if (!x_locked && target_exists)
-        {
-            x = (target.x + ArrayGetSum(x_offsets)) - cam_x_center;
-            x = clamp(x, 0, room_width - width);
-        }
-        
-        if (!y_locked && target_exists)
-        {
-            y = (target.y + ArrayGetSum(y_offsets)) - (50 + cam_y_center);
-            y = clamp(y, 0, room_height - height);
-        }
-         
-        var fin_x = x + irandom_range(-shake_mag, shake_mag);
-        var fin_y = y + irandom_range(-shake_mag, shake_mag);
-        
-        camera_set_view_pos(id, fin_x, fin_y);
-        
-        with (fmod_attr.position)
-        {
-            x = fin_x + cam_x_center;
-            y = fin_y + cam_y_center;
-        }
-        
-        fmod_studio_system_set_listener_attributes(viewport, fmod_attr);
+        pos = val.pos + shake_mag + offsetter_pos;
     }
 }
 
-function CameraDestroy(camera_to_delete)
+
+/**
+ * Creates a camera if there are less than 7 cameras already present.
+ * @parameter {Id.Instance|Array<Real>} follow_target (OPTIONAL) The ID of the instance to follow **OR** a 2 entry long array with the first entry representing the x position to point to and the second entry representing the y position to point to. Default is the current instances ID.
+ * @parameter {Real|Function|Asset.GMAnimCurve} follow_speed (OPTIONAL) The speed to set. If its a function, it should return a real. If it's an animation curve, it will use the normalized distance from the target position as the x position on the animation curve channel. If the speed is 0, the axis will instantly snap to its target position. Default is 0.
+ * @parameter {Constant.AssetType} follow_speed_type (OPTIONAL) The type of the previously set speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever. Default is 0.
+ */
+function CameraCreate(follow_target = id, follow_speed = 0, follow_speed_type = 0)
 {
-    var cam_index = array_get_index(global.cameras, camera_to_delete);
-    array_delete(global.cameras, cam_index, 1);
-    
-    view_visible[camera_to_delete.viewport] = false;
-    global.viewport_taken[camera_to_delete.viewport] = false;
+    with (InstanceCreate(0, 0, obj_camera))
+    {
+        followTarget = follow_target;
+        followSpeed = follow_speed;
+        followSpeedType = follow_speed_type;
+        
+        return id;
+    }
 }

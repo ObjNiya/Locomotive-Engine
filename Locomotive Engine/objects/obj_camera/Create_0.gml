@@ -156,9 +156,90 @@ ZoomRemove = function(zoom_name)
     return zoom.Remove(zoom_name);
 }
 
+////////
+// Angle
+////////
+
+anglers = new ApproacherGroup();
+
+/**
+ * Returns whether or not an angler with the given name exists.
+ * @parameter {String} angler_name The name of the angler to check for.
+ * @pure
+ */
+AnglerExists = function(angler_name)
+{
+    return anglers.Exists(angler_name);
+}
+
+
+/**
+ * Adds an angler to the axis position that will increment to the given offset at the given speed.
+ * @parameter {String} angler_name The name of the angler to add.
+ * @parameter {Real|Function} angler_target_pos The anglers target position. If its a function, it should return a real.
+ * @parameter {Bool} angler_target_pos_is_func Whether or not the anglers target position is a function or not.
+ * @parameter {Real|Function|Asset.GMAnimCurve} angler_speed The anglers speed. If its a function, it should return a real. If it's an animation curve, it will use the normalized distance from the target offset as the x position on the animation curve channel. If the speed is 0, the angler will instantly snap to its target offset.
+ * @parameter {Constant.AssetType} angler_speed_type The type of the anglers previously set speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.
+ * @parameter {Real} angler_speed_animcurve_channel (OPTIONAL) The index of which animation curve channel to use if the anglers speed is an animation curve. Default is 0.
+ * @parameter {Real} angler_priority (OPTIONAL) The priority of this angler over others. If its priority is the same as others, their offsets will stack.
+ * @returns {String}
+ */ 
+AnglerAdd = function(angler_name, angler_target_pos, angler_target_pos_is_func, angler_speed, angler_speed_type, angler_speed_animcurve_channel = 0, angler_priority = 0)
+{
+    return anglers.Add(angler_name, angler_target_pos, angler_target_pos_is_func, angler_speed, angler_speed_type, angler_speed_animcurve_channel, angler_priority);
+}
+
+
+/**
+ * Sets the given anglers speed at which it increments to the target offset.
+ * @parameter {String} angler_name The name of the angler to set the speed of.
+ * @parameter {Real|Function|Asset.GMAnimCurve} angler_speed The speed to set. If its a function, it should return a real. If it's an animation curve, it will use the normalized distance from the target offset as the x position on the animation curve channel. If the speed is 0, the angler will instantly snap to its target offset.
+ * @parameter {Constant.AssetType} angler_speed_type The type of the anglers previously set speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.
+ * @parameter {Real} angler_speed_animcurve_channel (OPTIONAL) The index of which animation curve channel to use if the given speed is an animation curve. Default is 0.
+ */
+AnglerSpeedSet = function(angler_name, angler_speed, angler_speed_type, angler_speed_animcurve_channel = 0)
+{
+    anglers.SpeedSet(angler_name, angler_speed, angler_speed_type, angler_speed_animcurve_channel);
+}
+
+
+/**
+ * Sets the given anglers offset to increment to.
+ * @parameter {String} angler_name The name of the angler to set the offset of.
+ * @parameter {Real|Function} angler_target_pos The target offset to set. If its a function, it should return a real.
+ * @parameter {Bool} angler_target_pos_is_func Whether or not if the previously set target offset is a function.
+ */
+AnglerTargetSet = function(angler_name, angler_target_pos, angler_target_pos_is_func)
+{
+    anglers.TargetSet(angler_name, angler_target_pos, angler_target_pos_is_func);
+}
+
+
+/**
+ * Sets the given anglers priority over other anglers.
+ * @parameter {String} angler_name The name of the angler to set the priority of.
+ * @parameter {Real} angler_priority The priority to set. If its priority is the same as others, their offsets will stack.
+ */
+AnglerPrioritySet = function(angler_name, angler_priority) 
+{
+    anglers.PrioritySet(angler_name, angler_priority);
+}
+
+
+/**
+ * Removes the given angler.
+ * @parameter {String} angler_name The name of the angler to remove.
+ * @returns {Bool}
+ */
+AnglerRemove = function(angler_name)
+{
+    return anglers.Remove(angler_name);
+}
 
 Step = function()
 {
+    camId = view_camera[viewport];
+    
     var zoom_amnt = 1;
 
     with (zoom)
@@ -167,10 +248,20 @@ Step = function()
         zoom_amnt = Evaluate(true);
     }
     
-    var width = global.baseAppWidth * zoom_amnt;
-    var height = global.baseAppHeight * zoom_amnt;
+    var width = global.baseAppWidth / zoom_amnt;
+    var height = global.baseAppHeight / zoom_amnt;
     
     camera_set_view_size(camId, width, height);
+    
+    var angle_amnt = 0;
+    
+    with (anglers)
+    {
+        Step();
+        angle_amnt = Evaluate(false);
+    }
+    
+    camera_set_view_angle(camId, angle_amnt);
     
     var target_x, target_y;
     
@@ -201,8 +292,11 @@ Step = function()
     var cam_center = width / 2;
     var cam_middle = height / 2;
     
-    xAxis.Step(target_x);
-    yAxis.Step(target_y);
+    if (mouse_check_button(mb_middle) || targetType != "none")
+    {
+        xAxis.Step(target_x);
+        yAxis.Step(target_y);
+    }
     
     x = clamp(xAxis.pos - cam_center, 0, room_width - width);
     y = clamp(yAxis.pos - cam_middle, 0, room_height - height);
@@ -217,7 +311,7 @@ Step = function()
     fmod_studio_system_set_listener_attributes(viewport, fmodAttr);
 }
 
-QuickLog("NUM: ", viewport)
+
 if (viewport > 7)
     exit;
 

@@ -103,7 +103,7 @@ ObjDepthSet([
     obj_treasurecatripi,
     obj_secretegg,
     obj_secretegg_spawn,
-    obj_exit_pointer,
+    obj_escapepointer,
     obj_patrick_pillar,
     obj_patrickblock,
     obj_cutoff

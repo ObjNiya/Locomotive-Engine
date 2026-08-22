@@ -3,7 +3,6 @@
   "%Name":"obj_camera",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_camera",
@@ -29,9 +28,9 @@
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"followTarget","filters":[
         "GMObject",
-      ],"listItems":[],"multiselect":false,"name":"followTarget","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[0, 0]","varDescription":"Which object/instance to follow.","varFriendlyName":"Target","varType":5,},
-    {"$GMObjectProperty":"v2","%Name":"followSpeed","filters":[],"listItems":[],"multiselect":false,"name":"followSpeed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"followSpeedType","filters":[],"listItems":[],"multiselect":false,"name":"followSpeedType","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":4,},
+      ],"listItems":[],"multiselect":false,"name":"followTarget","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[0, 0]","varDescription":"The ID of the instance to follow OR a 2 entry long array with the first entry representing the x position to point to and the second entry representing the y position to point to.","varFriendlyName":"Follow Target","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"followSpeed","filters":[],"listItems":[],"multiselect":false,"name":"followSpeed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varDescription":"How fast the camera can move to the instance it's following or the point it's pointing at.","varFriendlyName":"Follow Speed","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"followSpeedType","filters":[],"listItems":[],"multiselect":false,"name":"followSpeedType","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varDescription":"The type of the following speed. If it's a function, this should be `asset_script`, if it's an animation curve, this should be `asset_animationcurve`. If it's a real, this can be whatever.","varFriendlyName":"Follow Speed Type","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

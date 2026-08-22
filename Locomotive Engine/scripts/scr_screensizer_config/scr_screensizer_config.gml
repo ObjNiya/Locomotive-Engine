@@ -18,5 +18,5 @@ global.baseAppHeight = 540; // The base resolution height of the application. (T
 global.resizingMode = RESIZING_MODES.FIT; // How the application will be resized when the window size is changed.
 global.aspectRatio = [-1, -1]; // The aspect ratio of the application as an array. (e.x: [16, 9])
 global.adaptAspectRatio = false; // Whether or not to automatically adapt the applications aspect ratio to that of the monitor it's on.
-global.pixelPerfect = false; // Whether or not to increase the application's resolution or if to just scale it, if this variable is set to true it will just scale it.
+global.pixelPerfect = true; // Whether or not to increase the application's resolution or if to just scale it, if this variable is set to true it will just scale it.
 global.guiScale = 1; // The scale of the GUI in the application. (Works best with Pixel Perfect disabled).

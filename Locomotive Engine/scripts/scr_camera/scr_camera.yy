@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_camera",
   "parent":{
-    "name":"Essential",
-    "path":"folders/Scripts/Essential.yy",
+    "name":"Camera",
+    "path":"folders/Scripts/Essential/Camera.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,5 +1,5 @@
 /**
- * Enables the dissolve and passes in the given arguments into the according uniforms.
+ * Enables the dissolve shader and passes in the given arguments into the according uniforms.
  * @parameter {Real} amount By how much to dissolve the next things that are drawn as a scalar.
  * @parameter {Real} static_speed How fast the static looking effect moves as a scalar.
  */
