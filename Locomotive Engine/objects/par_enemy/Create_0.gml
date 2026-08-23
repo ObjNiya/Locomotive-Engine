@@ -55,6 +55,8 @@ spr_palette_index = 0;
 parryable = true;
 hp = 1;
 
+respawning = false;
+
 /////////////////////////////
 // Initialize various systems
 /////////////////////////////

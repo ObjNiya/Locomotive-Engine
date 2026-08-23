@@ -568,5 +568,7 @@
     {"name":"spr_techdifficulties_trans","order":2,"path":"sprites/spr_techdifficulties_trans/spr_techdifficulties_trans.yy",},
     {"name":"spr_throw_hitbox","order":3,"path":"sprites/spr_throw_hitbox/spr_throw_hitbox.yy",},
     {"name":"spr_tinyassmarxicouldsquishlikealittlebug","order":11,"path":"sprites/spr_tinyassmarxicouldsquishlikealittlebug/spr_tinyassmarxicouldsquishlikealittlebug.yy",},
+    {"name":"spr_tv_combo_damian","order":1,"path":"sprites/spr_tv_combo_damian/spr_tv_combo_damian.yy",},
+    {"name":"spr_tv_lap3_damian","order":2,"path":"sprites/spr_tv_lap3_damian/spr_tv_lap3_damian.yy",},
   ],
 }

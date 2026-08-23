@@ -42,8 +42,8 @@ function StatePlayerThrowStep()
         movespeed = 0;
         vsp = -6;
         camera.shake_set(3, 0.05);
-        ComboSetTime(99);
-
+        ComboSetTime(global.comboTimerMax);
+		
         with (carryingId)
         {
             thrownAngle = 0;

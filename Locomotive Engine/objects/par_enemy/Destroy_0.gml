@@ -35,4 +35,10 @@ array_foreach(global.cameras, function(camera, index) {
     camera.shake_set(3, 0.05);
 });
 
-SaveroomAdd();
+if (!respawning)
+{
+	ComboAdd(1, global.comboTimerMax);
+	SaveroomAdd();
+}
+else
+	ComboSetTime(1);
