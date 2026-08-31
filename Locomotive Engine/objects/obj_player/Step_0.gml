@@ -1,6 +1,14 @@
 HITSTUN_STEP;
 global.leadingPlayer = id;
+
+
+// Decrement Timers
+
 invincibilityTime--;
+grabdashcloudPartTimer--;
+dashcloudPartTimer--;
+mach3cloudPartTimer--;
+horizRingPartTimer--;
 
 CoyoteTimeStep();
 scr_collision();
@@ -28,7 +36,8 @@ var TechdifficultiesEnd = function()
 with (techdifficulties)
 {
     endEvent = TechdifficultiesEnd;
-    DepthSet(DEPTHS.HIGHEST);
+    
+    SetLayer(PRIORITY.HIGH, false);
 }
 
 visible = false;
@@ -38,3 +47,4 @@ camera.ShakeSet(3, 0.05, 0);
 
 sound_instance_one_shot(sfx_player_groundpound_land, x, room_height - 100);
 SmcSetState("Nothing");
+

@@ -2,6 +2,7 @@ HITSTUN_STEP;
 
 invincibleBuffer--;
 unstompableTime--;
+dashcloudPartTimer--;
 
 scr_collision();
 SmcRunEvent("Step");

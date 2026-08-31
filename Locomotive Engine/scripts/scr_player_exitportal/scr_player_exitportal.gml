@@ -30,7 +30,7 @@ function StatePlayerExitportalStep()
             visualYScale = 1;
             
             time_source_stop(blurAfterimageTimer);
-            create_particle(x, y + 45, obj_bang_particle);
+            PartSpawn(x, bbox_bottom, PART_TYPES.BANG);
             sound_instance_one_shot(sfx_player_bananaslip_bump, x, y);
             
             sprite_index = spr_bananaslip_land;

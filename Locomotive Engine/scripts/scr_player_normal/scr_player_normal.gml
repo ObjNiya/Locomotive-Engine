@@ -31,6 +31,7 @@ function StatePlayerNormalStep()
     // General Logic
     /////////////////////////////
     
+    static note_part_timer = 6;
     static dance_hold_require = 10; // How many frames of holding taunt should it take to spawn the beatbox?
     static idle_anims = [spr_idle_animation1, spr_idle_animation2]; // Which idle animations may the player randomly play?
     static idle_anims_count = 2; // How many random idle animations are available?
@@ -83,7 +84,7 @@ function StatePlayerNormalStep()
     var sign_input_x = sign(input_x);
     var approach_spd = (movespeed > max_speed) ? deccel : accel;
 
-    movespeed = Approach(movespeed, (ANALOG_CONTROLS) ? max_speed * abs(input_x) : abs(sign_input_x), approach_spd);
+    movespeed = Approach(movespeed, max_speed * abs(input_x), approach_spd);
     if (sign_input_x != dir)
     {
         dir = sign_input_x;
@@ -117,7 +118,7 @@ function StatePlayerNormalStep()
         
         if (sprite_index != spr_stomp && sign(vsp) == 1 && StompEnemy(enemy, self))
         {
-            InstanceCreate(x, y, obj_stomp_stars_particle);
+            PartSpawn(x, y, PART_TYPES.STOMPSTARS);
             SpriteSet(spr_stomp, 0);
             
             vsp = (InputCheck(INPUT_VERB.JUMP)) ? -14 : -9;
@@ -212,16 +213,16 @@ function StatePlayerNormalStep()
         if (time_source_get_state(blurAfterimageTimer) != time_source_state_active)
             time_source_start(blurAfterimageTimer); 
         
-        if (--noteParticleTimer <= 0)
+        if (--note_part_timer <= 0)
         {
-            create_particle(x + irandom_range(-70, 70), y + irandom_range(-70, 70), obj_note_particle, false);
-            noteParticleTimer = 6;
+            PartSpawn(x, y, PART_TYPES.NOTES, 70, 70);
+            note_part_timer = 6;
         }
         
         if (!instance_exists(obj_beatbox) || (instance_exists(obj_beatbox) && obj_beatbox.player != id))
         {
-            InstanceCreate(x, y, obj_puff_particle);
-            
+            PartSpawn(x, y, PART_TYPES.PUFF);
+
             with (InstanceCreate(x, y, obj_beatbox))
             {
                 vsp = -11;
@@ -242,7 +243,7 @@ function StatePlayerNormalStep()
         image_index = 0;
         sprite_index = (sign_input_x == 0) ? spr_land : spr_land_walk;
         
-        InstanceCreate(x, y + 45, obj_land_cloud_particle);
+        PartSpawn(x, bbox_bottom, PART_TYPES.LANDCLOUD);
         sound_instance_one_shot(sfxStep, x, y);
     }
     else if (EqualsToAny(sprite_index, spr_hauling_jump, spr_hauling_fall))
@@ -250,7 +251,7 @@ function StatePlayerNormalStep()
         land_spr = true;
         
         SpriteSet(spr_hauling_land, 0);
-        InstanceCreate(x, y + 45, obj_land_cloud_particle);
+        PartSpawn(x, bbox_bottom, PART_TYPES.LANDCLOUD);
     }
     
     var machslide_spr = (sprite_index == spr_machslide_end);

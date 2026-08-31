@@ -23,7 +23,7 @@ function StatePlayerTauntCreate()
     }
     
     SpriteSet(spr_taunt, M_RandomInt(sprite_get_number(spr_taunt)));
-    create_particle(x, y + 45, obj_taunt_particle);
+    tauntsparkId = layer_sprite_create(PriorityGetLay(spr_tauntspark_effect), x, y, spr_tauntspark_effect); 
     
     sound_instance_one_shot(sfx_player_taunt, x, y);
 }
@@ -54,4 +54,5 @@ function StatePlayerTauntDestroy()
     hsp = storedHsp;
     movespeed = storedMovespeed;
     
+    layer_sprite_destroy(tauntsparkId);
 }

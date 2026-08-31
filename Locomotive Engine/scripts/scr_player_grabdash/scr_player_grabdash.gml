@@ -111,8 +111,8 @@ function StatePlayerGrabdashStep()
         
         sound_instance_one_shot(sfx_player_bumpwall, x, y);
         sound_instance_stop(sndGrabdash, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-        create_particle(x + (10 * image_xscale), y + 10, obj_bump_particle, false);
-        
+        PartSpawn(x + (10 * image_xscale), y + 10, PART_TYPES.BUMPSPARK);
+  
         vsp = -4;
         grounded = false;
         
@@ -130,7 +130,11 @@ function StatePlayerGrabdashStep()
     if (grabdashAirborne && sprite_index == spr_grabdash)
         SpriteSet(spr_grabdash_end, 0);
     
-    create_particle_repeating(x, y + 45, obj_slide_cloud_particle);
+    if (grabdashcloudPartTimer > 0)
+        return;
+    
+    PartSpawnDirX(x, bbox_bottom, PART_TYPES.GRABDASHCLOUD, dir);
+    grabdashcloudPartTimer = 16;
 }
 
 /// @ignore

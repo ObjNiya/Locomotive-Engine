@@ -64,7 +64,7 @@
     },
     "name":"bg_doom_cmtry_1",
     "playback":1,
-    "playbackSpeed":20.0,
+    "playbackSpeed":21.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

@@ -3,7 +3,7 @@ function StatePlayerThrowCreate()
 {
     if (sprite_index == spr_swingding_throw)
         return;
-    image_speed = 1.05;
+
     if (sprite_index == spr_throw_uppercut)
         return;
     
@@ -52,12 +52,10 @@ function StatePlayerThrowStep()
             if (other.sprite_index == other.spr_throw_uppercut)
                 thrownAngle = 270;
             
-            InstanceCreate(x, y, obj_parry_particle);
-            repeat (3)
-                InstanceCreate(x, y, obj_slap_star_debris);
-            repeat (3)
-                InstanceCreate(x, y, obj_enemy_debris);
-            
+            PartSpawn(x, y, PART_TYPES.PARRYSPARK);
+            PartSpawn(x, y, PART_TYPES.SLAPSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
+            PartSpawn(x, y, PART_TYPES.ENEMY_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
+
             sound_instance_one_shot(sfx_playerpunch, x, y);
             sound_instance_one_shot(sfx_player_killingblow, x, y);
             
@@ -65,7 +63,7 @@ function StatePlayerThrowStep()
             SmcSetState("Thrown");
             
             call_later(1, time_source_units_frames, function() {
-                InstanceCreate(x, y, obj_bang_particle);
+                PartSpawn(x, y, PART_TYPES.BANG);
             });
         }
         

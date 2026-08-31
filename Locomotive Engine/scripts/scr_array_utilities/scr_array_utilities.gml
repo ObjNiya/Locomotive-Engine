@@ -31,7 +31,7 @@ function ArrayGetSum(array)
  */
 function ArrayInBounds(array, index)
 {
-    return (index >= 0 || index < array_length(array) - 1);
+    return (index >= 0 && index < array_length(array) - 1);
 }
 
 

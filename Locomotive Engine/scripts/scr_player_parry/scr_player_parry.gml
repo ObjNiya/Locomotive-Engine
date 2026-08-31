@@ -6,7 +6,6 @@ function StatePlayerParryCreate()
     
     sprite_index = choose(spr_parry1, spr_parry2, spr_parry3, spr_parry4);
     image_index = 0;
-    image_speed = 1.15;
     
     FlashEffectSet();
 }
@@ -51,16 +50,13 @@ function StatePlayerParryStep()
                 vsp = -6;
         }
         
-        repeat (3)
-            InstanceCreate(x, y, obj_slap_star_debris);
-        repeat (3)
-            InstanceCreate(x, y, obj_enemy_debris);
-        
-        InstanceCreate(x, y, obj_parry_particle);
-        InstanceCreate(x, y, obj_puff_particle);
-        
+        PartSpawn(x, y, PART_TYPES.SLAPSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
+        PartSpawn(x, y, PART_TYPES.ENEMY_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
+        PartSpawn(x, y, PART_TYPES.PARRYSPARK);
+        PartSpawn(x, y, PART_TYPES.PUFF);
+
         call_later(1, time_source_units_frames, function() {
-            InstanceCreate(x, y, obj_bang_particle);
+            PartSpawn(x, y, PART_TYPES.BANG);
         });
         
         call_later(5, time_source_units_frames, function() {

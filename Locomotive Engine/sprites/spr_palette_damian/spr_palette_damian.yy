@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Palettes",
-    "path":"folders/Sprites/Player/Damian/Palettes.yy",
+    "name":"Damian",
+    "path":"folders/Sprites/Player/Damian.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

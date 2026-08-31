@@ -21,8 +21,11 @@ function StateEnemyThrownStep()
         create_afterimage(x, y, obj_blur_afterimage);
     } 
     
-    if (abs(hsp) > 4 && grounded)
-        create_particle_repeating(x, y, obj_mach2_cloud_particle)
+    if (dashcloudPartTimer <= 0 && abs(hsp) > 4 && grounded)
+    {
+        PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
+        dashcloudPartTimer = 13;
+    }
     
     BlocksDestroy(x + hsp, y, true, false, [obj_metalblock]);
     BlocksDestroy(x, y + vsp, false, true, [obj_metalblock]);

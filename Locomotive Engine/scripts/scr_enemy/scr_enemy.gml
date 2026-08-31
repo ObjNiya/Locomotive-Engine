@@ -70,13 +70,8 @@ function StunEnemy(enemy_id, attacker_id)
         SmcSetState("Stunned");
         
         sound_instance_one_shot(sfx_player_mach2_bump, x, y);
-        InstanceCreate(x, y, obj_bang_particle);
-        
-        repeat (2)
-        {
-            with (InstanceCreate(x, y, obj_slap_star_debris))
-                vspeed = irandom_range(-6, -11);
-        }
+        PartSpawn(x, y, PART_TYPES.BANG);
+        PartSpawn(x, y, PART_TYPES.SLAPSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 2);
         
         return true;
     }

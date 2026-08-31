@@ -8,9 +8,11 @@
  */
 function InstanceCreate(x, y, obj, var_struct = {})
 {
-    
-    with (instance_create_depth(x, y, global.baseDepth + ObjDepthGet(obj), obj, var_struct))
+    with (instance_create_depth(x, y, 0, obj, var_struct))
+    {
+        SetLayer();
         return id;
+    }
 }
 
 

@@ -1,14 +1,17 @@
 /// @ignore
 function StatePlayerSjumpCreate()
 {
+    if (sprite_index != spr_springlaunch && sprite_index != spr_sjump_cancel_prepare) 
+        SpriteSet(spr_sjump, 0);
     
+    if (sprite_index != spr_sjump_cancel_prepare)
+    {
+        vsp = -12;
+        grav = -0.1;
+    }
     
-    SpriteSet(spr_sjump, 0);
-    
-    vsp = -12;
     hsp = 0;
     movespeed = 0;
-    grav = -0.1;
     grounded = false;
     
     instakillHitbox.canAttack = true;
@@ -17,10 +20,10 @@ function StatePlayerSjumpCreate()
     time_source_start(blurAfterimageTimer);
     time_source_start(machAfterimageTimer);
     time_source_start(airCloudParticleTimer);
-    time_source_start(upwardsWooshPartTimer);
 
-    InstanceCreate(x, y, obj_explosion_particle_alt);
-    
+    if (sprite_index != spr_sjump_cancel_prepare)
+        PartSpawn(x, y, PART_TYPES.EXPLO);
+
     if (sound_instance_get_playback_state() != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
         sound_instance_start(sndSuperjump);
     
@@ -28,73 +31,79 @@ function StatePlayerSjumpCreate()
 }
 
 /// @ignore
-function StatePlayerSjumpStep()
+function StatePlayerSjumpCancel()
 {
-    BlocksDestroy(x, floor(y + vsp + grav), false, true);
+    vsp = 0;
+    grav = 0;
     
-    if (PlayerDoInstakill())
-        vsp = -12;
-    
-    if (sprite_index == spr_springlaunch)
-    {
-        BlocksDestroy(x, floor(y + vsp + grav), false, true, [obj_metalblock]);
-        PlayerDoCeilingsplat();
-        
-        return;
-    }
-    
-    if ((InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH)) && sprite_index == spr_sjump)
-    {
-        SpriteSet(spr_sjump_cancel_prepare, 0);
-        
-        sound_instance_stop(sndSuperjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
-        sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
-        
-        vsp = 0;
-        grav = 0;
-    }
-    
-    if (sprite_index == spr_sjump && PlayerDoCeilingsplat())
-        return;
-    
-    if (sprite_index != spr_sjump_cancel_prepare)
-        return;
+    SpriteSet(spr_sjump_cancel_prepare, 0);
+     
+    sound_instance_stop(sndSuperjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
+    sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
     
     time_source_stop(blurAfterimageTimer);
     time_source_stop(machAfterimageTimer);
     time_source_stop(airCloudParticleTimer);
-    time_source_stop(upwardsWooshPartTimer);
+}
 
-    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+/// @ignore
+function StatePlayerSjumpStep()
+{
+    static ring_part_timer = 15;
     
-    if (dir == 0)
-        dir = sign(image_xscale);
-    else
-        image_xscale = dir;
-    
-    with (carryingId)
+    if (sprite_index == spr_sjump_cancel_prepare)
     {
-        x = other.x + 38 * other.image_xscale;
-        y = other.y - 16;
+        dir = Side(InputX(INPUT_CLUSTER.NAVIGATION), image_xscale);
+        image_xscale = dir;
+        
+        with (carryingId)
+        {
+            x = other.x + 38 * other.image_xscale;
+            y = other.y - 16;
+        }
+        
+        if (!AnimationEnd(spr_sjump_cancel_intro))
+            return;
+        
+        var prev_carrying_id = carryingId;
+        carryingId = noone;
+        
+        PlayerDoInstakill(prev_carrying_id);
+        SmcSetState("Mach");
+        
+        vsp = -5;
+        movespeed = 12;
+        
+        sprite_index = spr_sjump_cancel_intro;
+        image_speed = 1;
+        
+        FlashEffectSet();
+        PartSpawnDirX(x, y, PART_TYPES.RING, image_xscale);
+        
+        return;
     }
     
-    if (!AnimationEnd())
+    BlocksDestroy(x, floor(y + vsp + grav), false, true, [obj_metalblock]);
+    
+    if (PlayerDoInstakill())
+        vsp = -12;
+    if (PlayerDoCeilingsplat())
         return;
     
-    var prev_carrying_id = carryingId;
-    carryingId = noone;
+    if (ring_part_timer-- <= 0) 
+    {
+        PartSpawnDirY(x + 12, y, PART_TYPES.RING, -1);
+        ring_part_timer = 15;
+    }
     
-    PlayerDoInstakill(prev_carrying_id);
-    SmcSetState("Mach");
+    if (sprite_index == spr_springlaunch)
+    {
+        BlocksDestroy(x, floor(y + vsp + grav), false, true);
+        return;
+    }
     
-    vsp = -5;
-    movespeed = 12;
-    
-    sprite_index = spr_sjump_cancel_intro;
-    image_speed = 1;
-    
-    FlashEffectSet();
-    create_particle(x, y, obj_woosh_particle);
+    if (InputPressed(INPUT_VERB.MACHRUN) || InputPressed(INPUT_VERB.GRABDASH))
+        StatePlayerSjumpCancel();
 }
 
 /// @ignore
@@ -107,7 +116,6 @@ function StatePlayerSjumpDestroy()
     time_source_stop(blurAfterimageTimer);
     time_source_stop(machAfterimageTimer);
     time_source_stop(airCloudParticleTimer);
-    time_source_stop(upwardsWooshPartTimer);
     
     sound_instance_stop(sndSuperjump, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

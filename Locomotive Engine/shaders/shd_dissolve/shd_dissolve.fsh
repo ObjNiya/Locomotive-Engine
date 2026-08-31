@@ -4,6 +4,7 @@
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
+/// @inspector slider min=0.0 max=1.0 step=0.01
 uniform float u_fdissolveAmt;
 uniform float u_fTime;
 

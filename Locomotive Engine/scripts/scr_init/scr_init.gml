@@ -1,4 +1,10 @@
 /**
+ * Game properties
+ */
+
+#macro FPS 60
+
+/**
  * Compile Configurations
  */
 
@@ -13,13 +19,6 @@
 #macro FIX_HIGHJUMP false // Toggles being able to high jump by pressing several keys on the same frame.
 #macro FIX_POPUP false // Toggles climbing to the end of a wall suspending you in the air for a moment.
 #macro FIX_MISSING_PARRY_HITSTUN true // Toggles missing parry hitstun on the player.
-
-/**
- * Enable/Disable minor Enhancements
- */
-
-#macro RANDOMIZE_COLLECTABLE_FRAME_OFFSET true // Toggles collectables having a random starting frame offset.
-#macro ANALOG_CONTROLS true // Toggles analog controls for more of the players movement.
 
 /**
  * Code Shortcuts
@@ -66,7 +65,7 @@ function InitGlobals()
     {
         // Internal global variables
         
-        __ImportantObjs__ = [obj_game_manager, obj_layer_manager, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_camera_manager, obj_hud_timer, obj_parallax_manager, __InputUpdateController];
+        __ImportantObjs__ = [obj_game_manager, obj_priority_manager, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_camera_manager, obj_particle_manager, obj_hud_timer, obj_parallax_manager, __InputUpdateController];
         
         // Secret Tiles TODO: MOVE
         
@@ -93,7 +92,7 @@ function InitGlobals()
         fntSmall = font_add_sprite_ext(spr_fnt_small, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.,_1234567890:?", 1, 0);    
     
         fntPointsbook = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
-        fntPointsnum = font_add_sprite_ext(spr_fnt_points, "1234567890", 1, 0);
+        fntPointsnum = font_add_sprite_ext(spr_fnt_points, "1234567890-+", 1, 0);
         fntCombo = font_add_sprite_ext(spr_combobar_font, "0123456789", 1, 0);
     
         // Level data
@@ -105,13 +104,13 @@ function InitGlobals()
             InstanceCreate(obj_player.x, obj_player.y, obj_marx);
         }
         
-        showtimeTimer = time_source_create(time_source_game, 60, time_source_units_seconds, showtimeTimerFunc);
+        showtimeTimer = time_source_create(time_source_global, 60, time_source_units_seconds, showtimeTimerFunc);
         
         comboTimerFunc = function()
         {
             global.combo = 0;
         }
-        comboTimer = time_source_create(time_source_game, 6.75, time_source_units_seconds, comboTimerFunc);
+        comboTimer = time_source_create(time_source_global, 6.75, time_source_units_seconds, comboTimerFunc);
             
         plushies = {
             waddledoo: false,

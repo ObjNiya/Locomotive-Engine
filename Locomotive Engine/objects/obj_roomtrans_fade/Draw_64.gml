@@ -2,8 +2,8 @@ draw_set_color(image_blend);
 
 if faceTransition
 {
-	var _player_pos_x = playerId.x - camera_get_view_x(view_camera[playerId.camera.id]); // Get the player position relative to the screen
-	var _player_pos_y = playerId.y - camera_get_view_y(view_camera[playerId.camera.id]);
+	var _player_pos_x = playerId.x - camera_get_view_x(playerId.camera.camId); // Get the player position relative to the screen
+	var _player_pos_y = playerId.y - camera_get_view_y(playerId.camera.camId);
 	var _x = map(image_alpha, 0, 0.9, GuiCalcX(fa_center), _player_pos_x);
 	var _y = map(image_alpha, 0, 0.9, GuiCalcY(fa_middle), _player_pos_y);
 	var _size = max(map(image_alpha, 0, 1, 18, -1), 0);

@@ -2,7 +2,6 @@
 function StatePlayerSwingdingCreate()
 {
     SpriteSet(spr_swingding, 0);
-    image_speed = 1.15;
     
     deccel = 0.25;
     instakillHitbox.canAttack = true;
@@ -54,7 +53,7 @@ function StatePlayerSwingdingStep()
     }
     
     var x_offset = 0;
-    var targ_depth = DEPTHS.LOW;
+    var targ_depth = PRIORITY.LOW;
     
     switch (floor(image_index))
     {
@@ -66,22 +65,22 @@ function StatePlayerSwingdingStep()
             break;
         case 3:
             x_offset = -50;
-            targ_depth = DEPTHS.HIGH;
+            targ_depth = PRIORITY.HIGH;
             break;
         case 4:
             x_offset = -25;
-            targ_depth = DEPTHS.HIGH;
+            targ_depth = PRIORITY.HIGH;
             break;
         case 5:
-            targ_depth = DEPTHS.HIGH;
+            targ_depth = PRIORITY.HIGH;
             break;
         case 6:
             x_offset = 25;
-            targ_depth = DEPTHS.HIGH;
+            targ_depth = PRIORITY.HIGH;
             break;
         case 7:
             x_offset = 50;
-            targ_depth = DEPTHS.HIGH;
+            targ_depth = PRIORITY.HIGH;
             break;
     }
     
@@ -91,7 +90,8 @@ function StatePlayerSwingdingStep()
     {
         y = floor(other.y);
         x = floor(other.x + x_offset);
-        DepthSet(targ_depth);
+        
+        SetLayer(targ_depth, false);
     }
 }
 

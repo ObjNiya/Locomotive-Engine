@@ -8,10 +8,10 @@ destroySnd = sfx_destroy_block;
 paletteSpr = -1;
 paletteIndex = 0;
 
-debrisSpr = spr_block_debris;
+debrisPart = PART_TYPES.BLOCK_DEBRIS;
 debrisAmnt = 2;
 
-dustSpr = spr_block_dust_particle;
+dustPart = PART_TYPES.BLOCKDUST;
 dustAmnt = 1;
 
 alarm[0] = 1;

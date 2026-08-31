@@ -5,7 +5,7 @@ if (distance_to_pos(x, y, obj_player.x, obj_player.y, 500, 100) && !visible)
 {
     visible = true;
     image_index = 0;
-    image_speed = 1.15;
+    image_speed = 1;
 }
 else if (!visible || floor(image_index) <= 5 || instance_exists(enemyId))
     exit;
@@ -18,8 +18,8 @@ with (enemyId)
     x = other.x;
     y = other.y;
     
-    create_particle(x, y, obj_puff_particle);
-    
+    PartSpawn(x, y, PART_TYPES.PUFF);
+
     if (!showtimeSpawnStun)
         exit;
     

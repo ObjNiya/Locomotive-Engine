@@ -43,7 +43,7 @@
   "tracks":[
     {"$GMGraphicTrack":"","%Name":"Eye Glint","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<AssetSpriteKeyframe>":"","Keyframes":[
           {"$Keyframe<AssetSpriteKeyframe>":"","Channels":{
-              "0":{"$AssetSpriteKeyframe":"","Id":{"name":"spr_kungfu_particle","path":"sprites/spr_kungfu_particle/spr_kungfu_particle.yy",},"resourceType":"AssetSpriteKeyframe","resourceVersion":"2.0",},
+              "0":{"$AssetSpriteKeyframe":"","Id":{"name":"spr_spark_part","path":"sprites/spr_spark_part/spr_spark_part.yy",},"resourceType":"AssetSpriteKeyframe","resourceVersion":"2.0",},
             },"Disabled":false,"id":"0684d54a-9755-4407-a03a-c6c74c1de3f7","IsCreationKey":false,"Key":16.0,"Length":12.0,"resourceType":"Keyframe<AssetSpriteKeyframe>","resourceVersion":"2.0","Stretch":false,},
         ],"resourceType":"KeyframeStore<AssetSpriteKeyframe>","resourceVersion":"2.0",},"modifiers":[
         {"$LockedModifier":"","resourceType":"LockedModifier","resourceVersion":"2.0",},

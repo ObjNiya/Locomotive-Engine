@@ -28,8 +28,11 @@ function StateEnemyStunnedStep()
     movespeed = Approach(movespeed, 0, 0.3);
     hsp = movespeed * dir;
     
-    if (movespeed > 4 && grounded)
-        create_particle_repeating(x, y + 43, obj_machturn_particle);
+    if (dashcloudPartTimer > 0)
+        return;
+    
+    PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
+    dashcloudPartTimer = 13;
 }
 
 /// @ignore
@@ -42,6 +45,6 @@ function StateEnemyStunnedDestroy()
 /// @ignore
 function StateEnemyStunnedDraw()
 {
-    stunBird.Step();
-    stunBird.Draw(x, y - 40);
+    stunBird.SetPosition(x, y - 40);
+    stunBird.Draw();
 }

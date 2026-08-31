@@ -39,7 +39,7 @@ function StateEnemyWalkStep()
     if (!AnimationEnd() || !grounded)
         return;
     
-    InstanceCreate(x, y + 43, obj_cloud_particle);
+    PartSpawn(x, bbox_bottom, PART_TYPES.CLOUD);
     image_index = 0;
 }
 

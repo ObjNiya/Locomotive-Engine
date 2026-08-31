@@ -29,6 +29,15 @@ function StatePlayerWallclimbStep()
     
     BlocksDestroy(x, floor(y + (vsp - vertAccel)), false, true, [obj_metalblock]);
 
+    static cloud_timer = 10;
+    
+    if (--cloud_timer <= 0)
+    {
+        cloud_timer = 10;
+        
+        PartSpawn(x + (image_xscale * 10), y + 43, PART_TYPES.CLOUD);
+    }
+    
     if (!InputCheck(INPUT_VERB.MACHRUN) && wallclimbGrabTime <= 0)
     {
         SmcSetState("Normal");
@@ -84,7 +93,7 @@ function StatePlayerWallclimbStep()
         vsp = 0;
         
         SmcSetState("Mach");
-        create_particle(x, y + 43, obj_jump_particle, false);
+        PartSpawn(x, bbox_bottom, PART_TYPES.JUMPCLOUD);
     }
 }
 

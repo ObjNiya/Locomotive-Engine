@@ -18,7 +18,6 @@ whitenoiseNextSprite = spr_tv_idle_damian;
 
 comboBar = { count: 0, x: 0, y: 0, xOffset: 0, yOffset: 0, vsp: 0, state: "Fall" };
 comboSkull = new Animator(spr_combobar_skull);
-comboSkull.x = 0; comboSkull.y = 0;
 comboPlaceholderAnimShow = false // Makes the combo meter do it's animations. Set to false if it gets annoying.
 
 whitenoise.imageAlpha = 0
@@ -28,4 +27,4 @@ exprTimerFunc = function()
     TvDoWhitenoise(id, "Idle", playerId.spr_tv_idle);
 }
 
-exprTimer = time_source_create(time_source_game, 60, time_source_units_frames, exprTimerFunc);
+exprTimer = time_source_create(time_source_global, 60, time_source_units_frames, exprTimerFunc);

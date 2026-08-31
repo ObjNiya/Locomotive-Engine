@@ -9,8 +9,7 @@ with (comboBar)
 
 with (comboSkull)
 {
-	x = other.comboBar.x;
-	y = other.comboBar.y;
+    SetPosition(other.comboBar.x, other.comboBar.y);
 	
 	if (other.comboPlaceholderAnimShow)
 		x += irandom_range(-50, 50);
@@ -51,6 +50,7 @@ draw_reset_mask();
 
 draw_self();
 
-whitenoise.Draw(x, y);
+whitenoise.SetPosition(x, y);
+whitenoise.Draw();
 
 SmcRunEvent("Draw");

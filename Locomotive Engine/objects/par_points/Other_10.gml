@@ -1,10 +1,5 @@
 hud_pointsbook_add_collect_effect(value);
 PointsNumberCreate(value);
 sound_instance_one_shot(eventPath, x, y);
+SaveroomAdd();
 instance_destroy();
-
-if (IsSecret())
-{
-    with (InstanceCreate(x, y, obj_ghostcollectable))
-        sprite_index = other.sprite_index;
-}

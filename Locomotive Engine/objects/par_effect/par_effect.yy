@@ -2,8 +2,10 @@
   "$GMObject":"",
   "%Name":"par_effect",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":40,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"par_effect",
@@ -26,7 +28,13 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"onGui","filters":[],"listItems":[],"multiselect":false,"name":"onGui","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varDescription":"Whether or not the effect should be drawn on the GUI.","varFriendlyName":"On GUI","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"paletteSpr","filters":[
+        "GMSprite",
+      ],"listItems":[],"multiselect":false,"name":"paletteSpr","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varDescription":"The palette sprite to use if the effect should be paletted.","varFriendlyName":"Palette Sprite","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"paletteIndex","filters":[],"listItems":[],"multiselect":false,"name":"paletteIndex","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varDescription":"The palette index on the palette sprite if the effect should be paletted.","varFriendlyName":"Palette Index","varType":0,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,

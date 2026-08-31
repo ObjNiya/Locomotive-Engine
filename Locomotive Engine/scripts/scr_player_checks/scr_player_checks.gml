@@ -171,16 +171,12 @@ function PlayerSjump()
 
 
 /**
- * Returns whether or not the current player instance isn't grounded, at mach 3 or higher and is pressing superjump, permitting them to fly with their cape.
+ * Returns whether or not the current player instance isn't grounded, at mach 3 or higher and is holding up + pressing jump, permitting them to fly with their cape.
  * If superjump isn't bound to anything, it will check if up is held instead.
  */
 function PlayerCape()
 {
-    grounded = !grounded;
-    var result = PlayerSjump();
-    grounded = !grounded;
-    
-    return result;
+    return InputPressed(INPUT_VERB.JUMP) && InputCheck(INPUT_VERB.UP) && !grounded && PlayerGetMachStage() >= 3;
 }
 
 

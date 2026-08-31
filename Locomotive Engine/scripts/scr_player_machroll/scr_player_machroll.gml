@@ -1,14 +1,10 @@
 /// @ignore
 function StatePlayerMachrollCreate()
 {
-    
-    
     SpriteSet((sprite_index == spr_rolling_jump) ? spr_backslide_land : spr_machroll, 0);
     mask_index = spr_crouchmask;
     
-    with (InstanceCreate(x, y + 45, obj_burst_cloud_particle))
-        image_xscale = other.image_xscale;
-    
+    PartSpawnDirX(x, bbox_bottom, PART_TYPES.STARTCLOUD, dir);
     time_source_start(blurAfterimageTimer);
     
     if (sound_instance_get_playback_state(sndMachroll) != FMOD_STUDIO_PLAYBACK_STATE.PLAYING)
@@ -18,6 +14,8 @@ function StatePlayerMachrollCreate()
 /// @ignore
 function StatePlayerMachrollStep()
 {
+    static dashcloud_part_timer = 14;
+    
     var x_pos = (sign(hsp) == 1) ? ceil(x + hsp) : floor(x + hsp);
     BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
     
@@ -34,6 +32,7 @@ function StatePlayerMachrollStep()
         {
             SmcSetState("Mach");
             SpriteSet(spr_machroll_getup, 0);
+            PartSpawnDirX(x, bbox_bottom, PART_TYPES.STARTCLOUD, dir);
             sound_instance_start(sndRollGetup);
             
             return;
@@ -50,8 +49,13 @@ function StatePlayerMachrollStep()
             SpriteSet(spr_backslide_land, 0);
         
         AnimationEndExt((sprite_index == spr_backslide_land), spr_backslide);
-        create_particle_repeating(x, y + 45, obj_mach2_cloud_particle);
-        
+    
+        if (dashcloudPartTimer <= 0)
+        {
+            PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
+            dashcloudPartTimer = 13;
+        }
+
         return;
     }
     

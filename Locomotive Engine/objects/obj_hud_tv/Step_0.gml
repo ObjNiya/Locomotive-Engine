@@ -7,8 +7,6 @@ if (playerId.x > (room_width - 224) && playerId.y < 187)
 else
     yOffset = Approach(yOffset, 80, _spd);
 
-whitenoise.Step();
-
 with (comboBar)
 {
 	xOffset = sin((current_time * 0.001) / 2) * 5; // Because there isn't any 'wave' function, it has to be done like this. Thanks shaggy.
@@ -43,5 +41,3 @@ with (comboBar)
 			break;
 	}
 }
-
-comboSkull.Step();

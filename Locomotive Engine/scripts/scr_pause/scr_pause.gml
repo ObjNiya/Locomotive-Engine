@@ -1,3 +1,11 @@
+with (global)
+{
+    pausedTimeSrces = [];
+    
+    canPause = true;
+    gamePaused = false;
+}
+
 /**
  * Pauses gameplay by deactivating every instance, excluding the essential ones.
  * @parameter {Bool} notme Whether or not to also disable the instance calling the function.
@@ -16,8 +24,10 @@ function GamePause(notme, show_menu = true)
         instance_activate_object(obj);
     });
     
-    time_source_pause(time_source_global);
-    time_source_pause(time_source_game);
+    global.pausedTimeSrces = time_source_get_children(time_source_global);
+    array_foreach(global.pausedTimeSrces, function(time_src, index) {
+        time_source_pause(time_src);
+    });
     
     global.gamePaused = true;
 }
@@ -30,9 +40,11 @@ function GameResume()
     instance_activate_all();
     InstanceDestroySafe(obj_pause_screen);
     
-    time_source_resume(time_source_global);
-    time_source_resume(time_source_game);
-    
     global.gamePaused = false;
+    
+    array_foreach(global.pausedTimeSrces, function(time_src, index) {
+        time_source_resume(time_src);
+    });
+    global.pausedTimeSrces = [];
 }
 

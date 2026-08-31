@@ -1,1 +1,1 @@
-InstanceCreate(x, y, obj_puff_particle);
+PartSpawn(x, y, PART_TYPES.PUFF);

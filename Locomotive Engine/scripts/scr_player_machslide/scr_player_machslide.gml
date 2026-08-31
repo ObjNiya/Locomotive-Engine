@@ -9,6 +9,8 @@ function StatePlayerMachslideCreate()
 /// @ignore
 function StatePlayerMachslideStep()
 {
+    static dashcloud_part_timer = 14;
+    
     movespeed = Approach(movespeed, 0, 0.4);
     hsp = movespeed * dir;
     
@@ -30,6 +32,9 @@ function StatePlayerMachslideStep()
     
     AnimationEndExt((sprite_index == spr_machslide_intro), spr_machslide);
     
-    if (grounded)
-        create_particle_repeating(x, y + 45, obj_machturn_particle);
+    if (dashcloudPartTimer <= 0)
+    {
+        PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
+        dashcloudPartTimer = 13;
+    }
 }

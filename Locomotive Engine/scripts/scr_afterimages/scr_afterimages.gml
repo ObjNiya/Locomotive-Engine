@@ -9,7 +9,7 @@
  */
 function create_afterimage(x, y, afterimage_object)
 {
-    with (create_effect(x, y, afterimage_object))
+    /*with (create_effect(x, y, afterimage_object))
     {
         sprite_index = other.sprite_index;
         image_index = other.image_index - 1;
@@ -22,7 +22,7 @@ function create_afterimage(x, y, afterimage_object)
         image_alpha = other.image_alpha * real(other.visible);
         
         return id;
-    }
+    }*/
 }
 
 /**
@@ -34,7 +34,7 @@ function create_afterimage(x, y, afterimage_object)
  */
 function create_afterimage_vh(x, y, afterimage_object)
 {
-    with (create_afterimage(x + visualX, y + visualY, afterimage_object))
+    /*with (create_afterimage(x + visualX, y + visualY, afterimage_object))
     {
         image_xscale *= other.visualXScale;
         image_yscale *= other.visualYScale;
@@ -42,7 +42,7 @@ function create_afterimage_vh(x, y, afterimage_object)
         image_angle += other.visualAngle;
         
         return id;
-    }
+    }*/
 }
 
 /**
@@ -54,10 +54,10 @@ function create_afterimage_vh(x, y, afterimage_object)
  */
 function create_afterimage_repeating(x, y, afterimage_object)
 {
-    if (effect_repeat_check(afterimage_object))
+    /*if (effect_repeat_check(afterimage_object))
         return create_afterimage(x, y, afterimage_object);
     
-    return noone;
+    return noone;*/
 }
 
 /**
@@ -69,8 +69,8 @@ function create_afterimage_repeating(x, y, afterimage_object)
  */
 function create_afterimage_repeating_vh(x, y, afterimage_object)
 {
-    if (effect_repeat_check(afterimage_object))
+    /*if (effect_repeat_check(afterimage_object))
         return create_afterimage_vh(x, y, afterimage_object);
     
-    return noone;
+    return noone;*/
 }

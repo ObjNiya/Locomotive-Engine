@@ -1,6 +1,2 @@
 visible = !visible;
-
-if (visible)
-    alarm[0] = 20;
-else
-    alarm[0] = 5;
+alarm[0] = (visible) ? 20 : 5;

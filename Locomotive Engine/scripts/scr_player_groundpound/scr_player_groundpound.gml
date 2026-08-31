@@ -1,8 +1,6 @@
 /// @ignore
 function StatePlayerGroundpoundCreate()
 {
-    
-    
     SpriteSet(spr_groundpound_intro, 0);
     if (carryingId != noone)
         sprite_index = spr_piledriver;
@@ -25,6 +23,8 @@ function StatePlayerGroundpoundCreate()
 /// @ignore
 function StatePlayerGroundpoundStep()
 {
+    static ring_part_timer = 15;
+    
     var landed = EqualsToAny(sprite_index, spr_groundpound_land, spr_divebomb_land, spr_piledriverland);
     
     if (grounded || landed)
@@ -42,7 +42,7 @@ function StatePlayerGroundpoundStep()
             dir = sign(-instance_place(x, y + 1, obj_slope).image_xscale);
             image_xscale = Side(dir, image_xscale);
             
-            create_particle(x, y + 45, obj_jump_particle);
+            PartSpawn(x, bbox_bottom, PART_TYPES.JUMPCLOUD);
             return;
         }
         
@@ -60,10 +60,9 @@ function StatePlayerGroundpoundStep()
 			
             time_source_stop(machAfterimageTimer);
             time_source_stop(blurAfterimageTimer);
-            time_source_stop(downwardsWooshPartTimer);
             time_source_stop(airCloudParticleTimer);
 
-            create_particle(x, y + 45, obj_groundpound_slam_particle);
+            PartSpawn(x, bbox_bottom, PART_TYPES.GRNDPNDIMPACT);
             instance_destroy(groundpoundEffectId);
             
             if (groundpoundSmash >= 10)
@@ -75,8 +74,8 @@ function StatePlayerGroundpoundStep()
             if (carryingId != noone)
             {
                 SpriteSet(spr_piledriverland, 0);
-                create_particle(x, y + 35, obj_bang_particle);
-                create_particle(x, y + 45, obj_land_cloud_particle);
+                PartSpawn(x, y + 35, PART_TYPES.BANG);
+                PartSpawn(x, bbox_bottom, PART_TYPES.LANDCLOUD);
             }    
            
             // TODO: Make enemies JUMP
@@ -126,14 +125,10 @@ function StatePlayerGroundpoundStep()
     
     if (InputPressed(INPUT_VERB.GRABDASH))
     {
+        StatePlayerSjumpCancel();
         SmcSetState("Sjump");
-        SpriteSet(spr_sjump_cancel_prepare, 0);
-        instance_destroy(obj_explosion_particle_alt);
-        
-        sound_instance_one_shot(sfx_player_sjump_cancel, x, y);
-        
-        vsp = 0;
         grav = 0;
+        
         return;
     }
 
@@ -145,7 +140,7 @@ function StatePlayerGroundpoundStep()
     if (groundpoundSmash >= 10)
     {
         if (!instance_exists(groundpoundEffectId))
-            groundpoundEffectId = create_particle(x, y, obj_groundpound_effect, false);
+            groundpoundEffectId = EffectCreate(x, y, obj_following_effect, spr_grndpnd_effect);
     }
     
     if (vsp >= 2)
@@ -160,8 +155,11 @@ function StatePlayerGroundpoundStep()
             if (time_source_get_state(machAfterimageTimer) != time_source_state_active)
                 time_source_start(machAfterimageTimer);
             
-            if (time_source_get_state(downwardsWooshPartTimer) != time_source_state_active)
-                time_source_start(downwardsWooshPartTimer);
+            if (ring_part_timer-- <= 0)
+            {
+                PartSpawnDirY(x + 12, y, PART_TYPES.RING, 1);
+                ring_part_timer = 15;
+            }
         }
     }
     else
@@ -206,7 +204,6 @@ function StatePlayerGroundpoundDestroy()
     
     time_source_stop(machAfterimageTimer);
     time_source_stop(blurAfterimageTimer);
-    time_source_stop(downwardsWooshPartTimer);
     time_source_stop(airCloudParticleTimer);
     
     instance_destroy(groundpoundEffectId);

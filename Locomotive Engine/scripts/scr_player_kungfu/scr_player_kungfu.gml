@@ -52,8 +52,9 @@ function StatePlayerKungfuStep()
         image_xscale = Side(sign_input_x, image_xscale);
         
         SmcSetState("Mach");
-        InstanceCreate(x, y + 45, obj_jump_particle);
+        PartSpawn(x, bbox_bottom, PART_TYPES.JUMPCLOUD);
         sound_instance_one_shot(sfx_player_grab_cancel, x, y);
+        
         return;
     }
     

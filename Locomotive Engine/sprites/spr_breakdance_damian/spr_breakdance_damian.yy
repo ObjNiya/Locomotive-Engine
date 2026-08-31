@@ -78,7 +78,7 @@
     },
     "name":"spr_breakdance_damian",
     "playback":1,
-    "playbackSpeed":24.0,
+    "playbackSpeed":30.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

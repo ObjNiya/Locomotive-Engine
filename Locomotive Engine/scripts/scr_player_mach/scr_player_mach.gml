@@ -42,6 +42,8 @@ function StatePlayerMachCreate()
 /// @ignore
 function StatePlayerMachStep()
 {
+    static flame_part_timer = 12;
+    
     var mach3 = (movespeed >= 12 && EqualsToAny(sprite_index, spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel));
     accel = 0.1;
     
@@ -140,7 +142,7 @@ function StatePlayerMachStep()
             vsp = -6;
             movespeed = -6;
             
-            InstanceCreate(x + (dir * 15), y + 10, obj_bump_particle);
+            PartSpawn(x + (dir * 15), y + 10, PART_TYPES.BUMPSPARK);
             sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
             camera.ShakeSet(20, 0.666, 0);
         }
@@ -192,7 +194,11 @@ function StatePlayerMachStep()
                     sprite_index = spr_mach3;
             }
             
-            create_particle_repeating(x, y + 45, obj_mach2_cloud_particle);
+            if (dashcloudPartTimer <= 0)
+            {
+                PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
+                dashcloudPartTimer = 13;
+            }
         }
         else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_kungfu_backflip, spr_mach2_jump_intro, spr_mach2_jump, spr_walljump_intro, spr_walljump))
             SpriteSet(spr_mach2_jump_intro, 0);
@@ -210,30 +216,39 @@ function StatePlayerMachStep()
             {
                 sprite_index = spr_mach4;
                 
-                create_particle(x, y, obj_mach4_puff_particle);
+                PartSpawn(x, y, PART_TYPES.MACH4CLOUDS);
                 FlashEffectSet();
                 
                 time_source_start(blurAfterimageTimer);
             }
-            else if (--flameParticleTimer <= 0)
+            else if (--flame_part_timer <= 0)
             {
-                create_particle(x, y + 45, obj_flame_particle, false);
-                flameParticleTimer = 12;
+                PartSpawn(x, bbox_bottom, PART_TYPES.FLAME);
+                flame_part_timer = 12;
             }
             
             machsnd_state = 3;
-            create_particle_repeating(x, y, obj_woosh_particle);
+            
+            if (horizRingPartTimer <= 0)
+            {
+                PartSpawnDirX(x, y, PART_TYPES.RING, dir);
+                horizRingPartTimer = 14;
+            }
         }
         else if (sprite_index != spr_mach3 && !EqualsToAny(sprite_index, spr_mach3_hit_enemy, spr_mach3_jump, spr_mach3_dashpad) && !roll_getup_spr && !sjump_spr)
             sprite_index = spr_mach3;
-
-        create_particle_repeating(x, y + 45, obj_mach3_cloud_particle);
+        
+        if (grounded && mach3cloudPartTimer <= 0)
+        {
+            PartSpawnDirX(x, bbox_bottom, PART_TYPES.MACH3CLOUD, dir);
+            mach3cloudPartTimer = 20;
+        }
         
         if (!instance_exists(speedlinesEffectId))
-            speedlinesEffectId = create_particle(x, y, obj_speedlines_effect);
+            speedlinesEffectId = EffectCreate(x, y, obj_following_effect, spr_speedlines_effect);
         
         if (!instance_exists(chargeEffectId))
-            chargeEffectId = create_particle_repeating(x, y , obj_charge_effect);
+            chargeEffectId = EffectCreate(x, y, obj_following_effect, spr_charge_effect);
     }
     
     sound_instance_set_parameter_by_name(sndMach, "Grounded", machsnd_ground);
@@ -246,13 +261,12 @@ function StatePlayerMachDestroy()
     image_speed = 1;
     
     instakillHitbox.canAttack = false;
-    flameParticleTimer = 12;
     
     time_source_stop(blurAfterimageTimer);
     time_source_stop(machAfterimageTimer);
     
-    instance_destroy(speedlinesEffectId);
-    instance_destroy(chargeEffectId);
+    InstanceDestroySafe(speedlinesEffectId);
+    InstanceDestroySafe(chargeEffectId);
     
     sound_instance_stop(sndMach, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

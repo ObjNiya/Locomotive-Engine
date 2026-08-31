@@ -1,4 +1,4 @@
-seqLayer = layer_create(DEPTHS.FRONT);
+seqLayer = layer_create(PRIORITY.MAX);
 seqElem = layer_sequence_create(seqLayer, 0, 0, sequence);
 
 layer_script_begin(seqLayer, function() {

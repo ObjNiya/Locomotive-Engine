@@ -43,8 +43,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Misc.",
-    "path":"folders/Sprites/Enemies/Misc..yy",
+    "name":"Debris",
+    "path":"folders/Sprites/Effects/Debris.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

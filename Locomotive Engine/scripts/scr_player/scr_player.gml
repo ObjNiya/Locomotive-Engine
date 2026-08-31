@@ -22,7 +22,7 @@ function TryHurtPlayer(player_id, attacker_id)
             parryTarget = attacker_id;
             
             SmcSetState("Parry");
-            InstanceDestroySafe(obj_taunt_particle);
+            InstanceDestroySafe(tauntsparkId);
             sound_instance_one_shot(sfx_playerparry, x, y);
             
             return PLAYER_HURT_STATUS.PARRIED;
@@ -47,8 +47,8 @@ function TryHurtPlayer(player_id, attacker_id)
         if (M_RandomInt(100) <= 50)
             sound_instance_one_shot(sfxVoiceHurt, x, y);
         
-        InstanceCreate(x, y, obj_bang_particle);
-        InstanceCreate(x, y, obj_hurt_stars_particle);
+        PartSpawn(x, y, PART_TYPES.BANG);
+        PartSpawn(x, y, PART_TYPES.HURTSTARS);
         
         repeat (5)
             InstanceCreate(x, y, obj_hurt_star_debris);
@@ -62,7 +62,7 @@ function PlayerCreateSnds()
 {
     if (sndsInitialized)
         exit;
-    QuickLog("Creating sounds for ", id)
+
     sfxStep = CharGetSnd(sfx_damian_step, character);
     sfxJump = CharGetSnd(sfx_damian_jump, character);
     sfxMach = CharGetSnd(sfx_damian_mach, character);

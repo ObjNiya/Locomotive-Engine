@@ -2,7 +2,7 @@
 mask_index = spr_waddledee_mask;
 
 my_killer = noone;
-enemyTimeSources = time_source_create(time_source_game, 1, time_source_units_frames, function() {});
+enemyTimeSources = time_source_create(time_source_global, 1, time_source_units_frames, function() {});
 
 /////////////////////////////
 // State variables
@@ -54,6 +54,8 @@ spr_palette_index = 0;
 
 parryable = true;
 hp = 1;
+
+dashcloudPartTimer = 0;
 
 /////////////////////////////
 // Initialize various systems

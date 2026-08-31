@@ -39,7 +39,7 @@ function PlayerDoGrabdash(forced = false)
     if (!PlayerGrabdash() && !forced)
         return false;
     
-    create_particle(x, y + 45, obj_burst_cloud_particle);
+    PartSpawnDirX(x, bbox_bottom, PART_TYPES.STARTCLOUD, image_xscale);
     SmcSetState("Grabdash");
     return true;
 }
@@ -105,7 +105,7 @@ function PlayerDoUppercut(forced = false)
         return false;
     
     sound_instance_one_shot(sfx_player_uppercut, x, y);
-    InstanceCreate(x, y + 45, obj_jump_particle);
+    PartSpawn(x, bbox_bottom, PART_TYPES.JUMPCLOUD);
     
     SmcSetState("Uppercut");
     return true;
@@ -209,7 +209,7 @@ function PlayerDoJump(forced = false, sprite_to_set = spr_jump, jump_height = -1
     SpriteSet(sprite_to_set, 0);
     
     if (particle)
-        InstanceCreate(x, y + 45, obj_jump_particle);
+        PartSpawn(x, bbox_bottom, PART_TYPES.JUMPCLOUD);
     
     sound_instance_one_shot(sfxJump, x, y);
     
@@ -232,7 +232,7 @@ function PlayerDoLongjump(forced = false, jump_height = -11)
     CoyoteTimeJump();
     SmcSetState("Mach");
     SpriteSet(spr_longjump_intro, 0);
-    InstanceCreate(x, y + 45, obj_jump_particle);
+    PartSpawn(x, bbox_bottom, PART_TYPES.JUMPCLOUD);
     
     sound_instance_start(sndRollGetup);
     
@@ -274,15 +274,15 @@ function PlayerDoInstakill(enemy_to_kill = noone)
     sound_instance_one_shot(sfx_playerpunch, x, y);
     HitstunSet(5);
     
-    InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_puff_particle);
-    InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_parry_particle);
-    InstanceCreate(enemy_to_kill.x, enemy_to_kill.y, obj_kungfu_particle);
+    with (enemy_to_kill)
+    {
+        PartSpawn(x, y, PART_TYPES.PUFF);
+        PartSpawn(x, y, PART_TYPES.PARRYSPARK);
+        PartSpawn(x, y, PART_TYPES.SPARK);
+    }
     
-    repeat (3)
-        InstanceCreate(x, y, obj_slap_star_debris);
-    
-    repeat (3)
-        InstanceCreate(x, y, obj_enemy_debris);
+    PartSpawn(x, y, PART_TYPES.SLAPSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
+    PartSpawn(x, y, PART_TYPES.ENEMY_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
     
     AttackEnemy(enemy_to_kill, id);
     if (InputCheck(INPUT_VERB.JUMP))

@@ -12,11 +12,10 @@ mask_index = spr_player_mask;
 
 global.leadingPlayer = -1;
 
-camera = InstanceCreate(0, 0, obj_camera);
+camera = CameraCreate();
 
 with (camera)
 {
-    TargetSet(other.id);
     yAxis.OffsetterAdd("baseUp", -50, false, 0, 0);
     
     var PaintingPan = function()
@@ -111,7 +110,7 @@ instakillHitbox.canAttack = false;
 sndsInitialized = false;
 hasKey = false;
 hasCatripi = false;
-playerTimeSources = time_source_create(time_source_game, 1, time_source_units_frames, function() {});
+playerTimeSources = time_source_create(time_source_global, 1, time_source_units_frames, function() {});
 
 /////////////////////////////
 // State specific variables
@@ -155,6 +154,8 @@ tauntStoredState = "";
 tauntTimer = 18;
 parryHitboxTime = 8;
 parryHitboxBuffer = 8;
+
+tauntsparkId = noone;
 
 // Parry
 
@@ -205,14 +206,16 @@ hurtFlickerTimer = time_source_create(playerTimeSources, 2, time_source_units_fr
 sndSpin = -1;
 
 /////////////////////////////
-// Particle timers
+// Particle Timers
 /////////////////////////////
 
-noteParticleTimer = 6;
-flameParticleTimer = 12;
- 
+grabdashcloudPartTimer = 0;
+dashcloudPartTimer = 0;
+mach3cloudPartTimer = 0;
+horizRingPartTimer = 0;
+
 cloudParticleTimer = time_source_create(playerTimeSources, 12, time_source_units_frames, function() {
-    create_particle(x, y + 43, obj_cloud_particle, false);
+    PartSpawn(x, bbox_bottom, PART_TYPES.STEP_CLOUD);
     
     if ((stateName != "Normal" && stateName != "Painting" && stateName != "Ladder") || carryingId != noone)
         return;
@@ -221,18 +224,9 @@ cloudParticleTimer = time_source_create(playerTimeSources, 12, time_source_units
 }, [], -1);
 
 airCloudParticleTimer = time_source_create(playerTimeSources, 8, time_source_units_frames, function() {
-    create_particle(x + irandom_range(-25, 25), y + irandom_range(-10, 35), obj_cloud_particle, false);
+    PartSpawnExt(x, y, PART_TYPES.AIR_CLOUD, 25, 25, 10, 35);
 }, [], -1);
 
-downwardsWooshPartTimer = time_source_create(playerTimeSources, 0.25, time_source_units_seconds, function() {
-    with (create_particle(x, y, obj_woosh_particle, false))
-        image_angle = 90;
-}, [], -1);
-
-upwardsWooshPartTimer = time_source_create(playerTimeSources, 0.25, time_source_units_seconds, function() {
-    with (create_particle(x, y, obj_woosh_particle, false))
-        image_angle = -90;
-}, [], -1);
 
 /////////////////////////////
 // Afterimage timers

@@ -1,18 +1,18 @@
-/// @ignore
-function create_effect(x, y, effect_object)
+function EffectCreate(x, y, effect_obj, effect_spr = -1, palette_spr = -1, palette_index = 0, on_gui = false)
 {
-    with (InstanceCreate(x, y, effect_object))
+    with (InstanceCreate(x, y, effect_obj))
     {
-        spawner_id = other.id;
+        spawnedBy = other.id;
+        onGui = on_gui;
+        paletteSpr = palette_spr;
+        paletteIndex = palette_index;
+        
+        if (effect_spr != -1)
+        {
+            sprite_index = effect_spr;
+            SetLayer(sprite_index);
+        }
         
         return id;
     }
 }
-
-/// @ignore
-function effect_repeat_check(effect_object)
-{
-    return !(instance_exists(effect_object) && effect_object.spawner_id == id);
-}
-
-// TODO: Refactor

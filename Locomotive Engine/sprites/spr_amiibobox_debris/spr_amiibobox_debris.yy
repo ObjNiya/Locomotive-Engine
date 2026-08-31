@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Level Structure",
-    "path":"folders/Sprites/Level Structure.yy",
+    "name":"Debris",
+    "path":"folders/Sprites/Effects/Debris.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

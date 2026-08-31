@@ -54,3 +54,15 @@ function map(value, in_min, in_max, out_min, out_max)
 {
 	return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+
+
+/**
+ * Returns whether or not the given number is in the given range.
+ * @parameter {Real} n The number to check for.
+ * @parameter {Real} a The minimum of the range.
+ * @parameter {Real} b The maximum of the range.
+ */
+function InRange(n, a, b)
+{
+    return n >= a && n <= b;
+}
