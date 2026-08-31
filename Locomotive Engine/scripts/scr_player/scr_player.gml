@@ -31,6 +31,7 @@ function TryHurtPlayer(player_id, attacker_id)
         if (stateName == "Hurt" || invincibilityTime > 0)
             return PLAYER_HURT_STATUS.FAILED;
 
+        PlayerDropCarrying();
         
         var old_xscale = image_xscale;
         if (x != attacker_id.x)
@@ -49,9 +50,7 @@ function TryHurtPlayer(player_id, attacker_id)
         
         PartSpawn(x, y, PART_TYPES.BANG);
         PartSpawn(x, y, PART_TYPES.HURTSTARS);
-        
-        repeat (5)
-            PartSpawn(x, y, PART_TYPES.HURTSTARS)
+        PartSpawn(x, y, PART_TYPES.HURTSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 5);
         
         global.points -= max(global.points - 50, 0);
     }

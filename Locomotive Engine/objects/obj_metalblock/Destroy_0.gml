@@ -1,6 +1,3 @@
-if (array_length(targetTiles) >= 1)
-    TilesDestroyArea(targetTiles, bbox_left, bbox_top, bbox_right, bbox_bottom);
-
 var mid_x = x + (sprite_width / 2);
 mid_x -= sprite_xoffset;
 

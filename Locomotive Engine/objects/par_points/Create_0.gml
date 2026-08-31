@@ -7,5 +7,9 @@ magnetizeTarget = noone;
 
 DESTROY_SAVEROOM;
 
-if (place_meeting_collision(x, y))
-    visible = false;
+var tile_lay = layer_get_id("Tiles_1");
+if (tile_lay == -1)
+    exit;
+
+layer = tile_lay;
+depth = layer_get_depth(tile_lay);

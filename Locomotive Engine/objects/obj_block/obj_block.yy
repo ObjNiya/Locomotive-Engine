@@ -33,7 +33,7 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"targetTiles","filters":[],"listItems":[],"multiselect":false,"name":"targetTiles","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"[]","varDescription":"What tile layers' tiles should be destroyed if they overlap with this block.","varFriendlyName":"Target Tiles","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"targetTiles","filters":[],"listItems":[],"multiselect":false,"name":"targetTiles","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varDescription":"What tile layers' tiles should be destroyed if they overlap with this block.","varFriendlyName":"Target Tiles","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

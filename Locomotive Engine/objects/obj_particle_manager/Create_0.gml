@@ -41,6 +41,7 @@ enum PART_TYPES
     METALBLOCK_DEBRIS = 33,
     SLAPSTARS_DEBRIS = 34,
     WATERDROP_DEBRIS = 35,
+    HURTSTARS_DEBRIS = 36,
 }
 
 global.partLayers = ds_map_create();
@@ -245,3 +246,13 @@ part_type_direction(part_type, 26, 153, 0, 0);
 part_type_gravity(part_type, 0.5, 270);
 part_type_orientation(part_type, 0, 360, 0, 0, false);
 PartTypeRegister(PART_TYPES.SLAPSTARS_DEBRIS, part_type);
+
+// Hurt Stars Debris
+
+part_type = PartTypeCreateDebris(spr_slapstars_debris);
+part_type_life(part_type, 30, 30);
+part_type_speed(part_type, 6, 8, -0.25, 1);
+part_type_direction(part_type, 0, 360, 0, 1);
+part_type_gravity(part_type, 0, 0);
+part_type_orientation(part_type, 0, 360, 0, 0, false);
+PartTypeRegister(PART_TYPES.HURTSTARS_DEBRIS, part_type);

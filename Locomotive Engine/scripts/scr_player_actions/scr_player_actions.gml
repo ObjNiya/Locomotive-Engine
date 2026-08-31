@@ -290,3 +290,27 @@ function PlayerDoInstakill(enemy_to_kill = noone)
     
     return true;
 }
+
+
+/**
+ * Makes the current player instance drop anything they are carrying. Returns whether or not they were carrying anything.
+ */
+function PlayerDropCarrying()
+{
+    with (carryingId)
+    {
+        while (place_meeting_collision(x, y))
+            x -= other.image_xscale;
+        
+        var bbox_yoff = bbox_bottom - y;
+        y = other.bbox_bottom - bbox_yoff;
+        
+        SmcSetState("Stunned");
+        stunnedTimer = 200;
+        
+        other.carryingId = noone;
+        return true;
+    }
+    
+    return false;
+}

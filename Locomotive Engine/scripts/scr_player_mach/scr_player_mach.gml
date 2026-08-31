@@ -266,9 +266,9 @@ function StatePlayerMachStep()
     hsp = movespeed * dir;
 
     if (mach3)
-        BlocksDestroy(x + hsp, y, true, false);
+        BlocksDestroy(x + hsp + accel + slope_acel, y, true, false);
     else
-        BlocksDestroy(x + hsp, y, true, false, [obj_metalblock]);
+        BlocksDestroy(x + hsp + accel + slope_acel, y, true, false, [obj_metalblock]);
     
     PlayerDoJumpstop();
       

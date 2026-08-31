@@ -1,8 +1,6 @@
 /// @ignore
 function StatePlayerNormalCreate()
 {
-    
-    
     dir = sign(hsp);
     movespeed = abs(hsp);
     
@@ -180,8 +178,7 @@ function StatePlayerNormalStep()
     
     if (PlayerCrouch())
     {
-        with (carryingId)
-            SmcSetState("Stunned");
+        PlayerDropCarrying();
         SmcSetState("Crouch");
         
         carryingId = noone;
