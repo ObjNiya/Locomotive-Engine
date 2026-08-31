@@ -56,6 +56,7 @@ parryable = true;
 hp = 1;
 
 dashcloudPartTimer = 0;
+respawning = false;
 
 /////////////////////////////
 // Initialize various systems

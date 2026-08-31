@@ -7,19 +7,21 @@ if (playerId.x > (room_width - 224) && playerId.y < 187)
 else
     yOffset = Approach(yOffset, 80, _spd);
 
+comboFill = time_source_get_time_remaining(global.comboTimer);
+
 with (comboBar)
 {
-	xOffset = sin((current_time * 0.001) / 2) * 5; // Because there isn't any 'wave' function, it has to be done like this. Thanks shaggy.
+	xOffset = sin(((current_time * 0.001) / 2) * (pi * 2))  * 5; // Because there isn't any 'wave' function, it has to be done like this. Thanks shaggy.
 	
-	if (state != "Hide" && other.comboPlaceholderAnimShow)
-		count = irandom(200); // Placeholder for when an actual combo system is implemented.
+	if (global.combo > 0)
+		count = global.combo; // Placeholder for when an actual combo system is implemented.
 	
 	switch (state)
 	{
 		case "Hide":
 			yOffset = Approach(yOffset, -379, 5);
 			
-			if (yOffset <= -300 && other.comboPlaceholderAnimShow)
+			if (global.combo > 0)
 			{
 				state = "Fall";
 				vsp = -1;
@@ -36,7 +38,7 @@ with (comboBar)
 		case "Idle":
 			yOffset = lerp(yOffset, 121, 0.05);
 			
-			if (round(yOffset) == 121 && other.comboPlaceholderAnimShow) // Testing purposes
+			if global.combo <= 0
 				state = "Hide";
 			break;
 	}

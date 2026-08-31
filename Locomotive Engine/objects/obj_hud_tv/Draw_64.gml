@@ -9,10 +9,8 @@ with (comboBar)
 
 with (comboSkull)
 {
-    SetPosition(other.comboBar.x, other.comboBar.y);
-	
-	if (other.comboPlaceholderAnimShow)
-		x += irandom_range(-50, 50);
+	x = other.comboBar.x + map(other.comboFill, 0, global.comboTimerMax, -50, 59);
+	y = other.comboBar.y;
 	
 	Draw(x, y);
 }

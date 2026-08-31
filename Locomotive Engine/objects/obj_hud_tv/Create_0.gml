@@ -16,9 +16,10 @@ whitenoise = new Animator(spr_combobar);
 whitenoiseNextState = "Idle";
 whitenoiseNextSprite = spr_tv_idle_damian;
 
-comboBar = { count: 0, x: 0, y: 0, xOffset: 0, yOffset: 0, vsp: 0, state: "Fall" };
+comboBar = { count: 0, x: 0, y: 0, xOffset: 0, yOffset: -379, vsp: 0, state: "Hide" };
 comboSkull = new Animator(spr_combobar_skull);
-comboPlaceholderAnimShow = false // Makes the combo meter do it's animations. Set to false if it gets annoying.
+comboSkull.x = 0; comboSkull.y = 0;
+comboFill = 0
 
 whitenoise.imageAlpha = 0
 

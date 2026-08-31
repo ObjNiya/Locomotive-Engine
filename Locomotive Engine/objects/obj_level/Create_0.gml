@@ -3,7 +3,6 @@ SINGLETON;
 with (global)
 {
     time_source_stop(showtimeTimer);
-    time_source_stop(comboTimer);
     time_source_reconfigure(showtimeTimer, level.showtimeTime, time_source_units_seconds, showtimeTimerFunc);
     
     rank = RANKS.D;

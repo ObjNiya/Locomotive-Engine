@@ -24,4 +24,10 @@ sound_instance_one_shot(sfx_enemydeath, x, y);
 PartSpawn(x, y, PART_TYPES.SLAPSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 3);
 PartSpawn(x, y, PART_TYPES.BANG);
 
-SaveroomAdd();
+if (!respawning)
+{
+	ComboAdd(1, global.comboTimerMax);
+	SaveroomAdd();
+}
+else
+	ComboSetTime(1);

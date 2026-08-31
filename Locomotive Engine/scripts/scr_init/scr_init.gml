@@ -110,8 +110,9 @@ function InitGlobals()
         {
             global.combo = 0;
         }
-        comboTimer = time_source_create(time_source_global, 6.75, time_source_units_seconds, comboTimerFunc);
-            
+        comboTimerMax = 6.75
+        comboTimer = time_source_create(time_source_game, comboTimerMax, time_source_units_seconds, comboTimerFunc);
+        
         plushies = {
             waddledoo: false,
             koopa: false,
