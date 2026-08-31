@@ -81,7 +81,7 @@ function StatePlayerPaintingStep()
         }
         else if (y + vsp > paintingId.ystart)
         {
-            create_afterimage(x, y, obj_blur_afterimage);
+            FadeAfterimgCreate();
             FlashEffectSet();
         }
     }

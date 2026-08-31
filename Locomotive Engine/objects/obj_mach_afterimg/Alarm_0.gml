@@ -1,0 +1,1 @@
+color = merge_color(colorA, colorB, random(1));

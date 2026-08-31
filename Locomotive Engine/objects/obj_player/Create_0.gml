@@ -233,18 +233,15 @@ airCloudParticleTimer = time_source_create(playerTimeSources, 8, time_source_uni
 /////////////////////////////
 
 blurAfterimageTimer = time_source_create(playerTimeSources, 2, time_source_units_frames, function() {
-    with (create_afterimage_vh(x, y, obj_blur_afterimage))
-    {
-        if (other.stateName == "Cape")
-            image_index = floor(other.image_index);
-    }
+    var afterimg = FadeAfterimgCreate();
+    if (stateName == "Cape")
+        afterimg.image_index = floor(image_index);
 }, [], -1);
 
 machAfterimageUseAlpha = true;
 
 machAfterimageTimer = time_source_create(playerTimeSources, 6, time_source_units_frames, function() {
-    with (create_afterimage_vh(x, y, obj_mach_afterimage))
-        use_alpha = other.machAfterimageUseAlpha;
+    MachAfterimgCreate(machAfterimageUseAlpha);
 }, [], -1);
 
 /////////////////////////////

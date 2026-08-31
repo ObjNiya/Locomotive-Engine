@@ -14,11 +14,11 @@ function StateEnemyThrownCreate()
 /// @ignore
 function StateEnemyThrownStep()
 {
-    static blur_afterimage_timer = 2;
-    if (--blur_afterimage_timer <= 0)
+    static fade_afterimg_timer = 2;
+    if (--fade_afterimg_timer <= 0)
     {
-        blur_afterimage_timer = 2;
-        create_afterimage(x, y, obj_blur_afterimage);
+        fade_afterimg_timer = 2;
+        FadeAfterimgCreate();
     } 
     
     if (dashcloudPartTimer <= 0 && abs(hsp) > 4 && grounded)

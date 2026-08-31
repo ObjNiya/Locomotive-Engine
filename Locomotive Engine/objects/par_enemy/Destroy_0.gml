@@ -1,4 +1,4 @@
-with (InstanceCreate(x, y, obj_dead_enemy))
+with (InstanceCreate(x, y, obj_gibs))
 { 
     sprite_index = other.deadSpr;
     image_xscale = other.image_xscale;

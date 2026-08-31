@@ -147,7 +147,7 @@ part_type = part_type_create();
 part_type_sprite(part_type, spr_notes_part, false, false, true);
 part_type_life(part_type, 90, 100);
 part_type_speed(part_type, 0.8, 1.2, 0, 0);
-part_type_direction(part_type, 270, 270, 0, 0);
+part_type_direction(part_type, 90, 90, 0, 0);
 part_type_alpha2(part_type, 1, 0);
 PartTypeRegister(PART_TYPES.NOTES, part_type);
 

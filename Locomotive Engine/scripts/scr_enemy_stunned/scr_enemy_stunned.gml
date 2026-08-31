@@ -28,7 +28,7 @@ function StateEnemyStunnedStep()
     movespeed = Approach(movespeed, 0, 0.3);
     hsp = movespeed * dir;
     
-    if (dashcloudPartTimer > 0)
+    if (dashcloudPartTimer > 0 || abs(hsp) < 4 || !grounded)
         return;
     
     PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);

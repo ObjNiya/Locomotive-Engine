@@ -1,76 +1,54 @@
-// TODO: Refactor
-
-/**
- * This function will create the given afterimage object at the given position and will set all of the afterimage sprite drawing variables to the values from the instance who spawned it.
- * @parameter {Real} x The x position the afterimage will be created at.
- * @parameter {Real} y The y position the afterimage will be created at.
- * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
- * @returns {Id.Instance}
- */
-function create_afterimage(x, y, afterimage_object)
+function AfterimgCreate(afterimg_obj, palette_spr = -1, palette_index = 0, on_gui = false)
 {
-    /*with (create_effect(x, y, afterimage_object))
+    var vh = variable_instance_exists(id, "visualX");
+    
+    with (EffectCreate(x, y, afterimg_obj, sprite_index, palette_spr, palette_index, on_gui))
     {
-        sprite_index = other.sprite_index;
-        image_index = other.image_index - 1;
-        
+        image_index = max(other.image_index - 1, 0);
         image_xscale = other.image_xscale;
         image_yscale = other.image_yscale;
-        
         image_angle = other.image_angle;
         image_blend = other.image_blend;
         image_alpha = other.image_alpha * real(other.visible);
         
+        if (vh)
+        {
+            x += other.visualX;
+            y += other.visualY;
+            
+            image_xscale *= other.visualXScale;
+            image_yscale *= other.visualYScale;
+            image_angle += other.visualAngle;
+        }
+        
         return id;
-    }*/
+    }
 }
 
-/**
- * This function will do the same as the ```create_afterimage``` function, except that it accounts for sprite drawing variables created by the ```VisualHelperInit``` function.
- * @parameter {Real} x The x position the afterimage will be created at.
- * @parameter {Real} y The y position the afterimage will be created at.
- * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
- * @returns {Id.Instance}
- */
-function create_afterimage_vh(x, y, afterimage_object)
+
+function FadeAfterimgCreate(fade = 0.8, fade_spd = 0.15, palette_spr = -1, palette_index = 0, on_gui = false)
 {
-    /*with (create_afterimage(x + visualX, y + visualY, afterimage_object))
+    with (AfterimgCreate(obj_fade_afterimg, palette_spr, palette_index, on_gui))
     {
-        image_xscale *= other.visualXScale;
-        image_yscale *= other.visualYScale;
-        
-        image_angle += other.visualAngle;
+        self.fade = fade;
+        fadeSpd = fade_spd;
+        image_alpha = fade;
         
         return id;
-    }*/
+    }
 }
 
-/**
- * This function will create the given afterimage object at the given position and will set all of the afterimage sprite drawing variables to the values 
- * from the instance who spawned it ONLY when there is no other instance of that afterimage object in the room that has been spawned by the current instance.
- * @parameter {Real} x The x position the afterimage will be created at.
- * @parameter {Real} y The y position the afterimage will be created at.
- * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
- */
-function create_afterimage_repeating(x, y, afterimage_object)
-{
-    /*if (effect_repeat_check(afterimage_object))
-        return create_afterimage(x, y, afterimage_object);
-    
-    return noone;*/
-}
 
-/**
- * This function will do the same as the ```create_afterimage_repeating``` function, except that it accounts for sprite drawing variables created by the ```VisualHelperInit``` function.
- * @parameter {Real} x The x position the afterimage will be created at.
- * @parameter {Real} y The y position the afterimage will be created at.
- * @parameter {Asset.GMObject} afterimage_object The object index of the afterimage to create an instance of.
- * @returns {Id.Instance}
- */
-function create_afterimage_repeating_vh(x, y, afterimage_object)
+function MachAfterimgCreate(use_alpha = true, lifespan = 15, color_a = c_purple, color_b = c_yellow, on_gui = false)
 {
-    /*if (effect_repeat_check(afterimage_object))
-        return create_afterimage_vh(x, y, afterimage_object);
-    
-    return noone;*/
+    with (AfterimgCreate(obj_mach_afterimg, -1, 0, on_gui))
+    {
+        useAlpha = use_alpha;
+        self.lifespan = lifespan;
+        colorA = color_a;
+        colorB = color_b;
+  
+        alarm[2] = real(lifespan);
+        return id;
+    }
 }

@@ -13,7 +13,7 @@ enemyTimeSources = time_source_create(time_source_global, 1, time_source_units_f
 throwAngle = 0;
 throwSpr = spr_waddledee_dead;
 thrownBlurAfterimgTimer = time_source_create(enemyTimeSources, 2, time_source_units_frames, function() {
-    create_afterimage(x, y, obj_blur_afterimage);
+    FadeAfterimgCreate();
 }, [], -1);
 
 // Grabbed State
