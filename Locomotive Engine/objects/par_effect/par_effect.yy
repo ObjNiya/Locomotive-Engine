@@ -29,11 +29,11 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"onGui","filters":[],"listItems":[],"multiselect":false,"name":"onGui","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varDescription":"Whether or not the effect should be drawn on the GUI.","varFriendlyName":"On GUI","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"onGui","filters":[],"listItems":[],"multiselect":false,"name":"onGui","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varDescription":"Whether or not to draw the effect on the GUI.","varFriendlyName":"On GUI","varType":3,},
     {"$GMObjectProperty":"v2","%Name":"paletteSpr","filters":[
         "GMSprite",
-      ],"listItems":[],"multiselect":false,"name":"paletteSpr","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varDescription":"The palette sprite to use if the effect should be paletted.","varFriendlyName":"Palette Sprite","varType":5,},
-    {"$GMObjectProperty":"v2","%Name":"paletteIndex","filters":[],"listItems":[],"multiselect":false,"name":"paletteIndex","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varDescription":"The palette index on the palette sprite if the effect should be paletted.","varFriendlyName":"Palette Index","varType":0,},
+      ],"listItems":[],"multiselect":false,"name":"paletteSpr","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"-1","varDescription":"The sprite to palette the effect with OR -1 to apply no paletting.","varFriendlyName":"Palette Sprite","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"paletteIndex","filters":[],"listItems":[],"multiselect":false,"name":"paletteIndex","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varDescription":"The index of the palette from the palette sprite to use.","varFriendlyName":"Palette Index","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

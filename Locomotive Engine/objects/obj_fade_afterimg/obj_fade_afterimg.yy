@@ -30,8 +30,8 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"fade","filters":[],"listItems":[],"multiselect":false,"name":"fade","rangeEnabled":true,"rangeMax":11.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.8","varDescription":"The translucency of the afterimage when it's first spawned.","varFriendlyName":"Fade","varType":0,},
-    {"$GMObjectProperty":"v2","%Name":"fadeSpd","filters":[],"listItems":[],"multiselect":false,"name":"fadeSpd","rangeEnabled":true,"rangeMax":1.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.15","varDescription":"How fast the afterimage fades away.","varFriendlyName":"Fade Speed","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"fade","filters":[],"listItems":[],"multiselect":false,"name":"fade","rangeEnabled":true,"rangeMax":11.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.8","varDescription":"The starting alpha of the fading afterimage.","varFriendlyName":"Fade","varType":0,},
+    {"$GMObjectProperty":"v2","%Name":"fadeSpd","filters":[],"listItems":[],"multiselect":false,"name":"fadeSpd","rangeEnabled":true,"rangeMax":1.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.15","varDescription":"By how much the fading afterimage fades away each frame.","varFriendlyName":"Fade Speed","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
