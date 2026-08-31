@@ -1,3 +1,10 @@
+/**
+ * Returns whether or not the current instance is colliding the given camera.
+ * @parameter {Real} x The x position of the current instance to check at.
+ * @parameter {Real} y The y position of the current instance to check at.
+ * @parameter {Id.Camera} camera_id The camera to check collision for.
+ * @parameter {Bool} prec (OPTIONAL) Whether or not collision checks with the current instance should be precise. Default is true.
+ */
 function PlaceMeetingCamera(x, y, camera_id, prec = true)
 {
     var prev_x = self.x;
@@ -20,24 +27,37 @@ function PlaceMeetingCamera(x, y, camera_id, prec = true)
     return result != noone;
 }
 
-
+/**
+ * Returns an array of cameras that the current instance is colliding with.
+ * @parameter {Real} x The x position of the current instance to check at.
+ * @parameter {Real} y The y position of the current instance to check at.
+ */
 function CameraPlaceArray(x, y)
 {
-    var i = 0;
-    var cameras = [];
+    var cd_cameras = [];
     
-    repeat (7)
+    var camera_count = array_length(global.cameras);
+    var i = 0;
+    
+    repeat (camera_count)
     {
-        if (PlaceMeetingCamera(x, y, i))
-            array_push(cameras, view_camera[i]);
+        var cam_id = global.cameras[i].camId;
+        if (PlaceMeetingCamera(x, y, cam_id))
+            array_push(cd_cameras, cam_id);
         
         i++;
     }
     
-    return cameras;
+    return cd_cameras;
 }
 
 
+/**
+ * Returns the ID of the camera the current instance is colliding with **OR** -1 if the current instance is not colliding with any cameras.
+ * @parameter {Real} x The x position of the current instance to check at.
+ * @parameter {Real} y The y position of the current instance to check at.
+ * @returns {Id.Camera|Real}
+ */
 function CameraPlace(x, y)
 {
     var cameras = CameraPlaceArray(x, y);

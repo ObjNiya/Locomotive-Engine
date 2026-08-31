@@ -75,8 +75,6 @@ function StatePlayerGroundpoundStep()
                 PartSpawn(x, y + 35, PART_TYPES.BANG);
                 PartSpawn(x, bbox_bottom, PART_TYPES.LANDCLOUD);
             }    
-           
-            // TODO: Make enemies JUMP
             
             if (groundpoundSmash < 10)
                 return;
@@ -171,7 +169,7 @@ function StatePlayerGroundpoundStep()
             
             if (ring_part_timer-- <= 0)
             {
-                PartSpawnDirY(x + 12, y, PART_TYPES.RING, 1);
+                PartSpawnDirY(x - 12, y, PART_TYPES.RING, 1);
                 ring_part_timer = 15;
             }
         }
@@ -212,6 +210,7 @@ function StatePlayerGroundpoundDestroy()
 {
     grav = 0.5;
     terminalVelocity = 20;
+    groundpoundSmash = 0;
     
     instakillHitbox.canAttack = false;
     machAfterimageUseAlpha = true;
@@ -220,6 +219,6 @@ function StatePlayerGroundpoundDestroy()
     time_source_stop(blurAfterimageTimer);
     time_source_stop(airCloudParticleTimer);
     
-    instance_destroy(groundpoundEffectId);
+    InstanceDestroySafe(groundpoundEffectId);
     sound_instance_stop(sndGroundpound, FMOD_STUDIO_STOP_MODE.IMMEDIATE);
 }

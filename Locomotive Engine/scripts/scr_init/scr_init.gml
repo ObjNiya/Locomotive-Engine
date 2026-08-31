@@ -67,11 +67,6 @@ function InitGlobals()
         
         __ImportantObjs__ = [obj_game_manager, obj_priority_manager, obj_fmod_studio, obj_screensizer, obj_room_goto, obj_room_events, obj_camera_manager, obj_particle_manager, obj_hud_timer, obj_parallax_manager, __InputUpdateController];
         
-        // Secret Tiles TODO: MOVE
-        
-        ScrtTsCircleX = 0;
-        ScrtTsCircleY = 0;
-        ScrtTsCircleRadius = 0;
         
         // Button Prompt image index map
         

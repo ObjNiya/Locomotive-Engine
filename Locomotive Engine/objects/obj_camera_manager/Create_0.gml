@@ -1,4 +1,3 @@
 SINGLETON;
 
 global.cameras = [];
-

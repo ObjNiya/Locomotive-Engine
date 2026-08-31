@@ -228,8 +228,13 @@ function StatePlayerMachStep()
                 
                 return;
             }
-            
-            if (movespeed >= 16 && sprite_index != spr_mach4)
+        }
+        else if (PlayerDoCape())
+            return;
+        
+        if (movespeed >= 16)
+        {
+            if (sprite_index != spr_mach4)
             {
                 sprite_index = spr_mach4;
                 
@@ -238,12 +243,7 @@ function StatePlayerMachStep()
                 
                 time_source_start(blurAfterimageTimer);
             }
-        }
-        else if (PlayerDoCape())
-            return;
-        
-        if (movespeed >= 16)
-        {
+            
             machsnd_state = 3;
             
             if (--flame_part_timer <= 0)

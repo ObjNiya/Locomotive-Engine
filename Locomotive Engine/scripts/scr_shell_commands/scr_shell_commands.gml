@@ -27,8 +27,8 @@ function meta_noclip()
 /// @ignore
 function sh_show_collisions()
 {
-    with (obj_layer_manager)
-        set_collision_visible(!show_collisions);
+    with (obj_game_manager)
+        ShowCollisions(!collisionVisible);
 }
 
 

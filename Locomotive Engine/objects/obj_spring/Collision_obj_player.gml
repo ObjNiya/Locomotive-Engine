@@ -25,5 +25,5 @@ with (other)
         sprite_index = spr_springlaunch;
     }
     
-    // TODO: Add speedlines, Spring Sound
+    EffectCreate(x, y, obj_speedlines_effect_vert);
 }

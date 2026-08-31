@@ -30,3 +30,21 @@ with (obj_player)
 }
 
 sprite_index = spr_null;
+
+var i = 0;
+
+repeat (2)
+{
+    var dir = BSign(!i);
+    
+    with (GibsCreate(x, y, spr_secretegg_gibs, -1, false, false, spr_secretegg_palette, palIndex))
+    {
+        image_index = i;
+        hspeed = random_range(-3, -5) * dir;
+        vspeed = random_range(3, 5) * dir;
+
+        collideBuffer = 45;
+    }
+    
+    i++;
+}

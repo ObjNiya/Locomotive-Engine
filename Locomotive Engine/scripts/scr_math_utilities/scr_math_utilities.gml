@@ -45,9 +45,9 @@ function abs_floor(val) {
 
 // TODO: BASE GAME FUNCTION
 
-function distance_to_pos(arg0, arg1, arg2, arg3, arg4, arg5)
+function distance_to_pos(_x1, _y1, _x2, _y2, _max_x, _max_y)
 {
-    return abs(arg0 - arg2) <= arg4 && abs(arg1 - arg3) <= arg5;
+	return abs(_x1 - _x2) <= _max_x && abs(_y1 - _y2) <= _max_y;
 }
 
 function map(value, in_min, in_max, out_min, out_max)

@@ -1,5 +1,3 @@
-// TODO: Refactor Prop
-
 //x -= global.baseAppWidth;
 
 yOffset = 80;
