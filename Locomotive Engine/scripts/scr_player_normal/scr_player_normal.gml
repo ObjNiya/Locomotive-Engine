@@ -80,6 +80,8 @@ function StatePlayerNormalStep()
         return;
     
     var max_speed = (carryingId == noone) ? 8 : 6;
+    max_speed += CalcSlopeAccel(0, 1, 0, 1);
+    
     var input_x = InputX(INPUT_CLUSTER.NAVIGATION);
     var sign_input_x = sign(input_x);
     var approach_spd = (movespeed > max_speed) ? deccel : accel;
@@ -166,7 +168,6 @@ function StatePlayerNormalStep()
     /////////////////////////////
     // General Ground Logic
     /////////////////////////////
-    
     
     if (carryingId == noone && PlayerMachrun())
     {

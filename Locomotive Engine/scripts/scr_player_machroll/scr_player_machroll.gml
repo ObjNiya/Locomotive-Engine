@@ -21,6 +21,14 @@ function StatePlayerMachrollStep()
     
     StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
     
+    movespeed += CalcSlopeAccel(0, 0.4, 0, 0.3);
+    if (floor(movespeed) <= 0)
+    {
+        dir *= -1;
+        image_xscale *= -1;
+        movespeed = 2;
+    }
+    
     hsp = movespeed * dir;
     
     if (PlayerDoWallsplat())
@@ -50,7 +58,7 @@ function StatePlayerMachrollStep()
         
         AnimationEndExt((sprite_index == spr_backslide_land), spr_backslide);
     
-        if (dashcloudPartTimer <= 0)
+        if (dashcloudPartTimer <= 0 && grounded)
         {
             PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
             dashcloudPartTimer = 13;

@@ -530,6 +530,7 @@
     {"name":"scr_screensizer_internal","order":3,"path":"scripts/scr_screensizer_internal/scr_screensizer_internal.yy",},
     {"name":"scr_secret","order":3,"path":"scripts/scr_secret/scr_secret.yy",},
     {"name":"scr_showtime","order":1,"path":"scripts/scr_showtime/scr_showtime.yy",},
+    {"name":"scr_slope_momentum","order":11,"path":"scripts/scr_slope_momentum/scr_slope_momentum.yy",},
     {"name":"scr_state_tv_expression","order":1,"path":"scripts/scr_state_tv_expression/scr_state_tv_expression.yy",},
     {"name":"scr_state_tv_idle","order":2,"path":"scripts/scr_state_tv_idle/scr_state_tv_idle.yy",},
     {"name":"scr_state_tv_mach","order":3,"path":"scripts/scr_state_tv_mach/scr_state_tv_mach.yy",},

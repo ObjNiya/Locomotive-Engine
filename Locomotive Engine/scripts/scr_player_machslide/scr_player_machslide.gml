@@ -32,7 +32,7 @@ function StatePlayerMachslideStep()
     
     AnimationEndExt((sprite_index == spr_machslide_intro), spr_machslide);
     
-    if (dashcloudPartTimer <= 0)
+    if (dashcloudPartTimer <= 0 && grounded)
     {
         PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
         dashcloudPartTimer = 13;

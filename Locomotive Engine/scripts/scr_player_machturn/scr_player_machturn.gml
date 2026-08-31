@@ -1,8 +1,6 @@
 /// @ignore
 function StatePlayerMachturnCreate()
 {
-    
-    
     SpriteSet((PlayerGetMachStage() > 2) ? spr_mach3_turn_intro : spr_mach2_turn_intro, 0);
 }
 
@@ -32,7 +30,7 @@ function StatePlayerMachturnStep()
         return;
     }
     
-    if (dashcloudPartTimer <= 0)
+    if (dashcloudPartTimer <= 0 && grounded)
     {
         PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
         dashcloudPartTimer = 13;

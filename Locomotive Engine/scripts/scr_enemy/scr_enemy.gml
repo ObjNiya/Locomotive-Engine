@@ -17,7 +17,7 @@ function AttackEnemy(enemy_id, attacker_id, damage = 1)
         
         if (hp <= 0)
         {
-            my_killer = attacker_id;
+            myKiller = attacker_id;
             instance_destroy();
         }
         else

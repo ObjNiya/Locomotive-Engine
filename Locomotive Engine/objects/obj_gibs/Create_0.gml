@@ -1,22 +1,10 @@
-// Built-ins
+event_inherited();
 
-grav = 0.4;
-hsp = random_range(-10, -18);
-vsp = random_range(-10, -18);
+hspeed = random_range(-10, -18);
+vspeed = random_range(-10, -18);
+gravity = 0.4;
+alarm[0] = 5;
 
-onGui = false;
 collideBuffer = 10;
 
-paletteSpr = -1;
-paletteIndex = 0;
-
-draw = function()
-{
-    if (sprite_exists(paletteSpr))
-        pal_swap_set(paletteSpr, paletteIndex, false);
-    
-    draw_self();
-    pal_swap_reset();
-}
-
-alarm[0] = 5;
+event_user(0);

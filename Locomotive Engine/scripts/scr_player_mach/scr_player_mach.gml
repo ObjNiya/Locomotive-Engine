@@ -76,6 +76,7 @@ function StatePlayerMachStep()
     var min_speed = 6;
     var max_speed = 20;
     
+    accel += CalcSlopeAccel(0.05, 0.2, 0.03, 0.1);
     movespeed += accel * real(dir == sign_input_x || !mach3) * grounded;
     movespeed = clamp(movespeed, min_speed, max_speed);
     hsp = movespeed * dir;
@@ -194,7 +195,7 @@ function StatePlayerMachStep()
                     sprite_index = spr_mach3;
             }
             
-            if (dashcloudPartTimer <= 0)
+            if (dashcloudPartTimer <= 0 && grounded)
             {
                 PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
                 dashcloudPartTimer = 13;

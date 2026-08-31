@@ -906,6 +906,7 @@
     {"id":{"name":"scr_shell_commands","path":"scripts/scr_shell_commands/scr_shell_commands.yy",},},
     {"id":{"name":"scr_showtime","path":"scripts/scr_showtime/scr_showtime.yy",},},
     {"id":{"name":"scr_shyguy_walk","path":"scripts/scr_shyguy_walk/scr_shyguy_walk.yy",},},
+    {"id":{"name":"scr_slope_momentum","path":"scripts/scr_slope_momentum/scr_slope_momentum.yy",},},
     {"id":{"name":"scr_sprite_utilities","path":"scripts/scr_sprite_utilities/scr_sprite_utilities.yy",},},
     {"id":{"name":"scr_sprite","path":"scripts/scr_sprite/scr_sprite.yy",},},
     {"id":{"name":"scr_state_machine","path":"scripts/scr_state_machine/scr_state_machine.yy",},},

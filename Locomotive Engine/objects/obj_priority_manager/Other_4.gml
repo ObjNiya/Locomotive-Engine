@@ -1,1 +1,7 @@
-event_user(0);
+with (all)
+{
+    if (!PriorityExists(object_index))
+        continue;
+    
+    SetLayer();
+}

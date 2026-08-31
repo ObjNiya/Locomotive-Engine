@@ -1,7 +1,7 @@
 
 mask_index = spr_waddledee_mask;
 
-my_killer = noone;
+myKiller = noone;
 enemyTimeSources = time_source_create(time_source_global, 1, time_source_units_frames, function() {});
 
 /////////////////////////////
