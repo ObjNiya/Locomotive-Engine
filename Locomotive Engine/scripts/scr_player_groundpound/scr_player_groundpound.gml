@@ -54,8 +54,6 @@ function StatePlayerGroundpoundStep()
             hsp = 0;
             movespeed = 0;
             
-            camera.ShakeSet(5, 0.25, 0);
-            
             machAfterimageUseAlpha = true;
 			
             time_source_stop(machAfterimageTimer);
@@ -80,6 +78,22 @@ function StatePlayerGroundpoundStep()
            
             // TODO: Make enemies JUMP
             
+            if (groundpoundSmash < 10)
+                return;
+            
+            with (par_enemy)
+            {
+                if (invincibleBuffer > 0 || !grounded || !PlaceMeetingCamera(x, y, other.camera.camId))
+                    continue;
+                
+                SmcSetState("Stunned");
+                
+                vsp = -11;
+                hsp = 0;
+                image_xscale *= -1;
+            }
+            
+            camera.ShakeSet(5, 0.25, 0);
             return;
         }
         

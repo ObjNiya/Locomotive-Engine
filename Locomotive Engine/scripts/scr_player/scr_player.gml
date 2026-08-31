@@ -51,7 +51,7 @@ function TryHurtPlayer(player_id, attacker_id)
         PartSpawn(x, y, PART_TYPES.HURTSTARS);
         
         repeat (5)
-            InstanceCreate(x, y, obj_hurt_star_debris);
+            PartSpawn(x, y, PART_TYPES.HURTSTARS)
         
         global.points -= max(global.points - 50, 0);
     }

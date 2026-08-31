@@ -44,61 +44,14 @@ function StatePlayerMachStep()
 {
     static flame_part_timer = 12;
     
-    var mach3 = (movespeed >= 12 && EqualsToAny(sprite_index, spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel));
-    accel = 0.1;
-    
-    if (mach3)
-    {
-        if (movespeed < 16)
-            accel = 0.025;
-        
-        momentum = true;
-        
-        var x_pos = (sign(hsp) == 1) ? ceil(x + hsp + accel) : floor(x + hsp + accel);
-        BlocksDestroy(x_pos, y, true, false);
-        ScareEnemies();
-        
-        instakillHitbox.canAttack = true;
-        if (PlayerDoInstakill())
-            SpriteSet(spr_mach3_hit_enemy, 0);
-    }
-    else
-    {
-        instakillHitbox.canAttack = false;
-        
-        var x_pos = (sign(hsp) == 1) ? ceil(x + hsp + accel) : floor(x + hsp + accel);
-        BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
-        
-        StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
-    }
-
-    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    var min_speed = 6;
-    var max_speed = 20;
-    
-    accel += CalcSlopeAccel(0.05, 0.2, 0.03, 0.1);
-    movespeed += accel * real(dir == sign_input_x || !mach3) * grounded;
-    movespeed = clamp(movespeed, min_speed, max_speed);
-    hsp = movespeed * dir;
-    
     if (pantingSprTime < 2000)
         pantingSprTime++;
-    
-    PlayerDoJump(false, (mach3) ? spr_mach3_jump : spr_mach2_jump_intro);
 
     if (PlayerDoGrabdash())
         return;
     if (PlayerDoUppercut())
         return;
-    if (PlayerDoCape())
-        return;
-    
-    if (PlayerSjump())
-    {
-        SmcSetState("SjumpPrep");
-        return;
-    }
-    
+
     if (PlayerCrouch() || PlayerDive())
     {
         SmcSetState("Machroll");
@@ -110,20 +63,9 @@ function StatePlayerMachStep()
     
     if (PlayerDoMachturn())
         return;
-    else if (PlayerMachinstaturn())
-    {
-        dir *= -1;
-        image_xscale *= -1;
-        movespeed = min_speed;
-    }
     
     if (PlayerDoMachslide())
         return;
-    else if (PlayerMachstop())
-    {
-        SmcSetState("Normal");
-        return;
-    }
         
     if (PlayerWallclimb())
     {
@@ -131,89 +73,163 @@ function StatePlayerMachStep()
         return;
     }
     
-    if (PlayerHitWall())
-    {
-        if (!mach3)
-            PlayerDoWallsplat();
-        else
-        {
-            SmcSetState("Anim");
-            SpriteSet(spr_mach3_hit_wall, 0);
-            
-            vsp = -6;
-            movespeed = -6;
-            
-            PartSpawn(x + (dir * 15), y + 10, PART_TYPES.BUMPSPARK);
-            sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
-            camera.ShakeSet(20, 0.666, 0);
-        }
-
-        return;
-    }    
-    
-    PlayerDoJumpstop();
-    
     AnimationEndExt((sprite_index == spr_mach1), spr_mach2);
     AnimationEndExt((sprite_index == spr_mach2_jump_intro), spr_mach2_jump);
     AnimationEndExt((sprite_index == spr_mach3_jump || sprite_index == spr_mach3_hit_enemy), spr_mach3);
     AnimationEndExt((sprite_index == spr_longjump_intro), spr_longjump);
     AnimationEndExt((sprite_index == spr_walljump_intro), spr_walljump);
-    AnimationEndExt((sprite_index == spr_machroll_getup), spr_mach2);
     AnimationEndExt((sprite_index == spr_sjump_cancel_intro), spr_sjump_cancel);
     
-    image_speed = 1;
+    if (grounded)
+    {
+        switch (sprite_index)
+        {
+            case spr_sjump_cancel_intro:
+            case spr_sjump_cancel:
+                sprite_index = spr_mach3;
+                break;
+            
+            case spr_mach2_jump_intro:
+            case spr_mach2_jump:
+            case spr_walljump_intro:
+            case spr_walljump:
+            case spr_longjump_intro:
+            case spr_longjump:            
+                sprite_index = spr_mach2;
+                break;      
+        }
+    }
     
-    var roll_getup_spr = (sprite_index == spr_machroll_getup);
-  
-    if (sound_instance_get_playback_state(sndMach) == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
-        sound_instance_start(sndMach);
+    var mach3 = (movespeed >= 12 && EqualsToAny(sprite_index, spr_mach3, spr_mach3_jump, spr_mach3_dashpad, spr_mach3_hit_enemy, spr_mach3_hit_enemy, spr_mach4, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel));
+    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    var slope_acel = CalcSlopeAccel(0.05, 0.2, 0.03, 0.1);
     
-    var machsnd_ground = grounded;
     var machsnd_state = 0;
+    var machsnd_ground = grounded;
+    
+    instakillHitbox.canAttack = false;
+    accel = 0.1;
+    image_speed = 1;
     
     if (!mach3)
     {
-        machsnd_state = 1;
-        
-        if (roll_getup_spr)
+        machsnd_state = real(sprite_index != spr_mach1);
+        if (sprite_index == spr_machroll_getup)
             machsnd_ground = false;
-        else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_kungfu_backflip))
+        
+        InstanceDestroySafe(speedlinesEffectId);
+        InstanceDestroySafe(chargeEffectId);
+        
+        AnimationEndExt((sprite_index == spr_machroll_getup), spr_mach2);
+        if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_machroll_getup, spr_kungfu_backflip))
             image_speed = (movespeed / 5.5);
         
         if (grounded)
         {
-            if (sprite_index != spr_mach1 && !roll_getup_spr)
-                sprite_index = spr_mach2;
-            else
-            	machsnd_state = 0;
+            movespeed += accel + slope_acel;
+            
+            if (dashcloudPartTimer <= 0)
+            {
+                PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
+                dashcloudPartTimer = 13;
+            }
+            
+            PlayerDoJump(false, spr_mach2_jump_intro);
+            
+            if (PlayerMachstop())
+            {
+                SmcSetState("Normal");
+                return;
+            }
+            
+            if (PlayerMachinstaturn())
+            {
+                dir *= -1;
+                image_xscale *= -1;
+                movespeed = 6;
+            }
+            
+            if (PlayerHitWall())
+            {
+                PlayerDoWallsplat();
+                return;
+            }
             
             if (movespeed >= 12)
             {
                 FlashEffectSet();
-                
-                if (!roll_getup_spr)
+                if (sprite_index != spr_machroll_getup)
                     sprite_index = spr_mach3;
-            }
-            
-            if (dashcloudPartTimer <= 0 && grounded)
-            {
-                PartSpawnDirX(x, bbox_bottom, PART_TYPES.DASHCLOUD, dir);
-                dashcloudPartTimer = 13;
+                
+                mach3 = true;
             }
         }
         else if (!EqualsToAny(sprite_index, spr_longjump_intro, spr_longjump, spr_kungfu_backflip, spr_mach2_jump_intro, spr_mach2_jump, spr_walljump_intro, spr_walljump))
             SpriteSet(spr_mach2_jump_intro, 0);
         
+        StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
     }
     else
     {
-        var sjump_spr = (EqualsToAny(sprite_index, spr_sjump_cancel_intro, spr_sjump_cancel) && !grounded);
-        
         machsnd_state = 2;
         
-        if (movespeed >= 16)
+        if (movespeed >= 20)
         {
-            if (sprite_index != spr_mach4)
+            accel = 0;
+            slope_acel = 0;
+        }
+        else if (movespeed < 16)
+            accel = 0.025;
+        
+        ScareEnemies();
+        
+        instakillHitbox.canAttack = true;
+        if (PlayerDoInstakill())
+            SpriteSet(spr_mach3_hit_enemy, 0);
+        
+        if (!instance_exists(speedlinesEffectId))
+            speedlinesEffectId = EffectCreate(x, y, obj_following_effect, spr_speedlines_effect);
+        
+        if (!instance_exists(chargeEffectId))
+            chargeEffectId = EffectCreate(x, y, obj_following_effect, spr_charge_effect);
+        
+        AnimationEndExt((sprite_index == spr_machroll_getup), spr_mach3);
+        
+        if (grounded)
+        {
+            if (dir == sign_input_x)
+                movespeed += accel + slope_acel;
+            
+            if (mach3cloudPartTimer <= 0)
+            {
+                PartSpawnDirX(x, bbox_bottom, PART_TYPES.MACH3CLOUD, dir);
+                mach3cloudPartTimer = 20;
+            }
+            
+            PlayerDoJump(false, spr_mach3_jump);
+            
+            if (PlayerSjump())
+            {
+                SmcSetState("SjumpPrep");
+                return;
+            }
+            
+            if (PlayerHitWall())
+            {
+                SmcSetState("Anim");
+                SpriteSet(spr_mach3_hit_wall, 0);
+                
+                vsp = -6;
+                movespeed = -6;
+                
+                PartSpawn(x + (dir * 15), y + 10, PART_TYPES.BUMPSPARK);
+                sound_instance_one_shot(sfx_player_mach3_wallcrash, x, y);
+                camera.ShakeSet(20, 0.666, 0);
+                
+                return;
+            }
+            
+            if (movespeed >= 16 && sprite_index != spr_mach4)
             {
                 sprite_index = spr_mach4;
                 
@@ -222,13 +238,19 @@ function StatePlayerMachStep()
                 
                 time_source_start(blurAfterimageTimer);
             }
-            else if (--flame_part_timer <= 0)
+        }
+        else if (PlayerDoCape())
+            return;
+        
+        if (movespeed >= 16)
+        {
+            machsnd_state = 3;
+            
+            if (--flame_part_timer <= 0)
             {
                 PartSpawn(x, bbox_bottom, PART_TYPES.FLAME);
                 flame_part_timer = 12;
             }
-            
-            machsnd_state = 3;
             
             if (horizRingPartTimer <= 0)
             {
@@ -236,21 +258,22 @@ function StatePlayerMachStep()
                 horizRingPartTimer = 14;
             }
         }
-        else if (sprite_index != spr_mach3 && !EqualsToAny(sprite_index, spr_mach3_hit_enemy, spr_mach3_jump, spr_mach3_dashpad) && !roll_getup_spr && !sjump_spr)
+        else if (!EqualsToAny(sprite_index, spr_mach3, spr_mach3_hit_enemy, spr_mach3_jump, spr_mach3_dashpad, spr_machroll_getup, spr_sjump_cancel_intro, spr_sjump_cancel))
             sprite_index = spr_mach3;
-        
-        if (grounded && mach3cloudPartTimer <= 0)
-        {
-            PartSpawnDirX(x, bbox_bottom, PART_TYPES.MACH3CLOUD, dir);
-            mach3cloudPartTimer = 20;
-        }
-        
-        if (!instance_exists(speedlinesEffectId))
-            speedlinesEffectId = EffectCreate(x, y, obj_following_effect, spr_speedlines_effect);
-        
-        if (!instance_exists(chargeEffectId))
-            chargeEffectId = EffectCreate(x, y, obj_following_effect, spr_charge_effect);
     }
+    
+    movespeed = max(movespeed, 6);
+    hsp = movespeed * dir;
+
+    if (mach3)
+        BlocksDestroy(x + hsp, y, true, false);
+    else
+        BlocksDestroy(x + hsp, y, true, false, [obj_metalblock]);
+    
+    PlayerDoJumpstop();
+      
+    if (sound_instance_get_playback_state(sndMach) == FMOD_STUDIO_PLAYBACK_STATE.STOPPED)
+        sound_instance_start(sndMach);
     
     sound_instance_set_parameter_by_name(sndMach, "Grounded", machsnd_ground);
     sound_instance_set_parameter_by_name(sndMach, "State", machsnd_state);
