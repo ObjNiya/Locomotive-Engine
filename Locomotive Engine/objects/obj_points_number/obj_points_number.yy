@@ -12,8 +12,8 @@
   "name":"obj_points_number",
   "overriddenProperties":[],
   "parent":{
-    "name":"Effects",
-    "path":"folders/Objects/Effects.yy",
+    "name":"Types",
+    "path":"folders/Objects/Effects/Types.yy",
   },
   "parentObjectId":null,
   "persistent":false,

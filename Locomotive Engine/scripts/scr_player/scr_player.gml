@@ -17,6 +17,9 @@ function TryHurtPlayer(player_id, attacker_id)
         if (object_index != obj_player)
             return PLAYER_HURT_STATUS.FAILED;
         
+        if (stateName == "Parry")
+            return PLAYER_HURT_STATUS.FAILED;
+        
         if (stateName == "Taunt" && parryHitboxBuffer > 0)
         { 
             parryTarget = attacker_id;
@@ -52,11 +55,44 @@ function TryHurtPlayer(player_id, attacker_id)
         PartSpawn(x, y, PART_TYPES.HURTSTARS);
         PartSpawn(x, y, PART_TYPES.HURTSTARS_DEBRIS, 0, 0, ps_shape_rectangle, ps_distr_linear, false, 5);
         
-        global.points -= max(global.points - 50, 0);
+        if (global.points > 0)
+        {
+            repeat (10)
+                InstanceCreate(x, y, obj_pointsloss_effect);
+        }
+        
+        global.points = max(global.points - 50, 0);
     }
 }
 
 
+/**
+ * Tries to predict the current player instances x position for the next frame and returns it.
+ */
+function PlayerPredictX()
+{
+    if (sign(hsp) == 1)
+        return x + 1 + ceil(hsp + accel);
+    else
+        return x - 1 + floor(hsp - accel);
+}
+
+
+/**
+ * Tries to predict the current player instances y position for the next frame and returns it.
+ */
+function PlayerPredictY()
+{
+    if (sign(vsp) == 1)
+        return y + ceil(vsp + grav);
+    else
+        return y + floor(vsp + grav);
+}
+
+
+/**
+ * Initializes the current player instances FMOD Studio event instances.
+ */
 function PlayerCreateSnds()
 {
     if (sndsInitialized)
@@ -86,6 +122,10 @@ function PlayerCreateSnds()
     sndsInitialized = true;
 }
 
+
+/**
+ * Releases the current player instances FMOD Studio event instances.
+ */
 function PlayerDestroySnds()
 {
     if (!sndsInitialized)

@@ -11,8 +11,8 @@
   "name":"obj_gibs",
   "overriddenProperties":[],
   "parent":{
-    "name":"Effects",
-    "path":"folders/Objects/Effects.yy",
+    "name":"Types",
+    "path":"folders/Objects/Effects/Types.yy",
   },
   "parentObjectId":{
     "name":"par_effect",

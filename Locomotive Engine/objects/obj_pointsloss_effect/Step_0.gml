@@ -1,0 +1,1 @@
+vspeed = min(vspeed, 12);

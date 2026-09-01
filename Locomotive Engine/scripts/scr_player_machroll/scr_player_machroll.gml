@@ -1,6 +1,8 @@
 /// @ignore
 function StatePlayerMachrollCreate()
 {
+    accel = 0;
+    
     SpriteSet((sprite_index == spr_rolling_jump) ? spr_backslide_land : spr_machroll, 0);
     mask_index = spr_crouchmask;
     
@@ -16,9 +18,7 @@ function StatePlayerMachrollStep()
 {
     static dashcloud_part_timer = 14;
     
-    var x_pos = (sign(hsp) == 1) ? ceil(x + hsp) : floor(x + hsp);
-    BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
-    
+    BlocksDestroy(PlayerPredictX() , y, true, false, [obj_metalblock]);
     StunEnemy(HitboxPlace(hitbox, par_enemy, "hurtbox"), self);
     
     movespeed += CalcSlopeAccel(0, 0.4, 0, 0.3);

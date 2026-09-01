@@ -1,17 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_savestates",
+  "%Name":"obj_pointsloss_effect",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_savestates",
+  "name":"obj_pointsloss_effect",
   "overriddenProperties":[],
   "parent":{
-    "name":"Debug",
-    "path":"folders/Objects/Debug.yy",
+    "name":"Types",
+    "path":"folders/Objects/Effects/Types.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_effect",
+    "path":"objects/par_effect/par_effect.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -29,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_points_1",
+    "path":"sprites/spr_points_1/spr_points_1.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

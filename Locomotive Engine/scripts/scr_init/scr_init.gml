@@ -86,7 +86,7 @@ function InitGlobals()
         fntMedium = font_add_sprite_ext(spr_fnt_medium, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.:!0123456789?'\"ÁÉÍÓÚáéíóú_-[]▼()&#风雨廊桥전태양*яиБжидГзвбнль", 1, 2);
         fntSmall = font_add_sprite_ext(spr_fnt_small, "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!.,_1234567890:?", 1, 0);    
     
-        fntPointsbook = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, -16);
+        fntPointsbook = font_add_sprite_ext(spr_pointsbook_font, "1234567890", 1, 0);
         fntPointsnum = font_add_sprite_ext(spr_fnt_points, "1234567890-+", 1, 0);
         fntCombo = font_add_sprite_ext(spr_combobar_font, "0123456789", 1, 0);
     

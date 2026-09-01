@@ -273,6 +273,7 @@ PrioritySet([
     spr_charge_effect,
     spr_grndpnd_effect,
     obj_warppipe,
+    obj_pointsloss_effect,
     obj_gibs,
 ], PRIORITY.MAX);
 

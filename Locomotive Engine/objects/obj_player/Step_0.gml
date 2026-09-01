@@ -44,6 +44,7 @@ visible = false;
 hsp = 0;
 vsp = 0;
 camera.ShakeSet(3, 0.05, 0);
+PlayerDropCarrying();
 
 sound_instance_one_shot(sfx_player_groundpound_land, x, room_height - 100);
 SmcSetState("Nothing");

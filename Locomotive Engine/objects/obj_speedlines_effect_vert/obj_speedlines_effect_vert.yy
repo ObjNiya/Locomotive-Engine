@@ -11,8 +11,8 @@
   "name":"obj_speedlines_effect_vert",
   "overriddenProperties":[],
   "parent":{
-    "name":"Effects",
-    "path":"folders/Objects/Effects.yy",
+    "name":"Types",
+    "path":"folders/Objects/Effects/Types.yy",
   },
   "parentObjectId":{
     "name":"obj_following_effect",

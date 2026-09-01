@@ -1,0 +1,1 @@
+pointsDisplay = Approach(pointsDisplay, global.points, 2);

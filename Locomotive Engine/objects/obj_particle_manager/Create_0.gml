@@ -42,6 +42,9 @@ enum PART_TYPES
     SLAPSTARS_DEBRIS = 34,
     WATERDROP_DEBRIS = 35,
     HURTSTARS_DEBRIS = 36,
+    
+    // Other
+    POINTSLOSS = 37,
 }
 
 global.partLayers = ds_map_create();

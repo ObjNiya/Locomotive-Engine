@@ -58,38 +58,33 @@ function StatePlayerSwingdingStep()
     switch (floor(image_index))
     {
         case 0:
-            x_offset = 25;
-            break;
-        case 2:
-            x_offset = -25;
-            break;
-        case 3:
-            x_offset = -50;
-            targ_depth = PRIORITY.HIGH;
-            break;
-        case 4:
-            x_offset = -25;
-            targ_depth = PRIORITY.HIGH;
-            break;
-        case 5:
-            targ_depth = PRIORITY.HIGH;
-            break;
-        case 6:
-            x_offset = 25;
-            targ_depth = PRIORITY.HIGH;
-            break;
-        case 7:
             x_offset = 50;
-            targ_depth = PRIORITY.HIGH;
+            break;
+        
+        case 1:
+        case 7:    
+            x_offset = 25;
+            break;
+        
+        case 3:
+        case 5:    
+            x_offset = -25;
+            break;
+        
+        case 4:
+            x_offset = -50;
             break;
     }
+    
+    if (InRange(floor(image_index), 1, 3))
+        targ_depth = PRIORITY.MAX;
     
     x_offset *= image_xscale;
     
     with (carryingId)
     {
-        y = floor(other.y);
-        x = floor(other.x + x_offset);
+        y = other.y;
+        x = other.x + x_offset;
         
         SetLayer(targ_depth, false);
     }
