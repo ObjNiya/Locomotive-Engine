@@ -119,7 +119,10 @@ function Camera() constructor
      */
     ZoomAdd = function(zoom_name, zoom_target_pos, zoom_target_pos_is_func, zoom_speed, zoom_speed_type, zoom_speed_animcurve_channel = 0, zoom_priority = 0)
     {
-        return zoom.Add(zoom_name, zoom_target_pos, zoom_target_pos_is_func, zoom_speed, zoom_speed_type, zoom_speed_animcurve_channel, zoom_priority);
+        var zm = zoom.Add(zoom_name, zoom_target_pos, zoom_target_pos_is_func, zoom_speed, zoom_speed_type, zoom_speed_animcurve_channel, zoom_priority);
+        zoom[$ zoom_name].pos = 1;
+        
+        return zm;
     }
     
     

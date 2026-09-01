@@ -21,8 +21,12 @@ function StartShowtime()
         ShakeSetMin(3);
     }
     
+    with (obj_level)
+        event_user(0);
+    
     MusicSet(mu_showtime_damian);
     
-    InstanceDestroySafe(obj_its_showtime);
-    InstanceCreate(0, 0, obj_its_showtime);
+    
+    //InstanceDestroySafe(obj_its_showtime);
+    //InstanceCreate(0, 0, obj_its_showtime);
 }

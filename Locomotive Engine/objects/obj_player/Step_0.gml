@@ -1,4 +1,9 @@
-HITSTUN_STEP;
+if (HitstunStep())
+{
+    camera.Step();
+    exit;
+}
+
 global.leadingPlayer = id;
 
 

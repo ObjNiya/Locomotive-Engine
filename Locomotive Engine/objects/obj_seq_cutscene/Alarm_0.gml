@@ -1,4 +1,6 @@
-seqLayer = layer_create(PRIORITY.MAX);
+var seq_lay_depth = layer_get_depth(layer_get_all()[0]) - 1;
+
+seqLayer = layer_create(seq_lay_depth);
 seqElem = layer_sequence_create(seqLayer, 0, 0, sequence);
 
 layer_script_begin(seqLayer, function() {
@@ -9,10 +11,7 @@ layer_script_begin(seqLayer, function() {
         seqLayerSurf = surface_create(room_width, room_height);
     
     if (surface_get_target() != seqLayerSurf) 
-    {
         surface_set_target(seqLayerSurf);
-        draw_clear_alpha(c_black, 0);
-    }
 });
 
 layer_script_end(seqLayer, function() {

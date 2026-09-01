@@ -57,3 +57,24 @@ function GibsCreate(x, y, sprite, horiz_dir, animate = true, rng_frame = false, 
         return id;
     }
 }
+
+
+/**
+ * Creates a flashing effect that covers the whole room.
+ * @parameter {Real} starting_fade (OPTIONAL) The starting alpha of the flash. Default is 2.
+ * @parameter {Real} fade_spd (OPTIONAL) By how much the flash fades away every frame. Default is 0.1.
+ * @parameter {Constant.Color} flash_color (OPTIONAL) The color of the flash. Default is white.
+ * @parameter {Array<Asset.GMObject>|Array<Id.Instance>|Real} draw_above (OPTIONAL) An array of instances or objects to draw above the flash OR -1 if nothing should be drawn above the flash. Default is -1.
+ */
+function RoomflashCreate(starting_fade = 2, fade_spd = 0.1, flash_color = c_white, draw_above = -1)
+{
+    with (InstanceCreate(0, 0, obj_roomflash))
+    {
+        startingFade = starting_fade;
+        fadeSpd = fade_spd;
+        flashColor = flash_color;
+        drawAbove = draw_above;
+        
+        return id;
+    }
+}

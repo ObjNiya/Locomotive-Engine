@@ -34,6 +34,28 @@ function StatePlayerNormalStep()
     static idle_anims = [spr_idle_animation1, spr_idle_animation2]; // Which idle animations may the player randomly play?
     static idle_anims_count = 2; // How many random idle animations are available?
     
+    var walk_spr = spr_walk;
+    var idle_spr = spr_idle;
+    
+    if (global.combo >= 50)
+    {
+        walk_spr = spr_highcombo_walk;
+        idle_spr = spr_highcombo_idle;
+    }
+    else if (global.combo >= 25)
+    {
+        walk_spr = spr_combo_walk;
+        idle_spr = spr_combo_idle;
+    }
+    
+    if (IsShowtime() && time_source_get_period(global.showtimeTimer) <= 0)
+    {
+        walk_spr = spr_outoftime_walk;
+        idle_spr = spr_outoftime_idle;
+    }
+    else if (IsShowtime())
+        idle_spr = spr_showtime_idle;
+    
     with (carryingId)
     {
         var x_offset = 12 * other.image_xscale;
@@ -288,12 +310,12 @@ function StatePlayerNormalStep()
         
         if (machslide_spr || land_spr)
         {
-            AnimationEnd(spr_walk);
+            AnimationEnd(walk_spr);
             return;
         }
         
         idleSprTime = 150;
-        sprite_index = spr_walk;
+        sprite_index = walk_spr;
         
         return;
     }
@@ -323,13 +345,13 @@ function StatePlayerNormalStep()
     
     if (machslide_spr || land_spr) 
     {
-        AnimationEnd(spr_idle);
+        AnimationEnd(idle_spr);
         return;
     }    
     
     if (--idleSprTime < 0)
     {
-        if (sprite_index != spr_idle && AnimationEnd())
+        if (sprite_index != idle_spr && AnimationEnd())
             idleSprTime = 150;
         
         var i = 0;
@@ -383,7 +405,7 @@ function StatePlayerNormalStep()
         return;
     }
     
-    sprite_index = spr_idle;
+    sprite_index = idle_spr;
 
 }
 

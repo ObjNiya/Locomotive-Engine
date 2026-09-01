@@ -1,5 +1,5 @@
 if (suspendGame)
     GameResume();
 
-if (is_callable(endEvent))
+if (endEvent != -1)
     endEvent();
