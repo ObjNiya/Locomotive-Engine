@@ -1,11 +1,7 @@
 /// @ignore
 function StatePlayerGrabdashCreate()
 {
-    
-    
-    momentum = true;
-    grabdashAirborne = !grounded;
-    accel = 0.5;
+    acel = 0.5;
     
     image_speed = 1;
     
@@ -14,10 +10,14 @@ function StatePlayerGrabdashCreate()
     else
         image_xscale = dir;
     
-    if (movespeed < 10 && grounded)
-        movespeed = max(movespeed, 10);
+    if (abs(hsp) < 10 && grounded)
+        hsp = 10 * dir;
     
-    SpriteSet(spr_grabdash_intro, 0);
+    if (!EqualsToAny(sprite_index, spr_grabdash_intro, spr_grabdash, spr_grabdash_end) && grounded)
+        SpriteSet(spr_grabdash_intro, 0);
+    else if (!EqualsToAny(sprite_index, spr_grabdash_air_intro, spr_grabdash_air))
+        SpriteSet(spr_grabdash_air_intro, 0);
+    
     sound_instance_start(sndGrabdash);
     time_source_start(blurAfterimageTimer);
 }
@@ -25,16 +25,10 @@ function StatePlayerGrabdashCreate()
 /// @ignore
 function StatePlayerGrabdashStep()
 {
-    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    if (abs(hsp) < 10)
+        hsp += acel * dir;
 
-    if (movespeed < 10)
-        movespeed += accel;
-    
-    hsp = movespeed * dir;
-    
-    var x_pos = (sign(hsp) == 1) ? ceil(x + hsp) : floor(x + hsp);
-    BlocksDestroy(x_pos, y, true, false, [obj_metalblock]);
-    PlayerDoJumpstop();
+    BlocksDestroy(PlayerPredictX(), y, true, false, [obj_metalblock]);
     
     var enemy = HitboxPlace(hitbox, par_enemy, "hurtbox");
     if (enemy != noone)
@@ -51,7 +45,7 @@ function StatePlayerGrabdashStep()
             return;
         }
         
-        if (movespeed <= 10)
+        if (abs(hsp) <= 10)
         {
             SmcSetState("Normal");
             sprite_index = (grounded) ? spr_hauling_intro : spr_hauling_jump;
@@ -61,9 +55,9 @@ function StatePlayerGrabdashStep()
         
         if (!grounded)
             vsp = -6;
+        
         return;
     }
-    
     
     if (PlayerDoLongjump())
         return;
@@ -82,25 +76,22 @@ function StatePlayerGrabdashStep()
         return;
     }
     
+    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
+    
     if (sign_input_x == -dir || (sprite_index == spr_grabdash_end && AnimationEnd()))
     {
-        if (PlayerMachrun() && sign_input_x == dir)
-        {
-            SmcSetState("Mach");
-            sprite_index = spr_mach2;
-            
-            return;
-        }
-    
         SmcSetState("Normal");
         
-        if (!grounded && sign_input_x == -dir)
+        if (grounded)
         {
-            SpriteSet(spr_grabdash_cancel, 0);
-            sound_instance_one_shot(sfx_player_grab_cancel, x, y);
+            hsp = 2 * sign_input_x;
+            return;
         }
-        else if (sign_input_x == -dir)
-            movespeed = 2;
+        
+        hsp = 0;
+        
+        SpriteSet(spr_grabdash_cancel, 0);
+        sound_instance_one_shot(sfx_player_grab_cancel, x, y);
         
         return;
     }
@@ -120,16 +111,15 @@ function StatePlayerGrabdashStep()
         return;
     }
     
-    AnimationEndExt((sprite_index == spr_grabdash_intro), spr_grabdash);
-    
     if (!grounded)
+    { 
+        AnimationEnd(spr_grabdash_air);
         return;
+    }
     
+    AnimationEndExt((sprite_index == spr_grabdash_intro), spr_grabdash);
     AnimationEndExt((sprite_index == spr_grabdash), spr_grabdash_end);
-    
-    if (grabdashAirborne && sprite_index == spr_grabdash)
-        SpriteSet(spr_grabdash_end, 0);
-    
+
     if (grabdashcloudPartTimer > 0)
         return;
     

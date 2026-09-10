@@ -18,10 +18,11 @@ function PlayerGetMachStage()
 /// @ignore
 function StatePlayerMachCreate()
 {
-    movespeed = max(movespeed, 6);
-    accel = 0.1;
-    
+    acel = 0.1;
     dir = sign(image_xscale);
+    
+    if (abs(hsp) > 6)
+        hsp = 6 * dir;
     
     machAfterimageUseAlpha = true;
     time_source_start(machAfterimageTimer);

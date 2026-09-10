@@ -5,6 +5,12 @@
 */
 function MovementHelpersInit()
 {
+    maxSpd = 0;
+    acel = 0;
+    vertAcel = 0;
+    vertDecel = 0;
+    decel = 0;
+    
     movespeed = 0;
     vertMovespeed = 0;
     

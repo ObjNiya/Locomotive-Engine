@@ -71,10 +71,11 @@ function TryHurtPlayer(player_id, attacker_id)
  */
 function PlayerPredictX()
 {
-    if (sign(hsp) == 1)
-        return x + 1 + ceil(hsp + accel);
-    else
-        return x - 1 + floor(hsp - accel);
+    var predict_x = x + hsp + accel;
+    if (sign(predict_x) == -1)
+        return floor(predict_x);
+    
+    return ceil(predict_x);
 }
 
 
@@ -83,10 +84,11 @@ function PlayerPredictX()
  */
 function PlayerPredictY()
 {
-    if (sign(vsp) == 1)
-        return y + ceil(vsp + grav);
-    else
-        return y + floor(vsp + grav);
+    var predict_y = y + vsp + grav + vertAcel;
+    if (sign(predict_y) == -1)
+        return floor(predict_y);
+    
+    return ceil(predict_y);
 }
 
 

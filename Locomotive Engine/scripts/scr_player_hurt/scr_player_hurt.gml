@@ -4,7 +4,7 @@ function StatePlayerHurtCreate()
     if (sprite_index != spr_back_hurt)
         sprite_index = spr_hurt;
     
-    movespeed = -8;
+    hsp = -8 * dir;
     vsp = -14;
     
     sound_instance_one_shot(sfx_playerhurt, x, y);
@@ -15,11 +15,6 @@ function StatePlayerHurtCreate()
 /// @ignore
 function StatePlayerHurtStep()
 {
-    hsp = movespeed * dir;
-    
-    if (place_meeting_collision(x + hsp, y))
-        movespeed = 0;
-    
     if (!grounded || vsp < 0)
         return;
     

@@ -1,16 +1,14 @@
 /// @ignore
 function StatePlayerLadderCreate()
 {
-    
-    
-    sprite_index = spr_ladder_up;
+    if (sprite_index != spr_ladder_up && sprite_index != spr_ladder_down)
+        sprite_index = spr_ladder_up;
     image_speed = 1;
     
     hsp = 0;
     vsp = 0;
-    movespeed = 0;
-    vertMovespeed = 6;
-    
+    grav = 0;
+
     time_source_start(airCloudParticleTimer);
 }
 
@@ -27,20 +25,22 @@ function StatePlayerLadderStep()
         case -1:
             sprite_index = spr_ladder_up;
             time_source_resume(airCloudParticleTimer);
-            vertMovespeed = 6;
+            
+            vsp = -6;
             break;
+        
         case 0:
             sprite_index = spr_ladder_up;
             image_speed = 0;
             break;
+        
         case 1:
             sprite_index = spr_ladder_down;
             image_speed = -1;
-            vertMovespeed = 10;
+            
+            vsp = 10;
             break;
     }
-    
-    vsp = vertMovespeed * vertDir;
     
     if (InputPressed(INPUT_VERB.JUMP))
     {
@@ -68,6 +68,8 @@ function StatePlayerLadderStep()
 function StatePlayerLadderDestroy()
 {
     ladderId = noone;
+    grav = 0.5;
+    
     time_source_resume(airCloudParticleTimer);
     time_source_stop(airCloudParticleTimer);
     

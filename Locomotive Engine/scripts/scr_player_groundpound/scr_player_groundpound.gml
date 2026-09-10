@@ -5,8 +5,8 @@ function StatePlayerGroundpoundCreate()
     if (carryingId != noone)
         sprite_index = spr_piledriver;
     
-    accel = 0.25;
-    deccel = 0.05;
+    acel = 0.25;
+    decel = 0.05;
     
     if (sign(InputX(INPUT_CLUSTER.NAVIGATION)) == 0)
         hsp = 0;
@@ -126,13 +126,13 @@ function StatePlayerGroundpoundStep()
     {
         x = other.x + (16 * other.image_xscale);
         y = other.y + 16;
-        
     }
     
-    var y_pos = (sign(vsp) == 1) ? ceil(y + vsp + grav) : floor(y + vsp + grav);
-    BlocksDestroy(x, y_pos, false, true, [obj_metalblock]);
+    if (vsp >= 0) 
+        BlocksDestroy(x, PlayerPredictY(), false, true, [obj_metalblock]);
     if (carryingId == noone)
         InputVerbConsume(INPUT_VERB.JUMP);
+    
     PlayerDoInstakill();
     
     if (InputPressed(INPUT_VERB.GRABDASH))
@@ -186,20 +186,15 @@ function StatePlayerGroundpoundStep()
         return;
     }
     
-    var sign_input_x = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-
-    hsp = movespeed * dir;
+    dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
     
-    if (movespeed > 7)
-        movespeed -= deccel;
-    else if (dir != 0)
-        movespeed += accel;
+    if (dir == 0)
+        hsp = 0;
     
-    if (sign_input_x != dir || place_meeting_collision(x + hsp, y))
-    {
-        dir = sign_input_x;
-        movespeed = 0;
-    }        
+    if (abs(hsp) > 7)
+        hsp -= decel * dir;
+    else
+        hsp += acel * dir;
     
     if (sprite_index != spr_divebomb && sprite_index != spr_piledriver)
         image_xscale = Side(sign_input_x, image_xscale);

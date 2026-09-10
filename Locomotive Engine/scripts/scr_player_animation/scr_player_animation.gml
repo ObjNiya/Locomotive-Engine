@@ -1,8 +1,6 @@
 /// @ignore
 function StatePlayerAnimCreate()
 {
-    
-    
     image_index = 0;
     image_speed = 1;
 }
@@ -11,9 +9,10 @@ function StatePlayerAnimCreate()
 function StatePlayerAnimStep()
 {
     if (grounded)
-        movespeed = 0;
-    
-    hsp = movespeed * dir;
+    {
+        hsp = 0;
+        maxSpd = 0;
+    }
     
     image_xscale = Side(image_xscale, dir);
     

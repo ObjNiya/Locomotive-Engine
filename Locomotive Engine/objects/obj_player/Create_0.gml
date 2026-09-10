@@ -1,4 +1,7 @@
-event_inherited();
+enum PLAYER_UEVS
+{
+    TECHDIFFICULTIES = 0,
+}
 
 /////////////////////////////
 // Set built-ins

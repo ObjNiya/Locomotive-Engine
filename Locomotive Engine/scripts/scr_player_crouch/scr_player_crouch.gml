@@ -1,25 +1,29 @@
 /// @ignore
 function StatePlayerCrouchCreate()
 {
-    
-    
     mask_index = spr_crouchmask;
     image_speed = 1;
+    
+    maxSpd = 4;
+    acel = 4;
+    
+    if (!grounded)
+    {
+        sprite_index = spr_crouch_fall;
+        return;
+    }
     
     if (sign(hsp) == 0)
         SpriteSet(spr_crouch_intro, 0);
     else
         sprite_index = spr_crawl;
-    
-    movespeed = 4;
-    accel = 4;
 }
 
 /// @ignore
 function StatePlayerCrouchStep()
 {
     dir = sign(InputX(INPUT_CLUSTER.NAVIGATION));
-    hsp = movespeed * dir;
+    hsp = maxSpd * dir;
     
     image_xscale = Side(dir, image_xscale);
     
@@ -34,8 +38,10 @@ function StatePlayerCrouchStep()
     
     if (!grounded)
     {
-        if (!EqualsToAny(sprite_index, spr_crouch_jump, spr_crouch_fall) || (sprite_index == spr_crouch_jump && AnimationEnd()))
-            sprite_index = spr_crouch_fall;
+        if (sprite_index == spr_crouch_jump && !AnimationEnd())
+            return;
+        
+        sprite_index = spr_crouch_fall;
         return;    
     }
     
@@ -45,10 +51,14 @@ function StatePlayerCrouchStep()
         return;
     }
     
-    if ((dir == 0 && sprite_index != spr_crouch_intro) || (dir == 0 && sprite_index == spr_crouch_intro && AnimationEnd()))
+    if (dir != 0)
+    {
+        sprite_index = spr_crawl;
+        return;
+    }
+    
+    if (sprite_index != spr_crouch_intro || AnimationEnd())
         sprite_index = spr_crouch;
-    else
-    	sprite_index = spr_crawl;
 }
 
 /// @ignore
