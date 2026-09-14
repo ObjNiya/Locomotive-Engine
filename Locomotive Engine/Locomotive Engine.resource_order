@@ -134,6 +134,7 @@
     {"name":"FMOD","order":2,"path":"extensions/FMOD/FMOD.yy",},
     {"name":"@TODO","order":1,"path":"notes/@TODO/@TODO.yy",},
     {"name":"Attack Function Template","order":1,"path":"notes/Attack Function Template/Attack Function Template.yy",},
+    {"name":"README","order":51,"path":"notes/README/README.yy",},
     {"name":"Screensizer Set Up Guide","order":2,"path":"notes/Screensizer Set Up Guide/Screensizer Set Up Guide.yy",},
     {"name":"__InputUpdateController","order":17,"path":"objects/__InputUpdateController/__InputUpdateController.yy",},
     {"name":"obj_bigshowtimepoints","order":1,"path":"objects/obj_bigshowtimepoints/obj_bigshowtimepoints.yy",},
