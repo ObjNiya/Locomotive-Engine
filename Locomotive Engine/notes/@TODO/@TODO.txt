@@ -1,0 +1,2 @@
+@TODO: Once all sprites are imported get them into actual groups for once (both folders and sprite group). Same will apply for TV Nauta. 
+This note is copy-pasted into TV Nauta as well.
